@@ -72,6 +72,12 @@ Lessons are ordered by `course.json`'s `lessons` list, or by folder name if it's
 
 See `courses/getting-started` for one example of each.
 
+### Article and quiz lessons
+
+For a reading-only lesson, set `"type": "article"` in `config.json`; the lesson is just `lesson.md`, and learners finish it with **Mark Complete**.
+
+For a multiple-choice question, set `"type": "quiz"` and list the choices in `config.json`'s `"options"`. Put the question in `lesson.md` and the zero-based answer in `solution.json`: `{"correct_index": 0}`. Learners submit `{"answer": N}` to the lesson's `submit` endpoint. A wrong answer doesn't reveal the right one, so learners can try again. True/false questions are a quiz with two options.
+
 ### System design lessons
 
 Set `"type": "system-design"` in a lesson's `config.json`, with `maxLatencyMs` as the p99 target. Instead of code files, the lesson has `starter.json` (the diagram learners start from) and `solution.json` (a reference design that must pass). Both are React Flow graphs: nodes of type `client`, `loadBalancer`, `server`, or `database`, plus edges. **Simulate Traffic** sends 1,000 requests over one second through the learner's diagram. Grading is by behavior (overloaded servers, p99 latency, unanswered requests), so any design with enough capacity passes. See `courses/system-design`. The Studio can check and export these lessons but can't edit their diagrams yet. In development the app reads `courses/` live; user courses go in the app data folder (`~/Library/Application Support/dev.freeknowledge.app/courses` on macOS).

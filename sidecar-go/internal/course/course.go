@@ -13,6 +13,11 @@
 // starter.json (the initial diagram) and solution.json (a reference design
 // that must pass the simulator) instead of code and tests.
 //
+// Article lessons ("type": "article") are just lesson.md. Quiz lessons
+// ("type": "quiz") put the question in lesson.md, the choices in
+// config.json's "options", and the answer in solution.json:
+// {"correct_index": 0}.
+//
 // Folder names are the IDs. Lessons are ordered by course.json "lessons" if
 // present, otherwise by folder name (use 01-, 02- prefixes).
 //
@@ -64,17 +69,20 @@ type courseFile struct {
 }
 
 type lessonConfig struct {
-	Title        string `json:"title"`
-	Language     string `json:"language"`
-	Type         string `json:"type"` // "code" (default) or "system-design"
-	TimeoutMs    int    `json:"timeoutMs"`
-	MaxLatencyMs int    `json:"maxLatencyMs"` // system design: p99 latency target
+	Title        string   `json:"title"`
+	Language     string   `json:"language"`
+	Type         string   `json:"type"` // "code" (default) or "system-design"
+	TimeoutMs    int      `json:"timeoutMs"`
+	MaxLatencyMs int      `json:"maxLatencyMs"` // system design: p99 latency target
+	Options      []string `json:"options"`      // quiz: answer choices
 }
 
 // Lesson kinds.
 const (
 	KindCode         = "code"
 	KindSystemDesign = "system-design"
+	KindArticle      = "article"
+	KindQuiz         = "quiz"
 )
 
 type Course struct {
@@ -102,14 +110,15 @@ type LessonSummary struct {
 // files are paths only and are never sent to the frontend.
 type Lesson struct {
 	LessonSummary
-	CourseID      string `json:"courseId"`
-	Markdown      string `json:"markdown"`
-	Starter       string `json:"starter"` // code, or diagram JSON for system design
-	TimeoutMs     int    `json:"timeoutMs"`
-	MaxLatencyMs  int    `json:"maxLatencyMs,omitempty"`
-	Dir           string `json:"-"`
-	TestFile      string `json:"-"`
-	ReferenceFile string `json:"-"`
+	CourseID      string   `json:"courseId"`
+	Markdown      string   `json:"markdown"`
+	Starter       string   `json:"starter"` // code, or diagram JSON for system design
+	TimeoutMs     int      `json:"timeoutMs"`
+	MaxLatencyMs  int      `json:"maxLatencyMs,omitempty"`
+	Options       []string `json:"options,omitempty"` // quiz choices
+	Dir           string   `json:"-"`
+	TestFile      string   `json:"-"`
+	ReferenceFile string   `json:"-"`
 }
 
 // Valid reports whether the lesson can be graded.
@@ -226,7 +235,7 @@ func loadLesson(c *Course, id string) (*Lesson, error) {
 		if err := json.Unmarshal(raw, &cfg); err != nil {
 			l.Problems = append(l.Problems, "config.json: "+err.Error())
 		} else {
-			l.Title, l.TimeoutMs, l.MaxLatencyMs = cfg.Title, cfg.TimeoutMs, cfg.MaxLatencyMs
+			l.Title, l.TimeoutMs, l.MaxLatencyMs, l.Options = cfg.Title, cfg.TimeoutMs, cfg.MaxLatencyMs, cfg.Options
 			if cfg.Language != "" {
 				l.Language = cfg.Language
 			}
@@ -259,6 +268,26 @@ func loadLesson(c *Course, id string) (*Lesson, error) {
 			l.ReferenceFile = p
 		}
 		return l, nil
+	case KindArticle:
+		l.Language = ""
+		return l, nil
+	case KindQuiz:
+		l.Language = ""
+		if len(l.Options) < 2 {
+			l.Problems = append(l.Problems, `quiz needs at least two "options" in config.json`)
+		}
+		p := filepath.Join(dir, "solution.json")
+		if !fileExists(p) {
+			l.Problems = append(l.Problems, "solution.json is missing")
+			return l, nil
+		}
+		l.ReferenceFile = p
+		if i, err := ReadQuizAnswer(p); err != nil {
+			l.Problems = append(l.Problems, "solution.json: "+err.Error())
+		} else if len(l.Options) >= 2 && i >= len(l.Options) {
+			l.Problems = append(l.Problems, fmt.Sprintf("solution.json: correct_index %d is out of range for %d options", i, len(l.Options)))
+		}
+		return l, nil
 	default:
 		l.Problems = append(l.Problems, fmt.Sprintf("unknown lesson type %q", l.Kind))
 		return l, nil
@@ -280,6 +309,25 @@ func loadLesson(c *Course, id string) (*Lesson, error) {
 		l.ReferenceFile = p
 	}
 	return l, nil
+}
+
+// ReadQuizAnswer reads the zero-based correct_index from a quiz's
+// solution.json.
+func ReadQuizAnswer(path string) (int, error) {
+	raw, err := os.ReadFile(path)
+	if err != nil {
+		return 0, err
+	}
+	var sol struct {
+		CorrectIndex *int `json:"correct_index"`
+	}
+	if err := json.Unmarshal(raw, &sol); err != nil {
+		return 0, err
+	}
+	if sol.CorrectIndex == nil || *sol.CorrectIndex < 0 {
+		return 0, errors.New(`needs a non-negative "correct_index"`)
+	}
+	return *sol.CorrectIndex, nil
 }
 
 func firstHeading(md, fallback string) string {

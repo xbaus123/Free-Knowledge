@@ -23,6 +23,21 @@ const TABS: { id: Tab; label: string; hint: string }[] = [
   { id: "reference", label: "Reference", hint: "Your solution. It must pass the tests before you can export" },
 ];
 
+// Lesson types the Studio can show but not yet edit.
+const TYPE_INFO: Record<string, { label: string; files: string; check: string }> = {
+  "system-design": {
+    label: "System design",
+    files: 'lesson.md, config.json (with "type": "system-design" and maxLatencyMs), starter.json, and solution.json',
+    check: "Simulates solution.json (must pass) and starter.json (should fail)",
+  },
+  article: { label: "Article", files: 'lesson.md and config.json (with "type": "article")', check: "Checks that the lesson loads" },
+  quiz: {
+    label: "Quiz",
+    files: 'lesson.md (the question), config.json (with "type": "quiz" and an "options" list), and solution.json ({"correct_index": 0})',
+    check: "Checks that the options and answer are valid",
+  },
+};
+
 const field = (tab: Tab): "markdown" | "starter" | "tests" | "reference" => (tab === "instructions" ? "markdown" : tab);
 
 export function CourseEditor({ courseId, initialLessonId, onBack, onPreview }: Props) {
@@ -333,11 +348,11 @@ export function CourseEditor({ courseId, initialLessonId, onBack, onPreview }: P
             <div className="p-8 text-sm text-zinc-500">
               {course && course.lessons.length === 0 ? "Add your first lesson to get started." : "Loading…"}
             </div>
-          ) : draft.type === "system-design" ? (
+          ) : draft.type && draft.type !== "code" ? (
             <>
               <div className="flex shrink-0 items-center gap-3 border-b border-zinc-800 px-4 py-3">
                 <span className="font-medium">{draft.title}</span>
-                <span className="rounded bg-violet-950 px-2 py-0.5 text-xs text-violet-300">System design</span>
+                <span className="rounded bg-violet-950 px-2 py-0.5 text-xs text-violet-300">{TYPE_INFO[draft.type]?.label ?? draft.type}</span>
                 <div className="ml-auto flex items-center gap-2 text-sm">
                   <button onClick={deleteCurrent} disabled={!!busy} className="rounded px-2 py-1.5 text-xs text-zinc-500 hover:bg-zinc-800 hover:text-red-400">
                     Delete
@@ -345,7 +360,7 @@ export function CourseEditor({ courseId, initialLessonId, onBack, onPreview }: P
                   <button
                     onClick={runCheck}
                     disabled={!!busy}
-                    title="Simulates solution.json (must pass) and starter.json (should fail)"
+                    title={TYPE_INFO[draft.type]?.check}
                     className="rounded bg-emerald-700 px-3 py-1.5 font-medium hover:bg-emerald-600 disabled:opacity-40"
                   >
                     Check lesson
@@ -354,11 +369,8 @@ export function CourseEditor({ courseId, initialLessonId, onBack, onPreview }: P
               </div>
               <div className="min-h-0 flex-1 overflow-auto p-6 text-sm text-zinc-400">
                 <p className="mb-4 max-w-2xl">
-                  Diagram editing in the Studio is coming later. For now, edit this lesson's files in its course folder:{" "}
-                  <code className="text-zinc-300">lesson.md</code>, <code className="text-zinc-300">config.json</code> (with{" "}
-                  <code className="text-zinc-300">"type": "system-design"</code> and <code className="text-zinc-300">maxLatencyMs</code>),{" "}
-                  <code className="text-zinc-300">starter.json</code>, and <code className="text-zinc-300">solution.json</code>. Use Preview as learner to
-                  try it, and Check lesson to simulate both diagrams.
+                  Editing {TYPE_INFO[draft.type]?.label.toLowerCase() ?? draft.type} lessons in the Studio is coming later. For now, edit these files in
+                  the lesson's folder: {TYPE_INFO[draft.type]?.files ?? "lesson.md and config.json"}. Use Preview as learner to try it.
                 </p>
                 <div className="max-w-2xl rounded border border-zinc-800 p-5">
                   <Markdown>{draft.markdown}</Markdown>

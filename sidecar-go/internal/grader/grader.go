@@ -98,13 +98,21 @@ var harnesses = map[string]harness{
 	},
 }
 
-// Grade runs the lesson's tests against code.
+// Grade runs the lesson's tests against code. Article lessons pass as soon
+// as they're submitted (the learner marked them read); quizzes are graded
+// with GradeAnswer instead.
 func Grade(ctx context.Context, l *course.Lesson, code string, onOutput runner.OutputFunc) (Result, error) {
 	if !l.Valid() {
 		return Result{}, fmt.Errorf("lesson %s/%s has problems: %s", l.CourseID, l.ID, strings.Join(l.Problems, "; "))
 	}
-	if l.Kind != "code" {
-		return Result{}, fmt.Errorf("lesson kind %q can't be graded", l.Kind)
+	switch l.Kind {
+	case course.KindCode:
+	case course.KindArticle:
+		return Result{Result: runner.Result{Phase: runner.PhaseRun}, Passed: true, Tests: []TestResult{{Name: "Read the article", Status: StatusPass}}}, nil
+	case course.KindQuiz:
+		return Result{}, errors.New("quiz lessons are graded by answer, not code")
+	default:
+		return Result{}, fmt.Errorf("lesson type %q can't be graded here", l.Kind)
 	}
 	lang, _ := runner.Lookup(l.Language)
 	h, ok := harnesses[lang.ID]
@@ -164,6 +172,33 @@ func Grade(ctx context.Context, l *course.Lesson, code string, onOutput runner.O
 		}
 	}
 	return finish(r)
+}
+
+// GradeAnswer checks a quiz answer (a zero-based index into the options)
+// against the hidden solution.json. A wrong answer doesn't reveal the right
+// one, so the learner can try again.
+func GradeAnswer(l *course.Lesson, answer int) (Result, error) {
+	if !l.Valid() {
+		return Result{}, fmt.Errorf("lesson %s/%s has problems: %s", l.CourseID, l.ID, strings.Join(l.Problems, "; "))
+	}
+	if l.Kind != course.KindQuiz {
+		return Result{}, fmt.Errorf("lesson %s/%s isn't a quiz", l.CourseID, l.ID)
+	}
+	if answer < 0 || answer >= len(l.Options) {
+		return Result{}, fmt.Errorf("answer must be between 0 and %d", len(l.Options)-1)
+	}
+	correct, err := course.ReadQuizAnswer(l.ReferenceFile)
+	if err != nil {
+		return Result{}, err
+	}
+	r := Result{Result: runner.Result{Phase: runner.PhaseRun}, Passed: answer == correct}
+	t := TestResult{Name: l.Options[answer], Status: StatusPass, Message: "Correct!"}
+	if !r.Passed {
+		r.ExitCode = 1
+		t.Status, t.Message = StatusFail, "Not quite. Try again."
+	}
+	r.Tests = []TestResult{t}
+	return r, nil
 }
 
 // Validate grades the lesson's reference solution. Authors use this to prove

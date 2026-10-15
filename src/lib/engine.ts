@@ -64,9 +64,13 @@ export interface Lesson extends LessonSummary {
   timeoutMs: number;
   /** System design: p99 latency target. */
   maxLatencyMs?: number;
+  /** Quiz: answer choices. */
+  options?: string[];
 }
 
 export const isDesignLesson = (l?: LessonSummary) => l?.kind === "system-design";
+export const isArticleLesson = (l?: LessonSummary) => l?.kind === "article";
+export const isQuizLesson = (l?: LessonSummary) => l?.kind === "quiz";
 
 export interface SimNodeStats {
   type: string;
@@ -194,6 +198,14 @@ export const saveCode = (courseId: string, lessonId: string, code: string) =>
   request<void>(lessonPath(courseId, lessonId) + "/progress/code", { method: "PUT", body: JSON.stringify({ code }) });
 export const resetCode = (courseId: string, lessonId: string) =>
   request<void>(lessonPath(courseId, lessonId) + "/progress/code", { method: "DELETE" });
+
+/** Grades a quiz answer (zero-based index into the lesson's options). */
+export const submitAnswer = (courseId: string, lessonId: string, answer: number) =>
+  request<GradeResult>(lessonPath(courseId, lessonId) + "/submit", { method: "POST", body: JSON.stringify({ answer }) });
+
+/** Marks an article lesson as read. */
+export const completeArticle = (courseId: string, lessonId: string) =>
+  request<GradeResult>(lessonPath(courseId, lessonId) + "/submit", { method: "POST", body: "{}" });
 
 /** Sends a burst of traffic through a system design diagram and grades it. */
 export const simulate = (courseId: string, lessonId: string, graphJson: string) =>

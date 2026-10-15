@@ -114,7 +114,7 @@ func TestBundledCoursesAreReadOnly(t *testing.T) {
 	}
 	copyID := must(s.CopyCourse("getting-started"))
 	c := must(s.Courses.Course(copyID))
-	if c.Source != "user" || !strings.HasSuffix(c.Title, "(copy)") || len(c.Lessons) != 5 {
+	if c.Source != "user" || !strings.HasSuffix(c.Title, "(copy)") || len(c.Lessons) != 7 {
 		t.Fatalf("copy: %+v", c)
 	}
 	if _, err := s.CreateLesson(copyID, "Extra", "python"); err != nil {

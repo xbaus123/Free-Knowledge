@@ -114,3 +114,29 @@ func TestUserCoursesOverrideBundled(t *testing.T) {
 		t.Fatalf("got %v", titles)
 	}
 }
+
+func TestQuizProblems(t *testing.T) {
+	root := t.TempDir()
+	write(t, filepath.Join(root, "c", "course.json"), `{}`)
+	for id, files := range map[string]map[string]string{
+		"few-options":  {"config.json": `{"type":"quiz","options":["only"]}`, "solution.json": `{"correct_index":0}`},
+		"no-solution":  {"config.json": `{"type":"quiz","options":["a","b"]}`},
+		"out-of-range": {"config.json": `{"type":"quiz","options":["a","b"]}`, "solution.json": `{"correct_index":2}`},
+		"no-index":     {"config.json": `{"type":"quiz","options":["a","b"]}`, "solution.json": `{}`},
+		"ok":           {"config.json": `{"type":"quiz","options":["a","b"]}`, "solution.json": `{"correct_index":1}`},
+	} {
+		write(t, filepath.Join(root, "c", id, "lesson.md"), "# Q")
+		for name, body := range files {
+			write(t, filepath.Join(root, "c", id, name), body)
+		}
+	}
+	s := NewStore([]Root{{Path: root}})
+	for _, id := range []string{"few-options", "no-solution", "out-of-range", "no-index"} {
+		if l, err := s.Lesson("c", id); err != nil || l.Valid() {
+			t.Errorf("%s should have problems: %+v %v", id, l, err)
+		}
+	}
+	if l, err := s.Lesson("c", "ok"); err != nil || !l.Valid() || len(l.Options) != 2 {
+		t.Errorf("ok: %+v %v", l, err)
+	}
+}

@@ -39,6 +39,9 @@ func TestSampleCourse(t *testing.T) {
 		t.Fatalf("course problems: %v", c.Problems)
 	}
 	for _, s := range c.Lessons {
+		if s.Kind != course.KindCode {
+			continue // articles and quizzes have their own tests below
+		}
 		t.Run(s.ID, func(t *testing.T) {
 			t.Parallel()
 			l := lesson(t, s.ID)
@@ -177,4 +180,40 @@ func TestRustFailureMessage(t *testing.T) {
 		}
 	}
 	t.Fatalf("no fizz test in %+v", res.Tests)
+}
+
+func TestArticlePassesOnSubmit(t *testing.T) {
+	l, err := store.Lesson("getting-started", "06-theory-article")
+	if err != nil || !l.Valid() || l.Kind != course.KindArticle {
+		t.Fatalf("lesson: %+v %v", l, err)
+	}
+	res, err := Grade(context.Background(), l, "", nil)
+	if err != nil || !res.Passed {
+		t.Fatalf("got %+v %v", res, err)
+	}
+}
+
+func TestQuizAnswers(t *testing.T) {
+	l, err := store.Lesson("getting-started", "07-knowledge-check")
+	if err != nil || !l.Valid() || len(l.Options) != 4 {
+		t.Fatalf("lesson: %+v %v", l, err)
+	}
+	if res, err := GradeAnswer(l, 0); err != nil || !res.Passed || res.Tests[0].Name != "Garbage Collection" {
+		t.Fatalf("correct answer: %+v %v", res, err)
+	}
+	res, err := GradeAnswer(l, 2)
+	if err != nil || res.Passed || res.Tests[0].Status != StatusFail {
+		t.Fatalf("wrong answer: %+v %v", res, err)
+	}
+	if strings.Contains(res.Tests[0].Message, "Garbage") {
+		t.Fatal("a wrong answer must not reveal the right one")
+	}
+	for _, bad := range []int{-1, 4} {
+		if _, err := GradeAnswer(l, bad); err == nil {
+			t.Errorf("answer %d should be rejected", bad)
+		}
+	}
+	if _, err := Grade(context.Background(), l, "0", nil); err == nil {
+		t.Error("Grade should refuse quizzes")
+	}
 }

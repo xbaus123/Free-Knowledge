@@ -1,0 +1,5 @@
+{
+  "type": "quiz",
+  "title": "Memory Management",
+  "options": ["Garbage Collection", "Manual Allocation", "Magic", "Ignore it"]
+}

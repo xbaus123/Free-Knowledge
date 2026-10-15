@@ -356,3 +356,42 @@ func TestSimulateEndpoint(t *testing.T) {
 		t.Fatalf("no token: %d", r.StatusCode)
 	}
 }
+
+func TestQuizAndArticleSubmit(t *testing.T) {
+	ts, _ := newTestServer(t)
+	auth := map[string]string{"Authorization": "Bearer " + testToken}
+	var res struct{ Passed bool }
+	submit := func(lesson, body string) int {
+		t.Helper()
+		r := do(t, ts, "POST", "/courses/getting-started/lessons/"+lesson+"/submit", body, auth)
+		if r.StatusCode == 200 {
+			if err := json.NewDecoder(r.Body).Decode(&res); err != nil {
+				t.Fatal(err)
+			}
+		}
+		return r.StatusCode
+	}
+
+	if code := submit("07-knowledge-check", `{"answer":1}`); code != 200 || res.Passed {
+		t.Fatalf("wrong answer: %d %+v", code, res)
+	}
+	if code := submit("07-knowledge-check", `{"answer":0}`); code != 200 || !res.Passed {
+		t.Fatalf("right answer: %d %+v", code, res)
+	}
+	if code := submit("07-knowledge-check", `{}`); code != 422 {
+		t.Fatalf("missing answer: %d", code)
+	}
+	if code := submit("06-theory-article", `{}`); code != 200 || !res.Passed {
+		t.Fatalf("article: %d %+v", code, res)
+	}
+
+	var p struct {
+		Completed bool
+		Attempts  int
+		Code      *string
+	}
+	r := do(t, ts, "GET", "/courses/getting-started/lessons/07-knowledge-check/progress", "", auth)
+	if err := json.NewDecoder(r.Body).Decode(&p); err != nil || !p.Completed || p.Attempts != 2 || p.Code == nil || *p.Code != `{"answer":0}` {
+		t.Fatalf("quiz progress: %+v %v", p, err)
+	}
+}

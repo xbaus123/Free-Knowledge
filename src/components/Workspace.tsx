@@ -4,6 +4,7 @@ import * as engine from "../lib/engine";
 import { CodeEditor } from "./CodeEditor";
 import { SimulationPanel } from "./design/SimulationPanel";
 import { SystemCanvas } from "./design/SystemCanvas";
+import { QuizPanel } from "./quiz/QuizPanel";
 import { Markdown } from "./Markdown";
 import { OutputPanel, type OutputLine, type Tab } from "./OutputPanel";
 
@@ -46,6 +47,11 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
   // Bumped to remount the canvas with a new diagram (reset to starter).
   const [canvasKey, setCanvasKey] = useState(0);
   const isDesign = engine.isDesignLesson(lesson);
+  const isArticle = engine.isArticleLesson(lesson);
+  const isQuiz = engine.isQuizLesson(lesson);
+  // Quizzes save the last answer as {"answer": N}.
+  const [quizAnswer, setQuizAnswer] = useState<number>();
+  const [marking, setMarking] = useState(false);
 
   const refreshProgress = useCallback(() => {
     engine
@@ -74,6 +80,7 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
       .then(([l, p]) => {
         if (stale) return;
         setLesson(l);
+        setQuizAnswer(engine.isQuizLesson(l) ? parseQuizAnswer(p.code) : undefined);
         codeRef.current = p.code ?? l.starter;
         setCode(codeRef.current);
         setSaveState("saved");
@@ -119,7 +126,8 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
 
   // --- grading ---
   const submit = useCallback(async () => {
-    if (!lesson || cancelRef.current) return;
+    // Articles and quizzes have their own buttons.
+    if (!lesson || cancelRef.current || engine.isArticleLesson(lesson) || engine.isQuizLesson(lesson)) return;
     // Save now: a stopped run isn't recorded, so the code must not depend on it.
     void flushSave();
 
@@ -181,6 +189,25 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
     return () => window.removeEventListener("keydown", onKey);
   }, [submit]);
 
+  const markComplete = async () => {
+    setMarking(true);
+    setRunError(undefined);
+    try {
+      await engine.completeArticle(courseId, lessonId);
+      refreshProgress();
+    } catch (e) {
+      setRunError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setMarking(false);
+    }
+  };
+
+  const submitAnswer = async (answer: number) => {
+    const res = await engine.submitAnswer(courseId, lessonId, answer);
+    refreshProgress();
+    return res;
+  };
+
   const reset = async () => {
     if (!lesson) return;
     window.clearTimeout(timer.current);
@@ -203,6 +230,34 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
   const prev = index > 0 ? lessons[index - 1] : undefined;
   const next = index >= 0 && index < lessons.length - 1 ? lessons[index + 1] : undefined;
   const completedCount = lessons.filter((l) => progress[l.id]?.completed).length;
+
+  const completed = !!progress[lessonId]?.completed;
+  const goNext = next ? () => onOpenLesson(next.id) : undefined;
+
+  const lessonPane = (
+    <div className="h-full overflow-auto px-6 py-5">
+      {lesson ? (
+        <>
+          {progress[lesson.id]?.completed && (
+            <p className="mb-3 inline-block rounded bg-emerald-950 px-2 py-0.5 text-xs text-emerald-300">✓ Completed</p>
+          )}
+          {lesson.problems && lesson.problems.length > 0 && (
+            <div className="mb-4 rounded border border-amber-800 bg-amber-950/40 p-3 text-xs text-amber-200">
+              This lesson has problems and can't be graded:
+              <ul className="mt-1 list-disc pl-5">
+                {lesson.problems.map((p) => (
+                  <li key={p}>{p}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+          <Markdown>{lesson.markdown}</Markdown>
+        </>
+      ) : (
+        <p className="text-sm text-zinc-500">Loading…</p>
+      )}
+    </div>
+  );
 
   return (
     <div className="flex h-full flex-col">
@@ -239,31 +294,52 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
 
       {loadError ? (
         <div className="p-6 text-red-400">{loadError}</div>
+      ) : isArticle && lesson ? (
+        <div className="min-h-0 flex-1 overflow-auto">
+          <article className="mx-auto max-w-3xl px-8 py-10">
+            <Markdown>{lesson.markdown}</Markdown>
+            <div className="mt-10 flex items-center justify-between gap-4 border-t border-zinc-800 pt-6">
+              {completed ? (
+                <span className="text-sm text-emerald-400">✓ Completed</span>
+              ) : (
+                <button
+                  onClick={markComplete}
+                  disabled={marking}
+                  className="rounded bg-indigo-600 px-4 py-2 text-sm font-medium hover:bg-indigo-500 disabled:opacity-40"
+                >
+                  {marking ? "Saving…" : "Mark Complete"}
+                </button>
+              )}
+              {runError && <span className="text-sm text-red-400">{runError}</span>}
+              {completed && goNext && (
+                <button onClick={goNext} className="rounded bg-emerald-600 px-4 py-2 text-sm font-medium hover:bg-emerald-500">
+                  Next lesson →
+                </button>
+              )}
+            </div>
+          </article>
+        </div>
+      ) : isQuiz && lesson ? (
+        <Group orientation="horizontal" className="min-h-0 flex-1">
+          <Panel id="lesson" defaultSize="50" minSize="25">
+            {lessonPane}
+          </Panel>
+          <Separator className="w-px bg-zinc-800 transition-colors hover:bg-indigo-500 data-[separator=active]:bg-indigo-500" />
+          <Panel id="quiz" minSize="30">
+            <QuizPanel
+              key={`${courseId}/${lessonId}`}
+              options={lesson.options ?? []}
+              initialAnswer={quizAnswer}
+              completed={completed}
+              onSubmit={submitAnswer}
+              onNext={goNext}
+            />
+          </Panel>
+        </Group>
       ) : (
         <Group orientation="horizontal" className="min-h-0 flex-1">
           <Panel id="lesson" defaultSize="42" minSize="20">
-            <div className="h-full overflow-auto px-6 py-5">
-              {lesson ? (
-                <>
-                  {progress[lesson.id]?.completed && (
-                    <p className="mb-3 inline-block rounded bg-emerald-950 px-2 py-0.5 text-xs text-emerald-300">✓ Completed</p>
-                  )}
-                  {lesson.problems && lesson.problems.length > 0 && (
-                    <div className="mb-4 rounded border border-amber-800 bg-amber-950/40 p-3 text-xs text-amber-200">
-                      This lesson has problems and can't be graded:
-                      <ul className="mt-1 list-disc pl-5">
-                        {lesson.problems.map((p) => (
-                          <li key={p}>{p}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                  <Markdown>{lesson.markdown}</Markdown>
-                </>
-              ) : (
-                <p className="text-sm text-zinc-500">Loading…</p>
-              )}
-            </div>
+            {lessonPane}
           </Panel>
           <Separator className="w-px bg-zinc-800 transition-colors hover:bg-indigo-500 data-[separator=active]:bg-indigo-500" />
           <Panel id="work" minSize="30">
@@ -362,6 +438,15 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
       )}
     </div>
   );
+}
+
+function parseQuizAnswer(saved: string | null): number | undefined {
+  try {
+    const a = saved ? JSON.parse(saved).answer : undefined;
+    return typeof a === "number" ? a : undefined;
+  } catch {
+    return undefined;
+  }
 }
 
 function extension(language?: string) {
