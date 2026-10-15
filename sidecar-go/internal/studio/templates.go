@@ -83,3 +83,48 @@ fn returns_42() {
 `,
 	},
 }
+
+const articleTemplate = `# %s
+
+Write your article here. Use headings to break up longer explanations, **bold** for key terms, and fenced code blocks for examples:
+
+` + "```python\nprint(\"hello\")\n```" + `
+
+Learners finish an article by clicking **Mark Complete** at the bottom.
+`
+
+const quizIntroTemplate = `# %s
+
+Set the scene for the questions below. Learners see this text next to the quiz.
+`
+
+var quizTemplate = QuestionSource{
+	Prompt:       "Which of these is a compiled language?",
+	Options:      []string{"Go", "Python", "Bash"},
+	CorrectIndex: 0,
+	Explanation:  "Go is compiled to machine code ahead of time; Python and Bash are interpreted.",
+}
+
+const designMarkdownTemplate = `# %s
+
+Describe the scenario: what traffic is arriving, and what's going wrong?
+
+## Your task
+
+Keep **p99 latency at or under 200 ms**. Then click **Simulate Traffic** to send 1,000 requests through your design.
+`
+
+const designStarterTemplate = `{"nodes":[` +
+	`{"id":"client","type":"client","position":{"x":0,"y":120},"data":{"label":"Users"}},` +
+	`{"id":"api-1","type":"server","position":{"x":300,"y":120},"data":{"label":"API Server"}},` +
+	`{"id":"db","type":"database","position":{"x":600,"y":120},"data":{"label":"Database"}}],` +
+	`"edges":[{"id":"client-api-1","source":"client","target":"api-1"},{"id":"api-1-db","source":"api-1","target":"db"}]}`
+
+const designSolutionTemplate = `{"nodes":[` +
+	`{"id":"client","type":"client","position":{"x":0,"y":120},"data":{"label":"Users"}},` +
+	`{"id":"lb","type":"loadBalancer","position":{"x":220,"y":120},"data":{"label":"Load Balancer"}},` +
+	`{"id":"api-1","type":"server","position":{"x":440,"y":40},"data":{"label":"API Server 1"}},` +
+	`{"id":"api-2","type":"server","position":{"x":440,"y":200},"data":{"label":"API Server 2"}},` +
+	`{"id":"db","type":"database","position":{"x":680,"y":120},"data":{"label":"Database"}}],` +
+	`"edges":[{"id":"client-lb","source":"client","target":"lb"},{"id":"lb-api-1","source":"lb","target":"api-1"},` +
+	`{"id":"lb-api-2","source":"lb","target":"api-2"},{"id":"api-1-db","source":"api-1","target":"db"},{"id":"api-2-db","source":"api-2","target":"db"}]}`

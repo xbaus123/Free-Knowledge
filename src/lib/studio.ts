@@ -12,17 +12,32 @@ export interface CourseMeta {
   language?: string;
 }
 
+export type LessonType = "code" | "article" | "quiz" | "system-design";
+
 export interface LessonSource {
   id: string;
-  /** "code" or "system-design" (read-only). */
-  type?: string;
+  /** Chosen when the lesson is created; can't change. */
+  type: LessonType;
   title: string;
-  language: string;
+  language?: string;
   timeoutMs?: number;
+  /** System design: p99 latency target. */
+  maxLatencyMs?: number;
   markdown: string;
+  /** Code: starter code. System design: starter diagram JSON. */
   starter: string;
   tests: string;
+  /** Code: reference solution. System design: solution diagram JSON. */
   reference: string;
+  questions?: QuestionSource[];
+}
+
+/** A quiz question including its answer, as authors see it. */
+export interface QuestionSource {
+  prompt: string;
+  options: string[];
+  correctIndex: number;
+  explanation: string;
 }
 
 export interface LessonCheck {
@@ -60,8 +75,8 @@ export const updateCourse = (id: string, meta: CourseMeta, lessons?: string[]) =
 export const deleteCourse = (id: string) => request<void>(coursePath(id), { method: "DELETE" });
 export const copyCourse = (id: string) => request<{ id: string }>(coursePath(id) + "/copy", { method: "POST" });
 
-export const createLesson = (courseId: string, title: string, language: string) =>
-  request<{ id: string }>(coursePath(courseId) + "/lessons", json("POST", { title, language }));
+export const createLesson = (courseId: string, title: string, type: LessonType, language?: string) =>
+  request<{ id: string }>(coursePath(courseId) + "/lessons", json("POST", { title, type, language }));
 export const lessonSource = (courseId: string, lessonId: string) => request<LessonSource>(lessonPath(courseId, lessonId));
 export const saveLesson = (courseId: string, src: LessonSource) => request<void>(lessonPath(courseId, src.id), json("PUT", src));
 export const deleteLesson = (courseId: string, lessonId: string) => request<void>(lessonPath(courseId, lessonId), { method: "DELETE" });

@@ -195,22 +195,23 @@ func TestArticlePassesOnSubmit(t *testing.T) {
 
 func TestQuizAnswers(t *testing.T) {
 	l, err := store.Lesson("getting-started", "07-knowledge-check")
-	if err != nil || !l.Valid() || len(l.Options) != 4 {
+	if err != nil || !l.Valid() || len(l.Questions) != 1 || len(l.Questions[0].Options) != 4 {
 		t.Fatalf("lesson: %+v %v", l, err)
 	}
-	if res, err := GradeAnswer(l, 0); err != nil || !res.Passed || res.Tests[0].Name != "Garbage Collection" {
-		t.Fatalf("correct answer: %+v %v", res, err)
+	res, err := GradeAnswers(l, []int{0})
+	if err != nil || !res.Passed || res.Tests[0].Name != "Question 1" || !strings.Contains(res.Tests[0].Message, "garbage collector") {
+		t.Fatalf("correct answer should pass and explain: %+v %v", res, err)
 	}
-	res, err := GradeAnswer(l, 2)
+	res, err = GradeAnswers(l, []int{2})
 	if err != nil || res.Passed || res.Tests[0].Status != StatusFail {
 		t.Fatalf("wrong answer: %+v %v", res, err)
 	}
-	if strings.Contains(res.Tests[0].Message, "Garbage") {
-		t.Fatal("a wrong answer must not reveal the right one")
+	if strings.Contains(res.Tests[0].Message, "garbage") {
+		t.Fatal("a wrong answer must not reveal the explanation")
 	}
-	for _, bad := range []int{-1, 4} {
-		if _, err := GradeAnswer(l, bad); err == nil {
-			t.Errorf("answer %d should be rejected", bad)
+	for _, bad := range [][]int{{-1}, {4}, {}, {0, 1}} {
+		if _, err := GradeAnswers(l, bad); err == nil {
+			t.Errorf("answers %v should be rejected", bad)
 		}
 	}
 	if _, err := Grade(context.Background(), l, "0", nil); err == nil {

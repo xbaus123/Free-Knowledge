@@ -375,7 +375,7 @@ func TestQuizAndArticleSubmit(t *testing.T) {
 	if code := submit("07-knowledge-check", `{"answer":1}`); code != 200 || res.Passed {
 		t.Fatalf("wrong answer: %d %+v", code, res)
 	}
-	if code := submit("07-knowledge-check", `{"answer":0}`); code != 200 || !res.Passed {
+	if code := submit("07-knowledge-check", `{"answers":[0]}`); code != 200 || !res.Passed {
 		t.Fatalf("right answer: %d %+v", code, res)
 	}
 	if code := submit("07-knowledge-check", `{}`); code != 422 {
@@ -391,7 +391,7 @@ func TestQuizAndArticleSubmit(t *testing.T) {
 		Code      *string
 	}
 	r := do(t, ts, "GET", "/courses/getting-started/lessons/07-knowledge-check/progress", "", auth)
-	if err := json.NewDecoder(r.Body).Decode(&p); err != nil || !p.Completed || p.Attempts != 2 || p.Code == nil || *p.Code != `{"answer":0}` {
+	if err := json.NewDecoder(r.Body).Decode(&p); err != nil || !p.Completed || p.Attempts != 2 || p.Code == nil || *p.Code != `{"answers":[0]}` {
 		t.Fatalf("quiz progress: %+v %v", p, err)
 	}
 }

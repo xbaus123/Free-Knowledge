@@ -174,30 +174,39 @@ func Grade(ctx context.Context, l *course.Lesson, code string, onOutput runner.O
 	return finish(r)
 }
 
-// GradeAnswer checks a quiz answer (a zero-based index into the options)
-// against the hidden solution.json. A wrong answer doesn't reveal the right
-// one, so the learner can try again.
-func GradeAnswer(l *course.Lesson, answer int) (Result, error) {
+// GradeAnswers checks quiz answers (one zero-based option index per
+// question) against the hidden solution.json. Each question gets a result:
+// a correct one shows its explanation; a wrong one doesn't reveal the right
+// answer, so the learner can try again.
+func GradeAnswers(l *course.Lesson, answers []int) (Result, error) {
 	if !l.Valid() {
 		return Result{}, fmt.Errorf("lesson %s/%s has problems: %s", l.CourseID, l.ID, strings.Join(l.Problems, "; "))
 	}
 	if l.Kind != course.KindQuiz {
 		return Result{}, fmt.Errorf("lesson %s/%s isn't a quiz", l.CourseID, l.ID)
 	}
-	if answer < 0 || answer >= len(l.Options) {
-		return Result{}, fmt.Errorf("answer must be between 0 and %d", len(l.Options)-1)
+	if len(answers) != len(l.Questions) {
+		return Result{}, fmt.Errorf("expected %d answers, got %d", len(l.Questions), len(answers))
 	}
-	correct, err := course.ReadQuizAnswer(l.ReferenceFile)
+	key, err := course.ReadQuizAnswers(l.ReferenceFile)
 	if err != nil {
 		return Result{}, err
 	}
-	r := Result{Result: runner.Result{Phase: runner.PhaseRun}, Passed: answer == correct}
-	t := TestResult{Name: l.Options[answer], Status: StatusPass, Message: "Correct!"}
+	r := Result{Result: runner.Result{Phase: runner.PhaseRun}, Passed: true, Tests: make([]TestResult, len(answers))}
+	for i, a := range answers {
+		if a < 0 || a >= len(l.Questions[i].Options) {
+			return Result{}, fmt.Errorf("answer to question %d must be between 0 and %d", i+1, len(l.Questions[i].Options)-1)
+		}
+		t := TestResult{Name: fmt.Sprintf("Question %d", i+1), Status: StatusPass, Message: key[i].Explanation}
+		if a != key[i].CorrectIndex {
+			t.Status, t.Message = StatusFail, "Not quite. Try again."
+			r.Passed = false
+		}
+		r.Tests[i] = t
+	}
 	if !r.Passed {
 		r.ExitCode = 1
-		t.Status, t.Message = StatusFail, "Not quite. Try again."
 	}
-	r.Tests = []TestResult{t}
 	return r, nil
 }
 

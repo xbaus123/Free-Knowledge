@@ -2,6 +2,7 @@
 package studio
 
 import (
+	"bytes"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -43,16 +44,30 @@ type courseFile struct {
 // LessonSource is everything an author edits, including the hidden files.
 type LessonSource struct {
 	ID string `json:"id"`
-	// Type is "code", "system-design", "article", or "quiz". Read-only: the
-	// Studio edits code lessons; other types are edited as files for now.
-	Type      string `json:"type,omitempty"`
-	Title     string `json:"title"`
-	Language  string `json:"language"`
-	TimeoutMs int    `json:"timeoutMs,omitempty"`
-	Markdown  string `json:"markdown"`
+	// Type is "code", "article", "quiz", or "system-design". It's chosen when
+	// the lesson is created and can't change afterwards.
+	Type         string `json:"type"`
+	Title        string `json:"title"`
+	Language     string `json:"language,omitempty"`
+	TimeoutMs    int    `json:"timeoutMs,omitempty"`
+	MaxLatencyMs int    `json:"maxLatencyMs,omitempty"`
+	Markdown     string `json:"markdown"`
+	// Code lessons: starter code, hidden tests, and the reference solution.
+	// System design lessons: Starter is starter.json and Reference is
+	// solution.json (diagram JSON).
 	Starter   string `json:"starter"`
 	Tests     string `json:"tests"`
 	Reference string `json:"reference"`
+	// Quiz lessons.
+	Questions []QuestionSource `json:"questions,omitempty"`
+}
+
+// QuestionSource is a quiz question with its (hidden) answer.
+type QuestionSource struct {
+	Prompt       string   `json:"prompt"`
+	Options      []string `json:"options"`
+	CorrectIndex int      `json:"correctIndex"`
+	Explanation  string   `json:"explanation"`
 }
 
 var slugJunk = regexp.MustCompile(`[^a-z0-9]+`)
@@ -246,10 +261,25 @@ func (s *Studio) Lesson(courseID, lessonID string) (LessonSource, error) {
 	if err != nil {
 		return LessonSource{}, err
 	}
-	src := LessonSource{ID: l.ID, Type: l.Kind, Title: l.Title, Language: l.Language, TimeoutMs: l.TimeoutMs, Markdown: l.Markdown, Starter: l.Starter}
-	if lang, ok := runner.Lookup(l.Language); ok {
-		src.Tests = readOptional(filepath.Join(l.Dir, "solution_test"+lang.Ext))
-		src.Reference = readOptional(filepath.Join(l.Dir, "reference"+lang.Ext))
+	src := LessonSource{ID: l.ID, Type: l.Kind, Title: l.Title, Language: l.Language, TimeoutMs: l.TimeoutMs,
+		MaxLatencyMs: l.MaxLatencyMs, Markdown: l.Markdown, Starter: l.Starter}
+	switch l.Kind {
+	case course.KindCode:
+		if lang, ok := runner.Lookup(l.Language); ok {
+			src.Tests = readOptional(filepath.Join(l.Dir, "solution_test"+lang.Ext))
+			src.Reference = readOptional(filepath.Join(l.Dir, "reference"+lang.Ext))
+		}
+	case course.KindSystemDesign:
+		src.Reference = readOptional(filepath.Join(l.Dir, "solution.json"))
+	case course.KindQuiz:
+		answers, _ := course.ReadQuizAnswers(filepath.Join(l.Dir, "solution.json"))
+		for i, q := range l.Questions {
+			qs := QuestionSource{Prompt: q.Prompt, Options: q.Options}
+			if i < len(answers) {
+				qs.CorrectIndex, qs.Explanation = answers[i].CorrectIndex, answers[i].Explanation
+			}
+			src.Questions = append(src.Questions, qs)
+		}
 	}
 	return src, nil
 }
@@ -259,9 +289,10 @@ func readOptional(path string) string {
 	return string(b)
 }
 
-// CreateLesson adds a lesson with a working example (the reference passes,
-// the starter fails) and appends it to the course order.
-func (s *Studio) CreateLesson(courseID, title, language string) (string, error) {
+// CreateLesson adds a lesson of the given type ("" means code) from a
+// working example (code: the reference passes and the starter fails; system
+// design: likewise for the diagrams) and appends it to the course order.
+func (s *Studio) CreateLesson(courseID, title, kind, language string) (string, error) {
 	c, err := s.editable(courseID)
 	if err != nil {
 		return "", err
@@ -269,13 +300,32 @@ func (s *Studio) CreateLesson(courseID, title, language string) (string, error) 
 	if strings.TrimSpace(title) == "" {
 		return "", errors.New("title is required")
 	}
-	if language == "" {
-		language = c.Language
+	if kind == "" {
+		kind = course.KindCode
 	}
-	tpl, ok := templates[language]
-	if !ok {
-		return "", fmt.Errorf("unsupported language %q", language)
+	src := LessonSource{Type: kind, Title: title}
+	switch kind {
+	case course.KindCode:
+		if language == "" {
+			language = c.Language
+		}
+		tpl, ok := templates[language]
+		if !ok {
+			return "", fmt.Errorf("unsupported language %q", language)
+		}
+		src.Language, src.Markdown, src.Starter, src.Tests, src.Reference = language, fmt.Sprintf(tpl.markdown, title), tpl.starter, tpl.tests, tpl.reference
+	case course.KindArticle:
+		src.Markdown = fmt.Sprintf(articleTemplate, title)
+	case course.KindQuiz:
+		src.Markdown = fmt.Sprintf(quizIntroTemplate, title)
+		src.Questions = []QuestionSource{quizTemplate}
+	case course.KindSystemDesign:
+		src.Markdown = fmt.Sprintf(designMarkdownTemplate, title)
+		src.MaxLatencyMs, src.Starter, src.Reference = 200, designStarterTemplate, designSolutionTemplate
+	default:
+		return "", fmt.Errorf("unknown lesson type %q", kind)
 	}
+
 	cf, err := s.readCourseFile(c)
 	if err != nil {
 		return "", err
@@ -287,16 +337,8 @@ func (s *Studio) CreateLesson(courseID, title, language string) (string, error) 
 	if err := os.Mkdir(filepath.Join(c.Dir, id), 0o755); err != nil {
 		return "", err
 	}
-	src := LessonSource{
-		ID:        id,
-		Title:     title,
-		Language:  language,
-		Markdown:  fmt.Sprintf(tpl.markdown, title),
-		Starter:   tpl.starter,
-		Tests:     tpl.tests,
-		Reference: tpl.reference,
-	}
-	if err := s.writeLesson(c.Dir, src, ""); err != nil {
+	src.ID = id
+	if err := s.writeLesson(c.Dir, kind, src, ""); err != nil {
 		return "", err
 	}
 	cf.Lessons = append(cf.Lessons, id)
@@ -312,47 +354,125 @@ func (s *Studio) SaveLesson(courseID string, src LessonSource) error {
 	if err != nil {
 		return err
 	}
-	if l.Kind != course.KindCode {
-		return fmt.Errorf("%s lessons can't be edited in the Studio yet; edit their files directly", l.Kind)
+	if src.Type != "" && src.Type != l.Kind {
+		return fmt.Errorf("a lesson's type can't be changed (this is a %s lesson)", l.Kind)
 	}
-	if _, ok := runner.Lookup(src.Language); !ok {
-		return fmt.Errorf("unsupported language %q", src.Language)
+	if strings.TrimSpace(src.Title) == "" {
+		return errors.New("title is required")
 	}
-	if src.TimeoutMs < 0 || src.TimeoutMs > int(runner.MaxRunTimeout.Milliseconds()) {
-		return fmt.Errorf("time limit must be between 0 and %d ms", runner.MaxRunTimeout.Milliseconds())
+	switch l.Kind {
+	case course.KindCode:
+		if _, ok := runner.Lookup(src.Language); !ok {
+			return fmt.Errorf("unsupported language %q", src.Language)
+		}
+		if src.TimeoutMs < 0 || src.TimeoutMs > int(runner.MaxRunTimeout.Milliseconds()) {
+			return fmt.Errorf("time limit must be between 0 and %d ms", runner.MaxRunTimeout.Milliseconds())
+		}
+	case course.KindQuiz:
+		if err := validateQuestions(src.Questions); err != nil {
+			return err
+		}
+	case course.KindSystemDesign:
+		if src.MaxLatencyMs < 0 || src.MaxLatencyMs > 60_000 {
+			return errors.New("latency target must be between 0 and 60000 ms")
+		}
+		if !json.Valid([]byte(src.Starter)) || !json.Valid([]byte(src.Reference)) {
+			return errors.New("starter and solution diagrams must be valid JSON")
+		}
+	case course.KindArticle:
+	default:
+		return fmt.Errorf("%s lessons can't be edited in the Studio", l.Kind)
 	}
-	return s.writeLesson(c.Dir, src, l.Language)
+	return s.writeLesson(c.Dir, l.Kind, src, l.Language)
 }
 
-func (s *Studio) writeLesson(courseDir string, src LessonSource, oldLanguage string) error {
-	dir := filepath.Join(courseDir, src.ID)
-	lang, _ := runner.Lookup(src.Language)
-	// Switching language: remove files with the old extension.
-	if old, ok := runner.Lookup(oldLanguage); ok && old.Ext != lang.Ext {
-		for _, name := range []string{"starter", "solution_test", "reference"} {
-			os.Remove(filepath.Join(dir, name+old.Ext))
+func validateQuestions(qs []QuestionSource) error {
+	if len(qs) == 0 {
+		return errors.New("a quiz needs at least one question")
+	}
+	for i, q := range qs {
+		if len(q.Options) < 2 {
+			return fmt.Errorf("question %d needs at least two options", i+1)
+		}
+		for _, o := range q.Options {
+			if strings.TrimSpace(o) == "" {
+				return fmt.Errorf("question %d has an empty option", i+1)
+			}
+		}
+		if q.CorrectIndex < 0 || q.CorrectIndex >= len(q.Options) {
+			return fmt.Errorf("question %d needs a correct answer", i+1)
 		}
 	}
-	type config struct {
-		Title     string `json:"title"`
-		Language  string `json:"language"`
-		TimeoutMs int    `json:"timeoutMs,omitempty"`
+	return nil
+}
+
+// lessonConfig is config.json as the Studio writes it.
+type lessonConfig struct {
+	Type         string                `json:"type,omitempty"`
+	Title        string                `json:"title"`
+	Language     string                `json:"language,omitempty"`
+	TimeoutMs    int                   `json:"timeoutMs,omitempty"`
+	MaxLatencyMs int                   `json:"maxLatencyMs,omitempty"`
+	Questions    []course.QuizQuestion `json:"questions,omitempty"`
+}
+
+func (s *Studio) writeLesson(courseDir, kind string, src LessonSource, oldLanguage string) error {
+	dir := filepath.Join(courseDir, src.ID)
+	cfg := lessonConfig{Title: src.Title}
+	files := map[string][]byte{"lesson.md": []byte(src.Markdown)}
+
+	switch kind {
+	case course.KindCode:
+		lang, _ := runner.Lookup(src.Language)
+		// Switching language: remove files with the old extension.
+		if old, ok := runner.Lookup(oldLanguage); ok && old.Ext != lang.Ext {
+			for _, name := range []string{"starter", "solution_test", "reference"} {
+				os.Remove(filepath.Join(dir, name+old.Ext))
+			}
+		}
+		cfg.Language, cfg.TimeoutMs = src.Language, src.TimeoutMs
+		files["starter"+lang.Ext] = []byte(src.Starter)
+		files["solution_test"+lang.Ext] = []byte(src.Tests)
+		files["reference"+lang.Ext] = []byte(src.Reference)
+	case course.KindArticle:
+		cfg.Type = kind
+	case course.KindQuiz:
+		cfg.Type = kind
+		var answers []course.QuizAnswer
+		for _, q := range src.Questions {
+			cfg.Questions = append(cfg.Questions, course.QuizQuestion{Prompt: strings.TrimSpace(q.Prompt), Options: q.Options})
+			answers = append(answers, course.QuizAnswer{CorrectIndex: q.CorrectIndex, Explanation: strings.TrimSpace(q.Explanation)})
+		}
+		sol, err := json.MarshalIndent(map[string]any{"answers": answers}, "", "  ")
+		if err != nil {
+			return err
+		}
+		files["solution.json"] = append(sol, '\n')
+	case course.KindSystemDesign:
+		cfg.Type, cfg.MaxLatencyMs = kind, src.MaxLatencyMs
+		files["starter.json"] = prettyJSON(src.Starter)
+		files["solution.json"] = prettyJSON(src.Reference)
 	}
-	if err := writeJSON(filepath.Join(dir, "config.json"), config{src.Title, src.Language, src.TimeoutMs}); err != nil {
+
+	if err := writeJSON(filepath.Join(dir, "config.json"), cfg); err != nil {
 		return err
 	}
-	files := map[string]string{
-		"lesson.md":                src.Markdown,
-		"starter" + lang.Ext:       src.Starter,
-		"solution_test" + lang.Ext: src.Tests,
-		"reference" + lang.Ext:     src.Reference,
-	}
 	for name, body := range files {
-		if err := writeFile(filepath.Join(dir, name), []byte(body)); err != nil {
+		if err := writeFile(filepath.Join(dir, name), body); err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+// prettyJSON indents diagram JSON so course files diff well in git.
+func prettyJSON(s string) []byte {
+	var buf bytes.Buffer
+	if err := json.Indent(&buf, []byte(s), "", "  "); err != nil {
+		return []byte(s)
+	}
+	buf.WriteByte('\n')
+	return buf.Bytes()
 }
 
 func (s *Studio) DeleteLesson(courseID, lessonID string) error {

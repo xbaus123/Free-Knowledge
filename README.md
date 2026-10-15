@@ -76,15 +76,24 @@ See `courses/getting-started` for one example of each.
 
 For a reading-only lesson, set `"type": "article"` in `config.json`; the lesson is just `lesson.md`, and learners finish it with **Mark Complete**.
 
-For a multiple-choice question, set `"type": "quiz"` and list the choices in `config.json`'s `"options"`. Put the question in `lesson.md` and the zero-based answer in `solution.json`: `{"correct_index": 0}`. Learners submit `{"answer": N}` to the lesson's `submit` endpoint. A wrong answer doesn't reveal the right one, so learners can try again. True/false questions are a quiz with two options.
+For multiple-choice questions, set `"type": "quiz"`. Questions go in `config.json`; answers go in the hidden `solution.json`, with an optional explanation that learners see once they answer correctly:
+
+```json
+// config.json
+{ "type": "quiz", "title": "Big-O", "questions": [{ "prompt": "Binary search runs in…", "options": ["O(n)", "O(log n)"] }] }
+// solution.json
+{ "answers": [{ "correct_index": 1, "explanation": "Each step halves the range." }] }
+```
+
+A single question can use a shorter form instead: `"options": [...]` in `config.json` with the question in `lesson.md`, and `{"correct_index": 0, "explanation": "…"}` in `solution.json`. Learners submit `{"answers": [1]}` to the lesson's `submit` endpoint. Each question is marked right or wrong, but a wrong answer doesn't reveal the right one. True/false questions are a question with two options.
 
 ### System design lessons
 
-Set `"type": "system-design"` in a lesson's `config.json`, with `maxLatencyMs` as the p99 target. Instead of code files, the lesson has `starter.json` (the diagram learners start from) and `solution.json` (a reference design that must pass). Both are React Flow graphs: nodes of type `client`, `loadBalancer`, `server`, or `database`, plus edges. **Simulate Traffic** sends 1,000 requests over one second through the learner's diagram. Grading is by behavior (overloaded servers, p99 latency, unanswered requests), so any design with enough capacity passes. See `courses/system-design`. The Studio can check and export these lessons but can't edit their diagrams yet. In development the app reads `courses/` live; user courses go in the app data folder (`~/Library/Application Support/dev.freeknowledge.app/courses` on macOS).
+Set `"type": "system-design"` in a lesson's `config.json`, with `maxLatencyMs` as the p99 target. Instead of code files, the lesson has `starter.json` (the diagram learners start from) and `solution.json` (a reference design that must pass). Both are React Flow graphs: nodes of type `client`, `loadBalancer`, `server`, or `database`, plus edges. **Simulate Traffic** sends 1,000 requests over one second through the learner's diagram. Grading is by behavior (overloaded servers, p99 latency, unanswered requests), so any design with enough capacity passes. See `courses/system-design`. In development the app reads `courses/` live; user courses go in the app data folder (`~/Library/Application Support/dev.freeknowledge.app/courses` on macOS).
 
 ## Creator Studio and `.dojo` files
 
-Open **Creator Studio** from the home screen to write courses without touching the file system. New lessons start from a working example in the language you pick. **Check lesson** runs your reference solution (it must pass) and the starter code (it should fail) against your tests. **Export .dojo** checks every lesson and refuses to export until each reference solution passes. Bundled courses are read-only; use **Make an editable copy** to remix one.
+Open **Creator Studio** from the home screen to write courses without touching the file system. Add lessons of any type (code exercise, article, quiz, or system design); each starts from a working example. Quizzes have a question builder, and system design lessons use the same diagram canvas learners do, with a tab each for the starter and solution diagrams. **Check lesson** runs your reference solution (it must pass) and the starter code (it should fail) against your tests. **Export .dojo** checks every lesson and refuses to export until each reference solution passes. Bundled courses are read-only; use **Make an editable copy** to remix one.
 
 A `.dojo` file is a zip of one course folder plus a `dojo.json` manifest (`{"format": 1, "id": "<course-id>", ...}`). It includes reference solutions. Importing accepts only the files in the course layout above, enforces size limits, and never runs anything. Imported courses go in your user course folder; a course with the same ID asks before replacing.
 

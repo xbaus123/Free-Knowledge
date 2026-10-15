@@ -49,8 +49,8 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
   const isDesign = engine.isDesignLesson(lesson);
   const isArticle = engine.isArticleLesson(lesson);
   const isQuiz = engine.isQuizLesson(lesson);
-  // Quizzes save the last answer as {"answer": N}.
-  const [quizAnswer, setQuizAnswer] = useState<number>();
+  // Quizzes save the last answers as {"answers": [...]}.
+  const [quizAnswers, setQuizAnswers] = useState<number[]>();
   const [marking, setMarking] = useState(false);
 
   const refreshProgress = useCallback(() => {
@@ -80,7 +80,7 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
       .then(([l, p]) => {
         if (stale) return;
         setLesson(l);
-        setQuizAnswer(engine.isQuizLesson(l) ? parseQuizAnswer(p.code) : undefined);
+        setQuizAnswers(engine.isQuizLesson(l) ? parseQuizAnswers(p.code) : undefined);
         codeRef.current = p.code ?? l.starter;
         setCode(codeRef.current);
         setSaveState("saved");
@@ -202,8 +202,8 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
     }
   };
 
-  const submitAnswer = async (answer: number) => {
-    const res = await engine.submitAnswer(courseId, lessonId, answer);
+  const submitAnswers = async (answers: number[]) => {
+    const res = await engine.submitAnswers(courseId, lessonId, answers);
     refreshProgress();
     return res;
   };
@@ -328,10 +328,10 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
           <Panel id="quiz" minSize="30">
             <QuizPanel
               key={`${courseId}/${lessonId}`}
-              options={lesson.options ?? []}
-              initialAnswer={quizAnswer}
+              questions={lesson.questions ?? []}
+              initialAnswers={quizAnswers}
               completed={completed}
-              onSubmit={submitAnswer}
+              onSubmit={submitAnswers}
               onNext={goNext}
             />
           </Panel>
@@ -440,13 +440,15 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
   );
 }
 
-function parseQuizAnswer(saved: string | null): number | undefined {
+function parseQuizAnswers(saved: string | null): number[] | undefined {
   try {
-    const a = saved ? JSON.parse(saved).answer : undefined;
-    return typeof a === "number" ? a : undefined;
+    const parsed = saved ? JSON.parse(saved) : undefined;
+    if (Array.isArray(parsed?.answers)) return parsed.answers;
+    if (typeof parsed?.answer === "number") return [parsed.answer]; // older single-answer saves
   } catch {
-    return undefined;
+    // not saved, or not JSON
   }
+  return undefined;
 }
 
 function extension(language?: string) {

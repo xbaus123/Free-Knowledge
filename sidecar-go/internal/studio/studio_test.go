@@ -43,7 +43,7 @@ func TestTemplatesAreValidLessons(t *testing.T) {
 			if _, err := exec.LookPath(l.Requires); err != nil {
 				t.Skipf("%s not installed", l.Requires)
 			}
-			lid := must(s.CreateLesson(id, "Hello "+lang, lang))
+			lid := must(s.CreateLesson(id, "Hello "+lang, "", lang))
 			d := must(s.CheckLesson(context.Background(), id, lid))
 			if !d.OK || d.Warning != "" {
 				t.Fatalf("template should validate cleanly: %+v ref=%+v starter=%+v", d.LessonCheck, d.Reference, d.Starter)
@@ -62,8 +62,8 @@ func TestCourseAndLessonEditing(t *testing.T) {
 		t.Fatalf("unique id: %q", id2)
 	}
 
-	a := must(s.CreateLesson(id, "Variables", "python"))
-	b := must(s.CreateLesson(id, "Loops", "python"))
+	a := must(s.CreateLesson(id, "Variables", "", "python"))
+	b := must(s.CreateLesson(id, "Loops", "", "python"))
 	if a != "01-variables" || b != "02-loops" {
 		t.Fatalf("lesson ids: %s %s", a, b)
 	}
@@ -106,7 +106,7 @@ func TestCourseAndLessonEditing(t *testing.T) {
 
 func TestBundledCoursesAreReadOnly(t *testing.T) {
 	s := newStudio(t)
-	if _, err := s.CreateLesson("getting-started", "x", "python"); !errors.Is(err, ErrReadOnly) {
+	if _, err := s.CreateLesson("getting-started", "x", "", "python"); !errors.Is(err, ErrReadOnly) {
 		t.Fatalf("want ErrReadOnly, got %v", err)
 	}
 	if err := s.DeleteCourse("getting-started"); !errors.Is(err, ErrReadOnly) {
@@ -117,7 +117,7 @@ func TestBundledCoursesAreReadOnly(t *testing.T) {
 	if c.Source != "user" || !strings.HasSuffix(c.Title, "(copy)") || len(c.Lessons) != 7 {
 		t.Fatalf("copy: %+v", c)
 	}
-	if _, err := s.CreateLesson(copyID, "Extra", "python"); err != nil {
+	if _, err := s.CreateLesson(copyID, "Extra", "", "python"); err != nil {
 		t.Fatalf("copy should be editable: %v", err)
 	}
 }
@@ -128,7 +128,7 @@ func TestExportImportRoundTrip(t *testing.T) {
 	}
 	s := newStudio(t)
 	id := must(s.CreateCourse(CourseMeta{Title: "Shareable", Author: "Ada"}))
-	lid := must(s.CreateLesson(id, "Answer", "python"))
+	lid := must(s.CreateLesson(id, "Answer", "", "python"))
 	// A stray file that must not be exported.
 	os.WriteFile(filepath.Join(s.Root, id, lid, "notes.txt"), []byte("private"), 0o644)
 
@@ -170,7 +170,7 @@ func TestExportRequiresPassingReference(t *testing.T) {
 	}
 	s := newStudio(t)
 	id := must(s.CreateCourse(CourseMeta{Title: "Broken"}))
-	lid := must(s.CreateLesson(id, "Bad", "python"))
+	lid := must(s.CreateLesson(id, "Bad", "", "python"))
 	src := must(s.Lesson(id, lid))
 	src.Reference = "def answer():\n    return 41\n"
 	if err := s.SaveLesson(id, src); err != nil {
@@ -252,5 +252,71 @@ func TestDesignCourseExports(t *testing.T) {
 	}
 	if !slices.Contains(names, "01-scalability/starter.json") || !slices.Contains(names, "01-scalability/solution.json") {
 		t.Fatalf("archive: %v", names)
+	}
+}
+
+func TestNonCodeLessonTemplatesValidate(t *testing.T) {
+	s := newStudio(t)
+	id := must(s.CreateCourse(CourseMeta{Title: "Mixed"}))
+	for _, kind := range []string{course.KindArticle, course.KindQuiz, course.KindSystemDesign} {
+		t.Run(kind, func(t *testing.T) {
+			lid := must(s.CreateLesson(id, "New "+kind, kind, ""))
+			d := must(s.CheckLesson(context.Background(), id, lid))
+			if !d.OK || d.Warning != "" {
+				t.Fatalf("template should validate cleanly: %+v", d.LessonCheck)
+			}
+			src := must(s.Lesson(id, lid))
+			if src.Type != kind || !strings.Contains(src.Markdown, "New "+kind) {
+				t.Fatalf("source: %+v", src)
+			}
+			// Saving the unchanged source works and keeps the lesson valid.
+			if err := s.SaveLesson(id, src); err != nil {
+				t.Fatal(err)
+			}
+			if d := must(s.CheckLesson(context.Background(), id, lid)); !d.OK {
+				t.Fatalf("after save: %+v", d.LessonCheck)
+			}
+		})
+	}
+}
+
+func TestQuizEditing(t *testing.T) {
+	s := newStudio(t)
+	id := must(s.CreateCourse(CourseMeta{Title: "Quizzes"}))
+	lid := must(s.CreateLesson(id, "Check", course.KindQuiz, ""))
+	src := must(s.Lesson(id, lid))
+	src.Questions = []QuestionSource{
+		{Prompt: "2 + 2?", Options: []string{"3", "4"}, CorrectIndex: 1, Explanation: "Basic arithmetic."},
+		{Prompt: "Is Go compiled?", Options: []string{"True", "False"}, CorrectIndex: 0},
+	}
+	if err := s.SaveLesson(id, src); err != nil {
+		t.Fatal(err)
+	}
+	got := must(s.Lesson(id, lid))
+	if len(got.Questions) != 2 || got.Questions[0].Explanation != "Basic arithmetic." || got.Questions[1].Prompt != "Is Go compiled?" {
+		t.Fatalf("round trip: %+v", got.Questions)
+	}
+	l := must(s.Courses.Lesson(id, lid))
+	if !l.Valid() || len(l.Questions) != 2 {
+		t.Fatalf("learner view: %+v", l)
+	}
+
+	bad := map[string][]QuestionSource{
+		"no questions": nil,
+		"one option":   {{Options: []string{"only"}}},
+		"empty option": {{Options: []string{"a", " "}}},
+		"bad index":    {{Options: []string{"a", "b"}, CorrectIndex: 2}},
+	}
+	for name, qs := range bad {
+		src.Questions = qs
+		if err := s.SaveLesson(id, src); err == nil {
+			t.Errorf("%s: expected an error", name)
+		}
+	}
+
+	src = must(s.Lesson(id, lid))
+	src.Type = course.KindArticle
+	if err := s.SaveLesson(id, src); err == nil {
+		t.Error("changing a lesson's type should be refused")
 	}
 }

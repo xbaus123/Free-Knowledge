@@ -6,7 +6,6 @@ import (
 	"crypto/subtle"
 	"encoding/json"
 	"errors"
-	"fmt"
 	"log/slog"
 	"net"
 	"net/http"
@@ -277,27 +276,33 @@ func (s *Server) handleLesson(w http.ResponseWriter, r *http.Request) {
 }
 
 // handleSubmit grades a submission: {"code": "..."} for code lessons,
-// {"answer": 2} for quizzes, and {} for articles (marks them read).
+// {"answers": [0, 2]} for quizzes ({"answer": 0} for one question), and {}
+// for articles (marks them read).
 func (s *Server) handleSubmit(w http.ResponseWriter, r *http.Request) {
 	var body struct {
-		Code   string `json:"code"`
-		Answer *int   `json:"answer"`
+		Code    string `json:"code"`
+		Answer  *int   `json:"answer"`
+		Answers []int  `json:"answers"`
 	}
 	if err := json.NewDecoder(http.MaxBytesReader(w, r.Body, maxBodyBytes)).Decode(&body); err != nil {
 		writeJSON(w, http.StatusBadRequest, map[string]string{"error": "invalid JSON body: " + err.Error()})
 		return
+	}
+	if body.Answers == nil && body.Answer != nil {
+		body.Answers = []int{*body.Answer}
 	}
 	s.grade(w, r, func(l *course.Lesson) (grader.Result, error) {
 		saved := body.Code
 		var res grader.Result
 		var err error
 		if l.Kind == course.KindQuiz {
-			if body.Answer == nil {
-				return res, errors.New(`quiz submissions need an "answer"`)
+			if body.Answers == nil {
+				return res, errors.New(`quiz submissions need "answers"`)
 			}
-			// Saved like code, so the quiz reopens with the last choice selected.
-			saved = fmt.Sprintf(`{"answer":%d}`, *body.Answer)
-			res, err = grader.GradeAnswer(l, *body.Answer)
+			// Saved like code, so the quiz reopens with the last choices selected.
+			b, _ := json.Marshal(map[string][]int{"answers": body.Answers})
+			saved = string(b)
+			res, err = grader.GradeAnswers(l, body.Answers)
 		} else {
 			res, err = grader.Grade(r.Context(), l, body.Code, nil)
 		}

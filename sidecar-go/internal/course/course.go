@@ -14,9 +14,14 @@
 // that must pass the simulator) instead of code and tests.
 //
 // Article lessons ("type": "article") are just lesson.md. Quiz lessons
-// ("type": "quiz") put the question in lesson.md, the choices in
-// config.json's "options", and the answer in solution.json:
-// {"correct_index": 0}.
+// ("type": "quiz") list their questions in config.json and the answers in
+// solution.json, which stays hidden:
+//
+//	config.json:   {"type": "quiz", "questions": [{"prompt": "…", "options": ["…", "…"]}]}
+//	solution.json: {"answers": [{"correct_index": 0, "explanation": "…"}]}
+//
+// A single question may instead use top-level "options" with the question
+// in lesson.md, and solution.json {"correct_index": 0, "explanation": "…"}.
 //
 // Folder names are the IDs. Lessons are ordered by course.json "lessons" if
 // present, otherwise by folder name (use 01-, 02- prefixes).
@@ -69,12 +74,26 @@ type courseFile struct {
 }
 
 type lessonConfig struct {
-	Title        string   `json:"title"`
-	Language     string   `json:"language"`
-	Type         string   `json:"type"` // "code" (default) or "system-design"
-	TimeoutMs    int      `json:"timeoutMs"`
-	MaxLatencyMs int      `json:"maxLatencyMs"` // system design: p99 latency target
-	Options      []string `json:"options"`      // quiz: answer choices
+	Title        string         `json:"title"`
+	Language     string         `json:"language"`
+	Type         string         `json:"type"` // "code" (default) or "system-design"
+	TimeoutMs    int            `json:"timeoutMs"`
+	MaxLatencyMs int            `json:"maxLatencyMs"` // system design: p99 latency target
+	Questions    []QuizQuestion `json:"questions"`    // quiz
+	Options      []string       `json:"options"`      // quiz with one question (short form)
+}
+
+// QuizQuestion is the public part of a quiz question; answers live in
+// solution.json.
+type QuizQuestion struct {
+	Prompt  string   `json:"prompt,omitempty"` // empty: the question is in lesson.md
+	Options []string `json:"options"`
+}
+
+// QuizAnswer is the hidden part of a quiz question.
+type QuizAnswer struct {
+	CorrectIndex int    `json:"correct_index"`
+	Explanation  string `json:"explanation,omitempty"` // shown after a correct answer
 }
 
 // Lesson kinds.
@@ -110,15 +129,15 @@ type LessonSummary struct {
 // files are paths only and are never sent to the frontend.
 type Lesson struct {
 	LessonSummary
-	CourseID      string   `json:"courseId"`
-	Markdown      string   `json:"markdown"`
-	Starter       string   `json:"starter"` // code, or diagram JSON for system design
-	TimeoutMs     int      `json:"timeoutMs"`
-	MaxLatencyMs  int      `json:"maxLatencyMs,omitempty"`
-	Options       []string `json:"options,omitempty"` // quiz choices
-	Dir           string   `json:"-"`
-	TestFile      string   `json:"-"`
-	ReferenceFile string   `json:"-"`
+	CourseID      string         `json:"courseId"`
+	Markdown      string         `json:"markdown"`
+	Starter       string         `json:"starter"` // code, or diagram JSON for system design
+	TimeoutMs     int            `json:"timeoutMs"`
+	MaxLatencyMs  int            `json:"maxLatencyMs,omitempty"`
+	Questions     []QuizQuestion `json:"questions,omitempty"`
+	Dir           string         `json:"-"`
+	TestFile      string         `json:"-"`
+	ReferenceFile string         `json:"-"`
 }
 
 // Valid reports whether the lesson can be graded.
@@ -235,7 +254,10 @@ func loadLesson(c *Course, id string) (*Lesson, error) {
 		if err := json.Unmarshal(raw, &cfg); err != nil {
 			l.Problems = append(l.Problems, "config.json: "+err.Error())
 		} else {
-			l.Title, l.TimeoutMs, l.MaxLatencyMs, l.Options = cfg.Title, cfg.TimeoutMs, cfg.MaxLatencyMs, cfg.Options
+			l.Title, l.TimeoutMs, l.MaxLatencyMs, l.Questions = cfg.Title, cfg.TimeoutMs, cfg.MaxLatencyMs, cfg.Questions
+			if len(l.Questions) == 0 && len(cfg.Options) > 0 {
+				l.Questions = []QuizQuestion{{Options: cfg.Options}}
+			}
 			if cfg.Language != "" {
 				l.Language = cfg.Language
 			}
@@ -273,8 +295,13 @@ func loadLesson(c *Course, id string) (*Lesson, error) {
 		return l, nil
 	case KindQuiz:
 		l.Language = ""
-		if len(l.Options) < 2 {
-			l.Problems = append(l.Problems, `quiz needs at least two "options" in config.json`)
+		if len(l.Questions) == 0 {
+			l.Problems = append(l.Problems, `quiz needs "questions" (or "options") in config.json`)
+		}
+		for i, q := range l.Questions {
+			if len(q.Options) < 2 {
+				l.Problems = append(l.Problems, fmt.Sprintf("question %d needs at least two options", i+1))
+			}
 		}
 		p := filepath.Join(dir, "solution.json")
 		if !fileExists(p) {
@@ -282,10 +309,18 @@ func loadLesson(c *Course, id string) (*Lesson, error) {
 			return l, nil
 		}
 		l.ReferenceFile = p
-		if i, err := ReadQuizAnswer(p); err != nil {
+		answers, err := ReadQuizAnswers(p)
+		switch {
+		case err != nil:
 			l.Problems = append(l.Problems, "solution.json: "+err.Error())
-		} else if len(l.Options) >= 2 && i >= len(l.Options) {
-			l.Problems = append(l.Problems, fmt.Sprintf("solution.json: correct_index %d is out of range for %d options", i, len(l.Options)))
+		case len(answers) != len(l.Questions):
+			l.Problems = append(l.Problems, fmt.Sprintf("solution.json has %d answers for %d questions", len(answers), len(l.Questions)))
+		default:
+			for i, a := range answers {
+				if a.CorrectIndex >= len(l.Questions[i].Options) {
+					l.Problems = append(l.Problems, fmt.Sprintf("solution.json: question %d's correct_index %d is out of range", i+1, a.CorrectIndex))
+				}
+			}
 		}
 		return l, nil
 	default:
@@ -311,23 +346,36 @@ func loadLesson(c *Course, id string) (*Lesson, error) {
 	return l, nil
 }
 
-// ReadQuizAnswer reads the zero-based correct_index from a quiz's
-// solution.json.
-func ReadQuizAnswer(path string) (int, error) {
+// ReadQuizAnswers reads a quiz's solution.json, in either form:
+// {"answers": [...]} or a single {"correct_index": 0}.
+func ReadQuizAnswers(path string) ([]QuizAnswer, error) {
 	raw, err := os.ReadFile(path)
 	if err != nil {
-		return 0, err
+		return nil, err
+	}
+	type answer struct {
+		CorrectIndex *int   `json:"correct_index"`
+		Explanation  string `json:"explanation"`
 	}
 	var sol struct {
-		CorrectIndex *int `json:"correct_index"`
+		answer
+		Answers []answer `json:"answers"`
 	}
 	if err := json.Unmarshal(raw, &sol); err != nil {
-		return 0, err
+		return nil, err
 	}
-	if sol.CorrectIndex == nil || *sol.CorrectIndex < 0 {
-		return 0, errors.New(`needs a non-negative "correct_index"`)
+	list := sol.Answers
+	if list == nil {
+		list = []answer{sol.answer}
 	}
-	return *sol.CorrectIndex, nil
+	out := make([]QuizAnswer, len(list))
+	for i, a := range list {
+		if a.CorrectIndex == nil || *a.CorrectIndex < 0 {
+			return nil, fmt.Errorf(`answer %d needs a non-negative "correct_index"`, i+1)
+		}
+		out[i] = QuizAnswer{CorrectIndex: *a.CorrectIndex, Explanation: a.Explanation}
+	}
+	return out, nil
 }
 
 func firstHeading(md, fallback string) string {

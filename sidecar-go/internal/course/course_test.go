@@ -124,6 +124,9 @@ func TestQuizProblems(t *testing.T) {
 		"out-of-range": {"config.json": `{"type":"quiz","options":["a","b"]}`, "solution.json": `{"correct_index":2}`},
 		"no-index":     {"config.json": `{"type":"quiz","options":["a","b"]}`, "solution.json": `{}`},
 		"ok":           {"config.json": `{"type":"quiz","options":["a","b"]}`, "solution.json": `{"correct_index":1}`},
+		"multi":        {"config.json": `{"type":"quiz","questions":[{"prompt":"1?","options":["a","b"]},{"prompt":"2?","options":["c","d","e"]}]}`, "solution.json": `{"answers":[{"correct_index":1},{"correct_index":2,"explanation":"because"}]}`},
+		"multi-short":  {"config.json": `{"type":"quiz","questions":[{"options":["a","b"]},{"options":["c","d"]}]}`, "solution.json": `{"answers":[{"correct_index":1}]}`},
+		"multi-range":  {"config.json": `{"type":"quiz","questions":[{"options":["a","b"]}]}`, "solution.json": `{"answers":[{"correct_index":5}]}`},
 	} {
 		write(t, filepath.Join(root, "c", id, "lesson.md"), "# Q")
 		for name, body := range files {
@@ -131,12 +134,19 @@ func TestQuizProblems(t *testing.T) {
 		}
 	}
 	s := NewStore([]Root{{Path: root}})
-	for _, id := range []string{"few-options", "no-solution", "out-of-range", "no-index"} {
+	for _, id := range []string{"few-options", "no-solution", "out-of-range", "no-index", "multi-short", "multi-range"} {
 		if l, err := s.Lesson("c", id); err != nil || l.Valid() {
 			t.Errorf("%s should have problems: %+v %v", id, l, err)
 		}
 	}
-	if l, err := s.Lesson("c", "ok"); err != nil || !l.Valid() || len(l.Options) != 2 {
+	if l, err := s.Lesson("c", "ok"); err != nil || !l.Valid() || len(l.Questions) != 1 || len(l.Questions[0].Options) != 2 {
 		t.Errorf("ok: %+v %v", l, err)
+	}
+	if l, err := s.Lesson("c", "multi"); err != nil || !l.Valid() || len(l.Questions) != 2 || l.Questions[1].Prompt != "2?" {
+		t.Errorf("multi: %+v %v", l, err)
+	}
+	answers, err := ReadQuizAnswers(filepath.Join(root, "c", "multi", "solution.json"))
+	if err != nil || len(answers) != 2 || answers[1].Explanation != "because" {
+		t.Errorf("answers: %+v %v", answers, err)
 	}
 }

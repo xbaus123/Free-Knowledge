@@ -2,8 +2,10 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import * as engine from "../../lib/engine";
 import * as studio from "../../lib/studio";
 import { CodeEditor } from "../CodeEditor";
+import { SystemCanvas } from "../design/SystemCanvas";
 import { Markdown } from "../Markdown";
 import { TestList } from "../OutputPanel";
+import { QuizBuilder } from "./QuizBuilder";
 import { Field, inputClass } from "./StudioHome";
 import { extension, LANGUAGES } from "./languages";
 
@@ -14,31 +16,46 @@ interface Props {
   onPreview: (courseId: string, lessonId: string) => void;
 }
 
-type Tab = "instructions" | "starter" | "tests" | "reference";
+type Tab = "instructions" | "starter" | "tests" | "reference" | "questions" | "starterDiagram" | "solutionDiagram";
 
-const TABS: { id: Tab; label: string; hint: string }[] = [
-  { id: "instructions", label: "Instructions", hint: "lesson.md: what the learner reads" },
-  { id: "starter", label: "Starter", hint: "The code learners start with" },
-  { id: "tests", label: "Tests", hint: "Hidden tests. The learner's code is saved as solution.<ext> next to them" },
-  { id: "reference", label: "Reference", hint: "Your solution. It must pass the tests before you can export" },
-];
+type TabInfo = { id: Tab; label: string; hint: string; code?: boolean };
 
-// Lesson types the Studio can show but not yet edit.
-const TYPE_INFO: Record<string, { label: string; files: string; check: string }> = {
-  "system-design": {
-    label: "System design",
-    files: 'lesson.md, config.json (with "type": "system-design" and maxLatencyMs), starter.json, and solution.json',
-    check: "Simulates solution.json (must pass) and starter.json (should fail)",
-  },
-  article: { label: "Article", files: 'lesson.md and config.json (with "type": "article")', check: "Checks that the lesson loads" },
-  quiz: {
-    label: "Quiz",
-    files: 'lesson.md (the question), config.json (with "type": "quiz" and an "options" list), and solution.json ({"correct_index": 0})',
-    check: "Checks that the options and answer are valid",
-  },
+/** The editing tabs for each lesson type. */
+function tabsFor(type: studio.LessonType): TabInfo[] {
+  switch (type) {
+    case "article":
+      return [{ id: "instructions", label: "Article", hint: "lesson.md: learners read this, then click Mark Complete" }];
+    case "quiz":
+      return [
+        { id: "instructions", label: "Intro", hint: "lesson.md: shown beside the questions" },
+        { id: "questions", label: "Questions", hint: "Questions, options, and answers (answers stay hidden from learners)" },
+      ];
+    case "system-design":
+      return [
+        { id: "instructions", label: "Instructions", hint: "lesson.md: the scenario and the goal" },
+        { id: "starterDiagram", label: "Starter diagram", hint: "starter.json: the architecture learners start from" },
+        { id: "solutionDiagram", label: "Solution diagram", hint: "solution.json: a design that must pass the simulation" },
+      ];
+    default:
+      return [
+        { id: "instructions", label: "Instructions", hint: "lesson.md: what the learner reads" },
+        { id: "starter", label: "Starter", hint: "The code learners start with", code: true },
+        { id: "tests", label: "Tests", hint: "Hidden tests. The learner's code is saved as solution.<ext> next to them", code: true },
+        { id: "reference", label: "Reference", hint: "Your solution. It must pass the tests before you can export", code: true },
+      ];
+  }
+}
+
+const TYPE_LABELS: Record<studio.LessonType, string> = { code: "Code", article: "Article", quiz: "Quiz", "system-design": "System design" };
+
+const CHECK_HINTS: Record<studio.LessonType, string> = {
+  code: "Runs your reference solution and the starter against the tests (⌘ Enter)",
+  article: "Checks that the lesson loads (⌘ Enter)",
+  quiz: "Checks that every question has options and a correct answer (⌘ Enter)",
+  "system-design": "Simulates the solution diagram (must pass) and the starter (should fail) (⌘ Enter)",
 };
 
-const field = (tab: Tab): "markdown" | "starter" | "tests" | "reference" => (tab === "instructions" ? "markdown" : tab);
+const codeField = (tab: Tab) => (tab === "instructions" ? "markdown" : (tab as "starter" | "tests" | "reference"));
 
 export function CourseEditor({ courseId, initialLessonId, onBack, onPreview }: Props) {
   const [course, setCourse] = useState<engine.Course>();
@@ -158,10 +175,10 @@ export function CourseEditor({ courseId, initialLessonId, onBack, onPreview }: P
       setLessonId(c.lessons[Math.min(i, c.lessons.length - 1)]?.id);
     });
 
-  const addLesson = (title: string, language: string) =>
+  const addLesson = (title: string, type: studio.LessonType, language: string) =>
     act("add", async () => {
       await saveDraft();
-      const { id } = await studio.createLesson(courseId, title, language);
+      const { id } = await studio.createLesson(courseId, title, type, type === "code" ? language : undefined);
       await loadCourse();
       setLessonId(id);
       setTab("instructions");
@@ -230,6 +247,8 @@ export function CourseEditor({ courseId, initialLessonId, onBack, onPreview }: P
     setDraft(draftRef.current);
   };
   const ext = extension(draft?.language);
+  const tabs = draft ? tabsFor(draft.type) : [];
+  const activeTab = tabs.some((t) => t.id === tab) ? tab : "instructions";
 
   return (
     <div className="flex h-full flex-col">
@@ -334,7 +353,11 @@ export function CourseEditor({ courseId, initialLessonId, onBack, onPreview }: P
           </ol>
           <div className="border-t border-zinc-800 p-2">
             {adding ? (
-              <NewLessonForm defaultLanguage={draft?.language ?? course?.language ?? "python"} onAdd={addLesson} onCancel={() => setAdding(false)} />
+              <NewLessonForm
+                defaultLanguage={draft?.language || course?.language || "python"}
+                onAdd={addLesson}
+                onCancel={() => setAdding(false)}
+              />
             ) : (
               <button onClick={() => setAdding(true)} className="w-full rounded px-2 py-1.5 text-left text-sm text-indigo-300 hover:bg-zinc-900">
                 + Add lesson
@@ -348,70 +371,63 @@ export function CourseEditor({ courseId, initialLessonId, onBack, onPreview }: P
             <div className="p-8 text-sm text-zinc-500">
               {course && course.lessons.length === 0 ? "Add your first lesson to get started." : "Loading…"}
             </div>
-          ) : draft.type && draft.type !== "code" ? (
-            <>
-              <div className="flex shrink-0 items-center gap-3 border-b border-zinc-800 px-4 py-3">
-                <span className="font-medium">{draft.title}</span>
-                <span className="rounded bg-violet-950 px-2 py-0.5 text-xs text-violet-300">{TYPE_INFO[draft.type]?.label ?? draft.type}</span>
-                <div className="ml-auto flex items-center gap-2 text-sm">
-                  <button onClick={deleteCurrent} disabled={!!busy} className="rounded px-2 py-1.5 text-xs text-zinc-500 hover:bg-zinc-800 hover:text-red-400">
-                    Delete
-                  </button>
-                  <button
-                    onClick={runCheck}
-                    disabled={!!busy}
-                    title={TYPE_INFO[draft.type]?.check}
-                    className="rounded bg-emerald-700 px-3 py-1.5 font-medium hover:bg-emerald-600 disabled:opacity-40"
-                  >
-                    Check lesson
-                  </button>
-                </div>
-              </div>
-              <div className="min-h-0 flex-1 overflow-auto p-6 text-sm text-zinc-400">
-                <p className="mb-4 max-w-2xl">
-                  Editing {TYPE_INFO[draft.type]?.label.toLowerCase() ?? draft.type} lessons in the Studio is coming later. For now, edit these files in
-                  the lesson's folder: {TYPE_INFO[draft.type]?.files ?? "lesson.md and config.json"}. Use Preview as learner to try it.
-                </p>
-                <div className="max-w-2xl rounded border border-zinc-800 p-5">
-                  <Markdown>{draft.markdown}</Markdown>
-                </div>
-              </div>
-              {check && <CheckPanel check={check} onClose={() => setCheck(undefined)} />}
-            </>
           ) : (
             <>
               <div className="flex shrink-0 flex-wrap items-end gap-3 border-b border-zinc-800 px-4 py-3">
                 <label className="min-w-48 flex-1">
-                  <span className="mb-1 block text-xs text-zinc-400">Lesson title</span>
+                  <span className="mb-1 flex items-center gap-2 text-xs text-zinc-400">
+                    Lesson title
+                    {draft.type !== "code" && (
+                      <span className="rounded bg-violet-950 px-1.5 py-px text-[10px] text-violet-300">{TYPE_LABELS[draft.type]}</span>
+                    )}
+                  </span>
                   <input value={draft.title} onChange={(e) => update({ title: e.target.value })} className={inputClass} />
                 </label>
-                <label>
-                  <span className="mb-1 block text-xs text-zinc-400">Language</span>
-                  <select
-                    value={draft.language}
-                    onChange={(e) => update({ language: e.target.value })}
-                    className={inputClass}
-                    title="Switching language keeps your code; update the files to match"
-                  >
-                    {LANGUAGES.map((l) => (
-                      <option key={l.id} value={l.id}>
-                        {l.name}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-                <label className="w-28">
-                  <span className="mb-1 block text-xs text-zinc-400">Time limit (s)</span>
-                  <input
-                    type="number"
-                    min={1}
-                    max={60}
-                    placeholder="10"
-                    value={draft.timeoutMs ? draft.timeoutMs / 1000 : ""}
-                    onChange={(e) => update({ timeoutMs: e.target.value ? Math.round(Number(e.target.value) * 1000) : undefined })}
-                    className={inputClass}
-                  />
-                </label>
+                {draft.type === "code" && (
+                  <>
+                    <label>
+                      <span className="mb-1 block text-xs text-zinc-400">Language</span>
+                      <select
+                        value={draft.language}
+                        onChange={(e) => update({ language: e.target.value })}
+                        className={inputClass}
+                        title="Switching language keeps your code; update the files to match"
+                      >
+                        {LANGUAGES.map((l) => (
+                          <option key={l.id} value={l.id}>
+                            {l.name}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                    <label className="w-28">
+                      <span className="mb-1 block text-xs text-zinc-400">Time limit (s)</span>
+                      <input
+                        type="number"
+                        min={1}
+                        max={60}
+                        placeholder="10"
+                        value={draft.timeoutMs ? draft.timeoutMs / 1000 : ""}
+                        onChange={(e) => update({ timeoutMs: e.target.value ? Math.round(Number(e.target.value) * 1000) : undefined })}
+                        className={inputClass}
+                      />
+                    </label>
+                  </>
+                )}
+                {draft.type === "system-design" && (
+                  <label className="w-40">
+                    <span className="mb-1 block text-xs text-zinc-400">p99 latency target (ms)</span>
+                    <input
+                      type="number"
+                      min={1}
+                      max={60000}
+                      placeholder="none"
+                      value={draft.maxLatencyMs ?? ""}
+                      onChange={(e) => update({ maxLatencyMs: e.target.value ? Math.round(Number(e.target.value)) : undefined })}
+                      className={inputClass}
+                    />
+                  </label>
+                )}
                 <div className="ml-auto flex items-center gap-2 text-sm">
                   <span className="text-xs text-zinc-500">{dirty ? "Unsaved changes" : "Saved"}</span>
                   <button onClick={deleteCurrent} disabled={!!busy} className="rounded px-2 py-1.5 text-xs text-zinc-500 hover:bg-zinc-800 hover:text-red-400">
@@ -423,7 +439,7 @@ export function CourseEditor({ courseId, initialLessonId, onBack, onPreview }: P
                   <button
                     onClick={runCheck}
                     disabled={!!busy}
-                    title="Runs your reference solution and the starter against the tests (⌘ Enter)"
+                    title={CHECK_HINTS[draft.type]}
                     className="rounded bg-emerald-700 px-3 py-1.5 font-medium hover:bg-emerald-600 disabled:opacity-40"
                   >
                     Check lesson
@@ -432,35 +448,52 @@ export function CourseEditor({ courseId, initialLessonId, onBack, onPreview }: P
               </div>
 
               <div className="flex shrink-0 items-center gap-1 border-b border-zinc-800 px-2 text-xs">
-                {TABS.map((t) => (
+                {tabs.map((t) => (
                   <button
                     key={t.id}
                     onClick={() => setTab(t.id)}
-                    className={`border-b-2 px-3 py-2 ${tab === t.id ? "border-indigo-500 text-zinc-100" : "border-transparent text-zinc-400 hover:text-zinc-200"}`}
+                    className={`border-b-2 px-3 py-2 ${activeTab === t.id ? "border-indigo-500 text-zinc-100" : "border-transparent text-zinc-400 hover:text-zinc-200"}`}
                   >
                     {t.label}
-                    {t.id !== "instructions" && <span className="ml-1 font-mono text-zinc-500">.{ext}</span>}
+                    {t.code && <span className="ml-1 font-mono text-zinc-500">.{ext}</span>}
                   </button>
                 ))}
-                <span className="ml-auto truncate pr-2 text-zinc-500">{TABS.find((t) => t.id === tab)?.hint}</span>
+                <span className="ml-auto truncate pr-2 text-zinc-500">{tabs.find((t) => t.id === activeTab)?.hint}</span>
               </div>
 
               <div className="flex min-h-0 flex-1">
-                <div className={tab === "instructions" ? "w-1/2 border-r border-zinc-800" : "w-full"}>
-                  <CodeEditor
-                    path={`studio/${courseId}/${draft.id}/${tab}.${tab === "instructions" ? "md" : ext}`}
-                    language={tab === "instructions" ? "markdown" : draft.language}
-                    value={draft[field(tab)]}
-                    onChange={(v) => update({ [field(tab)]: v })}
-                    onSave={save}
-                    onSubmit={runCheck}
-                    autoFocus={false}
-                  />
-                </div>
-                {tab === "instructions" && (
-                  <div className="w-1/2 overflow-auto px-6 py-5">
-                    <Markdown>{draft.markdown}</Markdown>
+                {activeTab === "questions" ? (
+                  <div className="w-full">
+                    <QuizBuilder questions={draft.questions ?? []} onChange={(questions) => update({ questions })} />
                   </div>
+                ) : activeTab === "starterDiagram" || activeTab === "solutionDiagram" ? (
+                  <div className="w-full">
+                    <SystemCanvas
+                      key={`${draft.id}/${activeTab}`}
+                      initial={activeTab === "starterDiagram" ? draft.starter : draft.reference}
+                      onChange={(json) => update(activeTab === "starterDiagram" ? { starter: json } : { reference: json })}
+                      result={activeTab === "starterDiagram" ? check?.starterSim : check?.referenceSim}
+                    />
+                  </div>
+                ) : (
+                  <>
+                    <div className={activeTab === "instructions" ? "w-1/2 border-r border-zinc-800" : "w-full"}>
+                      <CodeEditor
+                        path={`studio/${courseId}/${draft.id}/${activeTab}.${activeTab === "instructions" ? "md" : ext}`}
+                        language={activeTab === "instructions" ? "markdown" : (draft.language ?? "")}
+                        value={draft[codeField(activeTab)]}
+                        onChange={(v) => update({ [codeField(activeTab)]: v })}
+                        onSave={save}
+                        onSubmit={runCheck}
+                        autoFocus={false}
+                      />
+                    </div>
+                    {activeTab === "instructions" && (
+                      <div className="w-1/2 overflow-auto px-6 py-5">
+                        <Markdown>{draft.markdown}</Markdown>
+                      </div>
+                    )}
+                  </>
                 )}
               </div>
 
@@ -539,25 +572,42 @@ function SimSummary({ title, result, expectPass }: { title: string; result: engi
   );
 }
 
-function NewLessonForm({ defaultLanguage, onAdd, onCancel }: { defaultLanguage: string; onAdd: (title: string, language: string) => void; onCancel: () => void }) {
+function NewLessonForm({
+  defaultLanguage,
+  onAdd,
+  onCancel,
+}: {
+  defaultLanguage: string;
+  onAdd: (title: string, type: studio.LessonType, language: string) => void;
+  onCancel: () => void;
+}) {
   const [title, setTitle] = useState("");
+  const [type, setType] = useState<studio.LessonType>("code");
   const [language, setLanguage] = useState(defaultLanguage);
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        if (title.trim()) onAdd(title.trim(), language);
+        if (title.trim()) onAdd(title.trim(), type, language);
       }}
       className="space-y-2"
     >
       <input autoFocus value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Lesson title" className={inputClass} />
-      <select value={language} onChange={(e) => setLanguage(e.target.value)} className={inputClass}>
-        {LANGUAGES.map((l) => (
-          <option key={l.id} value={l.id}>
-            {l.name}
-          </option>
-        ))}
+      <select value={type} onChange={(e) => setType(e.target.value as studio.LessonType)} className={inputClass} aria-label="Lesson type">
+        <option value="code">Code exercise</option>
+        <option value="article">Article (reading)</option>
+        <option value="quiz">Quiz</option>
+        <option value="system-design">System design</option>
       </select>
+      {type === "code" && (
+        <select value={language} onChange={(e) => setLanguage(e.target.value)} className={inputClass} aria-label="Language">
+          {LANGUAGES.map((l) => (
+            <option key={l.id} value={l.id}>
+              {l.name}
+            </option>
+          ))}
+        </select>
+      )}
       <div className="flex justify-end gap-1">
         <button type="button" onClick={onCancel} className="rounded px-2 py-1 text-xs text-zinc-400 hover:bg-zinc-800">
           Cancel

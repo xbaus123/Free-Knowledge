@@ -105,11 +105,11 @@ func (s *Server) handleCopyCourse(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) handleCreateLesson(w http.ResponseWriter, r *http.Request) {
-	var body struct{ Title, Language string }
+	var body struct{ Title, Type, Language string }
 	if !decodeBody(w, r, &body) {
 		return
 	}
-	id, err := s.cfg.Studio.CreateLesson(r.PathValue("course"), body.Title, body.Language)
+	id, err := s.cfg.Studio.CreateLesson(r.PathValue("course"), body.Title, body.Type, body.Language)
 	if err != nil {
 		writeStudioError(w, err)
 		return

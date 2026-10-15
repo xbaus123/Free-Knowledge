@@ -1,1 +1,4 @@
-{ "correct_index": 0 }
+{
+  "correct_index": 0,
+  "explanation": "Go has a garbage collector: it periodically finds memory your program can no longer reach and frees it, running alongside your code with very short pauses. You never call free yourself."
+}

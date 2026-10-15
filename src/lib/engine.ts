@@ -64,8 +64,14 @@ export interface Lesson extends LessonSummary {
   timeoutMs: number;
   /** System design: p99 latency target. */
   maxLatencyMs?: number;
-  /** Quiz: answer choices. */
-  options?: string[];
+  /** Quiz questions (answers stay on the engine). */
+  questions?: QuizQuestion[];
+}
+
+export interface QuizQuestion {
+  /** Empty when the question is in the lesson text. */
+  prompt?: string;
+  options: string[];
 }
 
 export const isDesignLesson = (l?: LessonSummary) => l?.kind === "system-design";
@@ -199,9 +205,9 @@ export const saveCode = (courseId: string, lessonId: string, code: string) =>
 export const resetCode = (courseId: string, lessonId: string) =>
   request<void>(lessonPath(courseId, lessonId) + "/progress/code", { method: "DELETE" });
 
-/** Grades a quiz answer (zero-based index into the lesson's options). */
-export const submitAnswer = (courseId: string, lessonId: string, answer: number) =>
-  request<GradeResult>(lessonPath(courseId, lessonId) + "/submit", { method: "POST", body: JSON.stringify({ answer }) });
+/** Grades quiz answers: one zero-based option index per question. */
+export const submitAnswers = (courseId: string, lessonId: string, answers: number[]) =>
+  request<GradeResult>(lessonPath(courseId, lessonId) + "/submit", { method: "POST", body: JSON.stringify({ answers }) });
 
 /** Marks an article lesson as read. */
 export const completeArticle = (courseId: string, lessonId: string) =>
