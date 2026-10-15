@@ -103,9 +103,13 @@ interface EngineInfo {
 
 let infoPromise: Promise<EngineInfo> | undefined;
 function engineInfo(): Promise<EngineInfo> {
-  // `npm run dev:web` runs the UI in a plain browser against `npm run dev:engine`.
+  // `npm run dev:web` runs the UI in a plain browser against `npm run dev:engine`,
+  // on separate ports so it can run alongside `npm run tauri dev`.
   const devToken = import.meta.env.DEV && !isTauri() ? import.meta.env.VITE_FK_ENGINE_TOKEN : undefined;
-  if (devToken) return Promise.resolve({ baseUrl: "http://127.0.0.1:14200", wsUrl: "ws://127.0.0.1:14200", token: devToken });
+  if (devToken) {
+    const addr = `127.0.0.1:${import.meta.env.VITE_FK_ENGINE_PORT ?? "14210"}`;
+    return Promise.resolve({ baseUrl: `http://${addr}`, wsUrl: `ws://${addr}`, token: devToken });
+  }
 
   infoPromise ??= invoke<EngineInfo>("engine_info").catch((err) => {
     infoPromise = undefined;
@@ -114,7 +118,7 @@ function engineInfo(): Promise<EngineInfo> {
   return infoPromise;
 }
 
-async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
+export async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
   const { baseUrl, token } = await engineInfo();
   const res = await fetch(baseUrl + path, {
     ...init,
@@ -122,8 +126,19 @@ async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
   });
   if (res.status === 204) return undefined as T;
   const body = await res.json();
-  if (!res.ok) throw new Error(body.error ?? `engine returned ${res.status}`);
+  if (!res.ok) throw new EngineError(body.error ?? `engine returned ${res.status}`, res.status, body);
   return body as T;
+}
+
+/** An error response from the engine; `body` has any extra fields it sent. */
+export class EngineError extends Error {
+  constructor(
+    message: string,
+    readonly status: number,
+    readonly body: Record<string, unknown>,
+  ) {
+    super(message);
+  }
 }
 
 export const health = () => request<Health>("/health");

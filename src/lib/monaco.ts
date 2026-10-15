@@ -9,6 +9,7 @@ import "monaco-esm/languages/definitions/javascript/register";
 import "monaco-esm/languages/definitions/go/register";
 import "monaco-esm/languages/definitions/cpp/register"; // registers "c" too
 import "monaco-esm/languages/definitions/rust/register";
+import "monaco-esm/languages/definitions/markdown/register"; // Creator Studio
 
 self.MonacoEnvironment = { getWorker: () => new EditorWorker() };
 

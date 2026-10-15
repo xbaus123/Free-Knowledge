@@ -8,17 +8,24 @@ interface Props {
   language: string;
   value: string;
   onChange: (value: string) => void;
-  onSubmit: () => void;
+  /** ⌘/Ctrl+Enter */
+  onSubmit?: () => void;
+  /** ⌘/Ctrl+S */
+  onSave?: () => void;
+  autoFocus?: boolean;
 }
 
-export function CodeEditor({ path, language, value, onChange, onSubmit }: Props) {
-  // Monaco binds commands once at mount; read the latest callback through a ref.
+export function CodeEditor({ path, language, value, onChange, onSubmit, onSave, autoFocus = true }: Props) {
+  // Monaco binds commands once at mount; read the latest callbacks through refs.
   const submitRef = useRef(onSubmit);
   submitRef.current = onSubmit;
+  const saveRef = useRef(onSave);
+  saveRef.current = onSave;
 
   const handleMount: OnMount = (editor, monaco) => {
-    editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter, () => submitRef.current());
-    editor.focus();
+    editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter, () => submitRef.current?.());
+    editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyS, () => saveRef.current?.());
+    if (autoFocus) editor.focus();
   };
 
   return (
@@ -35,8 +42,9 @@ export function CodeEditor({ path, language, value, onChange, onSubmit }: Props)
         minimap: { enabled: false },
         scrollBeyondLastLine: false,
         automaticLayout: true,
-        tabSize: language === "python" || language === "rust" ? 4 : 2,
+        tabSize: language === "python" || language === "rust" || language === "c" ? 4 : 2,
         insertSpaces: language !== "go",
+        wordWrap: language === "markdown" ? "on" : "off",
         padding: { top: 12 },
         renderLineHighlight: "line",
       }}

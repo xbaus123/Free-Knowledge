@@ -14,6 +14,7 @@ import (
 
 	"freeknowledge/engine/internal/course"
 	"freeknowledge/engine/internal/progress"
+	"freeknowledge/engine/internal/studio"
 )
 
 const testToken = "secret"
@@ -28,12 +29,15 @@ func newTestServer(t *testing.T) (*httptest.Server, string) {
 		t.Fatal(err)
 	}
 	t.Cleanup(func() { store.Close() })
+	userRoot := t.TempDir()
+	courses := course.NewStore([]course.Root{{Path: userRoot, Source: "user"}, {Path: "../../../courses", Source: "bundled"}})
 	ts.Config.Handler = New(Config{
 		Addr:     addr,
 		Token:    testToken,
 		Version:  "test",
-		Courses:  course.NewStore([]course.Root{{Path: "../../../courses", Source: "bundled"}}),
+		Courses:  courses,
 		Progress: store,
+		Studio:   &studio.Studio{Root: userRoot, Courses: courses},
 	}).Handler()
 	t.Cleanup(ts.Close)
 	return ts, addr
@@ -246,5 +250,58 @@ func TestCancelledSubmitIsNotRecorded(t *testing.T) {
 		if d.Attempts != 0 {
 			t.Fatalf("cancelled run was recorded as an attempt")
 		}
+	}
+}
+
+func TestStudioEndpoints(t *testing.T) {
+	ts, _ := newTestServer(t)
+	auth := map[string]string{"Authorization": "Bearer " + testToken}
+	decode := func(res *http.Response, v any) {
+		t.Helper()
+		if err := json.NewDecoder(res.Body).Decode(v); err != nil {
+			t.Fatal(err)
+		}
+	}
+
+	if res := do(t, ts, "POST", "/studio/courses/getting-started/lessons", `{"title":"x","language":"python"}`, auth); res.StatusCode != 403 {
+		t.Fatalf("editing bundled course: %d", res.StatusCode)
+	}
+
+	var created struct{ ID string }
+	res := do(t, ts, "POST", "/studio/courses", `{"title":"Studio Test"}`, auth)
+	decode(res, &created)
+	if res.StatusCode != 201 || created.ID != "studio-test" {
+		t.Fatalf("create course: %d %+v", res.StatusCode, created)
+	}
+	base := "/studio/courses/" + created.ID
+	res = do(t, ts, "POST", base+"/lessons", `{"title":"First","language":"python"}`, auth)
+	var lesson struct{ ID string }
+	decode(res, &lesson)
+
+	// Break the reference, then export must refuse.
+	res = do(t, ts, "GET", base+"/lessons/"+lesson.ID, "", auth)
+	var src map[string]any
+	decode(res, &src)
+	src["reference"] = "def answer():\n    return 0\n"
+	body, _ := json.Marshal(src)
+	if res := do(t, ts, "PUT", base+"/lessons/"+lesson.ID, string(body), auth); res.StatusCode != 204 {
+		t.Fatalf("save lesson: %d", res.StatusCode)
+	}
+	dest := t.TempDir() + "/out.dojo"
+	if res := do(t, ts, "POST", base+"/export", `{"path":"`+dest+`"}`, auth); res.StatusCode != 422 {
+		t.Fatalf("export with failing reference: %d", res.StatusCode)
+	}
+
+	src["reference"] = "def answer():\n    return 42\n"
+	body, _ = json.Marshal(src)
+	do(t, ts, "PUT", base+"/lessons/"+lesson.ID, string(body), auth)
+	if res := do(t, ts, "POST", base+"/export", `{"path":"`+dest+`"}`, auth); res.StatusCode != 200 {
+		t.Fatalf("export: %d", res.StatusCode)
+	}
+	if res := do(t, ts, "POST", "/studio/import", `{"path":"`+dest+`"}`, auth); res.StatusCode != 409 {
+		t.Fatalf("import over existing course: %d", res.StatusCode)
+	}
+	if res := do(t, ts, "POST", "/studio/import", `{"path":"`+dest+`","replace":true}`, auth); res.StatusCode != 200 {
+		t.Fatalf("import with replace: %d", res.StatusCode)
 	}
 }

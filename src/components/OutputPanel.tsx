@@ -106,23 +106,7 @@ function GradeSummary({ grade, onNext, onShowOutput }: { grade: GradeResult; onN
         </div>
       ) : null}
 
-      {grade.tests.length > 0 && (
-        <ul className="space-y-1.5">
-          {grade.tests.map((t) => (
-            <li key={t.name}>
-              <div className="flex items-baseline gap-2">
-                <span className={`w-3 font-bold ${statusColor[t.status]}`}>{statusIcon[t.status]}</span>
-                <span className={t.status === "pass" ? "text-zinc-300" : "text-zinc-100"}>{t.name}</span>
-              </div>
-              {t.message && t.status !== "pass" && (
-                <pre className="mt-1 ml-5 overflow-auto rounded bg-zinc-900 p-2 font-mono text-xs whitespace-pre-wrap text-zinc-300">
-                  {t.message}
-                </pre>
-              )}
-            </li>
-          ))}
-        </ul>
-      )}
+      {grade.tests.length > 0 && <TestList tests={grade.tests} />}
 
       {!grade.passed && grade.tests.length > 0 && (grade.stdout || grade.stderr) && (
         <button onClick={onShowOutput} className="text-xs text-zinc-400 underline hover:text-zinc-200">
@@ -142,5 +126,25 @@ function TabButton({ active, onClick, children }: { active: boolean; onClick: ()
     >
       {children}
     </button>
+  );
+}
+
+export function TestList({ tests }: { tests: TestResult[] }) {
+  return (
+    <ul className="space-y-1.5">
+      {tests.map((t) => (
+        <li key={t.name}>
+          <div className="flex items-baseline gap-2">
+            <span className={`w-3 font-bold ${statusColor[t.status]}`}>{statusIcon[t.status]}</span>
+            <span className={t.status === "pass" ? "text-zinc-300" : "text-zinc-100"}>{t.name}</span>
+          </div>
+          {t.message && t.status !== "pass" && (
+            <pre className="mt-1 ml-5 overflow-auto rounded bg-zinc-900 p-2 font-mono text-xs whitespace-pre-wrap text-zinc-300">
+              {t.message}
+            </pre>
+          )}
+        </li>
+      ))}
+    </ul>
   );
 }

@@ -7,4 +7,5 @@ declare module "monaco-esm/*";
 interface ImportMetaEnv {
   /** Engine token for `npm run dev:web` (browser-only UI development). */
   readonly VITE_FK_ENGINE_TOKEN?: string;
+  readonly VITE_FK_ENGINE_PORT?: string;
 }

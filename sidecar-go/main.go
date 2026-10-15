@@ -23,6 +23,7 @@ import (
 	"freeknowledge/engine/internal/progress"
 	"freeknowledge/engine/internal/runner"
 	"freeknowledge/engine/internal/server"
+	"freeknowledge/engine/internal/studio"
 )
 
 var version = "0.1.0-dev"
@@ -58,8 +59,9 @@ func run(addr string, watchStdin bool) error {
 
 	// User courses come first so they can override bundled ones.
 	var roots []course.Root
-	if p := os.Getenv("FK_USER_COURSES"); p != "" {
-		roots = append(roots, course.Root{Path: p, Source: "user"})
+	userCourses := os.Getenv("FK_USER_COURSES")
+	if userCourses != "" {
+		roots = append(roots, course.Root{Path: userCourses, Source: "user"})
 	}
 	if p := os.Getenv("FK_BUNDLED_COURSES"); p != "" {
 		roots = append(roots, course.Root{Path: p, Source: "bundled"})
@@ -102,8 +104,14 @@ func run(addr string, watchStdin bool) error {
 		return err
 	}
 
+	courses := course.NewStore(roots)
+	cfg := server.Config{Addr: addr, Token: token, Version: version, Courses: courses, Progress: store}
+	if userCourses != "" {
+		cfg.Studio = &studio.Studio{Root: userCourses, Courses: courses}
+	}
+
 	srv := &http.Server{
-		Handler:           server.New(server.Config{Addr: addr, Token: token, Version: version, Courses: course.NewStore(roots), Progress: store}).Handler(),
+		Handler:           server.New(cfg).Handler(),
 		ReadHeaderTimeout: 5 * time.Second,
 		// Request contexts derive from ctx, so shutdown kills running programs.
 		BaseContext: func(net.Listener) context.Context { return ctx },

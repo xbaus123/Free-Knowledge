@@ -10,13 +10,15 @@ interface Props {
   lessonId: string;
   onOpenLesson: (lessonId: string) => void;
   onHome: () => void;
+  /** Label for the back button; "Courses" unless previewing from the Studio. */
+  backLabel?: string;
 }
 
 type SaveState = "saved" | "unsaved" | "saving" | "error";
 
 const AUTOSAVE_MS = 800;
 
-export function Workspace({ courseId, lessonId, onOpenLesson, onHome }: Props) {
+export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel = "Courses" }: Props) {
   const [course, setCourse] = useState<engine.Course>();
   const [progress, setProgress] = useState<Record<string, engine.LessonProgress>>({});
   const [lesson, setLesson] = useState<engine.Lesson>();
@@ -172,7 +174,7 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome }: Props) {
     <div className="flex h-full flex-col">
       <header className="flex h-11 shrink-0 items-center gap-3 border-b border-zinc-800 bg-zinc-950 px-3 text-sm">
         <button onClick={onHome} className="rounded px-2 py-1 text-zinc-400 hover:bg-zinc-800 hover:text-zinc-100">
-          ← Courses
+          ← {backLabel}
         </button>
         <span className="truncate text-zinc-500">{course?.title}</span>
         <span className="text-zinc-700">/</span>

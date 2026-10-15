@@ -19,6 +19,7 @@ import (
 	"freeknowledge/engine/internal/grader"
 	"freeknowledge/engine/internal/progress"
 	"freeknowledge/engine/internal/runner"
+	"freeknowledge/engine/internal/studio"
 )
 
 const maxBodyBytes = 1 << 20
@@ -30,6 +31,7 @@ var allowedOrigins = map[string]bool{
 	"http://tauri.localhost":  true, // Windows
 	"https://tauri.localhost": true,
 	"http://localhost:1420":   true, // vite dev
+	"http://localhost:1430":   true, // `npm run dev:web` (browser-only UI development)
 }
 
 type Config struct {
@@ -38,6 +40,7 @@ type Config struct {
 	Version string
 	Courses  *course.Store
 	Progress *progress.Store
+	Studio   *studio.Studio // nil disables the /studio endpoints
 }
 
 type Server struct {
@@ -65,6 +68,7 @@ func (s *Server) Handler() http.Handler {
 	mux.Handle("GET /courses/{course}/lessons/{lesson}/progress", s.requireToken(http.HandlerFunc(s.handleLessonProgress)))
 	mux.Handle("PUT /courses/{course}/lessons/{lesson}/progress/code", s.requireToken(http.HandlerFunc(s.handleSaveCode)))
 	mux.Handle("DELETE /courses/{course}/lessons/{lesson}/progress/code", s.requireToken(http.HandlerFunc(s.handleResetCode)))
+	s.studioRoutes(mux)
 	return s.guard(mux)
 }
 

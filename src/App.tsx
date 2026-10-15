@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react";
 import { Home } from "./components/Home";
+import { CourseEditor } from "./components/studio/CourseEditor";
+import { StudioHome } from "./components/studio/StudioHome";
 import { Workspace } from "./components/Workspace";
 import * as engine from "./lib/engine";
 
-type Route = { view: "home" } | { view: "lesson"; courseId: string; lessonId: string };
+type Route =
+  | { view: "home" }
+  | { view: "lesson"; courseId: string; lessonId: string; fromStudio?: boolean }
+  | { view: "studio" }
+  | { view: "studio-course"; courseId: string; lessonId?: string };
 type LessonRef = { courseId: string; lessonId: string };
 
 const LAST_LESSON_KEY = "fk:lastLesson";
@@ -59,15 +65,36 @@ export default function App() {
     );
   }
 
-  if (route.view === "lesson") {
-    return (
-      <Workspace
-        courseId={route.courseId}
-        lessonId={route.lessonId}
-        onOpenLesson={(lessonId) => openLesson(route.courseId, lessonId)}
-        onHome={() => setRoute({ view: "home" })}
-      />
-    );
+  switch (route.view) {
+    case "lesson":
+      return route.fromStudio ? (
+        <Workspace
+          courseId={route.courseId}
+          lessonId={route.lessonId}
+          onOpenLesson={(lessonId) => setRoute({ ...route, lessonId })}
+          onHome={() => setRoute({ view: "studio-course", courseId: route.courseId, lessonId: route.lessonId })}
+          backLabel="Back to editing"
+        />
+      ) : (
+        <Workspace
+          courseId={route.courseId}
+          lessonId={route.lessonId}
+          onOpenLesson={(lessonId) => openLesson(route.courseId, lessonId)}
+          onHome={() => setRoute({ view: "home" })}
+        />
+      );
+    case "studio":
+      return <StudioHome onHome={() => setRoute({ view: "home" })} onEdit={(courseId) => setRoute({ view: "studio-course", courseId })} />;
+    case "studio-course":
+      return (
+        <CourseEditor
+          courseId={route.courseId}
+          initialLessonId={route.lessonId}
+          onBack={() => setRoute({ view: "studio" })}
+          onPreview={(courseId, lessonId) => setRoute({ view: "lesson", courseId, lessonId, fromStudio: true })}
+        />
+      );
+    default:
+      return <Home lastLesson={lastLesson} onOpen={openLesson} onStudio={() => setRoute({ view: "studio" })} />;
   }
-  return <Home lastLesson={lastLesson} onOpen={openLesson} />;
 }

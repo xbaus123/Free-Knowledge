@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
 import * as engine from "../lib/engine";
+import { importWithPrompts } from "../lib/studio";
 
 interface Props {
   lastLesson?: { courseId: string; lessonId: string };
   onOpen: (courseId: string, lessonId: string) => void;
+  onStudio: () => void;
 }
 
-export function Home({ lastLesson, onOpen }: Props) {
+export function Home({ lastLesson, onOpen, onStudio }: Props) {
   const [courses, setCourses] = useState<engine.Course[]>();
   const [progress, setProgress] = useState<engine.Progress>();
   const [runtimes, setRuntimes] = useState<engine.RuntimeInfo[]>([]);
   const [error, setError] = useState<string>();
+  const [notice, setNotice] = useState<string>();
 
-  useEffect(() => {
+  const load = () =>
     Promise.all([engine.courses(), engine.progress(), engine.runtimes()])
       .then(([c, p, r]) => {
         setCourses(c);
@@ -20,7 +23,20 @@ export function Home({ lastLesson, onOpen }: Props) {
         setRuntimes(r);
       })
       .catch((e) => setError(String(e)));
-  }, []);
+  useEffect(() => void load(), []);
+
+  const doImport = async () => {
+    setError(undefined);
+    setNotice(undefined);
+    try {
+      const res = await importWithPrompts();
+      if (!res) return;
+      setNotice(`${res.replaced ? "Replaced" : "Added"} "${res.title}" with ${res.lessons} lesson${res.lessons === 1 ? "" : "s"}.`);
+      load();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : String(e));
+    }
+  };
 
   const done = (courseId: string, lessonId: string) => !!progress?.courses[courseId]?.[lessonId]?.completed;
 
@@ -42,14 +58,28 @@ export function Home({ lastLesson, onOpen }: Props) {
             <p className="text-sm text-zinc-400">Learn to code on your own machine, fully offline.</p>
           </div>
           {progress && (
-            <div className="flex gap-3 text-sm">
+            <div className="flex items-center gap-3 text-sm">
               <Stat label="day streak" value={progress.stats.currentStreak} accent={progress.stats.currentStreak > 0 ? "text-amber-300" : undefined} />
               <Stat label="lessons done" value={progress.stats.completedLessons} />
             </div>
           )}
         </header>
 
+        <div className="mb-6 flex gap-2 text-sm">
+          <button onClick={onStudio} className="rounded border border-zinc-700 px-3 py-1.5 hover:bg-zinc-800">
+            ✎ Creator Studio
+          </button>
+          <button
+            onClick={doImport}
+            title="Courses run their tests on your computer. Only import courses from people you trust."
+            className="rounded border border-zinc-700 px-3 py-1.5 hover:bg-zinc-800"
+          >
+            Import course (.dojo)
+          </button>
+        </div>
+
         {error && <p className="mb-6 rounded border border-red-900 bg-red-950/40 p-3 text-sm text-red-300">{error}</p>}
+        {notice && <p className="mb-6 rounded border border-emerald-900 bg-emerald-950/40 p-3 text-sm text-emerald-300">{notice}</p>}
 
         {resume && resumeLesson && (
           <button
