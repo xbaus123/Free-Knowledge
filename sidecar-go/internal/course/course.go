@@ -1,0 +1,270 @@
+// Package course reads course packs from disk.
+//
+// Layout:
+//
+//	<root>/<course-id>/course.json
+//	<root>/<course-id>/<lesson-id>/lesson.md
+//	<root>/<course-id>/<lesson-id>/config.json        (optional)
+//	<root>/<course-id>/<lesson-id>/starter.<ext>      (optional; loaded into the editor)
+//	<root>/<course-id>/<lesson-id>/solution_test.<ext>
+//	<root>/<course-id>/<lesson-id>/reference.<ext>    (optional; author's solution, used for validation)
+//
+// Folder names are the IDs. Lessons are ordered by course.json "lessons" if
+// present, otherwise by folder name (use 01-, 02- prefixes).
+//
+// Packs are re-read on every call so authors see edits immediately.
+package course
+
+import (
+	"encoding/json"
+	"errors"
+	"fmt"
+	"os"
+	"path/filepath"
+	"regexp"
+	"slices"
+	"strings"
+
+	"freeknowledge/engine/internal/runner"
+)
+
+var (
+	ErrNotFound = errors.New("not found")
+	idPattern   = regexp.MustCompile(`^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$`)
+)
+
+// ValidID reports whether s is safe to use as a course or lesson folder name.
+func ValidID(s string) bool { return idPattern.MatchString(s) && !strings.Contains(s, "..") }
+
+// Root is a directory containing course folders.
+type Root struct {
+	Path   string
+	Source string // "user" or "bundled"
+}
+
+type Store struct {
+	roots []Root
+}
+
+// NewStore searches roots in order; an earlier root wins when two contain
+// the same course ID, so user courses can override bundled ones.
+func NewStore(roots []Root) *Store { return &Store{roots: roots} }
+
+type courseFile struct {
+	Title       string   `json:"title"`
+	Description string   `json:"description"`
+	Author      string   `json:"author"`
+	Version     string   `json:"version"`
+	Language    string   `json:"language"`
+	Lessons     []string `json:"lessons"`
+}
+
+type lessonConfig struct {
+	Title     string `json:"title"`
+	Language  string `json:"language"`
+	Kind      string `json:"kind"`
+	TimeoutMs int    `json:"timeoutMs"`
+}
+
+type Course struct {
+	ID          string          `json:"id"`
+	Title       string          `json:"title"`
+	Description string          `json:"description"`
+	Author      string          `json:"author,omitempty"`
+	Version     string          `json:"version,omitempty"`
+	Language    string          `json:"language,omitempty"`
+	Source      string          `json:"source"`
+	Lessons     []LessonSummary `json:"lessons"`
+	Problems    []string        `json:"problems,omitempty"`
+	Dir         string          `json:"-"`
+}
+
+type LessonSummary struct {
+	ID       string   `json:"id"`
+	Title    string   `json:"title"`
+	Language string   `json:"language"`
+	Kind     string   `json:"kind"`
+	Problems []string `json:"problems,omitempty"`
+}
+
+// Lesson is everything the UI needs to show a lesson. Test and reference
+// files are paths only and are never sent to the frontend.
+type Lesson struct {
+	LessonSummary
+	CourseID      string `json:"courseId"`
+	Markdown      string `json:"markdown"`
+	Starter       string `json:"starter"`
+	TimeoutMs     int    `json:"timeoutMs"`
+	Dir           string `json:"-"`
+	TestFile      string `json:"-"`
+	ReferenceFile string `json:"-"`
+}
+
+// Valid reports whether the lesson can be graded.
+func (l *Lesson) Valid() bool { return len(l.Problems) == 0 }
+
+// List returns every course across all roots, without lesson bodies.
+func (s *Store) List() []Course {
+	var out []Course
+	seen := map[string]bool{}
+	for _, root := range s.roots {
+		entries, err := os.ReadDir(root.Path)
+		if err != nil {
+			continue // a missing user dir is normal on first launch
+		}
+		for _, e := range entries {
+			if !e.IsDir() || !ValidID(e.Name()) || seen[e.Name()] {
+				continue
+			}
+			c, err := loadCourse(root, e.Name())
+			if errors.Is(err, ErrNotFound) {
+				continue // not a course folder
+			}
+			seen[e.Name()] = true
+			out = append(out, *c)
+		}
+	}
+	return out
+}
+
+func (s *Store) Course(id string) (*Course, error) {
+	if !ValidID(id) {
+		return nil, ErrNotFound
+	}
+	for _, root := range s.roots {
+		c, err := loadCourse(root, id)
+		if err == nil {
+			return c, nil
+		}
+		if !errors.Is(err, ErrNotFound) {
+			return nil, err
+		}
+	}
+	return nil, ErrNotFound
+}
+
+func (s *Store) Lesson(courseID, lessonID string) (*Lesson, error) {
+	c, err := s.Course(courseID)
+	if err != nil {
+		return nil, err
+	}
+	if !ValidID(lessonID) || !slices.ContainsFunc(c.Lessons, func(l LessonSummary) bool { return l.ID == lessonID }) {
+		return nil, ErrNotFound
+	}
+	return loadLesson(c, lessonID)
+}
+
+func loadCourse(root Root, id string) (*Course, error) {
+	dir := filepath.Join(root.Path, id)
+	raw, err := os.ReadFile(filepath.Join(dir, "course.json"))
+	if errors.Is(err, os.ErrNotExist) {
+		return nil, ErrNotFound
+	}
+	if err != nil {
+		return nil, err
+	}
+	c := &Course{ID: id, Source: root.Source, Dir: dir, Lessons: []LessonSummary{}}
+	var cf courseFile
+	if err := json.Unmarshal(raw, &cf); err != nil {
+		c.Title = id
+		c.Problems = append(c.Problems, "course.json: "+err.Error())
+		return c, nil
+	}
+	c.Title, c.Description, c.Author, c.Version, c.Language = cf.Title, cf.Description, cf.Author, cf.Version, cf.Language
+	if c.Title == "" {
+		c.Title = id
+	}
+
+	ids := cf.Lessons
+	if len(ids) == 0 {
+		entries, _ := os.ReadDir(dir)
+		for _, e := range entries {
+			if e.IsDir() && ValidID(e.Name()) {
+				ids = append(ids, e.Name()) // ReadDir is sorted by name
+			}
+		}
+	}
+	for _, lid := range ids {
+		if !ValidID(lid) {
+			c.Problems = append(c.Problems, fmt.Sprintf("invalid lesson id %q in course.json", lid))
+			continue
+		}
+		l, err := loadLesson(c, lid)
+		if err != nil {
+			c.Problems = append(c.Problems, fmt.Sprintf("lesson %q: %v", lid, err))
+			continue
+		}
+		c.Lessons = append(c.Lessons, l.LessonSummary)
+	}
+	return c, nil
+}
+
+func loadLesson(c *Course, id string) (*Lesson, error) {
+	dir := filepath.Join(c.Dir, id)
+	if fi, err := os.Stat(dir); err != nil || !fi.IsDir() {
+		return nil, fmt.Errorf("folder missing")
+	}
+	l := &Lesson{CourseID: c.ID, Dir: dir}
+	l.ID = id
+	l.Kind = "code"
+	l.Language = c.Language
+
+	if raw, err := os.ReadFile(filepath.Join(dir, "config.json")); err == nil {
+		var cfg lessonConfig
+		if err := json.Unmarshal(raw, &cfg); err != nil {
+			l.Problems = append(l.Problems, "config.json: "+err.Error())
+		} else {
+			l.Title, l.TimeoutMs = cfg.Title, cfg.TimeoutMs
+			if cfg.Language != "" {
+				l.Language = cfg.Language
+			}
+			if cfg.Kind != "" {
+				l.Kind = cfg.Kind
+			}
+		}
+	}
+
+	if md, err := os.ReadFile(filepath.Join(dir, "lesson.md")); err == nil {
+		l.Markdown = string(md)
+	} else {
+		l.Problems = append(l.Problems, "lesson.md is missing")
+	}
+	if l.Title == "" {
+		l.Title = firstHeading(l.Markdown, id)
+	}
+
+	if l.Kind != "code" {
+		return l, nil // other lesson kinds (system design) come later
+	}
+	lang, ok := runner.Lookup(l.Language)
+	if !ok {
+		l.Problems = append(l.Problems, fmt.Sprintf("unknown language %q (set it in course.json or config.json)", l.Language))
+		return l, nil
+	}
+	if b, err := os.ReadFile(filepath.Join(dir, "starter"+lang.Ext)); err == nil {
+		l.Starter = string(b)
+	}
+	if p := filepath.Join(dir, "solution_test"+lang.Ext); fileExists(p) {
+		l.TestFile = p
+	} else {
+		l.Problems = append(l.Problems, "solution_test"+lang.Ext+" is missing")
+	}
+	if p := filepath.Join(dir, "reference"+lang.Ext); fileExists(p) {
+		l.ReferenceFile = p
+	}
+	return l, nil
+}
+
+func firstHeading(md, fallback string) string {
+	for line := range strings.Lines(md) {
+		if t, ok := strings.CutPrefix(strings.TrimSpace(line), "# "); ok {
+			return strings.TrimSpace(t)
+		}
+	}
+	return fallback
+}
+
+func fileExists(p string) bool {
+	fi, err := os.Stat(p)
+	return err == nil && fi.Mode().IsRegular()
+}

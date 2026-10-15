@@ -36,6 +36,47 @@ export interface Health {
   version: string;
 }
 
+export interface LessonSummary {
+  id: string;
+  title: string;
+  language: string;
+  kind: string;
+  problems?: string[];
+}
+
+export interface Course {
+  id: string;
+  title: string;
+  description: string;
+  author?: string;
+  version?: string;
+  language?: string;
+  source: "user" | "bundled";
+  lessons: LessonSummary[];
+  problems?: string[];
+}
+
+export interface Lesson extends LessonSummary {
+  courseId: string;
+  markdown: string;
+  starter: string;
+  timeoutMs: number;
+}
+
+export type TestStatus = "pass" | "fail" | "error" | "skip";
+
+export interface TestResult {
+  name: string;
+  status: TestStatus;
+  message?: string;
+  durationMs: number;
+}
+
+export interface GradeResult extends RunResult {
+  passed: boolean;
+  tests: TestResult[];
+}
+
 interface EngineInfo {
   baseUrl: string;
   wsUrl: string;
@@ -66,6 +107,15 @@ export const health = () => request<Health>("/health");
 export const runtimes = () => request<RuntimeInfo[]>("/runtimes");
 export const run = (req: RunRequest) => request<RunResult>("/run", { method: "POST", body: JSON.stringify(req) });
 
+const lessonPath = (courseId: string, lessonId: string) =>
+  `/courses/${encodeURIComponent(courseId)}/lessons/${encodeURIComponent(lessonId)}`;
+
+export const courses = () => request<Course[]>("/courses");
+export const course = (id: string) => request<Course>(`/courses/${encodeURIComponent(id)}`);
+export const lesson = (courseId: string, lessonId: string) => request<Lesson>(lessonPath(courseId, lessonId));
+export const submit = (courseId: string, lessonId: string, code: string) =>
+  request<GradeResult>(lessonPath(courseId, lessonId) + "/submit", { method: "POST", body: JSON.stringify({ code }) });
+
 /** Polls /health until the engine answers, since it starts alongside the window. */
 export async function waitForEngine(timeoutMs = 10_000): Promise<Health> {
   const deadline = Date.now() + timeoutMs;
@@ -83,25 +133,37 @@ export interface StreamHandlers {
   onOutput: (stream: "stdout" | "stderr", data: string, phase: Phase) => void;
 }
 
+export interface Streamed<T> {
+  result: Promise<T>;
+  cancel: () => void;
+}
+
 /** Runs code over WebSocket, streaming output as it arrives. */
-export function runStreaming(req: RunRequest, handlers: StreamHandlers): { result: Promise<RunResult>; cancel: () => void } {
+export const runStreaming = (req: RunRequest, handlers: StreamHandlers) =>
+  stream<RunResult>({ type: "run", ...req }, "result", handlers);
+
+/** Grades code against a lesson's hidden tests, streaming program output. */
+export const submitStreaming = (courseId: string, lessonId: string, code: string, handlers: StreamHandlers) =>
+  stream<GradeResult>({ type: "submit", course: courseId, lesson: lessonId, code }, "grade", handlers);
+
+function stream<T>(message: object, resultType: string, handlers: StreamHandlers): Streamed<T> {
   let ws: WebSocket | undefined;
   let cancelled = false;
 
   const result = engineInfo().then(
     ({ wsUrl, token }) =>
-      new Promise<RunResult>((resolve, reject) => {
+      new Promise<T>((resolve, reject) => {
         if (cancelled) return reject(new Error("cancelled"));
         ws = new WebSocket(`${wsUrl}/ws/run?token=${encodeURIComponent(token)}`);
         let settled = false;
-        ws.onopen = () => ws!.send(JSON.stringify({ type: "run", ...req }));
+        ws.onopen = () => ws!.send(JSON.stringify(message));
         ws.onmessage = (ev) => {
           const msg = JSON.parse(ev.data);
           if (msg.type === "output") handlers.onOutput(msg.stream, msg.data, msg.phase);
-          else if (msg.type === "result") {
+          else if (msg.type === resultType) {
             settled = true;
             const { type: _, ...res } = msg;
-            resolve(res as RunResult);
+            resolve(res as T);
           } else if (msg.type === "error") {
             settled = true;
             reject(new Error(msg.error));

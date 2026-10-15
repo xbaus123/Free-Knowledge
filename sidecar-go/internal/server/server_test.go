@@ -2,6 +2,7 @@ package server
 
 import (
 	"context"
+	"encoding/json"
 	"net/http"
 	"net/http/httptest"
 	"strings"
@@ -10,6 +11,8 @@ import (
 
 	"github.com/coder/websocket"
 	"github.com/coder/websocket/wsjson"
+
+	"freeknowledge/engine/internal/course"
 )
 
 const testToken = "secret"
@@ -19,7 +22,7 @@ func newTestServer(t *testing.T) (*httptest.Server, string) {
 	ts := httptest.NewUnstartedServer(nil)
 	ts.Start()
 	addr := ts.Listener.Addr().String()
-	ts.Config.Handler = New(Config{Addr: addr, Token: testToken, Version: "test"}).Handler()
+	ts.Config.Handler = New(Config{Addr: addr, Token: testToken, Version: "test", Courses: course.NewStore([]course.Root{{Path: "../../../courses", Source: "bundled"}})}).Handler()
 	t.Cleanup(ts.Close)
 	return ts, addr
 }
@@ -115,5 +118,37 @@ func TestWebSocketStreamsOutput(t *testing.T) {
 		default:
 			t.Fatalf("unexpected message %v", msg)
 		}
+	}
+}
+
+func TestCourseEndpoints(t *testing.T) {
+	ts, _ := newTestServer(t)
+	auth := map[string]string{"Authorization": "Bearer " + testToken}
+
+	if res := do(t, ts, "GET", "/courses", "", auth); res.StatusCode != 200 {
+		t.Fatalf("list: %d", res.StatusCode)
+	}
+	res := do(t, ts, "GET", "/courses/getting-started/lessons/01-python-greet", "", auth)
+	var lesson map[string]any
+	if err := json.NewDecoder(res.Body).Decode(&lesson); err != nil || res.StatusCode != 200 {
+		t.Fatalf("lesson: %d %v", res.StatusCode, err)
+	}
+	for _, hidden := range []string{"testFile", "referenceFile", "dir", "TestFile"} {
+		if _, ok := lesson[hidden]; ok {
+			t.Errorf("lesson leaks %s", hidden)
+		}
+	}
+	if res := do(t, ts, "GET", "/courses/getting-started/lessons/..%2F..%2Fetc", "", auth); res.StatusCode != 404 {
+		t.Errorf("traversal: %d", res.StatusCode)
+	}
+
+	res = do(t, ts, "POST", "/courses/getting-started/lessons/01-python-greet/submit",
+		`{"code":"def greet(name):\n    return f'Hello, {name or \"world\"}!'\n"}`, auth)
+	var grade struct {
+		Passed bool
+		Tests  []struct{ Name, Status string }
+	}
+	if err := json.NewDecoder(res.Body).Decode(&grade); err != nil || !grade.Passed || len(grade.Tests) != 2 {
+		t.Fatalf("submit: %d %+v %v", res.StatusCode, grade, err)
 	}
 }

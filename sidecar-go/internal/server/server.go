@@ -15,6 +15,8 @@ import (
 	"github.com/coder/websocket"
 	"github.com/coder/websocket/wsjson"
 
+	"freeknowledge/engine/internal/course"
+	"freeknowledge/engine/internal/grader"
 	"freeknowledge/engine/internal/runner"
 )
 
@@ -33,6 +35,7 @@ type Config struct {
 	Addr    string
 	Token   string
 	Version string
+	Courses *course.Store
 }
 
 type Server struct {
@@ -51,6 +54,11 @@ func (s *Server) Handler() http.Handler {
 	mux.Handle("GET /runtimes", s.requireToken(http.HandlerFunc(s.handleRuntimes)))
 	mux.Handle("POST /run", s.requireToken(http.HandlerFunc(s.handleRun)))
 	mux.Handle("GET /ws/run", s.requireToken(http.HandlerFunc(s.handleRunWS)))
+	mux.Handle("GET /courses", s.requireToken(http.HandlerFunc(s.handleCourses)))
+	mux.Handle("GET /courses/{course}", s.requireToken(http.HandlerFunc(s.handleCourse)))
+	mux.Handle("GET /courses/{course}/lessons/{lesson}", s.requireToken(http.HandlerFunc(s.handleLesson)))
+	mux.Handle("POST /courses/{course}/lessons/{lesson}/submit", s.requireToken(http.HandlerFunc(s.handleSubmit)))
+	mux.Handle("POST /courses/{course}/lessons/{lesson}/validate", s.requireToken(http.HandlerFunc(s.handleValidate)))
 	return s.guard(mux)
 }
 
@@ -122,14 +130,20 @@ func (s *Server) handleRun(w http.ResponseWriter, r *http.Request) {
 	writeJSON(w, http.StatusOK, res)
 }
 
-// WebSocket protocol, one run per connection:
+// WebSocket protocol, one job per connection:
 //
 //	client → {"type":"run", ...runner.Request}
+//	      or {"type":"submit","course":"…","lesson":"…","code":"…"}
+//	      or {"type":"validate","course":"…","lesson":"…"}
 //	server → {"type":"output","phase":"run","stream":"stdout","data":"..."} (repeated)
-//	server → {"type":"result", ...runner.Result}   or   {"type":"error","error":"..."}
-//	client → {"type":"cancel"} or closing the socket kills the run.
+//	server → {"type":"result", ...runner.Result} for run,
+//	         {"type":"grade", ...grader.Result} for submit/validate,
+//	         or {"type":"error","error":"..."}
+//	client → {"type":"cancel"} or closing the socket kills the job.
 type wsClientMsg struct {
-	Type string `json:"type"`
+	Type   string `json:"type"`
+	Course string `json:"course"`
+	Lesson string `json:"lesson"`
 	runner.Request
 }
 
@@ -143,6 +157,11 @@ type wsOutputMsg struct {
 type wsResultMsg struct {
 	Type string `json:"type"`
 	runner.Result
+}
+
+type wsGradeMsg struct {
+	Type string `json:"type"`
+	grader.Result
 }
 
 func (s *Server) handleRunWS(w http.ResponseWriter, r *http.Request) {
@@ -161,12 +180,12 @@ func (s *Server) handleRunWS(w http.ResponseWriter, r *http.Request) {
 	readCtx, readCancel := context.WithTimeout(ctx, 10*time.Second)
 	err = wsjson.Read(readCtx, conn, &first)
 	readCancel()
-	if err != nil || first.Type != "run" {
-		conn.Close(websocket.StatusPolicyViolation, "expected a run message")
+	if err != nil {
+		conn.Close(websocket.StatusPolicyViolation, "expected a job message")
 		return
 	}
 
-	// Any further message (cancel) or a closed socket stops the run.
+	// Any further message (cancel) or a closed socket stops the job.
 	go func() {
 		defer cancel()
 		for {
@@ -177,18 +196,110 @@ func (s *Server) handleRunWS(w http.ResponseWriter, r *http.Request) {
 		}
 	}()
 
-	res, err := runner.Run(ctx, first.Request, func(phase runner.Phase, stream, chunk string) {
-		// Called serially by the runner; a failed write means the client left,
-		// which the reader goroutine will notice.
+	onOutput := func(phase runner.Phase, stream, chunk string) {
+		// Called serially; a failed write means the client left, which the
+		// reader goroutine will notice.
 		_ = wsjson.Write(ctx, conn, wsOutputMsg{Type: "output", Phase: phase, Stream: stream, Data: chunk})
-	})
-	if err != nil {
-		_ = wsjson.Write(ctx, conn, map[string]string{"type": "error", "error": err.Error()})
-		conn.Close(websocket.StatusInternalError, "run failed")
+	}
+
+	var reply any
+	switch first.Type {
+	case "run":
+		var res runner.Result
+		if res, err = runner.Run(ctx, first.Request, onOutput); err == nil {
+			reply = wsResultMsg{Type: "result", Result: res}
+		}
+	case "submit", "validate":
+		var l *course.Lesson
+		if l, err = s.cfg.Courses.Lesson(first.Course, first.Lesson); err == nil {
+			var res grader.Result
+			if first.Type == "submit" {
+				res, err = grader.Grade(ctx, l, first.Code, onOutput)
+			} else {
+				res, err = grader.Validate(ctx, l, onOutput)
+			}
+			if err == nil {
+				reply = wsGradeMsg{Type: "grade", Result: res}
+			}
+		}
+	default:
+		conn.Close(websocket.StatusPolicyViolation, "unknown message type")
 		return
 	}
-	_ = wsjson.Write(ctx, conn, wsResultMsg{Type: "result", Result: res})
+	if err != nil {
+		_ = wsjson.Write(ctx, conn, map[string]string{"type": "error", "error": err.Error()})
+		conn.Close(websocket.StatusNormalClosure, "")
+		return
+	}
+	_ = wsjson.Write(ctx, conn, reply)
 	conn.Close(websocket.StatusNormalClosure, "")
+}
+
+func (s *Server) handleCourses(w http.ResponseWriter, r *http.Request) {
+	list := s.cfg.Courses.List()
+	if list == nil {
+		list = []course.Course{}
+	}
+	writeJSON(w, http.StatusOK, list)
+}
+
+func (s *Server) handleCourse(w http.ResponseWriter, r *http.Request) {
+	c, err := s.cfg.Courses.Course(r.PathValue("course"))
+	if err != nil {
+		writeCourseError(w, err)
+		return
+	}
+	writeJSON(w, http.StatusOK, c)
+}
+
+func (s *Server) handleLesson(w http.ResponseWriter, r *http.Request) {
+	l, err := s.cfg.Courses.Lesson(r.PathValue("course"), r.PathValue("lesson"))
+	if err != nil {
+		writeCourseError(w, err)
+		return
+	}
+	writeJSON(w, http.StatusOK, l)
+}
+
+func (s *Server) handleSubmit(w http.ResponseWriter, r *http.Request) {
+	var body struct {
+		Code string `json:"code"`
+	}
+	if err := json.NewDecoder(http.MaxBytesReader(w, r.Body, maxBodyBytes)).Decode(&body); err != nil {
+		writeJSON(w, http.StatusBadRequest, map[string]string{"error": "invalid JSON body: " + err.Error()})
+		return
+	}
+	s.grade(w, r, func(l *course.Lesson) (grader.Result, error) {
+		return grader.Grade(r.Context(), l, body.Code, nil)
+	})
+}
+
+func (s *Server) handleValidate(w http.ResponseWriter, r *http.Request) {
+	s.grade(w, r, func(l *course.Lesson) (grader.Result, error) {
+		return grader.Validate(r.Context(), l, nil)
+	})
+}
+
+func (s *Server) grade(w http.ResponseWriter, r *http.Request, fn func(*course.Lesson) (grader.Result, error)) {
+	l, err := s.cfg.Courses.Lesson(r.PathValue("course"), r.PathValue("lesson"))
+	if err != nil {
+		writeCourseError(w, err)
+		return
+	}
+	res, err := fn(l)
+	if err != nil {
+		writeJSON(w, http.StatusUnprocessableEntity, map[string]string{"error": err.Error()})
+		return
+	}
+	writeJSON(w, http.StatusOK, res)
+}
+
+func writeCourseError(w http.ResponseWriter, err error) {
+	if errors.Is(err, course.ErrNotFound) {
+		writeJSON(w, http.StatusNotFound, map[string]string{"error": "not found"})
+		return
+	}
+	writeJSON(w, http.StatusInternalServerError, map[string]string{"error": err.Error()})
 }
 
 func writeJSON(w http.ResponseWriter, status int, v any) {

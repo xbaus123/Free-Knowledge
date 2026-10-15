@@ -36,6 +36,9 @@
     ],
     "externalBin": [
       "binaries/engine"
-    ]
+    ],
+    "resources": {
+      "../courses/": "courses/"
+    }
   }
 }

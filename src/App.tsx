@@ -23,6 +23,9 @@ export default function App() {
   const [output, setOutput] = useState<Line[]>([]);
   const [running, setRunning] = useState(false);
   const cancelRef = useRef<() => void>(undefined);
+  const [courses, setCourses] = useState<engine.Course[]>([]);
+  const [lesson, setLesson] = useState<engine.Lesson>();
+  const [grade, setGrade] = useState<engine.GradeResult>();
 
   useEffect(() => {
     engine
@@ -31,6 +34,7 @@ export default function App() {
         setStatus("ok");
         setVersion(h.version);
         setRuntimes(await engine.runtimes());
+        setCourses(await engine.courses());
       })
       .catch((err) => {
         setStatus("down");
@@ -80,6 +84,42 @@ export default function App() {
     }
   }
 
+  async function openLesson(key: string) {
+    setGrade(undefined);
+    setOutput([]);
+    if (!key) return setLesson(undefined);
+    const [courseId, lessonId] = key.split("/");
+    try {
+      const l = await engine.lesson(courseId, lessonId);
+      setLesson(l);
+      setLanguage(l.language);
+      setCode(l.starter);
+    } catch (err) {
+      append({ stream: "info", text: String(err) });
+    }
+  }
+
+  async function submit() {
+    if (!lesson) return;
+    setOutput([]);
+    setGrade(undefined);
+    setRunning(true);
+    const { result, cancel } = engine.submitStreaming(lesson.courseId, lesson.id, code, {
+      onOutput: (stream, text) => append({ stream, text }),
+    });
+    cancelRef.current = cancel;
+    try {
+      const g = await result;
+      setGrade(g);
+      summarize(g);
+    } catch (err) {
+      append({ stream: "info", text: String(err) });
+    } finally {
+      cancelRef.current = undefined;
+      setRunning(false);
+    }
+  }
+
   return (
     <main className="flex h-screen flex-col gap-4 bg-zinc-950 p-6 text-zinc-100">
       <header className="flex items-center justify-between">
@@ -109,7 +149,24 @@ export default function App() {
 
       <div className="flex items-center gap-2">
         <select
+          value={lesson ? `${lesson.courseId}/${lesson.id}` : ""}
+          onChange={(e) => openLesson(e.target.value)}
+          className="rounded bg-zinc-800 px-2 py-1.5 text-sm"
+        >
+          <option value="">Playground (no lesson)</option>
+          {courses.map((c) => (
+            <optgroup key={c.id} label={`${c.title} (${c.source})`}>
+              {c.lessons.map((l) => (
+                <option key={l.id} value={`${c.id}/${l.id}`} disabled={!!l.problems?.length}>
+                  {l.title}
+                </option>
+              ))}
+            </optgroup>
+          ))}
+        </select>
+        <select
           value={language}
+          disabled={!!lesson}
           onChange={(e) => {
             setLanguage(e.target.value);
             setCode(SAMPLES[e.target.value] ?? "");
@@ -136,12 +193,28 @@ export default function App() {
         >
           Run (stream)
         </button>
+        {lesson && (
+          <button
+            onClick={submit}
+            disabled={running || status !== "ok"}
+            className="rounded bg-emerald-600 px-3 py-1.5 text-sm hover:bg-emerald-500 disabled:opacity-40"
+          >
+            Submit
+          </button>
+        )}
         {running && cancelRef.current && (
           <button onClick={() => cancelRef.current?.()} className="rounded bg-red-700 px-3 py-1.5 text-sm hover:bg-red-600">
             Stop
           </button>
         )}
       </div>
+
+      {lesson && (
+        <details className="rounded bg-zinc-900 p-3 text-sm">
+          <summary className="cursor-pointer text-zinc-400">lesson.md (raw; rendered in Step 3)</summary>
+          <pre className="mt-2 max-h-48 overflow-auto whitespace-pre-wrap text-zinc-300">{lesson.markdown}</pre>
+        </details>
+      )}
 
       <div className="grid min-h-0 flex-1 grid-cols-2 gap-4">
         <textarea
@@ -159,6 +232,22 @@ export default function App() {
               {l.text}
             </span>
           ))}
+          {grade && (
+            <span className="mt-3 block border-t border-zinc-800 pt-2">
+              <span className={grade.passed ? "text-emerald-400" : "text-red-400"}>
+                {grade.passed ? "✔ All tests passed" : "✘ Not yet"}
+              </span>
+              {grade.tests.map((t) => (
+                <span key={t.name} className="block">
+                  <span className={t.status === "pass" ? "text-emerald-400" : t.status === "skip" ? "text-zinc-500" : "text-red-400"}>
+                    {t.status === "pass" ? "  ✔ " : t.status === "skip" ? "  - " : "  ✘ "}
+                  </span>
+                  {t.name}
+                  {t.message && <span className="block pl-6 text-zinc-400">{t.message}</span>}
+                </span>
+              ))}
+            </span>
+          )}
         </pre>
       </div>
     </main>

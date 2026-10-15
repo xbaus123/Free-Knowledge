@@ -32,17 +32,18 @@ type Language struct {
 	ID       string   `json:"id"`
 	Name     string   `json:"name"`
 	File     string   `json:"file"`
+	Ext      string   `json:"ext"`
 	Compile  []string `json:"-"`
 	Run      []string `json:"-"`
 	Requires string   `json:"requires"`
 }
 
 var languages = []Language{
-	{ID: "python", Name: "Python", File: "main.py", Run: []string{"python3", "-u", "main.py"}, Requires: "python3"},
-	{ID: "javascript", Name: "JavaScript (Node)", File: "main.js", Run: []string{"node", "main.js"}, Requires: "node"},
-	{ID: "go", Name: "Go", File: "main.go", Compile: []string{"go", "build", "-o", "{bin}", "main.go"}, Run: []string{"{bin}"}, Requires: "go"},
-	{ID: "c", Name: "C", File: "main.c", Compile: []string{"gcc", "-std=c17", "-Wall", "-O0", "-o", "{bin}", "main.c"}, Run: []string{"{bin}"}, Requires: "gcc"},
-	{ID: "rust", Name: "Rust", File: "main.rs", Compile: []string{"rustc", "--edition=2021", "-o", "{bin}", "main.rs"}, Run: []string{"{bin}"}, Requires: "rustc"},
+	{ID: "python", Name: "Python", File: "main.py", Ext: ".py", Run: []string{"python3", "-u", "main.py"}, Requires: "python3"},
+	{ID: "javascript", Name: "JavaScript (Node)", File: "main.js", Ext: ".js", Run: []string{"node", "main.js"}, Requires: "node"},
+	{ID: "go", Name: "Go", File: "main.go", Ext: ".go", Compile: []string{"go", "build", "-o", "{bin}", "main.go"}, Run: []string{"{bin}"}, Requires: "go"},
+	{ID: "c", Name: "C", File: "main.c", Ext: ".c", Compile: []string{"gcc", "-std=c17", "-Wall", "-O0", "-o", "{bin}", "main.c"}, Run: []string{"{bin}"}, Requires: "gcc"},
+	{ID: "rust", Name: "Rust", File: "main.rs", Ext: ".rs", Compile: []string{"rustc", "--edition=2021", "-o", "{bin}", "main.rs"}, Run: []string{"{bin}"}, Requires: "rustc"},
 }
 
 func Lookup(id string) (Language, bool) {
@@ -124,50 +125,72 @@ func Run(ctx context.Context, req Request, onOutput OutputFunc) (Result, error) 
 		return Result{}, fmt.Errorf("write source: %w", err)
 	}
 
-	bin := "prog"
-	if runtime.GOOS == "windows" {
-		bin = "prog.exe"
-	}
-	expand := func(args []string) []string {
-		out := make([]string, len(args))
-		for i, a := range args {
-			if a == "{bin}" {
-				a = filepath.Join(dir, bin)
-			}
-			out[i] = a
-		}
-		return out
-	}
-
 	start := time.Now()
 	if len(lang.Compile) > 0 {
-		res := execute(ctx, dir, expand(lang.Compile), "", CompileTimeout, PhaseCompile, onOutput)
+		res := Exec(ctx, Command{Dir: dir, Argv: ExpandBin(dir, lang.Compile), Timeout: CompileTimeout, Phase: PhaseCompile}, onOutput)
 		if res.ExitCode != 0 || res.TimedOut || ctx.Err() != nil {
 			res.DurationMs = time.Since(start).Milliseconds()
 			return res, nil
 		}
 	}
 
-	timeout := DefaultRunTimeout
-	if req.TimeoutMs > 0 {
-		timeout = min(time.Duration(req.TimeoutMs)*time.Millisecond, MaxRunTimeout)
-	}
-	res := execute(ctx, dir, expand(lang.Run), req.Stdin, timeout, PhaseRun, onOutput)
+	res := Exec(ctx, Command{Dir: dir, Argv: ExpandBin(dir, lang.Run), Stdin: req.Stdin, Timeout: ClampTimeout(req.TimeoutMs), Phase: PhaseRun}, onOutput)
 	res.DurationMs = time.Since(start).Milliseconds()
 	return res, nil
 }
 
-func execute(parent context.Context, dir string, argv []string, stdin string, timeout time.Duration, phase Phase, onOutput OutputFunc) Result {
-	ctx, cancel := context.WithTimeout(parent, timeout)
+// ClampTimeout converts a requested timeout to a duration, applying the
+// default and the maximum.
+func ClampTimeout(ms int) time.Duration {
+	if ms <= 0 {
+		return DefaultRunTimeout
+	}
+	return min(time.Duration(ms)*time.Millisecond, MaxRunTimeout)
+}
+
+// ExpandBin replaces "{bin}" in args with the platform executable path in dir.
+func ExpandBin(dir string, args []string) []string {
+	bin := "prog"
+	if runtime.GOOS == "windows" {
+		bin = "prog.exe"
+	}
+	out := make([]string, len(args))
+	for i, a := range args {
+		if a == "{bin}" {
+			a = filepath.Join(dir, bin)
+		}
+		out[i] = a
+	}
+	return out
+}
+
+// Command is one process invocation inside a workspace.
+type Command struct {
+	Dir     string
+	Argv    []string
+	Stdin   string
+	Env     []string // added to the inherited environment
+	Timeout time.Duration
+	Phase   Phase
+}
+
+// Exec runs c, capturing (and optionally streaming) its output. DurationMs is
+// left for the caller to fill in.
+func Exec(parent context.Context, c Command, onOutput OutputFunc) Result {
+	ctx, cancel := context.WithTimeout(parent, c.Timeout)
 	defer cancel()
+	phase, argv := c.Phase, c.Argv
 
 	var mu sync.Mutex
 	stdout := &capture{stream: "stdout", phase: phase, mu: &mu, onOutput: onOutput}
 	stderr := &capture{stream: "stderr", phase: phase, mu: &mu, onOutput: onOutput}
 
 	cmd := exec.CommandContext(ctx, argv[0], argv[1:]...)
-	cmd.Dir = dir
-	cmd.Stdin = strings.NewReader(stdin)
+	cmd.Dir = c.Dir
+	cmd.Stdin = strings.NewReader(c.Stdin)
+	if len(c.Env) > 0 {
+		cmd.Env = append(os.Environ(), c.Env...)
+	}
 	cmd.Stdout = stdout
 	cmd.Stderr = stderr
 	cmd.WaitDelay = killGrace

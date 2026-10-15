@@ -18,6 +18,7 @@ import (
 	"syscall"
 	"time"
 
+	"freeknowledge/engine/internal/course"
 	"freeknowledge/engine/internal/runner"
 	"freeknowledge/engine/internal/server"
 )
@@ -53,6 +54,18 @@ func run(addr string, watchStdin bool) error {
 
 	runner.ExtendPath()
 
+	// User courses come first so they can override bundled ones.
+	var roots []course.Root
+	if p := os.Getenv("FK_USER_COURSES"); p != "" {
+		roots = append(roots, course.Root{Path: p, Source: "user"})
+	}
+	if p := os.Getenv("FK_BUNDLED_COURSES"); p != "" {
+		roots = append(roots, course.Root{Path: p, Source: "bundled"})
+	}
+	if len(roots) == 0 {
+		slog.Warn("FK_USER_COURSES and FK_BUNDLED_COURSES not set; no courses will be listed")
+	}
+
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer stop()
 
@@ -72,7 +85,7 @@ func run(addr string, watchStdin bool) error {
 	}
 
 	srv := &http.Server{
-		Handler:           server.New(server.Config{Addr: addr, Token: token, Version: version}).Handler(),
+		Handler:           server.New(server.Config{Addr: addr, Token: token, Version: version, Courses: course.NewStore(roots)}).Handler(),
 		ReadHeaderTimeout: 5 * time.Second,
 		// Request contexts derive from ctx, so shutdown kills running programs.
 		BaseContext: func(net.Listener) context.Context { return ctx },
