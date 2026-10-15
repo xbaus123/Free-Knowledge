@@ -8,6 +8,16 @@ body,
   height: 100%;
 }
 
+/* Tailwind v4 leaves buttons with the default arrow cursor; restore the pointer. */
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  select:not(:disabled),
+  summary {
+    cursor: pointer;
+  }
+}
+
 body {
   background: #09090b;
   color: #f4f4f5;
