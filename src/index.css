@@ -16,6 +16,12 @@ body,
   summary {
     cursor: pointer;
   }
+
+  button:disabled,
+  [role="button"][aria-disabled="true"],
+  select:disabled {
+    cursor: not-allowed;
+  }
 }
 
 body {
