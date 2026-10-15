@@ -1,5 +1,6 @@
 {
   "title": "Reliability & Scalability: The Single Point of Failure",
   "type": "system-design",
-  "maxLatencyMs": 200
+  "maxLatencyMs": 200,
+  "max_budget": 95
 }

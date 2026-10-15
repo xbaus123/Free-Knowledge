@@ -104,7 +104,11 @@ A single question can use a shorter form instead: `"options": [...]` in `config.
 
 ### System design lessons
 
-Set `"type": "system-design"` in a lesson's `config.json`, with `maxLatencyMs` as the p99 target. Instead of code files, the lesson has `starter.json` (the diagram learners start from) and `solution.json` (a reference design that must pass). Both are React Flow graphs: nodes of type `client`, `loadBalancer`, `server`, or `database`, plus edges. **Simulate Traffic** sends 1,000 requests over one second through the learner's diagram. Grading is by behavior (overloaded servers, p99 latency, unanswered requests), so any design with enough capacity passes. See `courses/system-design`. In development the app reads `courses/` live; user courses go in the app data folder (`~/Library/Application Support/dev.freeknowledge.app/courses` on macOS).
+Set `"type": "system-design"` in a lesson's `config.json`, with `maxLatencyMs` as the p99 target. Instead of code files, the lesson has `starter.json` (the diagram learners start from) and `solution.json` (a reference design that must pass). Both are React Flow graphs: nodes of type `client`, `loadBalancer`, `server`, or `database`, plus edges. **Simulate Traffic** sends 1,000 requests over one second through the learner's diagram. Grading is by behavior (overloaded servers, p99 latency, unanswered requests), so any design with enough capacity passes. Add `"max_budget": 95` to cap the monthly cost; the engine prices each node (Load Balancer $20, Server $10 plus $10 per connection-pool slot past 4, Database $50 plus $40 for a replica) and fails designs over budget. `GET /simulate/catalog` lists the prices.
+
+Learners can double-click a node to change its settings (a server's connection pool, a database's sync/async replication, a load balancer's algorithm). Every run returns a **timeline** of frames (per-node CPU, pool use, and queue; per-connection traffic) plus events, which the canvas replays with glowing hot spots and a scrubber. The **Chaos** toolkit crashes nodes or cuts connections 30% into the run: load balancers route around failures after health checks notice, and replicated databases fail over. Chaos runs are experiments and don't count as lesson attempts.
+
+See `courses/system-design`. In development the app reads `courses/` live; user courses go in the app data folder (`~/Library/Application Support/dev.freeknowledge.app/courses` on macOS).
 
 ## Creator Studio and `.dojo` files
 

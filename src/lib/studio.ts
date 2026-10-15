@@ -23,6 +23,8 @@ export interface LessonSource {
   timeoutMs?: number;
   /** System design: p99 latency target. */
   maxLatencyMs?: number;
+  /** System design: monthly cost limit in dollars. */
+  maxBudget?: number;
   markdown: string;
   /** Code: starter code. System design: starter diagram JSON. */
   starter: string;

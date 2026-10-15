@@ -89,6 +89,7 @@ type lessonConfig struct {
 	Type         string         `json:"type"` // "code" (default) or "system-design"
 	TimeoutMs    int            `json:"timeoutMs"`
 	MaxLatencyMs int            `json:"maxLatencyMs"` // system design: p99 latency target
+	MaxBudget    int            `json:"max_budget"`   // system design: monthly cost limit in dollars
 	Questions    []QuizQuestion `json:"questions"`    // quiz
 	Options      []string       `json:"options"`      // quiz with one question (short form)
 	Capabilities Capabilities   `json:"capabilities"`
@@ -230,6 +231,7 @@ type Lesson struct {
 	Starter      string         `json:"starter"` // code, or diagram JSON for system design
 	TimeoutMs    int            `json:"timeoutMs"`
 	MaxLatencyMs int            `json:"maxLatencyMs,omitempty"`
+	MaxBudget    int            `json:"maxBudget,omitempty"`
 	Questions    []QuizQuestion `json:"questions,omitempty"`
 	Capabilities Capabilities   `json:"capabilities"`
 	// Files is the starting workspace of a multi-file code lesson.
@@ -356,7 +358,7 @@ func loadLesson(c *Course, id string) (*Lesson, error) {
 			l.Problems = append(l.Problems, "config.json: "+err.Error())
 		} else {
 			l.Title, l.TimeoutMs, l.MaxLatencyMs, l.Questions = cfg.Title, cfg.TimeoutMs, cfg.MaxLatencyMs, cfg.Questions
-			l.Capabilities = cfg.Capabilities
+			l.Capabilities, l.MaxBudget = cfg.Capabilities, cfg.MaxBudget
 			if len(l.Questions) == 0 && len(cfg.Options) > 0 {
 				l.Questions = []QuizQuestion{{Options: cfg.Options}}
 			}

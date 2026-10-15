@@ -438,6 +438,19 @@ export function CourseEditor({ courseId, initialLessonId, onBack, onPreview }: P
                   </>
                 )}
                 {draft.type === "system-design" && (
+                  <label className="w-36">
+                    <span className="mb-1 block text-xs text-zinc-400">Budget ($/month)</span>
+                    <input
+                      type="number"
+                      min={1}
+                      placeholder="none"
+                      value={draft.maxBudget ?? ""}
+                      onChange={(e) => update({ maxBudget: e.target.value ? Math.round(Number(e.target.value)) : undefined })}
+                      className={inputClass}
+                    />
+                  </label>
+                )}
+                {draft.type === "system-design" && (
                   <label className="w-40">
                     <span className="mb-1 block text-xs text-zinc-400">p99 latency target (ms)</span>
                     <input
@@ -550,6 +563,7 @@ export function CourseEditor({ courseId, initialLessonId, onBack, onPreview }: P
                       initial={activeTab === "starterDiagram" ? draft.starter : draft.reference}
                       onChange={(json) => update(activeTab === "starterDiagram" ? { starter: json } : { reference: json })}
                       result={activeTab === "starterDiagram" ? check?.starterSim : check?.referenceSim}
+                      budget={draft.maxBudget}
                     />
                   </div>
                 ) : (

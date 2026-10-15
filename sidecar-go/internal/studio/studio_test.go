@@ -403,3 +403,22 @@ func TestMultiFileAuthoringAndExport(t *testing.T) {
 		t.Fatalf("single-file again: %+v", l.Capabilities)
 	}
 }
+
+func TestDesignBudgetRoundTrip(t *testing.T) {
+	s := newStudio(t)
+	id := must(s.CreateCourse(CourseMeta{Title: "Budgets"}))
+	lid := must(s.CreateLesson(id, "Cheap", course.KindSystemDesign, ""))
+	src := must(s.Lesson(id, lid))
+	src.MaxBudget = 80 // the template solution costs $90
+	if err := s.SaveLesson(id, src); err != nil {
+		t.Fatal(err)
+	}
+	raw, _ := os.ReadFile(filepath.Join(s.Root, id, lid, "config.json"))
+	if !strings.Contains(string(raw), `"max_budget": 80`) {
+		t.Fatalf("config.json: %s", raw)
+	}
+	d := must(s.CheckLesson(context.Background(), id, lid))
+	if d.OK || !strings.Contains(d.Problem, "budget") {
+		t.Fatalf("a solution over budget should fail the check: %+v", d.LessonCheck)
+	}
+}

@@ -8,7 +8,8 @@ import { FileTree, LockIcon } from "./FileTree";
 import { InsightsButton } from "./InsightsButton";
 import { ScratchpadModal } from "./ScratchpadModal";
 import { SimulationPanel } from "./design/SimulationPanel";
-import { SystemCanvas } from "./design/SystemCanvas";
+import { parseGraph, SystemCanvas } from "./design/SystemCanvas";
+import { TimelineScrubber } from "./design/TimelineScrubber";
 import { QuizPanel } from "./quiz/QuizPanel";
 import { Markdown } from "./Markdown";
 import { OutputPanel, type OutputLine, type Tab } from "./OutputPanel";
@@ -51,6 +52,13 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
   const [simStale, setSimStale] = useState(false);
   // Bumped to remount the canvas with a new diagram (reset to starter).
   const [canvasKey, setCanvasKey] = useState(0);
+  // Replay of the last simulation.
+  const [frame, setFrame] = useState(0);
+  const [playing, setPlaying] = useState(false);
+  // Chaos experiments: nodes to crash and edges to cut.
+  const [chaos, setChaos] = useState<engine.Chaos>({ nodes: [], edges: [] });
+  const chaosRef = useRef(chaos);
+  chaosRef.current = chaos;
   const isDesign = engine.isDesignLesson(lesson);
   const isArticle = engine.isArticleLesson(lesson);
   const isQuiz = engine.isQuizLesson(lesson);
@@ -94,6 +102,8 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
     setTab("tests");
     setConfirmReset(false);
     setSimResult(undefined);
+    setChaos({ nodes: [], edges: [] });
+    setPlaying(false);
     Promise.all([engine.lesson(courseId, lessonId), engine.lessonProgress(courseId, lessonId)])
       .then(([l, p]) => {
         if (stale) return;
@@ -174,12 +184,23 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
       cancelRef.current = () => {}; // blocks a second run; simulations can't be stopped
       setRunning(true);
       setRunError(undefined);
+      setPlaying(false);
       try {
+        // Only chaos targets that still exist in the diagram.
+        const graph = parseGraph(codeRef.current);
+        const c = chaosRef.current;
+        const live = {
+          nodes: c.nodes.filter((id) => graph.nodes.some((n) => n.id === id)),
+          edges: c.edges.filter((id) => graph.edges.some((e) => e.id === id)),
+        };
         // Keep the traffic animation on screen briefly; the simulation itself takes milliseconds.
-        const [r] = await Promise.all([engine.simulate(courseId, lessonId, codeRef.current), new Promise((ok) => setTimeout(ok, 700))]);
+        const [r] = await Promise.all([engine.simulate(courseId, lessonId, codeRef.current, live), new Promise((ok) => setTimeout(ok, 500))]);
         setSimResult(r);
         setSimStale(false);
-        telemetry.current?.submission(r.passed ? "pass" : "failed_assertion");
+        setFrame(0);
+        setPlaying(r.timeline.frames.length > 0);
+        if (r.experiment) telemetry.current?.run();
+        else telemetry.current?.submission(r.passed ? "pass" : "failed_assertion");
         setSaveState("saved");
         refreshProgress();
       } catch (e) {
@@ -220,6 +241,30 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
       setRunning(false);
     }
   }, [lesson, courseId, lessonId, refreshProgress, flushSave]);
+
+  // Replay: advance about 20 frames a second.
+  const frameCount = simResult?.timeline.frames.length ?? 0;
+  useEffect(() => {
+    if (!playing) return;
+    const id = window.setInterval(() => setFrame((f) => Math.min(f + 1, frameCount - 1)), 50);
+    return () => window.clearInterval(id);
+  }, [playing, frameCount]);
+  useEffect(() => {
+    if (playing && frame >= frameCount - 1) setPlaying(false);
+  }, [playing, frame, frameCount]);
+
+  // Changing the chaos setup re-runs the simulation right away (debounced,
+  // so toggling several targets quickly runs once).
+  const submitRef = useRef(submit);
+  submitRef.current = submit;
+  const chaosTimer = useRef<number>(undefined);
+  const changeChaos = (c: engine.Chaos) => {
+    chaosRef.current = c;
+    setChaos(c);
+    window.clearTimeout(chaosTimer.current);
+    chaosTimer.current = window.setTimeout(() => void submitRef.current(), 250);
+  };
+  useEffect(() => () => window.clearTimeout(chaosTimer.current), [lessonId]);
 
   // ⌘/Ctrl+Enter anywhere (Monaco handles it itself while focused).
   useEffect(() => {
@@ -478,19 +523,50 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
                         title="⌘ Enter"
                         className="rounded bg-indigo-600 px-3 py-1 font-medium hover:bg-indigo-500 disabled:opacity-40"
                       >
-                        {isDesign ? (running ? "Simulating…" : "▶ Simulate Traffic") : running ? "Running…" : "▶ Run tests"}
+                        {isDesign
+                          ? running
+                            ? "Simulating…"
+                            : chaos.nodes.length + chaos.edges.length > 0
+                              ? "⚡ Run experiment"
+                              : "▶ Simulate Traffic"
+                          : running
+                            ? "Running…"
+                            : "▶ Run tests"}
                       </button>
                     </div>
                   </div>
                   <div className="min-h-0 flex-1">
                     {lesson && isDesign && (
-                      <SystemCanvas
-                        key={`${courseId}/${lessonId}/${canvasKey}`}
-                        initial={code}
-                        onChange={onCodeChange}
-                        result={simStale ? undefined : simResult}
-                        running={running}
-                      />
+                      <div className="flex h-full flex-col">
+                        <div className="min-h-0 flex-1">
+                          <SystemCanvas
+                            key={`${courseId}/${lessonId}/${canvasKey}`}
+                            initial={code}
+                            onChange={onCodeChange}
+                            result={simStale ? undefined : simResult}
+                            frame={simResult && !simStale && !running ? simResult.timeline.frames[frame] : undefined}
+                            running={running}
+                            budget={lesson.maxBudget}
+                            chaos={chaos}
+                            onChaosChange={changeChaos}
+                          />
+                        </div>
+                        {simResult && !simStale && !running && (
+                          <TimelineScrubber
+                            timeline={simResult.timeline}
+                            frame={Math.min(frame, frameCount - 1)}
+                            onFrame={(f) => {
+                              setPlaying(false);
+                              setFrame(f);
+                            }}
+                            playing={playing}
+                            onTogglePlay={() => {
+                              if (!playing && frame >= frameCount - 1) setFrame(0);
+                              setPlaying((p) => !p);
+                            }}
+                          />
+                        )}
+                      </div>
                     )}
                     {lesson && multiFile && (
                       <div className="flex h-full">
@@ -562,6 +638,11 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
                     maxLatencyMs={lesson?.maxLatencyMs}
                     stale={simStale && !!simResult}
                     onNext={next ? () => onOpenLesson(next.id) : undefined}
+                    onSeek={(ms) => {
+                      if (!simResult) return;
+                      setPlaying(false);
+                      setFrame(Math.min(frameCount - 1, Math.floor(ms / simResult.timeline.intervalMs)));
+                    }}
                   />
                 ) : (
                   <OutputPanel

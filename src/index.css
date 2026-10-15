@@ -35,3 +35,35 @@ body {
   background: transparent;
   padding: 0;
 }
+
+/* System design replay: nodes glow as they approach capacity. */
+@keyframes node-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 1px rgb(239 68 68 / 0.9),
+      0 0 14px 2px rgb(239 68 68 / 0.45);
+  }
+  50% {
+    box-shadow:
+      0 0 0 2px rgb(239 68 68 / 1),
+      0 0 26px 6px rgb(239 68 68 / 0.6);
+  }
+}
+.node-hot {
+  border-color: rgb(239 68 68) !important;
+  animation: node-pulse 1.2s ease-in-out infinite;
+}
+.node-warm {
+  box-shadow:
+    0 0 0 1px rgb(245 158 11 / 0.7),
+    0 0 12px 1px rgb(245 158 11 / 0.3);
+}
+@media (prefers-reduced-motion: reduce) {
+  .node-hot {
+    animation: none;
+    box-shadow:
+      0 0 0 2px rgb(239 68 68),
+      0 0 18px 4px rgb(239 68 68 / 0.55);
+  }
+}

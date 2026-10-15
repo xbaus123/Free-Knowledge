@@ -1,4 +1,4 @@
-import type { SimResult } from "../../lib/engine";
+import type { SimEvent, SimResult } from "../../lib/engine";
 
 interface Props {
   result?: SimResult;
@@ -8,9 +8,11 @@ interface Props {
   /** The diagram changed after this result was produced. */
   stale?: boolean;
   onNext?: () => void;
+  /** Jumps the replay to an event. */
+  onSeek?: (ms: number) => void;
 }
 
-export function SimulationPanel({ result, running, error, maxLatencyMs, stale, onNext }: Props) {
+export function SimulationPanel({ result, running, error, maxLatencyMs, stale, onNext, onSeek }: Props) {
   return (
     <div className="flex h-full flex-col bg-zinc-950">
       <div className="flex shrink-0 items-center border-b border-zinc-800 px-3 py-2 text-xs">
@@ -30,21 +32,37 @@ export function SimulationPanel({ result, running, error, maxLatencyMs, stale, o
         {result && stale && !running && (
           <p className="mb-3 text-xs text-zinc-500">You've changed the diagram since this run. Simulate again to see how it performs.</p>
         )}
-        {result && <Summary result={result} onNext={onNext} />}
+        {result && <Summary result={result} onNext={result.experiment ? undefined : onNext} onSeek={onSeek} />}
       </div>
     </div>
   );
 }
 
-function Summary({ result, onNext }: { result: SimResult; onNext?: () => void }) {
+const EVENT_ICONS: Record<SimEvent["kind"], string> = {
+  crash: "⚡",
+  partition: "✂",
+  failover: "↻",
+  bottleneck: "▲",
+  queueing: "≡",
+  errors: "✗",
+  data_loss: "⚠",
+};
+
+function Summary({ result, onNext, onSeek }: { result: SimResult; onNext?: () => void; onSeek?: (ms: number) => void }) {
   const m = result.metrics;
   const overTarget = m.maxLatencyMs !== undefined && m.p99Ms > m.maxLatencyMs;
   const servers = Object.entries(result.nodes)
     .filter(([, s]) => s.type === "server" || s.type === "database")
     .sort(([, a], [, b]) => b.utilization - a.utilization);
 
+  const cost = result.cost;
   return (
     <div className="space-y-4">
+      {result.experiment && (
+        <p className="rounded border border-red-900/70 bg-red-950/30 px-3 py-2 text-xs text-red-200">
+          ⚡ Chaos experiment: parts of your system fail 300 ms into the run. Experiments don't count toward completing the lesson.
+        </p>
+      )}
       {result.passed ? (
         <div className="flex items-center justify-between gap-3 rounded border border-emerald-800 bg-emerald-950/50 px-3 py-2">
           <span className="font-medium text-emerald-300">{result.message}</span>
@@ -72,6 +90,45 @@ function Summary({ result, onNext }: { result: SimResult; onNext?: () => void })
           <Metric label="throughput" value={`${m.throughputPerSec.toLocaleString()}/s`} />
           <Metric label="answered" value={`${m.completed.toLocaleString()} / ${m.requests.toLocaleString()}`} bad={m.failed > 0} />
         </div>
+      )}
+
+      {result.timeline.events.length > 0 && (
+        <div>
+          <h4 className="mb-1.5 text-xs font-medium tracking-wide text-zinc-500 uppercase">What happened</h4>
+          <ol className="space-y-0.5 text-xs">
+            {result.timeline.events.map((e, i) => (
+              <li key={i}>
+                <button onClick={() => onSeek?.(e.t)} className="flex w-full gap-2 rounded px-1.5 py-0.5 text-left text-zinc-300 hover:bg-zinc-900">
+                  <span className="w-14 shrink-0 text-right font-mono text-zinc-500">{Math.round(e.t)} ms</span>
+                  <span className="w-3 text-center">{EVENT_ICONS[e.kind] ?? "•"}</span>
+                  {e.message}
+                </button>
+              </li>
+            ))}
+          </ol>
+        </div>
+      )}
+
+      {cost.items.some((i) => i.cost > 0) && (
+        <details className="text-xs">
+          <summary className={cost.budget && cost.total > cost.budget ? "text-red-400" : "text-zinc-400"}>
+            Monthly cost: <span className="font-mono">${cost.total}</span>
+            {cost.budget ? ` of a $${cost.budget} budget` : ""}
+          </summary>
+          <table className="mt-1.5 w-full">
+            <tbody className="text-zinc-300">
+              {cost.items
+                .filter((i) => i.cost > 0)
+                .map((i) => (
+                  <tr key={i.nodeId} className="border-t border-zinc-800/70">
+                    <td className="py-1">{i.label}</td>
+                    <td className="py-1 text-zinc-500">{i.detail}</td>
+                    <td className="py-1 text-right font-mono">${i.cost}</td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        </details>
       )}
 
       {servers.length > 0 && (

@@ -15,12 +15,20 @@ When a machine can't keep up, you can **scale up** (buy a bigger machine) or **s
 
 ## Your task
 
-Keep **p99 latency at or under 200 ms** during the spike.
+Keep **p99 latency at or under 200 ms** during the spike, on a budget of **$95/month**.
 
-1. Add a **Load Balancer** between the Client and your servers. It spreads requests evenly, round-robin.
+| Component | Cost |
+|---|---|
+| Load Balancer | $20 |
+| API Server (4-connection pool) | $10, plus $10 per extra connection |
+| Database | $50, plus $40 for a replica |
+
+You could buy one big server with a larger pool (scaling up), but bigger machines cost disproportionately more. Scaling out is cheaper here:
+
+1. Add a **Load Balancer** between the Client and your servers. It spreads requests evenly.
 2. Add a **second API Server** behind it, and connect both servers to the Database.
-3. Click **Simulate Traffic** to send 1,000 requests through your design.
+3. Click **Simulate Traffic** to send 1,000 requests through your design, then use the timeline under the canvas to replay it.
 
-Drag from a node's right handle to another node's left handle to connect them. Select a node or connection and press Backspace to delete it.
+Drag from a node's right handle to another node's left handle to connect them. Select a node or connection and press Backspace to delete it. **Double-click** a node to change its settings.
 
-> Look closely at your finished design. Is there still a single point of failure? We'll come back to it.
+> Once you pass, open the **Chaos** toolkit and crash one of your servers. What happens to the requests in flight, and to the server that's left? Then crash the Database. Is there still a single point of failure? (Chaos runs are experiments; they don't affect your progress.)

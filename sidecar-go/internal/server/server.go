@@ -70,6 +70,7 @@ func (s *Server) Handler() http.Handler {
 	mux.Handle("PUT /courses/{course}/lessons/{lesson}/progress/code", s.requireToken(http.HandlerFunc(s.handleSaveCode)))
 	mux.Handle("DELETE /courses/{course}/lessons/{lesson}/progress/code", s.requireToken(http.HandlerFunc(s.handleResetCode)))
 	mux.Handle("POST /simulate", s.requireToken(http.HandlerFunc(s.handleSimulate)))
+	mux.Handle("GET /simulate/catalog", s.requireToken(http.HandlerFunc(s.handleCatalog)))
 	s.studioRoutes(mux)
 	s.telemetryRoutes(mux)
 	return s.guard(mux)

@@ -64,6 +64,8 @@ export interface Lesson extends LessonSummary {
   timeoutMs: number;
   /** System design: p99 latency target. */
   maxLatencyMs?: number;
+  /** System design: monthly cost limit in dollars. */
+  maxBudget?: number;
   /** Quiz questions (answers stay on the engine). */
   questions?: QuizQuestion[];
   capabilities: Capabilities;
@@ -99,6 +101,8 @@ export interface SimNodeStats {
   type: string;
   label: string;
   processed: number;
+  /** Servers and databases: worker pool size. */
+  pool?: number;
   /** 0..1 */
   utilization: number;
   maxQueue: number;
@@ -121,6 +125,68 @@ export interface SimResult {
     maxLatencyMs?: number;
   };
   nodes: Record<string, SimNodeStats>;
+  cost: CostBreakdown;
+  timeline: Timeline;
+  /** A chaos run: shown, but not counted as a lesson attempt. */
+  experiment?: boolean;
+}
+
+export interface CostBreakdown {
+  total: number;
+  budget?: number;
+  items: { nodeId: string; label: string; cost: number; detail?: string }[];
+}
+
+export interface FrameNode {
+  /** 0..1 of the worker pool, averaged over the frame. */
+  utilization: number;
+  /** Requests in service at the frame's end. */
+  active: number;
+  /** Requests waiting at the frame's end. */
+  queue: number;
+  down?: boolean;
+}
+
+export interface Frame {
+  t: number;
+  nodes: Record<string, FrameNode>;
+  /** Requests sent over each edge during the frame. */
+  edges: Record<string, number>;
+  completed: number;
+  failed: number;
+}
+
+export interface SimEvent {
+  t: number;
+  kind: "crash" | "partition" | "failover" | "bottleneck" | "queueing" | "errors" | "data_loss";
+  nodeId?: string;
+  edgeId?: string;
+  message: string;
+}
+
+export interface Timeline {
+  intervalMs: number;
+  frames: Frame[];
+  events: SimEvent[];
+}
+
+/** Nodes to crash and edges to cut partway through a run. */
+export interface Chaos {
+  nodes: string[];
+  edges: string[];
+}
+
+/** A node type's price and capacity, from the engine. */
+export interface NodeSpec {
+  type: string;
+  name: string;
+  cost: number;
+  workers: number;
+  serviceMs: number;
+  minPool?: number;
+  maxPool?: number;
+  poolSlotCost?: number;
+  replicaCost?: number;
 }
 
 export type TestStatus = "pass" | "fail" | "error" | "skip";
@@ -267,11 +333,21 @@ export const completeArticle = (courseId: string, lessonId: string) =>
   request<GradeResult>(lessonPath(courseId, lessonId) + "/submit", { method: "POST", body: "{}" });
 
 /** Sends a burst of traffic through a system design diagram and grades it. */
-export const simulate = (courseId: string, lessonId: string, graphJson: string) =>
+export const simulate = (courseId: string, lessonId: string, graphJson: string, chaos?: Chaos) =>
   request<SimResult>("/simulate", {
     method: "POST",
-    body: `{"course":${JSON.stringify(courseId)},"lesson":${JSON.stringify(lessonId)},"graph":${graphJson}}`,
+    body: `{"course":${JSON.stringify(courseId)},"lesson":${JSON.stringify(lessonId)},"graph":${graphJson},"chaos":${JSON.stringify(chaos ?? {})}}`,
   });
+
+let catalogPromise: Promise<NodeSpec[]> | undefined;
+/** Node prices and capacities (fetched once). */
+export function simCatalog(): Promise<NodeSpec[]> {
+  catalogPromise ??= request<NodeSpec[]>("/simulate/catalog").catch((e) => {
+    catalogPromise = undefined;
+    throw e;
+  });
+  return catalogPromise;
+}
 
 /** Polls /health until the engine answers, since it starts alongside the window. */
 export async function waitForEngine(timeoutMs = 10_000): Promise<Health> {

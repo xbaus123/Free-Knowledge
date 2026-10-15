@@ -442,3 +442,56 @@ func TestTelemetryEndpoints(t *testing.T) {
 		t.Fatalf("delete: %d", r.StatusCode)
 	}
 }
+
+func TestSimulateBudgetChaosAndCatalog(t *testing.T) {
+	ts, _ := newTestServer(t)
+	auth := map[string]string{"Authorization": "Bearer " + testToken}
+	solution, err := os.ReadFile("../../../courses/system-design/01-scalability/solution.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+	var res struct {
+		Passed     bool
+		Experiment bool
+		Cost       struct{ Total, Budget int }
+		Timeline   struct {
+			Frames []json.RawMessage
+			Events []struct{ Kind string }
+		}
+	}
+	body := func(chaos string) string {
+		return `{"course":"system-design","lesson":"01-scalability","graph":` + string(solution) + `,"chaos":` + chaos + `}`
+	}
+
+	// A chaos experiment: reported, but not recorded as an attempt.
+	r := do(t, ts, "POST", "/simulate", body(`{"nodes":["api-1"]}`), auth)
+	if err := json.NewDecoder(r.Body).Decode(&res); err != nil || !res.Experiment || res.Passed || len(res.Timeline.Frames) == 0 {
+		t.Fatalf("chaos run: %d %+v %v", r.StatusCode, res, err)
+	}
+	var p struct{ Attempts int }
+	r = do(t, ts, "GET", "/courses/system-design/lessons/01-scalability/progress", "", auth)
+	json.NewDecoder(r.Body).Decode(&p)
+	if p.Attempts != 0 {
+		t.Fatalf("chaos runs shouldn't count as attempts: %d", p.Attempts)
+	}
+
+	// The real run applies the lesson's budget.
+	res.Experiment, res.Passed = false, false // fields omitted when false
+	r = do(t, ts, "POST", "/simulate", body(`{}`), auth)
+	if err := json.NewDecoder(r.Body).Decode(&res); err != nil || !res.Passed || res.Experiment || res.Cost.Total != 90 || res.Cost.Budget != 95 {
+		t.Fatalf("lesson run: passed=%v experiment=%v cost=%+v %v", res.Passed, res.Experiment, res.Cost, err)
+	}
+
+	if r := do(t, ts, "POST", "/simulate", body(`{"nodes":["ghost"]}`), auth); r.StatusCode != 400 {
+		t.Fatalf("unknown chaos target: %d", r.StatusCode)
+	}
+
+	var catalog []struct {
+		Type string
+		Cost int
+	}
+	r = do(t, ts, "GET", "/simulate/catalog", "", auth)
+	if err := json.NewDecoder(r.Body).Decode(&catalog); err != nil || len(catalog) != 4 || catalog[1].Type != "loadBalancer" || catalog[1].Cost != 20 {
+		t.Fatalf("catalog: %+v %v", catalog, err)
+	}
+}
