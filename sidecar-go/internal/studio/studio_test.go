@@ -114,7 +114,7 @@ func TestBundledCoursesAreReadOnly(t *testing.T) {
 	}
 	copyID := must(s.CopyCourse("getting-started"))
 	c := must(s.Courses.Course(copyID))
-	if c.Source != "user" || !strings.HasSuffix(c.Title, "(copy)") || len(c.Lessons) != 7 {
+	if c.Source != "user" || !strings.HasSuffix(c.Title, "(copy)") || len(c.Lessons) != 8 {
 		t.Fatalf("copy: %+v", c)
 	}
 	if _, err := s.CreateLesson(copyID, "Extra", "", "python"); err != nil {
@@ -318,5 +318,88 @@ func TestQuizEditing(t *testing.T) {
 	src.Type = course.KindArticle
 	if err := s.SaveLesson(id, src); err == nil {
 		t.Error("changing a lesson's type should be refused")
+	}
+}
+
+func TestMultiFileAuthoringAndExport(t *testing.T) {
+	if _, err := exec.LookPath("python3"); err != nil {
+		t.Skip("python3 not installed")
+	}
+	s := newStudio(t)
+	id := must(s.CreateCourse(CourseMeta{Title: "Multi"}))
+	lid := must(s.CreateLesson(id, "Helpers", "", "python"))
+
+	// Turn on multi-file: the single file becomes solution.py.
+	src := must(s.Lesson(id, lid))
+	src.Capabilities = course.Capabilities{MultiFile: true, Scratchpad: true, Telemetry: true}
+	if err := s.SaveLesson(id, src); err != nil {
+		t.Fatal(err)
+	}
+	src = must(s.Lesson(id, lid))
+	if len(src.StarterFiles) != 1 || src.StarterFiles["solution.py"] == "" || src.ReferenceFiles["solution.py"] == "" {
+		t.Fatalf("after enabling multi-file: %+v / %+v", src.StarterFiles, src.ReferenceFiles)
+	}
+
+	// Add a locked helper the solution uses.
+	src.StarterFiles["lib/consts.py"] = "ANSWER = 42\n"
+	src.StarterFiles["solution.py"] = "from lib.consts import ANSWER\n\ndef answer():\n    pass\n"
+	src.ReferenceFiles["solution.py"] = "from lib.consts import ANSWER\n\ndef answer():\n    return ANSWER\n"
+	src.ReferenceFiles["lib/consts.py"] = "ANSWER = 0\n" // dropped: read-only files come from the starter
+	src.Capabilities.ReadOnlyFiles = []string{"lib/consts.py"}
+	if err := s.SaveLesson(id, src); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := os.Stat(filepath.Join(s.Root, id, lid, "reference", "lib", "consts.py")); !errors.Is(err, os.ErrNotExist) {
+		t.Error("read-only files shouldn't be saved in reference/")
+	}
+	d := must(s.CheckLesson(context.Background(), id, lid))
+	if !d.OK || d.Warning != "" {
+		t.Fatalf("check: %+v ref=%+v", d.LessonCheck, d.Reference)
+	}
+	l := must(s.Courses.Lesson(id, lid))
+	if !l.Capabilities.Scratchpad || !l.Capabilities.Telemetry || len(l.Files) != 2 || !l.Files[0].ReadOnly {
+		t.Fatalf("learner view: caps=%+v files=%+v", l.Capabilities, l.Files)
+	}
+
+	// Bad edits are refused.
+	for name, mutate := range map[string]func(*LessonSource){
+		"reserved name":     func(s *LessonSource) { s.StarterFiles["solution_test.py"] = "" },
+		"traversal":         func(s *LessonSource) { s.StarterFiles["../x.py"] = "" },
+		"unknown read-only": func(s *LessonSource) { s.Capabilities.ReadOnlyFiles = []string{"nope.py"} },
+	} {
+		bad := must(s.Lesson(id, lid))
+		mutate(&bad)
+		if err := s.SaveLesson(id, bad); err == nil {
+			t.Errorf("%s: expected an error", name)
+		}
+	}
+
+	quizID := must(s.CreateLesson(id, "Quiz", course.KindQuiz, ""))
+	quiz := must(s.Lesson(id, quizID))
+	quiz.Capabilities.MultiFile = true
+	if err := s.SaveLesson(id, quiz); err == nil {
+		t.Error("quizzes can't be multi-file")
+	}
+
+	// The archive carries the folders, and the import still validates.
+	dest := filepath.Join(t.TempDir(), "multi.dojo")
+	must(s.Export(context.Background(), id, dest, "test"))
+	other := newStudio(t)
+	must(other.Import(dest, false))
+	if d := must(other.CheckLesson(context.Background(), id, lid)); !d.OK {
+		t.Fatalf("imported lesson: %+v", d.LessonCheck)
+	}
+
+	// Turning multi-file off goes back to single files.
+	src = must(s.Lesson(id, lid))
+	src.Capabilities.MultiFile = false
+	if err := s.SaveLesson(id, src); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := os.Stat(filepath.Join(s.Root, id, lid, "starter")); !errors.Is(err, os.ErrNotExist) {
+		t.Error("starter/ should be removed when multi-file is off")
+	}
+	if l := must(s.Courses.Lesson(id, lid)); l.Capabilities.ReadOnlyFiles != nil || len(l.Files) != 0 {
+		t.Fatalf("single-file again: %+v", l.Capabilities)
 	}
 }

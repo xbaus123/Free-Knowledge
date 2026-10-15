@@ -36,6 +36,7 @@ A free, open-source, offline-first desktop app for learning programming, systems
 | GET | `/courses/{course}/lessons/{lesson}` | token | Lesson markdown and starter code (never the tests) |
 | POST | `/courses/{course}/lessons/{lesson}/submit` | token | `{code}` → `{passed, tests: [{name, status, message, durationMs}], stdout, stderr, …}` |
 | POST | `/courses/{course}/lessons/{lesson}/validate` | token | Grades the lesson's `reference.*` solution, so authors can check their tests |
+| GET, POST, DELETE | `/courses/{course}/lessons/{lesson}/telemetry`, `GET /telemetry` | token | Local learning insights (only for lessons with telemetry on) |
 | GET | `/progress` | token | Streak, lessons completed, and per-lesson progress for every course |
 | GET | `/courses/{course}/lessons/{lesson}/progress` | token | Saved code, attempts, and completion for one lesson |
 | PUT / DELETE | `/courses/{course}/lessons/{lesson}/progress/code` | token | Autosave `{code}`, or reset to the starter |
@@ -71,6 +72,20 @@ Lessons are ordered by `course.json`'s `lessons` list, or by folder name if it's
 | Rust | `#[test]` functions | `use super::*;` |
 
 See `courses/getting-started` for one example of each.
+
+### Lesson capabilities
+
+Any lesson can turn on optional features in `config.json` (or with the toggles in Creator Studio):
+
+```json
+"capabilities": { "scratchpad": true, "multi_file": true, "telemetry": true, "read_only_files": ["text_utils.py"] }
+```
+
+- **`scratchpad`**: a slide-over code runner in any of the five languages, for trying things out. It isn't graded.
+- **`multi_file`** (code lessons): learners get a file tree and tabs. The starting files live in the lesson's `starter/` folder, nested folders allowed. Your solution versions of the editable files go in `reference/`. Files in `read_only_files` are locked in the editor, and grading always uses the lesson's copy, so editing a helper can't change the result.
+- **`telemetry`**: records reading and typing time, attempts, scratchpad runs, and error types (syntax, compile, failed assertion, runtime, timeout) in the local progress database. It never records code. Learners see it under **Insights**, can clear it, and can turn recording off.
+
+See `courses/getting-started/08-modules` for a lesson using all three.
 
 ### Article and quiz lessons
 

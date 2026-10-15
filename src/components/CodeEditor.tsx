@@ -13,9 +13,11 @@ interface Props {
   /** ⌘/Ctrl+S */
   onSave?: () => void;
   autoFocus?: boolean;
+  /** Locks editing, e.g. a lesson's read-only helper files. */
+  readOnly?: boolean;
 }
 
-export function CodeEditor({ path, language, value, onChange, onSubmit, onSave, autoFocus = true }: Props) {
+export function CodeEditor({ path, language, value, onChange, onSubmit, onSave, autoFocus = true, readOnly = false }: Props) {
   // Monaco binds commands once at mount; read the latest callbacks through refs.
   const submitRef = useRef(onSubmit);
   submitRef.current = onSubmit;
@@ -47,6 +49,8 @@ export function CodeEditor({ path, language, value, onChange, onSubmit, onSave, 
         wordWrap: language === "markdown" ? "on" : "off",
         padding: { top: 12 },
         renderLineHighlight: "line",
+        readOnly,
+        readOnlyMessage: { value: "This file is read-only in this lesson." },
       }}
     />
   );

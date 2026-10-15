@@ -90,3 +90,51 @@ func must(t *testing.T, err error) {
 		t.Fatal(err)
 	}
 }
+
+func TestTelemetry(t *testing.T) {
+	s := open(t)
+	day := time.Date(2026, 3, 10, 12, 0, 0, 0, time.UTC)
+	first := Session{ID: "session-one", StartedAt: day, ReadingMs: 60_000, TypingMs: 30_000, Keystrokes: 120, Submissions: 2,
+		Outcomes: map[string]int{"syntax_error": 1, "failed_assertion": 1}}
+	must(t, s.SaveSession("c", "l", first))
+	// Re-sending a session's totals replaces them.
+	first.TypingMs, first.Submissions, first.Outcomes["failed_assertion"] = 40_000, 3, 2
+	must(t, s.SaveSession("c", "l", first))
+	must(t, s.SaveSession("c", "l", Session{ID: "session-two", StartedAt: day.Add(time.Hour), ReadingMs: 5_000, TypingMs: 10_000,
+		Submissions: 1, Outcomes: map[string]int{"pass": 1}, Solved: true}))
+	must(t, s.SaveSession("c", "other", Session{ID: "session-three", StartedAt: day, ReadingMs: 1}))
+
+	got, err := s.Insights("c", "l")
+	must(t, err)
+	if len(got) != 1 {
+		t.Fatalf("got %+v", got)
+	}
+	in := got[0]
+	if in.Sessions != 2 || in.Submissions != 4 || in.Outcomes["failed_assertion"] != 2 || in.Outcomes["pass"] != 1 || in.Keystrokes != 120 {
+		t.Fatalf("aggregate: %+v", in)
+	}
+	if in.TimeToSolveMs == nil || *in.TimeToSolveMs != 60_000+40_000+5_000+10_000 {
+		t.Fatalf("time to solve: %v", in.TimeToSolveMs)
+	}
+
+	all, _ := s.Insights("", "")
+	if len(all) != 2 {
+		t.Fatalf("all lessons: %+v", all)
+	}
+
+	for _, bad := range []Session{
+		{ID: "x", StartedAt: day},
+		{ID: "valid-id-1", StartedAt: day, ReadingMs: -1},
+		{ID: "valid-id-2", StartedAt: day, Outcomes: map[string]int{"hacked": 1}},
+		{ID: "valid-id-3"},
+	} {
+		if err := s.SaveSession("c", "l", bad); err == nil {
+			t.Errorf("expected rejection: %+v", bad)
+		}
+	}
+
+	must(t, s.DeleteInsights("c", "l"))
+	if got, _ := s.Insights("c", "l"); len(got) != 0 {
+		t.Fatalf("after delete: %+v", got)
+	}
+}

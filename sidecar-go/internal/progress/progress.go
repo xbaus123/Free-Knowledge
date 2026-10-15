@@ -5,8 +5,11 @@ package progress
 
 import (
 	"database/sql"
+	"encoding/json"
 	"errors"
 	"fmt"
+	"regexp"
+	"slices"
 	"time"
 
 	_ "modernc.org/sqlite"
@@ -25,6 +28,24 @@ var migrations = []string{
 		PRIMARY KEY (course_id, lesson_id)
 	);
 	CREATE TABLE activity (day TEXT PRIMARY KEY);`,
+
+	// Learning telemetry: one row per lesson visit, updated as it goes.
+	// Counts and durations only; never code or keystroke contents.
+	`CREATE TABLE telemetry_sessions (
+		session_id  TEXT PRIMARY KEY,
+		course_id   TEXT NOT NULL,
+		lesson_id   TEXT NOT NULL,
+		started_at  INTEGER NOT NULL,
+		updated_at  INTEGER NOT NULL,
+		reading_ms  INTEGER NOT NULL DEFAULT 0,
+		typing_ms   INTEGER NOT NULL DEFAULT 0,
+		keystrokes  INTEGER NOT NULL DEFAULT 0,
+		submissions INTEGER NOT NULL DEFAULT 0,
+		runs        INTEGER NOT NULL DEFAULT 0,
+		outcomes    TEXT NOT NULL DEFAULT '{}',
+		solved      INTEGER NOT NULL DEFAULT 0
+	);
+	CREATE INDEX telemetry_lesson ON telemetry_sessions (course_id, lesson_id, started_at);`,
 }
 
 type Store struct {
@@ -230,4 +251,136 @@ func (s *Store) Stats() (Stats, error) {
 		expect = d.AddDate(0, 0, -1).Format(time.DateOnly)
 	}
 	return st, rows.Err()
+}
+
+// --- learning telemetry ---
+
+// Outcome categories for submissions.
+var OutcomeKinds = []string{"pass", "syntax_error", "compile_error", "failed_assertion", "runtime_error", "timeout"}
+
+// Session is one visit to a lesson. The client sends cumulative totals, so
+// saving the same session again replaces it rather than adding to it.
+type Session struct {
+	ID          string         `json:"sessionId"`
+	StartedAt   time.Time      `json:"startedAt"`
+	ReadingMs   int64          `json:"readingMs"`
+	TypingMs    int64          `json:"typingMs"`
+	Keystrokes  int            `json:"keystrokes"`
+	Submissions int            `json:"submissions"`
+	Runs        int            `json:"runs"` // scratchpad runs
+	Outcomes    map[string]int `json:"outcomes"`
+	Solved      bool           `json:"solved"`
+}
+
+var sessionIDPattern = regexp.MustCompile(`^[A-Za-z0-9-]{8,64}$`)
+
+// Validate rejects malformed or implausible sessions.
+func (s Session) Validate() error {
+	const day = 24 * 60 * 60 * 1000
+	switch {
+	case !sessionIDPattern.MatchString(s.ID):
+		return errors.New("invalid sessionId")
+	case s.StartedAt.IsZero():
+		return errors.New("startedAt is required")
+	case s.ReadingMs < 0 || s.TypingMs < 0 || s.ReadingMs > day || s.TypingMs > day:
+		return errors.New("durations must be between 0 and 24 hours")
+	case s.Keystrokes < 0 || s.Submissions < 0 || s.Runs < 0 || s.Keystrokes > 10_000_000 || s.Submissions > 100_000 || s.Runs > 100_000:
+		return errors.New("counts out of range")
+	}
+	for k, v := range s.Outcomes {
+		if !slices.Contains(OutcomeKinds, k) || v < 0 || v > 100_000 {
+			return fmt.Errorf("invalid outcome %q", k)
+		}
+	}
+	return nil
+}
+
+// SaveSession inserts or replaces a lesson visit's totals.
+func (s *Store) SaveSession(courseID, lessonID string, sess Session) error {
+	if err := sess.Validate(); err != nil {
+		return err
+	}
+	if sess.Outcomes == nil {
+		sess.Outcomes = map[string]int{}
+	}
+	outcomes, _ := json.Marshal(sess.Outcomes)
+	_, err := s.db.Exec(`INSERT INTO telemetry_sessions
+		(session_id, course_id, lesson_id, started_at, updated_at, reading_ms, typing_ms, keystrokes, submissions, runs, outcomes, solved)
+		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+		ON CONFLICT (session_id) DO UPDATE SET
+			updated_at = excluded.updated_at, reading_ms = excluded.reading_ms, typing_ms = excluded.typing_ms,
+			keystrokes = excluded.keystrokes, submissions = excluded.submissions, runs = excluded.runs,
+			outcomes = excluded.outcomes, solved = excluded.solved
+		WHERE course_id = excluded.course_id AND lesson_id = excluded.lesson_id`,
+		sess.ID, courseID, lessonID, sess.StartedAt.UnixMilli(), s.now().UnixMilli(),
+		sess.ReadingMs, sess.TypingMs, sess.Keystrokes, sess.Submissions, sess.Runs, string(outcomes), sess.Solved)
+	return err
+}
+
+// Insights summarizes all visits to one lesson.
+type Insights struct {
+	CourseID    string         `json:"courseId"`
+	LessonID    string         `json:"lessonId"`
+	Sessions    int            `json:"sessions"`
+	ReadingMs   int64          `json:"readingMs"`
+	TypingMs    int64          `json:"typingMs"`
+	Keystrokes  int            `json:"keystrokes"`
+	Submissions int            `json:"submissions"`
+	Runs        int            `json:"runs"`
+	Outcomes    map[string]int `json:"outcomes"`
+	FirstSeen   time.Time      `json:"firstSeen"`
+	// TimeToSolveMs is active time (reading + typing) across visits up to
+	// and including the first one that solved the lesson.
+	TimeToSolveMs *int64 `json:"timeToSolveMs,omitempty"`
+}
+
+// Insights returns per-lesson summaries; empty IDs mean all.
+func (s *Store) Insights(courseID, lessonID string) ([]Insights, error) {
+	rows, err := s.db.Query(`SELECT course_id, lesson_id, started_at, reading_ms, typing_ms, keystrokes, submissions, runs, outcomes, solved
+		FROM telemetry_sessions
+		WHERE (? = '' OR course_id = ?) AND (? = '' OR lesson_id = ?)
+		ORDER BY course_id, lesson_id, started_at`, courseID, courseID, lessonID, lessonID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var out []Insights
+	var cur *Insights
+	for rows.Next() {
+		var c, l, outcomes string
+		var started, reading, typing int64
+		var keys, subs, runs int
+		var solved bool
+		if err := rows.Scan(&c, &l, &started, &reading, &typing, &keys, &subs, &runs, &outcomes, &solved); err != nil {
+			return nil, err
+		}
+		if cur == nil || cur.CourseID != c || cur.LessonID != l {
+			out = append(out, Insights{CourseID: c, LessonID: l, Outcomes: map[string]int{}, FirstSeen: time.UnixMilli(started)})
+			cur = &out[len(out)-1]
+		}
+		cur.Sessions++
+		cur.ReadingMs += reading
+		cur.TypingMs += typing
+		cur.Keystrokes += keys
+		cur.Submissions += subs
+		cur.Runs += runs
+		var o map[string]int
+		if json.Unmarshal([]byte(outcomes), &o) == nil {
+			for k, v := range o {
+				cur.Outcomes[k] += v
+			}
+		}
+		if cur.TimeToSolveMs == nil && solved {
+			t := cur.ReadingMs + cur.TypingMs
+			cur.TimeToSolveMs = &t
+		}
+	}
+	return out, rows.Err()
+}
+
+// DeleteInsights erases telemetry; empty IDs mean all.
+func (s *Store) DeleteInsights(courseID, lessonID string) error {
+	_, err := s.db.Exec(`DELETE FROM telemetry_sessions WHERE (? = '' OR course_id = ?) AND (? = '' OR lesson_id = ?)`,
+		courseID, courseID, lessonID, lessonID)
+	return err
 }

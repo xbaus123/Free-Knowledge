@@ -54,7 +54,7 @@ func TestSampleCourse(t *testing.T) {
 				t.Fatalf("reference should pass: %+v", ref)
 			}
 
-			starter, err := Grade(context.Background(), l, l.Starter, nil)
+			starter, err := GradeStarter(context.Background(), l, nil)
 			if err != nil {
 				t.Fatal(err)
 			}

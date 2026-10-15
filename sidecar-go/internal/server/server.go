@@ -22,7 +22,8 @@ import (
 	"freeknowledge/engine/internal/studio"
 )
 
-const maxBodyBytes = 1 << 20
+// maxBodyBytes allows a few multi-file submissions' worth of source.
+const maxBodyBytes = 4 << 20
 
 // allowedOrigins are the webview origins Tauri uses per platform, plus the
 // Vite dev server.
@@ -70,6 +71,7 @@ func (s *Server) Handler() http.Handler {
 	mux.Handle("DELETE /courses/{course}/lessons/{lesson}/progress/code", s.requireToken(http.HandlerFunc(s.handleResetCode)))
 	mux.Handle("POST /simulate", s.requireToken(http.HandlerFunc(s.handleSimulate)))
 	s.studioRoutes(mux)
+	s.telemetryRoutes(mux)
 	return s.guard(mux)
 }
 
@@ -152,9 +154,10 @@ func (s *Server) handleRun(w http.ResponseWriter, r *http.Request) {
 //	         or {"type":"error","error":"..."}
 //	client → {"type":"cancel"} or closing the socket kills the job.
 type wsClientMsg struct {
-	Type   string `json:"type"`
-	Course string `json:"course"`
-	Lesson string `json:"lesson"`
+	Type   string            `json:"type"`
+	Course string            `json:"course"`
+	Lesson string            `json:"lesson"`
+	Files  map[string]string `json:"files"` // multi-file submissions
 	runner.Request
 }
 
@@ -225,9 +228,10 @@ func (s *Server) handleRunWS(w http.ResponseWriter, r *http.Request) {
 		if l, err = s.cfg.Courses.Lesson(first.Course, first.Lesson); err == nil {
 			var res grader.Result
 			if first.Type == "submit" {
-				res, err = grader.Grade(ctx, l, first.Code, onOutput)
+				var saved string
+				res, saved, err = gradeCode(ctx, l, first.Code, first.Files, onOutput)
 				if err == nil {
-					s.recordAttempt(ctx, l, first.Code, res)
+					s.recordAttempt(ctx, l, saved, res)
 				}
 			} else {
 				res, err = grader.Validate(ctx, l, onOutput)
@@ -275,14 +279,32 @@ func (s *Server) handleLesson(w http.ResponseWriter, r *http.Request) {
 	writeJSON(w, http.StatusOK, l)
 }
 
-// handleSubmit grades a submission: {"code": "..."} for code lessons,
+// gradeCode grades a code lesson submission: files (path → content) when
+// given, as multi-file lessons send, otherwise code. It also returns what to
+// save as the learner's work: the code, or {"files": {...}}.
+func gradeCode(ctx context.Context, l *course.Lesson, code string, files map[string]string, onOutput runner.OutputFunc) (grader.Result, string, error) {
+	if files == nil {
+		res, err := grader.Grade(ctx, l, code, onOutput)
+		return res, code, err
+	}
+	saved, err := json.Marshal(map[string]any{"files": files})
+	if err != nil {
+		return grader.Result{}, "", err
+	}
+	res, err := grader.GradeFiles(ctx, l, files, onOutput)
+	return res, string(saved), err
+}
+
+// handleSubmit grades a submission: {"code": "..."} for code lessons
+// ({"files": {...}} for multi-file ones),
 // {"answers": [0, 2]} for quizzes ({"answer": 0} for one question), and {}
 // for articles (marks them read).
 func (s *Server) handleSubmit(w http.ResponseWriter, r *http.Request) {
 	var body struct {
-		Code    string `json:"code"`
-		Answer  *int   `json:"answer"`
-		Answers []int  `json:"answers"`
+		Code    string            `json:"code"`
+		Files   map[string]string `json:"files"`
+		Answer  *int              `json:"answer"`
+		Answers []int             `json:"answers"`
 	}
 	if err := json.NewDecoder(http.MaxBytesReader(w, r.Body, maxBodyBytes)).Decode(&body); err != nil {
 		writeJSON(w, http.StatusBadRequest, map[string]string{"error": "invalid JSON body: " + err.Error()})
@@ -304,7 +326,7 @@ func (s *Server) handleSubmit(w http.ResponseWriter, r *http.Request) {
 			saved = string(b)
 			res, err = grader.GradeAnswers(l, body.Answers)
 		} else {
-			res, err = grader.Grade(r.Context(), l, body.Code, nil)
+			res, saved, err = gradeCode(r.Context(), l, body.Code, body.Files, nil)
 		}
 		if err == nil {
 			s.recordAttempt(r.Context(), l, saved, res)

@@ -66,6 +66,23 @@ export interface Lesson extends LessonSummary {
   maxLatencyMs?: number;
   /** Quiz questions (answers stay on the engine). */
   questions?: QuizQuestion[];
+  capabilities: Capabilities;
+  /** Multi-file code lessons: the starting workspace. */
+  files?: LessonFile[];
+}
+
+/** Optional per-lesson features, from config.json. */
+export interface Capabilities {
+  scratchpad: boolean;
+  multi_file: boolean;
+  telemetry: boolean;
+  read_only_files?: string[];
+}
+
+export interface LessonFile {
+  path: string;
+  content: string;
+  readOnly?: boolean;
 }
 
 export interface QuizQuestion {
@@ -205,6 +222,42 @@ export const saveCode = (courseId: string, lessonId: string, code: string) =>
 export const resetCode = (courseId: string, lessonId: string) =>
   request<void>(lessonPath(courseId, lessonId) + "/progress/code", { method: "DELETE" });
 
+export type Outcome = "pass" | "syntax_error" | "compile_error" | "failed_assertion" | "runtime_error" | "timeout";
+
+/** One lesson visit's learning metrics; re-sending replaces the previous totals. */
+export interface TelemetrySession {
+  sessionId: string;
+  startedAt: string;
+  readingMs: number;
+  typingMs: number;
+  keystrokes: number;
+  submissions: number;
+  runs: number;
+  outcomes: Partial<Record<Outcome, number>>;
+  solved: boolean;
+}
+
+export interface Insights {
+  courseId: string;
+  lessonId: string;
+  sessions: number;
+  readingMs: number;
+  typingMs: number;
+  keystrokes: number;
+  submissions: number;
+  runs: number;
+  outcomes: Partial<Record<Outcome, number>>;
+  firstSeen?: string;
+  timeToSolveMs?: number;
+}
+
+/** keepalive lets a save finish while the page is closing. */
+export const saveTelemetry = (courseId: string, lessonId: string, session: TelemetrySession) =>
+  request<void>(lessonPath(courseId, lessonId) + "/telemetry", { method: "POST", body: JSON.stringify(session), keepalive: true });
+export const lessonInsights = (courseId: string, lessonId: string) => request<Insights>(lessonPath(courseId, lessonId) + "/telemetry");
+export const deleteInsights = (courseId: string, lessonId: string) =>
+  request<void>(lessonPath(courseId, lessonId) + "/telemetry", { method: "DELETE" });
+
 /** Grades quiz answers: one zero-based option index per question. */
 export const submitAnswers = (courseId: string, lessonId: string, answers: number[]) =>
   request<GradeResult>(lessonPath(courseId, lessonId) + "/submit", { method: "POST", body: JSON.stringify({ answers }) });
@@ -249,6 +302,10 @@ export const runStreaming = (req: RunRequest, handlers: StreamHandlers) =>
 /** Grades code against a lesson's hidden tests, streaming program output. */
 export const submitStreaming = (courseId: string, lessonId: string, code: string, handlers: StreamHandlers) =>
   stream<GradeResult>({ type: "submit", course: courseId, lesson: lessonId, code }, "grade", handlers);
+
+/** Grades a multi-file lesson: the learner's editable files, path → content. */
+export const submitFilesStreaming = (courseId: string, lessonId: string, files: Record<string, string>, handlers: StreamHandlers) =>
+  stream<GradeResult>({ type: "submit", course: courseId, lesson: lessonId, files }, "grade", handlers);
 
 function stream<T>(message: object, resultType: string, handlers: StreamHandlers): Streamed<T> {
   let ws: WebSocket | undefined;

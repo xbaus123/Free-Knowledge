@@ -14,9 +14,11 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"maps"
 	"os"
 	"os/exec"
 	"path/filepath"
+	"slices"
 	"strings"
 	"time"
 
@@ -53,9 +55,13 @@ type Result struct {
 var ErrNoReference = errors.New("lesson has no reference solution")
 
 type harness struct {
-	files   map[string]string // workspace file → embedded harness file
-	inline  map[string]string // workspace file → literal contents
-	env     []string
+	files  map[string]string // workspace file → embedded harness file
+	inline map[string]string // workspace file → literal contents
+	// generate returns more files given the learner's source files (paths
+	// with the language's extension), for harnesses that must list them.
+	generate func(sources []string) map[string]string
+	env      []string
+	// compile may contain "{sources}", expanded to every source file.
 	compile []string
 	run     []string
 	// parse extracts results from stdout instead of the results file.
@@ -76,7 +82,7 @@ var harnesses = map[string]harness{
 	},
 	"c": {
 		files:   map[string]string{"fk_test.h": "harness/fk_test.h"},
-		compile: []string{"gcc", "-std=c17", "-Wall", "-O0", "-o", "{bin}", "solution.c", "solution_test.c", "-lm"},
+		compile: []string{"gcc", "-std=c17", "-Wall", "-O0", "-o", "{bin}", "{sources}", "solution_test.c", "-lm"},
 		run:     []string{"{bin}"},
 	},
 	"go": {
@@ -88,20 +94,59 @@ var harnesses = map[string]harness{
 		display: displayGoTest,
 	},
 	"rust": {
-		inline: map[string]string{"fk_lib.rs": "#![allow(dead_code, unused_imports)]\n" +
-			"#[path = \"solution.rs\"] mod solution;\n" +
-			"pub use solution::*;\n" +
-			"#[cfg(test)] #[path = \"solution_test.rs\"] mod solution_test;\n"},
-		compile: []string{"rustc", "--edition=2021", "--test", "-o", "{bin}", "fk_lib.rs"},
-		run:     []string{"{bin}", "--test-threads=1"},
-		parse:   parseRustTest,
+		generate: rustCrateRoot,
+		compile:  []string{"rustc", "--edition=2021", "--test", "-o", "{bin}", "fk_lib.rs"},
+		run:      []string{"{bin}", "--test-threads=1"},
+		parse:    parseRustTest,
 	},
 }
 
-// Grade runs the lesson's tests against code. Article lessons pass as soon
+// rustCrateRoot declares every source file as a module of one crate, so
+// multi-file lessons work without the learner writing `mod` lines. Items in
+// solution.rs are re-exported at the root for the tests' `use super::*`.
+func rustCrateRoot(sources []string) map[string]string {
+	var b strings.Builder
+	b.WriteString("#![allow(dead_code, unused_imports)]\n")
+	for _, src := range sources {
+		if src == "solution.rs" {
+			b.WriteString("#[path = \"solution.rs\"] mod solution;\npub use solution::*;\n")
+			continue
+		}
+		fmt.Fprintf(&b, "#[path = %q] pub mod %s;\n", src, rustModName(src))
+	}
+	b.WriteString("#[cfg(test)] #[path = \"solution_test.rs\"] mod solution_test;\n")
+	return map[string]string{"fk_lib.rs": b.String()}
+}
+
+// rustModName turns "utils/math.rs" into "utils_math".
+func rustModName(path string) string {
+	name := []byte(strings.TrimSuffix(path, ".rs"))
+	for i, c := range name {
+		if !(c == '_' || c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z' || c >= '0' && c <= '9') {
+			name[i] = '_'
+		}
+	}
+	if len(name) > 0 && name[0] >= '0' && name[0] <= '9' {
+		return "m_" + string(name)
+	}
+	return string(name)
+}
+
+// Grade runs the lesson's tests against code (the learner's solution.<ext>). Article lessons pass as soon
 // as they're submitted (the learner marked them read); quizzes are graded
 // with GradeAnswer instead.
 func Grade(ctx context.Context, l *course.Lesson, code string, onOutput runner.OutputFunc) (Result, error) {
+	if l.Kind == course.KindCode {
+		lang, _ := runner.Lookup(l.Language)
+		return GradeFiles(ctx, l, map[string]string{"solution" + lang.Ext: code}, onOutput)
+	}
+	return GradeFiles(ctx, l, nil, onOutput)
+}
+
+// GradeFiles runs the lesson's tests against the learner's files (path →
+// content). Single-file lessons expect solution.<ext>; multi-file lessons
+// take edits to their starter files, ignoring read-only ones.
+func GradeFiles(ctx context.Context, l *course.Lesson, submitted map[string]string, onOutput runner.OutputFunc) (Result, error) {
 	if !l.Valid() {
 		return Result{}, fmt.Errorf("lesson %s/%s has problems: %s", l.CourseID, l.ID, strings.Join(l.Problems, "; "))
 	}
@@ -128,19 +173,34 @@ func Grade(ctx context.Context, l *course.Lesson, code string, onOutput runner.O
 		return finish(Result{Result: runner.Result{Phase: runner.PhaseCompile, ExitCode: -1, Error: lang.Requires + " is not installed or not on PATH"}})
 	}
 
+	files, err := workspaceFiles(l, lang, submitted)
+	if err != nil {
+		return Result{}, err
+	}
 	dir, err := os.MkdirTemp("", "fk-grade-*")
 	if err != nil {
 		return Result{}, fmt.Errorf("create workspace: %w", err)
 	}
 	defer os.RemoveAll(dir)
-	if err := setupWorkspace(dir, l, lang, h, code); err != nil {
+	sources, err := setupWorkspace(dir, l, lang, h, files)
+	if err != nil {
 		return Result{}, err
 	}
 	resultsPath := filepath.Join(dir, "fk_results.jsonl")
 	env := append([]string{"FK_RESULTS=" + resultsPath}, h.env...)
 
 	if len(h.compile) > 0 {
-		res := runner.Exec(ctx, runner.Command{Dir: dir, Argv: runner.ExpandBin(dir, h.compile), Env: env, Timeout: runner.CompileTimeout, Phase: runner.PhaseCompile}, onOutput)
+		var argv []string
+		for _, a := range runner.ExpandBin(dir, h.compile) {
+			if a == "{sources}" {
+				for _, src := range sources {
+					argv = append(argv, filepath.FromSlash(src))
+				}
+				continue
+			}
+			argv = append(argv, a)
+		}
+		res := runner.Exec(ctx, runner.Command{Dir: dir, Argv: argv, Env: env, Timeout: runner.CompileTimeout, Phase: runner.PhaseCompile}, onOutput)
 		if res.ExitCode != 0 || res.TimedOut || ctx.Err() != nil {
 			return finish(Result{Result: res, Tests: []TestResult{}})
 		}
@@ -213,45 +273,116 @@ func GradeAnswers(l *course.Lesson, answers []int) (Result, error) {
 // Validate grades the lesson's reference solution. Authors use this to prove
 // their tests pass before publishing.
 func Validate(ctx context.Context, l *course.Lesson, onOutput runner.OutputFunc) (Result, error) {
-	if l.ReferenceFile == "" {
+	lang, _ := runner.Lookup(l.Language)
+	files := map[string]string{}
+	if l.ReferenceFile != "" {
+		code, err := os.ReadFile(l.ReferenceFile)
+		if err != nil {
+			return Result{}, err
+		}
+		files["solution"+lang.Ext] = string(code)
+	}
+	if l.Capabilities.MultiFile && l.ReferenceDir != "" {
+		ref, err := course.ReadFileTree(l.ReferenceDir)
+		if err != nil {
+			return Result{}, fmt.Errorf("reference/: %w", err)
+		}
+		maps.Copy(files, ref)
+	}
+	if len(files) == 0 {
 		return Result{}, ErrNoReference
 	}
-	code, err := os.ReadFile(l.ReferenceFile)
-	if err != nil {
-		return Result{}, err
-	}
-	return Grade(ctx, l, string(code), onOutput)
+	return GradeFiles(ctx, l, files, onOutput)
 }
 
-func setupWorkspace(dir string, l *course.Lesson, lang runner.Language, h harness, code string) error {
+// GradeStarter grades the lesson's starting files unchanged. Authors use it
+// to confirm the tests don't already pass.
+func GradeStarter(ctx context.Context, l *course.Lesson, onOutput runner.OutputFunc) (Result, error) {
+	if l.Capabilities.MultiFile {
+		return GradeFiles(ctx, l, nil, onOutput)
+	}
+	return Grade(ctx, l, l.Starter, onOutput)
+}
+
+// ErrUnknownFile is returned for submitted files that aren't part of a
+// multi-file lesson.
+var ErrUnknownFile = errors.New("unknown file")
+
+// workspaceFiles returns the learner's files to grade.
+func workspaceFiles(l *course.Lesson, lang runner.Language, submitted map[string]string) (map[string]string, error) {
+	if !l.Capabilities.MultiFile {
+		code, ok := submitted["solution"+lang.Ext]
+		if !ok {
+			return nil, fmt.Errorf("the submission is missing solution%s", lang.Ext)
+		}
+		return map[string]string{"solution" + lang.Ext: code}, nil
+	}
+	files := make(map[string]string, len(l.Files))
+	readOnly := map[string]bool{}
+	for _, f := range l.Files {
+		files[f.Path] = f.Content
+		readOnly[f.Path] = f.ReadOnly
+	}
+	for path, content := range submitted {
+		if _, ok := files[path]; !ok {
+			return nil, fmt.Errorf("%w %q", ErrUnknownFile, path)
+		}
+		if !readOnly[path] { // locked files always come from the lesson
+			files[path] = content
+		}
+	}
+	return files, nil
+}
+
+// setupWorkspace writes the learner's files, the tests, and the harness into
+// dir. It returns the source files (by extension), sorted.
+func setupWorkspace(dir string, l *course.Lesson, lang runner.Language, h harness, files map[string]string) ([]string, error) {
 	write := func(name string, data []byte) error {
-		return os.WriteFile(filepath.Join(dir, name), data, 0o600)
+		p := filepath.Join(dir, filepath.FromSlash(name))
+		if err := os.MkdirAll(filepath.Dir(p), 0o700); err != nil {
+			return err
+		}
+		return os.WriteFile(p, data, 0o600)
 	}
-	if err := write("solution"+lang.Ext, []byte(code)); err != nil {
-		return err
+	var sources []string
+	for name, content := range files {
+		if !course.ValidFilePath(name) || course.ReservedFilePath(name) {
+			return nil, fmt.Errorf("invalid file name %q", name)
+		}
+		if err := write(name, []byte(content)); err != nil {
+			return nil, err
+		}
+		if strings.HasSuffix(name, lang.Ext) {
+			sources = append(sources, name)
+		}
 	}
+	slices.Sort(sources)
 	tests, err := os.ReadFile(l.TestFile)
 	if err != nil {
-		return fmt.Errorf("read tests: %w", err)
+		return nil, fmt.Errorf("read tests: %w", err)
 	}
 	if err := write("solution_test"+lang.Ext, tests); err != nil {
-		return err
+		return nil, err
 	}
 	for name, src := range h.files {
 		data, err := harnessFS.ReadFile(src)
 		if err != nil {
-			return err
+			return nil, err
 		}
 		if err := write(name, data); err != nil {
-			return err
+			return nil, err
 		}
 	}
-	for name, data := range h.inline {
+	generated := maps.Clone(h.inline)
+	if h.generate != nil {
+		generated = h.generate(sources)
+	}
+	for name, data := range generated {
 		if err := write(name, []byte(data)); err != nil {
-			return err
+			return nil, err
 		}
 	}
-	return nil
+	return sources, nil
 }
 
 // readResults reads harness records; a later record for the same test

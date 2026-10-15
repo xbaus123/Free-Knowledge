@@ -2,7 +2,7 @@
 // `npm run dev:web`.
 import { isTauri } from "@tauri-apps/api/core";
 import { ask, message, open, save } from "@tauri-apps/plugin-dialog";
-import { EngineError, request, type GradeResult, type SimResult } from "./engine";
+import { EngineError, request, type Capabilities, type GradeResult, type SimResult } from "./engine";
 
 export interface CourseMeta {
   title: string;
@@ -30,6 +30,11 @@ export interface LessonSource {
   /** Code: reference solution. System design: solution diagram JSON. */
   reference: string;
   questions?: QuestionSource[];
+  capabilities: Capabilities;
+  /** Multi-file code lessons: starting files, path → content. */
+  starterFiles?: Record<string, string>;
+  /** Multi-file code lessons: your solution versions of the editable files. */
+  referenceFiles?: Record<string, string>;
 }
 
 /** A quiz question including its answer, as authors see it. */

@@ -22,5 +22,19 @@ monaco.editor.defineTheme("freeknowledge", {
   colors: { "editor.background": "#0b0b0e", "editor.lineHighlightBackground": "#18181b" },
 });
 
+const EXTENSION_LANGUAGES: Record<string, string> = {
+  py: "python",
+  js: "javascript",
+  mjs: "javascript",
+  go: "go",
+  c: "c",
+  h: "c",
+  rs: "rust",
+  md: "markdown",
+};
+
+/** Picks an editor language from a file name ("plaintext" if unknown). */
+export const languageForPath = (path: string) => EXTENSION_LANGUAGES[path.split(".").pop()?.toLowerCase() ?? ""] ?? "plaintext";
+
 /** Maps engine language ids to Monaco language ids. */
 export const monacoLanguage = (id: string) => ({ javascript: "javascript", c: "c" })[id] ?? id;

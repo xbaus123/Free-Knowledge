@@ -20,6 +20,16 @@
 //	config.json:   {"type": "quiz", "questions": [{"prompt": "…", "options": ["…", "…"]}]}
 //	solution.json: {"answers": [{"correct_index": 0, "explanation": "…"}]}
 //
+// Any lesson may enable optional capabilities in config.json:
+//
+//	"capabilities": {"scratchpad": true, "multi_file": true, "telemetry": true,
+//	                 "read_only_files": ["helpers.py"]}
+//
+// A multi-file code lesson keeps its starting files in starter/ (any number,
+// in subfolders if needed) and may overlay them with reference/ for
+// validation. Files in read_only_files are shown locked, and grading always
+// uses the lesson's copy of them.
+//
 // A single question may instead use top-level "options" with the question
 // in lesson.md, and solution.json {"correct_index": 0, "explanation": "…"}.
 //
@@ -81,6 +91,92 @@ type lessonConfig struct {
 	MaxLatencyMs int            `json:"maxLatencyMs"` // system design: p99 latency target
 	Questions    []QuizQuestion `json:"questions"`    // quiz
 	Options      []string       `json:"options"`      // quiz with one question (short form)
+	Capabilities Capabilities   `json:"capabilities"`
+}
+
+// Capabilities are optional per-lesson features.
+type Capabilities struct {
+	// Scratchpad offers a free-form code runner beside the lesson.
+	Scratchpad bool `json:"scratchpad"`
+	// MultiFile gives code lessons a file tree instead of a single file.
+	MultiFile bool `json:"multi_file"`
+	// Telemetry records local learning metrics (time, attempts, error kinds).
+	Telemetry bool `json:"telemetry"`
+	// ReadOnlyFiles are starter files learners can see but not edit.
+	ReadOnlyFiles []string `json:"read_only_files,omitempty"`
+}
+
+// LessonFile is one file of a multi-file lesson's starting workspace.
+type LessonFile struct {
+	Path     string `json:"path"`
+	Content  string `json:"content"`
+	ReadOnly bool   `json:"readOnly,omitempty"`
+}
+
+// Limits for multi-file lessons.
+const (
+	MaxLessonFiles     = 100
+	MaxLessonFileBytes = 1 << 20
+	maxPathDepth       = 4
+)
+
+var pathSegment = regexp.MustCompile(`^[A-Za-z0-9_][A-Za-z0-9._-]{0,63}$`)
+
+// ValidFilePath reports whether p is a safe relative path for a lesson file:
+// slash-separated, no "..", at most a few folders deep.
+func ValidFilePath(p string) bool {
+	parts := strings.Split(p, "/")
+	if len(parts) > maxPathDepth || len(p) > 200 {
+		return false
+	}
+	for _, seg := range parts {
+		if !pathSegment.MatchString(seg) || strings.Contains(seg, "..") {
+			return false
+		}
+	}
+	return true
+}
+
+// ReservedFilePath reports names the grader writes itself (tests and
+// harness files), which lesson files must not use.
+func ReservedFilePath(p string) bool {
+	base := filepath.Base(p)
+	return p == "go.mod" || p == "package.json" || strings.HasPrefix(base, "solution_test.") || strings.HasPrefix(base, "fk_")
+}
+
+// ReadFileTree reads every regular file under root as a path→content map.
+func ReadFileTree(root string) (map[string]string, error) {
+	files := map[string]string{}
+	err := filepath.WalkDir(root, func(p string, d os.DirEntry, err error) error {
+		if err != nil {
+			return err
+		}
+		if d.IsDir() || !d.Type().IsRegular() {
+			return nil
+		}
+		rel, _ := filepath.Rel(root, p)
+		rel = filepath.ToSlash(rel)
+		if !ValidFilePath(rel) {
+			return fmt.Errorf("invalid file name %q", rel)
+		}
+		if len(files) >= MaxLessonFiles {
+			return fmt.Errorf("more than %d files", MaxLessonFiles)
+		}
+		info, err := d.Info()
+		if err != nil {
+			return err
+		}
+		if info.Size() > MaxLessonFileBytes {
+			return fmt.Errorf("%s is larger than 1 MB", rel)
+		}
+		b, err := os.ReadFile(p)
+		if err != nil {
+			return err
+		}
+		files[rel] = string(b)
+		return nil
+	})
+	return files, err
 }
 
 // QuizQuestion is the public part of a quiz question; answers live in
@@ -129,15 +225,20 @@ type LessonSummary struct {
 // files are paths only and are never sent to the frontend.
 type Lesson struct {
 	LessonSummary
-	CourseID      string         `json:"courseId"`
-	Markdown      string         `json:"markdown"`
-	Starter       string         `json:"starter"` // code, or diagram JSON for system design
-	TimeoutMs     int            `json:"timeoutMs"`
-	MaxLatencyMs  int            `json:"maxLatencyMs,omitempty"`
-	Questions     []QuizQuestion `json:"questions,omitempty"`
-	Dir           string         `json:"-"`
-	TestFile      string         `json:"-"`
-	ReferenceFile string         `json:"-"`
+	CourseID     string         `json:"courseId"`
+	Markdown     string         `json:"markdown"`
+	Starter      string         `json:"starter"` // code, or diagram JSON for system design
+	TimeoutMs    int            `json:"timeoutMs"`
+	MaxLatencyMs int            `json:"maxLatencyMs,omitempty"`
+	Questions    []QuizQuestion `json:"questions,omitempty"`
+	Capabilities Capabilities   `json:"capabilities"`
+	// Files is the starting workspace of a multi-file code lesson.
+	Files []LessonFile `json:"files,omitempty"`
+	Dir   string       `json:"-"`
+	// ReferenceDir overlays Files for validation (multi-file lessons).
+	ReferenceDir  string `json:"-"`
+	TestFile      string `json:"-"`
+	ReferenceFile string `json:"-"`
 }
 
 // Valid reports whether the lesson can be graded.
@@ -255,6 +356,7 @@ func loadLesson(c *Course, id string) (*Lesson, error) {
 			l.Problems = append(l.Problems, "config.json: "+err.Error())
 		} else {
 			l.Title, l.TimeoutMs, l.MaxLatencyMs, l.Questions = cfg.Title, cfg.TimeoutMs, cfg.MaxLatencyMs, cfg.Questions
+			l.Capabilities = cfg.Capabilities
 			if len(l.Questions) == 0 && len(cfg.Options) > 0 {
 				l.Questions = []QuizQuestion{{Options: cfg.Options}}
 			}
@@ -335,6 +437,9 @@ func loadLesson(c *Course, id string) (*Lesson, error) {
 	if b, err := os.ReadFile(filepath.Join(dir, "starter"+lang.Ext)); err == nil {
 		l.Starter = string(b)
 	}
+	if l.Capabilities.MultiFile {
+		loadLessonFiles(l, dir, lang)
+	}
 	if p := filepath.Join(dir, "solution_test"+lang.Ext); fileExists(p) {
 		l.TestFile = p
 	} else {
@@ -344,6 +449,43 @@ func loadLesson(c *Course, id string) (*Lesson, error) {
 		l.ReferenceFile = p
 	}
 	return l, nil
+}
+
+// loadLessonFiles fills Files for a multi-file lesson from starter/, or
+// from the single starter file if there's no starter/ folder yet.
+func loadLessonFiles(l *Lesson, dir string, lang runner.Language) {
+	files := map[string]string{}
+	if st, err := os.Stat(filepath.Join(dir, "starter")); err == nil && st.IsDir() {
+		var err error
+		if files, err = ReadFileTree(filepath.Join(dir, "starter")); err != nil {
+			l.Problems = append(l.Problems, "starter/: "+err.Error())
+			return
+		}
+	} else {
+		files["solution"+lang.Ext] = l.Starter
+	}
+	if len(files) == 0 {
+		l.Problems = append(l.Problems, "starter/ has no files")
+	}
+	for _, ro := range l.Capabilities.ReadOnlyFiles {
+		if _, ok := files[ro]; !ok {
+			l.Problems = append(l.Problems, fmt.Sprintf("read-only file %q isn't in the starter files", ro))
+		}
+	}
+	paths := make([]string, 0, len(files))
+	for p := range files {
+		if ReservedFilePath(p) {
+			l.Problems = append(l.Problems, fmt.Sprintf("starter file name %q is reserved for the grader", p))
+		}
+		paths = append(paths, p)
+	}
+	slices.Sort(paths)
+	for _, p := range paths {
+		l.Files = append(l.Files, LessonFile{Path: p, Content: files[p], ReadOnly: slices.Contains(l.Capabilities.ReadOnlyFiles, p)})
+	}
+	if st, err := os.Stat(filepath.Join(dir, "reference")); err == nil && st.IsDir() {
+		l.ReferenceDir = filepath.Join(dir, "reference")
+	}
 }
 
 // ReadQuizAnswers reads a quiz's solution.json, in either form:

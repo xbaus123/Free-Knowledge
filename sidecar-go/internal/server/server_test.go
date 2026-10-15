@@ -395,3 +395,50 @@ func TestQuizAndArticleSubmit(t *testing.T) {
 		t.Fatalf("quiz progress: %+v %v", p, err)
 	}
 }
+
+func TestTelemetryEndpoints(t *testing.T) {
+	ts, _ := newTestServer(t)
+	auth := map[string]string{"Authorization": "Bearer " + testToken}
+	session := `{"sessionId":"abcdef12","startedAt":"2026-10-15T10:00:00Z","readingMs":1000,"typingMs":500,"keystrokes":9,"submissions":1,"outcomes":{"failed_assertion":1}}`
+
+	// Bundled lessons don't enable telemetry, so sessions are refused.
+	if r := do(t, ts, "POST", "/courses/getting-started/lessons/01-python-greet/telemetry", session, auth); r.StatusCode != 403 {
+		t.Fatalf("telemetry off: %d", r.StatusCode)
+	}
+
+	// A user course with telemetry on accepts them.
+	r := do(t, ts, "POST", "/studio/courses", `{"title":"Tracked"}`, auth)
+	var c struct{ ID string }
+	json.NewDecoder(r.Body).Decode(&c)
+	r = do(t, ts, "POST", "/studio/courses/"+c.ID+"/lessons", `{"title":"One","type":"article"}`, auth)
+	var l struct{ ID string }
+	json.NewDecoder(r.Body).Decode(&l)
+	base := "/studio/courses/" + c.ID + "/lessons/" + l.ID
+	r = do(t, ts, "GET", base, "", auth)
+	var src map[string]any
+	json.NewDecoder(r.Body).Decode(&src)
+	src["capabilities"] = map[string]any{"telemetry": true}
+	b, _ := json.Marshal(src)
+	if r := do(t, ts, "PUT", base, string(b), auth); r.StatusCode != 204 {
+		t.Fatalf("enable telemetry: %d", r.StatusCode)
+	}
+
+	lessonURL := "/courses/" + c.ID + "/lessons/" + l.ID + "/telemetry"
+	if r := do(t, ts, "POST", lessonURL, session, auth); r.StatusCode != 204 {
+		t.Fatalf("save session: %d", r.StatusCode)
+	}
+	if r := do(t, ts, "POST", lessonURL, `{"sessionId":"abcdef12","startedAt":"2026-10-15T10:00:00Z","outcomes":{"bogus":1}}`, auth); r.StatusCode != 400 {
+		t.Fatalf("bad session: %d", r.StatusCode)
+	}
+	var in struct {
+		Sessions, Submissions int
+		Outcomes              map[string]int
+	}
+	r = do(t, ts, "GET", lessonURL, "", auth)
+	if err := json.NewDecoder(r.Body).Decode(&in); err != nil || in.Sessions != 1 || in.Outcomes["failed_assertion"] != 1 {
+		t.Fatalf("insights: %+v %v", in, err)
+	}
+	if r := do(t, ts, "DELETE", lessonURL, "", auth); r.StatusCode != 204 {
+		t.Fatalf("delete: %d", r.StatusCode)
+	}
+}

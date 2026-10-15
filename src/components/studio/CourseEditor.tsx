@@ -5,6 +5,7 @@ import { CodeEditor } from "../CodeEditor";
 import { SystemCanvas } from "../design/SystemCanvas";
 import { Markdown } from "../Markdown";
 import { TestList } from "../OutputPanel";
+import { MultiFileEditor } from "./MultiFileEditor";
 import { QuizBuilder } from "./QuizBuilder";
 import { Field, inputClass } from "./StudioHome";
 import { extension, LANGUAGES } from "./languages";
@@ -71,6 +72,7 @@ export function CourseEditor({ courseId, initialLessonId, onBack, onPreview }: P
   const [error, setError] = useState<string>();
   const [notice, setNotice] = useState<string>();
   const [adding, setAdding] = useState(false);
+  const [showCaps, setShowCaps] = useState(false);
 
   // Latest draft for save-before-navigate/check/export. Updated synchronously
   // in `update`, since a click can land before React re-renders after typing.
@@ -247,6 +249,27 @@ export function CourseEditor({ courseId, initialLessonId, onBack, onPreview }: P
     setDraft(draftRef.current);
   };
   const ext = extension(draft?.language);
+  const caps: engine.Capabilities = draft?.capabilities ?? { scratchpad: false, multi_file: false, telemetry: false };
+  const multi = draft?.type === "code" && caps.multi_file;
+
+  const setCapability = (key: "scratchpad" | "multi_file" | "telemetry", on: boolean) => {
+    if (!draft) return;
+    const solution = `solution.${ext}`;
+    const patch: Partial<studio.LessonSource> = { capabilities: { ...caps, [key]: on } };
+    if (key === "multi_file" && on && !Object.keys(draft.starterFiles ?? {}).length) {
+      // Start the file tree from the single-file lesson.
+      patch.starterFiles = { [solution]: draft.starter };
+      patch.referenceFiles = { [solution]: draft.reference };
+    }
+    if (key === "multi_file" && !on) {
+      // Back to one file: keep the solution file's contents.
+      patch.starter = draft.starterFiles?.[solution] ?? draft.starter;
+      patch.reference = draft.referenceFiles?.[solution] ?? draft.reference;
+      patch.capabilities = { ...caps, multi_file: false, read_only_files: [] };
+    }
+    update(patch);
+  };
+  const enabledCaps = [caps.scratchpad && "Scratchpad", multi && "Multi-file", caps.telemetry && "Insights"].filter(Boolean);
   const tabs = draft ? tabsFor(draft.type) : [];
   const activeTab = tabs.some((t) => t.id === tab) ? tab : "instructions";
 
@@ -339,7 +362,7 @@ export function CourseEditor({ courseId, initialLessonId, onBack, onPreview }: P
                     </span>
                     <span className="truncate">{l.title}</span>
                   </button>
-                  <span className="hidden shrink-0 group-hover:flex">
+                  <span className="flex shrink-0 opacity-0 group-hover:opacity-100 focus-within:opacity-100">
                     <IconButton label="Move up" disabled={i === 0 || !!busy} onClick={() => move(l.id, -1)}>
                       ↑
                     </IconButton>
@@ -447,6 +470,45 @@ export function CourseEditor({ courseId, initialLessonId, onBack, onPreview }: P
                 </div>
               </div>
 
+              <div className="shrink-0 border-b border-zinc-800">
+                <button
+                  onClick={() => setShowCaps((v) => !v)}
+                  aria-expanded={showCaps}
+                  className="flex w-full items-center gap-2 px-4 py-2 text-left text-xs text-zinc-400 hover:bg-zinc-900/60"
+                >
+                  <span className="w-3 text-[10px]">{showCaps ? "▾" : "▸"}</span>
+                  <span className="font-medium text-zinc-300">Lesson capabilities</span>
+                  <span className="text-zinc-500">{enabledCaps.length ? enabledCaps.join(" · ") : "None enabled"}</span>
+                </button>
+                {showCaps && (
+                  <div className="grid gap-3 px-4 pb-4 sm:grid-cols-3">
+                    <CapabilityToggle
+                      label="Scratchpad access"
+                      description="Learners can open a free-form code runner from the lesson. It isn't graded."
+                      checked={caps.scratchpad}
+                      onChange={(on) => setCapability("scratchpad", on)}
+                    />
+                    <CapabilityToggle
+                      label="Multi-file workspace"
+                      description={
+                        draft.type === "code"
+                          ? "A file tree and tabs instead of one file. Add files and lock helpers in the Starter tab."
+                          : "Only available for code exercises."
+                      }
+                      checked={multi}
+                      disabled={draft.type !== "code"}
+                      onChange={(on) => setCapability("multi_file", on)}
+                    />
+                    <CapabilityToggle
+                      label="Telemetry & learning insights"
+                      description="Records reading and typing time, attempts, and error types on the learner's device. Learners can turn it off."
+                      checked={caps.telemetry}
+                      onChange={(on) => setCapability("telemetry", on)}
+                    />
+                  </div>
+                )}
+              </div>
+
               <div className="flex shrink-0 items-center gap-1 border-b border-zinc-800 px-2 text-xs">
                 {tabs.map((t) => (
                   <button
@@ -455,14 +517,29 @@ export function CourseEditor({ courseId, initialLessonId, onBack, onPreview }: P
                     className={`border-b-2 px-3 py-2 ${activeTab === t.id ? "border-indigo-500 text-zinc-100" : "border-transparent text-zinc-400 hover:text-zinc-200"}`}
                   >
                     {t.label}
-                    {t.code && <span className="ml-1 font-mono text-zinc-500">.{ext}</span>}
+                    {t.code && <span className="ml-1 font-mono text-zinc-500">{multi && t.id !== "tests" ? "files" : `.${ext}`}</span>}
                   </button>
                 ))}
                 <span className="ml-auto truncate pr-2 text-zinc-500">{tabs.find((t) => t.id === activeTab)?.hint}</span>
               </div>
 
               <div className="flex min-h-0 flex-1">
-                {activeTab === "questions" ? (
+                {multi && (activeTab === "starter" || activeTab === "reference") ? (
+                  <MultiFileEditor
+                    key={`${draft.id}/${activeTab}`}
+                    mode={activeTab}
+                    idPrefix={`${courseId}/${draft.id}`}
+                    starterFiles={draft.starterFiles ?? {}}
+                    referenceFiles={draft.referenceFiles ?? {}}
+                    readOnly={caps.read_only_files ?? []}
+                    ext={ext}
+                    onChange={({ starterFiles, referenceFiles, readOnly }) =>
+                      update({ starterFiles, referenceFiles, capabilities: { ...caps, read_only_files: readOnly } })
+                    }
+                    onSave={save}
+                    onSubmit={runCheck}
+                  />
+                ) : activeTab === "questions" ? (
                   <div className="w-full">
                     <QuizBuilder questions={draft.questions ?? []} onChange={(questions) => update({ questions })} />
                   </div>
@@ -569,6 +646,42 @@ function SimSummary({ title, result, expectPass }: { title: string; result: engi
         p99 {result.metrics.p99Ms} ms · {result.metrics.completed.toLocaleString()}/{result.metrics.requests.toLocaleString()} answered
       </p>
     </div>
+  );
+}
+
+function CapabilityToggle({
+  label,
+  description,
+  checked,
+  disabled,
+  onChange,
+}: {
+  label: string;
+  description: string;
+  checked: boolean;
+  disabled?: boolean;
+  onChange: (on: boolean) => void;
+}) {
+  return (
+    <label className={`flex gap-3 rounded-lg border border-zinc-800 bg-zinc-900/40 p-3 ${disabled ? "opacity-50" : "cursor-pointer hover:border-zinc-700"}`}>
+      <span className="relative mt-0.5 inline-flex shrink-0">
+        <input
+          type="checkbox"
+          role="switch"
+          aria-label={label}
+          checked={checked}
+          disabled={disabled}
+          onChange={(e) => onChange(e.target.checked)}
+          className="peer sr-only"
+        />
+        <span className="h-5 w-9 rounded-full bg-zinc-700 transition-colors peer-checked:bg-indigo-600 peer-focus-visible:ring-2 peer-focus-visible:ring-indigo-400" />
+        <span className="absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white transition-transform peer-checked:translate-x-4" />
+      </span>
+      <span>
+        <span className="block text-sm font-medium text-zinc-200">{label}</span>
+        <span className="block text-xs text-zinc-500">{description}</span>
+      </span>
+    </label>
   );
 }
 

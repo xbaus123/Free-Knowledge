@@ -7,10 +7,12 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"maps"
 	"os"
 	"path"
 	"path/filepath"
 	"regexp"
+	"slices"
 	"strings"
 	"time"
 
@@ -83,7 +85,7 @@ func (s *Studio) CheckLesson(ctx context.Context, courseID, lessonID string) (Le
 	case l.Kind != course.KindCode:
 		d.OK = true
 		return d, nil
-	case l.ReferenceFile == "":
+	case l.ReferenceFile == "" && l.ReferenceDir == "":
 		d.Problem = "add a reference solution so the tests can be checked"
 		return d, nil
 	}
@@ -99,7 +101,7 @@ func (s *Studio) CheckLesson(ctx context.Context, courseID, lessonID string) (Le
 	}
 	d.OK = true
 
-	starter, err := grader.Grade(ctx, l, l.Starter, nil)
+	starter, err := grader.GradeStarter(ctx, l, nil)
 	if err != nil {
 		return d, err
 	}
@@ -236,6 +238,18 @@ func writeDojo(w io.Writer, c *course.Course, manifest dojoManifest) error {
 			return err
 		}
 		for _, e := range entries {
+			if e.IsDir() && (e.Name() == "starter" || e.Name() == "reference") {
+				tree, err := course.ReadFileTree(filepath.Join(c.Dir, l.ID, e.Name()))
+				if err != nil {
+					return fmt.Errorf("%s/%s: %w", l.ID, e.Name(), err)
+				}
+				for _, p := range slices.Sorted(maps.Keys(tree)) {
+					if err := add(l.ID+"/"+e.Name()+"/"+p, []byte(tree[p])); err != nil {
+						return err
+					}
+				}
+				continue
+			}
 			if !e.Type().IsRegular() || !allowedLessonFile(e.Name()) {
 				continue
 			}
@@ -402,7 +416,10 @@ func checkEntryName(name string) error {
 			return bad
 		}
 	default:
-		return bad
+		// Multi-file lessons: <lesson>/starter/... and <lesson>/reference/...
+		if !course.ValidID(parts[0]) || (parts[1] != "starter" && parts[1] != "reference") || !course.ValidFilePath(strings.Join(parts[2:], "/")) {
+			return bad
+		}
 	}
 	return nil
 }

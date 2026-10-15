@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"io/fs"
+	"maps"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -60,6 +61,13 @@ type LessonSource struct {
 	Reference string `json:"reference"`
 	// Quiz lessons.
 	Questions []QuestionSource `json:"questions,omitempty"`
+	// Optional features; see course.Capabilities.
+	Capabilities course.Capabilities `json:"capabilities"`
+	// Multi-file code lessons: the starting files (path → content) and the
+	// reference versions of the editable ones. Starter and Reference are
+	// unused for these.
+	StarterFiles   map[string]string `json:"starterFiles,omitempty"`
+	ReferenceFiles map[string]string `json:"referenceFiles,omitempty"`
 }
 
 // QuestionSource is a quiz question with its (hidden) answer.
@@ -262,12 +270,24 @@ func (s *Studio) Lesson(courseID, lessonID string) (LessonSource, error) {
 		return LessonSource{}, err
 	}
 	src := LessonSource{ID: l.ID, Type: l.Kind, Title: l.Title, Language: l.Language, TimeoutMs: l.TimeoutMs,
-		MaxLatencyMs: l.MaxLatencyMs, Markdown: l.Markdown, Starter: l.Starter}
+		MaxLatencyMs: l.MaxLatencyMs, Markdown: l.Markdown, Starter: l.Starter, Capabilities: l.Capabilities}
 	switch l.Kind {
 	case course.KindCode:
 		if lang, ok := runner.Lookup(l.Language); ok {
 			src.Tests = readOptional(filepath.Join(l.Dir, "solution_test"+lang.Ext))
 			src.Reference = readOptional(filepath.Join(l.Dir, "reference"+lang.Ext))
+			if l.Capabilities.MultiFile {
+				src.StarterFiles = map[string]string{}
+				for _, f := range l.Files {
+					src.StarterFiles[f.Path] = f.Content
+				}
+				src.ReferenceFiles = map[string]string{}
+				if l.ReferenceDir != "" {
+					src.ReferenceFiles, _ = course.ReadFileTree(l.ReferenceDir)
+				} else if src.Reference != "" {
+					src.ReferenceFiles["solution"+lang.Ext] = src.Reference
+				}
+			}
 		}
 	case course.KindSystemDesign:
 		src.Reference = readOptional(filepath.Join(l.Dir, "solution.json"))
@@ -360,10 +380,24 @@ func (s *Studio) SaveLesson(courseID string, src LessonSource) error {
 	if strings.TrimSpace(src.Title) == "" {
 		return errors.New("title is required")
 	}
+	if src.Capabilities.MultiFile && l.Kind != course.KindCode {
+		return errors.New("only code lessons can use multiple files")
+	}
 	switch l.Kind {
 	case course.KindCode:
-		if _, ok := runner.Lookup(src.Language); !ok {
+		lang, ok := runner.Lookup(src.Language)
+		if !ok {
 			return fmt.Errorf("unsupported language %q", src.Language)
+		}
+		if src.Capabilities.MultiFile {
+			// Turning multi-file on: start from the single-file lesson.
+			if len(src.StarterFiles) == 0 {
+				src.StarterFiles = map[string]string{"solution" + lang.Ext: src.Starter}
+				src.ReferenceFiles = map[string]string{"solution" + lang.Ext: src.Reference}
+			}
+			if err := validateFiles(src.StarterFiles, src.ReferenceFiles, src.Capabilities.ReadOnlyFiles); err != nil {
+				return err
+			}
 		}
 		if src.TimeoutMs < 0 || src.TimeoutMs > int(runner.MaxRunTimeout.Milliseconds()) {
 			return fmt.Errorf("time limit must be between 0 and %d ms", runner.MaxRunTimeout.Milliseconds())
@@ -384,6 +418,37 @@ func (s *Studio) SaveLesson(courseID string, src LessonSource) error {
 		return fmt.Errorf("%s lessons can't be edited in the Studio", l.Kind)
 	}
 	return s.writeLesson(c.Dir, l.Kind, src, l.Language)
+}
+
+// validateFiles checks a multi-file lesson's starter and reference files.
+func validateFiles(starter, reference map[string]string, readOnly []string) error {
+	if len(starter) == 0 {
+		return errors.New("a multi-file lesson needs at least one starter file")
+	}
+	if len(starter) > course.MaxLessonFiles {
+		return fmt.Errorf("a lesson can have at most %d files", course.MaxLessonFiles)
+	}
+	for path, content := range starter {
+		switch {
+		case !course.ValidFilePath(path):
+			return fmt.Errorf("%q isn't a valid file name (letters, digits, . _ -, and / for folders)", path)
+		case course.ReservedFilePath(path):
+			return fmt.Errorf("%q is reserved for the grader", path)
+		case len(content) > course.MaxLessonFileBytes:
+			return fmt.Errorf("%s is larger than 1 MB", path)
+		}
+	}
+	for path := range reference {
+		if _, ok := starter[path]; !ok {
+			return fmt.Errorf("reference file %q isn't one of the starter files", path)
+		}
+	}
+	for _, path := range readOnly {
+		if _, ok := starter[path]; !ok {
+			return fmt.Errorf("read-only file %q isn't one of the starter files", path)
+		}
+	}
+	return nil
 }
 
 func validateQuestions(qs []QuestionSource) error {
@@ -414,12 +479,23 @@ type lessonConfig struct {
 	TimeoutMs    int                   `json:"timeoutMs,omitempty"`
 	MaxLatencyMs int                   `json:"maxLatencyMs,omitempty"`
 	Questions    []course.QuizQuestion `json:"questions,omitempty"`
+	Capabilities *course.Capabilities  `json:"capabilities,omitempty"`
 }
 
 func (s *Studio) writeLesson(courseDir, kind string, src LessonSource, oldLanguage string) error {
 	dir := filepath.Join(courseDir, src.ID)
 	cfg := lessonConfig{Title: src.Title}
 	files := map[string][]byte{"lesson.md": []byte(src.Markdown)}
+
+	caps := src.Capabilities
+	if !caps.MultiFile {
+		caps.ReadOnlyFiles = nil
+	} else {
+		caps.ReadOnlyFiles = slices.Sorted(slices.Values(caps.ReadOnlyFiles))
+	}
+	if caps.Scratchpad || caps.MultiFile || caps.Telemetry {
+		cfg.Capabilities = &caps
+	}
 
 	switch kind {
 	case course.KindCode:
@@ -431,9 +507,28 @@ func (s *Studio) writeLesson(courseDir, kind string, src LessonSource, oldLangua
 			}
 		}
 		cfg.Language, cfg.TimeoutMs = src.Language, src.TimeoutMs
-		files["starter"+lang.Ext] = []byte(src.Starter)
 		files["solution_test"+lang.Ext] = []byte(src.Tests)
-		files["reference"+lang.Ext] = []byte(src.Reference)
+		if caps.MultiFile {
+			// Editable files only: grading always uses the lesson's copy of
+			// read-only ones.
+			ref := maps.Clone(src.ReferenceFiles)
+			for _, p := range caps.ReadOnlyFiles {
+				delete(ref, p)
+			}
+			if err := replaceDir(filepath.Join(dir, "starter"), src.StarterFiles); err != nil {
+				return err
+			}
+			if err := replaceDir(filepath.Join(dir, "reference"), ref); err != nil {
+				return err
+			}
+			os.Remove(filepath.Join(dir, "starter"+lang.Ext))
+			os.Remove(filepath.Join(dir, "reference"+lang.Ext))
+		} else {
+			files["starter"+lang.Ext] = []byte(src.Starter)
+			files["reference"+lang.Ext] = []byte(src.Reference)
+			os.RemoveAll(filepath.Join(dir, "starter"))
+			os.RemoveAll(filepath.Join(dir, "reference"))
+		}
 	case course.KindArticle:
 		cfg.Type = kind
 	case course.KindQuiz:
@@ -463,6 +558,32 @@ func (s *Studio) writeLesson(courseDir, kind string, src LessonSource, oldLangua
 		}
 	}
 	return nil
+}
+
+// replaceDir makes dir contain exactly files (path → content), building the
+// new contents beside it first so a failure leaves the old folder intact.
+func replaceDir(dir string, files map[string]string) error {
+	tmp := dir + ".tmp-new"
+	os.RemoveAll(tmp)
+	for path, content := range files {
+		p := filepath.Join(tmp, filepath.FromSlash(path))
+		if err := os.MkdirAll(filepath.Dir(p), 0o755); err != nil {
+			os.RemoveAll(tmp)
+			return err
+		}
+		if err := os.WriteFile(p, []byte(content), 0o644); err != nil {
+			os.RemoveAll(tmp)
+			return err
+		}
+	}
+	if err := os.MkdirAll(tmp, 0o755); err != nil {
+		return err
+	}
+	if err := os.RemoveAll(dir); err != nil {
+		os.RemoveAll(tmp)
+		return err
+	}
+	return os.Rename(tmp, dir)
 }
 
 // prettyJSON indents diagram JSON so course files diff well in git.

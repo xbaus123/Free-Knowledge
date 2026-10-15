@@ -1,0 +1,10 @@
+{
+  "title": "Python: Splitting Code Across Files",
+  "language": "python",
+  "capabilities": {
+    "scratchpad": true,
+    "multi_file": true,
+    "telemetry": true,
+    "read_only_files": ["text_utils.py"]
+  }
+}
