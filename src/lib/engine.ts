@@ -1,6 +1,6 @@
 // Client for the Go engine sidecar. Connection details (including the
 // per-launch auth token) come from the Rust side via `engine_info`.
-import { invoke } from "@tauri-apps/api/core";
+import { invoke, isTauri } from "@tauri-apps/api/core";
 
 export type Phase = "compile" | "run";
 
@@ -77,6 +77,24 @@ export interface GradeResult extends RunResult {
   tests: TestResult[];
 }
 
+export interface LessonProgress {
+  completed: boolean;
+  completedAt?: string;
+  attempts: number;
+  hasCode: boolean;
+}
+
+export interface LessonProgressDetail extends LessonProgress {
+  code: string | null;
+  codeUpdatedAt?: string;
+}
+
+export interface Progress {
+  stats: { currentStreak: number; completedLessons: number };
+  /** courseId → lessonId → progress; lessons with no activity are absent. */
+  courses: Record<string, Record<string, LessonProgress>>;
+}
+
 interface EngineInfo {
   baseUrl: string;
   wsUrl: string;
@@ -85,6 +103,10 @@ interface EngineInfo {
 
 let infoPromise: Promise<EngineInfo> | undefined;
 function engineInfo(): Promise<EngineInfo> {
+  // `npm run dev:web` runs the UI in a plain browser against `npm run dev:engine`.
+  const devToken = import.meta.env.DEV && !isTauri() ? import.meta.env.VITE_FK_ENGINE_TOKEN : undefined;
+  if (devToken) return Promise.resolve({ baseUrl: "http://127.0.0.1:14200", wsUrl: "ws://127.0.0.1:14200", token: devToken });
+
   infoPromise ??= invoke<EngineInfo>("engine_info").catch((err) => {
     infoPromise = undefined;
     throw err;
@@ -98,6 +120,7 @@ async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
     ...init,
     headers: { ...init.headers, Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
   });
+  if (res.status === 204) return undefined as T;
   const body = await res.json();
   if (!res.ok) throw new Error(body.error ?? `engine returned ${res.status}`);
   return body as T;
@@ -115,6 +138,14 @@ export const course = (id: string) => request<Course>(`/courses/${encodeURICompo
 export const lesson = (courseId: string, lessonId: string) => request<Lesson>(lessonPath(courseId, lessonId));
 export const submit = (courseId: string, lessonId: string, code: string) =>
   request<GradeResult>(lessonPath(courseId, lessonId) + "/submit", { method: "POST", body: JSON.stringify({ code }) });
+
+export const progress = () => request<Progress>("/progress");
+export const lessonProgress = (courseId: string, lessonId: string) =>
+  request<LessonProgressDetail>(lessonPath(courseId, lessonId) + "/progress");
+export const saveCode = (courseId: string, lessonId: string, code: string) =>
+  request<void>(lessonPath(courseId, lessonId) + "/progress/code", { method: "PUT", body: JSON.stringify({ code }) });
+export const resetCode = (courseId: string, lessonId: string) =>
+  request<void>(lessonPath(courseId, lessonId) + "/progress/code", { method: "DELETE" });
 
 /** Polls /health until the engine answers, since it starts alongside the window. */
 export async function waitForEngine(timeoutMs = 10_000): Promise<Health> {

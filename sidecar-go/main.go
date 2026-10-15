@@ -15,10 +15,12 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"path/filepath"
 	"syscall"
 	"time"
 
 	"freeknowledge/engine/internal/course"
+	"freeknowledge/engine/internal/progress"
 	"freeknowledge/engine/internal/runner"
 	"freeknowledge/engine/internal/server"
 )
@@ -66,6 +68,22 @@ func run(addr string, watchStdin bool) error {
 		slog.Warn("FK_USER_COURSES and FK_BUNDLED_COURSES not set; no courses will be listed")
 	}
 
+	// FK_DATA_DIR holds progress.db. Without it, progress lasts until exit.
+	dbPath := ":memory:"
+	if dir := os.Getenv("FK_DATA_DIR"); dir != "" {
+		if err := os.MkdirAll(dir, 0o755); err != nil {
+			return err
+		}
+		dbPath = filepath.Join(dir, "progress.db")
+	} else {
+		slog.Warn("FK_DATA_DIR not set; progress will not be saved")
+	}
+	store, err := progress.Open(dbPath)
+	if err != nil {
+		return err
+	}
+	defer store.Close()
+
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer stop()
 
@@ -85,7 +103,7 @@ func run(addr string, watchStdin bool) error {
 	}
 
 	srv := &http.Server{
-		Handler:           server.New(server.Config{Addr: addr, Token: token, Version: version, Courses: course.NewStore(roots)}).Handler(),
+		Handler:           server.New(server.Config{Addr: addr, Token: token, Version: version, Courses: course.NewStore(roots), Progress: store}).Handler(),
 		ReadHeaderTimeout: 5 * time.Second,
 		// Request contexts derive from ctx, so shutdown kills running programs.
 		BaseContext: func(net.Listener) context.Context { return ctx },

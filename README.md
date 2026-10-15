@@ -2,7 +2,7 @@
 
 A free, open-source, offline-first desktop app for learning programming, systems engineering, and system design. Lessons run entirely on your machine using the compilers and runtimes you already have installed. No cloud sandboxes, accounts, or internet connection required.
 
-> **Status:** early. The app shell, the Go engine, code execution, and the course loader and grader work. The lesson workspace UI, Creator Studio, and system design sandbox are next.
+> **Status:** early. You can take courses end to end: lesson reader, code editor, hidden-test grading, and saved progress. Creator Studio and the system design sandbox are next.
 
 ## Architecture
 
@@ -18,9 +18,9 @@ A free, open-source, offline-first desktop app for learning programming, systems
 └─────────────────────────────────────────────┘
 ```
 
-- `src/`: React frontend. `src/lib/engine.ts` is the engine client.
+- `src/`: React frontend. `src/lib/engine.ts` is the engine client; `src/components/` has the home screen and lesson workspace.
 - `src-tauri/`: Rust shell. It starts the engine with a random per-launch token and gives that token to the webview through the `engine_info` command.
-- `sidecar-go/`: the engine. `internal/runner` runs code, `internal/course` reads course packs, `internal/grader` runs hidden tests, and `internal/server` handles HTTP/WS, auth, and CORS.
+- `sidecar-go/`: the engine. `internal/runner` runs code, `internal/course` reads course packs, `internal/grader` runs hidden tests, `internal/progress` stores progress in SQLite, and `internal/server` handles HTTP/WS, auth, and CORS.
 - `courses/`: course packs bundled with the app.
 - `scripts/build-sidecar.mjs`: compiles the engine to `src-tauri/binaries/engine-<target-triple>`.
 
@@ -36,6 +36,9 @@ A free, open-source, offline-first desktop app for learning programming, systems
 | GET | `/courses/{course}/lessons/{lesson}` | token | Lesson markdown and starter code (never the tests) |
 | POST | `/courses/{course}/lessons/{lesson}/submit` | token | `{code}` → `{passed, tests: [{name, status, message, durationMs}], stdout, stderr, …}` |
 | POST | `/courses/{course}/lessons/{lesson}/validate` | token | Grades the lesson's `reference.*` solution, so authors can check their tests |
+| GET | `/progress` | token | Streak, lessons completed, and per-lesson progress for every course |
+| GET | `/courses/{course}/lessons/{lesson}/progress` | token | Saved code, attempts, and completion for one lesson |
+| PUT / DELETE | `/courses/{course}/lessons/{lesson}/progress/code` | token | Autosave `{code}`, or reset to the starter |
 | GET | `/ws/run?token=…` | token | Send `{"type":"run",…}` or `{"type":"submit","course","lesson","code"}`; receive streamed `output` messages, then a `result` or `grade` message. Send `{"type":"cancel"}` to stop. |
 
 Supported languages: Python, JavaScript (Node), Go, C (gcc), Rust (rustc).
@@ -78,11 +81,14 @@ npm run test:sidecar    # Go engine tests
 npm run tauri build     # release bundle
 ```
 
-To run the engine on its own:
+To work on the UI in a regular browser (faster reloads, browser dev tools), run these in two terminals and open http://localhost:1420:
 
 ```bash
-cd sidecar-go && FK_ENGINE_TOKEN=dev FK_BUNDLED_COURSES=../courses go run . -no-stdin-watchdog
+npm run dev:engine   # engine on :14200 with token "dev", progress in .dev-data/
+npm run dev:web      # Vite with the matching token
 ```
+
+Progress is stored in `progress.db` in the app data folder (`~/Library/Application Support/dev.freeknowledge.app/` on macOS).
 
 ## License
 

@@ -13,6 +13,7 @@ import (
 	"github.com/coder/websocket/wsjson"
 
 	"freeknowledge/engine/internal/course"
+	"freeknowledge/engine/internal/progress"
 )
 
 const testToken = "secret"
@@ -22,7 +23,18 @@ func newTestServer(t *testing.T) (*httptest.Server, string) {
 	ts := httptest.NewUnstartedServer(nil)
 	ts.Start()
 	addr := ts.Listener.Addr().String()
-	ts.Config.Handler = New(Config{Addr: addr, Token: testToken, Version: "test", Courses: course.NewStore([]course.Root{{Path: "../../../courses", Source: "bundled"}})}).Handler()
+	store, err := progress.Open(":memory:")
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() { store.Close() })
+	ts.Config.Handler = New(Config{
+		Addr:     addr,
+		Token:    testToken,
+		Version:  "test",
+		Courses:  course.NewStore([]course.Root{{Path: "../../../courses", Source: "bundled"}}),
+		Progress: store,
+	}).Handler()
 	t.Cleanup(ts.Close)
 	return ts, addr
 }
@@ -150,5 +162,89 @@ func TestCourseEndpoints(t *testing.T) {
 	}
 	if err := json.NewDecoder(res.Body).Decode(&grade); err != nil || !grade.Passed || len(grade.Tests) != 2 {
 		t.Fatalf("submit: %d %+v %v", res.StatusCode, grade, err)
+	}
+}
+
+func TestProgressEndpoints(t *testing.T) {
+	ts, _ := newTestServer(t)
+	auth := map[string]string{"Authorization": "Bearer " + testToken}
+	base := "/courses/getting-started/lessons/01-python-greet/progress"
+
+	if res := do(t, ts, "PUT", base+"/code", `{"code":"draft"}`, auth); res.StatusCode != 204 {
+		t.Fatalf("save: %d", res.StatusCode)
+	}
+	if res := do(t, ts, "PUT", "/courses/getting-started/lessons/nope/progress/code", `{"code":"x"}`, auth); res.StatusCode != 404 {
+		t.Fatalf("save to unknown lesson: %d", res.StatusCode)
+	}
+
+	var d struct {
+		Code      *string
+		Completed bool
+		Attempts  int
+	}
+	res := do(t, ts, "GET", base, "", auth)
+	if err := json.NewDecoder(res.Body).Decode(&d); err != nil || d.Code == nil || *d.Code != "draft" {
+		t.Fatalf("get: %+v %v", d, err)
+	}
+
+	do(t, ts, "POST", "/courses/getting-started/lessons/01-python-greet/submit",
+		`{"code":"def greet(name):\n    return f'Hello, {name or \"world\"}!'\n"}`, auth)
+	res = do(t, ts, "GET", base, "", auth)
+	if err := json.NewDecoder(res.Body).Decode(&d); err != nil || !d.Completed || d.Attempts != 1 {
+		t.Fatalf("after submit: %+v %v", d, err)
+	}
+
+	var all struct {
+		Stats   struct{ CurrentStreak, CompletedLessons int }
+		Courses map[string]map[string]struct{ Completed bool }
+	}
+	res = do(t, ts, "GET", "/progress", "", auth)
+	if err := json.NewDecoder(res.Body).Decode(&all); err != nil || all.Stats.CompletedLessons != 1 || all.Stats.CurrentStreak != 1 ||
+		!all.Courses["getting-started"]["01-python-greet"].Completed {
+		t.Fatalf("progress: %+v %v", all, err)
+	}
+
+	if res := do(t, ts, "DELETE", base+"/code", "", auth); res.StatusCode != 204 {
+		t.Fatalf("reset: %d", res.StatusCode)
+	}
+}
+
+func TestCancelledSubmitIsNotRecorded(t *testing.T) {
+	ts, addr := newTestServer(t)
+	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
+	defer cancel()
+	conn, _, err := websocket.Dial(ctx, "ws://"+addr+"/ws/run?token="+testToken,
+		&websocket.DialOptions{HTTPHeader: http.Header{"Origin": {"tauri://localhost"}}})
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer conn.CloseNow()
+
+	code := "def greet(name):\n    print('started', flush=True)\n    while True: pass\n"
+	if err := wsjson.Write(ctx, conn, map[string]string{"type": "submit", "course": "getting-started", "lesson": "01-python-greet", "code": code}); err != nil {
+		t.Fatal(err)
+	}
+	// Wait until the program is running, then cancel the way the UI does.
+	var msg map[string]any
+	if err := wsjson.Read(ctx, conn, &msg); err != nil || msg["type"] != "output" {
+		t.Fatalf("expected output, got %v %v", msg, err)
+	}
+	if err := wsjson.Write(ctx, conn, map[string]string{"type": "cancel"}); err != nil {
+		t.Fatal(err)
+	}
+	conn.Close(websocket.StatusNormalClosure, "")
+
+	auth := map[string]string{"Authorization": "Bearer " + testToken}
+	deadline := time.Now().Add(3 * time.Second)
+	for time.Now().Before(deadline) {
+		time.Sleep(200 * time.Millisecond)
+		var d struct{ Attempts int }
+		res := do(t, ts, "GET", "/courses/getting-started/lessons/01-python-greet/progress", "", auth)
+		if err := json.NewDecoder(res.Body).Decode(&d); err != nil {
+			t.Fatal(err)
+		}
+		if d.Attempts != 0 {
+			t.Fatalf("cancelled run was recorded as an attempt")
+		}
 	}
 }

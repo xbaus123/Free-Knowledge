@@ -17,6 +17,7 @@ import (
 
 	"freeknowledge/engine/internal/course"
 	"freeknowledge/engine/internal/grader"
+	"freeknowledge/engine/internal/progress"
 	"freeknowledge/engine/internal/runner"
 )
 
@@ -35,7 +36,8 @@ type Config struct {
 	Addr    string
 	Token   string
 	Version string
-	Courses *course.Store
+	Courses  *course.Store
+	Progress *progress.Store
 }
 
 type Server struct {
@@ -59,6 +61,10 @@ func (s *Server) Handler() http.Handler {
 	mux.Handle("GET /courses/{course}/lessons/{lesson}", s.requireToken(http.HandlerFunc(s.handleLesson)))
 	mux.Handle("POST /courses/{course}/lessons/{lesson}/submit", s.requireToken(http.HandlerFunc(s.handleSubmit)))
 	mux.Handle("POST /courses/{course}/lessons/{lesson}/validate", s.requireToken(http.HandlerFunc(s.handleValidate)))
+	mux.Handle("GET /progress", s.requireToken(http.HandlerFunc(s.handleProgress)))
+	mux.Handle("GET /courses/{course}/lessons/{lesson}/progress", s.requireToken(http.HandlerFunc(s.handleLessonProgress)))
+	mux.Handle("PUT /courses/{course}/lessons/{lesson}/progress/code", s.requireToken(http.HandlerFunc(s.handleSaveCode)))
+	mux.Handle("DELETE /courses/{course}/lessons/{lesson}/progress/code", s.requireToken(http.HandlerFunc(s.handleResetCode)))
 	return s.guard(mux)
 }
 
@@ -78,7 +84,7 @@ func (s *Server) guard(next http.Handler) http.Handler {
 			w.Header().Set("Vary", "Origin")
 		}
 		if r.Method == http.MethodOptions {
-			w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+			w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
 			w.Header().Set("Access-Control-Allow-Headers", "Authorization, Content-Type")
 			w.Header().Set("Access-Control-Max-Age", "600")
 			w.WriteHeader(http.StatusNoContent)
@@ -215,6 +221,9 @@ func (s *Server) handleRunWS(w http.ResponseWriter, r *http.Request) {
 			var res grader.Result
 			if first.Type == "submit" {
 				res, err = grader.Grade(ctx, l, first.Code, onOutput)
+				if err == nil {
+					s.recordAttempt(ctx, l, first.Code, res)
+				}
 			} else {
 				res, err = grader.Validate(ctx, l, onOutput)
 			}
@@ -270,7 +279,11 @@ func (s *Server) handleSubmit(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	s.grade(w, r, func(l *course.Lesson) (grader.Result, error) {
-		return grader.Grade(r.Context(), l, body.Code, nil)
+		res, err := grader.Grade(r.Context(), l, body.Code, nil)
+		if err == nil {
+			s.recordAttempt(r.Context(), l, body.Code, res)
+		}
+		return res, err
 	})
 }
 
@@ -292,6 +305,86 @@ func (s *Server) grade(w http.ResponseWriter, r *http.Request, fn func(*course.L
 		return
 	}
 	writeJSON(w, http.StatusOK, res)
+}
+
+// recordAttempt saves a graded submission. Runs cut short by a cancel or a
+// shutdown aren't counted.
+func (s *Server) recordAttempt(ctx context.Context, l *course.Lesson, code string, res grader.Result) {
+	if s.cfg.Progress == nil || ctx.Err() != nil {
+		return
+	}
+	if err := s.cfg.Progress.RecordAttempt(l.CourseID, l.ID, code, res.Passed); err != nil {
+		slog.Error("record attempt", "course", l.CourseID, "lesson", l.ID, "err", err)
+	}
+}
+
+func (s *Server) handleProgress(w http.ResponseWriter, r *http.Request) {
+	all, err := s.cfg.Progress.All()
+	if err != nil {
+		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": err.Error()})
+		return
+	}
+	stats, err := s.cfg.Progress.Stats()
+	if err != nil {
+		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": err.Error()})
+		return
+	}
+	writeJSON(w, http.StatusOK, map[string]any{"stats": stats, "courses": all})
+}
+
+// lessonFromPath checks the lesson exists so progress can't pile up for
+// arbitrary IDs.
+func (s *Server) lessonFromPath(w http.ResponseWriter, r *http.Request) (*course.Lesson, bool) {
+	l, err := s.cfg.Courses.Lesson(r.PathValue("course"), r.PathValue("lesson"))
+	if err != nil {
+		writeCourseError(w, err)
+		return nil, false
+	}
+	return l, true
+}
+
+func (s *Server) handleLessonProgress(w http.ResponseWriter, r *http.Request) {
+	l, ok := s.lessonFromPath(w, r)
+	if !ok {
+		return
+	}
+	d, err := s.cfg.Progress.Lesson(l.CourseID, l.ID)
+	if err != nil {
+		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": err.Error()})
+		return
+	}
+	writeJSON(w, http.StatusOK, d)
+}
+
+func (s *Server) handleSaveCode(w http.ResponseWriter, r *http.Request) {
+	l, ok := s.lessonFromPath(w, r)
+	if !ok {
+		return
+	}
+	var body struct {
+		Code string `json:"code"`
+	}
+	if err := json.NewDecoder(http.MaxBytesReader(w, r.Body, maxBodyBytes)).Decode(&body); err != nil {
+		writeJSON(w, http.StatusBadRequest, map[string]string{"error": "invalid JSON body: " + err.Error()})
+		return
+	}
+	if err := s.cfg.Progress.SaveCode(l.CourseID, l.ID, body.Code); err != nil {
+		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": err.Error()})
+		return
+	}
+	w.WriteHeader(http.StatusNoContent)
+}
+
+func (s *Server) handleResetCode(w http.ResponseWriter, r *http.Request) {
+	l, ok := s.lessonFromPath(w, r)
+	if !ok {
+		return
+	}
+	if err := s.cfg.Progress.ResetCode(l.CourseID, l.ID); err != nil {
+		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": err.Error()})
+		return
+	}
+	w.WriteHeader(http.StatusNoContent)
 }
 
 func writeCourseError(w http.ResponseWriter, err error) {

@@ -9,6 +9,17 @@ const host = process.env.TAURI_DEV_HOST;
 export default defineConfig(() => ({
   plugins: [react(), tailwindcss()],
 
+  build: {
+    // Assets load from disk inside the app, so bundle size doesn't cost a download.
+    chunkSizeWarningLimit: 8000,
+  },
+
+  resolve: {
+    // monaco-editor's package exports hide its CSS and internal modules,
+    // which src/lib/monaco.ts imports selectively to keep the bundle small.
+    alias: [{ find: /^monaco-esm\//, replacement: new URL("./node_modules/monaco-editor/esm/vs/", import.meta.url).pathname }],
+  },
+
   // Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`
   //
   // 1. prevent Vite from obscuring rust errors

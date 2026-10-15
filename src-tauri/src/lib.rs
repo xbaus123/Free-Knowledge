@@ -54,6 +54,7 @@ fn course_dirs(app: &AppHandle) -> tauri::Result<(PathBuf, PathBuf)> {
 
 fn spawn_engine(app: &AppHandle, token: &str) -> Result<CommandChild, Box<dyn std::error::Error>> {
     let (user_courses, bundled_courses) = course_dirs(app)?;
+    let data_dir = app.path().app_data_dir()?;
     let (mut rx, child) = app
         .shell()
         .sidecar("engine")?
@@ -61,6 +62,7 @@ fn spawn_engine(app: &AppHandle, token: &str) -> Result<CommandChild, Box<dyn st
         .env("FK_ENGINE_ADDR", ENGINE_ADDR)
         .env("FK_USER_COURSES", user_courses)
         .env("FK_BUNDLED_COURSES", bundled_courses)
+        .env("FK_DATA_DIR", data_dir)
         .spawn()?;
 
     tauri::async_runtime::spawn(async move {
@@ -88,6 +90,7 @@ fn spawn_engine(app: &AppHandle, token: &str) -> Result<CommandChild, Box<dyn st
 pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_shell::init())
+        .plugin(tauri_plugin_opener::init())
         .setup(|app| {
             let token = random_token();
             let child = spawn_engine(app.handle(), &token)?;

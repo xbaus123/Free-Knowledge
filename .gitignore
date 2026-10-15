@@ -25,3 +25,6 @@ dist-ssr
 
 # Built Go sidecar (produced by `npm run build:sidecar`)
 src-tauri/binaries/
+
+# Progress database used by `npm run dev:engine`
+.dev-data/
