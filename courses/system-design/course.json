@@ -1,0 +1,6 @@
+{
+  "title": "System Design",
+  "description": "Design systems that stay fast and available under load, based on Designing Data-Intensive Applications. Draw an architecture, then run traffic through it.",
+  "author": "FreeKnowledge contributors",
+  "version": "1.0.0"
+}

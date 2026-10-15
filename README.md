@@ -2,7 +2,7 @@
 
 A free, open-source, offline-first desktop app for learning programming, systems engineering, and system design. Lessons run entirely on your machine using the compilers and runtimes you already have installed. No cloud sandboxes, accounts, or internet connection required.
 
-> **Status:** early. You can take courses end to end (lesson reader, code editor, hidden-test grading, saved progress) and write your own in Creator Studio, then share them as `.dojo` files. The system design sandbox and AI tutor are next.
+> **Status:** early. You can take courses end to end (lesson reader, code editor, hidden-test grading, saved progress) and write your own in Creator Studio, then share them as `.dojo` files. System design lessons (draw an architecture, then simulate traffic through it) are in progress; the AI tutor is next.
 
 ## Architecture
 
@@ -20,7 +20,7 @@ A free, open-source, offline-first desktop app for learning programming, systems
 
 - `src/`: React frontend. `src/lib/engine.ts` is the engine client; `src/components/` has the home screen and lesson workspace.
 - `src-tauri/`: Rust shell. It starts the engine with a random per-launch token and gives that token to the webview through the `engine_info` command.
-- `sidecar-go/`: the engine. `internal/runner` runs code, `internal/course` reads course packs, `internal/grader` runs hidden tests, `internal/progress` stores progress in SQLite, `internal/studio` edits courses and reads/writes `.dojo` files, and `internal/server` handles HTTP/WS, auth, and CORS.
+- `sidecar-go/`: the engine. `internal/runner` runs code, `internal/course` reads course packs, `internal/grader` runs hidden tests, `internal/progress` stores progress in SQLite, `internal/studio` edits courses and reads/writes `.dojo` files, `internal/simulator` runs system design traffic simulations, and `internal/server` handles HTTP/WS, auth, and CORS.
 - `courses/`: course packs bundled with the app.
 - `scripts/build-sidecar.mjs`: compiles the engine to `src-tauri/binaries/engine-<target-triple>`.
 
@@ -39,6 +39,7 @@ A free, open-source, offline-first desktop app for learning programming, systems
 | GET | `/progress` | token | Streak, lessons completed, and per-lesson progress for every course |
 | GET | `/courses/{course}/lessons/{lesson}/progress` | token | Saved code, attempts, and completion for one lesson |
 | PUT / DELETE | `/courses/{course}/lessons/{lesson}/progress/code` | token | Autosave `{code}`, or reset to the starter |
+| POST | `/simulate` | token | `{course?, lesson?, graph: {nodes, edges}}` → `{passed, message, issues, metrics, nodes}`; with a lesson, its targets apply and progress is recorded |
 | POST, PUT, DELETE | `/studio/...` | token | Creator Studio: create and edit courses and lessons (user courses only), `check` a lesson, `export` a course to a `.dojo` path, `import` one |
 | GET | `/ws/run?token=…` | token | Send `{"type":"run",…}` or `{"type":"submit","course","lesson","code"}`; receive streamed `output` messages, then a `result` or `grade` message. Send `{"type":"cancel"}` to stop. |
 
@@ -69,7 +70,11 @@ Lessons are ordered by `course.json`'s `lessons` list, or by folder name if it's
 | C | `#include "fk_test.h"`, then `TEST(name) { EXPECT_EQ_INT(a, b); }` | declare the prototype; don't write `main` |
 | Rust | `#[test]` functions | `use super::*;` |
 
-See `courses/getting-started` for one example of each. In development the app reads `courses/` live; user courses go in the app data folder (`~/Library/Application Support/dev.freeknowledge.app/courses` on macOS).
+See `courses/getting-started` for one example of each.
+
+### System design lessons
+
+Set `"type": "system-design"` in a lesson's `config.json`, with `maxLatencyMs` as the p99 target. Instead of code files, the lesson has `starter.json` (the diagram learners start from) and `solution.json` (a reference design that must pass). Both are React Flow graphs: nodes of type `client`, `loadBalancer`, `server`, or `database`, plus edges. **Simulate Traffic** sends 1,000 requests over one second through the learner's diagram. Grading is by behavior (overloaded servers, p99 latency, unanswered requests), so any design with enough capacity passes. See `courses/system-design`. The Studio can check and export these lessons but can't edit their diagrams yet. In development the app reads `courses/` live; user courses go in the app data folder (`~/Library/Application Support/dev.freeknowledge.app/courses` on macOS).
 
 ## Creator Studio and `.dojo` files
 

@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"net/http"
 	"net/http/httptest"
+	"os"
 	"strings"
 	"testing"
 	"time"
@@ -303,5 +304,55 @@ func TestStudioEndpoints(t *testing.T) {
 	}
 	if res := do(t, ts, "POST", "/studio/import", `{"path":"`+dest+`","replace":true}`, auth); res.StatusCode != 200 {
 		t.Fatalf("import with replace: %d", res.StatusCode)
+	}
+}
+
+func TestSimulateEndpoint(t *testing.T) {
+	ts, _ := newTestServer(t)
+	auth := map[string]string{"Authorization": "Bearer " + testToken}
+	read := func(name string) string {
+		b, err := os.ReadFile("../../../courses/system-design/01-scalability/" + name)
+		if err != nil {
+			t.Fatal(err)
+		}
+		return string(b)
+	}
+	var res struct {
+		Passed  bool
+		Message string
+		Issues  []struct{ NodeID, Code string }
+	}
+	body := func(graph string) string {
+		return `{"course":"system-design","lesson":"01-scalability","graph":` + graph + `}`
+	}
+
+	r := do(t, ts, "POST", "/simulate", body(read("starter.json")), auth)
+	if err := json.NewDecoder(r.Body).Decode(&res); err != nil || r.StatusCode != 200 {
+		t.Fatalf("starter: %d %v", r.StatusCode, err)
+	}
+	if res.Passed || res.Message != "Server overloaded: 100% CPU utilization. Add a Load Balancer." || res.Issues[0].NodeID != "api-1" {
+		t.Fatalf("starter result: %+v", res)
+	}
+
+	r = do(t, ts, "POST", "/simulate", body(read("solution.json")), auth)
+	if err := json.NewDecoder(r.Body).Decode(&res); err != nil || !res.Passed {
+		t.Fatalf("solution result: %+v %v", res, err)
+	}
+
+	var p struct {
+		Completed bool
+		Attempts  int
+		Code      *string
+	}
+	r = do(t, ts, "GET", "/courses/system-design/lessons/01-scalability/progress", "", auth)
+	if err := json.NewDecoder(r.Body).Decode(&p); err != nil || !p.Completed || p.Attempts != 2 || p.Code == nil || !strings.Contains(*p.Code, `"lb"`) {
+		t.Fatalf("progress: %+v %v", p, err)
+	}
+
+	if r := do(t, ts, "POST", "/simulate", `{"graph":{"nodes":[{"id":"x","type":"toaster"}],"edges":[]}}`, auth); r.StatusCode != 400 {
+		t.Fatalf("bad node type: %d", r.StatusCode)
+	}
+	if r := do(t, ts, "POST", "/simulate", body(`{"nodes":[],"edges":[]}`), nil); r.StatusCode != 401 {
+		t.Fatalf("no token: %d", r.StatusCode)
 	}
 }

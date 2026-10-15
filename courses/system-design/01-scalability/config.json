@@ -1,0 +1,5 @@
+{
+  "title": "Reliability & Scalability: The Single Point of Failure",
+  "type": "system-design",
+  "maxLatencyMs": 200
+}

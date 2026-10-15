@@ -16,6 +16,7 @@ import (
 
 	"freeknowledge/engine/internal/course"
 	"freeknowledge/engine/internal/grader"
+	"freeknowledge/engine/internal/simulator"
 )
 
 // A .dojo file is a zip of one course folder:
@@ -60,6 +61,9 @@ type LessonCheckDetail struct {
 	LessonCheck
 	Reference *grader.Result `json:"reference,omitempty"`
 	Starter   *grader.Result `json:"starter,omitempty"`
+	// System design lessons: simulator runs of solution.json and starter.json.
+	ReferenceSim *simulator.Result `json:"referenceSim,omitempty"`
+	StarterSim   *simulator.Result `json:"starterSim,omitempty"`
 }
 
 // CheckLesson runs the reference solution (must pass) and the starter
@@ -74,7 +78,9 @@ func (s *Studio) CheckLesson(ctx context.Context, courseID, lessonID string) (Le
 	case !l.Valid():
 		d.Problem = strings.Join(l.Problems, "; ")
 		return d, nil
-	case l.Kind != "code":
+	case l.Kind == course.KindSystemDesign:
+		return checkDesignLesson(l, d)
+	case l.Kind != course.KindCode:
 		d.OK = true
 		return d, nil
 	case l.ReferenceFile == "":
@@ -100,6 +106,50 @@ func (s *Studio) CheckLesson(ctx context.Context, courseID, lessonID string) (Le
 	d.Starter = &starter
 	if starter.Passed {
 		d.Warning = "the starter code already passes, so learners can finish without changing anything"
+	}
+	return d, nil
+}
+
+// checkDesignLesson simulates solution.json (must pass) and starter.json
+// (should fail).
+func checkDesignLesson(l *course.Lesson, d LessonCheckDetail) (LessonCheckDetail, error) {
+	if l.ReferenceFile == "" {
+		d.Problem = "add a solution.json so the lesson can be checked"
+		return d, nil
+	}
+	opts := simulator.Options{MaxLatencyMs: float64(l.MaxLatencyMs)}
+	simulate := func(raw []byte, what string) (*simulator.Result, error) {
+		var g simulator.Graph
+		if err := json.Unmarshal(raw, &g); err != nil {
+			return nil, fmt.Errorf("%s: %w", what, err)
+		}
+		res, err := simulator.Run(g, opts)
+		if err != nil {
+			return nil, fmt.Errorf("%s: %w", what, err)
+		}
+		return &res, nil
+	}
+
+	raw, err := os.ReadFile(l.ReferenceFile)
+	if err != nil {
+		return d, err
+	}
+	if d.ReferenceSim, err = simulate(raw, "solution.json"); err != nil {
+		d.Problem = err.Error()
+		return d, nil
+	}
+	if !d.ReferenceSim.Passed {
+		d.Problem = "solution.json doesn't pass the simulation: " + d.ReferenceSim.Message
+		return d, nil
+	}
+	d.OK = true
+	if l.Starter == "" {
+		return d, nil
+	}
+	if d.StarterSim, err = simulate([]byte(l.Starter), "starter.json"); err != nil {
+		d.Warning = err.Error()
+	} else if d.StarterSim.Passed {
+		d.Warning = "the starter diagram already passes, so learners can finish without changing anything"
 	}
 	return d, nil
 }
@@ -201,7 +251,7 @@ func writeDojo(w io.Writer, c *course.Course, manifest dojoManifest) error {
 	return zw.Close()
 }
 
-var lessonFilePattern = regexp.MustCompile(`^(lesson\.md|config\.json|(starter|solution_test|reference)\.(py|js|go|c|rs))$`)
+var lessonFilePattern = regexp.MustCompile(`^(lesson\.md|config\.json|(starter|solution_test|reference)\.(py|js|go|c|rs)|(starter|solution)\.json)$`)
 
 func allowedLessonFile(name string) bool { return lessonFilePattern.MatchString(name) }
 

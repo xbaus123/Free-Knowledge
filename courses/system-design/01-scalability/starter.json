@@ -1,0 +1,11 @@
+{
+  "nodes": [
+    { "id": "client", "type": "client", "position": { "x": 0, "y": 120 }, "data": { "label": "Users" } },
+    { "id": "api-1", "type": "server", "position": { "x": 300, "y": 120 }, "data": { "label": "API Server" } },
+    { "id": "db", "type": "database", "position": { "x": 600, "y": 120 }, "data": { "label": "Database" } }
+  ],
+  "edges": [
+    { "id": "client-api-1", "source": "client", "target": "api-1" },
+    { "id": "api-1-db", "source": "api-1", "target": "db" }
+  ]
+}

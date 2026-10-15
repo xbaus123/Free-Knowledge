@@ -42,7 +42,10 @@ type courseFile struct {
 
 // LessonSource is everything an author edits, including the hidden files.
 type LessonSource struct {
-	ID        string `json:"id"`
+	ID string `json:"id"`
+	// Type is "code" or "system-design". Read-only: the Studio edits code
+	// lessons; system design lessons are edited as files for now.
+	Type      string `json:"type,omitempty"`
 	Title     string `json:"title"`
 	Language  string `json:"language"`
 	TimeoutMs int    `json:"timeoutMs,omitempty"`
@@ -243,7 +246,7 @@ func (s *Studio) Lesson(courseID, lessonID string) (LessonSource, error) {
 	if err != nil {
 		return LessonSource{}, err
 	}
-	src := LessonSource{ID: l.ID, Title: l.Title, Language: l.Language, TimeoutMs: l.TimeoutMs, Markdown: l.Markdown, Starter: l.Starter}
+	src := LessonSource{ID: l.ID, Type: l.Kind, Title: l.Title, Language: l.Language, TimeoutMs: l.TimeoutMs, Markdown: l.Markdown, Starter: l.Starter}
 	if lang, ok := runner.Lookup(l.Language); ok {
 		src.Tests = readOptional(filepath.Join(l.Dir, "solution_test"+lang.Ext))
 		src.Reference = readOptional(filepath.Join(l.Dir, "reference"+lang.Ext))
@@ -308,6 +311,9 @@ func (s *Studio) SaveLesson(courseID string, src LessonSource) error {
 	l, err := s.Courses.Lesson(courseID, src.ID)
 	if err != nil {
 		return err
+	}
+	if l.Kind != course.KindCode {
+		return errors.New("system design lessons can't be edited in the Studio yet; edit their files directly")
 	}
 	if _, ok := runner.Lookup(src.Language); !ok {
 		return fmt.Errorf("unsupported language %q", src.Language)

@@ -9,6 +9,10 @@
 //	<root>/<course-id>/<lesson-id>/solution_test.<ext>
 //	<root>/<course-id>/<lesson-id>/reference.<ext>    (optional; author's solution, used for validation)
 //
+// System design lessons ("type": "system-design" in config.json) use
+// starter.json (the initial diagram) and solution.json (a reference design
+// that must pass the simulator) instead of code and tests.
+//
 // Folder names are the IDs. Lessons are ordered by course.json "lessons" if
 // present, otherwise by folder name (use 01-, 02- prefixes).
 //
@@ -60,11 +64,18 @@ type courseFile struct {
 }
 
 type lessonConfig struct {
-	Title     string `json:"title"`
-	Language  string `json:"language"`
-	Kind      string `json:"kind"`
-	TimeoutMs int    `json:"timeoutMs"`
+	Title        string `json:"title"`
+	Language     string `json:"language"`
+	Type         string `json:"type"` // "code" (default) or "system-design"
+	TimeoutMs    int    `json:"timeoutMs"`
+	MaxLatencyMs int    `json:"maxLatencyMs"` // system design: p99 latency target
 }
+
+// Lesson kinds.
+const (
+	KindCode         = "code"
+	KindSystemDesign = "system-design"
+)
 
 type Course struct {
 	ID          string          `json:"id"`
@@ -93,8 +104,9 @@ type Lesson struct {
 	LessonSummary
 	CourseID      string `json:"courseId"`
 	Markdown      string `json:"markdown"`
-	Starter       string `json:"starter"`
+	Starter       string `json:"starter"` // code, or diagram JSON for system design
 	TimeoutMs     int    `json:"timeoutMs"`
+	MaxLatencyMs  int    `json:"maxLatencyMs,omitempty"`
 	Dir           string `json:"-"`
 	TestFile      string `json:"-"`
 	ReferenceFile string `json:"-"`
@@ -206,7 +218,7 @@ func loadLesson(c *Course, id string) (*Lesson, error) {
 	}
 	l := &Lesson{CourseID: c.ID, Dir: dir}
 	l.ID = id
-	l.Kind = "code"
+	l.Kind = KindCode
 	l.Language = c.Language
 
 	if raw, err := os.ReadFile(filepath.Join(dir, "config.json")); err == nil {
@@ -214,12 +226,12 @@ func loadLesson(c *Course, id string) (*Lesson, error) {
 		if err := json.Unmarshal(raw, &cfg); err != nil {
 			l.Problems = append(l.Problems, "config.json: "+err.Error())
 		} else {
-			l.Title, l.TimeoutMs = cfg.Title, cfg.TimeoutMs
+			l.Title, l.TimeoutMs, l.MaxLatencyMs = cfg.Title, cfg.TimeoutMs, cfg.MaxLatencyMs
 			if cfg.Language != "" {
 				l.Language = cfg.Language
 			}
-			if cfg.Kind != "" {
-				l.Kind = cfg.Kind
+			if cfg.Type != "" {
+				l.Kind = cfg.Type
 			}
 		}
 	}
@@ -233,8 +245,23 @@ func loadLesson(c *Course, id string) (*Lesson, error) {
 		l.Title = firstHeading(l.Markdown, id)
 	}
 
-	if l.Kind != "code" {
-		return l, nil // other lesson kinds (system design) come later
+	switch l.Kind {
+	case KindCode:
+	case KindSystemDesign:
+		l.Language = ""
+		if b, err := os.ReadFile(filepath.Join(dir, "starter.json")); err == nil {
+			if !json.Valid(b) {
+				l.Problems = append(l.Problems, "starter.json is not valid JSON")
+			}
+			l.Starter = string(b)
+		}
+		if p := filepath.Join(dir, "solution.json"); fileExists(p) {
+			l.ReferenceFile = p
+		}
+		return l, nil
+	default:
+		l.Problems = append(l.Problems, fmt.Sprintf("unknown lesson type %q", l.Kind))
+		return l, nil
 	}
 	lang, ok := runner.Lookup(l.Language)
 	if !ok {

@@ -333,6 +333,39 @@ export function CourseEditor({ courseId, initialLessonId, onBack, onPreview }: P
             <div className="p-8 text-sm text-zinc-500">
               {course && course.lessons.length === 0 ? "Add your first lesson to get started." : "Loading…"}
             </div>
+          ) : draft.type === "system-design" ? (
+            <>
+              <div className="flex shrink-0 items-center gap-3 border-b border-zinc-800 px-4 py-3">
+                <span className="font-medium">{draft.title}</span>
+                <span className="rounded bg-violet-950 px-2 py-0.5 text-xs text-violet-300">System design</span>
+                <div className="ml-auto flex items-center gap-2 text-sm">
+                  <button onClick={deleteCurrent} disabled={!!busy} className="rounded px-2 py-1.5 text-xs text-zinc-500 hover:bg-zinc-800 hover:text-red-400">
+                    Delete
+                  </button>
+                  <button
+                    onClick={runCheck}
+                    disabled={!!busy}
+                    title="Simulates solution.json (must pass) and starter.json (should fail)"
+                    className="rounded bg-emerald-700 px-3 py-1.5 font-medium hover:bg-emerald-600 disabled:opacity-40"
+                  >
+                    Check lesson
+                  </button>
+                </div>
+              </div>
+              <div className="min-h-0 flex-1 overflow-auto p-6 text-sm text-zinc-400">
+                <p className="mb-4 max-w-2xl">
+                  Diagram editing in the Studio is coming later. For now, edit this lesson's files in its course folder:{" "}
+                  <code className="text-zinc-300">lesson.md</code>, <code className="text-zinc-300">config.json</code> (with{" "}
+                  <code className="text-zinc-300">"type": "system-design"</code> and <code className="text-zinc-300">maxLatencyMs</code>),{" "}
+                  <code className="text-zinc-300">starter.json</code>, and <code className="text-zinc-300">solution.json</code>. Use Preview as learner to
+                  try it, and Check lesson to simulate both diagrams.
+                </p>
+                <div className="max-w-2xl rounded border border-zinc-800 p-5">
+                  <Markdown>{draft.markdown}</Markdown>
+                </div>
+              </div>
+              {check && <CheckPanel check={check} onClose={() => setCheck(undefined)} />}
+            </>
           ) : (
             <>
               <div className="flex shrink-0 flex-wrap items-end gap-3 border-b border-zinc-800 px-4 py-3">
@@ -444,6 +477,8 @@ function CheckPanel({ check, onClose }: { check: studio.LessonCheckDetail; onClo
       <div className="grid gap-6 md:grid-cols-2">
         {check.reference && <RunSummary title="Reference solution (should pass)" result={check.reference} expectPass />}
         {check.starter && <RunSummary title="Starter code (should fail)" result={check.starter} expectPass={false} />}
+        {check.referenceSim && <SimSummary title="solution.json (should pass)" result={check.referenceSim} expectPass />}
+        {check.starterSim && <SimSummary title="starter.json (should fail)" result={check.starterSim} expectPass={false} />}
       </div>
     </section>
   );
@@ -473,6 +508,21 @@ function RunSummary({ title, result, expectPass }: { title: string; result: engi
           <TestList tests={result.tests} />
         </>
       )}
+    </div>
+  );
+}
+
+function SimSummary({ title, result, expectPass }: { title: string; result: engine.SimResult; expectPass: boolean }) {
+  const good = result.passed === expectPass;
+  return (
+    <div>
+      <h4 className="mb-2 text-xs font-medium tracking-wide text-zinc-400 uppercase">
+        <span className={good ? "text-emerald-400" : "text-red-400"}>{good ? "✓" : "✗"}</span> {title}
+      </h4>
+      <p className={result.passed ? "text-emerald-300" : "text-zinc-300"}>{result.message}</p>
+      <p className="mt-1 text-xs text-zinc-500">
+        p99 {result.metrics.p99Ms} ms · {result.metrics.completed.toLocaleString()}/{result.metrics.requests.toLocaleString()} answered
+      </p>
     </div>
   );
 }

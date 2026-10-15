@@ -59,8 +59,41 @@ export interface Course {
 export interface Lesson extends LessonSummary {
   courseId: string;
   markdown: string;
+  /** Starter code, or diagram JSON for system design lessons. */
   starter: string;
   timeoutMs: number;
+  /** System design: p99 latency target. */
+  maxLatencyMs?: number;
+}
+
+export const isDesignLesson = (l?: LessonSummary) => l?.kind === "system-design";
+
+export interface SimNodeStats {
+  type: string;
+  label: string;
+  processed: number;
+  /** 0..1 */
+  utilization: number;
+  maxQueue: number;
+}
+
+export interface SimResult {
+  passed: boolean;
+  message: string;
+  issues: { nodeId?: string; code: string; message: string }[];
+  metrics: {
+    requests: number;
+    completed: number;
+    failed: number;
+    p50Ms: number;
+    p95Ms: number;
+    p99Ms: number;
+    maxMs: number;
+    durationMs: number;
+    throughputPerSec: number;
+    maxLatencyMs?: number;
+  };
+  nodes: Record<string, SimNodeStats>;
 }
 
 export type TestStatus = "pass" | "fail" | "error" | "skip";
@@ -161,6 +194,13 @@ export const saveCode = (courseId: string, lessonId: string, code: string) =>
   request<void>(lessonPath(courseId, lessonId) + "/progress/code", { method: "PUT", body: JSON.stringify({ code }) });
 export const resetCode = (courseId: string, lessonId: string) =>
   request<void>(lessonPath(courseId, lessonId) + "/progress/code", { method: "DELETE" });
+
+/** Sends a burst of traffic through a system design diagram and grades it. */
+export const simulate = (courseId: string, lessonId: string, graphJson: string) =>
+  request<SimResult>("/simulate", {
+    method: "POST",
+    body: `{"course":${JSON.stringify(courseId)},"lesson":${JSON.stringify(lessonId)},"graph":${graphJson}}`,
+  });
 
 /** Polls /health until the engine answers, since it starts alongside the window. */
 export async function waitForEngine(timeoutMs = 10_000): Promise<Health> {

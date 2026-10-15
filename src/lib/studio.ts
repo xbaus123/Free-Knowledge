@@ -2,7 +2,7 @@
 // `npm run dev:web`.
 import { isTauri } from "@tauri-apps/api/core";
 import { ask, message, open, save } from "@tauri-apps/plugin-dialog";
-import { EngineError, request, type GradeResult } from "./engine";
+import { EngineError, request, type GradeResult, type SimResult } from "./engine";
 
 export interface CourseMeta {
   title: string;
@@ -14,6 +14,8 @@ export interface CourseMeta {
 
 export interface LessonSource {
   id: string;
+  /** "code" or "system-design" (read-only). */
+  type?: string;
   title: string;
   language: string;
   timeoutMs?: number;
@@ -34,6 +36,9 @@ export interface LessonCheck {
 export interface LessonCheckDetail extends LessonCheck {
   reference?: GradeResult;
   starter?: GradeResult;
+  /** System design lessons: simulator runs of solution.json and starter.json. */
+  referenceSim?: SimResult;
+  starterSim?: SimResult;
 }
 
 export interface ImportResult {

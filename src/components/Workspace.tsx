@@ -2,6 +2,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Group, Panel, Separator } from "react-resizable-panels";
 import * as engine from "../lib/engine";
 import { CodeEditor } from "./CodeEditor";
+import { SimulationPanel } from "./design/SimulationPanel";
+import { SystemCanvas } from "./design/SystemCanvas";
 import { Markdown } from "./Markdown";
 import { OutputPanel, type OutputLine, type Tab } from "./OutputPanel";
 
@@ -37,6 +39,14 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
   const [confirmReset, setConfirmReset] = useState(false);
   const cancelRef = useRef<() => void>(undefined);
 
+  // System design lessons
+  const [simResult, setSimResult] = useState<engine.SimResult>();
+  // The diagram changed since the last run, so node overlays would mislead.
+  const [simStale, setSimStale] = useState(false);
+  // Bumped to remount the canvas with a new diagram (reset to starter).
+  const [canvasKey, setCanvasKey] = useState(0);
+  const isDesign = engine.isDesignLesson(lesson);
+
   const refreshProgress = useCallback(() => {
     engine
       .progress()
@@ -59,6 +69,7 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
     setRunError(undefined);
     setTab("tests");
     setConfirmReset(false);
+    setSimResult(undefined);
     Promise.all([engine.lesson(courseId, lessonId), engine.lessonProgress(courseId, lessonId)])
       .then(([l, p]) => {
         if (stale) return;
@@ -97,6 +108,7 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
   useEffect(() => () => void flushSave(), [courseId, lessonId, flushSave]);
 
   const onCodeChange = (value: string) => {
+    setSimStale(true);
     codeRef.current = value;
     setCode(value);
     pending.current = { courseId, lessonId, code: value };
@@ -110,6 +122,26 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
     if (!lesson || cancelRef.current) return;
     // Save now: a stopped run isn't recorded, so the code must not depend on it.
     void flushSave();
+
+    if (engine.isDesignLesson(lesson)) {
+      cancelRef.current = () => {}; // blocks a second run; simulations can't be stopped
+      setRunning(true);
+      setRunError(undefined);
+      try {
+        // Keep the traffic animation on screen briefly; the simulation itself takes milliseconds.
+        const [r] = await Promise.all([engine.simulate(courseId, lessonId, codeRef.current), new Promise((ok) => setTimeout(ok, 700))]);
+        setSimResult(r);
+        setSimStale(false);
+        setSaveState("saved");
+        refreshProgress();
+      } catch (e) {
+        setRunError(e instanceof Error ? e.message : String(e));
+      } finally {
+        cancelRef.current = undefined;
+        setRunning(false);
+      }
+      return;
+    }
 
     setRunning(true);
     setOutput([]);
@@ -156,6 +188,8 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
     setConfirmReset(false);
     codeRef.current = lesson.starter;
     setCode(lesson.starter);
+    setCanvasKey((k) => k + 1);
+    setSimResult(undefined);
     try {
       await engine.resetCode(courseId, lessonId);
       setSaveState("saved");
@@ -238,13 +272,13 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
                 <div className="flex h-full flex-col">
                   <div className="flex h-10 shrink-0 items-center gap-2 border-b border-zinc-800 bg-zinc-950 px-3 text-sm">
                     <span className="rounded bg-zinc-800 px-2 py-0.5 font-mono text-xs text-zinc-300">
-                      solution.{extension(lesson?.language)}
+                      {isDesign ? "architecture" : `solution.${extension(lesson?.language)}`}
                     </span>
                     <SaveIndicator state={saveState} />
                     <div className="ml-auto flex items-center gap-2">
                       {confirmReset ? (
                         <>
-                          <span className="text-xs text-zinc-400">Replace your code with the starter?</span>
+                          <span className="text-xs text-zinc-400">Replace your {isDesign ? "diagram" : "code"} with the starter?</span>
                           <button onClick={reset} className="rounded bg-red-700 px-2 py-1 text-xs hover:bg-red-600">
                             Reset
                           </button>
@@ -262,7 +296,7 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
                         </button>
                       )}
                       {/* Stop sits beside Run (not in its place) so a double-click can't restart the run. */}
-                      {running && (
+                      {running && !isDesign && (
                         <button onClick={() => cancelRef.current?.()} className="rounded bg-red-700 px-3 py-1 font-medium hover:bg-red-600">
                           Stop
                         </button>
@@ -273,12 +307,21 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
                         title="⌘ Enter"
                         className="rounded bg-indigo-600 px-3 py-1 font-medium hover:bg-indigo-500 disabled:opacity-40"
                       >
-                        {running ? "Running…" : "▶ Run tests"}
+                        {isDesign ? (running ? "Simulating…" : "▶ Simulate Traffic") : running ? "Running…" : "▶ Run tests"}
                       </button>
                     </div>
                   </div>
                   <div className="min-h-0 flex-1">
-                    {lesson && (
+                    {lesson && isDesign && (
+                      <SystemCanvas
+                        key={`${courseId}/${lessonId}/${canvasKey}`}
+                        initial={code}
+                        onChange={onCodeChange}
+                        result={simStale ? undefined : simResult}
+                        running={running}
+                      />
+                    )}
+                    {lesson && !isDesign && (
                       <CodeEditor
                         path={`${courseId}/${lessonId}/solution.${extension(lesson.language)}`}
                         language={lesson.language}
@@ -292,15 +335,26 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
               </Panel>
               <Separator className="h-px bg-zinc-800 transition-colors hover:bg-indigo-500 data-[separator=active]:bg-indigo-500" />
               <Panel id="output" defaultSize="35" minSize="10">
-                <OutputPanel
-                  tab={tab}
-                  onTab={setTab}
-                  output={output}
-                  grade={grade}
-                  running={running}
-                  error={runError}
-                  onNext={next ? () => onOpenLesson(next.id) : undefined}
-                />
+                {isDesign ? (
+                  <SimulationPanel
+                    result={simResult}
+                    running={running}
+                    error={runError}
+                    maxLatencyMs={lesson?.maxLatencyMs}
+                    stale={simStale && !!simResult}
+                    onNext={next ? () => onOpenLesson(next.id) : undefined}
+                  />
+                ) : (
+                  <OutputPanel
+                    tab={tab}
+                    onTab={setTab}
+                    output={output}
+                    grade={grade}
+                    running={running}
+                    error={runError}
+                    onNext={next ? () => onOpenLesson(next.id) : undefined}
+                  />
+                )}
               </Panel>
             </Group>
           </Panel>

@@ -230,3 +230,27 @@ func TestImportRejectsMaliciousArchives(t *testing.T) {
 		})
 	}
 }
+
+func TestBundledDesignLessonValidates(t *testing.T) {
+	s := newStudio(t)
+	d := must(s.CheckLesson(context.Background(), "system-design", "01-scalability"))
+	if !d.OK || d.Warning != "" || d.ReferenceSim == nil || !d.ReferenceSim.Passed || d.StarterSim == nil || d.StarterSim.Passed {
+		t.Fatalf("got %+v", d)
+	}
+}
+
+func TestDesignCourseExports(t *testing.T) {
+	s := newStudio(t)
+	id := must(s.CopyCourse("system-design"))
+	dest := filepath.Join(t.TempDir(), "sd.dojo")
+	must(s.Export(context.Background(), id, dest, "test"))
+	zr := must(zip.OpenReader(dest))
+	defer zr.Close()
+	var names []string
+	for _, f := range zr.File {
+		names = append(names, f.Name)
+	}
+	if !slices.Contains(names, "01-scalability/starter.json") || !slices.Contains(names, "01-scalability/solution.json") {
+		t.Fatalf("archive: %v", names)
+	}
+}

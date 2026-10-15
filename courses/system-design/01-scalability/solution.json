@@ -1,0 +1,16 @@
+{
+  "nodes": [
+    { "id": "client", "type": "client", "position": { "x": 0, "y": 120 }, "data": { "label": "Users" } },
+    { "id": "lb", "type": "loadBalancer", "position": { "x": 220, "y": 120 }, "data": { "label": "Load Balancer" } },
+    { "id": "api-1", "type": "server", "position": { "x": 440, "y": 40 }, "data": { "label": "API Server 1" } },
+    { "id": "api-2", "type": "server", "position": { "x": 440, "y": 200 }, "data": { "label": "API Server 2" } },
+    { "id": "db", "type": "database", "position": { "x": 680, "y": 120 }, "data": { "label": "Database" } }
+  ],
+  "edges": [
+    { "id": "client-lb", "source": "client", "target": "lb" },
+    { "id": "lb-api-1", "source": "lb", "target": "api-1" },
+    { "id": "lb-api-2", "source": "lb", "target": "api-2" },
+    { "id": "api-1-db", "source": "api-1", "target": "db" },
+    { "id": "api-2-db", "source": "api-2", "target": "db" }
+  ]
+}

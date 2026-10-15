@@ -35,9 +35,9 @@ var allowedOrigins = map[string]bool{
 }
 
 type Config struct {
-	Addr    string
-	Token   string
-	Version string
+	Addr     string
+	Token    string
+	Version  string
 	Courses  *course.Store
 	Progress *progress.Store
 	Studio   *studio.Studio // nil disables the /studio endpoints
@@ -68,6 +68,7 @@ func (s *Server) Handler() http.Handler {
 	mux.Handle("GET /courses/{course}/lessons/{lesson}/progress", s.requireToken(http.HandlerFunc(s.handleLessonProgress)))
 	mux.Handle("PUT /courses/{course}/lessons/{lesson}/progress/code", s.requireToken(http.HandlerFunc(s.handleSaveCode)))
 	mux.Handle("DELETE /courses/{course}/lessons/{lesson}/progress/code", s.requireToken(http.HandlerFunc(s.handleResetCode)))
+	mux.Handle("POST /simulate", s.requireToken(http.HandlerFunc(s.handleSimulate)))
 	s.studioRoutes(mux)
 	return s.guard(mux)
 }
