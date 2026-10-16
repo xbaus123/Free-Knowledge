@@ -1,0 +1,12 @@
+{
+  "answers": [
+    { "correct_index": 2, "explanation": "In an asynchronous network, silence is ambiguous. The payment might even have succeeded with the response lost, which is why retries need idempotency keys." },
+    { "correct_index": 1, "explanation": "Time-of-day clocks can jump when NTP corrects them, even backward, producing negative or wild durations. Monotonic clocks are made for measuring elapsed time on one machine." },
+    { "correct_index": 2, "explanation": "Timestamps from different machines don't reliably order events. The newer write gets the older timestamp and loses, with no error anywhere. That's the classic last-write-wins data loss." },
+    { "correct_index": 1, "explanation": "The check and the write aren't atomic with respect to time. Any pause between them, whether GC, VM suspension, or swapping, can invalidate the check. The fix can't live in the paused client; storage must reject it, which is what fencing tokens do." },
+    { "correct_index": 2, "explanation": "The truth is decided by a majority. A can't tell whether it's partitioned or the others are dead, so a correct system must not let it keep acting as leader without a quorum. Otherwise you get split brain." },
+    { "correct_index": 0, "explanation": "A zombie (paused or partitioned) client may still believe it holds the lock. Tokens let storage tell its writes from the current holder's." },
+    { "correct_index": 1, "explanation": "Tokens increase with every grant, so 33 comes from an older lease than 34. Storage keeps the highest token it has seen and rejects anything lower." },
+    { "correct_index": 1, "explanation": "Under load, response times grow. A trigger-happy failure detector declares live nodes dead, failover moves their work to others, and those overload in turn. Timeouts should reflect the observed distribution of response times, and some systems adapt them automatically." }
+  ]
+}

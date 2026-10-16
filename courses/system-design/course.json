@@ -1,6 +1,6 @@
 {
   "title": "System Design",
-  "description": "Design systems that stay fast, correct, and available, following Designing Data-Intensive Applications. Estimate load, scale and evolve architectures in the traffic simulator, build a log-structured storage engine and a consistent-hash partitioner in Python, and fix concurrency bugs with locks and serializable transactions.",
+  "description": "Design systems that stay fast, correct, and available, following Designing Data-Intensive Applications: from one server to replication, partitioning, transactions, consensus, and streams. Estimate load, stress architectures in the traffic simulator, and build a storage engine, a consistent-hash partitioner, and Raft in Python. Ends with a capstone: design a Twitter timeline that survives spikes, partitions, and crashes.",
   "author": "FreeKnowledge contributors",
   "version": "2.0.0",
   "lessons": [
@@ -19,6 +19,13 @@
     "13-partitioning-and-rate-limiting",
     "14-consistent-hashing",
     "15-transactions",
-    "16-write-skew"
+    "16-write-skew",
+    "17-distributed-trouble",
+    "18-fencing-tokens",
+    "19-consistency-and-consensus",
+    "20-raft-leader-election",
+    "21-batch-and-stream-processing",
+    "22-change-data-capture",
+    "23-capstone"
   ]
 }

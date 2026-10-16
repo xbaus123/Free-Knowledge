@@ -74,6 +74,8 @@ export const SimulationContext = createContext<{
   chaosNodes: Set<string>;
   chaosMode: boolean;
   catalog?: Record<string, NodeSpec>;
+  /** Show CPU and queue load (off for scenarios without request traffic). */
+  showLoad?: boolean;
 }>({ problemNodes: new Set(), chaosNodes: new Set(), chaosMode: false });
 
 interface Meta {
@@ -320,13 +322,13 @@ const LOADED: NodeKind[] = ["server", "database", "cache", "replica", "searchInd
 function SystemNode({ id, type, data, selected }: NodeProps<DesignNode>) {
   const kind = type as NodeKind;
   const meta = NODE_META[kind] ?? NODE_META.server;
-  const { stats, frame, problemNodes, chaosNodes, chaosMode, catalog } = useContext(SimulationContext);
+  const { stats, frame, problemNodes, chaosNodes, chaosMode, catalog, showLoad = true } = useContext(SimulationContext);
   const total = stats?.[id];
   const live = frame?.nodes[id];
   const pool = kind === "server" ? (data.pool ?? catalog?.server?.workers) : kind === "database" ? catalog?.database?.workers : undefined;
   const util = live ? live.utilization : total?.utilization;
   const queue = live ? live.queue : (total?.maxQueue ?? 0);
-  const hasLoad = LOADED.includes(kind);
+  const hasLoad = showLoad && LOADED.includes(kind);
   const temperature = hasLoad && util !== undefined ? heat(util, live?.queue ?? 0) : undefined;
   const down = !!live?.down;
   const doomed = chaosNodes.has(id);

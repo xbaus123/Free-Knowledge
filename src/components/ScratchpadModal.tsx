@@ -9,6 +9,8 @@ interface Props {
   onRun?: () => void;
   /** Language to start in (the lesson's, if it has one). */
   defaultLanguage?: string;
+  /** The lesson's current files, importable when running in its language. */
+  lessonFiles?: Record<string, string>;
 }
 
 const LANGUAGES = [
@@ -41,7 +43,7 @@ function store(key: string, value: string) {
 type Line = { stream: "stdout" | "stderr" | "info"; text: string };
 
 /** A slide-over code runner for trying things out, separate from the lesson's tests. */
-export function ScratchpadModal({ open, onClose, onRun, defaultLanguage }: Props) {
+export function ScratchpadModal({ open, onClose, onRun, defaultLanguage, lessonFiles }: Props) {
   const [language, setLanguage] = useState(() => {
     const saved = load(LANG_KEY);
     return LANGUAGES.some((l) => l.id === saved) ? saved! : LANGUAGES.some((l) => l.id === defaultLanguage) ? defaultLanguage! : "python";
@@ -52,6 +54,10 @@ export function ScratchpadModal({ open, onClose, onRun, defaultLanguage }: Props
   const [output, setOutput] = useState<Line[]>([]);
   const [running, setRunning] = useState(false);
   const cancelRef = useRef<() => void>(undefined);
+  const importable = language === defaultLanguage && lessonFiles ? lessonFiles : undefined;
+  const moduleNames = Object.keys(importable ?? {})
+    .filter((p) => p.endsWith(`.${lang.ext}`) && p !== `main.${lang.ext}`)
+    .sort();
 
   useEffect(() => {
     if (!open) return;
@@ -77,7 +83,7 @@ export function ScratchpadModal({ open, onClose, onRun, defaultLanguage }: Props
     setRunning(true);
     setOutput([]);
     const { result, cancel } = engine.runStreaming(
-      { language, code: codeRef.current },
+      { language, code: codeRef.current, files: importable },
       {
         onOutput: (stream, text) =>
           setOutput((o) => {
@@ -139,6 +145,12 @@ export function ScratchpadModal({ open, onClose, onRun, defaultLanguage }: Props
             </button>
           </div>
         </header>
+        {moduleNames.length > 0 && (
+          <p className="shrink-0 border-b border-zinc-800 px-3 py-1.5 text-xs text-zinc-500">
+            Your lesson's files are importable here, as you've written them:{" "}
+            <span className="font-mono text-zinc-300">{moduleNames.join(", ")}</span>
+          </p>
+        )}
         <div className="min-h-0 flex-[3]">
           {open && (
             <CodeEditor

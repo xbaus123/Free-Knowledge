@@ -100,3 +100,28 @@ func TestStreamingCallback(t *testing.T) {
 		t.Fatalf("missing streamed output: %q", got.String())
 	}
 }
+
+func TestExtraFilesAreImportable(t *testing.T) {
+	requireTool(t, "python3")
+	res, err := Run(context.Background(), Request{
+		Language: "python",
+		Code:     "import helper\nfrom pkg import util\nprint(helper.greet(), util.VALUE)",
+		Files: map[string]string{
+			"helper.py":   "def greet():\n    return 'hello'\n",
+			"pkg/util.py": "VALUE = 42\n",
+			"main.py":     "raise SystemExit('the program itself must win')",
+		},
+	}, nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if res.ExitCode != 0 || strings.TrimSpace(res.Stdout) != "hello 42" {
+		t.Fatalf("unexpected result: %+v", res)
+	}
+	for _, bad := range []string{"../escape.py", "/etc/passwd", ".."} {
+		res, err := Run(context.Background(), Request{Language: "python", Code: "print(1)", Files: map[string]string{bad: "x"}}, nil)
+		if err != nil || res.Error == "" {
+			t.Errorf("%q should be rejected: %+v %v", bad, res, err)
+		}
+	}
+}

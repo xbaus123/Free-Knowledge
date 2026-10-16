@@ -169,8 +169,9 @@ function Canvas({ initial, onChange, result, frame, running, budget, chaos = NO_
       chaosNodes: new Set(chaos.nodes),
       chaosMode,
       catalog,
+      showLoad: scenario?.kind !== "fencing",
     }),
-    [result, frame, chaos.nodes, chaosMode, catalog],
+    [result, frame, chaos.nodes, chaosMode, catalog, scenario?.kind],
   );
 
   // Connections: animated with traffic in the current frame, red and dashed when cut.

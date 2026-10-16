@@ -76,7 +76,16 @@ type Request struct {
 	Code      string `json:"code"`
 	Stdin     string `json:"stdin,omitempty"`
 	TimeoutMs int    `json:"timeoutMs,omitempty"`
+	// Files are written beside the program (relative paths) so it can
+	// import them; the Scratchpad sends a lesson's files this way.
+	Files map[string]string `json:"files,omitempty"`
 }
+
+// Limits on Request.Files.
+const (
+	MaxExtraFiles     = 100
+	MaxExtraFileBytes = 5 << 20 // in total
+)
 
 type Phase string
 
@@ -121,6 +130,9 @@ func Run(ctx context.Context, req Request, onOutput OutputFunc) (Result, error) 
 	}
 	defer os.RemoveAll(dir)
 
+	if err := writeExtraFiles(dir, lang.File, req.Files); err != nil {
+		return Result{Phase: PhaseCompile, ExitCode: -1, Error: err.Error()}, nil
+	}
 	if err := os.WriteFile(filepath.Join(dir, lang.File), []byte(req.Code), 0o600); err != nil {
 		return Result{}, fmt.Errorf("write source: %w", err)
 	}
@@ -137,6 +149,36 @@ func Run(ctx context.Context, req Request, onOutput OutputFunc) (Result, error) 
 	res := Exec(ctx, Command{Dir: dir, Argv: ExpandBin(dir, lang.Run), Stdin: req.Stdin, Timeout: ClampTimeout(req.TimeoutMs), Phase: PhaseRun}, onOutput)
 	res.DurationMs = time.Since(start).Milliseconds()
 	return res, nil
+}
+
+// writeExtraFiles writes files into dir, skipping the program's own file.
+// Paths must be relative and stay inside dir.
+func writeExtraFiles(dir, main string, files map[string]string) error {
+	if len(files) > MaxExtraFiles {
+		return fmt.Errorf("too many files (limit %d)", MaxExtraFiles)
+	}
+	total := 0
+	for p, content := range files {
+		total += len(content)
+		if total > MaxExtraFileBytes {
+			return errors.New("files are too large")
+		}
+		clean := filepath.Clean(filepath.FromSlash(p))
+		if p == "" || filepath.IsAbs(clean) || clean == "." || clean == ".." || strings.HasPrefix(clean, ".."+string(filepath.Separator)) {
+			return fmt.Errorf("invalid file path %q", p)
+		}
+		if clean == main {
+			continue
+		}
+		dst := filepath.Join(dir, clean)
+		if err := os.MkdirAll(filepath.Dir(dst), 0o700); err != nil {
+			return err
+		}
+		if err := os.WriteFile(dst, []byte(content), 0o600); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 // ClampTimeout converts a requested timeout to a duration, applying the

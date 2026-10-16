@@ -9,6 +9,8 @@ export interface RunRequest {
   code: string;
   stdin?: string;
   timeoutMs?: number;
+  /** Extra files beside the program (path → content), importable by it. */
+  files?: Record<string, string>;
 }
 
 export interface RunResult {

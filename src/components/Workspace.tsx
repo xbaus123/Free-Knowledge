@@ -670,6 +670,7 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
           onClose={() => setScratchpadOpen(false)}
           onRun={() => telemetry.current?.run()}
           defaultLanguage={lesson?.language}
+          lessonFiles={lesson?.kind !== "code" ? undefined : multiFile ? files : { [`solution.${extension(lesson.language)}`]: code }}
         />
       )}
     </div>

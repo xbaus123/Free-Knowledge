@@ -1,0 +1,10 @@
+{
+  "title": "Raft: Leader Election and Heartbeats",
+  "language": "python",
+  "timeoutMs": 30000,
+  "capabilities": {
+    "scratchpad": true,
+    "multi_file": true,
+    "read_only_files": ["cluster.py", "messages.py"]
+  }
+}

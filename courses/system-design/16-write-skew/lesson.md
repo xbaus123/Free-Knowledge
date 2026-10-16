@@ -59,6 +59,19 @@ Serializable transactions read from a snapshot, and the database remembers what 
 
 Your code must catch the failure and **retry the whole transaction**. On the retry, it sees the other booking and correctly returns `False`. Give up after `attempts` tries by letting the error propagate.
 
+Reproduce the bug yourself in the **Scratchpad** (your files are importable there):
+
+```python
+from booking import book_unsafe
+from race import run_concurrently
+from shop import open_facility
+
+db = open_facility()
+print(run_concurrently(db, [lambda: book_unsafe(db, 3, 1080, 1140, "Ada"),
+                            lambda: book_unsafe(db, 3, 1080, 1140, "Grace")]))
+print(db.rows("bookings"))
+```
+
 ## Think about it
 
 - Which fix holds locks while the customer's request runs? Which one does wasted work instead?

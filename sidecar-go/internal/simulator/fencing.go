@@ -135,6 +135,7 @@ func runFencing(g Graph, opts Options, cost CostBreakdown) (Result, error) {
 	longestStall, stallFrom := 0.0, 0.0
 	var lastWriter *fenceWorker
 	var inflight []fenceWrite
+	var acceptTimes []float64
 
 	type snapshot struct {
 		holder, writer string
@@ -184,6 +185,7 @@ func runFencing(g Graph, opts Options, cost CostBreakdown) (Result, error) {
 			maxGrant = max(maxGrant, wr.grant)
 			maxToken = max(maxToken, wr.token)
 			accepted++
+			acceptTimes = append(acceptTimes, t)
 			if lastAccept > 0 {
 				if gap := t - lastAccept; gap > longestStall {
 					longestStall, stallFrom = gap, lastAccept
@@ -351,7 +353,7 @@ func runFencing(g Graph, opts Options, cost CostBreakdown) (Result, error) {
 				f.Edges[id] = c
 			}
 		}
-		f.Completed = 0
+		f.Completed = countIn(acceptTimes, a, b) // writes storage accepted
 		tl.Frames = append(tl.Frames, f)
 	}
 	slices.SortStableFunc(tl.Events, func(x, y Event) int {

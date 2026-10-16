@@ -81,7 +81,7 @@ Any lesson can turn on optional features in `config.json` (or with the toggles i
 "capabilities": { "scratchpad": true, "multi_file": true, "telemetry": true, "read_only_files": ["text_utils.py"] }
 ```
 
-- **`scratchpad`**: a slide-over code runner in any of the five languages, for trying things out. It isn't graded.
+- **`scratchpad`**: a slide-over code runner in any of the five languages, for trying things out. It isn't graded. In the lesson's language, the learner's current lesson files are importable (single-file lessons as `solution.<ext>`).
 - **`multi_file`** (code lessons): learners get a file tree and tabs. The starting files live in the lesson's `starter/` folder, nested folders allowed. Your solution versions of the editable files go in `reference/`. Files in `read_only_files` are locked in the editor, and grading always uses the lesson's copy, so editing a helper can't change the result.
 - **`telemetry`**: records reading and typing time, attempts, scratchpad runs, and error types (syntax, compile, failed assertion, runtime, timeout) in the local progress database. It never records code. Learners see it under **Insights**, can clear it, and can turn recording off.
 

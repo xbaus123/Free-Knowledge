@@ -221,6 +221,7 @@ func (s *Server) handleRunWS(w http.ResponseWriter, r *http.Request) {
 	switch first.Type {
 	case "run":
 		var res runner.Result
+		first.Request.Files = first.Files // "files" lands on the outer struct
 		if res, err = runner.Run(ctx, first.Request, onOutput); err == nil {
 			reply = wsResultMsg{Type: "result", Result: res}
 		}

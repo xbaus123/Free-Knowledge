@@ -1,0 +1,78 @@
+{
+  "type": "quiz",
+  "title": "The Trouble with Distributed Systems",
+  "questions": [
+    {
+      "prompt": "Your service sends a request to a payments node and hears nothing back within its timeout. What do you actually know?",
+      "options": [
+        "The payments node has crashed",
+        "The request was lost in the network",
+        "Nothing for certain: the request or the response may be lost or delayed, or the node may be slow, paused, or down",
+        "The payment wasn't processed, so it's safe to retry with a new charge"
+      ]
+    },
+    {
+      "prompt": "You want to measure how long a database query took on one server. Which clock should you use?",
+      "options": [
+        "The time-of-day clock, because it's synchronized with NTP",
+        "A monotonic clock, because it never jumps backward",
+        "Either one; they're the same on a single machine",
+        "Neither; durations can't be measured reliably"
+      ]
+    },
+    {
+      "prompt": "Two replicas resolve conflicts with last write wins using their own time-of-day clocks. Node A's clock runs 50 ms fast. What can happen?",
+      "options": [
+        "Nothing; NTP keeps clocks exactly in sync",
+        "A's writes are rejected because their timestamps are in the future",
+        "A write from A can beat a later write from B, and B's write is silently discarded",
+        "Both writes are kept as siblings"
+      ]
+    },
+    {
+      "prompt": "A worker checks its lease (\"10 seconds left\"), then hits a 15-second garbage collection pause before writing. What's the danger?",
+      "options": [
+        "None; garbage collection never pauses threads for that long",
+        "The lease expired during the pause, another worker took over, and this worker writes anyway, believing it still holds the lease",
+        "The write is automatically cancelled by the runtime",
+        "The lock service extends the lease while the worker is paused"
+      ]
+    },
+    {
+      "prompt": "A three-node cluster is split by a partition: node A alone on one side, B and C on the other. A was the leader. What should happen?",
+      "options": [
+        "A remains leader because it was elected first",
+        "Both sides elect leaders and merge their data afterward",
+        "B and C, a majority, may elect a new leader; A must stop acting as leader because it can't reach a quorum",
+        "The whole cluster must stop until the partition heals"
+      ]
+    },
+    {
+      "prompt": "What does a fencing token protect against?",
+      "options": [
+        "A client whose lease has expired, perhaps without it knowing, writing to storage after a newer lease holder",
+        "Network packets being reordered",
+        "Clock drift between data centers",
+        "Two clients reading the same row"
+      ]
+    },
+    {
+      "prompt": "Storage has accepted a write with fencing token 34. A write arrives with token 33. What should storage do?",
+      "options": [
+        "Accept it; token 33 was valid once",
+        "Reject it: a newer lease holder has already written",
+        "Accept it only if it arrives within the lease duration",
+        "Ask the lock service whether 33 is still valid"
+      ]
+    },
+    {
+      "prompt": "Why does making a timeout very short to detect failures quickly often backfire?",
+      "options": [
+        "Short timeouts use more CPU",
+        "A slow but live node gets declared dead, and failing it over adds load that can make other nodes slow too: a cascade",
+        "Timeouts shorter than one second aren't supported by TCP",
+        "It doesn't backfire; shorter is always better"
+      ]
+    }
+  ]
+}

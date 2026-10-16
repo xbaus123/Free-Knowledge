@@ -29,7 +29,17 @@ Implement `KVStore` in `kvstore.py`:
 4. **`_load()`**: the index lives in memory, so it's gone after a restart. Rebuild it by reading every record from the start of the file. Later records win, and a tombstone removes its key.
 5. **Crash recovery**: if the process died halfway through an append, the file ends with a torn record and `record.read` raises `CorruptRecord`. Truncate the file at the start of that record (`self.file.truncate(offset)`) so new writes don't land after garbage.
 
-Use the **Scratchpad** to experiment. Open a store, write some keys, and look at the file size grow as you overwrite the same key.
+Use the **Scratchpad** to experiment; your files are importable there:
+
+```python
+import os
+from kvstore import KVStore
+
+db = KVStore("demo.log")
+for i in range(1000):
+    db.put("counter", str(i))
+print(db.get("counter"), os.path.getsize("demo.log"), "bytes for one key")
+```
 
 ## Think about it
 

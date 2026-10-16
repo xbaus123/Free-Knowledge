@@ -31,7 +31,15 @@ points = [10, 20, 30]
 bisect.bisect_right(points, 25)   # 2: the index of the first point > 25
 ```
 
-Use the **Scratchpad** to experiment. How uneven does the distribution get with `vnodes=1`? With 10? With 200?
+Use the **Scratchpad** to experiment: your code is importable there as `solution`. How uneven does the distribution get with `vnodes=1`? With 10? With 200?
+
+```python
+from collections import Counter
+from solution import Partitioner
+
+p = Partitioner([f"node-{i}" for i in range(10)], vnodes=1)
+print(Counter(p.node_for(f"user:{i}") for i in range(10_000)))
+```
 
 ## Think about it
 
