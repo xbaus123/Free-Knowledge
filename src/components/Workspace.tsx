@@ -528,7 +528,9 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
                             ? "Simulating…"
                             : chaos.nodes.length + chaos.edges.length > 0
                               ? "⚡ Run experiment"
-                              : "▶ Simulate Traffic"
+                              : lesson?.simulation?.kind === "fencing"
+                                ? "▶ Run Scenario"
+                                : "▶ Simulate Traffic"
                           : running
                             ? "Running…"
                             : "▶ Run tests"}
@@ -549,6 +551,7 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
                             budget={lesson.maxBudget}
                             chaos={chaos}
                             onChaosChange={changeChaos}
+                            scenario={lesson.simulation}
                           />
                         </div>
                         {simResult && !simStale && !running && (
@@ -636,6 +639,7 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
                     running={running}
                     error={runError}
                     maxLatencyMs={lesson?.maxLatencyMs}
+                    scenario={lesson?.simulation}
                     stale={simStale && !!simResult}
                     onNext={next ? () => onOpenLesson(next.id) : undefined}
                     onSeek={(ms) => {

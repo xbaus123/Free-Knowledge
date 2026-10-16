@@ -1,0 +1,142 @@
+{
+  "nodes": [
+    {
+      "id": "client",
+      "type": "client",
+      "position": {
+        "x": 0,
+        "y": 140
+      },
+      "data": {
+        "label": "Mobile apps (v1 + v2)"
+      }
+    },
+    {
+      "id": "lb",
+      "type": "loadBalancer",
+      "position": {
+        "x": 230,
+        "y": 140
+      },
+      "data": {
+        "label": "Load Balancer"
+      }
+    },
+    {
+      "id": "api-1",
+      "type": "server",
+      "position": {
+        "x": 470,
+        "y": 20
+      },
+      "data": {
+        "label": "API Server 1"
+      }
+    },
+    {
+      "id": "api-2",
+      "type": "server",
+      "position": {
+        "x": 470,
+        "y": 140
+      },
+      "data": {
+        "label": "API Server 2"
+      }
+    },
+    {
+      "id": "api-3",
+      "type": "server",
+      "position": {
+        "x": 470,
+        "y": 260
+      },
+      "data": {
+        "label": "API Server 3"
+      }
+    },
+    {
+      "id": "db",
+      "type": "database",
+      "position": {
+        "x": 720,
+        "y": 140
+      },
+      "data": {
+        "label": "Accounts DB"
+      }
+    },
+    {
+      "id": "registry",
+      "type": "schemaRegistry",
+      "position": {
+        "x": 230,
+        "y": 320
+      },
+      "data": {
+        "label": "Schema Registry",
+        "fields": [
+          {
+            "tag": 1,
+            "name": "user_id",
+            "type": "int64",
+            "required": true
+          },
+          {
+            "tag": 2,
+            "name": "email",
+            "type": "string",
+            "required": true
+          },
+          {
+            "tag": 4,
+            "name": "phone",
+            "type": "string"
+          },
+          {
+            "tag": 5,
+            "name": "referral_code",
+            "type": "int64"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "client-lb",
+      "source": "client",
+      "target": "lb"
+    },
+    {
+      "id": "lb-api-1",
+      "source": "lb",
+      "target": "api-1"
+    },
+    {
+      "id": "lb-api-2",
+      "source": "lb",
+      "target": "api-2"
+    },
+    {
+      "id": "lb-api-3",
+      "source": "lb",
+      "target": "api-3"
+    },
+    {
+      "id": "api-1-db",
+      "source": "api-1",
+      "target": "db"
+    },
+    {
+      "id": "api-2-db",
+      "source": "api-2",
+      "target": "db"
+    },
+    {
+      "id": "api-3-db",
+      "source": "api-3",
+      "target": "db"
+    }
+  ]
+}

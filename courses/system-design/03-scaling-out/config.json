@@ -1,0 +1,14 @@
+{
+  "title": "Scaling Out: The Single Point of Failure",
+  "type": "system-design",
+  "maxLatencyMs": 200,
+  "max_budget": 95,
+  "simulation": {
+    "traffic": {
+      "mix": {
+        "read": 4,
+        "write": 1
+      }
+    }
+  }
+}

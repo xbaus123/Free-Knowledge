@@ -1,0 +1,18 @@
+{
+  "type": "system-design",
+  "title": "Stream Processing: Change Data Capture",
+  "maxLatencyMs": 150,
+  "simulation": {
+    "palette": ["client", "loadBalancer", "server", "cache", "database", "queue", "searchIndex"],
+    "traffic": {
+      "requests": 1200,
+      "mix": { "read": 70, "write": 30 },
+      "keys": 200,
+      "read_your_writes_ms": 30
+    },
+    "faults": [
+      { "kind": "crash", "type": "searchIndex", "at_ms": 300, "for_ms": 300, "message": "Elasticsearch restarted for a version upgrade" }
+    ],
+    "goals": { "max_stale_pct": 1, "require": ["cache", "searchIndex"] }
+  }
+}

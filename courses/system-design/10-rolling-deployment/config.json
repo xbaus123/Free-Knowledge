@@ -1,0 +1,23 @@
+{
+  "type": "system-design",
+  "title": "Encoding and Evolution: A Rolling Deployment",
+  "maxLatencyMs": 200,
+  "simulation": {
+    "palette": ["client", "loadBalancer", "server", "database", "schemaRegistry"],
+    "traffic": {
+      "requests": 2000,
+      "duration_ms": 2000,
+      "mix": { "read": 70, "write": 30 },
+      "client_versions": { "v1": 1, "v2": 1 }
+    },
+    "rollout": { "to": "v2", "start_ms": 300, "interval_ms": 500, "restart_ms": 300 },
+    "schema": {
+      "v1": [
+        { "tag": 1, "name": "user_id", "type": "int64", "required": true },
+        { "tag": 2, "name": "email", "type": "string", "required": true },
+        { "tag": 3, "name": "nickname", "type": "string" }
+      ],
+      "new_fields": ["phone", "referral_code"]
+    }
+  }
+}

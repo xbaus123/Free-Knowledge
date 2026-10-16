@@ -1,0 +1,149 @@
+{
+  "nodes": [
+    {
+      "id": "client",
+      "type": "client",
+      "position": {
+        "x": 0,
+        "y": 140
+      },
+      "data": {
+        "label": "Users"
+      }
+    },
+    {
+      "id": "lb",
+      "type": "loadBalancer",
+      "position": {
+        "x": 210,
+        "y": 140
+      },
+      "data": {
+        "label": "Load Balancer"
+      }
+    },
+    {
+      "id": "api-1",
+      "type": "server",
+      "position": {
+        "x": 430,
+        "y": 20
+      },
+      "data": {
+        "label": "API Server 1"
+      }
+    },
+    {
+      "id": "api-2",
+      "type": "server",
+      "position": {
+        "x": 430,
+        "y": 140
+      },
+      "data": {
+        "label": "API Server 2"
+      }
+    },
+    {
+      "id": "api-3",
+      "type": "server",
+      "position": {
+        "x": 430,
+        "y": 260
+      },
+      "data": {
+        "label": "API Server 3"
+      }
+    },
+    {
+      "id": "redis",
+      "type": "cache",
+      "position": {
+        "x": 680,
+        "y": 60
+      },
+      "data": {
+        "label": "Redis"
+      }
+    },
+    {
+      "id": "postgres",
+      "type": "database",
+      "position": {
+        "x": 920,
+        "y": 60
+      },
+      "data": {
+        "label": "Postgres"
+      }
+    },
+    {
+      "id": "search",
+      "type": "searchIndex",
+      "position": {
+        "x": 680,
+        "y": 280
+      },
+      "data": {
+        "label": "Elasticsearch"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "client-lb",
+      "source": "client",
+      "target": "lb"
+    },
+    {
+      "id": "lb-api-1",
+      "source": "lb",
+      "target": "api-1"
+    },
+    {
+      "id": "lb-api-2",
+      "source": "lb",
+      "target": "api-2"
+    },
+    {
+      "id": "lb-api-3",
+      "source": "lb",
+      "target": "api-3"
+    },
+    {
+      "id": "api-1-redis",
+      "source": "api-1",
+      "target": "redis"
+    },
+    {
+      "id": "api-2-redis",
+      "source": "api-2",
+      "target": "redis"
+    },
+    {
+      "id": "api-3-redis",
+      "source": "api-3",
+      "target": "redis"
+    },
+    {
+      "id": "api-1-search",
+      "source": "api-1",
+      "target": "search"
+    },
+    {
+      "id": "api-2-search",
+      "source": "api-2",
+      "target": "search"
+    },
+    {
+      "id": "api-3-search",
+      "source": "api-3",
+      "target": "search"
+    },
+    {
+      "id": "redis-postgres",
+      "source": "redis",
+      "target": "postgres"
+    }
+  ]
+}

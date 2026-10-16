@@ -1,0 +1,12 @@
+{
+  "answers": [
+    { "correct_index": 1, "explanation": "10⁷ users × 20 = 2 × 10⁸ requests a day. Divide by about 10⁵ seconds: roughly 2,000 (precisely 86,400 s gives about 2,300) requests per second." },
+    { "correct_index": 1, "explanation": "3 × 2,300 ≈ 7,000 requests/s. Always size for the peak, not the average; queues form during the peak." },
+    { "correct_index": 1, "explanation": "10⁷ × 50 × 200 KB = 10¹⁴ bytes = 100 TB a day. 100 TB ÷ 86,400 s ≈ 1.2 GB/s, and × 8 bits ≈ 10 Gbit/s on average (more at peak). Bandwidth this size is why images go on a CDN." },
+    { "correct_index": 2, "explanation": "10⁷ × 2 × 300 B = 6 GB a day. × 365 ≈ 2.2 TB a year, before replication (multiply by 3 if you keep three copies)." },
+    { "correct_index": 1, "explanation": "7,000 ÷ 500 = 14. Add at least one spare (N+1) so a crash or deploy doesn't push the rest past capacity." },
+    { "correct_index": 3, "explanation": "An intercontinental round trip is about 150 ms, limited by the speed of light in fiber. A data center round trip is about 0.5 ms, an SSD read about 0.1 ms, and 1 MB from memory well under a millisecond. Geography dominates latency." },
+    { "correct_index": 1, "explanation": "50 × 10⁶ items × 2 KB = 100 GB in total. 20% of that is 20 GB, which fits in the memory of one large cache node (or a few smaller ones)." },
+    { "correct_index": 1, "explanation": "The load is 99% reads. Caches and read replicas scale reads; partitioning mainly helps when writes or data size outgrow one machine. Extra indexes slow writes down, and synchronous replication adds latency." }
+  ]
+}

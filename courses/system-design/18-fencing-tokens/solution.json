@@ -1,0 +1,73 @@
+{
+  "nodes": [
+    {
+      "id": "worker-a",
+      "type": "server",
+      "position": {
+        "x": 0,
+        "y": 40
+      },
+      "data": {
+        "label": "Worker A"
+      }
+    },
+    {
+      "id": "worker-b",
+      "type": "server",
+      "position": {
+        "x": 0,
+        "y": 240
+      },
+      "data": {
+        "label": "Worker B"
+      }
+    },
+    {
+      "id": "lock",
+      "type": "lock",
+      "position": {
+        "x": 300,
+        "y": 140
+      },
+      "data": {
+        "label": "Lock Service",
+        "leaseMs": 1000,
+        "fencing": true
+      }
+    },
+    {
+      "id": "storage",
+      "type": "database",
+      "position": {
+        "x": 600,
+        "y": 140
+      },
+      "data": {
+        "label": "Storage",
+        "checkTokens": true
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "worker-a-lock",
+      "source": "worker-a",
+      "target": "lock"
+    },
+    {
+      "id": "worker-b-lock",
+      "source": "worker-b",
+      "target": "lock"
+    },
+    {
+      "id": "worker-a-storage",
+      "source": "worker-a",
+      "target": "storage"
+    },
+    {
+      "id": "worker-b-storage",
+      "source": "worker-b",
+      "target": "storage"
+    }
+  ]
+}

@@ -16,6 +16,10 @@ const EVENT_COLORS: Record<SimEvent["kind"], string> = {
   queueing: "bg-amber-600",
   errors: "bg-red-400",
   data_loss: "bg-fuchsia-500",
+  stale: "bg-yellow-400",
+  throttled: "bg-orange-400",
+  deploy: "bg-sky-400",
+  lock: "bg-blue-400",
 };
 
 /** Replay controls: play/pause, step, and a slider with event markers. */

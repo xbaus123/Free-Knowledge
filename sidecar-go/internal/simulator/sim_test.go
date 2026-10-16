@@ -69,8 +69,8 @@ func TestLoadBalancedServersPass(t *testing.T) {
 		t.Fatalf("should pass: %+v", res.Issues)
 	}
 	m := res.Metrics
-	// client→lb→api→db and back: 6 hops × 2 ms + 1 + 6 + 3 ms of work.
-	if m.P50Ms != 22 || m.P99Ms > 30 || m.Completed != 1000 || m.Failed != 0 {
+	// client→lb→api→db and back: 6 hops × 2 ms + 1 + 6 + 4 ms of work.
+	if m.P50Ms != 23 || m.P99Ms > 30 || m.Completed != 1000 || m.Failed != 0 {
 		t.Fatalf("metrics: %+v", m)
 	}
 	if u := res.Nodes["api1"].Utilization; u < 0.6 || u > 0.9 {
@@ -79,7 +79,7 @@ func TestLoadBalancedServersPass(t *testing.T) {
 	if res.Nodes["api1"].Processed != 500 || res.Nodes["api2"].Processed != 500 {
 		t.Fatalf("round robin split: %+v %+v", res.Nodes["api1"], res.Nodes["api2"])
 	}
-	if res.Message != "Handled 1,000 requests with p99 latency of 22 ms." {
+	if res.Message != "Handled 1,000 requests with p99 latency of 23 ms." {
 		t.Fatalf("message: %q", res.Message)
 	}
 }

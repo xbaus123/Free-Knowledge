@@ -18,7 +18,7 @@ import "@xyflow/react/dist/style.css";
 import { useEffect, useMemo, useRef, useState } from "react";
 import * as engine from "../../lib/engine";
 import { NodeProperties } from "./NodeProperties";
-import { NODE_META, NodeIcon, nodeCost, nodeTypes, SimulationContext, type DesignNode, type NodeData, type NodeKind } from "./nodes";
+import { ALL_KINDS, NODE_META, NodeIcon, nodeCost, nodeTypes, SimulationContext, type DesignNode, type NodeData, type NodeKind } from "./nodes";
 
 export interface DesignGraph {
   nodes: { id: string; type: NodeKind; position: { x: number; y: number }; data: NodeData }[];
@@ -40,9 +40,11 @@ interface Props {
   /** Enables the chaos toolkit. */
   chaos?: engine.Chaos;
   onChaosChange?: (chaos: engine.Chaos) => void;
+  /** The lesson's scenario: which node types to offer, and settings context. */
+  scenario?: engine.SimulationConfig;
 }
 
-const PALETTE: NodeKind[] = ["loadBalancer", "server", "database", "client"];
+const DEFAULT_PALETTE: NodeKind[] = ["client", "loadBalancer", "server", "database"];
 const NO_CHAOS: engine.Chaos = { nodes: [], edges: [] };
 
 export function parseGraph(json: string): DesignGraph {
@@ -58,11 +60,8 @@ export function parseGraph(json: string): DesignGraph {
 function serialize(nodes: DesignNode[], edges: Edge[]): string {
   const g: DesignGraph = {
     nodes: nodes.map((n) => {
-      const { label, pool, replication, algorithm } = n.data;
-      const data: NodeData = { label };
-      if (pool !== undefined) data.pool = pool;
-      if (replication !== undefined) data.replication = replication;
-      if (algorithm !== undefined) data.algorithm = algorithm;
+      // Settings left at their defaults are undefined; leave them out.
+      const data = Object.fromEntries(Object.entries(n.data).filter(([, v]) => v !== undefined)) as NodeData;
       return { id: n.id, type: n.type as NodeKind, position: { x: Math.round(n.position.x), y: Math.round(n.position.y) }, data };
     }),
     edges: edges.map((e) => ({ id: e.id, source: e.source, target: e.target })),
@@ -89,7 +88,7 @@ export function SystemCanvas(props: Props) {
   );
 }
 
-function Canvas({ initial, onChange, result, frame, running, budget, chaos = NO_CHAOS, onChaosChange }: Props) {
+function Canvas({ initial, onChange, result, frame, running, budget, chaos = NO_CHAOS, onChaosChange, scenario }: Props) {
   const start = useMemo(() => parseGraph(initial), [initial]);
   const [nodes, setNodes, onNodesChange] = useNodesState<DesignNode>(start.nodes as DesignNode[]);
   const [edges, setEdges, onEdgesChange] = useEdgesState<Edge>(start.edges);
@@ -111,17 +110,31 @@ function Canvas({ initial, onChange, result, frame, running, budget, chaos = NO_
 
   const onConnect = (c: Connection) => setEdges((es) => addEdge({ ...c, id: `${c.source}-${c.target}` }, es));
 
-  // Traffic flows away from the client and ends at databases.
+  // Traffic flows away from the client; some nodes only receive.
   const isValidConnection: IsValidConnection = (c) => {
+    const source = nodes.find((n) => n.id === c.source);
     const target = nodes.find((n) => n.id === c.target);
-    return c.source !== c.target && target?.type !== "client" && !edges.some((e) => e.source === c.source && e.target === c.target);
+    return (
+      c.source !== c.target &&
+      !!source &&
+      !!target &&
+      NODE_META[source.type as NodeKind]?.output &&
+      NODE_META[target.type as NodeKind]?.input &&
+      !edges.some((e) => e.source === c.source && e.target === c.target)
+    );
   };
+  const palette = ALL_KINDS.filter((k) => (scenario?.palette ?? DEFAULT_PALETTE).includes(k));
 
   const addNode = (kind: NodeKind) => {
     const count = nodes.filter((n) => n.type === kind).length;
     let n = count + 1;
     while (nodes.some((x) => x.id === `${kind}-${n}`)) n++;
-    const label = kind === "server" ? `API Server ${n}` : count === 0 ? NODE_META[kind].name : `${NODE_META[kind].name} ${n}`;
+    const label =
+      kind === "server"
+        ? `${scenario?.kind === "fencing" ? "Worker" : "API Server"} ${n}`
+        : count === 0
+          ? NODE_META[kind].name
+          : `${NODE_META[kind].name} ${n}`;
     // Drop it in the first free spot near the middle of the visible canvas,
     // trying below then above so new nodes never land on existing ones.
     const box = wrapper.current?.getBoundingClientRect();
@@ -200,7 +213,7 @@ function Canvas({ initial, onChange, result, frame, running, budget, chaos = NO_
           isValidConnection={isValidConnection}
           onNodeDoubleClick={(_, n) => !chaosMode && setEditing(n.id)}
           onNodeClick={(_, n) => {
-            if (chaosMode && onChaosChange && n.type !== "client") onChaosChange({ ...liveChaos, nodes: toggle(liveChaos.nodes, n.id) });
+            if (chaosMode && onChaosChange && n.type !== "client" && n.type !== "schemaRegistry") onChaosChange({ ...liveChaos, nodes: toggle(liveChaos.nodes, n.id) });
           }}
           onEdgeClick={(_, e) => {
             if (chaosMode && onChaosChange) onChaosChange({ ...liveChaos, edges: toggle(liveChaos.edges, e.id) });
@@ -219,7 +232,7 @@ function Canvas({ initial, onChange, result, frame, running, budget, chaos = NO_
           <Controls showInteractive={false} />
           <Panel position="top-left" className="flex flex-col gap-1 rounded-lg border border-zinc-800 bg-zinc-950/90 p-1.5 text-xs">
             <span className="px-1.5 pt-0.5 pb-1 text-[10px] font-medium tracking-wide text-zinc-500 uppercase">Add</span>
-            {PALETTE.map((kind) => (
+            {palette.map((kind) => (
               <button
                 key={kind}
                 onClick={() => addNode(kind)}
@@ -259,7 +272,13 @@ function Canvas({ initial, onChange, result, frame, running, budget, chaos = NO_
 
           {editingNode && (
             <Panel position="top-right">
-              <NodeProperties node={editingNode} catalog={catalog} onChange={(data) => updateData(editingNode.id, data)} onClose={() => setEditing(undefined)} />
+              <NodeProperties
+                node={editingNode}
+                catalog={catalog}
+                scenario={scenario}
+                onChange={(data) => updateData(editingNode.id, data)}
+                onClose={() => setEditing(undefined)}
+              />
             </Panel>
           )}
 

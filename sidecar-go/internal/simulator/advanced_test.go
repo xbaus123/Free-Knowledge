@@ -132,7 +132,7 @@ func TestChaosDatabaseFailover(t *testing.T) {
 		t.Run(mode, func(t *testing.T) {
 			g := twoServers()
 			node(&g, "db").Data.Replication = mode
-			res := runWith(t, g, Options{Chaos: Chaos{Nodes: []string{"db"}}})
+			res := runWith(t, g, Options{Chaos: Chaos{Nodes: []string{"db"}}, Scenario: Scenario{Traffic: Traffic{Mix: map[string]float64{"read": 4, "write": 1}}}})
 			lastFrame := res.Timeline.Frames[len(res.Timeline.Frames)-1]
 			if recovered := lastFrame.Completed > 0 && !lastFrame.Nodes["db"].Down; recovered != want.recovers {
 				t.Errorf("recovered=%v, want %v (last frame %+v)", recovered, want.recovers, lastFrame)

@@ -1,0 +1,16 @@
+{
+  "type": "system-design",
+  "title": "Replication and Caching: Fresh Reads at Scale",
+  "maxLatencyMs": 150,
+  "max_budget": 160,
+  "simulation": {
+    "palette": ["client", "cdn", "loadBalancer", "server", "cache", "database", "replica"],
+    "traffic": {
+      "requests": 3500,
+      "mix": { "read": 55, "static": 35, "write": 10 },
+      "keys": 300,
+      "read_your_writes_ms": 30
+    },
+    "goals": { "max_stale_pct": 1 }
+  }
+}

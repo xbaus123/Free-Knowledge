@@ -1,0 +1,48 @@
+{
+  "type": "quiz",
+  "title": "Back-of-the-Envelope Estimation",
+  "questions": [
+    {
+      "prompt": "A photo app has 10 million daily active users. Each makes 20 API requests a day. What is the average request rate?",
+      "options": ["About 230 requests/s", "About 2,300 requests/s", "About 23,000 requests/s", "About 230,000 requests/s"]
+    },
+    {
+      "prompt": "Traffic peaks in the evening at roughly 3× the average. Using your answer above, what peak rate should you plan for?",
+      "options": ["About 700 requests/s", "About 7,000 requests/s", "About 70,000 requests/s", "About 700,000 requests/s"]
+    },
+    {
+      "prompt": "Each of those 10 million users views 50 photos a day, and a photo is 200 KB. What average outbound bandwidth does serving the photos take?",
+      "options": ["About 1 Gbit/s", "About 10 Gbit/s", "About 100 Gbit/s", "About 1 Tbit/s"]
+    },
+    {
+      "prompt": "Each user posts 2 short comments a day, stored as 300 bytes each including metadata. Roughly how much new storage do comments need per year?",
+      "options": ["About 20 GB", "About 200 GB", "About 2 TB", "About 20 TB"]
+    },
+    {
+      "prompt": "One API server comfortably handles 500 requests/s while keeping latency low. How many servers do you need for the 7,000 requests/s peak?",
+      "options": ["2", "About 15, plus a spare or two", "About 150", "About 1,500"]
+    },
+    {
+      "prompt": "Which of these takes the longest?",
+      "options": [
+        "Reading 1 MB sequentially from memory",
+        "A network round trip within one data center",
+        "A random read from an SSD",
+        "A network round trip from California to Europe and back"
+      ]
+    },
+    {
+      "prompt": "A catalog has 50 million items of 2 KB each. 20% of the items get 80% of the reads. About how much memory does a cache need to hold the popular items?",
+      "options": ["About 2 GB", "About 20 GB", "About 200 GB", "About 2 TB"]
+    },
+    {
+      "prompt": "A service handles 100,000 reads/s and 1,000 writes/s, and its database is the bottleneck. What helps most?",
+      "options": [
+        "Partitioning the database to spread out the writes",
+        "Adding a cache and read replicas to absorb the reads",
+        "Adding more indexes to speed up the writes",
+        "Switching to synchronous replication"
+      ]
+    }
+  ]
+}

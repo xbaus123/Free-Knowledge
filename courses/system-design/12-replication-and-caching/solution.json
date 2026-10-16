@@ -1,0 +1,182 @@
+{
+  "nodes": [
+    {
+      "id": "client",
+      "type": "client",
+      "position": {
+        "x": -120,
+        "y": 110
+      },
+      "data": {
+        "label": "Users"
+      }
+    },
+    {
+      "id": "cdn",
+      "type": "cdn",
+      "position": {
+        "x": 60,
+        "y": 110
+      },
+      "data": {
+        "label": "CDN"
+      }
+    },
+    {
+      "id": "lb",
+      "type": "loadBalancer",
+      "position": {
+        "x": 240,
+        "y": 110
+      },
+      "data": {
+        "label": "Load Balancer"
+      }
+    },
+    {
+      "id": "api-1",
+      "type": "server",
+      "position": {
+        "x": 480,
+        "y": -110
+      },
+      "data": {
+        "label": "API Server 1"
+      }
+    },
+    {
+      "id": "api-2",
+      "type": "server",
+      "position": {
+        "x": 480,
+        "y": 0
+      },
+      "data": {
+        "label": "API Server 2"
+      }
+    },
+    {
+      "id": "api-3",
+      "type": "server",
+      "position": {
+        "x": 480,
+        "y": 110
+      },
+      "data": {
+        "label": "API Server 3"
+      }
+    },
+    {
+      "id": "api-4",
+      "type": "server",
+      "position": {
+        "x": 480,
+        "y": 220
+      },
+      "data": {
+        "label": "API Server 4"
+      }
+    },
+    {
+      "id": "api-5",
+      "type": "server",
+      "position": {
+        "x": 480,
+        "y": 330
+      },
+      "data": {
+        "label": "API Server 5"
+      }
+    },
+    {
+      "id": "redis",
+      "type": "cache",
+      "position": {
+        "x": 720,
+        "y": 110
+      },
+      "data": {
+        "label": "Redis",
+        "policy": "invalidate"
+      }
+    },
+    {
+      "id": "primary",
+      "type": "database",
+      "position": {
+        "x": 960,
+        "y": 110
+      },
+      "data": {
+        "label": "Postgres (primary)"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "client-cdn",
+      "source": "client",
+      "target": "cdn"
+    },
+    {
+      "id": "cdn-lb",
+      "source": "cdn",
+      "target": "lb"
+    },
+    {
+      "id": "lb-api-1",
+      "source": "lb",
+      "target": "api-1"
+    },
+    {
+      "id": "lb-api-2",
+      "source": "lb",
+      "target": "api-2"
+    },
+    {
+      "id": "lb-api-3",
+      "source": "lb",
+      "target": "api-3"
+    },
+    {
+      "id": "lb-api-4",
+      "source": "lb",
+      "target": "api-4"
+    },
+    {
+      "id": "lb-api-5",
+      "source": "lb",
+      "target": "api-5"
+    },
+    {
+      "id": "api-1-redis",
+      "source": "api-1",
+      "target": "redis"
+    },
+    {
+      "id": "api-2-redis",
+      "source": "api-2",
+      "target": "redis"
+    },
+    {
+      "id": "api-3-redis",
+      "source": "api-3",
+      "target": "redis"
+    },
+    {
+      "id": "api-4-redis",
+      "source": "api-4",
+      "target": "redis"
+    },
+    {
+      "id": "api-5-redis",
+      "source": "api-5",
+      "target": "redis"
+    },
+    {
+      "id": "redis-primary",
+      "source": "redis",
+      "target": "primary"
+    }
+  ]
+}

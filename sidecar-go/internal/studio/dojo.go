@@ -119,7 +119,7 @@ func checkDesignLesson(l *course.Lesson, d LessonCheckDetail) (LessonCheckDetail
 		d.Problem = "add a solution.json so the lesson can be checked"
 		return d, nil
 	}
-	opts := simulator.Options{MaxLatencyMs: float64(l.MaxLatencyMs), MaxBudget: l.MaxBudget}
+	opts := l.DesignOptions()
 	simulate := func(raw []byte, what string) (*simulator.Result, error) {
 		var g simulator.Graph
 		if err := json.Unmarshal(raw, &g); err != nil {

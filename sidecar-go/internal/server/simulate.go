@@ -45,7 +45,8 @@ func (s *Server) handleSimulate(w http.ResponseWriter, r *http.Request) {
 			writeJSON(w, http.StatusBadRequest, map[string]string{"error": "not a system design lesson"})
 			return
 		}
-		opts.MaxLatencyMs, opts.MaxBudget = float64(l.MaxLatencyMs), l.MaxBudget
+		opts = l.DesignOptions()
+		opts.Chaos = body.Chaos
 	}
 
 	res, err := simulator.Run(g, opts)

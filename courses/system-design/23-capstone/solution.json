@@ -1,0 +1,267 @@
+{
+  "nodes": [
+    {
+      "id": "client",
+      "type": "client",
+      "position": {
+        "x": 0,
+        "y": 200
+      },
+      "data": {
+        "label": "Users"
+      }
+    },
+    {
+      "id": "limiter",
+      "type": "rateLimiter",
+      "position": {
+        "x": 180,
+        "y": 200
+      },
+      "data": {
+        "label": "Rate Limiter"
+      }
+    },
+    {
+      "id": "lb",
+      "type": "loadBalancer",
+      "position": {
+        "x": 380,
+        "y": 200
+      },
+      "data": {
+        "label": "Load Balancer"
+      }
+    },
+    {
+      "id": "api-1",
+      "type": "server",
+      "position": {
+        "x": 600,
+        "y": -50.0
+      },
+      "data": {
+        "label": "API Server 1"
+      }
+    },
+    {
+      "id": "api-2",
+      "type": "server",
+      "position": {
+        "x": 600,
+        "y": 50.0
+      },
+      "data": {
+        "label": "API Server 2"
+      }
+    },
+    {
+      "id": "api-3",
+      "type": "server",
+      "position": {
+        "x": 600,
+        "y": 150.0
+      },
+      "data": {
+        "label": "API Server 3"
+      }
+    },
+    {
+      "id": "api-4",
+      "type": "server",
+      "position": {
+        "x": 600,
+        "y": 250.0
+      },
+      "data": {
+        "label": "API Server 4"
+      }
+    },
+    {
+      "id": "api-5",
+      "type": "server",
+      "position": {
+        "x": 600,
+        "y": 350.0
+      },
+      "data": {
+        "label": "API Server 5"
+      }
+    },
+    {
+      "id": "api-6",
+      "type": "server",
+      "position": {
+        "x": 600,
+        "y": 450.0
+      },
+      "data": {
+        "label": "API Server 6"
+      }
+    },
+    {
+      "id": "redis",
+      "type": "cache",
+      "position": {
+        "x": 860,
+        "y": 60
+      },
+      "data": {
+        "label": "Timeline Cache"
+      }
+    },
+    {
+      "id": "kafka",
+      "type": "queue",
+      "position": {
+        "x": 860,
+        "y": 360
+      },
+      "data": {
+        "label": "Fan-out Queue",
+        "consumers": 32
+      }
+    },
+    {
+      "id": "db",
+      "type": "database",
+      "position": {
+        "x": 1100,
+        "y": 360
+      },
+      "data": {
+        "label": "Timelines DB",
+        "partitions": 2,
+        "replication": "sync"
+      }
+    },
+    {
+      "id": "replica",
+      "type": "replica",
+      "position": {
+        "x": 1100,
+        "y": 60
+      },
+      "data": {
+        "label": "Read Replica"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "client-limiter",
+      "source": "client",
+      "target": "limiter"
+    },
+    {
+      "id": "limiter-lb",
+      "source": "limiter",
+      "target": "lb"
+    },
+    {
+      "id": "lb-api-1",
+      "source": "lb",
+      "target": "api-1"
+    },
+    {
+      "id": "lb-api-2",
+      "source": "lb",
+      "target": "api-2"
+    },
+    {
+      "id": "lb-api-3",
+      "source": "lb",
+      "target": "api-3"
+    },
+    {
+      "id": "lb-api-4",
+      "source": "lb",
+      "target": "api-4"
+    },
+    {
+      "id": "lb-api-5",
+      "source": "lb",
+      "target": "api-5"
+    },
+    {
+      "id": "lb-api-6",
+      "source": "lb",
+      "target": "api-6"
+    },
+    {
+      "id": "api-1-redis",
+      "source": "api-1",
+      "target": "redis"
+    },
+    {
+      "id": "api-2-redis",
+      "source": "api-2",
+      "target": "redis"
+    },
+    {
+      "id": "api-3-redis",
+      "source": "api-3",
+      "target": "redis"
+    },
+    {
+      "id": "api-4-redis",
+      "source": "api-4",
+      "target": "redis"
+    },
+    {
+      "id": "api-5-redis",
+      "source": "api-5",
+      "target": "redis"
+    },
+    {
+      "id": "api-6-redis",
+      "source": "api-6",
+      "target": "redis"
+    },
+    {
+      "id": "api-1-kafka",
+      "source": "api-1",
+      "target": "kafka"
+    },
+    {
+      "id": "api-2-kafka",
+      "source": "api-2",
+      "target": "kafka"
+    },
+    {
+      "id": "api-3-kafka",
+      "source": "api-3",
+      "target": "kafka"
+    },
+    {
+      "id": "api-4-kafka",
+      "source": "api-4",
+      "target": "kafka"
+    },
+    {
+      "id": "api-5-kafka",
+      "source": "api-5",
+      "target": "kafka"
+    },
+    {
+      "id": "api-6-kafka",
+      "source": "api-6",
+      "target": "kafka"
+    },
+    {
+      "id": "redis-replica",
+      "source": "redis",
+      "target": "replica"
+    },
+    {
+      "id": "kafka-db",
+      "source": "kafka",
+      "target": "db"
+    },
+    {
+      "id": "db-replica",
+      "source": "db",
+      "target": "replica"
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 // `npm run dev:web`.
 import { isTauri } from "@tauri-apps/api/core";
 import { ask, message, open, save } from "@tauri-apps/plugin-dialog";
-import { EngineError, request, type Capabilities, type GradeResult, type SimResult } from "./engine";
+import { EngineError, request, type Capabilities, type GradeResult, type SimResult, type SimulationConfig } from "./engine";
 
 export interface CourseMeta {
   title: string;
@@ -25,6 +25,8 @@ export interface LessonSource {
   maxLatencyMs?: number;
   /** System design: monthly cost limit in dollars. */
   maxBudget?: number;
+  /** System design: the scenario (traffic, faults, goals, palette). */
+  simulation?: SimulationConfig;
   markdown: string;
   /** Code: starter code. System design: starter diagram JSON. */
   starter: string;

@@ -1,0 +1,12 @@
+{
+  "type": "system-design",
+  "title": "The Trouble with Distributed Systems: Fencing Tokens",
+  "simulation": {
+    "kind": "fencing",
+    "palette": ["server", "lock", "database"],
+    "faults": [
+      { "kind": "pause", "node": "worker-a", "at_ms": 300, "for_ms": 1500, "message": "Worker A froze in a 1.5-second garbage collection pause" },
+      { "kind": "cut", "from": "server", "to": "lock", "at_ms": 300, "for_ms": 1500, "message": "Packets between Worker A and the Lock Service are being dropped" }
+    ]
+  }
+}

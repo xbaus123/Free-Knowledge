@@ -66,6 +66,8 @@ export interface Lesson extends LessonSummary {
   maxLatencyMs?: number;
   /** System design: monthly cost limit in dollars. */
   maxBudget?: number;
+  /** System design: the scenario (traffic, faults, goals, palette). */
+  simulation?: SimulationConfig;
   /** Quiz questions (answers stay on the engine). */
   questions?: QuizQuestion[];
   capabilities: Capabilities;
@@ -91,6 +93,26 @@ export interface QuizQuestion {
   /** Empty when the question is in the lesson text. */
   prompt?: string;
   options: string[];
+}
+
+/** The parts of a system design scenario the canvas uses (see simulator.Scenario). */
+export interface SimulationConfig {
+  /** "" or "traffic" (default), or "fencing" for the distributed lock scenario. */
+  kind?: string;
+  /** Node types the canvas offers. */
+  palette?: string[];
+  traffic?: { requests?: number; duration_ms?: number };
+  /** Schema evolution: the fixed v1 schema, and fields v2 must add. */
+  schema?: { v1: SchemaField[]; new_fields?: string[] };
+  [key: string]: unknown;
+}
+
+/** One field of a message schema; readers match fields by tag. */
+export interface SchemaField {
+  tag: number;
+  name: string;
+  type: "int64" | "string" | "bool";
+  required?: boolean;
 }
 
 export const isDesignLesson = (l?: LessonSummary) => l?.kind === "system-design";
@@ -124,11 +146,19 @@ export interface SimResult {
     throughputPerSec: number;
     maxLatencyMs?: number;
   };
+  /** Scenario-specific measurements (stale reads, queue wait, …). */
+  stats: SimStat[];
   nodes: Record<string, SimNodeStats>;
   cost: CostBreakdown;
   timeline: Timeline;
   /** A chaos run: shown, but not counted as a lesson attempt. */
   experiment?: boolean;
+}
+
+export interface SimStat {
+  label: string;
+  value: string;
+  status?: "good" | "bad";
 }
 
 export interface CostBreakdown {
@@ -142,9 +172,11 @@ export interface FrameNode {
   utilization: number;
   /** Requests in service at the frame's end. */
   active: number;
-  /** Requests waiting at the frame's end. */
+  /** Requests (or queued messages) waiting at the frame's end. */
   queue: number;
   down?: boolean;
+  /** A short state label: a server's app version, who holds a lock. */
+  badge?: string;
 }
 
 export interface Frame {
@@ -158,7 +190,7 @@ export interface Frame {
 
 export interface SimEvent {
   t: number;
-  kind: "crash" | "partition" | "failover" | "bottleneck" | "queueing" | "errors" | "data_loss";
+  kind: "crash" | "partition" | "failover" | "bottleneck" | "queueing" | "errors" | "data_loss" | "stale" | "throttled" | "deploy" | "lock";
   nodeId?: string;
   edgeId?: string;
   message: string;
@@ -187,6 +219,12 @@ export interface NodeSpec {
   maxPool?: number;
   poolSlotCost?: number;
   replicaCost?: number;
+  maxPartitions?: number;
+  defaultLimit?: number;
+  defaultConsumers?: number;
+  maxConsumers?: number;
+  defaultTtlMs?: number;
+  defaultLeaseMs?: number;
 }
 
 export type TestStatus = "pass" | "fail" | "error" | "skip";

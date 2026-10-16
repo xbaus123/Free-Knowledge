@@ -9,7 +9,7 @@ import (
 // Event is something notable during a run, for the replay's markers.
 type Event struct {
 	T       float64 `json:"t"`
-	Kind    string  `json:"kind"` // crash, partition, failover, bottleneck, queueing, errors, data_loss
+	Kind    string  `json:"kind"` // crash, partition, failover, bottleneck, queueing, errors, data_loss, stale, throttled, deploy, lock, write
 	NodeID  string  `json:"nodeId,omitempty"`
 	EdgeID  string  `json:"edgeId,omitempty"`
 	Message string  `json:"message"`
@@ -17,10 +17,12 @@ type Event struct {
 
 // FrameNode is one node's state during a frame.
 type FrameNode struct {
-	Utilization float64 `json:"utilization"` // 0..1 of the worker pool, averaged over the frame
+	Utilization float64 `json:"utilization"` // 0..1 of the worker pool (busiest partition), averaged over the frame
 	Active      int     `json:"active"`      // requests in service at the frame's end
-	Queue       int     `json:"queue"`       // requests waiting at the frame's end
+	Queue       int     `json:"queue"`       // requests (or queued messages) waiting at the frame's end
 	Down        bool    `json:"down,omitempty"`
+	// Badge is a short state label, like a server's app version.
+	Badge string `json:"badge,omitempty"`
 }
 
 // Frame covers [T, T+interval).
@@ -73,19 +75,27 @@ func buildTimeline(s *sim, nodes map[string]*simNode, edges map[string]*simEdge)
 		b := a + tl.IntervalMs
 		f := Frame{T: a, Nodes: map[string]FrameNode{}, Edges: map[string]int{}}
 		for id, n := range nodes {
-			if n.Type == TypeClient {
+			if n.Type == TypeClient || n.Type == TypeSchemaRegistry {
 				continue
 			}
-			fn := FrameNode{Queue: queueAt(n.queueLog, b), Down: n.isDown(b - 0.001)}
-			if n.workers > 0 {
-				fn.Utilization = math.Round(busyBetween(n.busySpans, a, b)/(float64(n.workers)*tl.IntervalMs)*1000) / 1000
-				for _, span := range n.busySpans {
+			fn := FrameNode{Down: n.isDown(b-0.001) || n.isDraining(b-0.001)}
+			for _, sh := range n.shards {
+				fn.Queue += queueAt(sh.queueLog, b)
+				u := math.Round(busyBetween(sh.busySpans, a, b)/(float64(sh.workers)*tl.IntervalMs)*1000) / 1000
+				fn.Utilization = max(fn.Utilization, u)
+				for _, span := range sh.busySpans {
 					if span[0] <= b && b < span[1] {
 						fn.Active++
 					}
 				}
 			}
-			if fn.Utilization >= 0.95 && !bottlenecked[id] && n.Type == TypeServer {
+			if n.Type == TypeQueue {
+				fn.Queue = queueAt(n.backlog, b)
+			}
+			if n.Type == TypeServer && (s.schemas != nil || n.upgradeTo != "") {
+				fn.Badge = n.version(b - 0.001)
+			}
+			if fn.Utilization >= 0.95 && !bottlenecked[id] && n.Type != TypeSearchIndex {
 				bottlenecked[id] = true
 				tl.Events = append(tl.Events, Event{T: a, Kind: "bottleneck", NodeID: id, Message: fmt.Sprintf("%s hit full capacity", n.name())})
 			}

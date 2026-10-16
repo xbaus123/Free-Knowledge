@@ -17,7 +17,7 @@ interface Props {
   onPreview: (courseId: string, lessonId: string) => void;
 }
 
-type Tab = "instructions" | "starter" | "tests" | "reference" | "questions" | "starterDiagram" | "solutionDiagram";
+type Tab = "instructions" | "starter" | "tests" | "reference" | "questions" | "starterDiagram" | "solutionDiagram" | "simulation";
 
 type TabInfo = { id: Tab; label: string; hint: string; code?: boolean };
 
@@ -36,6 +36,7 @@ function tabsFor(type: studio.LessonType): TabInfo[] {
         { id: "instructions", label: "Instructions", hint: "lesson.md: the scenario and the goal" },
         { id: "starterDiagram", label: "Starter diagram", hint: "starter.json: the architecture learners start from" },
         { id: "solutionDiagram", label: "Solution diagram", hint: "solution.json: a design that must pass the simulation" },
+        { id: "simulation", label: "Simulation", hint: "Traffic, faults, goals, and which nodes the canvas offers (the \"simulation\" object in config.json)" },
       ];
     default:
       return [
@@ -564,8 +565,18 @@ export function CourseEditor({ courseId, initialLessonId, onBack, onPreview }: P
                       onChange={(json) => update(activeTab === "starterDiagram" ? { starter: json } : { reference: json })}
                       result={activeTab === "starterDiagram" ? check?.starterSim : check?.referenceSim}
                       budget={draft.maxBudget}
+                      scenario={draft.simulation}
                     />
                   </div>
+                ) : activeTab === "simulation" ? (
+                  <SimulationSettings
+                    key={draft.id}
+                    path={`studio/${courseId}/${draft.id}/simulation.json`}
+                    value={draft.simulation}
+                    onChange={(simulation) => update({ simulation })}
+                    onSave={save}
+                    onSubmit={runCheck}
+                  />
                 ) : (
                   <>
                     <div className={activeTab === "instructions" ? "w-1/2 border-r border-zinc-800" : "w-full"}>
@@ -592,6 +603,71 @@ export function CourseEditor({ courseId, initialLessonId, onBack, onPreview }: P
             </>
           )}
         </main>
+      </div>
+    </div>
+  );
+}
+
+const SIMULATION_EXAMPLE = `{
+  "palette": ["client", "loadBalancer", "server", "cache", "database"],
+  "traffic": { "requests": 2000, "mix": { "read": 80, "write": 20 }, "read_your_writes_ms": 30 },
+  "faults": [{ "kind": "crash", "type": "server", "at_ms": 500 }],
+  "goals": { "max_stale_pct": 1, "max_failed_pct": 5 }
+}`;
+
+/** Edits the scenario as JSON; the engine validates it on save. */
+function SimulationSettings({
+  path,
+  value,
+  onChange,
+  onSave,
+  onSubmit,
+}: {
+  path: string;
+  value?: engine.SimulationConfig;
+  onChange: (v: engine.SimulationConfig | undefined) => void;
+  onSave: () => void;
+  onSubmit: () => void;
+}) {
+  const [text, setText] = useState(() => (value && Object.keys(value).length ? JSON.stringify(value, null, 2) : ""));
+  const [error, setError] = useState<string>();
+  return (
+    <div className="flex w-full flex-col">
+      <div className="min-h-0 flex-1">
+        <CodeEditor
+          path={path}
+          language="javascript"
+          value={text}
+          onChange={(v) => {
+            setText(v);
+            if (!v.trim()) {
+              setError(undefined);
+              onChange(undefined);
+              return;
+            }
+            try {
+              const parsed = JSON.parse(v);
+              if (typeof parsed !== "object" || parsed === null || Array.isArray(parsed)) throw new Error("must be a JSON object");
+              setError(undefined);
+              onChange(parsed);
+            } catch (e) {
+              setError(e instanceof Error ? e.message : String(e));
+            }
+          }}
+          onSave={onSave}
+          onSubmit={onSubmit}
+          autoFocus={false}
+        />
+      </div>
+      <div className="shrink-0 border-t border-zinc-800 px-4 py-2 text-xs text-zinc-400">
+        {error ? (
+          <span className="text-red-400">Invalid JSON: {error}</span>
+        ) : (
+          <>
+            Leave empty for the default: 1,000 reads in one second with no faults. Example:{" "}
+            <code className="font-mono text-zinc-300">{SIMULATION_EXAMPLE.replace(/\s+/g, " ")}</code>
+          </>
+        )}
       </div>
     </div>
   );

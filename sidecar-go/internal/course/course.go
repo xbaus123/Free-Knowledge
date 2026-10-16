@@ -11,7 +11,9 @@
 //
 // System design lessons ("type": "system-design" in config.json) use
 // starter.json (the initial diagram) and solution.json (a reference design
-// that must pass the simulator) instead of code and tests.
+// that must pass the simulator) instead of code and tests. Their
+// config.json may describe the scenario in "simulation" (traffic, faults,
+// goals, and which node types the canvas offers).
 //
 // Article lessons ("type": "article") are just lesson.md. Quiz lessons
 // ("type": "quiz") list their questions in config.json and the answers in
@@ -50,6 +52,7 @@ import (
 	"strings"
 
 	"freeknowledge/engine/internal/runner"
+	"freeknowledge/engine/internal/simulator"
 )
 
 var (
@@ -84,15 +87,18 @@ type courseFile struct {
 }
 
 type lessonConfig struct {
-	Title        string         `json:"title"`
-	Language     string         `json:"language"`
-	Type         string         `json:"type"` // "code" (default) or "system-design"
-	TimeoutMs    int            `json:"timeoutMs"`
-	MaxLatencyMs int            `json:"maxLatencyMs"` // system design: p99 latency target
-	MaxBudget    int            `json:"max_budget"`   // system design: monthly cost limit in dollars
-	Questions    []QuizQuestion `json:"questions"`    // quiz
-	Options      []string       `json:"options"`      // quiz with one question (short form)
-	Capabilities Capabilities   `json:"capabilities"`
+	Title        string `json:"title"`
+	Language     string `json:"language"`
+	Type         string `json:"type"` // "code" (default) or "system-design"
+	TimeoutMs    int    `json:"timeoutMs"`
+	MaxLatencyMs int    `json:"maxLatencyMs"` // system design: p99 latency target
+	MaxBudget    int    `json:"max_budget"`   // system design: monthly cost limit in dollars
+	// Simulation is a system design lesson's scenario: traffic, faults,
+	// goals, and the node types its canvas offers (see simulator.Scenario).
+	Simulation   json.RawMessage `json:"simulation"`
+	Questions    []QuizQuestion  `json:"questions"` // quiz
+	Options      []string        `json:"options"`   // quiz with one question (short form)
+	Capabilities Capabilities    `json:"capabilities"`
 }
 
 // Capabilities are optional per-lesson features.
@@ -226,14 +232,16 @@ type LessonSummary struct {
 // files are paths only and are never sent to the frontend.
 type Lesson struct {
 	LessonSummary
-	CourseID     string         `json:"courseId"`
-	Markdown     string         `json:"markdown"`
-	Starter      string         `json:"starter"` // code, or diagram JSON for system design
-	TimeoutMs    int            `json:"timeoutMs"`
-	MaxLatencyMs int            `json:"maxLatencyMs,omitempty"`
-	MaxBudget    int            `json:"maxBudget,omitempty"`
-	Questions    []QuizQuestion `json:"questions,omitempty"`
-	Capabilities Capabilities   `json:"capabilities"`
+	CourseID     string `json:"courseId"`
+	Markdown     string `json:"markdown"`
+	Starter      string `json:"starter"` // code, or diagram JSON for system design
+	TimeoutMs    int    `json:"timeoutMs"`
+	MaxLatencyMs int    `json:"maxLatencyMs,omitempty"`
+	MaxBudget    int    `json:"maxBudget,omitempty"`
+	// Simulation is the raw scenario (system design); see DesignOptions.
+	Simulation   json.RawMessage `json:"simulation,omitempty"`
+	Questions    []QuizQuestion  `json:"questions,omitempty"`
+	Capabilities Capabilities    `json:"capabilities"`
 	// Files is the starting workspace of a multi-file code lesson.
 	Files []LessonFile `json:"files,omitempty"`
 	Dir   string       `json:"-"`
@@ -358,7 +366,7 @@ func loadLesson(c *Course, id string) (*Lesson, error) {
 			l.Problems = append(l.Problems, "config.json: "+err.Error())
 		} else {
 			l.Title, l.TimeoutMs, l.MaxLatencyMs, l.Questions = cfg.Title, cfg.TimeoutMs, cfg.MaxLatencyMs, cfg.Questions
-			l.Capabilities, l.MaxBudget = cfg.Capabilities, cfg.MaxBudget
+			l.Capabilities, l.MaxBudget, l.Simulation = cfg.Capabilities, cfg.MaxBudget, cfg.Simulation
 			if len(l.Questions) == 0 && len(cfg.Options) > 0 {
 				l.Questions = []QuizQuestion{{Options: cfg.Options}}
 			}
@@ -392,6 +400,9 @@ func loadLesson(c *Course, id string) (*Lesson, error) {
 		}
 		if p := filepath.Join(dir, "solution.json"); fileExists(p) {
 			l.ReferenceFile = p
+		}
+		if _, err := ParseScenario(l.Simulation); err != nil {
+			l.Problems = append(l.Problems, "config.json simulation: "+err.Error())
 		}
 		return l, nil
 	case KindArticle:
@@ -488,6 +499,27 @@ func loadLessonFiles(l *Lesson, dir string, lang runner.Language) {
 	if st, err := os.Stat(filepath.Join(dir, "reference")); err == nil && st.IsDir() {
 		l.ReferenceDir = filepath.Join(dir, "reference")
 	}
+}
+
+// ParseScenario decodes and validates a lesson's "simulation" object; an
+// empty one is the default scenario.
+func ParseScenario(raw json.RawMessage) (simulator.Scenario, error) {
+	var sc simulator.Scenario
+	if len(raw) == 0 || string(raw) == "null" {
+		return sc, nil
+	}
+	dec := json.NewDecoder(strings.NewReader(string(raw)))
+	dec.DisallowUnknownFields()
+	if err := dec.Decode(&sc); err != nil {
+		return sc, err
+	}
+	return sc, sc.Validate()
+}
+
+// DesignOptions are the simulator settings for a system design lesson.
+func (l *Lesson) DesignOptions() simulator.Options {
+	sc, _ := ParseScenario(l.Simulation) // problems are reported at load
+	return simulator.Options{MaxLatencyMs: float64(l.MaxLatencyMs), MaxBudget: l.MaxBudget, Scenario: sc}
 }
 
 // ReadQuizAnswers reads a quiz's solution.json, in either form:

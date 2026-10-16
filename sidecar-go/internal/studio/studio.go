@@ -53,7 +53,9 @@ type LessonSource struct {
 	TimeoutMs    int    `json:"timeoutMs,omitempty"`
 	MaxLatencyMs int    `json:"maxLatencyMs,omitempty"`
 	MaxBudget    int    `json:"maxBudget,omitempty"` // system design: $/month limit
-	Markdown     string `json:"markdown"`
+	// Simulation is a system design lesson's scenario (JSON object).
+	Simulation json.RawMessage `json:"simulation,omitempty"`
+	Markdown   string          `json:"markdown"`
 	// Code lessons: starter code, hidden tests, and the reference solution.
 	// System design lessons: Starter is starter.json and Reference is
 	// solution.json (diagram JSON).
@@ -271,7 +273,7 @@ func (s *Studio) Lesson(courseID, lessonID string) (LessonSource, error) {
 		return LessonSource{}, err
 	}
 	src := LessonSource{ID: l.ID, Type: l.Kind, Title: l.Title, Language: l.Language, TimeoutMs: l.TimeoutMs,
-		MaxLatencyMs: l.MaxLatencyMs, MaxBudget: l.MaxBudget, Markdown: l.Markdown, Starter: l.Starter, Capabilities: l.Capabilities}
+		MaxLatencyMs: l.MaxLatencyMs, MaxBudget: l.MaxBudget, Simulation: l.Simulation, Markdown: l.Markdown, Starter: l.Starter, Capabilities: l.Capabilities}
 	switch l.Kind {
 	case course.KindCode:
 		if lang, ok := runner.Lookup(l.Language); ok {
@@ -417,6 +419,9 @@ func (s *Studio) SaveLesson(courseID string, src LessonSource) error {
 		if !json.Valid([]byte(src.Starter)) || !json.Valid([]byte(src.Reference)) {
 			return errors.New("starter and solution diagrams must be valid JSON")
 		}
+		if _, err := course.ParseScenario(src.Simulation); err != nil {
+			return fmt.Errorf("simulation settings: %w", err)
+		}
 	case course.KindArticle:
 	default:
 		return fmt.Errorf("%s lessons can't be edited in the Studio", l.Kind)
@@ -483,6 +488,7 @@ type lessonConfig struct {
 	TimeoutMs    int                   `json:"timeoutMs,omitempty"`
 	MaxLatencyMs int                   `json:"maxLatencyMs,omitempty"`
 	MaxBudget    int                   `json:"max_budget,omitempty"`
+	Simulation   json.RawMessage       `json:"simulation,omitempty"`
 	Questions    []course.QuizQuestion `json:"questions,omitempty"`
 	Capabilities *course.Capabilities  `json:"capabilities,omitempty"`
 }
@@ -550,6 +556,9 @@ func (s *Studio) writeLesson(courseDir, kind string, src LessonSource, oldLangua
 		files["solution.json"] = append(sol, '\n')
 	case course.KindSystemDesign:
 		cfg.Type, cfg.MaxLatencyMs, cfg.MaxBudget = kind, src.MaxLatencyMs, src.MaxBudget
+		if len(src.Simulation) > 0 && string(src.Simulation) != "null" && string(src.Simulation) != "{}" {
+			cfg.Simulation = src.Simulation
+		}
 		files["starter.json"] = prettyJSON(src.Starter)
 		files["solution.json"] = prettyJSON(src.Reference)
 	}

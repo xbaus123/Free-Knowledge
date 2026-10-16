@@ -1,0 +1,70 @@
+{
+  "type": "system-design",
+  "title": "Capstone: Design a Twitter Timeline",
+  "maxLatencyMs": 200,
+  "max_budget": 400,
+  "simulation": {
+    "palette": [
+      "client",
+      "cdn",
+      "rateLimiter",
+      "loadBalancer",
+      "server",
+      "cache",
+      "database",
+      "replica",
+      "queue"
+    ],
+    "traffic": {
+      "requests": 4000,
+      "duration_ms": 2000,
+      "mix": {
+        "read": 98,
+        "write": 2
+      },
+      "keys": 2000,
+      "write_cost": 100,
+      "spikes": [
+        {
+          "kind": "bot",
+          "at_ms": 400,
+          "for_ms": 100,
+          "multiplier": 100
+        },
+        {
+          "kind": "hot_key",
+          "at_ms": 1300,
+          "for_ms": 300,
+          "multiplier": 1.5
+        }
+      ]
+    },
+    "faults": [
+      {
+        "kind": "crash",
+        "type": "server",
+        "at_ms": 700,
+        "message": "An API server's host died"
+      },
+      {
+        "kind": "crash",
+        "type": "database",
+        "at_ms": 1000,
+        "message": "The timelines database's primary crashed"
+      },
+      {
+        "kind": "cut",
+        "from": "loadBalancer",
+        "to": "server",
+        "at_ms": 1500,
+        "for_ms": 200,
+        "message": "A network partition cut the load balancer off from an API server"
+      }
+    ],
+    "goals": {
+      "max_failed_pct": 5,
+      "max_write_ms": 100,
+      "max_queue_lag_ms": 500
+    }
+  }
+}

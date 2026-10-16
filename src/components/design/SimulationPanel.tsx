@@ -1,4 +1,4 @@
-import type { SimEvent, SimResult } from "../../lib/engine";
+import type { SimEvent, SimResult, SimulationConfig } from "../../lib/engine";
 
 interface Props {
   result?: SimResult;
@@ -10,29 +10,33 @@ interface Props {
   onNext?: () => void;
   /** Jumps the replay to an event. */
   onSeek?: (ms: number) => void;
+  scenario?: SimulationConfig;
 }
 
-export function SimulationPanel({ result, running, error, maxLatencyMs, stale, onNext, onSeek }: Props) {
+export function SimulationPanel({ result, running, error, maxLatencyMs, stale, onNext, onSeek, scenario }: Props) {
+  const fencing = scenario?.kind === "fencing";
+  const requests = scenario?.traffic?.requests ?? 1000;
   return (
     <div className="flex h-full flex-col bg-zinc-950">
       <div className="flex shrink-0 items-center border-b border-zinc-800 px-3 py-2 text-xs">
         <span className="font-medium text-zinc-200">Simulation</span>
         <span className="ml-auto text-zinc-500">
-          {running ? "Sending traffic…" : maxLatencyMs ? `Goal: p99 ≤ ${maxLatencyMs} ms for 1,000 requests` : ""}
+          {running ? (fencing ? "Running the workers…" : "Sending traffic…") : maxLatencyMs ? `Goal: p99 ≤ ${maxLatencyMs} ms` : ""}
         </span>
       </div>
       <div className="min-h-0 flex-1 overflow-auto p-3 text-sm">
         {error && <p className="text-red-400">{error}</p>}
         {!result && !error && !running && (
           <p className="text-zinc-500">
-            Click <span className="text-zinc-300">Simulate Traffic</span> (or press <kbd className="rounded bg-zinc-800 px-1.5 py-0.5 text-xs">⌘ Enter</kbd>)
-            to send a burst of 1,000 requests through your design.
+            Click <span className="text-zinc-300">{fencing ? "Run Scenario" : "Simulate Traffic"}</span> (or press{" "}
+            <kbd className="rounded bg-zinc-800 px-1.5 py-0.5 text-xs">⌘ Enter</kbd>){" "}
+            {fencing ? "to run the workers through the scenario's faults." : `to send ${requests.toLocaleString()} requests through your design.`}
           </p>
         )}
         {result && stale && !running && (
           <p className="mb-3 text-xs text-zinc-500">You've changed the diagram since this run. Simulate again to see how it performs.</p>
         )}
-        {result && <Summary result={result} onNext={result.experiment ? undefined : onNext} onSeek={onSeek} />}
+        {result && <Summary result={result} fencing={fencing} onNext={result.experiment ? undefined : onNext} onSeek={onSeek} />}
       </div>
     </div>
   );
@@ -46,13 +50,19 @@ const EVENT_ICONS: Record<SimEvent["kind"], string> = {
   queueing: "≡",
   errors: "✗",
   data_loss: "⚠",
+  stale: "◷",
+  throttled: "⛔",
+  deploy: "⇪",
+  lock: "🔒",
 };
 
-function Summary({ result, onNext, onSeek }: { result: SimResult; onNext?: () => void; onSeek?: (ms: number) => void }) {
+const LOADED = ["server", "database", "cache", "replica", "searchIndex"];
+
+function Summary({ result, fencing, onNext, onSeek }: { result: SimResult; fencing: boolean; onNext?: () => void; onSeek?: (ms: number) => void }) {
   const m = result.metrics;
   const overTarget = m.maxLatencyMs !== undefined && m.p99Ms > m.maxLatencyMs;
   const servers = Object.entries(result.nodes)
-    .filter(([, s]) => s.type === "server" || s.type === "database")
+    .filter(([, s]) => LOADED.includes(s.type) && !fencing)
     .sort(([, a], [, b]) => b.utilization - a.utilization);
 
   const cost = result.cost;
@@ -60,7 +70,7 @@ function Summary({ result, onNext, onSeek }: { result: SimResult; onNext?: () =>
     <div className="space-y-4">
       {result.experiment && (
         <p className="rounded border border-red-900/70 bg-red-950/30 px-3 py-2 text-xs text-red-200">
-          ⚡ Chaos experiment: parts of your system fail 300 ms into the run. Experiments don't count toward completing the lesson.
+          ⚡ Chaos experiment: the parts you picked fail 30% of the way into the run. Experiments don't count toward completing the lesson.
         </p>
       )}
       {result.passed ? (
@@ -83,13 +93,27 @@ function Summary({ result, onNext, onSeek }: { result: SimResult; onNext?: () =>
         </ul>
       )}
 
-      {m.completed > 0 && (
+      {m.completed > 0 && !fencing && (
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
           <Metric label="p50 latency" value={`${m.p50Ms} ms`} />
           <Metric label="p99 latency" value={`${m.p99Ms} ms`} bad={overTarget} />
           <Metric label="throughput" value={`${m.throughputPerSec.toLocaleString()}/s`} />
           <Metric label="answered" value={`${m.completed.toLocaleString()} / ${m.requests.toLocaleString()}`} bad={m.failed > 0} />
         </div>
+      )}
+
+      {result.stats?.length > 0 && (
+        <dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 rounded border border-zinc-800 bg-zinc-900/40 px-3 py-2 text-xs">
+          {result.stats.map((s) => (
+            <div key={s.label} className="contents">
+              <dt className="text-zinc-400">{s.label}</dt>
+              <dd className={`font-mono ${s.status === "bad" ? "text-red-400" : s.status === "good" ? "text-emerald-400" : "text-zinc-200"}`}>
+                {s.status === "bad" ? "✗ " : s.status === "good" ? "✓ " : ""}
+                {s.value}
+              </dd>
+            </div>
+          ))}
+        </dl>
       )}
 
       {result.timeline.events.length > 0 && (

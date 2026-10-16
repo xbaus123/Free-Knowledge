@@ -1,0 +1,10 @@
+{
+  "title": "Build a Key-Value Store: An Append-Only Log with a Hash Index",
+  "language": "python",
+  "timeoutMs": 15000,
+  "capabilities": {
+    "scratchpad": true,
+    "multi_file": true,
+    "read_only_files": ["record.py"]
+  }
+}
