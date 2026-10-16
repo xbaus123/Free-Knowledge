@@ -1,6 +1,6 @@
 {
   "title": "System Design",
-  "description": "Design systems that stay fast, correct, and available, following Designing Data-Intensive Applications. Learn the vocabulary of load, estimate on paper, scale an architecture in the traffic simulator, compare data models, and build a storage engine in Python.",
+  "description": "Design systems that stay fast, correct, and available, following Designing Data-Intensive Applications. Estimate load, scale and evolve architectures in the traffic simulator, build a log-structured storage engine and a consistent-hash partitioner in Python, and fix concurrency bugs with locks and serializable transactions.",
   "author": "FreeKnowledge contributors",
   "version": "2.0.0",
   "lessons": [
@@ -10,6 +10,15 @@
     "04-data-models-and-apis",
     "05-three-data-models",
     "06-storage-engines",
-    "07-bitcask-kv-store"
+    "07-bitcask-kv-store",
+    "08-compaction-and-sstables",
+    "09-encoding-and-evolution",
+    "10-rolling-deployment",
+    "11-replication",
+    "12-replication-and-caching",
+    "13-partitioning-and-rate-limiting",
+    "14-consistent-hashing",
+    "15-transactions",
+    "16-write-skew"
   ]
 }

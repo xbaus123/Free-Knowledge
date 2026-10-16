@@ -223,7 +223,8 @@ function Canvas({ initial, onChange, result, frame, running, budget, chaos = NO_
           defaultEdgeOptions={{ type: "smoothstep", style: { strokeWidth: 1.5 } }}
           colorMode="dark"
           fitView
-          fitViewOptions={{ padding: 0.3, maxZoom: 1.1 }}
+          // Leave room for the palette (left), chaos toolbar (top), and cost badge (bottom).
+          fitViewOptions={{ padding: { top: "64px", left: "210px", right: "32px", bottom: "56px" }, maxZoom: 1.1 }}
           deleteKeyCode={["Backspace", "Delete"]}
           zoomOnDoubleClick={false}
           proOptions={{ hideAttribution: true }}

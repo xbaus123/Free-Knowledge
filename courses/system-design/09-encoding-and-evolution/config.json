@@ -1,0 +1,68 @@
+{
+  "type": "quiz",
+  "title": "Encoding and Evolution",
+  "questions": [
+    {
+      "prompt": "Version 2 of your service starts writing a new `phone` field. The v1 servers still running in your rolling upgrade must handle records that contain it. Which property do the v1 servers need?",
+      "options": ["Backward compatibility", "Forward compatibility", "Serializability", "Idempotence"]
+    },
+    {
+      "prompt": "In Protocol Buffers, what identifies a field in the encoded bytes?",
+      "options": ["The field's name", "Its position in the schema", "Its tag number", "A hash of its name and type"]
+    },
+    {
+      "prompt": "You add `string phone = 4;` to a Protocol Buffers schema. Can old code read messages that include it?",
+      "options": [
+        "No: old code fails on tags it doesn't recognize",
+        "Yes: old code skips fields with tags it doesn't know",
+        "Only if the field is marked required",
+        "Only after the old code is recompiled with the new schema"
+      ]
+    },
+    {
+      "prompt": "Field 3 (`nickname`, a string) is no longer needed. What should you do with tag 3?",
+      "options": [
+        "Reuse it for the next new field so tags stay compact",
+        "Reuse it, but only for another string field",
+        "Remove the field and reserve tag 3 so it's never used again",
+        "Keep the field forever and mark it required"
+      ]
+    },
+    {
+      "prompt": "Avro encodings contain no field names or tag numbers. How does a reader know which bytes belong to which field?",
+      "options": [
+        "Every Avro value starts with its field name",
+        "It resolves the writer's schema against its own reader's schema, matching fields by name",
+        "Fields must always appear in alphabetical order",
+        "It guesses from the byte patterns"
+      ]
+    },
+    {
+      "prompt": "In Avro, which change keeps a schema both forward and backward compatible?",
+      "options": [
+        "Adding a field that has a default value",
+        "Adding a field without a default value",
+        "Renaming a field without adding an alias",
+        "Changing a field from a string to an int"
+      ]
+    },
+    {
+      "prompt": "Your JavaScript frontend parses JSON API responses. Tweet ids are 64-bit integers like 1234567890123456789. What goes wrong?",
+      "options": [
+        "Nothing; JSON numbers are arbitrary precision",
+        "JSON can't encode numbers that large at all",
+        "JavaScript numbers are 64-bit floats, so ids above 2⁵³ silently lose precision",
+        "The ids are converted to strings automatically"
+      ]
+    },
+    {
+      "prompt": "An old version of your app reads a row, changes one field, and writes the whole row back. A newer version had added a `preferences` field to that row. What's the risk?",
+      "options": [
+        "None; the database rejects the old app's write",
+        "The old app silently drops `preferences` when it writes the row back",
+        "The new app can no longer read the row",
+        "The row is duplicated"
+      ]
+    }
+  ]
+}

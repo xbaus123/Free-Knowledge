@@ -1,0 +1,12 @@
+{
+  "answers": [
+    { "correct_index": 1, "explanation": "Old code reading data written by newer code is forward compatibility. (New code reading old data is backward compatibility.) It's the harder one, because old code must cope with things it was never told about." },
+    { "correct_index": 2, "explanation": "Protocol Buffers and Thrift write the tag number and a type code before each value. That's why renaming a field is free, but changing or reusing a tag breaks things." },
+    { "correct_index": 1, "explanation": "Unknown tags are skipped; the type code tells the parser how many bytes to jump. That's what makes adding optional fields forward compatible." },
+    { "correct_index": 2, "explanation": "Old data and old code still associate tag 3 with nickname. Reusing it means some reader will interpret one field's bytes as another's: a crash if the types differ, silent corruption if they match. Protobuf's `reserved 3;` enforces this." },
+    { "correct_index": 1, "explanation": "The encoding is only values in the writer's schema order. The reader needs that exact writer's schema (from a file header, a schema version in the record, or a schema registry) and resolves it against its own schema by field name." },
+    { "correct_index": 0, "explanation": "New readers fill the default in when reading old data (backward), and old readers ignore the unknown field (forward). Without a default, new code can't read old records." },
+    { "correct_index": 2, "explanation": "JavaScript represents numbers as IEEE 754 doubles, exact only up to 2⁵³. That's why Twitter's API returns ids twice: as a number and as a string (id_str)." },
+    { "correct_index": 1, "explanation": "The old code decodes the row into an object without the new field, then re-encodes it. Preserving unknown fields when rewriting records avoids this data loss; some encodings and ORMs do, many don't." }
+  ]
+}

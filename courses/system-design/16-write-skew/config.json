@@ -1,0 +1,10 @@
+{
+  "title": "Write Skew: Double-Booking the Golf Simulator",
+  "language": "python",
+  "timeoutMs": 30000,
+  "capabilities": {
+    "scratchpad": true,
+    "multi_file": true,
+    "read_only_files": ["minidb.py", "race.py", "shop.py"]
+  }
+}

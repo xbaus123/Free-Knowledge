@@ -1,0 +1,1 @@
+{ "title": "Consistent Hashing: A Partitioner That Scales", "language": "python", "timeoutMs": 20000, "capabilities": { "scratchpad": true } }
