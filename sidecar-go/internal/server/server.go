@@ -65,6 +65,7 @@ func (s *Server) Handler() http.Handler {
 	mux.Handle("GET /courses/{course}/lessons/{lesson}", s.requireToken(http.HandlerFunc(s.handleLesson)))
 	mux.Handle("POST /courses/{course}/lessons/{lesson}/submit", s.requireToken(http.HandlerFunc(s.handleSubmit)))
 	mux.Handle("POST /courses/{course}/lessons/{lesson}/validate", s.requireToken(http.HandlerFunc(s.handleValidate)))
+	mux.Handle("POST /courses/{course}/lessons/{lesson}/check", s.requireToken(http.HandlerFunc(s.handleCheckAnswer)))
 	mux.Handle("GET /progress", s.requireToken(http.HandlerFunc(s.handleProgress)))
 	mux.Handle("GET /courses/{course}/lessons/{lesson}/progress", s.requireToken(http.HandlerFunc(s.handleLessonProgress)))
 	mux.Handle("PUT /courses/{course}/lessons/{lesson}/progress/code", s.requireToken(http.HandlerFunc(s.handleSaveCode)))
@@ -335,6 +336,31 @@ func (s *Server) handleSubmit(w http.ResponseWriter, r *http.Request) {
 		}
 		return res, err
 	})
+}
+
+// handleCheckAnswer checks one answer of a quiz with immediate feedback:
+// {"question": 0, "answer": 2} → a test result for that question. It isn't
+// recorded as an attempt; the quiz is submitted once every answer is right.
+func (s *Server) handleCheckAnswer(w http.ResponseWriter, r *http.Request) {
+	var body struct {
+		Question *int `json:"question"`
+		Answer   *int `json:"answer"`
+	}
+	if err := json.NewDecoder(http.MaxBytesReader(w, r.Body, maxBodyBytes)).Decode(&body); err != nil || body.Question == nil || body.Answer == nil {
+		writeJSON(w, http.StatusBadRequest, map[string]string{"error": `send {"question": n, "answer": n}`})
+		return
+	}
+	l, err := s.cfg.Courses.Lesson(r.PathValue("course"), r.PathValue("lesson"))
+	if err != nil {
+		writeCourseError(w, err)
+		return
+	}
+	res, err := grader.CheckAnswer(l, *body.Question, *body.Answer)
+	if err != nil {
+		writeJSON(w, http.StatusUnprocessableEntity, map[string]string{"error": err.Error()})
+		return
+	}
+	writeJSON(w, http.StatusOK, res)
 }
 
 func (s *Server) handleValidate(w http.ResponseWriter, r *http.Request) {

@@ -465,6 +465,20 @@ export function CourseEditor({ courseId, initialLessonId, onBack, onPreview }: P
                     />
                   </label>
                 )}
+                {draft.type === "quiz" && (
+                  <label
+                    className="flex cursor-pointer items-center gap-2 self-end pb-2 text-sm text-zinc-300"
+                    title="Learners see whether each answer is right as soon as they pick it, instead of submitting all their answers at the end"
+                  >
+                    <input
+                      type="checkbox"
+                      checked={!!draft.immediateFeedback}
+                      onChange={(e) => update({ immediateFeedback: e.target.checked || undefined })}
+                      className="accent-indigo-500"
+                    />
+                    Check each answer immediately
+                  </label>
+                )}
                 <div className="ml-auto flex items-center gap-2 text-sm">
                   <span className="text-xs text-zinc-500">{dirty ? "Unsaved changes" : "Saved"}</span>
                   <button onClick={deleteCurrent} disabled={!!busy} className="rounded px-2 py-1.5 text-xs text-zinc-500 hover:bg-zinc-800 hover:text-red-400">

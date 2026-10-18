@@ -270,6 +270,32 @@ func GradeAnswers(l *course.Lesson, answers []int) (Result, error) {
 	return r, nil
 }
 
+// CheckAnswer checks one quiz answer, for quizzes with immediate feedback.
+// Like GradeAnswers, a wrong answer doesn't reveal the right one.
+func CheckAnswer(l *course.Lesson, question, answer int) (TestResult, error) {
+	if l.Kind != course.KindQuiz || !l.Valid() {
+		return TestResult{}, fmt.Errorf("lesson %s/%s isn't a working quiz", l.CourseID, l.ID)
+	}
+	if !l.ImmediateFeedback {
+		return TestResult{}, errors.New("this quiz checks answers when you submit them all")
+	}
+	if question < 0 || question >= len(l.Questions) {
+		return TestResult{}, fmt.Errorf("no question %d", question+1)
+	}
+	if answer < 0 || answer >= len(l.Questions[question].Options) {
+		return TestResult{}, fmt.Errorf("answer to question %d must be between 0 and %d", question+1, len(l.Questions[question].Options)-1)
+	}
+	key, err := course.ReadQuizAnswers(l.ReferenceFile)
+	if err != nil {
+		return TestResult{}, err
+	}
+	t := TestResult{Name: fmt.Sprintf("Question %d", question+1), Status: StatusPass, Message: key[question].Explanation}
+	if answer != key[question].CorrectIndex {
+		t.Status, t.Message = StatusFail, "Not quite. Try again."
+	}
+	return t, nil
+}
+
 // Validate grades the lesson's reference solution. Authors use this to prove
 // their tests pass before publishing.
 func Validate(ctx context.Context, l *course.Lesson, onOutput runner.OutputFunc) (Result, error) {

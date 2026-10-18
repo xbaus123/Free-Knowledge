@@ -218,3 +218,28 @@ func TestQuizAnswers(t *testing.T) {
 		t.Error("Grade should refuse quizzes")
 	}
 }
+
+func TestCheckAnswerImmediately(t *testing.T) {
+	l, err := store.Lesson("system-design", "02-back-of-the-envelope")
+	if err != nil || !l.ImmediateFeedback {
+		t.Fatalf("lesson: immediate=%v %v", l != nil && l.ImmediateFeedback, err)
+	}
+	res, err := CheckAnswer(l, 0, 1)
+	if err != nil || res.Status != StatusPass || !strings.Contains(res.Message, "86,400") {
+		t.Fatalf("correct answer should pass and explain: %+v %v", res, err)
+	}
+	res, err = CheckAnswer(l, 0, 2)
+	if err != nil || res.Status != StatusFail || strings.Contains(res.Message, "86,400") {
+		t.Fatalf("a wrong answer fails without revealing the explanation: %+v %v", res, err)
+	}
+	for _, bad := range [][2]int{{-1, 0}, {99, 0}, {0, -1}, {0, 4}} {
+		if _, err := CheckAnswer(l, bad[0], bad[1]); err == nil {
+			t.Errorf("%v should be rejected", bad)
+		}
+	}
+	// Quizzes without immediate feedback only grade on submit.
+	other, _ := store.Lesson("getting-started", "07-knowledge-check")
+	if _, err := CheckAnswer(other, 0, 0); err == nil {
+		t.Error("a quiz without immediate feedback should refuse single checks")
+	}
+}

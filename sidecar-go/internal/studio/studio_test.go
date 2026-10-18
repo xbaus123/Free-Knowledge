@@ -289,15 +289,16 @@ func TestQuizEditing(t *testing.T) {
 		{Prompt: "2 + 2?", Options: []string{"3", "4"}, CorrectIndex: 1, Explanation: "Basic arithmetic."},
 		{Prompt: "Is Go compiled?", Options: []string{"True", "False"}, CorrectIndex: 0},
 	}
+	src.ImmediateFeedback = true
 	if err := s.SaveLesson(id, src); err != nil {
 		t.Fatal(err)
 	}
 	got := must(s.Lesson(id, lid))
-	if len(got.Questions) != 2 || got.Questions[0].Explanation != "Basic arithmetic." || got.Questions[1].Prompt != "Is Go compiled?" {
-		t.Fatalf("round trip: %+v", got.Questions)
+	if len(got.Questions) != 2 || got.Questions[0].Explanation != "Basic arithmetic." || got.Questions[1].Prompt != "Is Go compiled?" || !got.ImmediateFeedback {
+		t.Fatalf("round trip: %+v immediate=%v", got.Questions, got.ImmediateFeedback)
 	}
 	l := must(s.Courses.Lesson(id, lid))
-	if !l.Valid() || len(l.Questions) != 2 {
+	if !l.Valid() || len(l.Questions) != 2 || !l.ImmediateFeedback {
 		t.Fatalf("learner view: %+v", l)
 	}
 

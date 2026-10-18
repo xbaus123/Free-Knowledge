@@ -1,6 +1,7 @@
 {
   "type": "quiz",
   "title": "The Trouble with Distributed Systems",
+  "immediate_feedback": true,
   "questions": [
     {
       "prompt": "Your service sends a request to a payments node and hears nothing back within its timeout. What do you actually know?",

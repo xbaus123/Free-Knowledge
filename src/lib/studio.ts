@@ -34,6 +34,8 @@ export interface LessonSource {
   /** Code: reference solution. System design: solution diagram JSON. */
   reference: string;
   questions?: QuestionSource[];
+  /** Quiz: check each answer as soon as it's chosen. */
+  immediateFeedback?: boolean;
   capabilities: Capabilities;
   /** Multi-file code lessons: starting files, path → content. */
   starterFiles?: Record<string, string>;

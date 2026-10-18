@@ -299,6 +299,12 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
     return res;
   };
 
+  const checkAnswer = async (question: number, answer: number) => {
+    const res = await engine.checkAnswer(courseId, lessonId, question, answer);
+    telemetry.current?.run();
+    return res;
+  };
+
   // --- multi-file workspace ---
   const readOnlyFiles = new Set((lesson?.files ?? []).filter((f) => f.readOnly).map((f) => f.path));
   const openFile = (path: string) => {
@@ -472,6 +478,7 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
               initialAnswers={quizAnswers}
               completed={completed}
               onSubmit={submitAnswers}
+              onCheck={lesson.immediateFeedback ? checkAnswer : undefined}
               onNext={goNext}
             />
           </Panel>

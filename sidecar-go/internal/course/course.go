@@ -22,6 +22,9 @@
 //	config.json:   {"type": "quiz", "questions": [{"prompt": "…", "options": ["…", "…"]}]}
 //	solution.json: {"answers": [{"correct_index": 0, "explanation": "…"}]}
 //
+// With "immediate_feedback": true, the learner's choice for each question is
+// checked as soon as it's made, instead of all at once on submit.
+//
 // Any lesson may enable optional capabilities in config.json:
 //
 //	"capabilities": {"scratchpad": true, "multi_file": true, "telemetry": true,
@@ -95,10 +98,12 @@ type lessonConfig struct {
 	MaxBudget    int    `json:"max_budget"`   // system design: monthly cost limit in dollars
 	// Simulation is a system design lesson's scenario: traffic, faults,
 	// goals, and the node types its canvas offers (see simulator.Scenario).
-	Simulation   json.RawMessage `json:"simulation"`
-	Questions    []QuizQuestion  `json:"questions"` // quiz
-	Options      []string        `json:"options"`   // quiz with one question (short form)
-	Capabilities Capabilities    `json:"capabilities"`
+	Simulation json.RawMessage `json:"simulation"`
+	Questions  []QuizQuestion  `json:"questions"` // quiz
+	// ImmediateFeedback checks each quiz answer as soon as it's chosen.
+	ImmediateFeedback bool         `json:"immediate_feedback"`
+	Options           []string     `json:"options"` // quiz with one question (short form)
+	Capabilities      Capabilities `json:"capabilities"`
 }
 
 // Capabilities are optional per-lesson features.
@@ -239,9 +244,12 @@ type Lesson struct {
 	MaxLatencyMs int    `json:"maxLatencyMs,omitempty"`
 	MaxBudget    int    `json:"maxBudget,omitempty"`
 	// Simulation is the raw scenario (system design); see DesignOptions.
-	Simulation   json.RawMessage `json:"simulation,omitempty"`
-	Questions    []QuizQuestion  `json:"questions,omitempty"`
-	Capabilities Capabilities    `json:"capabilities"`
+	Simulation json.RawMessage `json:"simulation,omitempty"`
+	Questions  []QuizQuestion  `json:"questions,omitempty"`
+	// ImmediateFeedback: quiz answers are checked one at a time as they're
+	// chosen, instead of all together on submit.
+	ImmediateFeedback bool         `json:"immediateFeedback,omitempty"`
+	Capabilities      Capabilities `json:"capabilities"`
 	// Files is the starting workspace of a multi-file code lesson.
 	Files []LessonFile `json:"files,omitempty"`
 	Dir   string       `json:"-"`
@@ -367,6 +375,7 @@ func loadLesson(c *Course, id string) (*Lesson, error) {
 		} else {
 			l.Title, l.TimeoutMs, l.MaxLatencyMs, l.Questions = cfg.Title, cfg.TimeoutMs, cfg.MaxLatencyMs, cfg.Questions
 			l.Capabilities, l.MaxBudget, l.Simulation = cfg.Capabilities, cfg.MaxBudget, cfg.Simulation
+			l.ImmediateFeedback = cfg.ImmediateFeedback
 			if len(l.Questions) == 0 && len(cfg.Options) > 0 {
 				l.Questions = []QuizQuestion{{Options: cfg.Options}}
 			}

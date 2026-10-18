@@ -1,14 +1,25 @@
 {
   "type": "quiz",
   "title": "Encoding and Evolution",
+  "immediate_feedback": true,
   "questions": [
     {
       "prompt": "Version 2 of your service starts writing a new `phone` field. The v1 servers still running in your rolling upgrade must handle records that contain it. Which property do the v1 servers need?",
-      "options": ["Backward compatibility", "Forward compatibility", "Serializability", "Idempotence"]
+      "options": [
+        "Backward compatibility",
+        "Forward compatibility",
+        "Serializability",
+        "Idempotence"
+      ]
     },
     {
       "prompt": "In Protocol Buffers, what identifies a field in the encoded bytes?",
-      "options": ["The field's name", "Its position in the schema", "Its tag number", "A hash of its name and type"]
+      "options": [
+        "The field's name",
+        "Its position in the schema",
+        "Its tag number",
+        "A hash of its name and type"
+      ]
     },
     {
       "prompt": "You add `string phone = 4;` to a Protocol Buffers schema. Can old code read messages that include it?",

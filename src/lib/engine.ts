@@ -70,6 +70,8 @@ export interface Lesson extends LessonSummary {
   maxBudget?: number;
   /** System design: the scenario (traffic, faults, goals, palette). */
   simulation?: SimulationConfig;
+  /** Quiz: check each answer as soon as it's chosen. */
+  immediateFeedback?: boolean;
   /** Quiz questions (answers stay on the engine). */
   questions?: QuizQuestion[];
   capabilities: Capabilities;
@@ -388,6 +390,10 @@ export function simCatalog(): Promise<NodeSpec[]> {
   });
   return catalogPromise;
 }
+
+/** Checks one answer of a quiz with immediate feedback (not recorded as an attempt). */
+export const checkAnswer = (courseId: string, lessonId: string, question: number, answer: number) =>
+  request<TestResult>(lessonPath(courseId, lessonId) + "/check", { method: "POST", body: JSON.stringify({ question, answer }) });
 
 /** Polls /health until the engine answers, since it starts alongside the window. */
 export async function waitForEngine(timeoutMs = 10_000): Promise<Health> {

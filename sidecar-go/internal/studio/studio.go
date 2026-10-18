@@ -64,6 +64,8 @@ type LessonSource struct {
 	Reference string `json:"reference"`
 	// Quiz lessons.
 	Questions []QuestionSource `json:"questions,omitempty"`
+	// ImmediateFeedback checks each quiz answer as soon as it's chosen.
+	ImmediateFeedback bool `json:"immediateFeedback,omitempty"`
 	// Optional features; see course.Capabilities.
 	Capabilities course.Capabilities `json:"capabilities"`
 	// Multi-file code lessons: the starting files (path → content) and the
@@ -273,7 +275,8 @@ func (s *Studio) Lesson(courseID, lessonID string) (LessonSource, error) {
 		return LessonSource{}, err
 	}
 	src := LessonSource{ID: l.ID, Type: l.Kind, Title: l.Title, Language: l.Language, TimeoutMs: l.TimeoutMs,
-		MaxLatencyMs: l.MaxLatencyMs, MaxBudget: l.MaxBudget, Simulation: l.Simulation, Markdown: l.Markdown, Starter: l.Starter, Capabilities: l.Capabilities}
+		MaxLatencyMs: l.MaxLatencyMs, MaxBudget: l.MaxBudget, Simulation: l.Simulation, Markdown: l.Markdown, Starter: l.Starter, Capabilities: l.Capabilities,
+		ImmediateFeedback: l.ImmediateFeedback}
 	switch l.Kind {
 	case course.KindCode:
 		if lang, ok := runner.Lookup(l.Language); ok {
@@ -482,15 +485,16 @@ func validateQuestions(qs []QuestionSource) error {
 
 // lessonConfig is config.json as the Studio writes it.
 type lessonConfig struct {
-	Type         string                `json:"type,omitempty"`
-	Title        string                `json:"title"`
-	Language     string                `json:"language,omitempty"`
-	TimeoutMs    int                   `json:"timeoutMs,omitempty"`
-	MaxLatencyMs int                   `json:"maxLatencyMs,omitempty"`
-	MaxBudget    int                   `json:"max_budget,omitempty"`
-	Simulation   json.RawMessage       `json:"simulation,omitempty"`
-	Questions    []course.QuizQuestion `json:"questions,omitempty"`
-	Capabilities *course.Capabilities  `json:"capabilities,omitempty"`
+	Type              string                `json:"type,omitempty"`
+	Title             string                `json:"title"`
+	Language          string                `json:"language,omitempty"`
+	TimeoutMs         int                   `json:"timeoutMs,omitempty"`
+	MaxLatencyMs      int                   `json:"maxLatencyMs,omitempty"`
+	MaxBudget         int                   `json:"max_budget,omitempty"`
+	Simulation        json.RawMessage       `json:"simulation,omitempty"`
+	Questions         []course.QuizQuestion `json:"questions,omitempty"`
+	ImmediateFeedback bool                  `json:"immediate_feedback,omitempty"`
+	Capabilities      *course.Capabilities  `json:"capabilities,omitempty"`
 }
 
 func (s *Studio) writeLesson(courseDir, kind string, src LessonSource, oldLanguage string) error {
@@ -545,6 +549,7 @@ func (s *Studio) writeLesson(courseDir, kind string, src LessonSource, oldLangua
 	case course.KindQuiz:
 		cfg.Type = kind
 		var answers []course.QuizAnswer
+		cfg.ImmediateFeedback = src.ImmediateFeedback
 		for _, q := range src.Questions {
 			cfg.Questions = append(cfg.Questions, course.QuizQuestion{Prompt: strings.TrimSpace(q.Prompt), Options: q.Options})
 			answers = append(answers, course.QuizAnswer{CorrectIndex: q.CorrectIndex, Explanation: strings.TrimSpace(q.Explanation)})

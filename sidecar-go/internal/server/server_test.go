@@ -396,6 +396,42 @@ func TestQuizAndArticleSubmit(t *testing.T) {
 	}
 }
 
+func TestCheckAnswerEndpoint(t *testing.T) {
+	ts, _ := newTestServer(t)
+	auth := map[string]string{"Authorization": "Bearer " + testToken}
+	check := func(lesson, body string) (int, string) {
+		t.Helper()
+		r := do(t, ts, "POST", "/courses/"+lesson+"/check", body, auth)
+		var res struct{ Status string }
+		if r.StatusCode == 200 {
+			if err := json.NewDecoder(r.Body).Decode(&res); err != nil {
+				t.Fatal(err)
+			}
+		}
+		return r.StatusCode, res.Status
+	}
+	quiz := "system-design/lessons/02-back-of-the-envelope"
+	if code, status := check(quiz, `{"question":0,"answer":1}`); code != 200 || status != "pass" {
+		t.Fatalf("right answer: %d %s", code, status)
+	}
+	if code, status := check(quiz, `{"question":0,"answer":0}`); code != 200 || status != "fail" {
+		t.Fatalf("wrong answer: %d %s", code, status)
+	}
+	if code, _ := check(quiz, `{"question":0}`); code != 400 {
+		t.Fatalf("missing answer: %d", code)
+	}
+	if code, _ := check("getting-started/lessons/07-knowledge-check", `{"question":0,"answer":0}`); code != 422 {
+		t.Fatalf("quiz without immediate feedback: %d", code)
+	}
+
+	// Checks aren't attempts.
+	var p struct{ Attempts int }
+	r := do(t, ts, "GET", "/courses/"+quiz+"/progress", "", auth)
+	if err := json.NewDecoder(r.Body).Decode(&p); err != nil || p.Attempts != 0 {
+		t.Fatalf("progress after checks: %+v %v", p, err)
+	}
+}
+
 func TestTelemetryEndpoints(t *testing.T) {
 	ts, _ := newTestServer(t)
 	auth := map[string]string{"Authorization": "Bearer " + testToken}
