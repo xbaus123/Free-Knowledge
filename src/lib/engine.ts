@@ -39,6 +39,8 @@ export interface Health {
 }
 
 export interface LessonSummary {
+  /** Code lessons: every language used, primary first. */
+  languages?: string[];
   id: string;
   title: string;
   language: string;

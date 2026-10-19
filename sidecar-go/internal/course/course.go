@@ -6,7 +6,7 @@
 //	<root>/<course-id>/<lesson-id>/lesson.md
 //	<root>/<course-id>/<lesson-id>/config.json        (optional)
 //	<root>/<course-id>/<lesson-id>/starter.<ext>      (optional; loaded into the editor)
-//	<root>/<course-id>/<lesson-id>/solution_test.<ext>
+//	<root>/<course-id>/<lesson-id>/solution_test.<ext>    (one per language)
 //	<root>/<course-id>/<lesson-id>/reference.<ext>    (optional; author's solution, used for validation)
 //
 // System design lessons ("type": "system-design" in config.json) use
@@ -90,12 +90,16 @@ type courseFile struct {
 }
 
 type lessonConfig struct {
-	Title        string `json:"title"`
-	Language     string `json:"language"`
-	Type         string `json:"type"` // "code" (default) or "system-design"
-	TimeoutMs    int    `json:"timeoutMs"`
-	MaxLatencyMs int    `json:"maxLatencyMs"` // system design: p99 latency target
-	MaxBudget    int    `json:"max_budget"`   // system design: monthly cost limit in dollars
+	Title    string `json:"title"`
+	Language string `json:"language"`
+	// Languages lists every language a code lesson uses, primary first;
+	// each has its own solution_test.<ext>. Lessons with more than one
+	// must be multi-file.
+	Languages    []string `json:"languages"`
+	Type         string   `json:"type"` // "code" (default) or "system-design"
+	TimeoutMs    int      `json:"timeoutMs"`
+	MaxLatencyMs int      `json:"maxLatencyMs"` // system design: p99 latency target
+	MaxBudget    int      `json:"max_budget"`   // system design: monthly cost limit in dollars
 	// Simulation is a system design lesson's scenario: traffic, faults,
 	// goals, and the node types its canvas offers (see simulator.Scenario).
 	Simulation json.RawMessage `json:"simulation"`
@@ -226,11 +230,13 @@ type Course struct {
 }
 
 type LessonSummary struct {
-	ID       string   `json:"id"`
-	Title    string   `json:"title"`
-	Language string   `json:"language"`
-	Kind     string   `json:"kind"`
-	Problems []string `json:"problems,omitempty"`
+	ID       string `json:"id"`
+	Title    string `json:"title"`
+	Language string `json:"language"` // a code lesson's primary language
+	// Languages are all of a code lesson's languages, primary first.
+	Languages []string `json:"languages,omitempty"`
+	Kind      string   `json:"kind"`
+	Problems  []string `json:"problems,omitempty"`
 }
 
 // Lesson is everything the UI needs to show a lesson. Test and reference
@@ -254,9 +260,16 @@ type Lesson struct {
 	Files []LessonFile `json:"files,omitempty"`
 	Dir   string       `json:"-"`
 	// ReferenceDir overlays Files for validation (multi-file lessons).
-	ReferenceDir  string `json:"-"`
-	TestFile      string `json:"-"`
-	ReferenceFile string `json:"-"`
+	ReferenceDir string `json:"-"`
+	// Tests has one suite per language, primary first.
+	Tests         []TestSuite `json:"-"`
+	ReferenceFile string      `json:"-"`
+}
+
+// TestSuite is a code lesson's tests in one language.
+type TestSuite struct {
+	Language runner.Language
+	File     string
 }
 
 // Valid reports whether the lesson can be graded.
@@ -382,6 +395,12 @@ func loadLesson(c *Course, id string) (*Lesson, error) {
 			if cfg.Language != "" {
 				l.Language = cfg.Language
 			}
+			if len(cfg.Languages) > 0 {
+				l.Languages = cfg.Languages
+				if cfg.Language == "" {
+					l.Language = cfg.Languages[0]
+				}
+			}
 			if cfg.Type != "" {
 				l.Kind = cfg.Type
 			}
@@ -400,7 +419,7 @@ func loadLesson(c *Course, id string) (*Lesson, error) {
 	switch l.Kind {
 	case KindCode:
 	case KindSystemDesign:
-		l.Language = ""
+		l.Language, l.Languages = "", nil
 		if b, err := os.ReadFile(filepath.Join(dir, "starter.json")); err == nil {
 			if !json.Valid(b) {
 				l.Problems = append(l.Problems, "starter.json is not valid JSON")
@@ -415,10 +434,10 @@ func loadLesson(c *Course, id string) (*Lesson, error) {
 		}
 		return l, nil
 	case KindArticle:
-		l.Language = ""
+		l.Language, l.Languages = "", nil
 		return l, nil
 	case KindQuiz:
-		l.Language = ""
+		l.Language, l.Languages = "", nil
 		if len(l.Questions) == 0 {
 			l.Problems = append(l.Problems, `quiz needs "questions" (or "options") in config.json`)
 		}
@@ -453,19 +472,41 @@ func loadLesson(c *Course, id string) (*Lesson, error) {
 	}
 	lang, ok := runner.Lookup(l.Language)
 	if !ok {
-		l.Problems = append(l.Problems, fmt.Sprintf("unknown language %q (set it in course.json or config.json)", l.Language))
+		l.Problems = append(l.Problems, fmt.Sprintf("unknown language %q (set it in config.json)", l.Language))
 		return l, nil
+	}
+	if len(l.Languages) == 0 {
+		l.Languages = []string{l.Language}
+	}
+	if l.Languages[0] != l.Language {
+		l.Problems = append(l.Problems, `config.json: "language" must be the first of "languages"`)
+	}
+	if len(l.Languages) > 1 && !l.Capabilities.MultiFile {
+		l.Problems = append(l.Problems, `a lesson with more than one language needs "multi_file" in its capabilities`)
+	}
+	seen := map[string]bool{}
+	for _, id := range l.Languages {
+		tl, ok := runner.Lookup(id)
+		switch {
+		case !ok:
+			l.Problems = append(l.Problems, fmt.Sprintf("unknown language %q", id))
+			continue
+		case seen[tl.ID]:
+			l.Problems = append(l.Problems, fmt.Sprintf("%s is listed twice", tl.Name))
+			continue
+		}
+		seen[tl.ID] = true
+		if p := filepath.Join(dir, "solution_test"+tl.Ext); fileExists(p) {
+			l.Tests = append(l.Tests, TestSuite{Language: tl, File: p})
+		} else {
+			l.Problems = append(l.Problems, "solution_test"+tl.Ext+" is missing")
+		}
 	}
 	if b, err := os.ReadFile(filepath.Join(dir, "starter"+lang.Ext)); err == nil {
 		l.Starter = string(b)
 	}
 	if l.Capabilities.MultiFile {
 		loadLessonFiles(l, dir, lang)
-	}
-	if p := filepath.Join(dir, "solution_test"+lang.Ext); fileExists(p) {
-		l.TestFile = p
-	} else {
-		l.Problems = append(l.Problems, "solution_test"+lang.Ext+" is missing")
 	}
 	if p := filepath.Join(dir, "reference"+lang.Ext); fileExists(p) {
 		l.ReferenceFile = p

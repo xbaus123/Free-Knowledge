@@ -7,3 +7,5 @@ export const LANGUAGES = [
 ] as const;
 
 export const extension = (language?: string) => LANGUAGES.find((l) => l.id === language)?.ext ?? "txt";
+
+export const languageName = (language?: string) => LANGUAGES.find((l) => l.id === language)?.name ?? language ?? "";

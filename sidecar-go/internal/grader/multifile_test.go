@@ -6,9 +6,11 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strings"
 	"testing"
 
 	"freeknowledge/engine/internal/course"
+	"freeknowledge/engine/internal/runner"
 )
 
 // multiFileLesson writes a multi-file lesson to a temp course and loads it.
@@ -122,5 +124,91 @@ func TestMultiFileProblems(t *testing.T) {
 	}
 	if len(l.Problems) != 2 {
 		t.Fatalf("want reserved-name and missing read-only problems, got %v", l.Problems)
+	}
+}
+
+// A full-stack lesson: a Python backend and a JavaScript frontend, each with
+// its own tests, in one workspace.
+func TestMultiLanguageLesson(t *testing.T) {
+	for _, tool := range []string{"python3", "node"} {
+		if _, err := exec.LookPath(tool); err != nil {
+			t.Skipf("%s not installed", tool)
+		}
+	}
+	root := t.TempDir()
+	files := map[string]string{
+		"course.json":             `{}`,
+		"l/lesson.md":             "# Full stack",
+		"l/config.json":           `{"languages":["python","javascript"],"capabilities":{"multi_file":true}}`,
+		"l/starter/solution.py":   "def price_with_tax(cents):\n    pass\n",
+		"l/starter/solution.js":   "export function formatPrice(cents) {}\n",
+		"l/reference/solution.py": "def price_with_tax(cents):\n    return round(cents * 1.2)\n",
+		"l/reference/solution.js": "export function formatPrice(cents) {\n  return `$${(cents / 100).toFixed(2)}`;\n}\n",
+		"l/solution_test.py":      "import unittest\nfrom solution import price_with_tax\n\nclass T(unittest.TestCase):\n    def test_tax(self):\n        \"\"\"adds 20% tax\"\"\"\n        self.assertEqual(price_with_tax(1000), 1200)\n",
+		"l/solution_test.js":      "import { test } from \"node:test\";\nimport assert from \"node:assert/strict\";\nimport { formatPrice } from \"./solution.js\";\n\ntest(\"formats cents as dollars\", () => {\n  assert.equal(formatPrice(1200), \"$12.00\");\n});\n",
+	}
+	for name, body := range files {
+		p := filepath.Join(root, "c", filepath.FromSlash(name))
+		os.MkdirAll(filepath.Dir(p), 0o755)
+		if err := os.WriteFile(p, []byte(body), 0o644); err != nil {
+			t.Fatal(err)
+		}
+	}
+	l, err := course.NewStore([]course.Root{{Path: root}}).Lesson("c", "l")
+	if err != nil || !l.Valid() {
+		t.Fatalf("lesson: %v %v", err, l.Problems)
+	}
+	if l.Language != "python" || len(l.Languages) != 2 || len(l.Tests) != 2 || len(l.Files) != 2 {
+		t.Fatalf("languages %v, %d suites, files %+v", l.Languages, len(l.Tests), l.Files)
+	}
+
+	var streamed string
+	ref, err := Validate(context.Background(), l, func(_ runner.Phase, _ string, chunk string) { streamed += chunk })
+	if err != nil || !ref.Passed || len(ref.Tests) != 2 {
+		t.Fatalf("reference: %+v %v", ref, err)
+	}
+	if ref.Tests[0].Name != "Python · adds 20% tax" || ref.Tests[1].Name != "JavaScript · formats cents as dollars" {
+		t.Errorf("test names: %+v", ref.Tests)
+	}
+	if !strings.Contains(streamed, "── Python tests ──") || !strings.Contains(streamed, "── JavaScript tests ──") {
+		t.Errorf("output should label each language's tests: %q", streamed)
+	}
+
+	// The backend done but the frontend not: one suite fails, so the lesson does.
+	half, err := GradeFiles(context.Background(), l, map[string]string{"solution.py": files["l/reference/solution.py"]}, nil)
+	if err != nil || half.Passed || half.Tests[0].Status != StatusPass || half.Tests[1].Status == StatusPass {
+		t.Fatalf("half done: %+v %v", half, err)
+	}
+}
+
+func TestMultiLanguageLessonProblems(t *testing.T) {
+	root := t.TempDir()
+	write := func(name, body string) {
+		p := filepath.Join(root, "c", filepath.FromSlash(name))
+		os.MkdirAll(filepath.Dir(p), 0o755)
+		os.WriteFile(p, []byte(body), 0o644)
+	}
+	write("course.json", `{}`)
+	for id, cfg := range map[string]string{
+		"single-file": `{"languages":["python","javascript"]}`,
+		"unknown":     `{"languages":["python","cobol"],"capabilities":{"multi_file":true}}`,
+		"twice":       `{"languages":["python","python"],"capabilities":{"multi_file":true}}`,
+		"mismatch":    `{"language":"javascript","languages":["python","javascript"],"capabilities":{"multi_file":true}}`,
+		"no-js-tests": `{"languages":["python","javascript"],"capabilities":{"multi_file":true}}`,
+	} {
+		write(id+"/config.json", cfg)
+		write(id+"/lesson.md", "# L")
+		write(id+"/starter/solution.py", "")
+		write(id+"/solution_test.py", "")
+		if id != "no-js-tests" {
+			write(id+"/solution_test.js", "")
+		}
+	}
+	store := course.NewStore([]course.Root{{Path: root}})
+	for _, id := range []string{"single-file", "unknown", "twice", "mismatch", "no-js-tests"} {
+		l, err := store.Lesson("c", id)
+		if err != nil || l.Valid() {
+			t.Errorf("%s should have problems: %v %v", id, err, l)
+		}
 	}
 }

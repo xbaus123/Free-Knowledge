@@ -34,6 +34,10 @@ export interface LessonSource {
   /** Code: reference solution. System design: solution diagram JSON. */
   reference: string;
   questions?: QuestionSource[];
+  /** Code: every language the lesson uses, primary (`language`) first. */
+  languages?: string[];
+  /** Code: tests for each language after the first (the first's are `tests`). */
+  languageTests?: Record<string, string>;
   /** Quiz: check each answer as soon as it's chosen. */
   immediateFeedback?: boolean;
   capabilities: Capabilities;
@@ -91,6 +95,16 @@ export const createLesson = (courseId: string, title: string, type: LessonType, 
 export const lessonSource = (courseId: string, lessonId: string) => request<LessonSource>(lessonPath(courseId, lessonId));
 export const saveLesson = (courseId: string, src: LessonSource) => request<void>(lessonPath(courseId, src.id), json("PUT", src));
 export const deleteLesson = (courseId: string, lessonId: string) => request<void>(lessonPath(courseId, lessonId), { method: "DELETE" });
+/** A language's starting files: what the Studio adds when a lesson takes on a new language. */
+export interface LanguageTemplate {
+  language: string;
+  /** solution.<ext> */
+  file: string;
+  starter: string;
+  tests: string;
+  reference: string;
+}
+export const languageTemplate = (language: string) => request<LanguageTemplate>(`/studio/templates/${encodeURIComponent(language)}`);
 export const checkLesson = (courseId: string, lessonId: string) =>
   request<LessonCheckDetail>(lessonPath(courseId, lessonId) + "/check", { method: "POST" });
 

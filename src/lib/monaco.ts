@@ -10,6 +10,13 @@ import "monaco-esm/languages/definitions/go/register";
 import "monaco-esm/languages/definitions/cpp/register"; // registers "c" too
 import "monaco-esm/languages/definitions/rust/register";
 import "monaco-esm/languages/definitions/markdown/register"; // Creator Studio
+// Other files a full-stack lesson might include beside its code.
+import "monaco-esm/languages/definitions/html/register";
+import "monaco-esm/languages/definitions/css/register";
+import "monaco-esm/languages/definitions/typescript/register";
+import "monaco-esm/languages/definitions/sql/register";
+import "monaco-esm/languages/definitions/yaml/register";
+import "monaco-esm/languages/definitions/shell/register";
 
 self.MonacoEnvironment = { getWorker: () => new EditorWorker() };
 
@@ -31,6 +38,16 @@ const EXTENSION_LANGUAGES: Record<string, string> = {
   h: "c",
   rs: "rust",
   md: "markdown",
+  html: "html",
+  htm: "html",
+  css: "css",
+  ts: "typescript",
+  tsx: "typescript",
+  json: "javascript",
+  sql: "sql",
+  yaml: "yaml",
+  yml: "yaml",
+  sh: "shell",
 };
 
 /** Picks an editor language from a file name ("plaintext" if unknown). */

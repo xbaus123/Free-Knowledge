@@ -24,6 +24,7 @@ func (s *Server) studioRoutes(mux *http.ServeMux) {
 	h("DELETE /studio/courses/{course}/lessons/{lesson}", s.handleDeleteLesson)
 	h("POST /studio/courses/{course}/lessons/{lesson}/check", s.handleCheckLesson)
 	h("POST /studio/import", s.handleImport)
+	h("GET /studio/templates/{language}", s.handleTemplate)
 }
 
 func (s *Server) requireStudio(next http.HandlerFunc) http.HandlerFunc {
@@ -57,6 +58,17 @@ func writeStudioError(w http.ResponseWriter, err error) {
 		// Studio errors are mostly about the author's input.
 		writeJSON(w, http.StatusBadRequest, map[string]string{"error": err.Error()})
 	}
+}
+
+// handleTemplate returns a language's starting files, for adding a language
+// to a lesson.
+func (s *Server) handleTemplate(w http.ResponseWriter, r *http.Request) {
+	tpl, err := studio.Template(r.PathValue("language"))
+	if err != nil {
+		writeJSON(w, http.StatusNotFound, map[string]string{"error": err.Error()})
+		return
+	}
+	writeJSON(w, http.StatusOK, tpl)
 }
 
 func (s *Server) handleCreateCourse(w http.ResponseWriter, r *http.Request) {

@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import * as engine from "../../lib/engine";
 import * as studio from "../../lib/studio";
-import { LANGUAGES } from "./languages";
 
 interface Props {
   onHome: () => void;
@@ -151,13 +150,12 @@ function NewCourseForm({ onCreate, onCancel }: { onCreate: (meta: Partial<studio
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [author, setAuthor] = useState("");
-  const [language, setLanguage] = useState("python");
 
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        if (title.trim()) onCreate({ title: title.trim(), description, author, language });
+        if (title.trim()) onCreate({ title: title.trim(), description, author });
       }}
       className="mb-8 grid gap-3 rounded-lg border border-indigo-900 bg-zinc-900/60 p-4 sm:grid-cols-2"
     >
@@ -170,15 +168,7 @@ function NewCourseForm({ onCreate, onCancel }: { onCreate: (meta: Partial<studio
       <Field label="Description" wide>
         <input value={description} onChange={(e) => setDescription(e.target.value)} placeholder="What will learners be able to do?" className={inputClass} />
       </Field>
-      <Field label="Default language for new lessons">
-        <select value={language} onChange={(e) => setLanguage(e.target.value)} className={inputClass}>
-          {LANGUAGES.map((l) => (
-            <option key={l.id} value={l.id}>
-              {l.name}
-            </option>
-          ))}
-        </select>
-      </Field>
+      <p className="self-end text-xs text-zinc-500">Each lesson picks its own languages, and can mix several.</p>
       <div className="flex items-end justify-end gap-2">
         <button type="button" onClick={onCancel} className="rounded px-3 py-1.5 text-sm text-zinc-400 hover:bg-zinc-800">
           Cancel

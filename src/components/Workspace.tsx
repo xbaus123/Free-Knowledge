@@ -115,7 +115,12 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
           filesRef.current = all;
           setFiles(all);
           codeRef.current = editableFilesJSON(l, all);
-          const first = l.files.find((f) => !f.readOnly && f.path.startsWith("solution.")) ?? l.files.find((f) => !f.readOnly) ?? l.files[0];
+          // Open the main language's solution file first.
+          const first =
+            l.files.find((f) => !f.readOnly && f.path === `solution.${extension(l.language)}`) ??
+            l.files.find((f) => !f.readOnly && f.path.startsWith("solution.")) ??
+            l.files.find((f) => !f.readOnly) ??
+            l.files[0];
           setActiveFile(first.path);
           setOpenTabs([first.path]);
         }

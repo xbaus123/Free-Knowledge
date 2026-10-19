@@ -10,6 +10,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"runtime"
+	"slices"
 	"strings"
 	"sync"
 	"time"
@@ -45,6 +46,9 @@ var languages = []Language{
 	{ID: "c", Name: "C", File: "main.c", Ext: ".c", Compile: []string{"gcc", "-std=c17", "-Wall", "-O0", "-o", "{bin}", "main.c"}, Run: []string{"{bin}"}, Requires: "gcc"},
 	{ID: "rust", Name: "Rust", File: "main.rs", Ext: ".rs", Compile: []string{"rustc", "--edition=2021", "-o", "{bin}", "main.rs"}, Run: []string{"{bin}"}, Requires: "rustc"},
 }
+
+// Languages lists every supported language.
+func Languages() []Language { return slices.Clone(languages) }
 
 func Lookup(id string) (Language, bool) {
 	for _, l := range languages {

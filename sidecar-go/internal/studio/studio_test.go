@@ -423,3 +423,56 @@ func TestDesignBudgetRoundTrip(t *testing.T) {
 		t.Fatalf("a solution over budget should fail the check: %+v", d.LessonCheck)
 	}
 }
+
+func TestAddingALanguageToALesson(t *testing.T) {
+	for _, tool := range []string{"python3", "node"} {
+		if _, err := exec.LookPath(tool); err != nil {
+			t.Skipf("%s not installed", tool)
+		}
+	}
+	s := newStudio(t)
+	id := must(s.CreateCourse(CourseMeta{Title: "Full Stack"})) // no default language
+	lid := must(s.CreateLesson(id, "Prices", "", "python"))
+	src := must(s.Lesson(id, lid))
+	if src.Language != "python" || len(src.Languages) != 1 {
+		t.Fatalf("new lesson: %+v", src)
+	}
+
+	js := must(Template("javascript"))
+	src.Languages = append(src.Languages, js.Language)
+	src.LanguageTests = map[string]string{js.Language: js.Tests}
+	if err := s.SaveLesson(id, src); err == nil {
+		t.Fatal("two languages in a single-file lesson should be refused")
+	}
+	src.Capabilities.MultiFile = true
+	src.StarterFiles = map[string]string{"solution.py": src.Starter, js.File: js.Starter}
+	src.ReferenceFiles = map[string]string{"solution.py": src.Reference, js.File: js.Reference}
+	if err := s.SaveLesson(id, src); err != nil {
+		t.Fatal(err)
+	}
+	got := must(s.Lesson(id, lid))
+	if !slices.Equal(got.Languages, []string{"python", "javascript"}) || !strings.Contains(got.LanguageTests["javascript"], "node:test") {
+		t.Fatalf("reloaded: languages %v tests %v", got.Languages, got.LanguageTests)
+	}
+	check := must(s.CheckLesson(context.Background(), id, lid))
+	if !check.OK || len(check.Reference.Tests) != 2 || check.Warning != "" {
+		t.Fatalf("check: %+v", check)
+	}
+
+	// Dropping the language removes its tests.
+	got.Languages = got.Languages[:1]
+	got.ReferenceFiles = map[string]string{"solution.py": got.ReferenceFiles["solution.py"]}
+	got.StarterFiles = map[string]string{"solution.py": got.StarterFiles["solution.py"]}
+	if err := s.SaveLesson(id, got); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := os.Stat(filepath.Join(s.Root, id, lid, "solution_test.js")); !errors.Is(err, os.ErrNotExist) {
+		t.Error("solution_test.js should be removed with the language")
+	}
+	if l := must(s.Courses.Lesson(id, lid)); !l.Valid() || len(l.Languages) != 1 {
+		t.Fatalf("after removing: %+v", l)
+	}
+	if _, err := Template("cobol"); err == nil {
+		t.Error("unknown language template should fail")
+	}
+}

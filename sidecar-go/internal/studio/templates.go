@@ -1,5 +1,11 @@
 package studio
 
+import (
+	"fmt"
+
+	"freeknowledge/engine/internal/runner"
+)
+
 // Starting point for a new lesson in each language: a complete example where
 // the reference passes and the starter fails, so "Check lesson" works
 // immediately and authors can see the expected shape of each file.
@@ -11,6 +17,26 @@ type template struct {
 }
 
 const markdownTemplate = "# %s\n\nExplain the idea here. Code examples in fenced blocks are syntax highlighted.\n\n## Your task\n\nWrite `answer` so that it returns `42`.\n"
+
+// LanguageTemplate is a working starting point for one language: what the
+// Studio adds when an author brings a new language into a lesson.
+type LanguageTemplate struct {
+	Language  string `json:"language"`
+	File      string `json:"file"` // solution.<ext>
+	Starter   string `json:"starter"`
+	Tests     string `json:"tests"`
+	Reference string `json:"reference"`
+}
+
+// Template returns the starting files for a language.
+func Template(language string) (LanguageTemplate, error) {
+	lang, ok := runner.Lookup(language)
+	tpl, has := templates[language]
+	if !ok || !has {
+		return LanguageTemplate{}, fmt.Errorf("unsupported language %q", language)
+	}
+	return LanguageTemplate{Language: lang.ID, File: "solution" + lang.Ext, Starter: tpl.starter, Tests: tpl.tests, Reference: tpl.reference}, nil
+}
 
 var templates = map[string]template{
 	"python": {

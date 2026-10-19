@@ -531,3 +531,16 @@ func TestSimulateBudgetChaosAndCatalog(t *testing.T) {
 		t.Fatalf("catalog: %+v %v", catalog, err)
 	}
 }
+
+func TestStudioTemplateEndpoint(t *testing.T) {
+	ts, _ := newTestServer(t)
+	auth := map[string]string{"Authorization": "Bearer " + testToken}
+	r := do(t, ts, "GET", "/studio/templates/javascript", "", auth)
+	var tpl struct{ Language, File, Starter, Tests, Reference string }
+	if err := json.NewDecoder(r.Body).Decode(&tpl); err != nil || r.StatusCode != 200 || tpl.File != "solution.js" || !strings.Contains(tpl.Tests, "node:test") {
+		t.Fatalf("template: %d %+v %v", r.StatusCode, tpl, err)
+	}
+	if r := do(t, ts, "GET", "/studio/templates/cobol", "", auth); r.StatusCode != 404 {
+		t.Fatalf("unknown language: %d", r.StatusCode)
+	}
+}

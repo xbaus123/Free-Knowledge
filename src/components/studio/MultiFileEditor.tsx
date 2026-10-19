@@ -116,7 +116,7 @@ export function MultiFileEditor({ mode, idPrefix, starterFiles, referenceFiles, 
                   autoFocus
                   value={newName}
                   onChange={(e) => setNewName(e.target.value)}
-                  placeholder={`helpers.${ext} or lib/util.${ext}`}
+                  placeholder={`helpers.${ext}, app.js, index.html…`}
                   className={inputClass}
                   aria-label="New file name"
                 />

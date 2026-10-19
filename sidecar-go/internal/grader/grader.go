@@ -2,7 +2,8 @@
 //
 // The submission is written as solution.<ext> next to the lesson's
 // solution_test.<ext> in a temp workspace, along with a small per-language
-// harness. Harnesses append one JSON record per test to $FK_RESULTS, keeping
+// harness. A lesson in several languages has a test file for each; every
+// suite runs in its own workspace and the results are merged. Harnesses append one JSON record per test to $FK_RESULTS, keeping
 // test results separate from the program's own stdout. Go and Rust use their
 // toolchains' own test output instead.
 package grader
@@ -159,7 +160,67 @@ func GradeFiles(ctx context.Context, l *course.Lesson, submitted map[string]stri
 	default:
 		return Result{}, fmt.Errorf("lesson type %q can't be graded here", l.Kind)
 	}
-	lang, _ := runner.Lookup(l.Language)
+	primary, _ := runner.Lookup(l.Language)
+	files, err := workspaceFiles(l, primary, submitted)
+	if err != nil {
+		return Result{}, err
+	}
+	if len(l.Tests) == 1 {
+		return gradeSuite(ctx, l, l.Tests[0], files, onOutput)
+	}
+	return gradeSuites(ctx, l, files, onOutput)
+}
+
+// gradeSuites runs each language's tests in turn (a lesson in several
+// languages) and merges the results, naming each test by its language.
+func gradeSuites(ctx context.Context, l *course.Lesson, files map[string]string, onOutput runner.OutputFunc) (Result, error) {
+	start := time.Now()
+	merged := Result{Result: runner.Result{Phase: runner.PhaseRun}, Passed: true, Tests: []TestResult{}}
+	var stdout, stderr, errs []string
+	for _, suite := range l.Tests {
+		name, _, _ := strings.Cut(suite.Language.Name, " (") // "JavaScript (Node)" → "JavaScript"
+		header := fmt.Sprintf("── %s tests ──\n", name)
+		if onOutput != nil {
+			onOutput(runner.PhaseRun, "stdout", header)
+		}
+		r, err := gradeSuite(ctx, l, suite, files, onOutput)
+		if err != nil {
+			return Result{}, err
+		}
+		stdout = append(stdout, header+r.Stdout)
+		if r.Stderr != "" {
+			stderr = append(stderr, header+r.Stderr)
+		}
+		if r.Error != "" {
+			errs = append(errs, name+": "+r.Error)
+		}
+		for _, t := range r.Tests {
+			t.Name = name + " · " + t.Name
+			merged.Tests = append(merged.Tests, t)
+		}
+		if !r.Passed {
+			merged.Passed = false
+			if merged.ExitCode == 0 {
+				merged.Phase, merged.ExitCode = r.Phase, r.ExitCode
+			}
+		}
+		merged.TimedOut = merged.TimedOut || r.TimedOut
+		merged.Truncated = merged.Truncated || r.Truncated
+		if ctx.Err() != nil {
+			break
+		}
+	}
+	if !merged.Passed && merged.ExitCode == 0 {
+		merged.ExitCode = 1
+	}
+	merged.Stdout, merged.Stderr, merged.Error = strings.Join(stdout, "\n"), strings.Join(stderr, "\n"), strings.Join(errs, "; ")
+	merged.DurationMs = time.Since(start).Milliseconds()
+	return merged, nil
+}
+
+// gradeSuite runs one language's tests against files in a fresh workspace.
+func gradeSuite(ctx context.Context, l *course.Lesson, suite course.TestSuite, files map[string]string, onOutput runner.OutputFunc) (Result, error) {
+	lang := suite.Language
 	h, ok := harnesses[lang.ID]
 	if !ok {
 		return Result{}, fmt.Errorf("no test harness for %s", lang.Name)
@@ -173,16 +234,12 @@ func GradeFiles(ctx context.Context, l *course.Lesson, submitted map[string]stri
 		return finish(Result{Result: runner.Result{Phase: runner.PhaseCompile, ExitCode: -1, Error: lang.Requires + " is not installed or not on PATH"}})
 	}
 
-	files, err := workspaceFiles(l, lang, submitted)
-	if err != nil {
-		return Result{}, err
-	}
 	dir, err := os.MkdirTemp("", "fk-grade-*")
 	if err != nil {
 		return Result{}, fmt.Errorf("create workspace: %w", err)
 	}
 	defer os.RemoveAll(dir)
-	sources, err := setupWorkspace(dir, l, lang, h, files)
+	sources, err := setupWorkspace(dir, suite, h, files)
 	if err != nil {
 		return Result{}, err
 	}
@@ -362,7 +419,8 @@ func workspaceFiles(l *course.Lesson, lang runner.Language, submitted map[string
 
 // setupWorkspace writes the learner's files, the tests, and the harness into
 // dir. It returns the source files (by extension), sorted.
-func setupWorkspace(dir string, l *course.Lesson, lang runner.Language, h harness, files map[string]string) ([]string, error) {
+func setupWorkspace(dir string, suite course.TestSuite, h harness, files map[string]string) ([]string, error) {
+	lang := suite.Language
 	write := func(name string, data []byte) error {
 		p := filepath.Join(dir, filepath.FromSlash(name))
 		if err := os.MkdirAll(filepath.Dir(p), 0o700); err != nil {
@@ -383,7 +441,7 @@ func setupWorkspace(dir string, l *course.Lesson, lang runner.Language, h harnes
 		}
 	}
 	slices.Sort(sources)
-	tests, err := os.ReadFile(l.TestFile)
+	tests, err := os.ReadFile(suite.File)
 	if err != nil {
 		return nil, fmt.Errorf("read tests: %w", err)
 	}

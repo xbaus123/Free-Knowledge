@@ -8,7 +8,7 @@ import { TestList } from "../OutputPanel";
 import { MultiFileEditor } from "./MultiFileEditor";
 import { QuizBuilder } from "./QuizBuilder";
 import { Field, inputClass } from "./StudioHome";
-import { extension, LANGUAGES } from "./languages";
+import { extension, languageName, LANGUAGES } from "./languages";
 
 interface Props {
   courseId: string;
@@ -17,7 +17,7 @@ interface Props {
   onPreview: (courseId: string, lessonId: string) => void;
 }
 
-type Tab = "instructions" | "starter" | "tests" | "reference" | "questions" | "starterDiagram" | "solutionDiagram" | "simulation";
+type Tab = "instructions" | "starter" | "tests" | `tests:${string}` | "reference" | "questions" | "starterDiagram" | "solutionDiagram" | "simulation";
 
 type TabInfo = { id: Tab; label: string; hint: string; code?: boolean };
 
@@ -271,7 +271,71 @@ export function CourseEditor({ courseId, initialLessonId, onBack, onPreview }: P
     update(patch);
   };
   const enabledCaps = [caps.scratchpad && "Scratchpad", multi && "Multi-file", caps.telemetry && "Insights"].filter(Boolean);
-  const tabs = draft ? tabsFor(draft.type) : [];
+
+  // --- languages: a code lesson can mix several, each with its own tests ---
+  const languages = draft?.type !== "code" ? [] : draft.languages?.length ? draft.languages : [draft.language ?? "python"];
+  const tabLanguage = (t: Tab) => (t.startsWith("tests:") ? t.slice("tests:".length) : (draft?.language ?? ""));
+
+  const addLanguage = (id: string) =>
+    act("language", async () => {
+      const d = draftRef.current;
+      if (!d) return;
+      const tpl = await studio.languageTemplate(id);
+      const current = d.languages?.length ? d.languages : [d.language ?? "python"];
+      // Several languages need a file tree; start it from the single file.
+      const solution = `solution.${extension(d.language)}`;
+      const hasTree = d.capabilities.multi_file && Object.keys(d.starterFiles ?? {}).length > 0;
+      const starterFiles = hasTree ? { ...d.starterFiles } : { [solution]: d.starter };
+      const referenceFiles = hasTree ? { ...d.referenceFiles } : { [solution]: d.reference };
+      if (!(tpl.file in starterFiles)) {
+        starterFiles[tpl.file] = tpl.starter;
+        referenceFiles[tpl.file] = tpl.reference;
+      }
+      update({
+        languages: [...current, id],
+        languageTests: { ...d.languageTests, [id]: tpl.tests },
+        capabilities: { ...d.capabilities, multi_file: true },
+        starterFiles,
+        referenceFiles,
+      });
+      setTab(`tests:${id}`);
+      setNotice(
+        `Added ${languageName(id)}: ${tpl.file} in the Starter and Reference files, and example tests here. ${hasTree ? "" : "The lesson now uses multiple files. "}Save to keep it.`,
+      );
+    });
+
+  const removeLanguage = (id: string) =>
+    act("language", async () => {
+      const d = draftRef.current;
+      if (!d || languages.length < 2) return;
+      const ok = await studio.confirmDialog(`Remove ${languageName(id)} from this lesson? Its tests are deleted when you save. Its files stay in the file tree.`);
+      if (!ok) return;
+      const rest = languages.filter((l) => l !== id);
+      const { [id]: _dropped, ...languageTests } = d.languageTests ?? {};
+      const patch: Partial<studio.LessonSource> = { languages: rest, language: rest[0], languageTests };
+      if (id === languages[0]) {
+        // The next language becomes the main one; its tests move up.
+        patch.tests = languageTests[rest[0]] ?? "";
+        delete languageTests[rest[0]];
+      }
+      update(patch);
+      setTab("tests");
+    });
+
+  const baseTabs = draft ? tabsFor(draft.type) : [];
+  const tabs: TabInfo[] =
+    languages.length > 1
+      ? baseTabs.flatMap((t) =>
+          t.id !== "tests"
+            ? [t]
+            : languages.map((l, i) => ({
+                id: (i === 0 ? "tests" : `tests:${l}`) as Tab,
+                label: `Tests · ${languageName(l)}`,
+                hint: `solution_test.${extension(l)}: hidden tests, run with ${languageName(l)}`,
+                code: true,
+              })),
+        )
+      : baseTabs;
   const activeTab = tabs.some((t) => t.id === tab) ? tab : "instructions";
 
   return (
@@ -303,7 +367,7 @@ export function CourseEditor({ courseId, initialLessonId, onBack, onPreview }: P
       {notice && <p className="border-b border-emerald-900 bg-emerald-950/50 px-4 py-2 text-sm text-emerald-300">{notice}</p>}
 
       {showSettings && (
-        <div className="grid shrink-0 gap-3 border-b border-zinc-800 bg-zinc-900/60 p-4 sm:grid-cols-4">
+        <div className="grid shrink-0 gap-3 border-b border-zinc-800 bg-zinc-900/60 p-4 sm:grid-cols-3">
           <Field label="Title">
             <input value={meta.title} onChange={(e) => setMeta({ ...meta, title: e.target.value })} className={inputClass} />
           </Field>
@@ -313,17 +377,7 @@ export function CourseEditor({ courseId, initialLessonId, onBack, onPreview }: P
           <Field label="Version">
             <input value={meta.version} onChange={(e) => setMeta({ ...meta, version: e.target.value })} className={inputClass} />
           </Field>
-          <Field label="Default language">
-            <select value={meta.language ?? ""} onChange={(e) => setMeta({ ...meta, language: e.target.value || undefined })} className={inputClass}>
-              <option value="">None</option>
-              {LANGUAGES.map((l) => (
-                <option key={l.id} value={l.id}>
-                  {l.name}
-                </option>
-              ))}
-            </select>
-          </Field>
-          <div className="sm:col-span-3">
+          <div className="sm:col-span-2">
             <Field label="Description">
               <input value={meta.description} onChange={(e) => setMeta({ ...meta, description: e.target.value })} className={inputClass} />
             </Field>
@@ -378,7 +432,11 @@ export function CourseEditor({ courseId, initialLessonId, onBack, onPreview }: P
           <div className="border-t border-zinc-800 p-2">
             {adding ? (
               <NewLessonForm
-                defaultLanguage={draft?.language || course?.language || "python"}
+                defaultLanguage={
+                  (draft?.type === "code" && draft.language) ||
+                  [...(course?.lessons ?? [])].reverse().find((l) => l.kind === "code" && l.language)?.language ||
+                  "python"
+                }
                 onAdd={addLesson}
                 onCancel={() => setAdding(false)}
               />
@@ -409,21 +467,63 @@ export function CourseEditor({ courseId, initialLessonId, onBack, onPreview }: P
                 </label>
                 {draft.type === "code" && (
                   <>
-                    <label>
-                      <span className="mb-1 block text-xs text-zinc-400">Language</span>
-                      <select
-                        value={draft.language}
-                        onChange={(e) => update({ language: e.target.value })}
-                        className={inputClass}
-                        title="Switching language keeps your code; update the files to match"
-                      >
-                        {LANGUAGES.map((l) => (
-                          <option key={l.id} value={l.id}>
-                            {l.name}
-                          </option>
-                        ))}
-                      </select>
-                    </label>
+                    <div>
+                      <span className="mb-1 block text-xs text-zinc-400">{languages.length > 1 ? "Languages" : "Language"}</span>
+                      <div className="flex flex-wrap items-center gap-1.5">
+                        {languages.length === 1 ? (
+                          <select
+                            value={languages[0]}
+                            onChange={(e) => update({ language: e.target.value, languages: [e.target.value] })}
+                            className={inputClass.replace("w-full", "w-auto")}
+                            title="Switching language keeps your code; update the files to match"
+                            aria-label="Language"
+                          >
+                            {LANGUAGES.map((l) => (
+                              <option key={l.id} value={l.id}>
+                                {l.name}
+                              </option>
+                            ))}
+                          </select>
+                        ) : (
+                          languages.map((l, i) => (
+                            <span key={l} className="flex items-center gap-1.5 rounded border border-zinc-700 bg-zinc-900 py-1 pr-1 pl-2 text-sm">
+                              {languageName(l)}
+                              {i === 0 && (
+                                <span className="text-[10px] text-zinc-500" title={`solution.${extension(l)} is the learner's main file`}>
+                                  main
+                                </span>
+                              )}
+                              <button
+                                onClick={() => removeLanguage(l)}
+                                disabled={!!busy}
+                                aria-label={`Remove ${languageName(l)}`}
+                                title={`Remove ${languageName(l)} and its tests`}
+                                className="rounded px-1 text-xs text-zinc-500 hover:bg-zinc-800 hover:text-red-400"
+                              >
+                                ✕
+                              </button>
+                            </span>
+                          ))
+                        )}
+                        {languages.length < LANGUAGES.length && (
+                          <select
+                            value=""
+                            onChange={(e) => e.target.value && addLanguage(e.target.value)}
+                            disabled={!!busy}
+                            className={`${inputClass.replace("w-full", "w-auto")} text-indigo-300`}
+                            aria-label="Add a language"
+                            title="Add another language to this lesson, with its own starter file and tests (for example, a JavaScript frontend beside a Python backend)"
+                          >
+                            <option value="">+ Add language</option>
+                            {LANGUAGES.filter((l) => !languages.includes(l.id)).map((l) => (
+                              <option key={l.id} value={l.id}>
+                                {l.name}
+                              </option>
+                            ))}
+                          </select>
+                        )}
+                      </div>
+                    </div>
                     <label className="w-28">
                       <span className="mb-1 block text-xs text-zinc-400">Time limit (s)</span>
                       <input
@@ -519,12 +619,14 @@ export function CourseEditor({ courseId, initialLessonId, onBack, onPreview }: P
                     <CapabilityToggle
                       label="Multi-file workspace"
                       description={
-                        draft.type === "code"
-                          ? "A file tree and tabs instead of one file. Add files and lock helpers in the Starter tab."
-                          : "Only available for code exercises."
+                        draft.type !== "code"
+                          ? "Only available for code exercises."
+                          : languages.length > 1
+                            ? "Required while the lesson uses more than one language."
+                            : "A file tree and tabs instead of one file. Add files and lock helpers in the Starter tab."
                       }
                       checked={multi}
-                      disabled={draft.type !== "code"}
+                      disabled={draft.type !== "code" || languages.length > 1}
                       onChange={(on) => setCapability("multi_file", on)}
                     />
                     <CapabilityToggle
@@ -545,7 +647,12 @@ export function CourseEditor({ courseId, initialLessonId, onBack, onPreview }: P
                     className={`border-b-2 px-3 py-2 ${activeTab === t.id ? "border-indigo-500 text-zinc-100" : "border-transparent text-zinc-400 hover:text-zinc-200"}`}
                   >
                     {t.label}
-                    {t.code && <span className="ml-1 font-mono text-zinc-500">{multi && t.id !== "tests" ? "files" : `.${ext}`}</span>}
+                    {t.code && languages.length < 2 && (
+                      <span className="ml-1 font-mono text-zinc-500">{multi && t.id !== "tests" ? "files" : `.${ext}`}</span>
+                    )}
+                    {t.code && languages.length > 1 && t.id !== "tests" && !t.id.startsWith("tests:") && (
+                      <span className="ml-1 font-mono text-zinc-500">files</span>
+                    )}
                   </button>
                 ))}
                 <span className="ml-auto truncate pr-2 text-zinc-500">{tabs.find((t) => t.id === activeTab)?.hint}</span>
@@ -595,10 +702,14 @@ export function CourseEditor({ courseId, initialLessonId, onBack, onPreview }: P
                   <>
                     <div className={activeTab === "instructions" ? "w-1/2 border-r border-zinc-800" : "w-full"}>
                       <CodeEditor
-                        path={`studio/${courseId}/${draft.id}/${activeTab}.${activeTab === "instructions" ? "md" : ext}`}
-                        language={activeTab === "instructions" ? "markdown" : (draft.language ?? "")}
-                        value={draft[codeField(activeTab)]}
-                        onChange={(v) => update({ [codeField(activeTab)]: v })}
+                        path={`studio/${courseId}/${draft.id}/${activeTab.replace(":", "-")}.${activeTab === "instructions" ? "md" : extension(tabLanguage(activeTab))}`}
+                        language={activeTab === "instructions" ? "markdown" : tabLanguage(activeTab)}
+                        value={activeTab.startsWith("tests:") ? (draft.languageTests?.[tabLanguage(activeTab)] ?? "") : draft[codeField(activeTab)]}
+                        onChange={(v) =>
+                          activeTab.startsWith("tests:")
+                            ? update({ languageTests: { ...draftRef.current?.languageTests, [tabLanguage(activeTab)]: v } })
+                            : update({ [codeField(activeTab)]: v })
+                        }
                         onSave={save}
                         onSubmit={runCheck}
                         autoFocus={false}

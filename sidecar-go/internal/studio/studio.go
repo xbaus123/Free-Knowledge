@@ -53,6 +53,11 @@ type LessonSource struct {
 	TimeoutMs    int    `json:"timeoutMs,omitempty"`
 	MaxLatencyMs int    `json:"maxLatencyMs,omitempty"`
 	MaxBudget    int    `json:"maxBudget,omitempty"` // system design: $/month limit
+	// Languages are a code lesson's languages, primary first (Language is
+	// the primary). LanguageTests holds the tests for the others, by
+	// language; Tests is the primary language's.
+	Languages     []string          `json:"languages,omitempty"`
+	LanguageTests map[string]string `json:"languageTests,omitempty"`
 	// Simulation is a system design lesson's scenario (JSON object).
 	Simulation json.RawMessage `json:"simulation,omitempty"`
 	Markdown   string          `json:"markdown"`
@@ -279,6 +284,13 @@ func (s *Studio) Lesson(courseID, lessonID string) (LessonSource, error) {
 		ImmediateFeedback: l.ImmediateFeedback}
 	switch l.Kind {
 	case course.KindCode:
+		src.Languages = l.Languages
+		for _, suite := range l.Tests[min(1, len(l.Tests)):] {
+			if src.LanguageTests == nil {
+				src.LanguageTests = map[string]string{}
+			}
+			src.LanguageTests[suite.Language.ID] = readOptional(suite.File)
+		}
 		if lang, ok := runner.Lookup(l.Language); ok {
 			src.Tests = readOptional(filepath.Join(l.Dir, "solution_test"+lang.Ext))
 			src.Reference = readOptional(filepath.Join(l.Dir, "reference"+lang.Ext))
@@ -333,7 +345,10 @@ func (s *Studio) CreateLesson(courseID, title, kind, language string) (string, e
 	switch kind {
 	case course.KindCode:
 		if language == "" {
-			language = c.Language
+			language = c.Language // older courses set a default
+		}
+		if language == "" {
+			language = "python"
 		}
 		tpl, ok := templates[language]
 		if !ok {
@@ -391,9 +406,12 @@ func (s *Studio) SaveLesson(courseID string, src LessonSource) error {
 	}
 	switch l.Kind {
 	case course.KindCode:
-		lang, ok := runner.Lookup(src.Language)
-		if !ok {
-			return fmt.Errorf("unsupported language %q", src.Language)
+		if err := normalizeLanguages(&src); err != nil {
+			return err
+		}
+		lang, _ := runner.Lookup(src.Language)
+		if len(src.Languages) > 1 && !src.Capabilities.MultiFile {
+			return errors.New("a lesson in more than one language needs multiple files: turn on Multiple files")
 		}
 		if src.Capabilities.MultiFile {
 			// Turning multi-file on: start from the single-file lesson.
@@ -430,6 +448,35 @@ func (s *Studio) SaveLesson(courseID string, src LessonSource) error {
 		return fmt.Errorf("%s lessons can't be edited in the Studio", l.Kind)
 	}
 	return s.writeLesson(c.Dir, l.Kind, src, l.Language)
+}
+
+// normalizeLanguages makes Language the first of Languages and checks them:
+// known and unique. Changing Language alone switches the primary language
+// (moving it to the front if it's already listed).
+func normalizeLanguages(src *LessonSource) error {
+	switch {
+	case len(src.Languages) == 0:
+		src.Languages = []string{src.Language}
+	case src.Language != "" && src.Language != src.Languages[0]:
+		rest := slices.DeleteFunc(slices.Clone(src.Languages), func(id string) bool { return id == src.Language })
+		if len(rest) == len(src.Languages) {
+			rest = rest[1:] // the old primary is replaced
+		}
+		src.Languages = append([]string{src.Language}, rest...)
+	}
+	ids := make([]string, 0, len(src.Languages))
+	for _, id := range src.Languages {
+		lang, ok := runner.Lookup(id)
+		if !ok {
+			return fmt.Errorf("unsupported language %q", id)
+		}
+		if slices.Contains(ids, lang.ID) {
+			return fmt.Errorf("%s is listed twice", lang.Name)
+		}
+		ids = append(ids, lang.ID)
+	}
+	src.Languages, src.Language = ids, ids[0]
+	return nil
 }
 
 // validateFiles checks a multi-file lesson's starter and reference files.
@@ -494,6 +541,7 @@ type lessonConfig struct {
 	Simulation        json.RawMessage       `json:"simulation,omitempty"`
 	Questions         []course.QuizQuestion `json:"questions,omitempty"`
 	ImmediateFeedback bool                  `json:"immediate_feedback,omitempty"`
+	Languages         []string              `json:"languages,omitempty"`
 	Capabilities      *course.Capabilities  `json:"capabilities,omitempty"`
 }
 
@@ -514,15 +562,32 @@ func (s *Studio) writeLesson(courseDir, kind string, src LessonSource, oldLangua
 
 	switch kind {
 	case course.KindCode:
+		if err := normalizeLanguages(&src); err != nil {
+			return err
+		}
 		lang, _ := runner.Lookup(src.Language)
-		// Switching language: remove files with the old extension.
+		// Switching the primary language: drop its single-file starter and
+		// reference.
 		if old, ok := runner.Lookup(oldLanguage); ok && old.Ext != lang.Ext {
-			for _, name := range []string{"starter", "solution_test", "reference"} {
+			for _, name := range []string{"starter", "reference"} {
 				os.Remove(filepath.Join(dir, name+old.Ext))
 			}
 		}
 		cfg.Language, cfg.TimeoutMs = src.Language, src.TimeoutMs
+		if len(src.Languages) > 1 {
+			cfg.Languages = src.Languages
+		}
+		// One test file per language; remove tests for languages dropped.
+		for _, other := range runner.Languages() {
+			if !slices.Contains(src.Languages, other.ID) {
+				os.Remove(filepath.Join(dir, "solution_test"+other.Ext))
+			}
+		}
 		files["solution_test"+lang.Ext] = []byte(src.Tests)
+		for _, id := range src.Languages[1:] {
+			l, _ := runner.Lookup(id)
+			files["solution_test"+l.Ext] = []byte(src.LanguageTests[id])
+		}
 		if caps.MultiFile {
 			// Editable files only: grading always uses the lesson's copy of
 			// read-only ones.

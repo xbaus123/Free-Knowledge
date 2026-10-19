@@ -55,7 +55,7 @@ courses/my-course/
   course.json            {"title", "description", "author", "version", "language"?, "lessons"?: [ids]}
   01-first-lesson/
     lesson.md            instructions (the first "# " heading is the default title)
-    config.json          optional: {"title", "language", "timeoutMs"}
+    config.json          {"title", "language", "languages"?, "timeoutMs"}
     starter.py           code the learner starts from
     solution_test.py     hidden tests
     reference.py         your solution; `validate` checks that it passes
@@ -72,6 +72,18 @@ Lessons are ordered by `course.json`'s `lessons` list, or by folder name if it's
 | Rust | `#[test]` functions | `use super::*;` |
 
 See `courses/getting-started` for one example of each.
+
+Each lesson sets its own `language`; a course doesn't need one (`course.json`'s `language` is only a fallback for older packs).
+
+#### Lessons in several languages
+
+A full-stack lesson can mix languages, for example a Python backend and a JavaScript frontend. List them in `config.json`, main language first, and turn on multiple files:
+
+```json
+{ "title": "Prices, end to end", "languages": ["python", "javascript"], "capabilities": { "multi_file": true } }
+```
+
+Give each language its own tests (`solution_test.py`, `solution_test.js`). The grader runs each language's tests in turn against the same files, and shows every test labeled with its language. The lesson passes when all of them do. In Creator Studio, use **+ Add language** in a code lesson's header: it adds a working starter file and example tests for that language, and a Tests tab for each one. Files of other kinds (HTML, CSS, SQL, YAML, …) can sit in the file tree too, with syntax highlighting.
 
 ### Lesson capabilities
 
