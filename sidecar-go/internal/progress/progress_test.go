@@ -1,6 +1,7 @@
 package progress
 
 import (
+	"database/sql"
 	"path/filepath"
 	"testing"
 	"time"
@@ -136,5 +137,45 @@ func TestTelemetry(t *testing.T) {
 	must(t, s.DeleteInsights("c", "l"))
 	if got, _ := s.Insights("c", "l"); len(got) != 0 {
 		t.Fatalf("after delete: %+v", got)
+	}
+}
+
+func TestRenumberedSystemDesignLessonsKeepProgress(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "progress.db")
+	// A database from before System Design 3.0 renumbered its lessons.
+	db, err := sql.Open("sqlite", "file:"+path)
+	must(t, err)
+	for _, m := range migrations[:2] {
+		_, err := db.Exec(m)
+		must(t, err)
+	}
+	_, err = db.Exec(`PRAGMA user_version = 2;
+		INSERT INTO lesson_progress (course_id, lesson_id, code, attempts, completed_at) VALUES
+			('system-design', '07-bitcask-kv-store', 'my store', 3, 1),
+			('system-design', '01-core-vocabulary', NULL, 1, 1),
+			('other', '07-bitcask-kv-store', 'not mine', 1, NULL);
+		INSERT INTO telemetry_sessions (session_id, course_id, lesson_id, started_at, updated_at)
+			VALUES ('s1', 'system-design', '23-capstone', 1, 1);`)
+	must(t, err)
+	db.Close()
+
+	s, err := Open(path)
+	must(t, err)
+	defer s.Close()
+	d, err := s.Lesson("system-design", "11-bitcask-kv-store")
+	must(t, err)
+	if d.Code == nil || *d.Code != "my store" || d.Attempts != 3 || !d.Completed {
+		t.Fatalf("progress should follow the lesson to its new id: %+v", d)
+	}
+	if d, _ := s.Lesson("system-design", "01-core-vocabulary"); !d.Completed {
+		t.Fatalf("lesson 1 kept its id: %+v", d)
+	}
+	if d, _ := s.Lesson("other", "07-bitcask-kv-store"); d.Code == nil || *d.Code != "not mine" {
+		t.Fatalf("other courses are untouched: %+v", d)
+	}
+	var lesson string
+	must(t, s.db.QueryRow(`SELECT lesson_id FROM telemetry_sessions WHERE session_id = 's1'`).Scan(&lesson))
+	if lesson != "27-capstone" {
+		t.Fatalf("telemetry lesson = %q", lesson)
 	}
 }

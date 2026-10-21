@@ -46,6 +46,38 @@ var migrations = []string{
 		solved      INTEGER NOT NULL DEFAULT 0
 	);
 	CREATE INDEX telemetry_lesson ON telemetry_sessions (course_id, lesson_id, started_at);`,
+
+	// System Design 3.0 inserted four foundation lessons after lesson 1 and
+	// renumbered the rest. Keep learners' progress on the renamed lessons.
+	`CREATE TEMP TABLE renamed (old TEXT PRIMARY KEY, new TEXT NOT NULL);
+	INSERT INTO renamed VALUES
+		('02-back-of-the-envelope', '06-back-of-the-envelope'),
+		('03-scaling-out', '07-scaling-out'),
+		('04-data-models-and-apis', '08-data-models-and-apis'),
+		('05-three-data-models', '09-three-data-models'),
+		('06-storage-engines', '10-storage-engines'),
+		('07-bitcask-kv-store', '11-bitcask-kv-store'),
+		('08-compaction-and-sstables', '12-compaction-and-sstables'),
+		('09-encoding-and-evolution', '13-encoding-and-evolution'),
+		('10-rolling-deployment', '14-rolling-deployment'),
+		('11-replication', '15-replication'),
+		('12-replication-and-caching', '16-replication-and-caching'),
+		('13-partitioning-and-rate-limiting', '17-partitioning-and-rate-limiting'),
+		('14-consistent-hashing', '18-consistent-hashing'),
+		('15-transactions', '19-transactions'),
+		('16-write-skew', '20-write-skew'),
+		('17-distributed-trouble', '21-distributed-trouble'),
+		('18-fencing-tokens', '22-fencing-tokens'),
+		('19-consistency-and-consensus', '23-consistency-and-consensus'),
+		('20-raft-leader-election', '24-raft-leader-election'),
+		('21-batch-and-stream-processing', '25-batch-and-stream-processing'),
+		('22-change-data-capture', '26-change-data-capture'),
+		('23-capstone', '27-capstone');
+	UPDATE lesson_progress SET lesson_id = (SELECT new FROM renamed WHERE old = lesson_id)
+		WHERE course_id = 'system-design' AND lesson_id IN (SELECT old FROM renamed);
+	UPDATE telemetry_sessions SET lesson_id = (SELECT new FROM renamed WHERE old = lesson_id)
+		WHERE course_id = 'system-design' AND lesson_id IN (SELECT old FROM renamed);
+	DROP TABLE renamed;`,
 }
 
 type Store struct {

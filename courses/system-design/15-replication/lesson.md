@@ -19,7 +19,7 @@ One replica is the **leader** (primary). All writes go to it. It sends each chan
 - **Synchronous**: the leader waits until a follower confirms before telling the client the write succeeded. That follower is guaranteed up to date, but if it's slow or down, writes stall.
 - **Asynchronous**: the leader confirms immediately and replicates in the background. It's fast, but if the leader dies, confirmed writes that hadn't reached a follower are **lost**.
 
-In practice, systems often make one follower synchronous and the rest asynchronous (**semi-synchronous**). You saw this trade-off in lesson 3: a sync standby added 4 ms per write, and an async one lost recent writes on failover.
+In practice, systems often make one follower synchronous and the rest asynchronous (**semi-synchronous**). You saw this trade-off in lesson 7: a sync standby added 4 ms per write, and an async one lost recent writes on failover.
 
 ### Handling failures
 
@@ -45,7 +45,7 @@ With asynchronous followers, a follower may be seconds behind the leader (**even
 | Time going backward | Refresh twice and see a comment appear, then disappear | **Monotonic reads**: always route a user to the same replica |
 | Effects before causes | You see an answer before the question it replies to | **Consistent prefix reads**: see writes in the order they happened |
 
-In lesson 12, you'll fight a lagging replica in the simulator.
+In lesson 16, you'll fight a lagging replica in the simulator.
 
 ## Multi-leader replication
 

@@ -233,7 +233,7 @@ func TestImportRejectsMaliciousArchives(t *testing.T) {
 
 func TestBundledDesignLessonValidates(t *testing.T) {
 	s := newStudio(t)
-	d := must(s.CheckLesson(context.Background(), "system-design", "03-scaling-out"))
+	d := must(s.CheckLesson(context.Background(), "system-design", "07-scaling-out"))
 	if !d.OK || d.Warning != "" || d.ReferenceSim == nil || !d.ReferenceSim.Passed || d.StarterSim == nil || d.StarterSim.Passed {
 		t.Fatalf("got %+v", d)
 	}
@@ -250,7 +250,7 @@ func TestDesignCourseExports(t *testing.T) {
 	for _, f := range zr.File {
 		names = append(names, f.Name)
 	}
-	if !slices.Contains(names, "03-scaling-out/starter.json") || !slices.Contains(names, "03-scaling-out/solution.json") {
+	if !slices.Contains(names, "07-scaling-out/starter.json") || !slices.Contains(names, "07-scaling-out/solution.json") {
 		t.Fatalf("archive: %v", names)
 	}
 }

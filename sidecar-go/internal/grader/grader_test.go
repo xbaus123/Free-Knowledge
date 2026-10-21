@@ -220,7 +220,7 @@ func TestQuizAnswers(t *testing.T) {
 }
 
 func TestCheckAnswerImmediately(t *testing.T) {
-	l, err := store.Lesson("system-design", "02-back-of-the-envelope")
+	l, err := store.Lesson("system-design", "06-back-of-the-envelope")
 	if err != nil || !l.ImmediateFeedback {
 		t.Fatalf("lesson: immediate=%v %v", l != nil && l.ImmediateFeedback, err)
 	}

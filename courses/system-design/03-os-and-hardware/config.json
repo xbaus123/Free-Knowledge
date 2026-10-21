@@ -1,0 +1,6 @@
+{
+  "title": "Operating Systems and Hardware: Threads, Locks, and the Memory Hierarchy",
+  "language": "python",
+  "timeoutMs": 20000,
+  "capabilities": { "scratchpad": true }
+}

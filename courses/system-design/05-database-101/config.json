@@ -1,0 +1,6 @@
+{
+  "title": "Database 101: Tables, Indexes, and ACID",
+  "language": "python",
+  "timeoutMs": 10000,
+  "capabilities": { "scratchpad": true }
+}

@@ -2,7 +2,7 @@
 
 *Based on* Designing Data-Intensive Applications*, Chapters 2 and 4.*
 
-Every application is layers of data models stacked on each other: your objects, the database's model of them, bytes on disk. The model you pick shapes what's easy and what's painful, often more than any other decision. The same goes for the API your services use to talk to each other.
+Every application is layers of data models stacked on each other: your objects, the database's model of them, bytes on disk. The model you pick shapes what's easy and what's painful, often more than any other decision. The same goes for the API your services use to talk to each other. Lessons 4 and 5 introduced APIs and databases. This lesson compares the models in depth and adds a third: the graph.
 
 ## The relational model
 
@@ -72,7 +72,7 @@ The lines blur: PostgreSQL stores JSON documents, and MongoDB supports joins. In
 
 ## API design: how services talk
 
-Data also flows *between* processes: from browser to server, and from service to service. Two dominant styles:
+Data also flows *between* processes: from browser to server, and from service to service. A recap of the two dominant styles from lesson 4:
 
 ### REST
 

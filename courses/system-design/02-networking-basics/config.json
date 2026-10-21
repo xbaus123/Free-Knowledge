@@ -1,0 +1,6 @@
+{
+  "title": "Networking Basics: Packets, Names, and Round Trips",
+  "language": "python",
+  "timeoutMs": 10000,
+  "capabilities": { "scratchpad": true }
+}

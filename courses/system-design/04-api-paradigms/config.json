@@ -1,0 +1,6 @@
+{
+  "title": "API Paradigms: REST, RPC, and GraphQL",
+  "language": "python",
+  "timeoutMs": 10000,
+  "capabilities": { "scratchpad": true }
+}

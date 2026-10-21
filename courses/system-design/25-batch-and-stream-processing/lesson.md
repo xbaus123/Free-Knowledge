@@ -29,7 +29,7 @@ Batch output is derived data too: search indexes, recommendation models, and rep
 
 ## Streams: logs as the core abstraction
 
-A **stream** is batch processing on unbounded data, handling events as they happen. The central abstraction is the **log**, the same append-only structure you built in lesson 7, now as a message broker:
+A **stream** is batch processing on unbounded data, handling events as they happen. The central abstraction is the **log**, the same append-only structure you built in lesson 11, now as a message broker:
 
 - **Kafka** (also Pulsar, Kinesis) stores messages in an append-only, **partitioned** log on disk.
 - Each consumer group tracks its **offset**, its position in each partition. Reading doesn't delete anything, so many independent consumers can read the same log, and a new one can start from the beginning to rebuild its state.

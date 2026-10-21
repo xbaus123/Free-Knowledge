@@ -50,7 +50,7 @@ Remember the routing rules: servers send reads to a cache first, then a replica,
 
 ## How to approach it
 
-Do the back-of-the-envelope math from lesson 2 before you draw anything. Then build in layers, simulating after each:
+Do the back-of-the-envelope math from lesson 6 before you draw anything. Then build in layers, simulating after each:
 
 1. **Serve the reads.** How many servers do ~2,000 req/s need, with headroom for a dead server and a viral spike?
 2. **Protect the database.** Every read that reaches the database competes with 400-ms fan-out writes for its connections. Where should reads go instead?

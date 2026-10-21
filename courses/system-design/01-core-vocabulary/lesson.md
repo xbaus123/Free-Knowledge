@@ -99,4 +99,4 @@ Most of a system's cost comes after launch: fixing bugs, keeping it running, ada
 | Utilization | The fraction of a resource's capacity in use |
 | Scale up / scale out | Bigger machine / more machines |
 
-Next, you'll practice turning load parameters into concrete numbers with back-of-the-envelope estimates.
+Before putting numbers on load, the next four lessons cover the foundations every design sits on: networks, operating systems and hardware, APIs, and databases.
