@@ -1,0 +1,6 @@
+{
+  "title": "Load Balancing, Reverse Proxies, and API Gateways",
+  "language": "python",
+  "timeoutMs": 10000,
+  "capabilities": { "scratchpad": true }
+}

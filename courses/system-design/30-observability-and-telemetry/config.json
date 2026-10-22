@@ -1,0 +1,6 @@
+{
+  "title": "Observability: Metrics, Logs, and Traces",
+  "language": "python",
+  "timeoutMs": 10000,
+  "capabilities": { "scratchpad": true }
+}

@@ -11,6 +11,8 @@ From lesson 1, you have two options:
 - **Scale up**: give the server a bigger connection pool. It works, but bigger machines cost disproportionately more.
 - **Scale out**: put a **load balancer** in front of several ordinary servers. It spreads requests across them, and if one dies, health checks notice and the rest keep serving. Scaling out also improves **reliability**: with one server, one crash takes the whole app down. That server is a **single point of failure**.
 
+The next lesson opens up the load balancer itself: its algorithms, its health checks, and how it grows into an API gateway.
+
 ## Your task
 
 Keep **p99 latency at or under 200 ms** during the spike, on a budget of **$95/month**.

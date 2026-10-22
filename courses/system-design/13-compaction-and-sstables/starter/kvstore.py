@@ -1,7 +1,7 @@
 """A log-structured key-value store: log segments with a hash index, merged
 by compaction into an SSTable with a sparse index.
 
-Lesson 11's store, reorganized into a directory of files. Reading, writing,
+Lesson 12's store, reorganized into a directory of files. Reading, writing,
 and replaying segments already work. Your TODOs: rolling over to a new
 segment, compaction, and finding keys in the SSTable through its sparse
 index.

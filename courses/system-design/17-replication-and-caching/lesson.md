@@ -43,4 +43,4 @@ Some hints, if you want them:
 - Sending every read straight to the primary fixes staleness, but count its load: about 2,300 reads plus 350 writes a second.
 - Ask yourself where the cache should **load misses from**, and whether the replica still earns its $40 once the cache is in place.
 
-> **Think about it.** Invalidate-on-write keeps the cache fresh, but there's still a race. A read misses, loads the old value from the database, and a write invalidates the key *before* that read stores its stale copy. How do real systems narrow that window? (Look up "cache stampede" and "lease"-based caching, as in Facebook's memcache paper.)
+> **Think about it.** Invalidate-on-write keeps the cache fresh, but there's still a race. A read misses, loads the old value from the database, and a write invalidates the key *before* that read stores its stale copy. How do real systems narrow that window? The next lesson covers this race, along with cache stampedes and the lease-based fix from Facebook's memcache paper.

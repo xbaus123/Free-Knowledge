@@ -1,6 +1,6 @@
-# Batch, Streams, and Observability
+# Batch and Stream Processing
 
-*Part III · Derived Data. Based on* Designing Data-Intensive Applications*, Chapters 10–12.*
+*Based on* Designing Data-Intensive Applications*, Chapters 10–12.*
 
 Real applications don't use one database. They combine a primary database with caches, search indexes, analytics warehouses, and recommendation models. Data is split into two kinds:
 
@@ -29,12 +29,11 @@ Batch output is derived data too: search indexes, recommendation models, and rep
 
 ## Streams: logs as the core abstraction
 
-A **stream** is batch processing on unbounded data, handling events as they happen. The central abstraction is the **log**, the same append-only structure you built in lesson 11, now as a message broker:
+A **stream** is batch processing on unbounded data, handling events as they happen. The central abstraction is the **log**, the same append-only structure you built in lesson 12, which you met as a message broker in the last lesson. Three of its properties matter most for derived data:
 
-- **Kafka** (also Pulsar, Kinesis) stores messages in an append-only, **partitioned** log on disk.
-- Each consumer group tracks its **offset**, its position in each partition. Reading doesn't delete anything, so many independent consumers can read the same log, and a new one can start from the beginning to rebuild its state.
-- Messages within a partition are **ordered**. Partition by key, such as user id, to keep each key's events in order.
-- If a consumer crashes, it resumes from its last committed offset. Brokers retain messages for days or weeks, so a slow or failed consumer just falls behind and catches up.
+- **Ordered by key**: partition by key, such as user id, and each key's events stay in order.
+- **Retained, not deleted**: a new consumer can start from the beginning and rebuild its state from history.
+- **Resumable**: a crashed, slow, or failed consumer picks up from its committed offset and catches up.
 
 ### Change data capture and the outbox
 
@@ -69,24 +68,6 @@ Failures make consumers retry, so messages get processed **at least once**. Dupl
 
 The guarantee is **end-to-end**: if any step in the chain isn't idempotent or transactional, duplicates leak through, so idempotency keys must flow all the way from the client.
 
-## Observability
-
-You can't fix what you can't see. Distributed systems need three kinds of telemetry:
-
-| Signal | What it is | Good for |
-|---|---|---|
-| **Metrics** | Numbers over time: counters, gauges, histograms | Dashboards, alerting, trends |
-| **Logs** | Timestamped records of discrete events, ideally structured (JSON) | Explaining what happened in one request |
-| **Traces** | One request's path through every service, as a tree of timed **spans** sharing a trace id | Finding which hop in a chain is slow |
-
-Useful habits:
-
-- **RED** for services: Rate, Errors, and Duration (as percentiles from **histograms**; averages hide the tail).
-- **USE** for resources: Utilization, Saturation (queue length), and Errors. That's exactly what the simulator's node badges show.
-- Define **SLOs** on user-facing signals ("99% of requests under 200 ms over 30 days") and alert on **error-budget burn rate**, not on every CPU spike.
-- Propagate **trace context** (W3C `traceparent`, OpenTelemetry) across HTTP calls and Kafka messages, so traces continue through asynchronous pipelines.
-- Watch **consumer lag** for every stream consumer. It's the stream version of queue length, and it tells you how stale your derived data is.
-
 ## Key terms
 
 | Term | Meaning |
@@ -98,4 +79,5 @@ Useful habits:
 | Change data capture | Publishing a database's committed changes as a stream |
 | Outbox | Events written in the same transaction as the data, then relayed |
 | Effectively-once | At-least-once delivery plus idempotent or transactional processing |
-| Metrics, logs, traces | The three pillars of observability |
+
+Watching all of this in production, from consumer lag to the latency of each hop, is the subject of lesson 30.

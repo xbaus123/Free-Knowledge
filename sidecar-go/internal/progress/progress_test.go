@@ -142,7 +142,8 @@ func TestTelemetry(t *testing.T) {
 
 func TestRenumberedSystemDesignLessonsKeepProgress(t *testing.T) {
 	path := filepath.Join(t.TempDir(), "progress.db")
-	// A database from before System Design 3.0 renumbered its lessons.
+	// A database from before System Design 3.0 and 4.0 renumbered its
+	// lessons: both renames apply in turn.
 	db, err := sql.Open("sqlite", "file:"+path)
 	must(t, err)
 	for _, m := range migrations[:2] {
@@ -162,7 +163,7 @@ func TestRenumberedSystemDesignLessonsKeepProgress(t *testing.T) {
 	s, err := Open(path)
 	must(t, err)
 	defer s.Close()
-	d, err := s.Lesson("system-design", "11-bitcask-kv-store")
+	d, err := s.Lesson("system-design", "12-bitcask-kv-store")
 	must(t, err)
 	if d.Code == nil || *d.Code != "my store" || d.Attempts != 3 || !d.Completed {
 		t.Fatalf("progress should follow the lesson to its new id: %+v", d)
@@ -175,7 +176,7 @@ func TestRenumberedSystemDesignLessonsKeepProgress(t *testing.T) {
 	}
 	var lesson string
 	must(t, s.db.QueryRow(`SELECT lesson_id FROM telemetry_sessions WHERE session_id = 's1'`).Scan(&lesson))
-	if lesson != "27-capstone" {
+	if lesson != "31-capstone" {
 		t.Fatalf("telemetry lesson = %q", lesson)
 	}
 }

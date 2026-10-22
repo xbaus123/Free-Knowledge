@@ -48,6 +48,8 @@ The run lasts two seconds:
 
 Remember the routing rules: servers send reads to a cache first, then a replica, then the database. Writes go to a queue first, then a cache, then the database.
 
+You've studied each piece in depth: load balancers in lesson 8, caching in lessons 17 and 18, and queues in lesson 27. The results panel and the replay timeline are your observability (lesson 30): read them the way you'd read a dashboard and a trace.
+
 ## How to approach it
 
 Do the back-of-the-envelope math from lesson 6 before you draw anything. Then build in layers, simulating after each:

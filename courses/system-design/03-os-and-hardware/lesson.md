@@ -38,7 +38,7 @@ write count (6)
                         write count (6)     one increment is lost
 ```
 
-This is a **race condition**: the result depends on the timing of the interleaving. Races are maddening because they're rare. The code works in testing and fails once a day in production under load. The problematic pattern is **read-modify-write** on shared data, and you'll meet it again at database scale as the **lost update** (lesson 19).
+This is a **race condition**: the result depends on the timing of the interleaving. Races are maddening because they're rare. The code works in testing and fails once a day in production under load. The problematic pattern is **read-modify-write** on shared data, and you'll meet it again at database scale as the **lost update** (lesson 21).
 
 ## Locks
 
@@ -105,7 +105,7 @@ With RAM at 100 ns in front of an SSD at 100 µs, a 99% hit rate averages 1,100 
 
 ### Sequential vs. random
 
-Disks and SSDs are far faster reading and writing **sequentially** (one long run of blocks) than **randomly** (scattered blocks). On a spinning disk, every random access pays a physical seek. On an SSD the gap is smaller but still large. Many storage engines are designed around this. The append-only log you'll build in lesson 11 turns every write into a sequential one.
+Disks and SSDs are far faster reading and writing **sequentially** (one long run of blocks) than **randomly** (scattered blocks). On a spinning disk, every random access pays a physical seek. On an SSD the gap is smaller but still large. Many storage engines are designed around this. The append-only log you'll build in lesson 12 turns every write into a sequential one.
 
 ### Volatility and durability
 

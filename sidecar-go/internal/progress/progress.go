@@ -78,6 +78,36 @@ var migrations = []string{
 	UPDATE telemetry_sessions SET lesson_id = (SELECT new FROM renamed WHERE old = lesson_id)
 		WHERE course_id = 'system-design' AND lesson_id IN (SELECT old FROM renamed);
 	DROP TABLE renamed;`,
+	// System Design 4.0 inserted lessons on load balancing, caching
+	// strategies, message queues, and observability, and renumbered the
+	// lessons around them.
+	`CREATE TEMP TABLE renamed (old TEXT PRIMARY KEY, new TEXT NOT NULL);
+	INSERT INTO renamed VALUES
+		('08-data-models-and-apis', '09-data-models-and-apis'),
+		('09-three-data-models', '10-three-data-models'),
+		('10-storage-engines', '11-storage-engines'),
+		('11-bitcask-kv-store', '12-bitcask-kv-store'),
+		('12-compaction-and-sstables', '13-compaction-and-sstables'),
+		('13-encoding-and-evolution', '14-encoding-and-evolution'),
+		('14-rolling-deployment', '15-rolling-deployment'),
+		('15-replication', '16-replication'),
+		('16-replication-and-caching', '17-replication-and-caching'),
+		('17-partitioning-and-rate-limiting', '19-partitioning-and-rate-limiting'),
+		('18-consistent-hashing', '20-consistent-hashing'),
+		('19-transactions', '21-transactions'),
+		('20-write-skew', '22-write-skew'),
+		('21-distributed-trouble', '23-distributed-trouble'),
+		('22-fencing-tokens', '24-fencing-tokens'),
+		('23-consistency-and-consensus', '25-consistency-and-consensus'),
+		('24-raft-leader-election', '26-raft-leader-election'),
+		('25-batch-and-stream-processing', '28-batch-and-stream-processing'),
+		('26-change-data-capture', '29-change-data-capture'),
+		('27-capstone', '31-capstone');
+	UPDATE lesson_progress SET lesson_id = (SELECT new FROM renamed WHERE old = lesson_id)
+		WHERE course_id = 'system-design' AND lesson_id IN (SELECT old FROM renamed);
+	UPDATE telemetry_sessions SET lesson_id = (SELECT new FROM renamed WHERE old = lesson_id)
+		WHERE course_id = 'system-design' AND lesson_id IN (SELECT old FROM renamed);
+	DROP TABLE renamed;`,
 }
 
 type Store struct {

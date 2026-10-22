@@ -70,7 +70,7 @@ Partitioning protects you from *expected* growth. **Rate limiting** protects you
 | **Fixed window** | Count requests per calendar minute. | Simple, but a client can send 2× the limit across a window boundary. |
 | **Sliding window** | Weight the previous window's count by how much of it overlaps. | Smooths the boundary problem cheaply. |
 
-With many API servers, the counters must be **shared**, usually in Redis with atomic increments, or kept approximately per server. Put limits early (at the edge or in an API gateway) so rejected requests cost almost nothing. Set them high enough that real users never notice. The simulator's capstone counts real users rejected by an overeager limiter as failures.
+With many API servers, the counters must be **shared**, usually in Redis with atomic increments, or kept approximately per server. Put limits early (at the edge or in an API gateway, lesson 8) so rejected requests cost almost nothing. Set them high enough that real users never notice. The simulator's capstone counts real users rejected by an overeager limiter as failures.
 
 ## Key terms
 

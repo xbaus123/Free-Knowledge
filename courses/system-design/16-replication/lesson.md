@@ -45,7 +45,7 @@ With asynchronous followers, a follower may be seconds behind the leader (**even
 | Time going backward | Refresh twice and see a comment appear, then disappear | **Monotonic reads**: always route a user to the same replica |
 | Effects before causes | You see an answer before the question it replies to | **Consistent prefix reads**: see writes in the order they happened |
 
-In lesson 16, you'll fight a lagging replica in the simulator.
+In lesson 17, you'll fight a lagging replica in the simulator.
 
 ## Multi-leader replication
 

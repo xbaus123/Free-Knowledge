@@ -1,0 +1,6 @@
+{
+  "title": "Message Queues: Task Queues, Logs, and Consumer Groups",
+  "language": "python",
+  "timeoutMs": 10000,
+  "capabilities": { "scratchpad": true }
+}

@@ -5,7 +5,7 @@ Your Bitcask store has two problems:
 1. **The log grows forever.** Overwrite a key a million times and the file holds a million records, though only the last one matters.
 2. **Every key lives in memory.** The hash index needs an entry for every key, however many there are.
 
-Real log-structured engines fix both, and you'll do it in three steps, as in lesson 10:
+Real log-structured engines fix both, and you'll do it in three steps, as in lesson 11:
 
 - Split the log into **segments**. When the active segment is full, close it and start a new one. Closed segments never change.
 - **Compact** closed segments. Merge them into one file holding only each key's latest value, with deleted keys dropped.
@@ -21,7 +21,7 @@ segment-000006.log   ← the active segment (new writes go here)
 sstable-000004.sst   ← the compacted data, sorted by key
 ```
 
-- **`record.py`** (read-only): the same record format as lesson 11.
+- **`record.py`** (read-only): the same record format as lesson 12.
 - **`layout.py`** (read-only): `segment_path(dir, id)`, `sstable_path(dir, id)`, and `file_ids(dir)`.
 - **`kvstore.py`**: yours. Opening, appending, replaying segments, and `get` for keys in the logs already work.
 
