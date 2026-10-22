@@ -65,7 +65,7 @@ Document databases (MongoDB, Firestore, CouchDB) store each record as a nested *
 | Schema | Enforced on write | Interpreted on read |
 | Strength | Integrity, flexible queries across data | Locality, matching the shape of your objects |
 
-The boundary is blurry: PostgreSQL stores and indexes JSON, and MongoDB has joins and schema validation. Lessons 9 and 10 compare relational, document, and graph models in depth.
+The boundary is blurry: PostgreSQL stores and indexes JSON, and MongoDB has joins and schema validation. Lessons 10 and 11 compare relational, document, and graph models in depth.
 
 ## Indexes
 
@@ -91,7 +91,7 @@ The index in nearly every relational database is a **B-tree**:
 
 The number of children per page is the **fanout**, and it's large, often several hundred. So B-trees are very shallow: with a fanout of 500, four levels address 500⁴ ≈ 62 billion keys. Finding any one of them takes four page reads, and the top levels are almost always cached in memory (lesson 3).
 
-Because the keys are sorted, B-trees also answer **range queries** (`WHERE created_at BETWEEN ...`) and **ordered results** (`ORDER BY`) by reading neighboring leaves. Lesson 11 shows how B-trees handle writes and crashes, and compares them with log-structured storage.
+Because the keys are sorted, B-trees also answer **range queries** (`WHERE created_at BETWEEN ...`) and **ordered results** (`ORDER BY`) by reading neighboring leaves. Lesson 12 shows how B-trees handle writes and crashes, and compares them with log-structured storage.
 
 ### Composite indexes
 
@@ -134,7 +134,7 @@ A bank transfer is several writes: debit one account, credit another, record the
 
 - **Atomicity**: all of the transaction's writes happen, or none do. If anything fails partway, the database **rolls back** every write the transaction made. You never see half a transfer.
 - **Consistency**: the data moves from one valid state to another, respecting every constraint. A transaction that would leave a negative balance fails as a whole. (Strictly, keeping data valid is your application's job, and atomicity and constraints are the database's tools for helping.)
-- **Isolation**: concurrent transactions don't see each other's half-finished work. Ideally, the result is as if they had run one at a time. In practice databases offer weaker, faster **isolation levels**, and their anomalies fill lessons 21 and 22.
+- **Isolation**: concurrent transactions don't see each other's half-finished work. Ideally, the result is as if they had run one at a time. In practice databases offer weaker, faster **isolation levels**, and their anomalies fill lessons 24 and 25.
 - **Durability**: once the database says "committed," the data survives a crash. It's written to a **write-ahead log** and `fsync`ed to disk before the commit returns (lesson 3).
 
 In SQL:

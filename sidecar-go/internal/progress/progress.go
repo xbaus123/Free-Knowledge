@@ -108,6 +108,39 @@ var migrations = []string{
 	UPDATE telemetry_sessions SET lesson_id = (SELECT new FROM renamed WHERE old = lesson_id)
 		WHERE course_id = 'system-design' AND lesson_id IN (SELECT old FROM renamed);
 	DROP TABLE renamed;`,
+	// System Design 5.0 inserted lessons on security, search, geographical
+	// distribution, and microservices, and renumbered the lessons around
+	// them.
+	`CREATE TEMP TABLE renamed (old TEXT PRIMARY KEY, new TEXT NOT NULL);
+	INSERT INTO renamed VALUES
+		('09-data-models-and-apis', '10-data-models-and-apis'),
+		('10-three-data-models', '11-three-data-models'),
+		('11-storage-engines', '12-storage-engines'),
+		('12-bitcask-kv-store', '13-bitcask-kv-store'),
+		('13-compaction-and-sstables', '14-compaction-and-sstables'),
+		('14-encoding-and-evolution', '16-encoding-and-evolution'),
+		('15-rolling-deployment', '17-rolling-deployment'),
+		('16-replication', '18-replication'),
+		('17-replication-and-caching', '19-replication-and-caching'),
+		('18-caching-strategies', '20-caching-strategies'),
+		('19-partitioning-and-rate-limiting', '21-partitioning-and-rate-limiting'),
+		('20-consistent-hashing', '22-consistent-hashing'),
+		('21-transactions', '24-transactions'),
+		('22-write-skew', '25-write-skew'),
+		('23-distributed-trouble', '26-distributed-trouble'),
+		('24-fencing-tokens', '27-fencing-tokens'),
+		('25-consistency-and-consensus', '28-consistency-and-consensus'),
+		('26-raft-leader-election', '29-raft-leader-election'),
+		('27-message-queues', '31-message-queues'),
+		('28-batch-and-stream-processing', '32-batch-and-stream-processing'),
+		('29-change-data-capture', '33-change-data-capture'),
+		('30-observability-and-telemetry', '34-observability-and-telemetry'),
+		('31-capstone', '35-capstone');
+	UPDATE lesson_progress SET lesson_id = (SELECT new FROM renamed WHERE old = lesson_id)
+		WHERE course_id = 'system-design' AND lesson_id IN (SELECT old FROM renamed);
+	UPDATE telemetry_sessions SET lesson_id = (SELECT new FROM renamed WHERE old = lesson_id)
+		WHERE course_id = 'system-design' AND lesson_id IN (SELECT old FROM renamed);
+	DROP TABLE renamed;`,
 }
 
 type Store struct {

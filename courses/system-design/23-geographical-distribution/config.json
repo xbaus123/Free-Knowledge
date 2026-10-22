@@ -1,0 +1,6 @@
+{
+  "title": "Geographical Distribution: Multi-Region, Anycast, and CDNs",
+  "language": "python",
+  "timeoutMs": 10000,
+  "capabilities": { "scratchpad": true }
+}

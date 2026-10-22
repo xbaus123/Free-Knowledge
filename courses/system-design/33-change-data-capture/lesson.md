@@ -3,7 +3,7 @@
 Your marketplace keeps product listings in **Postgres**, the system of record. Two derived stores hang off it:
 
 - **Redis** caches listings, so reads rarely touch Postgres. API servers read and write through it.
-- **Elasticsearch** powers search. Each API server **dual-writes**: after Postgres commits a change, the server sends the same change to Elasticsearch.
+- **Elasticsearch** powers search (lesson 15). Each API server **dual-writes**: after Postgres commits a change, the server sends the same change to Elasticsearch.
 
 Load for this run:
 

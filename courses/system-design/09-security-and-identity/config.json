@@ -1,0 +1,6 @@
+{
+  "title": "Security and Identity: TLS, OAuth, JWTs, and Access Control",
+  "language": "python",
+  "timeoutMs": 10000,
+  "capabilities": { "scratchpad": true }
+}

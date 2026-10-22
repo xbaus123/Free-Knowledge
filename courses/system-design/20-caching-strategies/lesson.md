@@ -73,7 +73,7 @@ Write only to the database and let reads populate the cache. It's the cache-asid
 | Write-behind | Cache now, database later | None in cache; database lags | Cache only | Losing unflushed writes |
 | Write-around | Database only | Until TTL | Database only | Stale until expiry |
 
-For keeping many caches and indexes in sync with a database reliably, the best tool comes later: subscribe them to the database's change stream (change data capture, lesson 29).
+For keeping many caches and indexes in sync with a database reliably, the best tool comes later: subscribe them to the database's change stream (change data capture, lesson 33).
 
 ## Eviction policies
 
@@ -109,7 +109,7 @@ Defenses, usually combined:
 
 ### Hot keys
 
-A single key can be too hot even for a cache: one celebrity's profile read 1 million times a second overwhelms the one cache node that owns it (lesson 19's skew problem, at the cache tier). Fixes: keep hot keys in an **in-process** cache on every app server, or **replicate** the hot key across several cache nodes under different names and pick one at random.
+A single key can be too hot even for a cache: one celebrity's profile read 1 million times a second overwhelms the one cache node that owns it (lesson 21's skew problem, at the cache tier). Fixes: keep hot keys in an **in-process** cache on every app server, or **replicate** the hot key across several cache nodes under different names and pick one at random.
 
 ## Your task
 

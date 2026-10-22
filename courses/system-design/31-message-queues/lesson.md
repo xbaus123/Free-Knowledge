@@ -8,7 +8,7 @@ A **message broker** breaks that coupling. A **producer** hands a message to the
 
 ## Why go asynchronous
 
-- **Load leveling**: a burst of 10,000 sign-ups becomes a queue that workers drain at their own pace. The capstone uses exactly this: tweets are acknowledged at once, and the expensive fan-out happens behind a queue.
+- **Load leveling**: a burst of 10,000 sign-ups becomes a queue that workers drain at their own pace. The capstone uses exactly this: tweets are acknowledged at once, and the expensive fan-out happens behind a queue. So do the choreographed sagas of the last lesson, where each service reacts to the previous one's events.
 - **Decoupling**: the producer doesn't know or care who consumes, how many consumers there are, or whether they're up right now.
 - **Fan-out**: one event ("order placed") feeds many independent consumers: email, inventory, analytics, search.
 - **Reliability**: if a consumer crashes mid-task, the broker redelivers the message to another one.
@@ -44,13 +44,13 @@ RabbitMQ (the AMQP standard), ActiveMQ, and Amazon SQS behave like a queue of in
 Consequences to design around:
 
 - **At-least-once delivery.** A consumer can finish the work and then crash before its acknowledgment arrives, or run past the visibility timeout. The broker redelivers, and the work happens twice. So consumers must be **idempotent**: charge the card only if this payment id hasn't been charged.
-- **A late acknowledgment can be refused.** If the visibility timeout expired and another consumer received the message, the first consumer's acknowledgment is for a delivery that no longer counts. (It's the lease problem from lesson 23 again.) Long tasks must **extend** their visibility timeout as they go.
+- **A late acknowledgment can be refused.** If the visibility timeout expired and another consumer received the message, the first consumer's acknowledgment is for a delivery that no longer counts. (It's the lease problem from lesson 26 again.) Long tasks must **extend** their visibility timeout as they go.
 - **Ordering is lost.** With competing consumers and redelivery, message 2 can finish before message 1. Even a single consumer sees reordering when a message is redelivered after later ones were processed.
 - **Poison messages**: a message that crashes its consumer every time would be redelivered forever, blocking capacity. After N failed deliveries, move it to a **dead-letter queue (DLQ)** for a human to inspect.
 
 ## Family 2: Log-based brokers
 
-Kafka, Amazon Kinesis, Apache Pulsar, and Redpanda take a different approach: the broker is an **append-only log on disk**, the same structure as your storage engine in lesson 12.
+Kafka, Amazon Kinesis, Apache Pulsar, and Redpanda take a different approach: the broker is an **append-only log on disk**, the same structure as your storage engine in lesson 13.
 
 - A **topic** is split into **partitions**. Each partition is a log, and each message gets a sequential **offset** within its partition.
 - A producer appends. The partition is chosen by **hashing the message key** (say, the user id), so all messages for a key land in one partition, **in order**. Messages without a key are spread round robin.
@@ -73,7 +73,7 @@ Kafka's default **range assignor** sorts consumers by name and gives each a cont
 - **Throughput**: appending and reading sequentially is the fastest thing a disk does (lesson 3). One partition handles hundreds of megabytes per second.
 - **Replay**: because messages remain after consumption, a new consumer can start from the beginning and build its state from history. A buggy consumer can be fixed and **rewound** to reprocess the last day. This is what makes logs the backbone of derived data in the next lessons.
 - **Cheap fan-out**: adding a consumer group costs no broker writes. It's just another set of offsets.
-- **Consumer lag** is easy to monitor: the distance between a partition's end offset and the group's committed offset. It tells you how far behind, and how stale, each consumer is (lesson 30).
+- **Consumer lag** is easy to monitor: the distance between a partition's end offset and the group's committed offset. It tells you how far behind, and how stale, each consumer is (lesson 34).
 
 The costs: ordering and parallelism are tied to partitioning. A slow message blocks every message behind it in its partition (**head-of-line blocking**), so logs suit high-volume streams of fairly uniform, fast-to-process messages, and fit poorly for long, individually expensive jobs.
 

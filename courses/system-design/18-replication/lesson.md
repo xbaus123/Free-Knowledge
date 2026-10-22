@@ -45,11 +45,11 @@ With asynchronous followers, a follower may be seconds behind the leader (**even
 | Time going backward | Refresh twice and see a comment appear, then disappear | **Monotonic reads**: always route a user to the same replica |
 | Effects before causes | You see an answer before the question it replies to | **Consistent prefix reads**: see writes in the order they happened |
 
-In lesson 17, you'll fight a lagging replica in the simulator.
+In lesson 19, you'll fight a lagging replica in the simulator.
 
 ## Multi-leader replication
 
-Several nodes accept writes, each one a leader for some clients, and they replicate to each other. It's useful across **multiple data centers** (each has a local leader, so writes are fast and survive a data center outage), for **offline clients** (each device is a leader, as in calendar sync), and for **collaborative editing**.
+Several nodes accept writes, each one a leader for some clients, and they replicate to each other. It's useful across **multiple data centers** (each has a local leader, so writes are fast and survive a data center outage; lesson 23), for **offline clients** (each device is a leader, as in calendar sync), and for **collaborative editing**.
 
 The cost is **write conflicts**: two leaders accept conflicting changes to the same record at the same time. Resolutions:
 

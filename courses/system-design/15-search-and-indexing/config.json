@@ -1,0 +1,6 @@
+{
+  "title": "Search and Indexing: Inverted Indexes, Ranking, and Fuzzy Matching",
+  "language": "python",
+  "timeoutMs": 10000,
+  "capabilities": { "scratchpad": true }
+}

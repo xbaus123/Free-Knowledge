@@ -57,7 +57,7 @@ How do you commit a transaction atomically across several nodes, so that all com
 1. **Prepare**: the coordinator asks every participant, "Can you commit?" Each one makes sure it can (writing everything to disk), then votes **yes**. A yes is a *promise*: the participant can no longer abort on its own.
 2. **Commit**: if *all* voted yes, the coordinator writes its decision to its own log (the **commit point**), then tells everyone to commit. If anyone voted no, everyone aborts.
 
-The weakness: if the coordinator crashes after participants voted yes, they're **in doubt**. They can't commit or abort until it recovers, and they hold their locks the whole time. 2PC is a **blocking** protocol, and the coordinator is a single point of failure. XA transactions across different technologies are notoriously painful to operate for this reason.
+The weakness: if the coordinator crashes after participants voted yes, they're **in doubt**. They can't commit or abort until it recovers, and they hold their locks the whole time. 2PC is a **blocking** protocol, and the coordinator is a single point of failure. XA transactions across different technologies are notoriously painful to operate for this reason. Microservices usually avoid 2PC altogether and use **sagas** instead (lesson 30).
 
 ## Consensus
 

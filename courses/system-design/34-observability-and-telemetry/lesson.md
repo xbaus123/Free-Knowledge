@@ -67,7 +67,7 @@ Three checklists cover most services:
 - **USE**, for resources (CPUs, disks, connection pools, queues): **U**tilization (busy fraction), **S**aturation (work waiting: queue length), **E**rrors. That's exactly what the simulator's node badges show.
 - Google's **four golden signals**: latency, traffic, errors, and saturation.
 
-For asynchronous pipelines, add **consumer lag** for every consumer group (lesson 27): it's the stream version of queue length, and it tells you how stale every piece of derived data is.
+For asynchronous pipelines, add **consumer lag** for every consumer group (lesson 31): it's the stream version of queue length, and it tells you how stale every piece of derived data is.
 
 ## Logs
 

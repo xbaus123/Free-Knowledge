@@ -29,7 +29,7 @@ Batch output is derived data too: search indexes, recommendation models, and rep
 
 ## Streams: logs as the core abstraction
 
-A **stream** is batch processing on unbounded data, handling events as they happen. The central abstraction is the **log**, the same append-only structure you built in lesson 12, which you met as a message broker in the last lesson. Three of its properties matter most for derived data:
+A **stream** is batch processing on unbounded data, handling events as they happen. The central abstraction is the **log**, the same append-only structure you built in lesson 13, which you met as a message broker in the last lesson. Three of its properties matter most for derived data:
 
 - **Ordered by key**: partition by key, such as user id, and each key's events stay in order.
 - **Retained, not deleted**: a new consumer can start from the beginning and rebuild its state from history.
@@ -80,4 +80,4 @@ The guarantee is **end-to-end**: if any step in the chain isn't idempotent or tr
 | Outbox | Events written in the same transaction as the data, then relayed |
 | Effectively-once | At-least-once delivery plus idempotent or transactional processing |
 
-Watching all of this in production, from consumer lag to the latency of each hop, is the subject of lesson 30.
+Watching all of this in production, from consumer lag to the latency of each hop, is the subject of lesson 34.

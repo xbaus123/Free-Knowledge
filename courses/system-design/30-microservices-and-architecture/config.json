@@ -1,0 +1,6 @@
+{
+  "title": "Microservices: Boundaries, Service Meshes, and Sagas",
+  "language": "python",
+  "timeoutMs": 10000,
+  "capabilities": { "scratchpad": true }
+}

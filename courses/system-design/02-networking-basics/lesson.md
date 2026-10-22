@@ -67,7 +67,7 @@ The price is **head-of-line blocking**: one lost segment stalls every byte behin
 | Congestion control | Built in | Up to the application |
 | Typical uses | HTTP/1.1 and HTTP/2, databases, SSH | DNS, video and voice, games, QUIC |
 
-Even TCP can't make the network reliable, only *hide* most of its failures. If the other side vanishes, TCP eventually gives up, and your application sees a timeout. You'll spend lesson 23 on what that means.
+Even TCP can't make the network reliable, only *hide* most of its failures. If the other side vanishes, TCP eventually gives up, and your application sees a timeout. You'll spend lesson 26 on what that means.
 
 ## DNS: names to addresses
 
@@ -119,7 +119,7 @@ Fetching a page over a **new** HTTPS connection takes:
 3. 1 RTT for the request and the first byte of the response,
 4. plus the transmission time.
 
-Across an ocean, that's about half a second before a large bandwidth makes any difference. So systems fight round trips: **connection pooling** and **keep-alive** reuse connections, **CDNs** move content closer to users (lesson 17), and protocols batch requests.
+Across an ocean, that's about half a second before a large bandwidth makes any difference. So systems fight round trips: **connection pooling** and **keep-alive** reuse connections, **CDNs** move content closer to users (lessons 19 and 23), and protocols batch requests.
 
 ### The window caps throughput
 
