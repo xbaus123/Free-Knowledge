@@ -2,6 +2,8 @@ package grader
 
 import (
 	"context"
+	"encoding/json"
+	"os"
 	"os/exec"
 	"path/filepath"
 	"strings"
@@ -241,5 +243,86 @@ func TestCheckAnswerImmediately(t *testing.T) {
 	other, _ := store.Lesson("getting-started", "07-knowledge-check")
 	if _, err := CheckAnswer(other, 0, 0); err == nil {
 		t.Error("a quiz without immediate feedback should refuse single checks")
+	}
+}
+
+func testNamed(t *testing.T, res Result, name string) TestResult {
+	t.Helper()
+	for _, tr := range res.Tests {
+		if tr.Name == name {
+			return tr
+		}
+	}
+	t.Fatalf("no test %q in %+v", name, res.Tests)
+	return TestResult{}
+}
+
+func TestPythonFailureDetails(t *testing.T) {
+	l := lesson(t, "01-python-greet")
+	res, err := Grade(context.Background(), l, "def greet(name):\n    return 'Hi'\n", nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	tr := testNamed(t, res, "greets someone by name")
+	want := TestResult{Input: "greet('Ada')", Expected: "'Hello, Ada!'", Actual: "'Hi'"}
+	if tr.Status != StatusFail || tr.Input != want.Input || tr.Expected != want.Expected || tr.Actual != want.Actual {
+		t.Fatalf("got %+v, want details %+v", tr, want)
+	}
+	if !strings.Contains(tr.Message, "'Hi' != 'Hello, Ada!'") {
+		t.Errorf("the assertion message should be kept: %q", tr.Message)
+	}
+
+	// An exception isn't an assertion: no details, just the traceback.
+	res, err = Grade(context.Background(), l, "def greet(name):\n    raise ValueError('nope')\n", nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	tr = testNamed(t, res, "greets someone by name")
+	if tr.Status != StatusError || tr.Input != "" || tr.Expected != "" || tr.Actual != "" || !strings.Contains(tr.Message, "ValueError: nope") {
+		t.Fatalf("got %+v", tr)
+	}
+}
+
+func TestJavaScriptFailureDetails(t *testing.T) {
+	l := lesson(t, "02-javascript-sum")
+	res, err := Grade(context.Background(), l, "export function sum(numbers) { return 0; }\n", nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	tr := testNamed(t, res, "sums a few numbers")
+	if tr.Status != StatusFail || tr.Input != "sum([1, 2, 3])" || tr.Expected != "6" || tr.Actual != "0" || tr.Message == "" {
+		t.Fatalf("got %+v", tr)
+	}
+
+	res, err = Grade(context.Background(), l, "export function sum(numbers) { throw new Error('nope'); }\n", nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	tr = testNamed(t, res, "sums a few numbers")
+	if tr.Status != StatusFail || tr.Input != "" || tr.Expected != "" || tr.Actual != "" || tr.Message != "nope" {
+		t.Fatalf("got %+v", tr)
+	}
+}
+
+func TestReadResultsDetails(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "results.jsonl")
+	records := `{"name":"a","status":"fail","message":"5 != 6","durationMs":1,"input":"f(1)","expected":"6","actual":"5"}
+{"name":"b","status":"fail","message":"boom","durationMs":2}
+`
+	if err := os.WriteFile(path, []byte(records), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	got := readResults(path)
+	if len(got) != 2 {
+		t.Fatalf("got %+v", got)
+	}
+	if got[0].Input != "f(1)" || got[0].Expected != "6" || got[0].Actual != "5" || got[0].Message != "5 != 6" {
+		t.Errorf("details not parsed: %+v", got[0])
+	}
+	b, _ := json.Marshal(got[1])
+	for _, field := range []string{"input", "expected", "actual"} {
+		if strings.Contains(string(b), `"`+field+`"`) {
+			t.Errorf("missing details should be omitted from %s", b)
+		}
 	}
 }

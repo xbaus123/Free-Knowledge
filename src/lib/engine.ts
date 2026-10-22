@@ -240,6 +240,11 @@ export interface TestResult {
   status: TestStatus;
   message?: string;
   durationMs: number;
+  /** Failed equality assertions, when the harness can recover them: the call
+   *  under test with its arguments, and the compared values, as source text. */
+  input?: string;
+  expected?: string;
+  actual?: string;
 }
 
 export interface GradeResult extends RunResult {

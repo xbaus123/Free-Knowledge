@@ -138,13 +138,53 @@ export function TestList({ tests }: { tests: TestResult[] }) {
             <span className={`w-3 font-bold ${statusColor[t.status]}`}>{statusIcon[t.status]}</span>
             <span className={t.status === "pass" ? "text-zinc-300" : "text-zinc-100"}>{t.name}</span>
           </div>
-          {t.message && t.status !== "pass" && (
-            <pre className="mt-1 ml-5 overflow-auto rounded bg-zinc-900 p-2 font-mono text-xs whitespace-pre-wrap text-zinc-300">
-              {t.message}
-            </pre>
+          {t.status !== "pass" && hasDetails(t) ? (
+            <FailureDetails test={t} />
+          ) : (
+            t.message &&
+            t.status !== "pass" && (
+              <pre className="mt-1 ml-5 overflow-auto rounded bg-zinc-900 p-2 font-mono text-xs whitespace-pre-wrap text-zinc-300">
+                {t.message}
+              </pre>
+            )
           )}
         </li>
       ))}
     </ul>
+  );
+}
+
+function hasDetails(t: TestResult) {
+  return t.input !== undefined || t.expected !== undefined || t.actual !== undefined;
+}
+
+// FailureDetails shows a failed assertion's input and compared values, with
+// the full assertion message (which may hold the test author's note) below.
+function FailureDetails({ test }: { test: TestResult }) {
+  return (
+    <div className="mt-1 ml-5 space-y-1">
+      {test.input !== undefined && <DetailBlock label="Input" value={test.input} className="border-zinc-700 bg-zinc-900 text-zinc-200" />}
+      {test.expected !== undefined && (
+        <DetailBlock label="Expected" value={test.expected} className="border-emerald-800 bg-emerald-950/40 text-emerald-200" />
+      )}
+      {test.actual !== undefined && (
+        <DetailBlock label="Actual" value={test.actual} className="border-red-800 bg-red-950/40 text-red-200" />
+      )}
+      {test.message && (
+        <details className="text-xs text-zinc-500">
+          <summary className="cursor-pointer hover:text-zinc-300">Full message</summary>
+          <pre className="mt-1 overflow-auto rounded bg-zinc-900 p-2 font-mono whitespace-pre-wrap text-zinc-300">{test.message}</pre>
+        </details>
+      )}
+    </div>
+  );
+}
+
+function DetailBlock({ label, value, className }: { label: string; value: string; className: string }) {
+  return (
+    <div className={`overflow-hidden rounded border ${className}`}>
+      <div className="px-2 pt-1 text-[10px] font-semibold tracking-wide uppercase opacity-70">{label}</div>
+      <pre className="overflow-auto px-2 pb-1.5 font-mono text-xs whitespace-pre-wrap">{value}</pre>
+    </div>
   );
 }

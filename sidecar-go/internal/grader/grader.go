@@ -45,6 +45,12 @@ type TestResult struct {
 	Status     Status `json:"status"`
 	Message    string `json:"message,omitempty"`
 	DurationMs int64  `json:"durationMs"`
+	// For failed equality assertions, when the harness can recover them:
+	// the call under test with its arguments, and the compared values, each
+	// formatted as source-like text in the lesson's language.
+	Input    string `json:"input,omitempty"`
+	Expected string `json:"expected,omitempty"`
+	Actual   string `json:"actual,omitempty"`
 }
 
 type Result struct {
