@@ -142,8 +142,8 @@ func TestTelemetry(t *testing.T) {
 
 func TestRenumberedSystemDesignLessonsKeepProgress(t *testing.T) {
 	path := filepath.Join(t.TempDir(), "progress.db")
-	// A database from before System Design 3.0, 4.0, and 5.0 renumbered
-	// its lessons: every rename applies in turn.
+	// A database from before System Design 3.0 through 6.0 renumbered its
+	// lessons: every rename applies in turn.
 	db, err := sql.Open("sqlite", "file:"+path)
 	must(t, err)
 	for _, m := range migrations[:2] {
@@ -154,6 +154,8 @@ func TestRenumberedSystemDesignLessonsKeepProgress(t *testing.T) {
 		INSERT INTO lesson_progress (course_id, lesson_id, code, attempts, completed_at) VALUES
 			('system-design', '07-bitcask-kv-store', 'my store', 3, 1),
 			('system-design', '01-core-vocabulary', NULL, 1, 1),
+			('system-design', '11-replication', NULL, 1, 1),
+			('system-design', '12-replication-and-caching', '{"nodes":[]}', 2, 1),
 			('other', '07-bitcask-kv-store', 'not mine', 1, NULL);
 		INSERT INTO telemetry_sessions (session_id, course_id, lesson_id, started_at, updated_at)
 			VALUES ('s1', 'system-design', '23-capstone', 1, 1);`)
@@ -171,12 +173,18 @@ func TestRenumberedSystemDesignLessonsKeepProgress(t *testing.T) {
 	if d, _ := s.Lesson("system-design", "01-core-vocabulary"); !d.Completed {
 		t.Fatalf("lesson 1 kept its id: %+v", d)
 	}
+	if d, _ := s.Lesson("system-design", "19-replication"); !d.Completed {
+		t.Fatalf("renamed by every migration: %+v", d)
+	}
+	if d, _ := s.Lesson("system-design", "20-replication-lag-and-consistency"); d.Code != nil || d.Completed {
+		t.Fatalf("a diagram shouldn't become the new Python lesson's code: %+v", d)
+	}
 	if d, _ := s.Lesson("other", "07-bitcask-kv-store"); d.Code == nil || *d.Code != "not mine" {
 		t.Fatalf("other courses are untouched: %+v", d)
 	}
 	var lesson string
 	must(t, s.db.QueryRow(`SELECT lesson_id FROM telemetry_sessions WHERE session_id = 's1'`).Scan(&lesson))
-	if lesson != "35-capstone" {
+	if lesson != "37-capstone" {
 		t.Fatalf("telemetry lesson = %q", lesson)
 	}
 }

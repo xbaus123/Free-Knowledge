@@ -133,7 +133,7 @@ An inverted index answers "which documents contain this term?" but is terrible a
 
 An Elasticsearch **index** is split into **shards**, each a complete Lucene index, spread across a cluster of nodes:
 
-- The number of **primary shards** is fixed when the index is created. A document goes to shard `hash(_id) % primaries`. This is partitioning with a fixed number of partitions (lesson 21): to grow, you add nodes and move whole shards, never re-hash documents. Changing the shard count means reindexing.
+- The number of **primary shards** is fixed when the index is created. A document goes to shard `hash(_id) % primaries`. This is partitioning with a fixed number of partitions (lesson 22): to grow, you add nodes and move whole shards, never re-hash documents. Changing the shard count means reindexing.
 - Each primary has **replica shards** on other nodes. Replicas give failover *and* read capacity: any copy of a shard can answer a search. Search is **read-heavy** (often a hundred searches for each update), so read throughput scales by adding replicas.
 
 A search is a **scatter-gather** in two phases, **query then fetch**:
@@ -149,7 +149,7 @@ Scatter-gather has consequences:
 
 ### Search is derived data
 
-A search index is almost never the **system of record**. The source of truth stays in a database. The index is a **derived** view, rebuilt from that source whenever its analyzers or mappings change. Keeping it in sync reliably is a classic problem: dual-writing from the application loses updates whenever the index is down. Lesson 33 fixes that with change data capture.
+A search index is almost never the **system of record**. The source of truth stays in a database. The index is a **derived** view, rebuilt from that source whenever its analyzers or mappings change. Keeping it in sync reliably is a classic problem: dual-writing from the application loses updates whenever the index is down. Lesson 35 fixes that with change data capture.
 
 ### Beyond keywords
 

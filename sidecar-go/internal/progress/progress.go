@@ -141,6 +141,37 @@ var migrations = []string{
 	UPDATE telemetry_sessions SET lesson_id = (SELECT new FROM renamed WHERE old = lesson_id)
 		WHERE course_id = 'system-design' AND lesson_id IN (SELECT old FROM renamed);
 	DROP TABLE renamed;`,
+	// System Design 6.0 inserted lessons on blob and time-series storage
+	// and resiliency patterns, and renumbered the lessons around them.
+	// 19-replication-and-caching became a different exercise
+	// (20-replication-lag-and-consistency), so its progress isn't carried
+	// over: a saved diagram isn't a starting point for Python code.
+	`CREATE TEMP TABLE renamed (old TEXT PRIMARY KEY, new TEXT NOT NULL);
+	INSERT INTO renamed VALUES
+		('16-encoding-and-evolution', '17-encoding-and-evolution'),
+		('17-rolling-deployment', '18-rolling-deployment'),
+		('18-replication', '19-replication'),
+		('20-caching-strategies', '21-caching-strategies'),
+		('21-partitioning-and-rate-limiting', '22-partitioning-and-rate-limiting'),
+		('22-consistent-hashing', '23-consistent-hashing'),
+		('23-geographical-distribution', '24-geographical-distribution'),
+		('24-transactions', '25-transactions'),
+		('25-write-skew', '26-write-skew'),
+		('26-distributed-trouble', '27-distributed-trouble'),
+		('27-fencing-tokens', '29-fencing-tokens'),
+		('28-consistency-and-consensus', '30-consistency-and-consensus'),
+		('29-raft-leader-election', '31-raft-leader-election'),
+		('30-microservices-and-architecture', '32-microservices-and-architecture'),
+		('31-message-queues', '33-message-queues'),
+		('32-batch-and-stream-processing', '34-batch-and-stream-processing'),
+		('33-change-data-capture', '35-change-data-capture'),
+		('34-observability-and-telemetry', '36-observability-and-telemetry'),
+		('35-capstone', '37-capstone');
+	UPDATE lesson_progress SET lesson_id = (SELECT new FROM renamed WHERE old = lesson_id)
+		WHERE course_id = 'system-design' AND lesson_id IN (SELECT old FROM renamed);
+	UPDATE telemetry_sessions SET lesson_id = (SELECT new FROM renamed WHERE old = lesson_id)
+		WHERE course_id = 'system-design' AND lesson_id IN (SELECT old FROM renamed);
+	DROP TABLE renamed;`,
 }
 
 type Store struct {

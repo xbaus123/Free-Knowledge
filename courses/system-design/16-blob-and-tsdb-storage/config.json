@@ -1,0 +1,6 @@
+{
+  "title": "Blob and Time-Series Storage: Object Stores, Erasure Coding, and TSDBs",
+  "language": "python",
+  "timeoutMs": 10000,
+  "capabilities": { "scratchpad": true }
+}

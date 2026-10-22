@@ -1,0 +1,6 @@
+{
+  "title": "Replication Lag: Read-Your-Writes, Monotonic Reads, and Consistent Prefixes",
+  "language": "python",
+  "timeoutMs": 10000,
+  "capabilities": { "scratchpad": true }
+}

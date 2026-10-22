@@ -37,7 +37,7 @@ Status codes come in classes: **2xx** success, **3xx** look elsewhere, **4xx** t
 | `404 Not Found` | No such resource |
 | `405 Method Not Allowed` | The resource exists but doesn't support that method |
 | `409 Conflict` | It clashes with the current state (a duplicate, a stale version) |
-| `429 Too Many Requests` | Slow down (lesson 21) |
+| `429 Too Many Requests` | Slow down (lesson 22) |
 | `500` / `503` | The server broke / is overloaded or down |
 
 ## REST: resources and uniform methods
@@ -88,7 +88,7 @@ message Book {
 }
 ```
 
-- **Compact binary encoding**: field numbers instead of names, so messages are much smaller and faster to parse than JSON (lesson 16 explains how this survives schema changes).
+- **Compact binary encoding**: field numbers instead of names, so messages are much smaller and faster to parse than JSON (lesson 17 explains how this survives schema changes).
 - **Generated, typed clients** in a dozen languages.
 - **HTTP/2** underneath: many calls share one connection, and calls can **stream** many messages in either direction.
 - **Deadlines**: every call carries a time budget that propagates to the calls it makes.

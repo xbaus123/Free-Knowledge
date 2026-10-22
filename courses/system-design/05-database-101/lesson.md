@@ -134,7 +134,7 @@ A bank transfer is several writes: debit one account, credit another, record the
 
 - **Atomicity**: all of the transaction's writes happen, or none do. If anything fails partway, the database **rolls back** every write the transaction made. You never see half a transfer.
 - **Consistency**: the data moves from one valid state to another, respecting every constraint. A transaction that would leave a negative balance fails as a whole. (Strictly, keeping data valid is your application's job, and atomicity and constraints are the database's tools for helping.)
-- **Isolation**: concurrent transactions don't see each other's half-finished work. Ideally, the result is as if they had run one at a time. In practice databases offer weaker, faster **isolation levels**, and their anomalies fill lessons 24 and 25.
+- **Isolation**: concurrent transactions don't see each other's half-finished work. Ideally, the result is as if they had run one at a time. In practice databases offer weaker, faster **isolation levels**, and their anomalies fill lessons 25 and 26.
 - **Durability**: once the database says "committed," the data survives a crash. It's written to a **write-ahead log** and `fsync`ed to disk before the commit returns (lesson 3).
 
 In SQL:

@@ -23,7 +23,7 @@ Microsoft's **STRIDE** mnemonic is a checklist for question 2. Each threat viola
 | **T**ampering | Integrity | Editing a token's `role` claim to `admin` | Signatures, MACs, TLS |
 | **R**epudiation | Non-repudiation | "I never issued that refund" | Tamper-evident audit logs |
 | **I**nformation disclosure | Confidentiality | Reading traffic on café Wi-Fi; a leaky error message | Encryption in transit and at rest, least privilege |
-| **D**enial of service | Availability | A flood of expensive search requests | Rate limiting (lesson 21), quotas, autoscaling |
+| **D**enial of service | Availability | A flood of expensive search requests | Rate limiting (lesson 22), quotas, autoscaling |
 | **E**levation of privilege | Authorization | A customer calling an admin-only endpoint | Authorization checks on every request |
 
 Three principles run through every defense:
@@ -61,7 +61,7 @@ Because the session keys come from **ephemeral** keys thrown away after the hand
 | **Re-encrypt** (TLS bridging) | The edge decrypts, inspects, and opens a new TLS connection to the backend | L7 features *and* encryption inside | Two handshakes; certificates on every backend |
 | **Passthrough** | An L4 balancer forwards encrypted bytes; the backend terminates | True end-to-end encryption; the edge never sees plaintext | No L7 routing, header inspection, or caching at the edge |
 
-Terminating at the edge was the classic setup, on the theory that the internal network is trusted. That theory has failed repeatedly: one compromised machine inside can read everything. The modern stance is **zero trust**: no network location is trusted by default, and every connection is authenticated and encrypted. Inside the data center, that usually means **mutual TLS (mTLS)**, where the *client* also presents a certificate, so both sides know who the other is. Managing certificates for thousands of service instances by hand is impossible, so a service mesh (lesson 30) issues short-lived certificates to every instance automatically, often as **SPIFFE** identities like `spiffe://example.com/orders`.
+Terminating at the edge was the classic setup, on the theory that the internal network is trusted. That theory has failed repeatedly: one compromised machine inside can read everything. The modern stance is **zero trust**: no network location is trusted by default, and every connection is authenticated and encrypted. Inside the data center, that usually means **mutual TLS (mTLS)**, where the *client* also presents a certificate, so both sides know who the other is. Managing certificates for thousands of service instances by hand is impossible, so a service mesh (lesson 32) issues short-lived certificates to every instance automatically, often as **SPIFFE** identities like `spiffe://example.com/orders`.
 
 At the edge, certificates come from a public CA. Automate their issuance and renewal with the **ACME** protocol (as Let's Encrypt does), because an expired certificate is one of the most common self-inflicted outages. One IP address can serve many host names, because the client names the host it wants in the handshake (**SNI**, server name indication), and the server picks the matching certificate.
 
@@ -85,7 +85,7 @@ After login, every later request must carry proof of identity. There are two fam
 **Server-side sessions.** The server stores a session record (`session id → user, expiry`) and gives the client an **opaque**, random session id, usually in a cookie. Every request looks the id up.
 
 - Revocation is trivial: delete the record.
-- But every request needs a lookup in a shared session store (lesson 20), which every service must reach.
+- But every request needs a lookup in a shared session store (lesson 21), which every service must reach.
 
 **Self-contained tokens.** The server packs the identity into the token itself and **signs** it. Any service holding the verification key can check it locally, with no lookup.
 
@@ -137,7 +137,7 @@ JWT libraries have a long history of vulnerabilities, almost all from trusting t
 - **Algorithm confusion.** A server expecting RS256 is handed a token with `"alg": "HS256"`. A naive library uses the "key" it has (the RSA *public* key, which is public!) as the HMAC secret, and the attacker's self-signed token verifies. The fix for both: the **verifier decides** which algorithms it accepts; the token's header only selects among them.
 - **Skipping claim checks.** A valid signature only proves the issuer made the token. Without checking `aud`, a token issued for a low-security internal tool works against your payments API.
 - **Timing attacks.** Comparing signatures with `==` stops at the first differing byte, so response time leaks how many leading bytes were right. With enough measurements, an attacker can forge a signature byte by byte. Use a **constant-time** comparison.
-- **Clock skew.** Servers' clocks disagree by seconds (lesson 26), so allow a small **leeway** (30 to 60 seconds) when checking `exp` and `nbf`.
+- **Clock skew.** Servers' clocks disagree by seconds (lesson 27), so allow a small **leeway** (30 to 60 seconds) when checking `exp` and `nbf`.
 - **Where the browser keeps it.** A token in `localStorage` can be stolen by any injected script (**XSS**). A token in an `HttpOnly` cookie can't be read by scripts, but the browser sends it automatically, which opens up **cross-site request forgery (CSRF)**; defend with `SameSite` cookies and anti-CSRF tokens.
 
 ## OAuth 2.0 and OpenID Connect

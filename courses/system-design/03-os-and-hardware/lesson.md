@@ -38,7 +38,7 @@ write count (6)
                         write count (6)     one increment is lost
 ```
 
-This is a **race condition**: the result depends on the timing of the interleaving. Races are maddening because they're rare. The code works in testing and fails once a day in production under load. The problematic pattern is **read-modify-write** on shared data, and you'll meet it again at database scale as the **lost update** (lesson 24).
+This is a **race condition**: the result depends on the timing of the interleaving. Races are maddening because they're rare. The code works in testing and fails once a day in production under load. The problematic pattern is **read-modify-write** on shared data, and you'll meet it again at database scale as the **lost update** (lesson 25).
 
 ## Locks
 

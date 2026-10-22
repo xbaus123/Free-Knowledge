@@ -10,7 +10,7 @@ A load balancer sits between clients and a pool of interchangeable **backends** 
 
 1. **Scalability**: add a server, and the pool's capacity grows. Clients don't change anything.
 2. **Availability**: when a backend dies, traffic flows to the others. Without a load balancer, every client pointed at the dead server fails.
-3. **Indirection**: clients know one stable address. Behind it, you can deploy, resize, and replace servers freely. Most of the operational tricks in this course (rolling deployments in lesson 17, canary releases, failover) depend on this layer of indirection.
+3. **Indirection**: clients know one stable address. Behind it, you can deploy, resize, and replace servers freely. Most of the operational tricks in this course (rolling deployments in lesson 18, canary releases, failover) depend on this layer of indirection.
 
 It only works cleanly when the backends are **stateless**: any server can handle any request because the state lives elsewhere, in a database or cache. Keeping session state on a server forces **sticky sessions** (routing each user back to "their" server), which spreads load unevenly and loses sessions when that server dies. Move the state out and the servers become cattle, not pets.
 
@@ -41,7 +41,7 @@ A **layer 7** load balancer terminates the client's TCP (and usually TLS) connec
 - balance **each request** independently, even within one long-lived client connection,
 - **route by content**: host name, path, method, headers, or cookies (`/api/*` to API servers, `/static/*` to a file server),
 - **retry** a failed request on another backend (only when it's idempotent; lesson 4),
-- add headers such as `X-Forwarded-For` (the client's real address) and a request id for tracing (lesson 34).
+- add headers such as `X-Forwarded-For` (the client's real address) and a request id for tracing (lesson 36).
 
 The price is CPU and latency for parsing and TLS, and the balancer must understand every protocol it routes. NGINX, HAProxy, Envoy, and AWS's Application Load Balancer are L7 balancers. A common pattern combines them: a tier of L4 balancers spreads connections across a fleet of L7 proxies, which route individual requests.
 
@@ -80,7 +80,7 @@ With many load balancers each tracking load separately, or with load information
 
 ### Hashing for affinity
 
-Sometimes you *want* the same key on the same backend: a cache server that already holds a user's data, or a shard that owns a partition. Hash a request attribute (user id, URL) to pick the backend. Plain `hash % N` reshuffles almost everything when N changes, so balancers use **consistent hashing** (ring hash, Maglev hashing), which you'll build in lesson 22.
+Sometimes you *want* the same key on the same backend: a cache server that already holds a user's data, or a shard that owns a partition. Hash a request attribute (user id, URL) to pick the backend. Plain `hash % N` reshuffles almost everything when N changes, so balancers use **consistent hashing** (ring hash, Maglev hashing), which you'll build in lesson 23.
 
 | Algorithm | Needs state? | Handles uneven requests? | Notes |
 |---|---|---|---|
@@ -100,7 +100,7 @@ A load balancer is only as good as its knowledge of which backends are alive.
 - **Connection draining**: before removing a backend for a deploy, stop sending it new requests and let in-flight ones finish.
 - **Slow start**: a freshly started backend has cold caches and an unwarmed runtime. Ramp its share of traffic up gradually instead of handing it a full share at once.
 
-Detecting failure always involves a timeout, and a timeout can't distinguish a dead server from a slow one or a lost network path (lesson 26). Every health check is a guess.
+Detecting failure always involves a timeout, and a timeout can't distinguish a dead server from a slow one or a lost network path (lesson 27). Every health check is a guess.
 
 ## The load balancer is a single point of failure too
 
@@ -116,7 +116,7 @@ A **forward proxy** acts on behalf of *clients* (a corporate proxy that filters 
 
 - **TLS termination**: decrypt once at the edge, and manage certificates in one place (next lesson).
 - **Buffering slow clients**: a mobile client uploading at 50 KB/s would tie up an application worker for seconds. The proxy absorbs the slow upload and hands the backend a complete request in one burst. This also blunts slow-request attacks like Slowloris.
-- **Compression and caching** of responses (lesson 20).
+- **Compression and caching** of responses (lesson 21).
 - **Protection**: request size limits, header normalization, and hiding the internal topology.
 
 ## API gateways
@@ -125,13 +125,13 @@ An **API gateway** is a reverse proxy specialized for the front door of an API, 
 
 - **Routing**: `/api/users/*` to the user service, `/api/orders/*` to the order service. Clients see one API, while the backend is many services that can be split, merged, or moved.
 - **Authentication**: verify API keys or tokens (such as JWTs) once, and pass the verified identity to services in a header. The next lesson builds exactly this.
-- **Rate limiting and quotas** per client (lesson 21), rejecting floods before they reach anything expensive.
+- **Rate limiting and quotas** per client (lesson 22), rejecting floods before they reach anything expensive.
 - **Transformation**: translate between protocols (REST outside, gRPC inside), version APIs, and reshape responses.
 - **Aggregation**: one client call fans out to several services and returns a combined result. A **backend for frontend (BFF)** is a gateway tailored to one client, such as the mobile app.
-- **Observability**: every request passes through, so the gateway is the natural place to record metrics, assign request ids, and start traces (lesson 34).
+- **Observability**: every request passes through, so the gateway is the natural place to record metrics, assign request ids, and start traces (lesson 36).
 - **Traffic shifting**: send 1% of traffic to a new version (a **canary**) and watch its error rate before going further.
 
-Gateways have failure modes of their own. Everything flows through them, so they must be highly available and fast. And the temptation to put business logic in the gateway turns it into a distributed monolith that every team must change. Keep it to cross-cutting concerns. For traffic *between* internal services (east-west, as opposed to north-south traffic from clients), a **service mesh** runs a small proxy (often Envoy) beside every service instance and applies the same features without a central gateway (lesson 30).
+Gateways have failure modes of their own. Everything flows through them, so they must be highly available and fast. And the temptation to put business logic in the gateway turns it into a distributed monolith that every team must change. Keep it to cross-cutting concerns. For traffic *between* internal services (east-west, as opposed to north-south traffic from clients), a **service mesh** runs a small proxy (often Envoy) beside every service instance and applies the same features without a central gateway (lesson 32).
 
 ## Your task
 

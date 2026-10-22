@@ -1,0 +1,6 @@
+{
+  "title": "Resiliency Patterns: Timeouts, Retries, Circuit Breakers, and Bulkheads",
+  "language": "python",
+  "timeoutMs": 10000,
+  "capabilities": { "scratchpad": true }
+}
