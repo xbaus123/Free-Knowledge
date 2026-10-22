@@ -5,6 +5,7 @@ import { languageForPath } from "../lib/monaco";
 import { classifyGrade, LessonTelemetry, telemetryAllowed } from "../lib/telemetry";
 import { CodeEditor } from "./CodeEditor";
 import { FileTree, LockIcon } from "./FileTree";
+import { FindBar } from "./FindBar";
 import { InsightsButton } from "./InsightsButton";
 import { ScratchpadModal } from "./ScratchpadModal";
 import { SimulationPanel } from "./design/SimulationPanel";
@@ -75,6 +76,8 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
   const [openTabs, setOpenTabs] = useState<string[]>([]);
   const [activeFile, setActiveFile] = useState("");
   const [scratchpadOpen, setScratchpadOpen] = useState(false);
+  // The lesson text that ⌘/Ctrl+F searches (side pane or full-width article).
+  const lessonTextRef = useRef<HTMLDivElement>(null);
   const telemetry = useRef<LessonTelemetry | null>(null);
   const [telemetryOn, setTelemetryOn] = useState(telemetryAllowed);
   const [telemetryEpoch, setTelemetryEpoch] = useState(0); // bumped to start a fresh visit
@@ -362,27 +365,30 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
   const goNext = next ? () => onOpenLesson(next.id) : undefined;
 
   const lessonPane = (
-    <div className="h-full overflow-auto px-6 py-5">
-      {lesson ? (
-        <>
-          {progress[lesson.id]?.completed && (
-            <p className="mb-3 inline-block rounded bg-emerald-950 px-2 py-0.5 text-xs text-emerald-300">✓ Completed</p>
-          )}
-          {lesson.problems && lesson.problems.length > 0 && (
-            <div className="mb-4 rounded border border-amber-800 bg-amber-950/40 p-3 text-xs text-amber-200">
-              This lesson has problems and can't be graded:
-              <ul className="mt-1 list-disc pl-5">
-                {lesson.problems.map((p) => (
-                  <li key={p}>{p}</li>
-                ))}
-              </ul>
-            </div>
-          )}
-          <Markdown>{lesson.markdown}</Markdown>
-        </>
-      ) : (
-        <p className="text-sm text-zinc-500">Loading…</p>
-      )}
+    <div className="flex h-full flex-col">
+      <FindBar target={lessonTextRef} contentKey={lesson?.markdown ?? ""} enabled={!scratchpadOpen} />
+      <div ref={lessonTextRef} className="min-h-0 flex-1 overflow-auto px-6 py-5">
+        {lesson ? (
+          <>
+            {progress[lesson.id]?.completed && (
+              <p className="mb-3 inline-block rounded bg-emerald-950 px-2 py-0.5 text-xs text-emerald-300">✓ Completed</p>
+            )}
+            {lesson.problems && lesson.problems.length > 0 && (
+              <div className="mb-4 rounded border border-amber-800 bg-amber-950/40 p-3 text-xs text-amber-200">
+                This lesson has problems and can't be graded:
+                <ul className="mt-1 list-disc pl-5">
+                  {lesson.problems.map((p) => (
+                    <li key={p}>{p}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            <Markdown>{lesson.markdown}</Markdown>
+          </>
+        ) : (
+          <p className="text-sm text-zinc-500">Loading…</p>
+        )}
+      </div>
     </div>
   );
 
@@ -446,29 +452,32 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
       {loadError ? (
         <div className="p-6 text-red-400">{loadError}</div>
       ) : isArticle && lesson ? (
-        <div className="min-h-0 flex-1 overflow-auto">
-          <article className="mx-auto max-w-3xl px-8 py-10">
-            <Markdown>{lesson.markdown}</Markdown>
-            <div className="mt-10 flex items-center justify-between gap-4 border-t border-zinc-800 pt-6">
-              {completed ? (
-                <span className="text-sm text-emerald-400">✓ Completed</span>
-              ) : (
-                <button
-                  onClick={markComplete}
-                  disabled={marking}
-                  className="rounded bg-indigo-600 px-4 py-2 text-sm font-medium hover:bg-indigo-500 disabled:opacity-40"
-                >
-                  {marking ? "Saving…" : "Mark Complete"}
-                </button>
-              )}
-              {runError && <span className="text-sm text-red-400">{runError}</span>}
-              {completed && goNext && (
-                <button onClick={goNext} className="rounded bg-emerald-600 px-4 py-2 text-sm font-medium hover:bg-emerald-500">
-                  Next lesson →
-                </button>
-              )}
-            </div>
-          </article>
+        <div className="flex min-h-0 flex-1 flex-col">
+          <FindBar target={lessonTextRef} contentKey={lesson.markdown} enabled={!scratchpadOpen} />
+          <div ref={lessonTextRef} className="min-h-0 flex-1 overflow-auto">
+            <article className="mx-auto max-w-3xl px-8 py-10">
+              <Markdown>{lesson.markdown}</Markdown>
+              <div className="mt-10 flex items-center justify-between gap-4 border-t border-zinc-800 pt-6">
+                {completed ? (
+                  <span className="text-sm text-emerald-400">✓ Completed</span>
+                ) : (
+                  <button
+                    onClick={markComplete}
+                    disabled={marking}
+                    className="rounded bg-indigo-600 px-4 py-2 text-sm font-medium hover:bg-indigo-500 disabled:opacity-40"
+                  >
+                    {marking ? "Saving…" : "Mark Complete"}
+                  </button>
+                )}
+                {runError && <span className="text-sm text-red-400">{runError}</span>}
+                {completed && goNext && (
+                  <button onClick={goNext} className="rounded bg-emerald-600 px-4 py-2 text-sm font-medium hover:bg-emerald-500">
+                    Next lesson →
+                  </button>
+                )}
+              </div>
+            </article>
+          </div>
         </div>
       ) : isQuiz && lesson ? (
         <Group orientation="horizontal" className="min-h-0 flex-1">

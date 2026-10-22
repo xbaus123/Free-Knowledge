@@ -67,3 +67,13 @@ body {
       0 0 18px 4px rgb(239 68 68 / 0.55);
   }
 }
+
+/* In-lesson find (FindBar). */
+::highlight(fk-find) {
+  background-color: rgb(250 204 21 / 0.3);
+}
+
+::highlight(fk-find-current) {
+  background-color: rgb(250 204 21 / 0.85);
+  color: #09090b;
+}
