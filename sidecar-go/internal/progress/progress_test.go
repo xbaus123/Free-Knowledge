@@ -142,7 +142,7 @@ func TestTelemetry(t *testing.T) {
 
 func TestRenumberedSystemDesignLessonsKeepProgress(t *testing.T) {
 	path := filepath.Join(t.TempDir(), "progress.db")
-	// A database from before System Design 3.0 through 6.0 renumbered its
+	// A database from before System Design 3.0 through 7.0 renumbered its
 	// lessons: every rename applies in turn.
 	db, err := sql.Open("sqlite", "file:"+path)
 	must(t, err)
@@ -165,7 +165,7 @@ func TestRenumberedSystemDesignLessonsKeepProgress(t *testing.T) {
 	s, err := Open(path)
 	must(t, err)
 	defer s.Close()
-	d, err := s.Lesson("system-design", "13-bitcask-kv-store")
+	d, err := s.Lesson("system-design", "17-bitcask-kv-store")
 	must(t, err)
 	if d.Code == nil || *d.Code != "my store" || d.Attempts != 3 || !d.Completed {
 		t.Fatalf("progress should follow the lesson to its new id: %+v", d)
@@ -173,10 +173,10 @@ func TestRenumberedSystemDesignLessonsKeepProgress(t *testing.T) {
 	if d, _ := s.Lesson("system-design", "01-core-vocabulary"); !d.Completed {
 		t.Fatalf("lesson 1 kept its id: %+v", d)
 	}
-	if d, _ := s.Lesson("system-design", "19-replication"); !d.Completed {
+	if d, _ := s.Lesson("system-design", "23-replication"); !d.Completed {
 		t.Fatalf("renamed by every migration: %+v", d)
 	}
-	if d, _ := s.Lesson("system-design", "20-replication-lag-and-consistency"); d.Code != nil || d.Completed {
+	if d, _ := s.Lesson("system-design", "24-replication-lag-and-consistency"); d.Code != nil || d.Completed {
 		t.Fatalf("a diagram shouldn't become the new Python lesson's code: %+v", d)
 	}
 	if d, _ := s.Lesson("other", "07-bitcask-kv-store"); d.Code == nil || *d.Code != "not mine" {
@@ -184,7 +184,7 @@ func TestRenumberedSystemDesignLessonsKeepProgress(t *testing.T) {
 	}
 	var lesson string
 	must(t, s.db.QueryRow(`SELECT lesson_id FROM telemetry_sessions WHERE session_id = 's1'`).Scan(&lesson))
-	if lesson != "37-capstone" {
+	if lesson != "41-capstone" {
 		t.Fatalf("telemetry lesson = %q", lesson)
 	}
 }

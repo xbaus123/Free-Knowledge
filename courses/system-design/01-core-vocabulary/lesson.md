@@ -99,4 +99,4 @@ Most of a system's cost comes after launch: fixing bugs, keeping it running, ada
 | Utilization | The fraction of a resource's capacity in use |
 | Scale up / scale out | Bigger machine / more machines |
 
-Before putting numbers on load, the next four lessons cover the foundations every design sits on: networks, operating systems and hardware, APIs, and databases.
+Next, a short knowledge check on these terms. Then, before putting numbers on load, four lessons cover the foundations every design sits on: networks, operating systems and hardware, APIs, and databases.

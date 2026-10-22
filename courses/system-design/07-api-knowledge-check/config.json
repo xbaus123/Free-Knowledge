@@ -1,0 +1,97 @@
+{
+  "type": "quiz",
+  "title": "Knowledge Check: API Paradigms",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "A request fails with 400 Bad Request. Should the client retry it unchanged?",
+      "options": [
+        "Yes: errors are usually transient",
+        "Yes, after a short wait",
+        "Only if the request was a GET",
+        "No: a 4xx means the client did something wrong"
+      ]
+    },
+    {
+      "prompt": "Which of these HTTP methods is idempotent but not safe?",
+      "options": [
+        "GET",
+        "DELETE",
+        "POST",
+        "PATCH"
+      ]
+    },
+    {
+      "prompt": "A client sends DELETE /books/8, times out, and retries. The retry answers 404 Not Found. Was the DELETE idempotent?",
+      "options": [
+        "Yes: the effect, book 8 being gone, is the same as deleting once",
+        "No: the two calls got different responses",
+        "No: the 404 means the first call never ran",
+        "Only if the server cached the first response"
+      ]
+    },
+    {
+      "prompt": "A POST that creates an order times out, so the client doesn't know whether the order was created. How can it retry safely?",
+      "options": [
+        "Send the retry as a PUT instead",
+        "GET the order list first, and retry if the order is missing",
+        "Resend it with the same idempotency key, so the server replays its earlier response instead of creating a second order",
+        "Wait a few seconds, so the first request has time to finish"
+      ]
+    },
+    {
+      "prompt": "Why does cursor pagination (?after=137) work better than offset pagination (?offset=40) for a feed where new items keep arriving?",
+      "options": [
+        "Cursors are shorter to send",
+        "The server jumps to the cursor with an index seek, and items added elsewhere don't shift the page",
+        "Offset pages can't be cached",
+        "Cursors return every item in one response"
+      ]
+    },
+    {
+      "prompt": "A mobile app needs a book, its author, and the author's other books. Through a REST API it makes three requests, and each response carries every field. What are these two problems called?",
+      "options": [
+        "Under-fetching and over-fetching",
+        "The N+1 problem and batching",
+        "Head-of-line blocking and congestion",
+        "Normalization and denormalization"
+      ]
+    },
+    {
+      "prompt": "Why are Protocol Buffers messages much smaller than the equivalent JSON?",
+      "options": [
+        "They're always gzip-compressed",
+        "They leave out fields the client didn't ask for",
+        "They're sent over UDP instead of TCP",
+        "They use a binary encoding that identifies fields by number instead of by name"
+      ]
+    },
+    {
+      "prompt": "What's the danger in treating a remote procedure call as if it were a local function call?",
+      "options": [
+        "Generated client code is slow to compile",
+        "A remote call can time out without telling you whether it ran, and it's far slower and more variable",
+        "RPC frameworks can't return errors",
+        "RPC calls can't carry structured arguments"
+      ]
+    },
+    {
+      "prompt": "A GraphQL query asks for 50 books with each author's name. A naive resolver loads each book's author separately. How many database queries is that, and what's the fix?",
+      "options": [
+        "2, and no fix is needed",
+        "50, fixed by adding an index on authors",
+        "51, fixed by batching all the author ids into one query",
+        "1, because GraphQL loads everything at once"
+      ]
+    },
+    {
+      "prompt": "Why doesn't ordinary HTTP caching work well for GraphQL?",
+      "options": [
+        "Every query is a POST to the same URL",
+        "GraphQL responses are binary",
+        "The schema changes too often to cache",
+        "GraphQL servers forbid caching headers"
+      ]
+    }
+  ]
+}

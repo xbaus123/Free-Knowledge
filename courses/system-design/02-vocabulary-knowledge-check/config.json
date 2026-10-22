@@ -1,0 +1,88 @@
+{
+  "type": "quiz",
+  "title": "Knowledge Check: Reliability, Scalability, and Load",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "A disk dies in one database server, but a replica takes over and every request still succeeds. How do you describe what happened?",
+      "options": [
+        "A failure, but not a fault",
+        "A fault that didn't become a failure",
+        "Both a fault and a failure",
+        "Neither: nothing went wrong"
+      ]
+    },
+    {
+      "prompt": "When Twitter moved to pushing each tweet into followers' cached timelines, which load parameter turned out to matter most?",
+      "options": [
+        "The average length of a tweet",
+        "The number of tweets posted per second",
+        "The distribution of followers per user",
+        "The number of data centers serving reads"
+      ]
+    },
+    {
+      "prompt": "A service's p99 response time is 1.5 seconds. What does that mean?",
+      "options": [
+        "1 in 100 requests takes at least 1.5 seconds",
+        "99% of requests take about 1.5 seconds",
+        "The average request takes 1.5 seconds",
+        "The single slowest request took 1.5 seconds"
+      ]
+    },
+    {
+      "prompt": "Why is the mean a poor summary of response times?",
+      "options": [
+        "It's expensive to compute over millions of requests",
+        "It's always higher than the median",
+        "It ignores the fastest requests",
+        "It doesn't tell you how many users actually experienced a delay"
+      ]
+    },
+    {
+      "prompt": "Loading one page makes 10 backend calls in parallel. Each backend is slow (beyond its p99) on 1% of calls. Roughly what fraction of page loads are slow?",
+      "options": [
+        "About 0.1%",
+        "About 1%",
+        "About 10%",
+        "About 99%"
+      ]
+    },
+    {
+      "prompt": "Strictly speaking, how does latency differ from response time?",
+      "options": [
+        "They're two names for the same measurement",
+        "Latency is the time a request spends waiting to be handled; response time is everything the client sees",
+        "Latency includes network delays, and response time doesn't",
+        "Response time is measured by the server, latency by the client"
+      ]
+    },
+    {
+      "prompt": "A server's utilization climbs from 50% to 95% as traffic grows. What happens to response times?",
+      "options": [
+        "They rise steeply, because queues form and grow faster near full capacity",
+        "They rise in exact proportion to the traffic",
+        "They stay flat until utilization reaches 100%",
+        "They fall, because caches stay warmer under load"
+      ]
+    },
+    {
+      "prompt": "Which part of a system is the hardest to scale out across many machines?",
+      "options": [
+        "Stateless API servers behind a load balancer",
+        "Static files such as images and scripts",
+        "Data: databases and other stateful components",
+        "The load balancer itself"
+      ]
+    },
+    {
+      "prompt": "A team adds clear dashboards, predictable behavior, and sane defaults so on-call engineers can keep the system healthy. Which maintainability principle is that?",
+      "options": [
+        "Simplicity",
+        "Evolvability",
+        "Elasticity",
+        "Operability"
+      ]
+    }
+  ]
+}

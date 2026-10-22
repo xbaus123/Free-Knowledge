@@ -1,0 +1,13 @@
+{
+  "answers": [
+    { "correct_index": 1, "explanation": "A fault is one component deviating from its spec (the disk). A failure is the whole system no longer serving users. Fault tolerance is exactly this: keeping faults from turning into failures." },
+    { "correct_index": 2, "explanation": "Write fan-out is proportional to follower count. Most accounts are cheap to fan out, but accounts with tens of millions of followers aren't, so Twitter merges those tweets in at read time instead." },
+    { "correct_index": 0, "explanation": "99% of requests are faster than the p99, so the slowest 1% take at least that long. That's the tail of the distribution, which the average hides." },
+    { "correct_index": 3, "explanation": "A few very slow requests and many fast ones can produce the same mean as uniformly mediocre ones. Percentiles say how many requests were at least that slow, which is what users feel." },
+    { "correct_index": 2, "explanation": "The page is as slow as its slowest call. The chance that all 10 calls are fast is 0.99¹⁰ ≈ 0.90, so about 10% of page loads hit at least one slow call. That's tail latency amplification." },
+    { "correct_index": 1, "explanation": "Response time is what the client waits: service time plus network delays plus queueing delays. Latency, strictly, is only the time spent waiting. In everyday use people often say latency for both." },
+    { "correct_index": 0, "explanation": "Waiting time doesn't grow gently. Around 70% busy, bursts start forming queues, and close to 100% the queues run away. That's why the simulator asks you to watch utilization." },
+    { "correct_index": 2, "explanation": "Stateless services scale out by adding identical copies. Data has to be copied, split, and kept consistent across machines, which is why most of this course is about replicating, partitioning, and moving data." },
+    { "correct_index": 3, "explanation": "Operability is making a system easy for operators to keep running. Simplicity is about managing complexity with good abstractions, and evolvability is about making change easy. Elasticity is about scaling, not maintainability." }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "type": "quiz",
+  "title": "Knowledge Check: Networking",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "What does IP promise about a packet you send?",
+      "options": [
+        "It arrives exactly once, in order",
+        "It arrives eventually, though possibly out of order",
+        "Nothing: it may be dropped, duplicated, reordered, or delayed",
+        "It arrives, or the sender is told it was dropped"
+      ]
+    },
+    {
+      "prompt": "How many addresses does the block 10.20.0.0/16 contain?",
+      "options": [
+        "16",
+        "256",
+        "65,536",
+        "About 16.7 million"
+      ]
+    },
+    {
+      "prompt": "Which of these addresses is in one of the private ranges, never routed on the public internet?",
+      "options": [
+        "8.8.8.8",
+        "172.20.5.1",
+        "172.32.0.1",
+        "193.168.1.1"
+      ]
+    },
+    {
+      "prompt": "A TCP receiver has bytes 0 to 999 and 2000 to 2999, but not 1000 to 1999. Which acknowledgment does it send?",
+      "options": [
+        "ACK 1000",
+        "ACK 2000",
+        "ACK 3000",
+        "None, until the gap is filled"
+      ]
+    },
+    {
+      "prompt": "Which of these is the best fit for UDP rather than TCP?",
+      "options": [
+        "Copying a database backup to another data center",
+        "An interactive SSH session",
+        "Loading a web page over HTTP/2",
+        "A live video call, where a late frame is useless"
+      ]
+    },
+    {
+      "prompt": "A recursive resolver with an empty cache looks up api.example.com. Who does it ask first?",
+      "options": [
+        "The authoritative servers for example.com",
+        "A root server, which refers it to the servers for com",
+        "The servers for com",
+        "The machine at api.example.com"
+      ]
+    },
+    {
+      "prompt": "You plan to fail over to another region by changing a DNS record. Which TTL makes failover fast, and what does it cost?",
+      "options": [
+        "A long TTL, at no cost",
+        "A long TTL, at the cost of more lookups",
+        "A short TTL, at the cost of more lookups",
+        "TTL makes no difference to failover"
+      ]
+    },
+    {
+      "prompt": "How many round trips does it take to get the first byte of a response over a new HTTPS connection using TLS 1.3?",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "prompt": "A 2 KB API call crosses an ocean with a 150 ms round trip. Upgrading the link from 100 Mbit/s to 1 Gbit/s makes it about how much faster?",
+      "options": [
+        "Barely faster at all",
+        "About twice as fast",
+        "About 10 times faster",
+        "Slower, because of congestion"
+      ]
+    },
+    {
+      "prompt": "A TCP connection has a 64 KB window and a 100 ms round trip, on a 1 Gbit/s link. What limits its throughput?",
+      "options": [
+        "The link, at about 1 Gbit/s",
+        "The window, at about 5 Mbit/s",
+        "The packet size, at 1,500 bytes per round trip",
+        "Nothing: TCP grows the window to fill any link"
+      ]
+    }
+  ]
+}

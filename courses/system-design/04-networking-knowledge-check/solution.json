@@ -1,0 +1,14 @@
+{
+  "answers": [
+    { "correct_index": 2, "explanation": "IP is best-effort, and it doesn't tell you which of those happened. Every reliable protocol, TCP included, is built on top of that unreliable base." },
+    { "correct_index": 2, "explanation": "A /16 fixes the first 16 of the 32 bits, leaving 16 bits free: 2¹⁶ = 65,536 addresses. A /24 has 256, and a /8 has 2²⁴ ≈ 16.7 million." },
+    { "correct_index": 1, "explanation": "The private blocks are 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16. 172.16.0.0/12 runs from 172.16.0.0 to 172.31.255.255, so 172.20.5.1 is inside it and 172.32.0.1 isn't." },
+    { "correct_index": 0, "explanation": "ACKs are cumulative: the number of the next byte the receiver is waiting for. It has everything before byte 1000, and holds bytes 2000 to 2999 in its buffer until the gap is filled." },
+    { "correct_index": 3, "explanation": "Waiting for a retransmitted video frame only makes the call stutter. The other three need every byte, in order, which is what TCP provides." },
+    { "correct_index": 1, "explanation": "With nothing cached, resolution starts at the root and follows referrals: root to com, com to example.com's authoritative servers, which answer. Once those referrals are cached, later lookups skip straight to the longest zone it knows." },
+    { "correct_index": 2, "explanation": "Resolvers keep serving a cached answer until its TTL runs out, so a change takes up to one TTL to reach everyone. Short TTLs (30 to 60 seconds) make changes spread fast, but resolvers have to ask again more often." },
+    { "correct_index": 2, "explanation": "One for the TCP handshake, one for the TLS 1.3 handshake, and one for the request and the start of the response. Across an ocean, that's about half a second before bandwidth matters at all." },
+    { "correct_index": 0, "explanation": "Transmitting 2 KB at 100 Mbit/s takes 16,000 bits ÷ 10⁸ bits/s = 0.16 ms. The round trips take hundreds of milliseconds. More bandwidth widens the pipe, but it doesn't shorten it." },
+    { "correct_index": 1, "explanation": "Throughput ≤ window ÷ RTT = 64 KB ÷ 0.1 s ≈ 640 KB/s ≈ 5 Mbit/s. To fill the link, the window must reach the bandwidth-delay product: 1 Gbit/s × 100 ms = 12.5 MB." }
+  ]
+}

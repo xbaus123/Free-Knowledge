@@ -311,7 +311,7 @@ func TestSimulateEndpoint(t *testing.T) {
 	ts, _ := newTestServer(t)
 	auth := map[string]string{"Authorization": "Bearer " + testToken}
 	read := func(name string) string {
-		b, err := os.ReadFile("../../../courses/system-design/07-scaling-out/" + name)
+		b, err := os.ReadFile("../../../courses/system-design/11-scaling-out/" + name)
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -323,7 +323,7 @@ func TestSimulateEndpoint(t *testing.T) {
 		Issues  []struct{ NodeID, Code string }
 	}
 	body := func(graph string) string {
-		return `{"course":"system-design","lesson":"07-scaling-out","graph":` + graph + `}`
+		return `{"course":"system-design","lesson":"11-scaling-out","graph":` + graph + `}`
 	}
 
 	r := do(t, ts, "POST", "/simulate", body(read("starter.json")), auth)
@@ -344,7 +344,7 @@ func TestSimulateEndpoint(t *testing.T) {
 		Attempts  int
 		Code      *string
 	}
-	r = do(t, ts, "GET", "/courses/system-design/lessons/07-scaling-out/progress", "", auth)
+	r = do(t, ts, "GET", "/courses/system-design/lessons/11-scaling-out/progress", "", auth)
 	if err := json.NewDecoder(r.Body).Decode(&p); err != nil || !p.Completed || p.Attempts != 2 || p.Code == nil || !strings.Contains(*p.Code, `"lb"`) {
 		t.Fatalf("progress: %+v %v", p, err)
 	}
@@ -410,7 +410,7 @@ func TestCheckAnswerEndpoint(t *testing.T) {
 		}
 		return r.StatusCode, res.Status
 	}
-	quiz := "system-design/lessons/06-back-of-the-envelope"
+	quiz := "system-design/lessons/10-back-of-the-envelope"
 	if code, status := check(quiz, `{"question":0,"answer":1}`); code != 200 || status != "pass" {
 		t.Fatalf("right answer: %d %s", code, status)
 	}
@@ -482,7 +482,7 @@ func TestTelemetryEndpoints(t *testing.T) {
 func TestSimulateBudgetChaosAndCatalog(t *testing.T) {
 	ts, _ := newTestServer(t)
 	auth := map[string]string{"Authorization": "Bearer " + testToken}
-	solution, err := os.ReadFile("../../../courses/system-design/07-scaling-out/solution.json")
+	solution, err := os.ReadFile("../../../courses/system-design/11-scaling-out/solution.json")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -496,7 +496,7 @@ func TestSimulateBudgetChaosAndCatalog(t *testing.T) {
 		}
 	}
 	body := func(chaos string) string {
-		return `{"course":"system-design","lesson":"07-scaling-out","graph":` + string(solution) + `,"chaos":` + chaos + `}`
+		return `{"course":"system-design","lesson":"11-scaling-out","graph":` + string(solution) + `,"chaos":` + chaos + `}`
 	}
 
 	// A chaos experiment: reported, but not recorded as an attempt.
@@ -505,7 +505,7 @@ func TestSimulateBudgetChaosAndCatalog(t *testing.T) {
 		t.Fatalf("chaos run: %d %+v %v", r.StatusCode, res, err)
 	}
 	var p struct{ Attempts int }
-	r = do(t, ts, "GET", "/courses/system-design/lessons/07-scaling-out/progress", "", auth)
+	r = do(t, ts, "GET", "/courses/system-design/lessons/11-scaling-out/progress", "", auth)
 	json.NewDecoder(r.Body).Decode(&p)
 	if p.Attempts != 0 {
 		t.Fatalf("chaos runs shouldn't count as attempts: %d", p.Attempts)

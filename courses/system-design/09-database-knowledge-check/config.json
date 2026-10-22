@@ -1,0 +1,97 @@
+{
+  "type": "quiz",
+  "title": "Knowledge Check: Databases",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Why enforce \"a balance can't go negative\" with a CHECK constraint, rather than only in your application code?",
+      "options": [
+        "The database checks numbers faster than application code",
+        "Application code can't compare numbers reliably",
+        "The constraint holds for every program that writes, including scripts, admin tools, and next year's services",
+        "Constraints make the table smaller on disk"
+      ]
+    },
+    {
+      "prompt": "The column accounts.user_id is a foreign key referencing users.id. What does that guarantee?",
+      "options": [
+        "Each user has exactly one account",
+        "Every account's user_id refers to a user that exists",
+        "Accounts are stored in user id order",
+        "Two accounts can't belong to the same user"
+      ]
+    },
+    {
+      "prompt": "A user's email address is copied into every one of their account rows. What's the main risk?",
+      "options": [
+        "The copies can disagree when the email changes",
+        "Reads of an account become slower",
+        "The foreign key from accounts to users stops working",
+        "Emails can no longer be indexed"
+      ]
+    },
+    {
+      "prompt": "Which data fits best into a single embedded document?",
+      "options": [
+        "Friendships between users of a social network",
+        "Products referenced by thousands of orders",
+        "Students and the courses each one is enrolled in",
+        "A user profile and its list of addresses, always loaded together"
+      ]
+    },
+    {
+      "prompt": "A B-tree index has a fanout of 500 and holds about 60 billion keys. How many page reads does finding one key take?",
+      "options": [
+        "About 2",
+        "About 4",
+        "About 36",
+        "About 500"
+      ]
+    },
+    {
+      "prompt": "There's an index on (from_account, created_at). Which query can it speed up?",
+      "options": [
+        "WHERE created_at > '2024-01-01'",
+        "WHERE to_account = 20",
+        "WHERE from_account = 10 ORDER BY created_at DESC LIMIT 10",
+        "WHERE amount > 100"
+      ]
+    },
+    {
+      "prompt": "Why not add an index on every column, just in case?",
+      "options": [
+        "Every index slows down every write to the table and takes space",
+        "A table can only have one index",
+        "Indexes make range queries slower",
+        "Indexes go out of date and return wrong rows"
+      ]
+    },
+    {
+      "prompt": "EXPLAIN QUERY PLAN for a query prints SCAN accounts. What does it mean?",
+      "options": [
+        "The query found its rows with an index lookup",
+        "The results were cached",
+        "The results had to be sorted after fetching them",
+        "The database reads every row of accounts to answer it"
+      ]
+    },
+    {
+      "prompt": "A transfer runs inside a transaction. The process crashes after debiting account 10, before crediting account 20. What does the database hold afterward?",
+      "options": [
+        "Account 10 debited and account 20 unchanged",
+        "Neither write: the debit is rolled back",
+        "Both writes: the credit is replayed on restart",
+        "Whatever the application decides when it restarts"
+      ]
+    },
+    {
+      "prompt": "What does a database do before it reports that a COMMIT succeeded, so the data survives a crash?",
+      "options": [
+        "Keeps the writes in the OS page cache",
+        "Copies the writes to every replica",
+        "Writes them to the write-ahead log and calls fsync",
+        "Updates every index, then waits a second"
+      ]
+    }
+  ]
+}

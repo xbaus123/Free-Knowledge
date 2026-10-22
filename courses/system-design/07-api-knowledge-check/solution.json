@@ -1,0 +1,14 @@
+{
+  "answers": [
+    { "correct_index": 3, "explanation": "4xx errors are the client's fault, so the same request will fail again. A 5xx means the server failed, and a retry might work. 429 Too Many Requests is the exception that says to slow down and try later." },
+    { "correct_index": 1, "explanation": "DELETE changes state, so it isn't safe, but deleting twice has the same effect as deleting once. GET is safe and idempotent, while POST and PATCH aren't necessarily idempotent." },
+    { "correct_index": 0, "explanation": "Idempotency is about the effect, not the response. Either way book 8 ends up deleted. That's what makes it safe to retry a timed-out DELETE without knowing whether the first one ran." },
+    { "correct_index": 2, "explanation": "The client generates one key per logical operation. The server remembers the response for each key it has succeeded with, and returns it again for a retry. Checking the list first races with the original request, which may still be in flight." },
+    { "correct_index": 1, "explanation": "With offsets, the database still walks past every earlier row, and an insert at the top shifts every page, so items repeat or get skipped. A cursor names the last item seen, so the next page is always \"items after this one.\"" },
+    { "correct_index": 0, "explanation": "Needing extra round trips for related data is under-fetching. Receiving fields you don't need is over-fetching. GraphQL avoids both by letting the client name exactly the fields it wants, in one request." },
+    { "correct_index": 3, "explanation": "A .proto file assigns each field a number (title = 2), and the encoding sends that number and a compact binary value instead of repeating \"title\" as text in every message." },
+    { "correct_index": 1, "explanation": "A local call either runs or throws, in nanoseconds. A remote one crosses the network: it can be lost, delayed, or run without the reply arriving. Code has to handle timeouts, retries, and idempotency explicitly." },
+    { "correct_index": 2, "explanation": "One query for the list plus one per book is the N+1 problem. Collecting the 50 author ids and loading them in a single query (what DataLoader automates) makes it two queries in total." },
+    { "correct_index": 0, "explanation": "HTTP caches and CDNs key on the method and URL, and only cache safe GETs. With GraphQL, every query is a POST to one endpoint, so you need your own caching layer." }
+  ]
+}

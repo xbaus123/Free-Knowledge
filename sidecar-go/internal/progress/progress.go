@@ -172,6 +172,51 @@ var migrations = []string{
 	UPDATE telemetry_sessions SET lesson_id = (SELECT new FROM renamed WHERE old = lesson_id)
 		WHERE course_id = 'system-design' AND lesson_id IN (SELECT old FROM renamed);
 	DROP TABLE renamed;`,
+	// System Design 7.0 inserted four knowledge-check quizzes in the
+	// foundations and renumbered every lesson after the first.
+	`CREATE TEMP TABLE renamed (old TEXT PRIMARY KEY, new TEXT NOT NULL);
+	INSERT INTO renamed VALUES
+		('02-networking-basics', '03-networking-basics'),
+		('03-os-and-hardware', '05-os-and-hardware'),
+		('04-api-paradigms', '06-api-paradigms'),
+		('05-database-101', '08-database-101'),
+		('06-back-of-the-envelope', '10-back-of-the-envelope'),
+		('07-scaling-out', '11-scaling-out'),
+		('08-load-balancing-and-gateways', '12-load-balancing-and-gateways'),
+		('09-security-and-identity', '13-security-and-identity'),
+		('10-data-models-and-apis', '14-data-models-and-apis'),
+		('11-three-data-models', '15-three-data-models'),
+		('12-storage-engines', '16-storage-engines'),
+		('13-bitcask-kv-store', '17-bitcask-kv-store'),
+		('14-compaction-and-sstables', '18-compaction-and-sstables'),
+		('15-search-and-indexing', '19-search-and-indexing'),
+		('16-blob-and-tsdb-storage', '20-blob-and-tsdb-storage'),
+		('17-encoding-and-evolution', '21-encoding-and-evolution'),
+		('18-rolling-deployment', '22-rolling-deployment'),
+		('19-replication', '23-replication'),
+		('20-replication-lag-and-consistency', '24-replication-lag-and-consistency'),
+		('21-caching-strategies', '25-caching-strategies'),
+		('22-partitioning-and-rate-limiting', '26-partitioning-and-rate-limiting'),
+		('23-consistent-hashing', '27-consistent-hashing'),
+		('24-geographical-distribution', '28-geographical-distribution'),
+		('25-transactions', '29-transactions'),
+		('26-write-skew', '30-write-skew'),
+		('27-distributed-trouble', '31-distributed-trouble'),
+		('28-resiliency-patterns', '32-resiliency-patterns'),
+		('29-fencing-tokens', '33-fencing-tokens'),
+		('30-consistency-and-consensus', '34-consistency-and-consensus'),
+		('31-raft-leader-election', '35-raft-leader-election'),
+		('32-microservices-and-architecture', '36-microservices-and-architecture'),
+		('33-message-queues', '37-message-queues'),
+		('34-batch-and-stream-processing', '38-batch-and-stream-processing'),
+		('35-change-data-capture', '39-change-data-capture'),
+		('36-observability-and-telemetry', '40-observability-and-telemetry'),
+		('37-capstone', '41-capstone');
+	UPDATE lesson_progress SET lesson_id = (SELECT new FROM renamed WHERE old = lesson_id)
+		WHERE course_id = 'system-design' AND lesson_id IN (SELECT old FROM renamed);
+	UPDATE telemetry_sessions SET lesson_id = (SELECT new FROM renamed WHERE old = lesson_id)
+		WHERE course_id = 'system-design' AND lesson_id IN (SELECT old FROM renamed);
+	DROP TABLE renamed;`,
 }
 
 type Store struct {

@@ -1,0 +1,14 @@
+{
+  "answers": [
+    { "correct_index": 2, "explanation": "There's always more than one program writing to a database, and each can have bugs. A constraint is checked on every write, whoever makes it. A write that would break it fails, and nothing changes." },
+    { "correct_index": 1, "explanation": "A foreign key ensures the row it points to exists, which is how tables relate. A user can still have any number of accounts." },
+    { "correct_index": 0, "explanation": "Denormalizing makes some reads faster, but every copy is one more place to update. Miss one and the data contradicts itself. Normalization stores each fact once and refers to it by id." },
+    { "correct_index": 3, "explanation": "Embedding gives locality: one read returns the whole tree. The other three are many-to-one or many-to-many relationships, which documents handle poorly without joins." },
+    { "correct_index": 1, "explanation": "Each level multiplies the keys reachable by the fanout: 500⁴ ≈ 62 billion. So four levels suffice, and the top levels are almost always cached in memory, so even fewer reads reach the disk." },
+    { "correct_index": 2, "explanation": "The index is sorted by from_account, then created_at within each account. The database jumps to account 10's entries, which are already in time order, and reads ten. It can't help a filter on created_at alone, because that isn't the leftmost column." },
+    { "correct_index": 0, "explanation": "Each insert, update, and delete has to update every index on the table. Add the indexes your important queries need, and no more." },
+    { "correct_index": 3, "explanation": "SCAN is a full table scan. An index lookup shows as SEARCH accounts USING INDEX …, and an after-the-fact sort shows as USE TEMP B-TREE FOR ORDER BY." },
+    { "correct_index": 1, "explanation": "That's atomicity: all of a transaction's writes happen, or none do. A transaction that never committed is rolled back, so nobody ever sees half a transfer." },
+    { "correct_index": 2, "explanation": "That's durability. The page cache alone would lose writes in a crash, so the database forces its log onto disk with fsync before the commit returns. It's one reason commits are slow." }
+  ]
+}
