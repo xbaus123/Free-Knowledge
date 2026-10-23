@@ -76,7 +76,7 @@ export class LessonTelemetry {
     this.dirty = true;
   }
 
-  /** A scratchpad run. */
+  /** A run that isn't graded: the scratchpad, Run, or a chaos experiment. */
   run() {
     this.session.runs++;
     this.dirty = true;

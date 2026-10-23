@@ -28,6 +28,11 @@ type SaveState = "saved" | "unsaved" | "saving" | "error";
 
 const AUTOSAVE_MS = 800;
 
+// Languages whose lesson code can run as a program. Go, C and Rust lessons
+// are libraries with no main (the tests supply it), so they only run under test.
+const RUNNABLE = new Set(["python", "javascript"]);
+const PRINT_HINT: Record<string, string> = { python: "print(...)", javascript: "console.log(...)" };
+
 export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel = "Courses" }: Props) {
   const [course, setCourse] = useState<engine.Course>();
   const [progress, setProgress] = useState<Record<string, engine.LessonProgress>>({});
@@ -250,6 +255,55 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
     }
   }, [lesson, courseId, lessonId, refreshProgress, flushSave]);
 
+  // --- running without the tests ---
+  const runnable = !!lesson && lesson.kind === "code" && RUNNABLE.has(lesson.language);
+  const runCode = useCallback(async () => {
+    if (!lesson || cancelRef.current || lesson.kind !== "code" || !RUNNABLE.has(lesson.language)) return;
+    void flushSave();
+    setRunning(true);
+    setOutput([]);
+    setRunError(undefined);
+    setTab("output");
+    telemetry.current?.run();
+    // The learner's solution runs as the program; a multi-file lesson's other
+    // files (helpers, data) sit beside it so its imports and reads work.
+    const entry = `solution.${extension(lesson.language)}`;
+    const files = lesson.capabilities.multi_file ? filesRef.current : undefined;
+    let printed = false;
+    const { result, cancel } = engine.runStreaming(
+      { language: lesson.language, code: files ? (files[entry] ?? "") : codeRef.current, files, timeoutMs: lesson.timeoutMs },
+      {
+        onOutput: (stream, text) => {
+          printed = true;
+          setOutput((o) => {
+            const last = o[o.length - 1];
+            return last?.stream === stream ? [...o.slice(0, -1), { stream, text: last.text + text }] : [...o, { stream, text }];
+          });
+        },
+      },
+    );
+    cancelRef.current = cancel;
+    const info = (text: string) => setOutput((o) => [...o, { stream: "info", text }]);
+    try {
+      const r = await result;
+      if (!printed && !r.error && !r.timedOut && r.exitCode === 0) {
+        info(`Nothing was printed. Call your code and print the result with ${PRINT_HINT[lesson.language]} to see it here.`);
+      }
+      info(
+        r.error
+          ? r.error
+          : r.timedOut
+            ? `Stopped: time limit reached after ${r.durationMs} ms`
+            : `Exited with code ${r.exitCode} in ${r.durationMs} ms${r.truncated ? " (output truncated at 1 MB)" : ""}`,
+      );
+    } catch (e) {
+      info(String(e).includes("cancelled") ? "Stopped" : String(e));
+    } finally {
+      cancelRef.current = undefined;
+      setRunning(false);
+    }
+  }, [lesson, flushSave]);
+
   // Replay: advance about 20 frames a second.
   const frameCount = simResult?.timeline.frames.length ?? 0;
   useEffect(() => {
@@ -274,17 +328,19 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
   };
   useEffect(() => () => window.clearTimeout(chaosTimer.current), [lessonId]);
 
-  // ⌘/Ctrl+Enter anywhere (Monaco handles it itself while focused).
+  // ⌘/Ctrl+Enter runs the tests and ⇧⌘/Ctrl+Enter runs the code, anywhere
+  // (Monaco handles them itself while focused).
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "Enter" && !e.defaultPrevented && !scratchpadOpen) {
         e.preventDefault();
-        submit();
+        if (e.shiftKey) runCode();
+        else submit();
       }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [submit, scratchpadOpen]);
+  }, [submit, runCode, scratchpadOpen]);
 
   const markComplete = async () => {
     setMarking(true);
@@ -538,6 +594,16 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
                           Stop
                         </button>
                       )}
+                      {runnable && (
+                        <button
+                          onClick={runCode}
+                          disabled={running}
+                          title="Run your code and show its output, without the tests (⇧⌘ Enter)"
+                          className="rounded border border-zinc-700 px-3 py-1 font-medium text-zinc-200 hover:bg-zinc-800 disabled:opacity-40"
+                        >
+                          ▷ Run
+                        </button>
+                      )}
                       <button
                         onClick={submit}
                         disabled={running || !lesson || !!lesson.problems?.length}
@@ -634,6 +700,7 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
                               value={files[activeFile] ?? ""}
                               onChange={(v) => onFileChange(activeFile, v)}
                               onSubmit={submit}
+                              onRun={runnable ? runCode : undefined}
                               readOnly={readOnlyFiles.has(activeFile)}
                             />
                           </div>
@@ -647,6 +714,7 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
                         value={code}
                         onChange={onCodeChange}
                         onSubmit={submit}
+                        onRun={runnable ? runCode : undefined}
                       />
                     )}
                   </div>

@@ -1,7 +1,8 @@
 import { useEffect, useRef } from "react";
 import type { GradeResult, TestResult } from "../lib/engine";
 
-export type OutputLine = { stream: "stdout" | "stderr"; text: string };
+/** "info" lines are the app's own notes, like how a run ended. */
+export type OutputLine = { stream: "stdout" | "stderr" | "info"; text: string };
 export type Tab = "tests" | "output";
 
 interface Props {
@@ -59,7 +60,7 @@ export function OutputPanel({ tab, onTab, output, grade, running, error, onNext 
             <span className="text-zinc-500">{running ? "" : "Your program's output will appear here."}</span>
           ) : (
             output.map((l, i) => (
-              <span key={i} className={l.stream === "stderr" ? "text-red-300" : "text-zinc-200"}>
+              <span key={i} className={l.stream === "stderr" ? "text-red-300" : l.stream === "info" ? "mt-2 block text-zinc-500" : "text-zinc-200"}>
                 {l.text}
               </span>
             ))

@@ -10,6 +10,8 @@ interface Props {
   onChange: (value: string) => void;
   /** ⌘/Ctrl+Enter */
   onSubmit?: () => void;
+  /** ⇧⌘/Ctrl+Enter; without it the key keeps Monaco's "insert line above". */
+  onRun?: () => void;
   /** ⌘/Ctrl+S */
   onSave?: () => void;
   autoFocus?: boolean;
@@ -17,15 +19,20 @@ interface Props {
   readOnly?: boolean;
 }
 
-export function CodeEditor({ path, language, value, onChange, onSubmit, onSave, autoFocus = true, readOnly = false }: Props) {
+export function CodeEditor({ path, language, value, onChange, onSubmit, onRun, onSave, autoFocus = true, readOnly = false }: Props) {
   // Monaco binds commands once at mount; read the latest callbacks through refs.
   const submitRef = useRef(onSubmit);
   submitRef.current = onSubmit;
+  const runRef = useRef(onRun);
+  runRef.current = onRun;
   const saveRef = useRef(onSave);
   saveRef.current = onSave;
 
   const handleMount: OnMount = (editor, monaco) => {
     editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter, () => submitRef.current?.());
+    editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyMod.Shift | monaco.KeyCode.Enter, () =>
+      runRef.current ? runRef.current() : editor.trigger("keyboard", "editor.action.insertLineBefore", null),
+    );
     editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyS, () => saveRef.current?.());
     if (autoFocus) editor.focus();
   };
