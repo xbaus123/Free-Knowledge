@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import * as engine from "../lib/engine";
 import { importWithPrompts } from "../lib/studio";
 
+// Collapsed course cards list this many lessons so every card is the same size.
+const PREVIEW_LESSONS = 5;
+
 interface Props {
   lastLesson?: { courseId: string; lessonId: string };
   onOpen: (courseId: string, lessonId: string) => void;
@@ -14,6 +17,7 @@ export function Home({ lastLesson, onOpen, onStudio }: Props) {
   const [runtimes, setRuntimes] = useState<engine.RuntimeInfo[]>([]);
   const [error, setError] = useState<string>();
   const [notice, setNotice] = useState<string>();
+  const [expanded, setExpanded] = useState<Set<string>>(new Set());
 
   const load = () =>
     Promise.all([engine.courses(), engine.progress(), engine.runtimes()])
@@ -37,6 +41,13 @@ export function Home({ lastLesson, onOpen, onStudio }: Props) {
       setError(e instanceof Error ? e.message : String(e));
     }
   };
+
+  const toggleExpanded = (courseId: string) =>
+    setExpanded((prev) => {
+      const next = new Set(prev);
+      if (!next.delete(courseId)) next.add(courseId);
+      return next;
+    });
 
   const done = (courseId: string, lessonId: string) => !!progress?.courses[courseId]?.[lessonId]?.completed;
 
@@ -105,26 +116,40 @@ export function Home({ lastLesson, onOpen, onStudio }: Props) {
           {courses?.map((c) => {
             const completed = c.lessons.filter((l) => done(c.id, l.id)).length;
             const pct = c.lessons.length ? Math.round((completed / c.lessons.length) * 100) : 0;
+            const isExpanded = expanded.has(c.id);
+            const shown = isExpanded ? c.lessons : c.lessons.slice(0, PREVIEW_LESSONS);
             return (
-              <div key={c.id} className="flex flex-col rounded-lg border border-zinc-800 bg-zinc-900/50 p-4">
+              <div
+                key={c.id}
+                className={`flex flex-col rounded-lg border border-zinc-800 bg-zinc-900/50 p-4 ${isExpanded ? "sm:col-span-2" : ""}`}
+              >
                 <div className="mb-1 flex items-start justify-between gap-2">
-                  <h3 className="font-medium">{c.title}</h3>
-                  {c.source === "user" && <span className="rounded bg-zinc-800 px-1.5 py-0.5 text-[10px] text-zinc-400 uppercase">Yours</span>}
+                  <h3 className="truncate font-medium" title={c.title}>
+                    {c.title}
+                  </h3>
+                  <span className="flex shrink-0 items-center gap-1.5">
+                    {c.problems && c.problems.length > 0 && (
+                      <span
+                        className="text-xs text-amber-400"
+                        title={`${c.problems.length} problem${c.problems.length > 1 ? "s" : ""} loading this course:\n${c.problems.join("\n")}`}
+                      >
+                        ⚠ {c.problems.length}
+                      </span>
+                    )}
+                    {c.source === "user" && <span className="rounded bg-zinc-800 px-1.5 py-0.5 text-[10px] text-zinc-400 uppercase">Yours</span>}
+                  </span>
                 </div>
-                <p className="mb-4 text-sm text-zinc-400">{c.description}</p>
-                {c.problems && c.problems.length > 0 && (
-                  <p className="mb-3 text-xs text-amber-400" title={c.problems.join("\n")}>
-                    ⚠ {c.problems.length} problem{c.problems.length > 1 ? "s" : ""} loading this course
-                  </p>
-                )}
-                <ol className="mb-4 space-y-1 text-sm">
-                  {c.lessons.map((l, i) => (
-                    <li key={l.id}>
+                <p className={`mb-4 text-sm text-zinc-400 ${isExpanded ? "" : "line-clamp-2 min-h-10"}`} title={isExpanded ? undefined : c.description}>
+                  {c.description}
+                </p>
+                <ol className={`text-sm ${isExpanded ? "gap-x-6 sm:columns-2" : "min-h-35"}`}>
+                  {shown.map((l, i) => (
+                    <li key={l.id} className="mb-1 break-inside-avoid">
                       <button
                         onClick={() => onOpen(c.id, l.id)}
                         className="flex w-full items-center gap-2 rounded px-1.5 py-0.5 text-left text-zinc-300 hover:bg-zinc-800"
                       >
-                        <span className={`w-4 text-center ${done(c.id, l.id) ? "text-emerald-400" : "text-zinc-600"}`}>
+                        <span className={`w-5 shrink-0 text-center ${done(c.id, l.id) ? "text-emerald-400" : "text-zinc-600"}`}>
                           {done(c.id, l.id) ? "✓" : i + 1}
                         </span>
                         <span className="truncate">{l.title}</span>
@@ -132,6 +157,13 @@ export function Home({ lastLesson, onOpen, onStudio }: Props) {
                     </li>
                   ))}
                 </ol>
+                <div className="mb-3 h-6">
+                  {c.lessons.length > PREVIEW_LESSONS && (
+                    <button onClick={() => toggleExpanded(c.id)} className="px-1.5 text-xs text-indigo-300 hover:text-indigo-200">
+                      {isExpanded ? "Show fewer lessons ▴" : `Show all ${c.lessons.length} lessons ▾`}
+                    </button>
+                  )}
+                </div>
                 <div className="mt-auto flex items-center gap-3">
                   <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-zinc-800">
                     <div className="h-full rounded-full bg-emerald-500 transition-all" style={{ width: `${pct}%` }} />
