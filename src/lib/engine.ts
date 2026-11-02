@@ -31,6 +31,8 @@ export interface RuntimeInfo {
   requires: string;
   available: boolean;
   path?: string;
+  /** What isn't installed: usually `requires`, or "Rosetta". */
+  missing?: string;
 }
 
 export interface Health {

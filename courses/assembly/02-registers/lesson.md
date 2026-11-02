@@ -47,7 +47,7 @@ Most arithmetic instructions take two operands and overwrite the first:
 | `neg rax`      | `rax = -rax`                  |
 | `inc rax`      | `rax = rax + 1`               |
 
-`rax`, `rcx`, `rdx`, `rsi`, `rdi`, and `r8` to `r11` are yours to overwrite freely inside a function. The others must be preserved; the stack lesson shows how.
+`rax`, `rcx`, `rdx`, `rsi`, `rdi`, and `r8` to `r11` are yours to overwrite freely inside a function. The others (`rbx`, `rbp`, `rsp`, and `r12` to `r15`) belong to the caller and must hold the same values when you return; the stack lesson shows how to borrow them. The tests check this.
 
 ## Your task
 

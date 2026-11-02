@@ -3,6 +3,8 @@ package runner
 import (
 	"context"
 	"os/exec"
+	"path/filepath"
+	"runtime"
 	"strings"
 	"testing"
 	"time"
@@ -62,7 +64,10 @@ func TestCompileErrorReportsCompilePhase(t *testing.T) {
 
 // Assembly builds for x86-64 everywhere, and main needs no _ prefix on macOS.
 func TestAssemblyBuildAndRun(t *testing.T) {
-	requireTool(t, "gcc")
+	asm, _ := Lookup("assembly")
+	if missing, _ := asm.Unavailable(); missing != "" {
+		t.Skipf("%s not installed", missing)
+	}
 	res, err := Run(context.Background(), Request{
 		Language: "assembly",
 		Code:     "    .intel_syntax noprefix\n    .text\n    .globl main\nmain:\n    mov eax, 42\n    ret\n",
@@ -71,6 +76,27 @@ func TestAssemblyBuildAndRun(t *testing.T) {
 		t.Fatal(err)
 	}
 	if res.Phase != PhaseRun || res.ExitCode != 42 {
+		t.Fatalf("unexpected result: %+v", res)
+	}
+}
+
+// Without Rosetta, an Apple Silicon Mac can't run assembly lessons, and says
+// how to install it instead of failing to start the program.
+func TestAssemblyNeedsRosetta(t *testing.T) {
+	if runtime.GOOS != "darwin" || runtime.GOARCH != "arm64" {
+		t.Skip("only Apple Silicon Macs need Rosetta")
+	}
+	defer func(p string) { rosettaPath = p }(rosettaPath)
+	rosettaPath = filepath.Join(t.TempDir(), "missing")
+	asm, _ := Lookup("assembly")
+	if missing, msg := asm.Unavailable(); missing != "Rosetta" || !strings.Contains(msg, "softwareupdate --install-rosetta") {
+		t.Fatalf("got %q, %q", missing, msg)
+	}
+	res, err := Run(context.Background(), Request{Language: "assembly", Code: "    .globl main\nmain:\n    ret\n"}, nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if res.ExitCode != -1 || !strings.Contains(res.Error, "Rosetta") {
 		t.Fatalf("unexpected result: %+v", res)
 	}
 }

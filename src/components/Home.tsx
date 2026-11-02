@@ -186,7 +186,7 @@ export function Home({ lastLesson, onOpen, onStudio }: Props) {
 
         {missing.length > 0 && (
           <p className="mt-8 text-xs text-zinc-500">
-            Not installed: {missing.map((r) => `${r.name} (${r.requires})`).join(", ")}. Lessons in these languages can't run until
+            Not installed: {missing.map((r) => `${r.name} (${r.missing ?? r.requires})`).join(", ")}. Lessons in these languages can't run until
             they're installed.
           </p>
         )}

@@ -59,6 +59,24 @@ func (l Language) TestFile() string {
 	return "solution_test" + l.Ext
 }
 
+// rosettaPath exists once Rosetta is installed. Apple Silicon Macs need it
+// to run the x86-64 programs assembly lessons build.
+var rosettaPath = "/Library/Apple/usr/share/rosetta/rosetta"
+
+// Unavailable reports what must be installed before code in l can run
+// (empty if nothing), and a message explaining it.
+func (l Language) Unavailable() (missing, message string) {
+	if _, err := exec.LookPath(l.Requires); err != nil {
+		return l.Requires, l.Requires + " is not installed or not on PATH"
+	}
+	if l.ID == "assembly" && runtime.GOOS == "darwin" && runtime.GOARCH == "arm64" {
+		if _, err := os.Stat(rosettaPath); err != nil {
+			return "Rosetta", "Rosetta is not installed, and this Mac needs it to run x86-64 code. Install it by running: softwareupdate --install-rosetta"
+		}
+	}
+	return "", ""
+}
+
 // AssemblyFlags are the gcc flags that build x86-64 code on every platform:
 // Apple Silicon Macs build for x86_64 and run it under Rosetta.
 func AssemblyFlags() []string {
@@ -98,13 +116,16 @@ type RuntimeInfo struct {
 	Language
 	Available bool   `json:"available"`
 	Path      string `json:"path,omitempty"`
+	// Missing is what isn't installed: usually Requires, or "Rosetta".
+	Missing string `json:"missing,omitempty"`
 }
 
 func Runtimes() []RuntimeInfo {
 	out := make([]RuntimeInfo, 0, len(languages))
 	for _, l := range languages {
-		p, err := exec.LookPath(l.Requires)
-		out = append(out, RuntimeInfo{Language: l, Available: err == nil, Path: p})
+		p, _ := exec.LookPath(l.Requires)
+		missing, _ := l.Unavailable()
+		out = append(out, RuntimeInfo{Language: l, Available: missing == "", Path: p, Missing: missing})
 	}
 	return out
 }
@@ -158,8 +179,8 @@ func Run(ctx context.Context, req Request, onOutput OutputFunc) (Result, error) 
 	if !ok {
 		return Result{}, fmt.Errorf("%w: %q", ErrUnknownLanguage, req.Language)
 	}
-	if _, err := exec.LookPath(lang.Requires); err != nil {
-		return Result{Phase: PhaseCompile, ExitCode: -1, Error: fmt.Sprintf("%s is not installed or not on PATH", lang.Requires)}, nil
+	if missing, msg := lang.Unavailable(); missing != "" {
+		return Result{Phase: PhaseCompile, ExitCode: -1, Error: msg}, nil
 	}
 
 	dir, err := os.MkdirTemp("", "fk-run-*")

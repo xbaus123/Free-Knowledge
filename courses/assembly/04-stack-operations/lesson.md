@@ -57,4 +57,4 @@ Implement in `starter.s`:
 2. `long square(long x)` returns `x * x`.
 3. `long sum_of_squares(long a, long b)` returns `a * a + b * b` by calling your `square` twice. `b` has to survive the first call and `a * a` the second, so keep each in a callee-saved register while `square` runs. One register can hold them in turn.
 
-The tests can't see every register, so a missing save may still pass here, but code that calls yours would break. Treat the saving rules as part of the task.
+The tests check that `rbx`, `rbp`, `rsp`, and `r12` to `r15` come back unchanged from every function.

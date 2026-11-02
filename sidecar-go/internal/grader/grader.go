@@ -17,7 +17,6 @@ import (
 	"fmt"
 	"maps"
 	"os"
-	"os/exec"
 	"path/filepath"
 	"slices"
 	"strings"
@@ -93,10 +92,10 @@ var harnesses = map[string]harness{
 		run:     []string{"{bin}"},
 	},
 	// Assembly is linked with C tests that declare its functions through
-	// fk_asm.h.
+	// fk_asm.h, and with fk_check.s, which checks saved registers.
 	"assembly": {
-		files:   map[string]string{"fk_test.h": "harness/fk_test.h", "fk_asm.h": "harness/fk_asm.h"},
-		compile: slices.Concat([]string{"gcc", "-Wall", "-O0"}, runner.AssemblyFlags(), []string{"-o", "{bin}", "{sources}", "solution_test.c"}),
+		files:   map[string]string{"fk_test.h": "harness/fk_test.h", "fk_asm.h": "harness/fk_asm.h", "fk_check.s": "harness/fk_check.s"},
+		compile: slices.Concat([]string{"gcc", "-Wall", "-O0"}, runner.AssemblyFlags(), []string{"-o", "{bin}", "{sources}", "fk_check.s", "solution_test.c"}),
 		run:     []string{"{bin}"},
 	},
 	"go": {
@@ -243,8 +242,8 @@ func gradeSuite(ctx context.Context, l *course.Lesson, suite course.TestSuite, f
 		r.DurationMs = time.Since(start).Milliseconds()
 		return r, nil
 	}
-	if _, err := exec.LookPath(lang.Requires); err != nil {
-		return finish(Result{Result: runner.Result{Phase: runner.PhaseCompile, ExitCode: -1, Error: lang.Requires + " is not installed or not on PATH"}})
+	if missing, msg := lang.Unavailable(); missing != "" {
+		return finish(Result{Result: runner.Result{Phase: runner.PhaseCompile, ExitCode: -1, Error: msg}})
 	}
 
 	dir, err := os.MkdirTemp("", "fk-grade-*")

@@ -4,6 +4,7 @@ import { loader } from "@monaco-editor/react";
 import * as monaco from "monaco-esm/editor/editor.api";
 import EditorWorker from "monaco-editor/editor/editor.worker?worker";
 import "./monaco-features";
+import { X86_REGISTERS } from "./asm";
 import "monaco-esm/languages/definitions/python/register";
 import "monaco-esm/languages/definitions/javascript/register";
 import "monaco-esm/languages/definitions/go/register";
@@ -23,8 +24,7 @@ self.MonacoEnvironment = { getWorker: () => new EditorWorker() };
 loader.config({ monaco });
 
 // Monaco ships no assembly language, so a small one for GNU as x86-64 in
-// Intel syntax (the Assembly course): comments, directives, labels,
-// registers, and numbers.
+// Intel syntax (the Assembly course), matching lesson code blocks (asm.ts).
 monaco.languages.register({ id: "asm", extensions: [".s", ".S", ".asm"] });
 monaco.languages.setLanguageConfiguration("asm", {
   comments: { lineComment: "#", blockComment: ["/*", "*/"] },
@@ -32,8 +32,7 @@ monaco.languages.setLanguageConfiguration("asm", {
 });
 monaco.languages.setMonarchTokensProvider("asm", {
   ignoreCase: true,
-  registers:
-    /\b(?:[re]?(?:ax|bx|cx|dx|si|di|sp|bp|ip)|[abcd][lh]|(?:si|di|sp|bp)l|r(?:[89]|1[0-5])[dwb]?|[xy]mm(?:[0-9]|1[0-5])|[cdefgs]s)\b/,
+  registers: X86_REGISTERS,
   tokenizer: {
     root: [
       [/#.*$/, "comment"],

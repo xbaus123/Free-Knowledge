@@ -38,3 +38,12 @@ TEST(sum_array_empty) {
     long xs[] = {99};
     EXPECT_EQ_INT(sum_array(xs, 0), 0);
 }
+
+TEST(max2_preserves_registers) {
+    EXPECT_PRESERVES(max2, (4, 9));
+}
+
+TEST(sum_array_preserves_registers) {
+    long xs[] = {1, 2, 3};
+    EXPECT_PRESERVES(sum_array, (xs, 3));
+}

@@ -4,7 +4,6 @@ import (
 	"context"
 	"encoding/json"
 	"os"
-	"os/exec"
 	"path/filepath"
 	"strings"
 	"testing"
@@ -30,8 +29,8 @@ func courseLesson(t *testing.T, courseID, id string) *course.Lesson {
 		t.Fatalf("lesson problems: %v", l.Problems)
 	}
 	lang, _ := runner.Lookup(l.Language)
-	if _, err := exec.LookPath(lang.Requires); err != nil {
-		t.Skipf("%s not installed", lang.Requires)
+	if missing, _ := lang.Unavailable(); missing != "" {
+		t.Skipf("%s not installed", missing)
 	}
 	return l
 }
@@ -40,6 +39,33 @@ func courseLesson(t *testing.T, courseID, id string) *course.Lesson {
 func TestSampleCourse(t *testing.T) { testCodeLessons(t, "getting-started") }
 
 func TestAssemblyCourse(t *testing.T) { testCodeLessons(t, "assembly") }
+
+// The reference without its push rbx / pop rbx still returns the right
+// sums, but its caller's rbx is lost.
+func TestAssemblyRegisterCheck(t *testing.T) {
+	l := courseLesson(t, "assembly", "04-stack-operations")
+	ref, err := os.ReadFile(l.ReferenceFile)
+	if err != nil {
+		t.Fatal(err)
+	}
+	code := strings.NewReplacer("    push rbx", "", "    pop rbx", "").Replace(string(ref))
+	res, err := Grade(context.Background(), l, code, nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, tr := range res.Tests {
+		want := StatusPass
+		if tr.Name == "sum_of_squares_preserves_registers" {
+			want = StatusFail
+			if !strings.Contains(tr.Message, "sum_of_squares(3, 4) changed rbx without restoring it") {
+				t.Errorf("unexpected message: %q", tr.Message)
+			}
+		}
+		if tr.Status != want {
+			t.Errorf("%s: got %s, want %s (%s)", tr.Name, tr.Status, want, tr.Message)
+		}
+	}
+}
 
 func testCodeLessons(t *testing.T, courseID string) {
 	c, err := store.Course(courseID)

@@ -1,7 +1,11 @@
 import { openUrl } from "@tauri-apps/plugin-opener";
 import ReactMarkdown from "react-markdown";
-import rehypeHighlight from "rehype-highlight";
+import { common } from "lowlight";
+import rehypeHighlight, { type Options as HighlightOptions } from "rehype-highlight";
 import remarkGfm from "remark-gfm";
+import { asm } from "../lib/asm";
+
+const highlight: HighlightOptions = { languages: { ...common, asm }, aliases: { asm: ["s", "assembly"] } };
 
 /** Renders lesson markdown. Links open in the system browser, never in the app window. */
 export function Markdown({ children }: { children: string }) {
@@ -9,7 +13,7 @@ export function Markdown({ children }: { children: string }) {
     <div className="prose prose-sm prose-invert max-w-none prose-pre:bg-zinc-900 prose-pre:border prose-pre:border-zinc-800 prose-code:before:content-none prose-code:after:content-none prose-code:text-indigo-200">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
-        rehypePlugins={[rehypeHighlight]}
+        rehypePlugins={[[rehypeHighlight, highlight]]}
         components={{
           a: ({ href, children }) => (
             <a

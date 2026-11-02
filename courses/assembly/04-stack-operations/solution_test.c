@@ -53,3 +53,12 @@ TEST(sum_of_squares_with_negatives) {
 TEST(sum_of_squares_with_zero) {
     EXPECT_EQ_INT(sum_of_squares(0, 9), 81);
 }
+
+TEST(reverse_preserves_registers) {
+    long xs[] = {1, 2, 3};
+    EXPECT_PRESERVES(reverse, (xs, 3));
+}
+
+TEST(sum_of_squares_preserves_registers) {
+    EXPECT_PRESERVES(sum_of_squares, (3, 4));
+}

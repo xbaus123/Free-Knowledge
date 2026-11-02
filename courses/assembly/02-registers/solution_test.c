@@ -26,3 +26,11 @@ TEST(low_byte_ignores_upper_bits) {
 TEST(low_byte_of_negative_number) {
     EXPECT_EQ_INT(low_byte(-1), 255);
 }
+
+TEST(linear_preserves_registers) {
+    EXPECT_PRESERVES(linear, (3, 4, 5));
+}
+
+TEST(low_byte_preserves_registers) {
+    EXPECT_PRESERVES(low_byte, (0x1234));
+}
