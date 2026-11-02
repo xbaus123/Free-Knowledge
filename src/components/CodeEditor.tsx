@@ -51,7 +51,7 @@ export function CodeEditor({ path, language, value, onChange, onSubmit, onRun, o
         minimap: { enabled: false },
         scrollBeyondLastLine: false,
         automaticLayout: true,
-        tabSize: language === "python" || language === "rust" || language === "c" ? 4 : 2,
+        tabSize: language === "python" || language === "rust" || language === "c" || language === "assembly" ? 4 : 2,
         insertSpaces: language !== "go",
         wordWrap: language === "markdown" ? "on" : "off",
         padding: { top: 12 },

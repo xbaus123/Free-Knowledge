@@ -265,7 +265,7 @@ func writeDojo(w io.Writer, c *course.Course, manifest dojoManifest) error {
 	return zw.Close()
 }
 
-var lessonFilePattern = regexp.MustCompile(`^(lesson\.md|config\.json|(starter|solution_test|reference)\.(py|js|go|c|rs)|(starter|solution)\.json)$`)
+var lessonFilePattern = regexp.MustCompile(`^(lesson\.md|config\.json|(starter|solution_test|reference)\.(py|js|go|c|rs|s)|(starter|solution)\.json)$`)
 
 func allowedLessonFile(name string) bool { return lessonFilePattern.MatchString(name) }
 

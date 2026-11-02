@@ -292,7 +292,7 @@ func (s *Studio) Lesson(courseID, lessonID string) (LessonSource, error) {
 			src.LanguageTests[suite.Language.ID] = readOptional(suite.File)
 		}
 		if lang, ok := runner.Lookup(l.Language); ok {
-			src.Tests = readOptional(filepath.Join(l.Dir, "solution_test"+lang.Ext))
+			src.Tests = readOptional(filepath.Join(l.Dir, lang.TestFile()))
 			src.Reference = readOptional(filepath.Join(l.Dir, "reference"+lang.Ext))
 			if l.Capabilities.MultiFile {
 				src.StarterFiles = map[string]string{}
@@ -580,13 +580,13 @@ func (s *Studio) writeLesson(courseDir, kind string, src LessonSource, oldLangua
 		// One test file per language; remove tests for languages dropped.
 		for _, other := range runner.Languages() {
 			if !slices.Contains(src.Languages, other.ID) {
-				os.Remove(filepath.Join(dir, "solution_test"+other.Ext))
+				os.Remove(filepath.Join(dir, other.TestFile()))
 			}
 		}
-		files["solution_test"+lang.Ext] = []byte(src.Tests)
+		files[lang.TestFile()] = []byte(src.Tests)
 		for _, id := range src.Languages[1:] {
 			l, _ := runner.Lookup(id)
-			files["solution_test"+l.Ext] = []byte(src.LanguageTests[id])
+			files[l.TestFile()] = []byte(src.LanguageTests[id])
 		}
 		if caps.MultiFile {
 			// Editable files only: grading always uses the lesson's copy of

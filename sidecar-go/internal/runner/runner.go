@@ -37,6 +37,9 @@ type Language struct {
 	Compile  []string `json:"-"`
 	Run      []string `json:"-"`
 	Requires string   `json:"requires"`
+	// TestExt is the hidden tests' extension when they're written in another
+	// language (assembly is tested from C); empty means Ext.
+	TestExt string `json:"testExt,omitempty"`
 }
 
 var languages = []Language{
@@ -45,6 +48,37 @@ var languages = []Language{
 	{ID: "go", Name: "Go", File: "main.go", Ext: ".go", Compile: []string{"go", "build", "-o", "{bin}", "main.go"}, Run: []string{"{bin}"}, Requires: "go"},
 	{ID: "c", Name: "C", File: "main.c", Ext: ".c", Compile: []string{"gcc", "-std=c17", "-Wall", "-O0", "-o", "{bin}", "main.c"}, Run: []string{"{bin}"}, Requires: "gcc"},
 	{ID: "rust", Name: "Rust", File: "main.rs", Ext: ".rs", Compile: []string{"rustc", "--edition=2021", "-o", "{bin}", "main.rs"}, Run: []string{"{bin}"}, Requires: "rustc"},
+	{ID: "assembly", Name: "Assembly (x86-64)", File: "main.s", Ext: ".s", TestExt: ".c", Compile: assemblyCompile(), Run: []string{"{bin}"}, Requires: "gcc"},
+}
+
+// TestFile is the name of the lesson's hidden tests in this language.
+func (l Language) TestFile() string {
+	if l.TestExt != "" {
+		return "solution_test" + l.TestExt
+	}
+	return "solution_test" + l.Ext
+}
+
+// AssemblyFlags are the gcc flags that build x86-64 code on every platform:
+// Apple Silicon Macs build for x86_64 and run it under Rosetta.
+func AssemblyFlags() []string {
+	switch runtime.GOOS {
+	case "darwin":
+		return []string{"-arch", "x86_64"}
+	case "linux":
+		return []string{"-Wa,--noexecstack"}
+	}
+	return nil
+}
+
+// assemblyCompile builds a program from main.s. Learners write plain symbol
+// names, so on macOS their main is aliased to the _main the linker expects.
+func assemblyCompile() []string {
+	argv := append([]string{"gcc", "-Wall", "-O0"}, AssemblyFlags()...)
+	if runtime.GOOS == "darwin" {
+		argv = append(argv, "-Wl,-alias,main,_main")
+	}
+	return append(argv, "-o", "{bin}", "main.s")
 }
 
 // Languages lists every supported language.

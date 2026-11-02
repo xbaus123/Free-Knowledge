@@ -92,6 +92,13 @@ var harnesses = map[string]harness{
 		compile: []string{"gcc", "-std=c17", "-Wall", "-O0", "-o", "{bin}", "{sources}", "solution_test.c", "-lm"},
 		run:     []string{"{bin}"},
 	},
+	// Assembly is linked with C tests that declare its functions through
+	// fk_asm.h.
+	"assembly": {
+		files:   map[string]string{"fk_test.h": "harness/fk_test.h", "fk_asm.h": "harness/fk_asm.h"},
+		compile: slices.Concat([]string{"gcc", "-Wall", "-O0"}, runner.AssemblyFlags(), []string{"-o", "{bin}", "{sources}", "solution_test.c"}),
+		run:     []string{"{bin}"},
+	},
 	"go": {
 		inline:  map[string]string{"go.mod": "module lesson\n\ngo 1.21\n"},
 		env:     []string{"GOTOOLCHAIN=local", "GOFLAGS=-mod=mod", "GOPROXY=off"},
@@ -451,7 +458,7 @@ func setupWorkspace(dir string, suite course.TestSuite, h harness, files map[str
 	if err != nil {
 		return nil, fmt.Errorf("read tests: %w", err)
 	}
-	if err := write("solution_test"+lang.Ext, tests); err != nil {
+	if err := write(lang.TestFile(), tests); err != nil {
 		return nil, err
 	}
 	for name, src := range h.files {

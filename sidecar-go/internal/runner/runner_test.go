@@ -60,6 +60,21 @@ func TestCompileErrorReportsCompilePhase(t *testing.T) {
 	}
 }
 
+// Assembly builds for x86-64 everywhere, and main needs no _ prefix on macOS.
+func TestAssemblyBuildAndRun(t *testing.T) {
+	requireTool(t, "gcc")
+	res, err := Run(context.Background(), Request{
+		Language: "assembly",
+		Code:     "    .intel_syntax noprefix\n    .text\n    .globl main\nmain:\n    mov eax, 42\n    ret\n",
+	}, nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if res.Phase != PhaseRun || res.ExitCode != 42 {
+		t.Fatalf("unexpected result: %+v", res)
+	}
+}
+
 func TestGoBuildAndRun(t *testing.T) {
 	requireTool(t, "go")
 	res, err := Run(context.Background(), Request{

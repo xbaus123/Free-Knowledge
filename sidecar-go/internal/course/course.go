@@ -6,7 +6,7 @@
 //	<root>/<course-id>/<lesson-id>/lesson.md
 //	<root>/<course-id>/<lesson-id>/config.json        (optional)
 //	<root>/<course-id>/<lesson-id>/starter.<ext>      (optional; loaded into the editor)
-//	<root>/<course-id>/<lesson-id>/solution_test.<ext>    (one per language)
+//	<root>/<course-id>/<lesson-id>/solution_test.<ext>    (one per language; assembly is tested from C)
 //	<root>/<course-id>/<lesson-id>/reference.<ext>    (optional; author's solution, used for validation)
 //
 // System design lessons ("type": "system-design" in config.json) use
@@ -484,7 +484,7 @@ func loadLesson(c *Course, id string) (*Lesson, error) {
 	if len(l.Languages) > 1 && !l.Capabilities.MultiFile {
 		l.Problems = append(l.Problems, `a lesson with more than one language needs "multi_file" in its capabilities`)
 	}
-	seen := map[string]bool{}
+	seen, testFiles := map[string]bool{}, map[string]bool{}
 	for _, id := range l.Languages {
 		tl, ok := runner.Lookup(id)
 		switch {
@@ -494,12 +494,15 @@ func loadLesson(c *Course, id string) (*Lesson, error) {
 		case seen[tl.ID]:
 			l.Problems = append(l.Problems, fmt.Sprintf("%s is listed twice", tl.Name))
 			continue
+		case testFiles[tl.TestFile()]:
+			l.Problems = append(l.Problems, fmt.Sprintf("%s would share %s with another language", tl.Name, tl.TestFile()))
+			continue
 		}
-		seen[tl.ID] = true
-		if p := filepath.Join(dir, "solution_test"+tl.Ext); fileExists(p) {
+		seen[tl.ID], testFiles[tl.TestFile()] = true, true
+		if p := filepath.Join(dir, tl.TestFile()); fileExists(p) {
 			l.Tests = append(l.Tests, TestSuite{Language: tl, File: p})
 		} else {
-			l.Problems = append(l.Problems, "solution_test"+tl.Ext+" is missing")
+			l.Problems = append(l.Problems, tl.TestFile()+" is missing")
 		}
 	}
 	if b, err := os.ReadFile(filepath.Join(dir, "starter"+lang.Ext)); err == nil {

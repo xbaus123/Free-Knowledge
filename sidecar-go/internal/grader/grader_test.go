@@ -17,7 +17,12 @@ var store = course.NewStore([]course.Root{{Path: filepath.Join("..", "..", "..",
 
 func lesson(t *testing.T, id string) *course.Lesson {
 	t.Helper()
-	l, err := store.Lesson("getting-started", id)
+	return courseLesson(t, "getting-started", id)
+}
+
+func courseLesson(t *testing.T, courseID, id string) *course.Lesson {
+	t.Helper()
+	l, err := store.Lesson(courseID, id)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -32,8 +37,12 @@ func lesson(t *testing.T, id string) *course.Lesson {
 }
 
 // Every sample lesson: the reference passes and the starter fails.
-func TestSampleCourse(t *testing.T) {
-	c, err := store.Course("getting-started")
+func TestSampleCourse(t *testing.T) { testCodeLessons(t, "getting-started") }
+
+func TestAssemblyCourse(t *testing.T) { testCodeLessons(t, "assembly") }
+
+func testCodeLessons(t *testing.T, courseID string) {
+	c, err := store.Course(courseID)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -46,7 +55,7 @@ func TestSampleCourse(t *testing.T) {
 		}
 		t.Run(s.ID, func(t *testing.T) {
 			t.Parallel()
-			l := lesson(t, s.ID)
+			l := courseLesson(t, courseID, s.ID)
 
 			ref, err := Validate(context.Background(), l, nil)
 			if err != nil {

@@ -22,6 +22,39 @@ self.MonacoEnvironment = { getWorker: () => new EditorWorker() };
 
 loader.config({ monaco });
 
+// Monaco ships no assembly language, so a small one for GNU as x86-64 in
+// Intel syntax (the Assembly course): comments, directives, labels,
+// registers, and numbers.
+monaco.languages.register({ id: "asm", extensions: [".s", ".S", ".asm"] });
+monaco.languages.setLanguageConfiguration("asm", {
+  comments: { lineComment: "#", blockComment: ["/*", "*/"] },
+  brackets: [["[", "]"]],
+});
+monaco.languages.setMonarchTokensProvider("asm", {
+  ignoreCase: true,
+  registers:
+    /\b(?:[re]?(?:ax|bx|cx|dx|si|di|sp|bp|ip)|[abcd][lh]|(?:si|di|sp|bp)l|r(?:[89]|1[0-5])[dwb]?|[xy]mm(?:[0-9]|1[0-5])|[cdefgs]s)\b/,
+  tokenizer: {
+    root: [
+      [/#.*$/, "comment"],
+      [/\/\/.*$/, "comment"],
+      [/\/\*/, "comment", "@comment"],
+      [/^\s*[A-Za-z_.$][\w.$]*:/, "type.identifier"],
+      [/\.[A-Za-z_]\w*/, "keyword"],
+      [/@registers/, "variable.predefined"],
+      [/\b(?:byte|word|dword|qword)\s+ptr\b/, "keyword"],
+      [/\b(?:0x[0-9a-f]+|0b[01]+|\d+)\b/, "number"],
+      [/"(?:[^"\\]|\\.)*"/, "string"],
+      [/'(?:[^'\\]|\\.)'/, "string"],
+      [/[A-Za-z_][\w.$]*/, "identifier"],
+    ],
+    comment: [
+      [/\*\//, "comment", "@pop"],
+      [/./, "comment"],
+    ],
+  },
+});
+
 monaco.editor.defineTheme("freeknowledge", {
   base: "vs-dark",
   inherit: true,
@@ -48,10 +81,12 @@ const EXTENSION_LANGUAGES: Record<string, string> = {
   yaml: "yaml",
   yml: "yaml",
   sh: "shell",
+  s: "asm",
+  asm: "asm",
 };
 
 /** Picks an editor language from a file name ("plaintext" if unknown). */
 export const languageForPath = (path: string) => EXTENSION_LANGUAGES[path.split(".").pop()?.toLowerCase() ?? ""] ?? "plaintext";
 
 /** Maps engine language ids to Monaco language ids. */
-export const monacoLanguage = (id: string) => ({ javascript: "javascript", c: "c" })[id] ?? id;
+export const monacoLanguage = (id: string) => ({ javascript: "javascript", c: "c", assembly: "asm" })[id] ?? id;

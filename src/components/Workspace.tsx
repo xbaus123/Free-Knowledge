@@ -802,7 +802,7 @@ function parseQuizAnswers(saved: string | null): number[] | undefined {
 }
 
 function extension(language?: string) {
-  return ({ python: "py", javascript: "js", go: "go", c: "c", rust: "rs" } as Record<string, string>)[language ?? ""] ?? "txt";
+  return ({ python: "py", javascript: "js", go: "go", c: "c", rust: "rs", assembly: "s" } as Record<string, string>)[language ?? ""] ?? "txt";
 }
 
 function SaveIndicator({ state }: { state: SaveState }) {
