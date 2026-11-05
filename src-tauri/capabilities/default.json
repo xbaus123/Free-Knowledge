@@ -7,7 +7,15 @@
   ],
   "permissions": [
     "core:default",
-    "opener:allow-open-url",
+    "opener:allow-default-urls",
+    {
+      "identifier": "opener:allow-open-url",
+      "allow": [
+        {
+          "url": "claude://claude.ai/new?q=*"
+        }
+      ]
+    },
     "dialog:allow-open",
     "dialog:allow-save",
     "dialog:allow-ask",

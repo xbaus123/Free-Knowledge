@@ -3,6 +3,7 @@ import { Group, Panel, Separator } from "react-resizable-panels";
 import * as engine from "../lib/engine";
 import { languageForPath } from "../lib/monaco";
 import { classifyGrade, LessonTelemetry, telemetryAllowed } from "../lib/telemetry";
+import { AskClaudeButton } from "./AskClaudeButton";
 import { CodeEditor } from "./CodeEditor";
 import { FileTree, LockIcon } from "./FileTree";
 import { FindBar } from "./FindBar";
@@ -569,6 +570,20 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
                     </span>
                     <SaveIndicator state={saveState} />
                     <div className="ml-auto flex items-center gap-2">
+                      {lesson && !confirmReset && (
+                        <AskClaudeButton
+                          lesson={lesson}
+                          courseTitle={course?.title}
+                          files={
+                            multiFile
+                              ? Object.fromEntries(Object.entries(files).filter(([path]) => !readOnlyFiles.has(path)))
+                              : { [isDesign ? "architecture.json" : `solution.${extension(lesson.language)}`]: code }
+                          }
+                          grade={isDesign ? undefined : grade}
+                          output={isDesign ? [] : output}
+                          runError={runError}
+                        />
+                      )}
                       {confirmReset ? (
                         <>
                           <span className="text-xs text-zinc-400">Replace your {isDesign ? "diagram" : "code"} with the starter?</span>
