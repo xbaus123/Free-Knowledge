@@ -300,21 +300,22 @@ func gradeCode(ctx context.Context, l *course.Lesson, code string, files map[str
 
 // handleSubmit grades a submission: {"code": "..."} for code lessons
 // ({"files": {...}} for multi-file ones),
-// {"answers": [0, 2]} for quizzes ({"answer": 0} for one question), and {}
+// {"answers": [0, "written text"]} for quizzes ({"answer": 0} for one
+// question), and {}
 // for articles (marks them read).
 func (s *Server) handleSubmit(w http.ResponseWriter, r *http.Request) {
 	var body struct {
-		Code    string            `json:"code"`
-		Files   map[string]string `json:"files"`
-		Answer  *int              `json:"answer"`
-		Answers []int             `json:"answers"`
+		Code    string                `json:"code"`
+		Files   map[string]string     `json:"files"`
+		Answer  *grader.QuizResponse  `json:"answer"`
+		Answers []grader.QuizResponse `json:"answers"`
 	}
 	if err := json.NewDecoder(http.MaxBytesReader(w, r.Body, maxBodyBytes)).Decode(&body); err != nil {
 		writeJSON(w, http.StatusBadRequest, map[string]string{"error": "invalid JSON body: " + err.Error()})
 		return
 	}
 	if body.Answers == nil && body.Answer != nil {
-		body.Answers = []int{*body.Answer}
+		body.Answers = []grader.QuizResponse{*body.Answer}
 	}
 	s.grade(w, r, func(l *course.Lesson) (grader.Result, error) {
 		saved := body.Code
@@ -325,7 +326,7 @@ func (s *Server) handleSubmit(w http.ResponseWriter, r *http.Request) {
 				return res, errors.New(`quiz submissions need "answers"`)
 			}
 			// Saved like code, so the quiz reopens with the last choices selected.
-			b, _ := json.Marshal(map[string][]int{"answers": body.Answers})
+			b, _ := json.Marshal(map[string][]grader.QuizResponse{"answers": body.Answers})
 			saved = string(b)
 			res, err = grader.GradeAnswers(l, body.Answers)
 		} else {
@@ -339,15 +340,15 @@ func (s *Server) handleSubmit(w http.ResponseWriter, r *http.Request) {
 }
 
 // handleCheckAnswer checks one answer of a quiz with immediate feedback:
-// {"question": 0, "answer": 2} → a test result for that question. It isn't
+// {"question": 0, "answer": 2} (or "answer": "text") → a test result for that question. It isn't
 // recorded as an attempt; the quiz is submitted once every answer is right.
 func (s *Server) handleCheckAnswer(w http.ResponseWriter, r *http.Request) {
 	var body struct {
-		Question *int `json:"question"`
-		Answer   *int `json:"answer"`
+		Question *int                 `json:"question"`
+		Answer   *grader.QuizResponse `json:"answer"`
 	}
 	if err := json.NewDecoder(http.MaxBytesReader(w, r.Body, maxBodyBytes)).Decode(&body); err != nil || body.Question == nil || body.Answer == nil {
-		writeJSON(w, http.StatusBadRequest, map[string]string{"error": `send {"question": n, "answer": n}`})
+		writeJSON(w, http.StatusBadRequest, map[string]string{"error": `send {"question": n, "answer": n or "text"}`})
 		return
 	}
 	l, err := s.cfg.Courses.Lesson(r.PathValue("course"), r.PathValue("lesson"))

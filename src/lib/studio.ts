@@ -49,11 +49,18 @@ export interface LessonSource {
 
 /** A quiz question including its answer, as authors see it. */
 export interface QuestionSource {
+  /** Multiple choice (default), true/false, or a typed answer. */
+  type?: QuestionType;
   prompt: string;
+  /** Choice and true/false questions. */
   options: string[];
   correctIndex: number;
+  /** Written questions: answers that count as right (case and spacing don't matter). */
+  acceptedAnswers?: string[];
   explanation: string;
 }
+
+export type QuestionType = "choice" | "true_false" | "written";
 
 export interface LessonCheck {
   lessonId: string;

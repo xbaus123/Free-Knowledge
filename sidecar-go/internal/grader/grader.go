@@ -303,11 +303,72 @@ func gradeSuite(ctx context.Context, l *course.Lesson, suite course.TestSuite, f
 	return finish(r)
 }
 
-// GradeAnswers checks quiz answers (one zero-based option index per
-// question) against the hidden solution.json. Each question gets a result:
-// a correct one shows its explanation; a wrong one doesn't reveal the right
-// answer, so the learner can try again.
-func GradeAnswers(l *course.Lesson, answers []int) (Result, error) {
+// QuizResponse is a learner's answer to one quiz question: an option index
+// (JSON number) for choice and true/false questions, or the typed text (JSON
+// string) for written ones.
+type QuizResponse struct {
+	Index  int
+	Text   string
+	IsText bool
+}
+
+// Choice and Written build responses.
+func Choice(i int) QuizResponse     { return QuizResponse{Index: i} }
+func Written(s string) QuizResponse { return QuizResponse{Text: s, IsText: true} }
+
+func (r *QuizResponse) UnmarshalJSON(b []byte) error {
+	var i int
+	if err := json.Unmarshal(b, &i); err == nil {
+		*r = Choice(i)
+		return nil
+	}
+	var s string
+	if err := json.Unmarshal(b, &s); err != nil {
+		return errors.New("each answer must be an option number or the written text")
+	}
+	*r = Written(s)
+	return nil
+}
+
+func (r QuizResponse) MarshalJSON() ([]byte, error) {
+	if r.IsText {
+		return json.Marshal(r.Text)
+	}
+	return json.Marshal(r.Index)
+}
+
+// maxWrittenAnswer caps a written answer's length.
+const maxWrittenAnswer = 2000
+
+// checkResponse grades one answer against its key. A wrong answer doesn't
+// reveal the right one, so the learner can try again.
+func checkResponse(q course.QuizQuestion, key course.QuizAnswer, i int, a QuizResponse) (TestResult, error) {
+	t := TestResult{Name: fmt.Sprintf("Question %d", i+1), Status: StatusPass, Message: key.Explanation}
+	var right bool
+	if q.IsWritten() {
+		if !a.IsText {
+			return TestResult{}, fmt.Errorf("question %d needs a written answer", i+1)
+		}
+		if len(a.Text) > maxWrittenAnswer {
+			return TestResult{}, fmt.Errorf("the answer to question %d is too long", i+1)
+		}
+		right = key.Accepts(a.Text)
+	} else {
+		if a.IsText || a.Index < 0 || a.Index >= len(q.Options) {
+			return TestResult{}, fmt.Errorf("answer to question %d must be between 0 and %d", i+1, len(q.Options)-1)
+		}
+		right = a.Index == key.CorrectIndex
+	}
+	if !right {
+		t.Status, t.Message = StatusFail, "Not quite. Try again."
+	}
+	return t, nil
+}
+
+// GradeAnswers checks quiz answers (one per question) against the hidden
+// solution.json. Each question gets a result: a correct one shows its
+// explanation; a wrong one doesn't reveal the right answer.
+func GradeAnswers(l *course.Lesson, answers []QuizResponse) (Result, error) {
 	if !l.Valid() {
 		return Result{}, fmt.Errorf("lesson %s/%s has problems: %s", l.CourseID, l.ID, strings.Join(l.Problems, "; "))
 	}
@@ -323,12 +384,11 @@ func GradeAnswers(l *course.Lesson, answers []int) (Result, error) {
 	}
 	r := Result{Result: runner.Result{Phase: runner.PhaseRun}, Passed: true, Tests: make([]TestResult, len(answers))}
 	for i, a := range answers {
-		if a < 0 || a >= len(l.Questions[i].Options) {
-			return Result{}, fmt.Errorf("answer to question %d must be between 0 and %d", i+1, len(l.Questions[i].Options)-1)
+		t, err := checkResponse(l.Questions[i], key[i], i, a)
+		if err != nil {
+			return Result{}, err
 		}
-		t := TestResult{Name: fmt.Sprintf("Question %d", i+1), Status: StatusPass, Message: key[i].Explanation}
-		if a != key[i].CorrectIndex {
-			t.Status, t.Message = StatusFail, "Not quite. Try again."
+		if t.Status != StatusPass {
 			r.Passed = false
 		}
 		r.Tests[i] = t
@@ -341,7 +401,7 @@ func GradeAnswers(l *course.Lesson, answers []int) (Result, error) {
 
 // CheckAnswer checks one quiz answer, for quizzes with immediate feedback.
 // Like GradeAnswers, a wrong answer doesn't reveal the right one.
-func CheckAnswer(l *course.Lesson, question, answer int) (TestResult, error) {
+func CheckAnswer(l *course.Lesson, question int, answer QuizResponse) (TestResult, error) {
 	if l.Kind != course.KindQuiz || !l.Valid() {
 		return TestResult{}, fmt.Errorf("lesson %s/%s isn't a working quiz", l.CourseID, l.ID)
 	}
@@ -351,18 +411,11 @@ func CheckAnswer(l *course.Lesson, question, answer int) (TestResult, error) {
 	if question < 0 || question >= len(l.Questions) {
 		return TestResult{}, fmt.Errorf("no question %d", question+1)
 	}
-	if answer < 0 || answer >= len(l.Questions[question].Options) {
-		return TestResult{}, fmt.Errorf("answer to question %d must be between 0 and %d", question+1, len(l.Questions[question].Options)-1)
-	}
 	key, err := course.ReadQuizAnswers(l.ReferenceFile)
 	if err != nil {
 		return TestResult{}, err
 	}
-	t := TestResult{Name: fmt.Sprintf("Question %d", question+1), Status: StatusPass, Message: key[question].Explanation}
-	if answer != key[question].CorrectIndex {
-		t.Status, t.Message = StatusFail, "Not quite. Try again."
-	}
-	return t, nil
+	return checkResponse(l.Questions[question], key[question], question, answer)
 }
 
 // Validate grades the lesson's reference solution. Authors use this to prove

@@ -70,7 +70,7 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
   const isArticle = engine.isArticleLesson(lesson);
   const isQuiz = engine.isQuizLesson(lesson);
   // Quizzes save the last answers as {"answers": [...]}.
-  const [quizAnswers, setQuizAnswers] = useState<number[]>();
+  const [quizAnswers, setQuizAnswers] = useState<engine.QuizResponse[]>();
   const [marking, setMarking] = useState(false);
 
   // Capabilities
@@ -357,14 +357,14 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
     }
   };
 
-  const submitAnswers = async (answers: number[]) => {
+  const submitAnswers = async (answers: engine.QuizResponse[]) => {
     const res = await engine.submitAnswers(courseId, lessonId, answers);
     telemetry.current?.submission(res.passed ? "pass" : "failed_assertion");
     refreshProgress();
     return res;
   };
 
-  const checkAnswer = async (question: number, answer: number) => {
+  const checkAnswer = async (question: number, answer: engine.QuizResponse) => {
     const res = await engine.checkAnswer(courseId, lessonId, question, answer);
     telemetry.current?.run();
     return res;
@@ -805,7 +805,7 @@ function editableFilesJSON(l: engine.Lesson, files: Record<string, string>): str
   return JSON.stringify({ files: Object.fromEntries(editable) });
 }
 
-function parseQuizAnswers(saved: string | null): number[] | undefined {
+function parseQuizAnswers(saved: string | null): engine.QuizResponse[] | undefined {
   try {
     const parsed = saved ? JSON.parse(saved) : undefined;
     if (Array.isArray(parsed?.answers)) return parsed.answers;

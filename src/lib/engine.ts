@@ -98,10 +98,16 @@ export interface LessonFile {
 }
 
 export interface QuizQuestion {
+  /** Omitted for multiple choice. */
+  type?: "true_false" | "written";
   /** Empty when the question is in the lesson text. */
   prompt?: string;
-  options: string[];
+  /** Omitted for written questions. */
+  options?: string[];
 }
+
+/** An answer to one quiz question: an option index, or the typed text of a written answer. */
+export type QuizResponse = number | string;
 
 /** The parts of a system design scenario the canvas uses (see simulator.Scenario). */
 export interface SimulationConfig {
@@ -375,8 +381,8 @@ export const lessonInsights = (courseId: string, lessonId: string) => request<In
 export const deleteInsights = (courseId: string, lessonId: string) =>
   request<void>(lessonPath(courseId, lessonId) + "/telemetry", { method: "DELETE" });
 
-/** Grades quiz answers: one zero-based option index per question. */
-export const submitAnswers = (courseId: string, lessonId: string, answers: number[]) =>
+/** Grades quiz answers: a zero-based option index (or written text) per question. */
+export const submitAnswers = (courseId: string, lessonId: string, answers: QuizResponse[]) =>
   request<GradeResult>(lessonPath(courseId, lessonId) + "/submit", { method: "POST", body: JSON.stringify({ answers }) });
 
 /** Marks an article lesson as read. */
@@ -401,7 +407,7 @@ export function simCatalog(): Promise<NodeSpec[]> {
 }
 
 /** Checks one answer of a quiz with immediate feedback (not recorded as an attempt). */
-export const checkAnswer = (courseId: string, lessonId: string, question: number, answer: number) =>
+export const checkAnswer = (courseId: string, lessonId: string, question: number, answer: QuizResponse) =>
   request<TestResult>(lessonPath(courseId, lessonId) + "/check", { method: "POST", body: JSON.stringify({ question, answer }) });
 
 /** Polls /health until the engine answers, since it starts alongside the window. */

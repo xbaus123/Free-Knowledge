@@ -22,6 +22,14 @@
 //	config.json:   {"type": "quiz", "questions": [{"prompt": "…", "options": ["…", "…"]}]}
 //	solution.json: {"answers": [{"correct_index": 0, "explanation": "…"}]}
 //
+// A question may set "type": "true_false" (options default to True/False;
+// correct_index 0 is True) or "type": "written" (no options; the learner
+// types an answer, matched against "accepted_answers" in solution.json,
+// ignoring case and extra spaces):
+//
+//	config.json:   {"type": "written", "prompt": "…"}
+//	solution.json: {"accepted_answers": ["…", "…"], "explanation": "…"}
+//
 // With "immediate_feedback": true, the learner's choice for each question is
 // checked as soon as it's made, instead of all at once on submit.
 //
@@ -198,14 +206,66 @@ func ReadFileTree(root string) (map[string]string, error) {
 // QuizQuestion is the public part of a quiz question; answers live in
 // solution.json.
 type QuizQuestion struct {
+	// Type is "" (multiple choice), QuestionTrueFalse, or QuestionWritten.
+	Type    string   `json:"type,omitempty"`
 	Prompt  string   `json:"prompt,omitempty"` // empty: the question is in lesson.md
-	Options []string `json:"options"`
+	Options []string `json:"options,omitempty"`
 }
+
+// Quiz question types (multiple choice is the default, "").
+const (
+	QuestionChoice    = "choice"
+	QuestionTrueFalse = "true_false"
+	QuestionWritten   = "written"
+)
+
+// TrueFalseOptions are a true/false question's options.
+var TrueFalseOptions = []string{"True", "False"}
+
+// IsWritten reports whether the learner types the answer.
+func (q QuizQuestion) IsWritten() bool { return q.Type == QuestionWritten }
 
 // QuizAnswer is the hidden part of a quiz question.
 type QuizAnswer struct {
-	CorrectIndex int    `json:"correct_index"`
-	Explanation  string `json:"explanation,omitempty"` // shown after a correct answer
+	CorrectIndex int `json:"correct_index"`
+	// AcceptedAnswers are the right answers to a written question.
+	AcceptedAnswers []string `json:"accepted_answers,omitempty"`
+	Explanation     string   `json:"explanation,omitempty"` // shown after a correct answer
+}
+
+// MarshalJSON is how solution.json stores one answer: correct_index for
+// choice questions, accepted_answers for written ones.
+func (a QuizAnswer) MarshalJSON() ([]byte, error) {
+	if len(a.AcceptedAnswers) > 0 {
+		return json.Marshal(struct {
+			AcceptedAnswers []string `json:"accepted_answers"`
+			Explanation     string   `json:"explanation,omitempty"`
+		}{a.AcceptedAnswers, a.Explanation})
+	}
+	return json.Marshal(struct {
+		CorrectIndex int    `json:"correct_index"`
+		Explanation  string `json:"explanation,omitempty"`
+	}{a.CorrectIndex, a.Explanation})
+}
+
+// NormalizeWritten is how written answers are compared: case and runs of
+// whitespace don't matter.
+func NormalizeWritten(s string) string {
+	return strings.ToLower(strings.Join(strings.Fields(s), " "))
+}
+
+// Accepts reports whether text matches one of a written answer's accepted answers.
+func (a QuizAnswer) Accepts(text string) bool {
+	got := NormalizeWritten(text)
+	if got == "" {
+		return false
+	}
+	for _, want := range a.AcceptedAnswers {
+		if NormalizeWritten(want) == got {
+			return true
+		}
+	}
+	return false
 }
 
 // Lesson kinds.
@@ -441,9 +501,24 @@ func loadLesson(c *Course, id string) (*Lesson, error) {
 		if len(l.Questions) == 0 {
 			l.Problems = append(l.Problems, `quiz needs "questions" (or "options") in config.json`)
 		}
-		for i, q := range l.Questions {
-			if len(q.Options) < 2 {
-				l.Problems = append(l.Problems, fmt.Sprintf("question %d needs at least two options", i+1))
+		for i := range l.Questions {
+			q := &l.Questions[i]
+			switch q.Type {
+			case "", QuestionChoice:
+				q.Type = ""
+				if len(q.Options) < 2 {
+					l.Problems = append(l.Problems, fmt.Sprintf("question %d needs at least two options", i+1))
+				}
+			case QuestionTrueFalse:
+				if len(q.Options) == 0 {
+					q.Options = slices.Clone(TrueFalseOptions)
+				} else if len(q.Options) != 2 {
+					l.Problems = append(l.Problems, fmt.Sprintf("true/false question %d needs exactly two options", i+1))
+				}
+			case QuestionWritten:
+				q.Options = nil
+			default:
+				l.Problems = append(l.Problems, fmt.Sprintf("question %d has unknown type %q", i+1, q.Type))
 			}
 		}
 		p := filepath.Join(dir, "solution.json")
@@ -460,7 +535,13 @@ func loadLesson(c *Course, id string) (*Lesson, error) {
 			l.Problems = append(l.Problems, fmt.Sprintf("solution.json has %d answers for %d questions", len(answers), len(l.Questions)))
 		default:
 			for i, a := range answers {
-				if a.CorrectIndex >= len(l.Questions[i].Options) {
+				q := l.Questions[i]
+				switch {
+				case q.IsWritten() && len(a.AcceptedAnswers) == 0:
+					l.Problems = append(l.Problems, fmt.Sprintf(`solution.json: written question %d needs "accepted_answers"`, i+1))
+				case !q.IsWritten() && a.AcceptedAnswers != nil:
+					l.Problems = append(l.Problems, fmt.Sprintf(`solution.json: question %d has options, so it needs "correct_index", not "accepted_answers"`, i+1))
+				case !q.IsWritten() && a.CorrectIndex >= len(q.Options):
 					l.Problems = append(l.Problems, fmt.Sprintf("solution.json: question %d's correct_index %d is out of range", i+1, a.CorrectIndex))
 				}
 			}
@@ -583,8 +664,9 @@ func ReadQuizAnswers(path string) ([]QuizAnswer, error) {
 		return nil, err
 	}
 	type answer struct {
-		CorrectIndex *int   `json:"correct_index"`
-		Explanation  string `json:"explanation"`
+		CorrectIndex    *int     `json:"correct_index"`
+		AcceptedAnswers []string `json:"accepted_answers"`
+		Explanation     string   `json:"explanation"`
 	}
 	var sol struct {
 		answer
@@ -599,8 +681,21 @@ func ReadQuizAnswers(path string) ([]QuizAnswer, error) {
 	}
 	out := make([]QuizAnswer, len(list))
 	for i, a := range list {
+		if a.AcceptedAnswers != nil {
+			var accepted []string
+			for _, s := range a.AcceptedAnswers {
+				if s = strings.TrimSpace(s); s != "" {
+					accepted = append(accepted, s)
+				}
+			}
+			if len(accepted) == 0 {
+				return nil, fmt.Errorf(`answer %d's "accepted_answers" is empty`, i+1)
+			}
+			out[i] = QuizAnswer{AcceptedAnswers: accepted, Explanation: a.Explanation}
+			continue
+		}
 		if a.CorrectIndex == nil || *a.CorrectIndex < 0 {
-			return nil, fmt.Errorf(`answer %d needs a non-negative "correct_index"`, i+1)
+			return nil, fmt.Errorf(`answer %d needs a non-negative "correct_index" (or "accepted_answers")`, i+1)
 		}
 		out[i] = QuizAnswer{CorrectIndex: *a.CorrectIndex, Explanation: a.Explanation}
 	}

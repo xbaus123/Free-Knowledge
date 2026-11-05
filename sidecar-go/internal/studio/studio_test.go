@@ -287,18 +287,28 @@ func TestQuizEditing(t *testing.T) {
 	src := must(s.Lesson(id, lid))
 	src.Questions = []QuestionSource{
 		{Prompt: "2 + 2?", Options: []string{"3", "4"}, CorrectIndex: 1, Explanation: "Basic arithmetic."},
-		{Prompt: "Is Go compiled?", Options: []string{"True", "False"}, CorrectIndex: 0},
+		{Type: course.QuestionTrueFalse, Prompt: "Is Go compiled?", Options: []string{"True", "False"}, CorrectIndex: 0},
+		{Type: course.QuestionWritten, Prompt: "Name Go's mascot.", Options: []string{"stale"}, AcceptedAnswers: []string{" gopher ", "", "the gopher"}},
 	}
 	src.ImmediateFeedback = true
 	if err := s.SaveLesson(id, src); err != nil {
 		t.Fatal(err)
 	}
 	got := must(s.Lesson(id, lid))
-	if len(got.Questions) != 2 || got.Questions[0].Explanation != "Basic arithmetic." || got.Questions[1].Prompt != "Is Go compiled?" || !got.ImmediateFeedback {
+	if len(got.Questions) != 3 || got.Questions[0].Explanation != "Basic arithmetic." || got.Questions[1].Prompt != "Is Go compiled?" || !got.ImmediateFeedback {
 		t.Fatalf("round trip: %+v immediate=%v", got.Questions, got.ImmediateFeedback)
 	}
+	if q := got.Questions[0]; q.Type != course.QuestionChoice {
+		t.Errorf("choice question type: %q", q.Type)
+	}
+	if q := got.Questions[1]; q.Type != course.QuestionTrueFalse || len(q.Options) != 2 || q.CorrectIndex != 0 {
+		t.Errorf("true/false round trip: %+v", q)
+	}
+	if q := got.Questions[2]; q.Type != course.QuestionWritten || len(q.Options) != 0 || !slices.Equal(q.AcceptedAnswers, []string{"gopher", "the gopher"}) {
+		t.Errorf("written round trip: %+v", q)
+	}
 	l := must(s.Courses.Lesson(id, lid))
-	if !l.Valid() || len(l.Questions) != 2 || !l.ImmediateFeedback {
+	if !l.Valid() || len(l.Questions) != 3 || !l.ImmediateFeedback {
 		t.Fatalf("learner view: %+v", l)
 	}
 
@@ -307,6 +317,8 @@ func TestQuizEditing(t *testing.T) {
 		"one option":   {{Options: []string{"only"}}},
 		"empty option": {{Options: []string{"a", " "}}},
 		"bad index":    {{Options: []string{"a", "b"}, CorrectIndex: 2}},
+		"no accepted":  {{Type: course.QuestionWritten, AcceptedAnswers: []string{" "}}},
+		"bad type":     {{Type: "essay", Options: []string{"a", "b"}}},
 	}
 	for name, qs := range bad {
 		src.Questions = qs

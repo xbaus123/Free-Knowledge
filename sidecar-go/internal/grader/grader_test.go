@@ -235,18 +235,18 @@ func TestQuizAnswers(t *testing.T) {
 	if err != nil || !l.Valid() || len(l.Questions) != 1 || len(l.Questions[0].Options) != 4 {
 		t.Fatalf("lesson: %+v %v", l, err)
 	}
-	res, err := GradeAnswers(l, []int{0})
+	res, err := GradeAnswers(l, []QuizResponse{Choice(0)})
 	if err != nil || !res.Passed || res.Tests[0].Name != "Question 1" || !strings.Contains(res.Tests[0].Message, "garbage collector") {
 		t.Fatalf("correct answer should pass and explain: %+v %v", res, err)
 	}
-	res, err = GradeAnswers(l, []int{2})
+	res, err = GradeAnswers(l, []QuizResponse{Choice(2)})
 	if err != nil || res.Passed || res.Tests[0].Status != StatusFail {
 		t.Fatalf("wrong answer: %+v %v", res, err)
 	}
 	if strings.Contains(res.Tests[0].Message, "garbage") {
 		t.Fatal("a wrong answer must not reveal the explanation")
 	}
-	for _, bad := range [][]int{{-1}, {4}, {}, {0, 1}} {
+	for _, bad := range [][]QuizResponse{{Choice(-1)}, {Choice(4)}, {}, {Choice(0), Choice(1)}, {Written("Garbage Collection")}} {
 		if _, err := GradeAnswers(l, bad); err == nil {
 			t.Errorf("answers %v should be rejected", bad)
 		}
@@ -261,23 +261,74 @@ func TestCheckAnswerImmediately(t *testing.T) {
 	if err != nil || !l.ImmediateFeedback {
 		t.Fatalf("lesson: immediate=%v %v", l != nil && l.ImmediateFeedback, err)
 	}
-	res, err := CheckAnswer(l, 0, 1)
+	res, err := CheckAnswer(l, 0, Choice(1))
 	if err != nil || res.Status != StatusPass || !strings.Contains(res.Message, "86,400") {
 		t.Fatalf("correct answer should pass and explain: %+v %v", res, err)
 	}
-	res, err = CheckAnswer(l, 0, 2)
+	res, err = CheckAnswer(l, 0, Choice(2))
 	if err != nil || res.Status != StatusFail || strings.Contains(res.Message, "86,400") {
 		t.Fatalf("a wrong answer fails without revealing the explanation: %+v %v", res, err)
 	}
 	for _, bad := range [][2]int{{-1, 0}, {99, 0}, {0, -1}, {0, 4}} {
-		if _, err := CheckAnswer(l, bad[0], bad[1]); err == nil {
+		if _, err := CheckAnswer(l, bad[0], Choice(bad[1])); err == nil {
 			t.Errorf("%v should be rejected", bad)
 		}
 	}
 	// Quizzes without immediate feedback only grade on submit.
 	other, _ := store.Lesson("getting-started", "07-knowledge-check")
-	if _, err := CheckAnswer(other, 0, 0); err == nil {
+	if _, err := CheckAnswer(other, 0, Choice(0)); err == nil {
 		t.Error("a quiz without immediate feedback should refuse single checks")
+	}
+}
+
+func TestWrittenAndTrueFalseQuestions(t *testing.T) {
+	dir := t.TempDir()
+	lesson := filepath.Join(dir, "c", "q")
+	if err := os.MkdirAll(lesson, 0o755); err != nil {
+		t.Fatal(err)
+	}
+	write := func(name, body string) {
+		if err := os.WriteFile(filepath.Join(lesson, name), []byte(body), 0o644); err != nil {
+			t.Fatal(err)
+		}
+	}
+	if err := os.WriteFile(filepath.Join(dir, "c", "course.json"), []byte(`{"title": "C"}`), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	write("lesson.md", "# Q\n")
+	write("config.json", `{"type": "quiz", "immediate_feedback": true, "questions": [
+		{"type": "true_false", "prompt": "Go is compiled."},
+		{"type": "written", "prompt": "What does HTTP stand for?"}]}`)
+	write("solution.json", `{"answers": [{"correct_index": 0},
+		{"accepted_answers": ["HyperText Transfer Protocol"], "explanation": "Yes."}]}`)
+	l, err := course.NewStore([]course.Root{{Path: dir, Source: "test"}}).Lesson("c", "q")
+	if err != nil || !l.Valid() {
+		t.Fatalf("lesson: %+v %v", l, err)
+	}
+	if got := l.Questions[0].Options; len(got) != 2 || got[0] != "True" {
+		t.Fatalf("true/false options default to True/False: %v", got)
+	}
+	res, err := GradeAnswers(l, []QuizResponse{Choice(0), Written("  hypertext   transfer PROTOCOL ")})
+	if err != nil || !res.Passed || res.Tests[1].Message != "Yes." {
+		t.Fatalf("right answers (any case and spacing) pass: %+v %v", res, err)
+	}
+	res, err = GradeAnswers(l, []QuizResponse{Choice(1), Written("HTTPS")})
+	if err != nil || res.Passed || res.Tests[0].Status != StatusFail || res.Tests[1].Status != StatusFail {
+		t.Fatalf("wrong answers fail: %+v %v", res, err)
+	}
+	if r, err := CheckAnswer(l, 1, Written("")); err != nil || r.Status != StatusFail {
+		t.Fatalf("an empty written answer fails: %+v %v", r, err)
+	}
+	if _, err := CheckAnswer(l, 1, Choice(0)); err == nil {
+		t.Error("a written question needs text, not an option")
+	}
+	if _, err := CheckAnswer(l, 0, Written("True")); err == nil {
+		t.Error("a true/false question needs an option, not text")
+	}
+
+	write("solution.json", `{"answers": [{"correct_index": 0}, {"correct_index": 0}]}`)
+	if l, _ := course.NewStore([]course.Root{{Path: dir, Source: "test"}}).Lesson("c", "q"); l.Valid() {
+		t.Error("a written question without accepted_answers is a problem")
 	}
 }
 

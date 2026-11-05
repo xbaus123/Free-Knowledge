@@ -82,10 +82,14 @@ type LessonSource struct {
 
 // QuestionSource is a quiz question with its (hidden) answer.
 type QuestionSource struct {
+	// Type is "choice" (or ""), "true_false", or "written".
+	Type         string   `json:"type,omitempty"`
 	Prompt       string   `json:"prompt"`
 	Options      []string `json:"options"`
 	CorrectIndex int      `json:"correctIndex"`
-	Explanation  string   `json:"explanation"`
+	// AcceptedAnswers are the right answers to a written question.
+	AcceptedAnswers []string `json:"acceptedAnswers,omitempty"`
+	Explanation     string   `json:"explanation"`
 }
 
 var slugJunk = regexp.MustCompile(`[^a-z0-9]+`)
@@ -312,9 +316,16 @@ func (s *Studio) Lesson(courseID, lessonID string) (LessonSource, error) {
 	case course.KindQuiz:
 		answers, _ := course.ReadQuizAnswers(filepath.Join(l.Dir, "solution.json"))
 		for i, q := range l.Questions {
-			qs := QuestionSource{Prompt: q.Prompt, Options: q.Options}
+			qs := QuestionSource{Type: q.Type, Prompt: q.Prompt, Options: q.Options}
+			if qs.Type == "" {
+				qs.Type = course.QuestionChoice
+			}
+			if qs.Options == nil {
+				qs.Options = []string{}
+			}
 			if i < len(answers) {
 				qs.CorrectIndex, qs.Explanation = answers[i].CorrectIndex, answers[i].Explanation
+				qs.AcceptedAnswers = answers[i].AcceptedAnswers
 			}
 			src.Questions = append(src.Questions, qs)
 		}
@@ -515,6 +526,19 @@ func validateQuestions(qs []QuestionSource) error {
 		return errors.New("a quiz needs at least one question")
 	}
 	for i, q := range qs {
+		switch q.Type {
+		case "", course.QuestionChoice, course.QuestionTrueFalse:
+		case course.QuestionWritten:
+			if !slices.ContainsFunc(q.AcceptedAnswers, func(a string) bool { return strings.TrimSpace(a) != "" }) {
+				return fmt.Errorf("question %d needs at least one accepted answer", i+1)
+			}
+			continue
+		default:
+			return fmt.Errorf("question %d has unknown type %q", i+1, q.Type)
+		}
+		if q.Type == course.QuestionTrueFalse && len(q.Options) != 2 {
+			return fmt.Errorf("true/false question %d needs exactly two options", i+1)
+		}
 		if len(q.Options) < 2 {
 			return fmt.Errorf("question %d needs at least two options", i+1)
 		}
@@ -616,8 +640,24 @@ func (s *Studio) writeLesson(courseDir, kind string, src LessonSource, oldLangua
 		var answers []course.QuizAnswer
 		cfg.ImmediateFeedback = src.ImmediateFeedback
 		for _, q := range src.Questions {
-			cfg.Questions = append(cfg.Questions, course.QuizQuestion{Prompt: strings.TrimSpace(q.Prompt), Options: q.Options})
-			answers = append(answers, course.QuizAnswer{CorrectIndex: q.CorrectIndex, Explanation: strings.TrimSpace(q.Explanation)})
+			cq := course.QuizQuestion{Prompt: strings.TrimSpace(q.Prompt), Options: q.Options}
+			a := course.QuizAnswer{CorrectIndex: q.CorrectIndex, Explanation: strings.TrimSpace(q.Explanation)}
+			switch q.Type {
+			case course.QuestionTrueFalse:
+				cq.Type = q.Type
+				if slices.Equal(q.Options, course.TrueFalseOptions) {
+					cq.Options = nil // the default
+				}
+			case course.QuestionWritten:
+				cq.Type, cq.Options, a.CorrectIndex = q.Type, nil, 0
+				for _, s := range q.AcceptedAnswers {
+					if s = strings.TrimSpace(s); s != "" {
+						a.AcceptedAnswers = append(a.AcceptedAnswers, s)
+					}
+				}
+			}
+			cfg.Questions = append(cfg.Questions, cq)
+			answers = append(answers, a)
 		}
 		sol, err := json.MarshalIndent(map[string]any{"answers": answers}, "", "  ")
 		if err != nil {
