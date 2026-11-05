@@ -1,0 +1,55 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "ARPA, the Advanced Research Projects Agency, later renamed DARPA, funded ARPANET from 1969."
+    },
+    {
+      "accepted_answers": [
+        "IMP",
+        "IMPs",
+        "interface message processor",
+        "interface message processors"
+      ],
+      "explanation": "Interface Message Processors received and forwarded packets, which makes them the ancestors of today's routers."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "UCLA, the Stanford Research Institute, UCSB, and Utah. MIT and UCL joined later."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It only worked across ARPANET itself. Crossing different networks is exactly the problem Cerf and Kahn's TCP/IP solved."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Cerf and Kahn's design carried data across different networks joined by gateways."
+    },
+    {
+      "accepted_answers": [
+        "1983",
+        "january 1, 1983",
+        "jan 1 1983",
+        "1 january 1983"
+      ],
+      "explanation": "January 1, 1983 is often called the Internet's birthday."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Three networks built on completely different technology, one end-to-end path. That's internetworking."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The Internet is distributed by design. There are big junction points, like Internet exchange points, but no single machine whose loss takes it down."
+    },
+    {
+      "accepted_answers": [
+        "Crocker",
+        "Steve Crocker",
+        "Stephen Crocker",
+        "Stephen D. Crocker"
+      ],
+      "explanation": "Steve Crocker, a UCLA graduate student in the Network Working Group. Jon Postel went on to edit the RFC series for nearly 30 years."
+    }
+  ]
+}

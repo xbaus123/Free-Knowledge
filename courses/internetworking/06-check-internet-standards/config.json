@@ -1,0 +1,68 @@
+{
+  "type": "quiz",
+  "title": "Check: What Makes the Internet Special",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Your laptop moves from Wi-Fi to an Ethernet cable, and every program keeps using IP the same way. Which of the four ideas is that?",
+      "options": [
+        "Universal interconnection",
+        "Network technology independence",
+        "End-to-end acknowledgments",
+        "Application protocol standards"
+      ]
+    },
+    {
+      "prompt": "Delivery is confirmed by the two endpoints, not by each router along the way. Which idea is that?",
+      "options": [
+        "End-to-end acknowledgments",
+        "Universal interconnection",
+        "Network technology independence",
+        "Application protocol standards"
+      ]
+    },
+    {
+      "prompt": "An email client from one vendor sends mail to a server from a completely different vendor, and it just works. Which idea makes that possible?",
+      "options": [
+        "Network technology independence",
+        "End-to-end acknowledgments",
+        "Application protocol standards",
+        "Universal interconnection"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Universal interconnection means any host can reach any other host, whatever networks lie between them."
+    },
+    {
+      "type": "written",
+      "prompt": "What does IETF stand for?"
+    },
+    {
+      "type": "written",
+      "prompt": "What does RFC stand for?"
+    },
+    {
+      "type": "true_false",
+      "prompt": "When a published RFC turns out to contain a mistake, the IETF edits that RFC to fix it."
+    },
+    {
+      "prompt": "How does the IETF make decisions?",
+      "options": [
+        "A vote of member countries",
+        "Rough consensus and running code",
+        "The largest vendors decide",
+        "Whoever files the first patent"
+      ]
+    },
+    {
+      "prompt": "What is a proposal called before it's published as an RFC?",
+      "options": [
+        "An RFP",
+        "An Internet-Draft",
+        "A white paper",
+        "A patent"
+      ]
+    }
+  ]
+}

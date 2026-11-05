@@ -1,0 +1,56 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "32",
+        "32 bits",
+        "thirty-two",
+        "thirty two"
+      ],
+      "explanation": "32 bits gives 2³² ≈ 4.3 billion addresses, which seemed endless in 1981."
+    },
+    {
+      "accepted_answers": [
+        "128",
+        "128 bits"
+      ],
+      "explanation": "2¹²⁸ is about 3.4 × 10³⁸ addresses, enough to give every device its own public address."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The central pool ran out in 2011, and the regional registries ran out over the following years."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "On a log scale each step up the axis is ×10, so steady exponential growth looks like a straight line."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Once millions of devices speak a protocol, you can't just change it. Old systems stay in service for decades."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The early Internet assumed every host was run by a trusted researcher. Security has been added on top ever since."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "IPv6 has no broadcast. It uses multicast, addressing just the group of hosts that care."
+    },
+    {
+      "accepted_answers": [
+        "flow label",
+        "flowlabel",
+        "the flow label"
+      ],
+      "explanation": "Routers can use the flow label to give every packet in a stream consistent treatment."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A simple fixed-size main header is faster for routers, and new extension headers can be added later."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The router announces the prefix, and the host fills in the rest. That also makes moving a whole network to a new prefix easier."
+    }
+  ]
+}

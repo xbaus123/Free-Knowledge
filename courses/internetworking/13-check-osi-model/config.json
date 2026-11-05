@@ -1,0 +1,71 @@
+{
+  "type": "quiz",
+  "title": "Check: The OSI Model",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "Which number is the Network layer in the OSI model?"
+    },
+    {
+      "type": "written",
+      "prompt": "Name OSI layer 5."
+    },
+    {
+      "type": "written",
+      "prompt": "Name OSI layer 2."
+    },
+    {
+      "prompt": "Which layer handles encoding, compression, and encryption?",
+      "options": [
+        "Session",
+        "Presentation",
+        "Application",
+        "Transport"
+      ]
+    },
+    {
+      "prompt": "What is the unit of data at the transport layer when using TCP?",
+      "options": [
+        "Bit",
+        "Frame",
+        "Packet",
+        "Segment"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What is the unit of data at the physical layer?"
+    },
+    {
+      "type": "true_false",
+      "prompt": "The OSI model was published by the International Organization for Standardization (ISO) in 1984."
+    },
+    {
+      "prompt": "\"Please Do Not Throw Sausage Pizza Away\" lists the OSI layers in which order?",
+      "options": [
+        "From layer 7 down",
+        "From layer 1 up",
+        "Alphabetically",
+        "In the order a router reads them"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A user types the wrong password three times, then calls it a network outage. An engineer might jokingly call it a layer ___ problem. (a number)"
+    },
+    {
+      "prompt": "The unofficial layer 9 is…",
+      "options": [
+        "Wi-Fi",
+        "The organization: budgets, policies, and politics",
+        "Encryption",
+        "The cloud"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Ethernet and Wi-Fi are network layer (layer 3) protocols."
+    }
+  ]
+}

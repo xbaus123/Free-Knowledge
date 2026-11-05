@@ -1,0 +1,93 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "A circuit reserves capacity for the whole conversation, even while nobody is sending. Packet switching lets many conversations share each link, and routes around failures. The price is variable delay and packets that may arrive lost or out of order."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Each site's computer connected to an IMP, and the IMPs forwarded packets to each other toward their destination. That's exactly a router's job today."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "On \"flag day\", ARPANET hosts switched from the old protocol to TCP/IP all at once. It's often called the Internet's birthday. ARPANET's first message was in 1969, and IPv4 addresses ran out in 2011."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The Internet deliberately has no central hub: routers forward packets using their own tables, and can find a new path when a link fails. The fourth idea on Comer's list is application protocol standards."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "\"Request for Comments\" dates back to RFC 1 in 1969. Standards like IP (RFC 791) and DNS (RFC 1035) are published as RFCs. A published RFC is never changed; a newer RFC replaces it instead."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "On a log scale each step up the axis is ten times more, so a straight line means the count multiplied by the same factor over equal stretches of time. On a linear chart the same data looks flat until the mid-1990s and then shoots up."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The opposite: addresses like 2001:db8:85a3::8a2e:370:7334 are much harder to remember, so IPv6 depends on DNS even more than IPv4 does."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Physical, Data Link, Network, Transport, Session, Presentation, Application. \"Please Do Not Throw Sausage Pizza Away.\""
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The presentation layer decides how data is represented: character encodings, image formats, compression, and encryption such as TLS."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "TCP/IP deliberately says nothing about the hardware, so it folds the physical and data link layers into one. It also folds the session, presentation, and application layers into its single application layer."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Data at the top three layers, a segment at the transport layer, a packet at the network layer, a frame at the data link layer, and bits at the physical layer."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The FCS is a checksum (CRC-32 for Ethernet) over the whole frame. If a bit was flipped on the wire, the receiver's checksum won't match and the frame is dropped. You built this in the encapsulation exercise."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "A router works at layer 3. It strips the frame, reads the destination IP address to pick the next hop, then wraps the packet in a new frame for the next link. The MAC addresses change at every hop; the IP addresses don't."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Because each layer only reads its own header, a whole packet can ride inside another protocol as ordinary data. VPNs use this on purpose. Attackers use it to sneak traffic through DNS queries, web requests, or pings that a firewall lets through."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The opposite: a reserved circuit sits idle between bursts, while packets from many conversations share links."
+    },
+    {
+      "accepted_answers": [
+        "TCP/IP",
+        "tcp ip",
+        "tcpip",
+        "tcp/ip suite"
+      ],
+      "explanation": "Flag day made TCP/IP the standard protocol between networks."
+    },
+    {
+      "accepted_answers": [
+        "2",
+        "layer 2",
+        "l2",
+        "two",
+        "layer two",
+        "Data Link",
+        "Data Link layer",
+        "datalink",
+        "data-link",
+        "datalink layer",
+        "data-link layer"
+      ],
+      "explanation": "The data link layer checks the FCS in the frame trailer."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Multicast reaches only the group of hosts that care, instead of every host on the network."
+    }
+  ]
+}

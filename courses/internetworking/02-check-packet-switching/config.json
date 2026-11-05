@@ -1,0 +1,63 @@
+{
+  "type": "quiz",
+  "title": "Check: Packet Switching",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "true_false",
+      "prompt": "In circuit switching, the path stays reserved for the whole conversation, even while nobody is talking."
+    },
+    {
+      "type": "written",
+      "prompt": "Fill in the blank: computers send data in short ______ separated by long silences, which is why a reserved circuit wastes capacity. (one word)"
+    },
+    {
+      "prompt": "A switch in the middle of the path fails during a conversation. What happens?",
+      "options": [
+        "Both kinds of network drop the conversation",
+        "On a circuit-switched network the conversation drops; on a packet-switched network traffic is routed around the failure",
+        "On a packet-switched network the conversation drops; on a circuit-switched network a backup circuit takes over",
+        "Neither notices, because switches don't fail"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Packets that belong to the same message always follow the same route."
+    },
+    {
+      "prompt": "What price does packet switching pay for sharing links?",
+      "options": [
+        "Every conversation needs its own wire",
+        "Packets can be delayed, lost, or arrive out of order, so the endpoints have to cope",
+        "Only one computer can send at a time",
+        "It can't carry voice at all"
+      ]
+    },
+    {
+      "prompt": "Which network was a US military message-switching system that stored whole messages at relay centers and then forwarded them?",
+      "options": [
+        "DECnet",
+        "X.25",
+        "AUTODIN",
+        "ARPANET"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "DECnet was designed to connect computers from any vendor."
+    },
+    {
+      "type": "written",
+      "prompt": "What's the word for a network of networks: separate networks joined so any host can reach any other? (one word)"
+    },
+    {
+      "prompt": "Which of these is NOT one of the reasons to network given in the reading?",
+      "options": [
+        "Sharing resources, like an expensive printer or computer",
+        "Sharing information, like files and email",
+        "Reliability: work can move to another machine if one fails",
+        "Making each computer run its own programs faster"
+      ]
+    }
+  ]
+}

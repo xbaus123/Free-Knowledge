@@ -1,0 +1,67 @@
+{
+  "type": "quiz",
+  "title": "Check: Encapsulation",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Which shows a frame on the wire, in order?",
+      "options": [
+        "[Packet hdr][Frame hdr][Segment hdr][Data]",
+        "[Frame hdr][Packet hdr][Segment hdr][Data][Frame trailer]",
+        "[Segment hdr][Packet hdr][Frame hdr][Data][Frame trailer]",
+        "[Frame hdr][Segment hdr][Packet hdr][Data]"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "On the way down the stack, each layer adds its header in front of what the layer above gave it."
+    },
+    {
+      "type": "written",
+      "prompt": "What's the name of the process where each layer removes its own header on the way up the stack?"
+    },
+    {
+      "type": "written",
+      "prompt": "What three-letter abbreviation names the checksum in a frame's trailer?"
+    },
+    {
+      "prompt": "A frame arrives and its FCS doesn't match the receiver's own checksum. What happens?",
+      "options": [
+        "The receiver fixes the flipped bit",
+        "The frame is thrown away",
+        "The frame is passed up anyway",
+        "The receiver asks the router for a copy"
+      ]
+    },
+    {
+      "prompt": "Why does an Ethernet frame put the destination MAC address first?",
+      "options": [
+        "It's alphabetical",
+        "So a switch can start deciding where to send the frame before the rest arrives",
+        "To save space",
+        "Because the source isn't needed"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Is network byte order big-endian or little-endian?"
+    },
+    {
+      "type": "written",
+      "prompt": "How many bytes does struct.pack(\"!HH\", 80, 443) produce? (a number)"
+    },
+    {
+      "type": "written",
+      "prompt": "In the exercise's frame format, how many bytes does the link layer add around a packet, counting header and trailer? (a number)"
+    },
+    {
+      "prompt": "The receiver's network layer reads the packet header. What does it do with the segment header and data after it?",
+      "options": [
+        "Checks the port numbers",
+        "Treats them as one opaque payload and hands it up to the transport layer",
+        "Discards them",
+        "Rewrites them"
+      ]
+    }
+  ]
+}

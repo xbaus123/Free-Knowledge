@@ -1,0 +1,49 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "That's the defining feature, and its weakness for computer traffic: the reserved capacity sits idle between bursts."
+    },
+    {
+      "accepted_answers": [
+        "bursts",
+        "burst"
+      ],
+      "explanation": "Bursty traffic is the key reason packet switching won for computers. A shared link carries other traffic while one sender is quiet."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A circuit is a fixed path, so losing any switch on it breaks the call. Packets are forwarded hop by hop, so routers can pick a different next hop."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Each packet is forwarded on its own. Packets of one message can take different routes, and can even arrive out of order."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Sharing means queues, and queues mean variable delay and occasional loss. The Internet leaves recovery to the endpoints (TCP, in Chapter 5)."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "AUTODIN, the Automatic Digital Network, stored and forwarded whole messages, not small packets."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "DECnet connected Digital Equipment Corporation's own computers. Like the other early networks, it solved networking inside one world."
+    },
+    {
+      "accepted_answers": [
+        "internetwork",
+        "an internetwork",
+        "internet",
+        "an internet",
+        "internetworking"
+      ],
+      "explanation": "Connecting separate networks to each other is internetworking, the problem the Internet was built to solve and the name of this course."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Networking lets machines share. It doesn't make a single computer compute faster."
+    }
+  ]
+}

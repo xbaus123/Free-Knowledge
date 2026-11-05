@@ -1,0 +1,63 @@
+{
+  "type": "quiz",
+  "title": "Check: ARPANET and TCP/IP",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Who funded ARPANET?",
+      "options": [
+        "The National Science Foundation",
+        "DARPA (then ARPA), part of the US Department of Defense",
+        "AT&T",
+        "IBM"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What did BBN call the machines that sat between each ARPANET host and the network and forwarded its packets? Type the three-letter abbreviation."
+    },
+    {
+      "prompt": "Which list has ARPANET's first four nodes (1969)?",
+      "options": [
+        "MIT, Harvard, Yale, Princeton",
+        "UCLA, SRI, UC Santa Barbara, University of Utah",
+        "UCL, MIT, Stanford, CERN",
+        "BBN, IBM, AT&T, Xerox PARC"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "ARPANET's original host-to-host protocol could carry data across different kinds of networks."
+    },
+    {
+      "prompt": "In 1974, who described the protocol that became TCP/IP?",
+      "options": [
+        "Steve Crocker and Jon Postel",
+        "Vint Cerf and Bob Kahn",
+        "Tim Berners-Lee and Robert Cailliau",
+        "Bob Metcalfe and David Boggs"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "On \"flag day\", every ARPANET host switched to TCP/IP at once. What year? (four digits)"
+    },
+    {
+      "prompt": "What did the 1977 demonstration prove?",
+      "options": [
+        "That email worked",
+        "That TCP/IP could carry traffic across three different networks (ARPANET, packet radio, and satellite) in one path",
+        "That fiber optics could replace copper",
+        "That the Internet could survive a nuclear attack"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "All Internet traffic passes through one central hub."
+    },
+    {
+      "type": "written",
+      "prompt": "Who wrote RFC 1, in 1969? (surname is enough)"
+    }
+  ]
+}

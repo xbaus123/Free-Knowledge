@@ -1,0 +1,67 @@
+{
+  "type": "quiz",
+  "title": "Drill: Name the Layer",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "IP: which OSI layer? Type the number or the name."
+    },
+    {
+      "type": "written",
+      "prompt": "Ethernet: which OSI layer? Type the number or the name."
+    },
+    {
+      "type": "written",
+      "prompt": "TCP: which OSI layer? Type the number or the name."
+    },
+    {
+      "type": "written",
+      "prompt": "HTTP: which OSI layer? Type the number or the name."
+    },
+    {
+      "type": "written",
+      "prompt": "Fiber-optic cable: which OSI layer? Type the number or the name."
+    },
+    {
+      "type": "written",
+      "prompt": "A network switch: which OSI layer? Type the number or the name."
+    },
+    {
+      "type": "written",
+      "prompt": "A router: which OSI layer? Type the number or the name."
+    },
+    {
+      "type": "written",
+      "prompt": "UDP: which OSI layer? Type the number or the name."
+    },
+    {
+      "type": "written",
+      "prompt": "A hub: which OSI layer? Type the number or the name."
+    },
+    {
+      "type": "written",
+      "prompt": "JPEG and UTF-8: which OSI layer? Type the number or the name."
+    },
+    {
+      "type": "written",
+      "prompt": "ICMP (the protocol behind ping): which OSI layer? Type the number or the name."
+    },
+    {
+      "type": "written",
+      "prompt": "SIP, which sets up and tears down voice calls: which OSI layer? Type the number or the name."
+    },
+    {
+      "type": "written",
+      "prompt": "A MAC address: which OSI layer? Type the number or the name."
+    },
+    {
+      "type": "written",
+      "prompt": "DNS: which OSI layer? Type the number or the name."
+    },
+    {
+      "type": "written",
+      "prompt": "Wi-Fi (IEEE 802.11): which OSI layer? Type the number or the name."
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "type": "quiz",
+  "title": "Check: The TCP/IP Model",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "How many layers does the TCP/IP model have? (a number)"
+    },
+    {
+      "prompt": "TCP/IP's Application layer covers which OSI layers?",
+      "options": [
+        "Only Application",
+        "Application and Presentation",
+        "Application, Presentation, and Session",
+        "Everything above Network"
+      ]
+    },
+    {
+      "prompt": "What does TCP/IP's Internet layer do?",
+      "options": [
+        "Carries bits on the wire",
+        "Defines the datagram (the IP packet) and routes it",
+        "Delivers data between programs",
+        "Runs web browsers"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "The TCP/IP model specifies which cables and hardware a network must use."
+    },
+    {
+      "prompt": "A switch makes forwarding decisions using…",
+      "options": [
+        "IP addresses in the packet header",
+        "Hardware (MAC) addresses in the frame header",
+        "Port numbers",
+        "Nothing: it repeats the signal"
+      ]
+    },
+    {
+      "prompt": "Which device works at layer 1 and looks at nothing, just repeating the signal?",
+      "options": [
+        "Router",
+        "Switch",
+        "Hub",
+        "Firewall"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A router forwards packets using which kind of address? (two letters)"
+    },
+    {
+      "prompt": "Someone says \"layer 3 switch\". Which numbering are they using, and what does the device forward by?",
+      "options": [
+        "TCP/IP numbering; forwards by MAC address",
+        "OSI numbering; forwards packets by IP address",
+        "OSI numbering; forwards by port number",
+        "TCP/IP numbering; forwards by port number"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Your own computer works at every layer of the stack."
+    }
+  ]
+}

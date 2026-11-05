@@ -1,0 +1,55 @@
+{
+  "type": "quiz",
+  "title": "Check: Why Layers",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "What's the main benefit of building a network in layers?",
+      "options": [
+        "It makes packets smaller",
+        "Each layer solves one problem and relies on the layer below without knowing how it works",
+        "Every layer can read every header",
+        "It removes the need for routers"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A router reads the web page inside a packet to decide where to send it."
+    },
+    {
+      "type": "true_false",
+      "prompt": "Each layer adds its own header, and on the receiving side each layer reads only the header its partner layer wrote."
+    },
+    {
+      "prompt": "A company replaces its Ethernet cables with Wi-Fi. Which layers have to change?",
+      "options": [
+        "All seven",
+        "Only the physical and data link layers; nothing above them notices",
+        "Only the application layer",
+        "The network and transport layers"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the name for carrying a whole packet inside another packet, as if it were ordinary data? (one word)"
+    },
+    {
+      "prompt": "A firewall lets DNS queries through. An attacker hides stolen data inside DNS queries. Why does it get through?",
+      "options": [
+        "DNS is encrypted",
+        "The firewall only checks the outer headers, which really do look like ordinary DNS",
+        "Firewalls can't see DNS",
+        "The attacker turned the firewall off"
+      ]
+    },
+    {
+      "prompt": "A program sends a 50 MB file. What does it see?",
+      "options": [
+        "Thousands of packets, which it has to number itself",
+        "A stream of data. The lower layers split it into packets and reassemble it on the other end",
+        "Individual electrical signals",
+        "The route the data takes"
+      ]
+    }
+  ]
+}

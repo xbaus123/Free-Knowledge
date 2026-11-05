@@ -1,0 +1,48 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "4",
+        "four"
+      ],
+      "explanation": "Application, Host-to-Host Transport, Internet, and Network Access."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "In TCP/IP an application handles its own presentation and sessions."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It matches OSI layer 3, the network layer."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It deliberately says nothing about hardware. Any network that can carry an IP datagram will do."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A switch is a layer 2 device. A hub (layer 1) just repeats the signal, and a router (layer 3) uses IP addresses."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Hubs and repeaters work on raw signals. They don't understand addresses at all."
+    },
+    {
+      "accepted_answers": [
+        "IP",
+        "ip address",
+        "ip addresses",
+        "IP addresses"
+      ],
+      "explanation": "Routers are layer 3 devices. They read the destination IP address in the packet header."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "\"Layer 2\" and \"layer 3\" almost always mean OSI's numbers, even on TCP/IP networks."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It builds the whole stack to send, and unpacks it to receive."
+    }
+  ]
+}

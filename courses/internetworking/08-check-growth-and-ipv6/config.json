@@ -1,0 +1,72 @@
+{
+  "type": "quiz",
+  "title": "Check: Growth and IPv6",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "How many bits long is an IPv4 address? (a number)"
+    },
+    {
+      "type": "written",
+      "prompt": "How many bits long is an IPv6 address? (a number)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "The global pool of unallocated IPv4 addresses ran out in 2011."
+    },
+    {
+      "prompt": "On a linear chart, Internet growth before about 1995 looks flat. On a log scale it's a steadily rising line. Why the difference?",
+      "options": [
+        "The log chart uses different data",
+        "Early numbers were tiny next to later ones, so a linear scale hides that they were multiplying by about ten every few years",
+        "Growth really was flat before 1995",
+        "Log scales always make lines straight"
+      ]
+    },
+    {
+      "prompt": "A hospital still runs a 20-year-old machine that only speaks an old protocol, so the network has to keep supporting it. Which growth problem is that?",
+      "options": [
+        "Unintended use",
+        "Legacy systems",
+        "Address space",
+        "Hackers"
+      ]
+    },
+    {
+      "prompt": "Email and DNS were designed without any authentication. Which growth problem does that lead to?",
+      "options": [
+        "Address space",
+        "Legacy systems",
+        "Hackers",
+        "Unintended use"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "IPv6 uses broadcast to reach every host on a network, just like IPv4."
+    },
+    {
+      "type": "written",
+      "prompt": "Which IPv6 header field lets a sender mark packets that belong to one stream, like a video call? (two words)"
+    },
+    {
+      "prompt": "How does IPv6 handle optional features?",
+      "options": [
+        "It doesn't support any",
+        "In extension headers chained after a simpler main header, so routers can skip what they don't need",
+        "By making the main header bigger every year",
+        "By sending them in a separate packet first"
+      ]
+    },
+    {
+      "prompt": "What does IPv6 autoconfiguration let a host do?",
+      "options": [
+        "Choose any address it likes",
+        "Build its own address from the network's prefix, without needing a server",
+        "Skip having an address",
+        "Copy its neighbor's address"
+      ]
+    }
+  ]
+}

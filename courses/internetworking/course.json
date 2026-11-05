@@ -1,0 +1,27 @@
+{
+  "title": "Internetworking",
+  "description": "How the Internet actually works, layer by layer. Starts with where the Internet came from and the OSI and TCP/IP models, then works up the stack: topologies and transmission media, Ethernet frames and switching, IP addressing and subnetting, ARP and ICMP, TCP and UDP, routing, DNS and mail, the upper layers, resilience, and wireless and IoT. Readings explain each layer, Python exercises have you build the pieces (frames, checksums, subnet calculators, routing tables), short quizzes (multiple choice, true or false, and typed answers) follow every reading, with drills and a review to close each chapter.",
+  "author": "FreeKnowledge contributors",
+  "version": "0.1.0",
+  "lessons": [
+    "01-why-we-network",
+    "02-check-packet-switching",
+    "03-arpanet-and-tcp-ip",
+    "04-check-arpanet",
+    "05-internet-standards",
+    "06-check-internet-standards",
+    "07-growth-and-ipv6",
+    "08-check-growth-and-ipv6",
+    "09-timeline-drill",
+    "10-why-layers",
+    "11-check-why-layers",
+    "12-osi-model",
+    "13-check-osi-model",
+    "14-tcp-ip-model",
+    "15-check-tcp-ip-model",
+    "16-layer-drill",
+    "17-encapsulation",
+    "18-check-encapsulation",
+    "19-chapter-review"
+  ]
+}

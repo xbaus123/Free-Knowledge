@@ -1,0 +1,149 @@
+{
+  "type": "quiz",
+  "title": "Chapter Review: Intro to Networks",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Why did packet switching suit computer traffic better than the phone network's circuit switching?",
+      "options": [
+        "It guarantees a fixed delay for every message",
+        "It reserves a dedicated path, so packets never arrive out of order",
+        "It needs no addresses, because the path is set up in advance",
+        "Computers send in bursts, and shared links don't sit idle between them the way a reserved circuit does"
+      ]
+    },
+    {
+      "prompt": "On ARPANET, what were the Interface Message Processors (IMPs) built by BBN?",
+      "options": [
+        "The first personal computers",
+        "The first email programs",
+        "Packet-forwarding machines between each host and the network: the first routers",
+        "The first DNS servers"
+      ]
+    },
+    {
+      "prompt": "What happened on January 1, 1983?",
+      "options": [
+        "Every ARPANET host switched to TCP/IP, which became the standard protocol between networks",
+        "ARPANET sent its first message, from UCLA to SRI",
+        "The IPv4 address pool ran out",
+        "The first web page was published"
+      ]
+    },
+    {
+      "prompt": "Which of these is NOT one of the four ideas Comer says make the Internet special?",
+      "options": [
+        "Network technology independence",
+        "Universal interconnection",
+        "End-to-end acknowledgments",
+        "A central hub that every packet passes through"
+      ]
+    },
+    {
+      "prompt": "What is an RFC?",
+      "options": [
+        "A numbered IETF document describing an Internet protocol or practice, never edited once published",
+        "A router configuration file",
+        "A government license required to run a network",
+        "A request to reserve a block of IP addresses"
+      ]
+    },
+    {
+      "prompt": "Plotted on a log scale, the number of computers on the Internet from 1981 to about 2000 forms a nearly straight rising line. What does that mean?",
+      "options": [
+        "The Internet grew by the same number of hosts every year",
+        "The Internet stopped growing",
+        "The number of hosts multiplied by a roughly constant factor every few years: exponential growth",
+        "The data was measured wrong"
+      ]
+    },
+    {
+      "prompt": "Which is NOT a change IPv6 makes?",
+      "options": [
+        "128-bit addresses instead of 32-bit",
+        "Multicast replaces broadcast",
+        "Hosts can configure their own addresses from the network prefix",
+        "It removes the need for DNS, because addresses are easy to remember"
+      ]
+    },
+    {
+      "prompt": "Put these OSI layers in order from the bottom (layer 1) up.",
+      "options": [
+        "Physical, Network, Data Link, Transport, Session, Application, Presentation",
+        "Physical, Data Link, Network, Transport, Session, Presentation, Application",
+        "Data Link, Physical, Network, Transport, Presentation, Session, Application",
+        "Physical, Data Link, Transport, Network, Session, Presentation, Application"
+      ]
+    },
+    {
+      "prompt": "Which OSI layer handles encoding, compression, and encryption?",
+      "options": [
+        "Session",
+        "Transport",
+        "Presentation",
+        "Data Link"
+      ]
+    },
+    {
+      "prompt": "The TCP/IP model's Network Access layer covers which OSI layers?",
+      "options": [
+        "Network and Transport",
+        "Data Link and Network",
+        "Session, Presentation, and Application",
+        "Physical and Data Link"
+      ]
+    },
+    {
+      "prompt": "During encapsulation, what is the unit of data called at the network layer, and at the data link layer?",
+      "options": [
+        "Packet, then frame",
+        "Segment, then packet",
+        "Frame, then packet",
+        "Datagram, then bits"
+      ]
+    },
+    {
+      "prompt": "Which layer adds a trailer as well as a header, and what does the trailer hold?",
+      "options": [
+        "Transport: the port numbers",
+        "Network: the destination IP address",
+        "Data link: the Frame Check Sequence, a checksum for catching corrupted frames",
+        "Application: the end of the file"
+      ]
+    },
+    {
+      "prompt": "A router receives a frame. Which header does it use to decide where the packet goes next?",
+      "options": [
+        "The data link header's MAC addresses",
+        "The transport header's port numbers",
+        "The application data",
+        "The network header's destination IP address"
+      ]
+    },
+    {
+      "prompt": "Why is tunneling a security concern?",
+      "options": [
+        "Tunnels make the network slower",
+        "Tunnels can only be used by administrators",
+        "A firewall that checks only the outer headers can't see the traffic hidden inside an allowed protocol",
+        "Tunneled packets skip the physical layer"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A circuit-switched network makes better use of shared links than a packet-switched one."
+    },
+    {
+      "type": "written",
+      "prompt": "Name the protocol suite that every ARPANET host switched to on January 1, 1983."
+    },
+    {
+      "type": "written",
+      "prompt": "A frame with a bad checksum is dropped. Which OSI layer number made that decision?"
+    },
+    {
+      "type": "true_false",
+      "prompt": "IPv6 removes broadcast and uses multicast instead."
+    }
+  ]
+}

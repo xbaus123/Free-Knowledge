@@ -1,0 +1,74 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "3",
+        "layer 3",
+        "three",
+        "layer three",
+        "l3"
+      ],
+      "explanation": "Layer 3: addressing and routing between networks. IP lives here."
+    },
+    {
+      "accepted_answers": [
+        "session",
+        "session layer",
+        "the session layer"
+      ],
+      "explanation": "The session layer opens, manages, and closes conversations between programs. SIP and RPC are examples."
+    },
+    {
+      "accepted_answers": [
+        "data link",
+        "data link layer",
+        "datalink",
+        "data-link",
+        "the data link layer",
+        "datalink layer",
+        "data-link layer"
+      ],
+      "explanation": "The data link layer delivers frames across one link, between neighbors on the same network. Ethernet and Wi-Fi live here."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Presentation is about how data is represented: ASCII and UTF-8, JPEG, and encryption."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "TCP segments (UDP datagrams), carried inside network-layer packets, carried inside data link frames."
+    },
+    {
+      "accepted_answers": [
+        "bits",
+        "bit",
+        "a bit"
+      ],
+      "explanation": "The physical layer moves raw bits as voltages, light pulses, or radio waves."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "ISO published it as a reference model for open systems."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Physical, Data Link, Network, Transport, Session, Presentation, Application."
+    },
+    {
+      "accepted_answers": [
+        "8",
+        "layer 8",
+        "eight"
+      ],
+      "explanation": "Layer 8 is the user, one of the two joke layers above the official seven."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Decisions at layer 9 shape a network before anyone plugs in a cable."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "They're data link (layer 2) protocols: they deliver frames between neighbors on one network. IP is layer 3."
+    }
+  ]
+}

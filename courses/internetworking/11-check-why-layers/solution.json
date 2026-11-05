@@ -1,0 +1,37 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "A Wi-Fi driver author doesn't think about web pages, and a browser author doesn't think about radio."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A router reads the network-layer header (the destination IP address) and treats everything after it as opaque data."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's what keeps the layers independent of each other."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Swappable layers are how the Internet achieves network technology independence."
+    },
+    {
+      "accepted_answers": [
+        "tunneling",
+        "tunnelling",
+        "a tunnel",
+        "tunnel"
+      ],
+      "explanation": "Tunneling is how VPNs work: your traffic is wrapped in an encrypted outer packet addressed to the VPN server."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Each layer only looks at its own header, so traffic hidden inside an allowed protocol looks allowed. That's why tunneling is a security issue."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Splitting and rebuilding are invisible to the application, unless it works at the session layer and manages that itself."
+    }
+  ]
+}

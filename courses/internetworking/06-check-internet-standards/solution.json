@@ -1,0 +1,48 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "TCP/IP doesn't care what's underneath. Any network that can carry a packet can join."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Keeping acknowledgments at the ends lets the network in the middle stay simple."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Both sides speak the same published protocol (SMTP, for mail), so it doesn't matter who wrote each program."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Every host gets an address, and routers carry packets between networks to get there."
+    },
+    {
+      "accepted_answers": [
+        "Internet Engineering Task Force",
+        "the Internet Engineering Task Force"
+      ],
+      "explanation": "The IETF is an open community of engineers. Anyone can join a working group's mailing list."
+    },
+    {
+      "accepted_answers": [
+        "Request for Comments",
+        "Requests for Comments",
+        "Request for Comment",
+        "Requests for Comment"
+      ],
+      "explanation": "The name dates from 1969, when they really were requests for feedback. Today RFCs include the Internet's official standards."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "An RFC is never changed after publication. A later RFC updates or replaces it. TCP's original RFC 793 was replaced by RFC 9293 in 2022."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Broad agreement in the working group, backed by implementations that actually work."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Working documents are Internet-Drafts. Once a working group agrees, a draft can be published as an RFC on the standards track."
+    }
+  ]
+}

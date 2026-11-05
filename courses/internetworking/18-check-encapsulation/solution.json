@@ -1,0 +1,65 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Each lower layer wraps everything the layer above gave it, so the outermost header belongs to the lowest layer."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's encapsulation. The data link layer adds a trailer as well."
+    },
+    {
+      "accepted_answers": [
+        "de-encapsulation",
+        "deencapsulation",
+        "decapsulation",
+        "de encapsulation"
+      ],
+      "explanation": "De-encapsulation is encapsulation in reverse: each layer strips its own header and passes the rest up."
+    },
+    {
+      "accepted_answers": [
+        "FCS",
+        "frame check sequence"
+      ],
+      "explanation": "The Frame Check Sequence is a CRC-32 of the whole frame."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Ethernet detects errors but doesn't correct them. Any recovery happens higher up, for example TCP resending a missing segment."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A switch can start forwarding as soon as it has read 6 bytes."
+    },
+    {
+      "accepted_answers": [
+        "big-endian",
+        "big endian",
+        "big",
+        "bigendian"
+      ],
+      "explanation": "Most significant byte first. That's what the ! in struct.pack(\"!HH\", …) asks for."
+    },
+    {
+      "accepted_answers": [
+        "4",
+        "four",
+        "4 bytes"
+      ],
+      "explanation": "H is a 2-byte unsigned number, and there are two of them."
+    },
+    {
+      "accepted_answers": [
+        "18",
+        "eighteen",
+        "18 bytes"
+      ],
+      "explanation": "Destination MAC (6) + source MAC (6) + length (2) + FCS (4) = 18. A real Ethernet frame has the same 18 bytes of overhead, with a type field in place of the length."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Each layer only reads the header its partner layer wrote."
+    }
+  ]
+}

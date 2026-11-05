@@ -1,0 +1,200 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "3",
+        "layer 3",
+        "l3",
+        "three",
+        "layer three",
+        "Network",
+        "Network layer"
+      ],
+      "explanation": "IP addresses and routes packets between networks."
+    },
+    {
+      "accepted_answers": [
+        "2",
+        "layer 2",
+        "l2",
+        "two",
+        "layer two",
+        "Data Link",
+        "Data Link layer",
+        "datalink",
+        "data-link",
+        "datalink layer",
+        "data-link layer"
+      ],
+      "explanation": "Ethernet delivers frames between neighbors on one network."
+    },
+    {
+      "accepted_answers": [
+        "4",
+        "layer 4",
+        "l4",
+        "four",
+        "layer four",
+        "Transport",
+        "Transport layer"
+      ],
+      "explanation": "TCP delivers data reliably and in order between programs."
+    },
+    {
+      "accepted_answers": [
+        "7",
+        "layer 7",
+        "l7",
+        "seven",
+        "layer seven",
+        "Application",
+        "Application layer"
+      ],
+      "explanation": "HTTP is the web's application protocol."
+    },
+    {
+      "accepted_answers": [
+        "1",
+        "layer 1",
+        "l1",
+        "one",
+        "layer one",
+        "Physical",
+        "Physical layer"
+      ],
+      "explanation": "Cables and light pulses are the physical layer."
+    },
+    {
+      "accepted_answers": [
+        "2",
+        "layer 2",
+        "l2",
+        "two",
+        "layer two",
+        "Data Link",
+        "Data Link layer",
+        "datalink",
+        "data-link",
+        "datalink layer",
+        "data-link layer"
+      ],
+      "explanation": "Switches forward frames by MAC address."
+    },
+    {
+      "accepted_answers": [
+        "3",
+        "layer 3",
+        "l3",
+        "three",
+        "layer three",
+        "Network",
+        "Network layer"
+      ],
+      "explanation": "Routers forward packets by IP address."
+    },
+    {
+      "accepted_answers": [
+        "4",
+        "layer 4",
+        "l4",
+        "four",
+        "layer four",
+        "Transport",
+        "Transport layer"
+      ],
+      "explanation": "UDP is the other transport protocol: no reliability, just ports and a checksum."
+    },
+    {
+      "accepted_answers": [
+        "1",
+        "layer 1",
+        "l1",
+        "one",
+        "layer one",
+        "Physical",
+        "Physical layer"
+      ],
+      "explanation": "A hub just repeats the signal out of every port."
+    },
+    {
+      "accepted_answers": [
+        "6",
+        "layer 6",
+        "l6",
+        "six",
+        "layer six",
+        "Presentation",
+        "Presentation layer"
+      ],
+      "explanation": "How data is represented is the presentation layer's job."
+    },
+    {
+      "accepted_answers": [
+        "3",
+        "layer 3",
+        "l3",
+        "three",
+        "layer three",
+        "Network",
+        "Network layer"
+      ],
+      "explanation": "ICMP carries network-layer error and control messages, like \"destination unreachable\"."
+    },
+    {
+      "accepted_answers": [
+        "5",
+        "layer 5",
+        "l5",
+        "five",
+        "layer five",
+        "Session",
+        "Session layer"
+      ],
+      "explanation": "Opening, managing, and closing conversations is the session layer."
+    },
+    {
+      "accepted_answers": [
+        "2",
+        "layer 2",
+        "l2",
+        "two",
+        "layer two",
+        "Data Link",
+        "Data Link layer",
+        "datalink",
+        "data-link",
+        "datalink layer",
+        "data-link layer"
+      ],
+      "explanation": "MAC addresses are hardware addresses used in frame headers."
+    },
+    {
+      "accepted_answers": [
+        "7",
+        "layer 7",
+        "l7",
+        "seven",
+        "layer seven",
+        "Application",
+        "Application layer"
+      ],
+      "explanation": "DNS is an application-layer service that turns names into addresses."
+    },
+    {
+      "accepted_answers": [
+        "2",
+        "layer 2",
+        "l2",
+        "two",
+        "layer two",
+        "Data Link",
+        "Data Link layer",
+        "datalink",
+        "data-link",
+        "datalink layer",
+        "data-link layer"
+      ],
+      "explanation": "Like Ethernet, Wi-Fi is a data link protocol, with radio as its physical layer."
+    }
+  ]
+}

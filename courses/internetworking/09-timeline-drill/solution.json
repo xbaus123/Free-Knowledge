@@ -1,0 +1,40 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "1969 first nodes, 1974 Cerf and Kahn's paper, 1977 the three-network demonstration, 1983 flag day."
+    },
+    {
+      "accepted_answers": [
+        "1969"
+      ],
+      "explanation": "UCLA, SRI, UCSB, and Utah, in 1969. RFC 1 is from the same year."
+    },
+    {
+      "accepted_answers": [
+        "1974"
+      ],
+      "explanation": "Their 1974 paper described carrying data across different networks joined by gateways."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "RFC 1: 1969. Three-network demonstration: 1977. DoD adoption: 1982. ARPANET shut down: 1990."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The DoD adopted it in 1982. Flag day was January 1, 1983."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "ARPANET shut down in 1990. The IPv4 pool ran out in 2011, two decades later."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "AUTODIN (1960s), ARPANET (1969), flag day (1983), IPv6 (designed in the 1990s)."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Postel edited the RFCs, Crocker wrote RFC 1, Cerf co-designed TCP/IP with Kahn, and BBN built the IMPs."
+    }
+  ]
+}
