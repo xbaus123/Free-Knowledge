@@ -1,0 +1,59 @@
+{
+  "type": "quiz",
+  "title": "Check: Planning the Site and Space",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Why is physical planning so important to get right early?",
+      "options": [
+        "Physical mistakes are the most expensive to fix later",
+        "Physical planning is required by the OSI model",
+        "Routers can't be reconfigured",
+        "Cables can't be replaced"
+      ]
+    },
+    {
+      "prompt": "Which is a real-estate question to ask about a site?",
+      "options": [
+        "Whether it's exposed to floods, earthquakes, or other disasters nearby",
+        "What the Wi-Fi password should be",
+        "How many VLANs to create",
+        "Which cable category to use"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the four-letter abbreviation for heating, ventilation, and air conditioning?"
+    },
+    {
+      "type": "written",
+      "prompt": "Standard metal frames that servers and switches bolt into are called ______. (one word)"
+    },
+    {
+      "type": "written",
+      "prompt": "The small room on each floor where that floor's cables meet a switch is called the wiring ______. (one word)"
+    },
+    {
+      "prompt": "Why does the 100 m limit matter when planning wiring closets?",
+      "options": [
+        "It doesn't, cables can be any length",
+        "It's the maximum height of a building",
+        "Every desk's twisted-pair run has to reach the closet within the segment limit",
+        "Closets must be 100 m apart"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Most sites are a hybrid: wired for desks and servers, wireless for laptops and phones."
+    },
+    {
+      "prompt": "What's the main trade-off of keeping servers on-site instead of in a remote data center?",
+      "options": [
+        "On-site means more control but more responsibility",
+        "There's no difference",
+        "Remote servers can't be reached over a network",
+        "On-site is always cheaper"
+      ]
+    }
+  ]
+}

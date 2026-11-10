@@ -1,0 +1,72 @@
+{
+  "type": "quiz",
+  "title": "Check: Microwaves and Infrared",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "Microwaves are aimed in a narrow beam from one antenna at another. The reading's word for this is ______. (one word)"
+    },
+    {
+      "prompt": "What do microwave antennas need in order to communicate?",
+      "options": [
+        "A shared password",
+        "Line of sight between them",
+        "To be in the same room",
+        "A cable between them"
+      ]
+    },
+    {
+      "prompt": "What are the two types of microwave transmission?",
+      "options": [
+        "Baseband and broadband",
+        "Single-mode and multimode",
+        "Terrestrial and satellite",
+        "Shielded and unshielded"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the most common frequency range for microwave communication, in GHz? (like 1-10)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Heavy rain and fog can hurt microwave signal quality."
+    },
+    {
+      "prompt": "Which is NOT a listed advantage of microwaves?",
+      "options": [
+        "Signals pass easily through buildings and hills",
+        "Fast deployment",
+        "High-speed data transfer",
+        "Cheap compared to laying cable"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A device that can both transmit and receive, needed on each side of an infrared link, is called a ______. (one word)"
+    },
+    {
+      "prompt": "Which list describes infrared?",
+      "options": [
+        "Long range, passes through walls, expensive",
+        "Tower-to-tower links across land",
+        "Short range, low cost, low power, high speed, but needs line of sight and has high attenuation",
+        "Carries light through glass"
+      ]
+    },
+    {
+      "prompt": "What's infrared's best use, per the reading?",
+      "options": [
+        "Satellite TV",
+        "Remote controls and scanning",
+        "Home Wi-Fi",
+        "Linking two cities"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Infrared's short range is a security advantage: a signal that can't leave the room is hard to eavesdrop on."
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Layer 1 means dealing with the systems and their environment before anything is ever connected."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "802.3 is wired Ethernet. 802.11 is Wi-Fi."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "\"Is it plugged in?\" still fixes a surprising number of problems. No light usually means no link."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Cameras, lights, and fences deter and record people approaching the site. The others work at the door or on the network."
+    },
+    {
+      "accepted_answers": [
+        "reading",
+        "read",
+        "seeing",
+        "viewing",
+        "looking",
+        "photographing",
+        "shoulder surfing",
+        "watching"
+      ],
+      "explanation": "If they can see in, they can read whatever's on the screen."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Each checks who you are before the door opens: a badge, a PIN, or your body."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Separating networks, hosts, and LANs keeps one breach from reaching everything."
+    },
+    {
+      "accepted_answers": [
+        "faraday",
+        "faraday's"
+      ],
+      "explanation": "Phones inside a Faraday cage lose signal, and nothing inside can be picked up from outside."
+    },
+    {
+      "accepted_answers": [
+        "scif",
+        "skif"
+      ],
+      "explanation": "A Sensitive Compartmented Information Facility, usually pronounced \"skiff\"."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Physical access beats most digital defenses. That's why physical security comes first."
+    }
+  ]
+}

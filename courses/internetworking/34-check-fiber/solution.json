@@ -1,0 +1,51 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "A pulse of light is a 1, no light is a 0."
+    },
+    {
+      "accepted_answers": [
+        "total internal reflection",
+        "internal reflection",
+        "tir"
+      ],
+      "explanation": "When light hits the cladding at a shallow angle, it reflects back into the core."
+    },
+    {
+      "accepted_answers": [
+        "cladding",
+        "the cladding"
+      ],
+      "explanation": "The cladding bends light slightly less than the core, which is what makes total internal reflection work."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Light isn't affected by electrical noise, and light in one fiber doesn't leak into another."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Fiber is immune to electrical interference, so noise from power lines doesn't affect it."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Single-mode fiber has one light path, so pulses don't smear together over long distances."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "In multimode fiber, light takes many paths and pulses smear together, which limits it to a few hundred meters. Long links use single-mode."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Fiber's weaknesses are cost and handling, not performance."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The last stretch to your home decides a lot, like whether upload speeds can match download."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Broadband coax is a shared medium. Everyone on the segment shares its capacity."
+    }
+  ]
+}

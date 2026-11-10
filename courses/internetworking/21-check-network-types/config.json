@@ -1,0 +1,59 @@
+{
+  "type": "quiz",
+  "title": "Check: Client-Server and Peer-to-Peer",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "true_false",
+      "prompt": "In a client-server network, the central server provides the services and manages the traffic."
+    },
+    {
+      "prompt": "Which one describes a peer-to-peer network?",
+      "options": [
+        "There's no central server, and each host is responsible for sharing its own resources and data",
+        "Every host connects to a central switch",
+        "One central machine stores every file and checks every login",
+        "Only two computers can ever be connected"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Peer-to-peer networks don't grow well past a small group. The reading's two-word summary of this drawback: \"size ______\". (one word)"
+    },
+    {
+      "prompt": "A company's file server crashes. What happens on a client-server network?",
+      "options": [
+        "Only the server's own user is affected",
+        "The clients automatically become servers",
+        "Nothing, the clients share the files among themselves",
+        "Every client loses access to that service, because the server is a single point of failure"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "\"Server\" names a special kind of hardware. An ordinary laptop can't be a server."
+    },
+    {
+      "prompt": "Five friends at home share one printer and swap files directly between their laptops, with no dedicated server. What kind of network is this?",
+      "options": [
+        "Peer-to-peer",
+        "Circuit-switched",
+        "Neither, it's a WAN",
+        "Client-server"
+      ]
+    },
+    {
+      "prompt": "Which is an advantage of client-server over peer-to-peer?",
+      "options": [
+        "It has no single point of failure",
+        "Security and backups are managed in one central place",
+        "It costs less to set up",
+        "It needs no administrator"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A file-sharing app uses a central server only to help peers find each other, then sends the files directly between peers. What's the word for a design that mixes both models? (one word)"
+    }
+  ]
+}

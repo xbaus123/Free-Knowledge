@@ -1,0 +1,45 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "That's the whole idea: clients ask, the server answers and decides who gets what."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Peers share directly with each other. Note that \"connects to a central switch\" is about topology, not about who serves whom."
+    },
+    {
+      "accepted_answers": [
+        "constrained",
+        "constraint",
+        "limited"
+      ],
+      "explanation": "With no central control, every peer manages its own sharing and security, and that stops working once the group gets big."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Centralizing the service also centralizes the risk. That's why important servers come in pairs or groups."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Server is a role. A laptop that answers requests, say by running a web server, is a server while it does."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A small group, no central server, every machine sharing its own resources: that's peer-to-peer."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Central control is the big win: one place to patch, back up, and decide who can see what. The other three are peer-to-peer's strengths."
+    },
+    {
+      "accepted_answers": [
+        "hybrid",
+        "a hybrid",
+        "hybrid network",
+        "hybrid model"
+      ],
+      "explanation": "Hybrids are common: central where it helps (finding peers, logging in), direct where it scales (moving the data)."
+    }
+  ]
+}

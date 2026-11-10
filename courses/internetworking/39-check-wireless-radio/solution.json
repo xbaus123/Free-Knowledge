@@ -1,0 +1,52 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Wi-Fi, Bluetooth, and cellular are all uses of radio waves."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's why low-frequency AM radio crosses states, and infrared can't get past your hand."
+    },
+    {
+      "accepted_answers": [
+        "antenna",
+        "antennas",
+        "antennae",
+        "aerial"
+      ],
+      "explanation": "The antenna turns electrical signals into radio waves and back."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Microwaves sit at the high end of that range, from 1 to 300 GHz."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Every other transmitter on a nearby frequency is noise, and storms can disrupt the signal too."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "There's only one airwave. Everyone nearby on the same frequency shares it."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "With a cable, an attacker has to get at the cable. With radio, standing in the parking lot is enough."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Listening to radio doesn't transmit anything, so passive eavesdropping is invisible."
+    },
+    {
+      "accepted_answers": [
+        "encryption",
+        "encrypting",
+        "encrypt",
+        "wpa3",
+        "wpa2",
+        "wpa"
+      ],
+      "explanation": "Encryption, like WPA3 for Wi-Fi, makes the captured signal useless to the listener."
+    }
+  ]
+}

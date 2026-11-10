@@ -1,0 +1,54 @@
+{
+  "type": "quiz",
+  "title": "Check: Signal Budget",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "A signal goes in at 100 mW and comes out at 10 mW. What's the loss in dB? (a number)"
+    },
+    {
+      "type": "written",
+      "prompt": "A cable loses 5 dB per 100 m. How many dB does 400 m of it lose? (a number)"
+    },
+    {
+      "prompt": "Following on: what fraction of the power is left after that 20 dB loss?",
+      "options": [
+        "1/20",
+        "1/100",
+        "1/10",
+        "1/2"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A 350 m run needs segments of at most 100 m. How many repeaters does it need? (a number)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "A 100 m run with a 100 m segment limit needs one repeater."
+    },
+    {
+      "type": "written",
+      "prompt": "How many seconds does a 250,000,000-byte file take over a 1000 Mbps link, at best? (a number)"
+    },
+    {
+      "prompt": "Why does choose_medium ignore UTP when noisy is True?",
+      "options": [
+        "UTP can't carry 1 Gbps",
+        "UTP can't reach 100 m",
+        "UTP has no shield, so it's prone to EMI and RFI",
+        "UTP is too expensive"
+      ]
+    },
+    {
+      "prompt": "Using the starter's catalog, what does choose_medium pick for a quiet 300 m run at 1000 Mbps?",
+      "options": [
+        "Single-mode fiber",
+        "Multimode fiber",
+        "Broadband coax",
+        "UTP Cat 6"
+      ]
+    }
+  ]
+}

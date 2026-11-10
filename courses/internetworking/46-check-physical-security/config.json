@@ -1,0 +1,72 @@
+{
+  "type": "quiz",
+  "title": "Check: Layer 1 in Practice and Physical Security",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "true_false",
+      "prompt": "Planning the physical layer includes the room's heating, cooling, and security, not just the cables."
+    },
+    {
+      "prompt": "Which IEEE standard family is wired Ethernet?",
+      "options": [
+        "802.3",
+        "802.11",
+        "802.15",
+        "X.25"
+      ]
+    },
+    {
+      "prompt": "A user says the network is down. A good first physical-layer check is...",
+      "options": [
+        "Reinstall the operating system",
+        "Call the ISP",
+        "Rewrite the router's configuration",
+        "Check that it's plugged in, and look at the port's link light"
+      ]
+    },
+    {
+      "prompt": "Which of these protects the outside of a site?",
+      "options": [
+        "Separate LANs",
+        "Biometric scanners",
+        "A touchpad PIN",
+        "Video monitoring, exterior lighting, and fences"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Window coverings keep someone outside from doing what to your screens and whiteboards? (one word)"
+    },
+    {
+      "prompt": "Which list is all door access controls?",
+      "options": [
+        "Fence, lighting, camera",
+        "UTP, STP, coax",
+        "Card reader, touchpad, biometric scanner",
+        "Hub, switch, router"
+      ]
+    },
+    {
+      "prompt": "Keeping guest Wi-Fi from reaching the company's payroll server is an example of...",
+      "options": [
+        "Attenuation",
+        "Crosstalk",
+        "Separation",
+        "Total internal reflection"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "An enclosure of conductive metal mesh that blocks electromagnetic signals from getting in or out is called a ______ cage. (one word)"
+    },
+    {
+      "type": "written",
+      "prompt": "What's the four-letter abbreviation for a facility accredited for handling classified information?"
+    },
+    {
+      "type": "true_false",
+      "prompt": "A firewall protects equipment from an attacker who can walk up and plug into it."
+    }
+  ]
+}

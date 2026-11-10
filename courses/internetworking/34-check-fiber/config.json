@@ -1,0 +1,72 @@
+{
+  "type": "quiz",
+  "title": "Check: Fiber-Optic Cable",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "How does fiber-optic cable carry data?",
+      "options": [
+        "As electrical voltage on a copper core",
+        "As sound waves",
+        "As radio waves inside a metal tube",
+        "As pulses of light through thin strands of glass or plastic"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What effect keeps light bouncing inside a fiber's core instead of escaping? (three words)"
+    },
+    {
+      "type": "written",
+      "prompt": "What's the name of the glass layer that surrounds the core? (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Fiber is resistant to EMI, RFI, and crosstalk."
+    },
+    {
+      "prompt": "A cable has to run right beside high-voltage power lines in a factory. Which medium handles the noise best?",
+      "options": [
+        "Infrared",
+        "Baseband coax",
+        "Unshielded twisted pair",
+        "Fiber optic"
+      ]
+    },
+    {
+      "prompt": "Which kind of fiber has a very thin core, uses a laser, and runs for tens of kilometers?",
+      "options": [
+        "Multimode",
+        "Broadband",
+        "Single-mode",
+        "Shielded"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Multimode fiber is the better choice for a 40 km link between cities."
+    },
+    {
+      "prompt": "What's a real drawback of fiber?",
+      "options": [
+        "It picks up interference easily",
+        "It loses signal quickly over distance",
+        "It's more expensive, and the glass is fragile and hard to splice",
+        "It has very low bandwidth"
+      ]
+    },
+    {
+      "prompt": "What's the key physical difference between Comcast's network and Verizon Fios?",
+      "options": [
+        "There is no difference, both are all fiber",
+        "Comcast is all fiber, Fios is all coax",
+        "Comcast is hybrid fiber-coax, with broadband coax for the last stretch; Fios runs fiber all the way to the home",
+        "Comcast uses satellites, Fios uses radio"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "On a hybrid fiber-coax network, your neighborhood's coax segment is shared, so speeds can drop at busy times."
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "One bad cable only cuts off one device, but if the central device dies, everyone is cut off."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Each device has its own cable to the center, so only that one device loses its connection. That makes stars easy to troubleshoot."
+    },
+    {
+      "accepted_answers": [
+        "star",
+        "star topology",
+        "a star"
+      ],
+      "explanation": "Every device runs its own cable to a switch, or connects by Wi-Fi to an access point at the center."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Many paths between devices means no single link failure can cut anyone off."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "All those redundant links need to be checked and agreed on, and some data may be sent more than one way."
+    },
+    {
+      "accepted_answers": [
+        "10",
+        "ten"
+      ],
+      "explanation": "n × (n − 1) / 2 = 5 × 4 / 2 = 10."
+    },
+    {
+      "accepted_answers": [
+        "7",
+        "seven"
+      ],
+      "explanation": "Each device links to every other device: n − 1 = 7."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Stars connected to each other in a hierarchy make a tree. It's what large and spread-out networks usually look like."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The reading says the opposite: complex to configure, with increased cost. In return, they scale over long distances."
+    }
+  ]
+}

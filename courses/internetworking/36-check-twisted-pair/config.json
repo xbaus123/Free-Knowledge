@@ -1,0 +1,68 @@
+{
+  "type": "quiz",
+  "title": "Check: Twisted Pair",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Why are the wires in a twisted-pair cable twisted?",
+      "options": [
+        "To make the cable shorter",
+        "So outside noise hits both wires of a pair equally and cancels out, and neighboring pairs don't leak into each other",
+        "So the cable can carry light",
+        "To make the cable stronger"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What connector is on the end of an Ethernet twisted-pair cable? (like XX-45)"
+    },
+    {
+      "type": "written",
+      "prompt": "What does UTP stand for? (three words)"
+    },
+    {
+      "prompt": "Which list describes UTP?",
+      "options": [
+        "Expensive, bulky, protects from interference",
+        "Carries light, immune to noise",
+        "Cheap, most common, easy to install, prone to crosstalk, RFI, and EMI",
+        "Only works for distances under 1 meter"
+      ]
+    },
+    {
+      "prompt": "Which list describes STP?",
+      "options": [
+        "Wireless, line of sight, short range",
+        "Expensive, faster than unshielded, bulky, hard to install, protects from interference and crosstalk",
+        "Uses one copper core inside a metal shield",
+        "Cheap, thin, easy to install, prone to noise"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Shielded twisted pair is the most common cable in offices and homes."
+    },
+    {
+      "prompt": "A hospital needs copper cabling near MRI machines and other heavy electrical equipment. Which is the better choice?",
+      "options": [
+        "Either, it makes no difference",
+        "STP",
+        "Infrared",
+        "UTP"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "If an STP cable's shield isn't grounded properly, it can make noise worse."
+    },
+    {
+      "prompt": "Which twisted-pair category handles 10 Gbps over the full 100-meter segment?",
+      "options": [
+        "Cat 5e",
+        "Cat 6a",
+        "Cat 6",
+        "Cat 3"
+      ]
+    }
+  ]
+}

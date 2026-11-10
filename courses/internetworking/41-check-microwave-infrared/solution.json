@@ -1,0 +1,59 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "unidirectional",
+        "directional",
+        "uni-directional"
+      ],
+      "explanation": "Unlike radio, which spreads in all directions, microwaves go one way."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "That's why microwave antennas go on tall towers: to see over obstacles and the curve of the Earth."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Terrestrial goes tower to tower across land. Satellite goes up to a satellite and back down."
+    },
+    {
+      "accepted_answers": [
+        "3-30",
+        "3 - 30",
+        "3 to 30",
+        "3-30 ghz",
+        "3 to 30 ghz",
+        "3–30",
+        "3–30 ghz"
+      ],
+      "explanation": "Microwaves span 1 to 300 GHz, but 3 to 30 GHz is the usual range."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Atmospheric conditions are one of microwave's listed disadvantages."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The opposite: physical obstacles can interrupt the beam."
+    },
+    {
+      "accepted_answers": [
+        "transceiver",
+        "transceivers"
+      ],
+      "explanation": "Transmitter + receiver = transceiver."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Infrared fades fast and is blocked by anything in the way."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Short range and line of sight suit a TV remote perfectly."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The same property that limits it also contains it."
+    }
+  ]
+}

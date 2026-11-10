@@ -1,0 +1,48 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Twisting is the cable's built-in defense against EMI, RFI, and crosstalk."
+    },
+    {
+      "accepted_answers": [
+        "rj-45",
+        "rj45",
+        "rj 45",
+        "8p8c"
+      ],
+      "explanation": "RJ-45, the slightly wider cousin of the phone jack."
+    },
+    {
+      "accepted_answers": [
+        "unshielded twisted pair",
+        "unshielded twisted-pair"
+      ],
+      "explanation": "UTP has no shield, just the twists."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Nearly all office and home Ethernet is UTP."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The shield buys noise protection and speed, at the cost of price and handling."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Unshielded twisted pair is. STP is used where electrical noise is a real problem."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "STP's shield protects the signal in electrically noisy places."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's part of why STP is harder to install."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Cat 6 manages 10 Gbps only over short runs. Cat 6a does the full 100 m."
+    }
+  ]
+}

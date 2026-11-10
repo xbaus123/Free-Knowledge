@@ -1,0 +1,132 @@
+{
+  "type": "quiz",
+  "title": "Chapter Review: Topologies and the Physical Layer",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "A network with no central server, where every host shares its own resources, is...",
+      "options": [
+        "Client-server",
+        "Baseband",
+        "Peer-to-peer",
+        "A tree"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Every device connects to a central switch. Name the topology. (one word)"
+    },
+    {
+      "type": "written",
+      "prompt": "How many links does a full mesh of 6 devices need? (a number)"
+    },
+    {
+      "prompt": "Which topology is low cost but hard to troubleshoot, with one break taking everything down?",
+      "options": [
+        "Bus",
+        "Star",
+        "Mesh",
+        "Tree"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Ring networks have good quality because token passing prevents collisions."
+    },
+    {
+      "prompt": "Which list is all unguided media?",
+      "options": [
+        "STP, UTP, infrared",
+        "Radio waves, microwaves, infrared",
+        "Twisted pair, coax, fiber",
+        "Coax, radio, fiber"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "The loss of signal strength as it travels is called ______. (one word)"
+    },
+    {
+      "type": "written",
+      "prompt": "A signal loses 10 dB. What fraction of its power is left? (a fraction like 1/4)"
+    },
+    {
+      "prompt": "Signal leaking between wires placed too close together is...",
+      "options": [
+        "Crosstalk",
+        "Bandwidth",
+        "EMI",
+        "RFI"
+      ]
+    },
+    {
+      "prompt": "Which coax carries many signals over long distances using modulation and FDM?",
+      "options": [
+        "Broadband",
+        "Shielded",
+        "Multimode",
+        "Baseband"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What keeps light inside a fiber's core? (three words)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Fiber-optic cable is prone to EMI and RFI."
+    },
+    {
+      "prompt": "Cheap, most common, easy to install, but prone to crosstalk. Which cable?",
+      "options": [
+        "UTP",
+        "STP",
+        "Single-mode fiber",
+        "Broadband coax"
+      ]
+    },
+    {
+      "prompt": "Which wireless medium needs line of sight, works over just a few meters, and is used in remote controls?",
+      "options": [
+        "Radio waves",
+        "Microwaves",
+        "Satellite",
+        "Infrared"
+      ]
+    },
+    {
+      "prompt": "Why is wireless considered inherently less secure?",
+      "options": [
+        "It can't be encrypted",
+        "Anyone in range can pick up the signal, without physical access",
+        "It's slower than wired",
+        "Radio waves damage data"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which IEEE standard family is wired Ethernet? (like 802.x)"
+    },
+    {
+      "type": "written",
+      "prompt": "An enclosure that blocks electromagnetic signals in and out is a ______ cage. (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "A badge plus a PIN is multi-factor authentication."
+    },
+    {
+      "prompt": "What's the trade-off between on-site and remote backups?",
+      "options": [
+        "Remote is always faster",
+        "On-site is faster to restore; remote survives a disaster at the site",
+        "On-site survives fires better",
+        "There's no difference"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "In systems terms, a network is described by its elements, its functions, and its ______. (one word)"
+    }
+  ]
+}

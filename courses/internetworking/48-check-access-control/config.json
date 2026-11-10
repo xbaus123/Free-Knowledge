@@ -1,0 +1,67 @@
+{
+  "type": "quiz",
+  "title": "Check: Access Control and MFA",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "What's the difference between authentication and authorization?",
+      "options": [
+        "Authorization proves who you are; authentication decides what you can do",
+        "They mean the same thing",
+        "Authentication proves who you are; authorization decides what you're allowed to do",
+        "Authentication is for doors, authorization is for computers"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A fingerprint belongs to which authentication factor? Something you ______. (one word)"
+    },
+    {
+      "type": "written",
+      "prompt": "A badge or a security token is something you ______. (one word)"
+    },
+    {
+      "type": "written",
+      "prompt": "A PIN is something you ______. (one word)"
+    },
+    {
+      "type": "written",
+      "prompt": "What's the abbreviation for requiring at least two different authentication factors?"
+    },
+    {
+      "type": "true_false",
+      "prompt": "A password plus a security question counts as MFA."
+    },
+    {
+      "prompt": "Which combination IS multi-factor?",
+      "options": [
+        "Password + security question",
+        "Two different ID badges",
+        "Password + PIN",
+        "Badge + fingerprint"
+      ]
+    },
+    {
+      "prompt": "\"Every network admin can open the server room\" is authorization by...",
+      "options": [
+        "role",
+        "accident",
+        "rule",
+        "fingerprint"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Giving people access only to what their current job requires, and nothing more, is the principle of least ______. (one word)"
+    },
+    {
+      "prompt": "What's a tripwire for?",
+      "options": [
+        "Detecting when something it watches changes, and raising an alarm",
+        "Encrypting Wi-Fi",
+        "Preventing anyone from ever getting in",
+        "Speeding up the network"
+      ]
+    }
+  ]
+}

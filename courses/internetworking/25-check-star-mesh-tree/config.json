@@ -1,0 +1,63 @@
+{
+  "type": "quiz",
+  "title": "Check: Star, Mesh, and Tree",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "In a star topology, what is the single point of failure?",
+      "options": [
+        "Any one of the cables",
+        "There isn't one",
+        "The device at the edge with the most traffic",
+        "The central hub or switch"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "In a star, a damaged cable to one computer takes the whole network down."
+    },
+    {
+      "type": "written",
+      "prompt": "Most office and home networks today are wired in which topology? (one word)"
+    },
+    {
+      "prompt": "What's the main strength of a mesh topology?",
+      "options": [
+        "Reliable data transmission: if one link fails, traffic takes another path",
+        "It's the cheapest to wire",
+        "It needs no configuration at all",
+        "It uses only one cable"
+      ]
+    },
+    {
+      "prompt": "And the drawback the reading gives for mesh?",
+      "options": [
+        "Only one device can send at a time",
+        "It can't cover long distances",
+        "Redundancy results in additional traffic (and more cables and ports to pay for)",
+        "The hub is a single point of failure"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A full mesh connects 5 devices. How many links does it need in total? (a number)"
+    },
+    {
+      "type": "written",
+      "prompt": "In a full mesh of 8 devices, how many links does each device need? (a number)"
+    },
+    {
+      "prompt": "A university joins one star network per building back to a core switch, in levels. Which topology is that?",
+      "options": [
+        "Bus",
+        "Point-to-point",
+        "Tree",
+        "Ring"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Tree topologies are easy and cheap to configure."
+    }
+  ]
+}

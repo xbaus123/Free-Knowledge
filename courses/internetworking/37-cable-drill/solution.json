@@ -1,0 +1,137 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "coax",
+        "coaxial",
+        "coaxial cable",
+        "broadband coax",
+        "broadband coaxial",
+        "broadband",
+        "broadband coaxial cable"
+      ],
+      "explanation": "Four layers sharing one axis: coaxial cable."
+    },
+    {
+      "accepted_answers": [
+        "fiber",
+        "fibre",
+        "fiber optic",
+        "fibre optic",
+        "fiber-optic",
+        "fibre-optic",
+        "fiber optic cable",
+        "optical fiber",
+        "single-mode fiber",
+        "single mode fiber",
+        "single-mode",
+        "single mode"
+      ],
+      "explanation": "Only fiber carries light."
+    },
+    {
+      "accepted_answers": [
+        "utp",
+        "unshielded twisted pair",
+        "unshielded",
+        "unshielded twisted-pair",
+        "cat 6",
+        "cat6",
+        "cat 5e",
+        "cat5e",
+        "twisted pair"
+      ],
+      "explanation": "Unshielded twisted pair."
+    },
+    {
+      "accepted_answers": [
+        "stp",
+        "shielded twisted pair",
+        "shielded",
+        "shielded twisted-pair"
+      ],
+      "explanation": "Shielded twisted pair."
+    },
+    {
+      "accepted_answers": [
+        "coax",
+        "coaxial",
+        "coaxial cable",
+        "broadband coax",
+        "broadband coaxial",
+        "broadband",
+        "broadband coaxial cable"
+      ],
+      "explanation": "Broadband coax."
+    },
+    {
+      "accepted_answers": [
+        "fiber",
+        "fibre",
+        "fiber optic",
+        "fibre optic",
+        "fiber-optic",
+        "fibre-optic",
+        "fiber optic cable",
+        "optical fiber",
+        "single-mode fiber",
+        "single mode fiber",
+        "single-mode",
+        "single mode"
+      ],
+      "explanation": "Single-mode fiber."
+    },
+    {
+      "accepted_answers": [
+        "fiber",
+        "fibre",
+        "fiber optic",
+        "fibre optic",
+        "fiber-optic",
+        "fibre-optic",
+        "fiber optic cable",
+        "optical fiber",
+        "single-mode fiber",
+        "single mode fiber",
+        "single-mode",
+        "single mode"
+      ],
+      "explanation": "Light isn't affected by electrical noise."
+    },
+    {
+      "accepted_answers": [
+        "coax",
+        "coaxial",
+        "coaxial cable",
+        "broadband coax",
+        "broadband coaxial",
+        "broadband",
+        "broadband coaxial cable"
+      ],
+      "explanation": "Baseband coax."
+    },
+    {
+      "accepted_answers": [
+        "utp",
+        "unshielded twisted pair",
+        "unshielded",
+        "unshielded twisted-pair",
+        "cat 6",
+        "cat6",
+        "cat 5e",
+        "cat5e",
+        "twisted pair"
+      ],
+      "explanation": "Unshielded twisted pair, Cat 5e or Cat 6."
+    },
+    {
+      "accepted_answers": [
+        "stp",
+        "shielded twisted pair",
+        "shielded",
+        "shielded twisted-pair"
+      ],
+      "explanation": "Shielded twisted pair."
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "You can reconfigure a router in minutes, but moving a data center takes months."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Location decides which disasters you have to plan for."
+    },
+    {
+      "accepted_answers": [
+        "hvac"
+      ],
+      "explanation": "Servers turn electricity into heat, so cooling runs all day, every day."
+    },
+    {
+      "accepted_answers": [
+        "racks",
+        "rack",
+        "server racks",
+        "server rack"
+      ],
+      "explanation": "Racks keep equipment organized, cooled, and easy to reach."
+    },
+    {
+      "accepted_answers": [
+        "closet",
+        "closets",
+        "cupboard",
+        "room"
+      ],
+      "explanation": "Every desk on the floor has to be within 100 m of cable from it."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "That's why big floors often have more than one wiring closet."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Wired is faster and more secure, wireless is cheaper and lets people move."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Remote means less to maintain, but you depend on the network link to reach your servers."
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "The signal runs on the inner conductor, the insulator keeps it apart from the shield, the shield blocks noise, and the jacket protects it all."
+    },
+    {
+      "accepted_answers": [
+        "polyethylene",
+        "polythene",
+        "pe"
+      ],
+      "explanation": "Polyethylene: low signal loss, water-resistant, sturdy, and cheap."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The shield is why coax resists interference better than plain wire."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Along with protecting the cable from damage, moisture, dust, chemicals, heat, and short circuits."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Baseband puts one signal directly onto the wire. It's simple, and used inside a building's LAN."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Broadband coax divides the cable's frequencies into many channels, so TV and Internet travel at once."
+    },
+    {
+      "accepted_answers": [
+        "fdm",
+        "frequency division multiplexing",
+        "frequency-division multiplexing"
+      ],
+      "explanation": "Frequency-division multiplexing: like radio stations sharing the air on different frequencies."
+    },
+    {
+      "accepted_answers": [
+        "tdm",
+        "time division multiplexing",
+        "time-division multiplexing"
+      ],
+      "explanation": "Time-division multiplexing: each device gets its own slice of time on the single channel."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Broadband relies on modulation. Baseband uses none."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Baseband has limited bandwidth: one channel, no frequency multiplexing, no modulation."
+    }
+  ]
+}

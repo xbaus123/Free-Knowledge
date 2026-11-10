@@ -1,0 +1,55 @@
+{
+  "type": "quiz",
+  "title": "Drill: Name the Topology",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "Every device taps into one long backbone cable with a terminator at each end."
+    },
+    {
+      "type": "written",
+      "prompt": "Each device connects to exactly two neighbors, forming a closed loop."
+    },
+    {
+      "type": "written",
+      "prompt": "Every device has its own cable to one central switch."
+    },
+    {
+      "type": "written",
+      "prompt": "Every router is linked directly to every other router."
+    },
+    {
+      "type": "written",
+      "prompt": "Exactly two devices share one dedicated link."
+    },
+    {
+      "type": "written",
+      "prompt": "Several star networks hang off a core in levels, like branches."
+    },
+    {
+      "type": "written",
+      "prompt": "Cheapest to wire, but one break anywhere takes everything down and the fault is hard to find."
+    },
+    {
+      "type": "written",
+      "prompt": "A token circulates, and only the device holding it may send."
+    },
+    {
+      "type": "written",
+      "prompt": "Most reliable, because traffic can always take another path, but it's expensive and the redundancy adds traffic."
+    },
+    {
+      "type": "written",
+      "prompt": "Fast and easy to troubleshoot, but if the hub fails, everyone is cut off."
+    },
+    {
+      "type": "written",
+      "prompt": "Works well across long distances and big campuses, but it's complex to configure and costs more."
+    },
+    {
+      "type": "written",
+      "prompt": "Good quality and collision-free, but every device added slows the trip around."
+    }
+  ]
+}

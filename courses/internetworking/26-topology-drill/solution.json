@@ -1,0 +1,117 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "bus",
+        "bus topology",
+        "a bus"
+      ],
+      "explanation": "One shared cable, terminated at both ends: a bus."
+    },
+    {
+      "accepted_answers": [
+        "ring",
+        "ring topology",
+        "a ring",
+        "token ring"
+      ],
+      "explanation": "Two neighbors each, in a loop: a ring."
+    },
+    {
+      "accepted_answers": [
+        "star",
+        "star topology",
+        "a star"
+      ],
+      "explanation": "Everything meets in the middle: a star."
+    },
+    {
+      "accepted_answers": [
+        "mesh",
+        "mesh topology",
+        "a mesh",
+        "full mesh",
+        "partial mesh"
+      ],
+      "explanation": "Everyone linked to everyone: a full mesh."
+    },
+    {
+      "accepted_answers": [
+        "point to point",
+        "point-to-point",
+        "point to point topology",
+        "point-to-point topology",
+        "p2p"
+      ],
+      "explanation": "Two devices, one link: point-to-point."
+    },
+    {
+      "accepted_answers": [
+        "tree",
+        "tree topology",
+        "a tree",
+        "hierarchical",
+        "hierarchical topology",
+        "hybrid",
+        "star of stars"
+      ],
+      "explanation": "Stars joined in a hierarchy: a tree."
+    },
+    {
+      "accepted_answers": [
+        "bus",
+        "bus topology",
+        "a bus"
+      ],
+      "explanation": "Low cost, hard to troubleshoot: the bus."
+    },
+    {
+      "accepted_answers": [
+        "ring",
+        "ring topology",
+        "a ring",
+        "token ring"
+      ],
+      "explanation": "Token passing goes with rings."
+    },
+    {
+      "accepted_answers": [
+        "mesh",
+        "mesh topology",
+        "a mesh",
+        "full mesh",
+        "partial mesh"
+      ],
+      "explanation": "Reliability through redundancy is mesh's whole point."
+    },
+    {
+      "accepted_answers": [
+        "star",
+        "star topology",
+        "a star"
+      ],
+      "explanation": "The central device is the star's single point of failure."
+    },
+    {
+      "accepted_answers": [
+        "tree",
+        "tree topology",
+        "a tree",
+        "hierarchical",
+        "hierarchical topology",
+        "hybrid",
+        "star of stars"
+      ],
+      "explanation": "That's the tree's trade-off."
+    },
+    {
+      "accepted_answers": [
+        "ring",
+        "ring topology",
+        "a ring",
+        "token ring"
+      ],
+      "explanation": "Limited scalability is the ring's weakness."
+    }
+  ]
+}

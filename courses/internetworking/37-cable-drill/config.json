@@ -1,0 +1,47 @@
+{
+  "type": "quiz",
+  "title": "Drill: Which Cable?",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "Inner copper conductor, polyethylene insulator, metal braid, plastic jacket."
+    },
+    {
+      "type": "written",
+      "prompt": "Carries light using total internal reflection."
+    },
+    {
+      "type": "written",
+      "prompt": "Cheap, thin, easy to install, and in nearly every office, but prone to crosstalk."
+    },
+    {
+      "type": "written",
+      "prompt": "Twisted pairs wrapped in foil: protected from interference, but expensive and bulky."
+    },
+    {
+      "type": "written",
+      "prompt": "Brings cable TV and cable Internet into the home, many channels at once."
+    },
+    {
+      "type": "written",
+      "prompt": "Runs tens of kilometers between cities with minimal loss."
+    },
+    {
+      "type": "written",
+      "prompt": "Completely immune to EMI and RFI, because there's no electricity in it."
+    },
+    {
+      "type": "written",
+      "prompt": "What early Ethernet ran on as a bus, with terminators at each end."
+    },
+    {
+      "type": "written",
+      "prompt": "The usual cable from a desk to the wiring closet, up to 100 m."
+    },
+    {
+      "type": "written",
+      "prompt": "Copper pairs in a factory full of motors, where plain twisting isn't enough."
+    }
+  ]
+}

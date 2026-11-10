@@ -1,0 +1,54 @@
+{
+  "type": "quiz",
+  "title": "Check: The Physical Layer and Media",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "The physical layer is which OSI layer? (a number)"
+    },
+    {
+      "prompt": "What does the physical layer actually do?",
+      "options": [
+        "Adds MAC addresses to frames",
+        "Chooses a route between networks",
+        "Makes sure data arrives in order",
+        "Turns bits into signals (voltages, light, or radio waves) on the medium, and back into bits at the other end"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "The physical layer reads the destination address in a frame to decide where to send it."
+    },
+    {
+      "type": "written",
+      "prompt": "What's the general name for whatever a signal travels through between sender and receiver, like a cable or the air? (two words)"
+    },
+    {
+      "prompt": "Which of these are all guided media?",
+      "options": [
+        "Twisted pair, coaxial cable, fiber optic",
+        "Twisted pair, radio waves, infrared",
+        "Fiber optic, microwaves, coaxial cable",
+        "Radio waves, microwaves, infrared"
+      ]
+    },
+    {
+      "prompt": "Which of these is an unguided medium?",
+      "options": [
+        "Coaxial cable",
+        "Shielded twisted pair",
+        "Microwaves",
+        "Fiber optic"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Guided media are also called ______ media. (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Fiber-optic cable carries the signal as light, not electricity."
+    }
+  ]
+}

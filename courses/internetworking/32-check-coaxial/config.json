@@ -1,0 +1,67 @@
+{
+  "type": "quiz",
+  "title": "Check: Coaxial Cable",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "From the center out, what are the four layers of a coaxial cable?",
+      "options": [
+        "Metal shield, inner conductor, plastic jacket, insulating material",
+        "Glass core, cladding, metal shield, plastic jacket",
+        "Inner conductor, metal shield, insulating material, plastic jacket",
+        "Inner conductor, insulating material, metal shield, plastic jacket"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which plastic is usually used for coax's insulating material? (one word)"
+    },
+    {
+      "prompt": "What does coax's metal shield do?",
+      "options": [
+        "Blocks outside noise from reaching the signal and keeps the signal inside",
+        "Makes the cable flexible",
+        "Converts the signal to light",
+        "Carries the main signal"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "The outer plastic jacket also helps protect people from electric shock."
+    },
+    {
+      "prompt": "Which describes baseband coax?",
+      "options": [
+        "Many signals over long distances using modulation",
+        "One digital signal over a short distance, with no modulation",
+        "Light pulses through glass",
+        "Radio signals between towers"
+      ]
+    },
+    {
+      "prompt": "Cable TV and cable Internet share one coax line into your home. Which kind of coax is that?",
+      "options": [
+        "Single-mode",
+        "Broadband",
+        "Shielded twisted pair",
+        "Baseband"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Broadband coax gives each signal its own frequency channel. What's that technique called? Give its three-letter abbreviation."
+    },
+    {
+      "type": "written",
+      "prompt": "Baseband coax has only one channel, so devices take turns in slices of time. What's that called? Give its three-letter abbreviation."
+    },
+    {
+      "type": "true_false",
+      "prompt": "Broadband coax represents data as analog waves on carrier frequencies, while baseband sends digital signals directly."
+    },
+    {
+      "type": "true_false",
+      "prompt": "Baseband coax has more bandwidth than broadband, because it doesn't waste effort on modulation."
+    }
+  ]
+}

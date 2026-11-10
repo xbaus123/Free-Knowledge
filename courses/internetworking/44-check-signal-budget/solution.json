@@ -1,0 +1,53 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "10",
+        "10 db",
+        "ten"
+      ],
+      "explanation": "10 × log10(100 / 10) = 10 × 1 = 10 dB."
+    },
+    {
+      "accepted_answers": [
+        "20",
+        "20 db",
+        "twenty"
+      ],
+      "explanation": "5 × 400 / 100 = 20 dB. Losses add up along the cable."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Each 10 dB is a factor of ten, so 20 dB leaves a hundredth."
+    },
+    {
+      "accepted_answers": [
+        "3",
+        "three"
+      ],
+      "explanation": "350 m takes 4 segments, and repeaters go between them: 4 − 1 = 3."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It fits exactly in one segment, so it needs none. Your repeaters_needed handles this edge case."
+    },
+    {
+      "accepted_answers": [
+        "2",
+        "2 seconds",
+        "2s",
+        "two",
+        "2.0"
+      ],
+      "explanation": "250,000,000 × 8 = 2,000,000,000 bits, divided by 1,000,000,000 bits per second = 2 seconds."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "In the catalog, UTP is the only cable that isn't emi_resistant."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Twisted pair stops at 100 m. Coax, multimode, and single-mode all qualify, and coax is cheapest per meter."
+    }
+  ]
+}

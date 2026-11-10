@@ -1,0 +1,48 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "topology",
+        "network topology",
+        "a topology"
+      ],
+      "explanation": "Topology decides what breaks when a cable fails, how easy the network is to grow, and how much it costs to wire."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "They can differ. A network can be cabled as a star while the data is passed around it as a ring."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "One dedicated link between exactly two devices is point-to-point."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Without a terminator, the signal reflects off the cable's end and garbles everything else on the bus."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "One cable keeps it cheap, but a fault can be anywhere along that cable, and one break takes down the whole bus."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Everyone shares one cable, so only one can talk at a time. A busy bus spends a lot of time recovering from collisions."
+    },
+    {
+      "accepted_answers": [
+        "token",
+        "the token",
+        "a token"
+      ],
+      "explanation": "Token passing is why rings have no collisions and every device gets a fair, predictable turn."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Rings are collision-free, but each extra device adds delay to every trip around the loop."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's why standards like FDDI used two rings running in opposite directions."
+    }
+  ]
+}

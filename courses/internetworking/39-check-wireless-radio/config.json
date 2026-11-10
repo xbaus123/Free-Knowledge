@@ -1,0 +1,68 @@
+{
+  "type": "quiz",
+  "title": "Check: Wireless and Radio Waves",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "What are the three types of wireless transmission?",
+      "options": [
+        "Radio waves, microwaves, infrared",
+        "Wi-Fi, Bluetooth, cellular",
+        "AM, FM, shortwave",
+        "Radio waves, coax, fiber"
+      ]
+    },
+    {
+      "prompt": "Generally, as wireless frequency goes up...",
+      "options": [
+        "it carries more data, but range gets shorter and it's blocked more easily",
+        "nothing changes except the antenna color",
+        "it stops needing an antenna",
+        "range increases and signals pass through walls more easily"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Radio communication needs a transmitter, a receiver, and an ______ on each. (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Radio waves cover roughly 3 kHz to 300 GHz."
+    },
+    {
+      "prompt": "Which is a con of radio waves?",
+      "options": [
+        "They're prone to interference and atmospheric disturbances",
+        "They only work over a few centimeters",
+        "They can't be used by portable devices",
+        "They need line of sight"
+      ]
+    },
+    {
+      "prompt": "Why is radio's bandwidth limited?",
+      "options": [
+        "Radio can't carry digital data",
+        "Radio is slower than light",
+        "The spectrum is shared by everyone in the area, and governments license out slices of it",
+        "Antennas can only send one bit at a time"
+      ]
+    },
+    {
+      "prompt": "Why is wireless considered inherently less secure than wired?",
+      "options": [
+        "Wireless devices have no passwords",
+        "Wireless can't use encryption",
+        "Radio waves corrupt encrypted data",
+        "The signal spreads out in every direction, so anyone in range can pick it up without physical access"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "You can usually tell when someone is passively eavesdropping on your Wi-Fi."
+    },
+    {
+      "type": "written",
+      "prompt": "On a wireless network, what's the main defense against eavesdropping, since walls don't stop radio? (one word)"
+    }
+  ]
+}

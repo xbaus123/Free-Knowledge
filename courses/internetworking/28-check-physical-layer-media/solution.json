@@ -1,0 +1,54 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "1",
+        "one",
+        "layer 1",
+        "layer one",
+        "l1"
+      ],
+      "explanation": "Layer 1, the bottom of the stack, where bits become signals."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Routing is layer 3, MAC addresses are layer 2, ordering is layer 4. Layer 1 only moves bits."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Layer 1 doesn't know what a frame or an address is. It just moves 1s and 0s across the medium."
+    },
+    {
+      "accepted_answers": [
+        "transmission medium",
+        "transmission media",
+        "medium",
+        "the medium",
+        "media",
+        "the transmission medium"
+      ],
+      "explanation": "The transmission medium sits between the sender's physical layer and the receiver's."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Guided means a cable carries the signal along a physical path."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Microwaves travel through the air with no cable to guide them, like radio and infrared."
+    },
+    {
+      "accepted_answers": [
+        "wired",
+        "cable",
+        "cabled",
+        "bounded"
+      ],
+      "explanation": "Guided means wired: the cable guides the signal."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Twisted pair and coax carry electrical signals on copper. Fiber carries light through glass or plastic."
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "type": "quiz",
+  "title": "Check: Devices, Access, and Continuity",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Which three kinds of things make up what's on the network?",
+      "options": [
+        "Cables, closets, and racks",
+        "Clients, servers, and network devices",
+        "Users, passwords, and tokens",
+        "Bits, frames, and packets"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the three-letter abbreviation for the encrypted tunnel that lets people work from home securely?"
+    },
+    {
+      "prompt": "Connecting a whole branch office back to headquarters usually calls for...",
+      "options": [
+        "Infrared",
+        "A hardware VPN: a dedicated device at the network's edge",
+        "No VPN at all",
+        "A software VPN on every laptop"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Remote backups survive a fire or flood at the main site; on-site backups are faster to restore. The usual answer is to have both."
+    },
+    {
+      "prompt": "Why plan a second Internet provider?",
+      "options": [
+        "So the site stays online if the first provider goes down",
+        "Because one provider can't carry email",
+        "To double the number of IP addresses",
+        "It's required for Wi-Fi"
+      ]
+    },
+    {
+      "prompt": "Describing a network in systems terms means listing its...",
+      "options": [
+        "costs, prices, and budgets",
+        "layers 1, 2, and 3",
+        "users, passwords, and roles",
+        "elements, functions, and interconnections"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "\"The payroll server stores salary records\" describes one of the system's ______. (one word)"
+    },
+    {
+      "type": "written",
+      "prompt": "\"Building A's switch connects to Building B's by single-mode fiber\" describes one of the system's ______. (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Once your plan is done, it's worth looking at it from an attacker's point of view to find the easiest way in."
+    }
+  ]
+}

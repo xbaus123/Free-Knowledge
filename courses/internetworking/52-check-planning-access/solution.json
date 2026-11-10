@@ -1,0 +1,52 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Network devices are things like switches, routers, and access points."
+    },
+    {
+      "accepted_answers": [
+        "vpn",
+        "virtual private network"
+      ],
+      "explanation": "A virtual private network makes a remote laptop act as if it were inside the office network."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Hardware VPNs are fast and suit whole sites. Software VPNs suit individual users."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Each one covers the other's weakness."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Service provider access is a single point of failure unless there's a second one."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The parts, what each part does, and how the parts connect."
+    },
+    {
+      "accepted_answers": [
+        "functions",
+        "function"
+      ],
+      "explanation": "What a part does is its function. The payroll server itself is an element."
+    },
+    {
+      "accepted_answers": [
+        "interconnections",
+        "interconnection",
+        "connections",
+        "connection",
+        "links"
+      ],
+      "explanation": "How the parts connect: the interconnections."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Thinking like an attacker is how you find the weak spots before someone else does."
+    }
+  ]
+}

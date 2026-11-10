@@ -1,0 +1,63 @@
+{
+  "type": "quiz",
+  "title": "Check: Point-to-Point, Bus, and Ring",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "What's the word for a network's shape: which devices connect to which? (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "A network's physical topology (how the cables run) and its logical topology (how data flows) are always the same."
+    },
+    {
+      "prompt": "Two routers in different buildings are joined by one dedicated cable that nothing else uses. Which topology is that?",
+      "options": [
+        "Bus",
+        "Ring",
+        "Mesh",
+        "Point-to-point"
+      ]
+    },
+    {
+      "prompt": "What do the terminators at each end of a bus do?",
+      "options": [
+        "Decide which device may send next",
+        "Connect the bus to the Internet",
+        "Absorb the signal so it doesn't bounce back along the cable",
+        "Amplify the signal for the far end"
+      ]
+    },
+    {
+      "prompt": "Which pair of traits belongs to a bus topology?",
+      "options": [
+        "Fast, but the hub is a single point of failure",
+        "Good quality, limited scalability",
+        "Reliable, but redundancy adds traffic",
+        "Low cost, hard to troubleshoot"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "On a bus, if two devices send at the same moment, their signals collide."
+    },
+    {
+      "type": "written",
+      "prompt": "In a classic ring, a special message circulates and only the device holding it may send. What's that message called? (one word)"
+    },
+    {
+      "prompt": "Why does a ring have limited scalability?",
+      "options": [
+        "Collisions get worse as the ring grows",
+        "Only two devices can be on a ring",
+        "Rings can only use fiber-optic cable",
+        "Every device added is another hop each message has to pass through, and adding one means opening the ring"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A dual ring can keep working after one link breaks, by sending traffic the other way around."
+    }
+  ]
+}

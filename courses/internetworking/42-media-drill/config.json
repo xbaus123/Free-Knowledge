@@ -1,0 +1,51 @@
+{
+  "type": "quiz",
+  "title": "Drill: Pick the Medium",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "A TV remote control."
+    },
+    {
+      "type": "written",
+      "prompt": "A phone that has to work anywhere in the house, through walls."
+    },
+    {
+      "type": "written",
+      "prompt": "Linking two hilltop towers 40 km apart without laying any cable."
+    },
+    {
+      "type": "written",
+      "prompt": "A 30 km link between two cities, buried underground, carrying huge amounts of data."
+    },
+    {
+      "type": "written",
+      "prompt": "Cheap cabling for 40 desks, each within 60 m of the wiring closet."
+    },
+    {
+      "type": "written",
+      "prompt": "Copper cabling, 50 m, in a factory full of heavy motors, on a tight budget that rules out fiber."
+    },
+    {
+      "type": "written",
+      "prompt": "Internet service to a remote cabin with no cables anywhere nearby, using a dish pointed at the sky."
+    },
+    {
+      "type": "written",
+      "prompt": "The cable company's line carrying TV and Internet into a house, many channels at once."
+    },
+    {
+      "type": "written",
+      "prompt": "A barcode scanner reading a label a few centimeters away."
+    },
+    {
+      "type": "written",
+      "prompt": "A data center link that must be immune to electrical noise and impossible to tap from outside."
+    },
+    {
+      "type": "written",
+      "prompt": "Broadcasting music to a whole region."
+    }
+  ]
+}

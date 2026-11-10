@@ -1,0 +1,81 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "attenuation"
+      ],
+      "explanation": "Attenuation is what eventually makes a signal too weak to read."
+    },
+    {
+      "accepted_answers": [
+        "decibels",
+        "decibel",
+        "db"
+      ],
+      "explanation": "Decibels are logarithmic, which is why a few key values are worth memorizing."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "3 dB is roughly a halving. 10 dB leaves a tenth."
+    },
+    {
+      "accepted_answers": [
+        "1/100",
+        "one hundredth",
+        "a hundredth",
+        "0.01",
+        "1%",
+        "one percent",
+        "1 percent"
+      ],
+      "explanation": "Every 10 dB is another factor of ten: 10 dB leaves 1/10, 20 dB leaves 1/100."
+    },
+    {
+      "accepted_answers": [
+        "20",
+        "20 db",
+        "twenty"
+      ],
+      "explanation": "Decibel losses simply add up, which is the whole point of using them."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Every medium has a maximum segment length. Past it, you need a repeater or switch to rebuild the signal."
+    },
+    {
+      "accepted_answers": [
+        "100",
+        "100 m",
+        "100m",
+        "100 meters",
+        "one hundred"
+      ],
+      "explanation": "100 meters. That limit shapes where wiring closets go in a building."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "It's measured in bits per second: kbps, Mbps, Gbps."
+    },
+    {
+      "accepted_answers": [
+        "12.5",
+        "12.5 mb",
+        "12.5 mbps",
+        "12.5 megabytes"
+      ],
+      "explanation": "There are 8 bits in a byte: 100 ÷ 8 = 12.5 megabytes per second."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Electromagnetic interference. RFI is noise from radio transmitters."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It's the faint second conversation you used to hear on old phone lines."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "5G is the fifth generation of cellular technology. Bandwidth is measured in bits per second."
+    }
+  ]
+}

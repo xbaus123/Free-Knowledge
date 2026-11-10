@@ -1,0 +1,75 @@
+{
+  "type": "quiz",
+  "title": "Check: Attenuation, Bandwidth, and Noise",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "What's the term for the measurable loss of signal strength as a signal travels? (one word)"
+    },
+    {
+      "type": "written",
+      "prompt": "Attenuation is measured in which unit? (one word, or its abbreviation)"
+    },
+    {
+      "prompt": "A signal loses 3 dB. About how much of its power is left?",
+      "options": [
+        "Three quarters",
+        "A third",
+        "A tenth",
+        "Half"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A signal loses 20 dB along a cable. What fraction of its power is left? (a fraction like 1/4)"
+    },
+    {
+      "type": "written",
+      "prompt": "A 10 dB stretch of cable feeds a second 10 dB stretch. What's the total loss in dB? (a number)"
+    },
+    {
+      "prompt": "What does segment length mean?",
+      "options": [
+        "The length of one data packet",
+        "The distance between two twists in a cable",
+        "How long a device waits before sending",
+        "How far a signal can travel over a medium before it degrades to the point of being unintelligible"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the maximum segment length of twisted-pair Ethernet, in meters? (a number)"
+    },
+    {
+      "prompt": "Bandwidth is...",
+      "options": [
+        "how strong the signal is",
+        "how far the signal can travel",
+        "the width of the cable",
+        "the amount of data that can cross the medium in a given time"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A link is rated at 100 Mbps. At most how many megabytes per second can it move? (a number)"
+    },
+    {
+      "prompt": "Noise from motors, fluorescent lights, and power cables is called...",
+      "options": [
+        "Attenuation",
+        "RFI",
+        "EMI",
+        "Crosstalk"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Crosstalk happens when signal conductors are placed too close to each other and one wire's signal leaks into its neighbor."
+    },
+    {
+      "type": "true_false",
+      "prompt": "\"5G\" is a unit of bandwidth, like Mbps."
+    }
+  ]
+}

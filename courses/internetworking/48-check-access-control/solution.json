@@ -1,0 +1,65 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Who are you, then what may you do. Authentication always comes first."
+    },
+    {
+      "accepted_answers": [
+        "are",
+        "is"
+      ],
+      "explanation": "Biometrics are something you are."
+    },
+    {
+      "accepted_answers": [
+        "have",
+        "own",
+        "possess",
+        "carry",
+        "hold"
+      ],
+      "explanation": "Cards and tokens are something you have."
+    },
+    {
+      "accepted_answers": [
+        "know"
+      ],
+      "explanation": "Passwords, PINs, and security answers are all something you know."
+    },
+    {
+      "accepted_answers": [
+        "mfa",
+        "2fa",
+        "multi-factor authentication",
+        "multifactor authentication",
+        "two-factor authentication",
+        "multi factor authentication"
+      ],
+      "explanation": "Multi-factor authentication: pick 2 or more of the three factors."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Both are something you know. One phishing page can collect both, so it's still a single factor."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Something you have plus something you are: two different factors."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Role-based access: change someone's role, and their access follows."
+    },
+    {
+      "accepted_answers": [
+        "privilege",
+        "privileges"
+      ],
+      "explanation": "Least privilege limits how much damage one stolen account can do."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Tripwires assume prevention can fail, and make sure someone notices. A door sensor and a file-change alert are both tripwires."
+    }
+  ]
+}

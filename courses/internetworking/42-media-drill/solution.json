@@ -1,0 +1,127 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "infrared",
+        "ir",
+        "infra-red"
+      ],
+      "explanation": "Short range, line of sight, low power: infrared."
+    },
+    {
+      "accepted_answers": [
+        "radio",
+        "radio waves",
+        "radio wave"
+      ],
+      "explanation": "Radio waves spread out and pass through walls. That's Wi-Fi."
+    },
+    {
+      "accepted_answers": [
+        "microwave",
+        "microwaves",
+        "terrestrial microwave",
+        "satellite",
+        "satellite microwave",
+        "microwave satellite"
+      ],
+      "explanation": "Terrestrial microwave: a narrow beam between towers with line of sight."
+    },
+    {
+      "accepted_answers": [
+        "fiber",
+        "fibre",
+        "fiber optic",
+        "fibre optic",
+        "fiber-optic",
+        "fibre-optic",
+        "fiber optic cable",
+        "optical fiber",
+        "single-mode fiber",
+        "single mode fiber",
+        "single-mode",
+        "single mode"
+      ],
+      "explanation": "Single-mode fiber: high bandwidth over long distances with minimal loss."
+    },
+    {
+      "accepted_answers": [
+        "utp",
+        "unshielded twisted pair",
+        "unshielded",
+        "unshielded twisted-pair",
+        "cat 6",
+        "cat6",
+        "cat 5e",
+        "cat5e",
+        "twisted pair"
+      ],
+      "explanation": "Unshielded twisted pair: cheap, easy, and well within 100 m."
+    },
+    {
+      "accepted_answers": [
+        "stp",
+        "shielded twisted pair",
+        "shielded",
+        "shielded twisted-pair"
+      ],
+      "explanation": "Shielded twisted pair protects against the motors' EMI."
+    },
+    {
+      "accepted_answers": [
+        "microwave",
+        "microwaves",
+        "terrestrial microwave",
+        "satellite",
+        "satellite microwave",
+        "microwave satellite"
+      ],
+      "explanation": "Satellite microwave."
+    },
+    {
+      "accepted_answers": [
+        "coax",
+        "coaxial",
+        "coaxial cable",
+        "broadband coax",
+        "broadband coaxial",
+        "broadband",
+        "broadband coaxial cable"
+      ],
+      "explanation": "Broadband coax, using FDM."
+    },
+    {
+      "accepted_answers": [
+        "infrared",
+        "ir",
+        "infra-red"
+      ],
+      "explanation": "Scanning is one of infrared's best uses."
+    },
+    {
+      "accepted_answers": [
+        "fiber",
+        "fibre",
+        "fiber optic",
+        "fibre optic",
+        "fiber-optic",
+        "fibre-optic",
+        "fiber optic cable",
+        "optical fiber",
+        "single-mode fiber",
+        "single mode fiber",
+        "single-mode",
+        "single mode"
+      ],
+      "explanation": "Fiber carries light: no EMI, no crosstalk, and nothing leaks out to pick up."
+    },
+    {
+      "accepted_answers": [
+        "radio",
+        "radio waves",
+        "radio wave"
+      ],
+      "explanation": "Low-frequency radio travels long distances in all directions."
+    }
+  ]
+}
