@@ -1,0 +1,57 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Sender and receiver both know G, because it's part of the standard."
+    },
+    {
+      "accepted_answers": [
+        "3",
+        "three"
+      ],
+      "explanation": "G is r + 1 bits, so r = 3."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "No carries, no borrows: 1 + 1 = 0 and 1 - 1 = 0, the same as XOR."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Then the receiver can check by dividing: a zero remainder means no error was detected."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Any non-zero remainder means the bits changed in transit."
+    },
+    {
+      "accepted_answers": [
+        "001"
+      ],
+      "explanation": "1101000 divided by 1011 (mod 2) leaves 001, so the sender transmits 1101001."
+    },
+    {
+      "accepted_answers": [
+        "11"
+      ],
+      "explanation": "Append two zeros, 11010100, and divide by 101: the remainder is 11."
+    },
+    {
+      "accepted_answers": [
+        "1"
+      ],
+      "explanation": "With G = 11 the CRC is a parity bit: 1011 has three 1s, so R = 1, making the count even."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A CRC with r bits detects all burst errors shorter than r + 1 bits."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Both carry a CRC-32 in their Frame Check Sequence."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "That's why the NIC can check every frame at full line speed."
+    }
+  ]
+}

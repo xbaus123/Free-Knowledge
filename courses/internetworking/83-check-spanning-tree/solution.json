@@ -1,0 +1,62 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Each switch floods each copy again, and nothing ever retires them."
+    },
+    {
+      "accepted_answers": [
+        "spanning tree protocol"
+      ],
+      "explanation": "Spanning Tree Protocol, IEEE 802.1D."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The cables stay connected. STP logically blocks ports, and can unblock one when an active link fails."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Lowest bridge ID wins. Priority is compared first; the MAC address breaks ties."
+    },
+    {
+      "accepted_answers": [
+        "32768",
+        "32,768"
+      ],
+      "explanation": "32768. Set a lower value on the switch you want as root."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Priority comes first. The MAC address only matters if priorities are equal."
+    },
+    {
+      "accepted_answers": [
+        "root port",
+        "the root port",
+        "root"
+      ],
+      "explanation": "Every non-root switch has exactly one root port."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Listen, then learn, then forward: learning fills the MAC table before traffic flows."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Blocking, then listening, then learning, then forwarding."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Rapid STP (802.1w) converges in about a second."
+    },
+    {
+      "accepted_answers": [
+        "bpdu",
+        "bpdus",
+        "bridge protocol data unit",
+        "bridge protocol data units"
+      ],
+      "explanation": "Bridge protocol data units."
+    }
+  ]
+}

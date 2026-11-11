@@ -1,0 +1,108 @@
+{
+  "type": "quiz",
+  "title": "Exam 1 Review",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Put the OSI layers in order from layer 1 up.",
+      "options": [
+        "Application, Presentation, Session, Transport, Network, Data Link, Physical",
+        "Data Link, Physical, Network, Session, Transport, Presentation, Application",
+        "Physical, Data Link, Network, Transport, Session, Presentation, Application",
+        "Physical, Network, Data Link, Transport, Presentation, Session, Application"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which OSI layer number is the data link layer?"
+    },
+    {
+      "prompt": "Which of these is a physical layer example?",
+      "options": [
+        "A TCP port",
+        "An IP route",
+        "A MAC address",
+        "Twisted pair cable, fiber, or radio carrying bits as signals"
+      ]
+    },
+    {
+      "prompt": "Which is a technology of the data link layer?",
+      "options": [
+        "An HTTP proxy",
+        "A web browser",
+        "A DNS server",
+        "A switch"
+      ]
+    },
+    {
+      "prompt": "What's the unit of data at each layer as it goes down the TCP/IP stack?",
+      "options": [
+        "Frame, packet, segment, bits",
+        "Data, segment, packet, frame, bits",
+        "Packet, frame, data, segment",
+        "Bits, frame, packet, segment"
+      ]
+    },
+    {
+      "prompt": "During de-encapsulation at the receiving host, which header is removed first?",
+      "options": [
+        "The application data",
+        "The data link header and trailer",
+        "The network header",
+        "The transport header"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "In what year did every ARPANET host switch to TCP/IP, on flag day? (four digits)"
+    },
+    {
+      "prompt": "Which field in an Ethernet frame holds the error-detecting checksum?",
+      "options": [
+        "FCS",
+        "Source MAC",
+        "Preamble",
+        "EtherType"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "An Ethernet frame's data field can be anywhere from 46 to 1500 bytes."
+    },
+    {
+      "prompt": "A MAC address is...",
+      "options": [
+        "32 bits, assigned by your ISP",
+        "128 bits, chosen by the router",
+        "16 bits, assigned by the switch",
+        "48 bits: a 24-bit OUI from the manufacturer plus a 24-bit device ID"
+      ]
+    },
+    {
+      "prompt": "Which is NOT a MAC address security issue covered in this course?",
+      "options": [
+        "One address can be associated with more than one user",
+        "MAC addresses are encrypted, so they can't be logged",
+        "Cloning",
+        "Spoofing"
+      ]
+    },
+    {
+      "prompt": "What does STP prevent?",
+      "options": [
+        "ARP spoofing",
+        "Collisions on WiFi",
+        "Loops and broadcast storms in a switched network with redundant links",
+        "Bit errors"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What protocol answers 'who has 192.168.1.1?' with a MAC address? (three letters)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Packet switching reserves a dedicated path for the whole conversation."
+    }
+  ]
+}

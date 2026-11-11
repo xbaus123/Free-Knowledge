@@ -1,0 +1,68 @@
+{
+  "type": "quiz",
+  "title": "Check: MAC Addresses",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "How many bits are in a MAC address? (a number)"
+    },
+    {
+      "type": "written",
+      "prompt": "What's the three-letter abbreviation for the first half of a MAC address, which identifies the manufacturer?"
+    },
+    {
+      "prompt": "What does MAC stand for?",
+      "options": [
+        "Media Access Control",
+        "Multiple Access Channel",
+        "Main Adapter Configuration",
+        "Machine Address Code"
+      ]
+    },
+    {
+      "prompt": "Which address is the Ethernet broadcast address?",
+      "options": [
+        "ff:ff:ff:ff:ff:ff",
+        "00:00:00:00:00:00",
+        "01:00:5e:00:00:fb",
+        "127.0.0.1"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "3C-BD-C5-40-77-61 and 3cbd.c540.7761 are the same MAC address."
+    },
+    {
+      "prompt": "A MAC address starts with da:. What can you tell from that?",
+      "options": [
+        "It belongs to Dell",
+        "It's locally administered: probably a random, private address made up by the device's software",
+        "It's a multicast address",
+        "It's a broadcast address"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A MAC address changes when a laptop moves from one network to another, the way its IP address does."
+    },
+    {
+      "prompt": "On Windows, what heading is the MAC address listed under in the network details?",
+      "options": [
+        "IPv4 Address",
+        "Hardware",
+        "HWaddr",
+        "Physical Address"
+      ]
+    },
+    {
+      "prompt": "Why do phones use a different random MAC address on each WiFi network?",
+      "options": [
+        "To get a better IP address",
+        "Because the factory MAC wears out",
+        "It makes WiFi faster",
+        "So the device can't be tracked from network to network by its MAC address"
+      ]
+    }
+  ]
+}

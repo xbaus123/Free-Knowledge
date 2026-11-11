@@ -1,0 +1,52 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "No partitioning: whoever is sending gets the whole channel."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Collisions will happen, so the protocol is about noticing them and retrying well."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Only at the beginning of a slot. That's why the nodes must be synchronized."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The random choice is what breaks the tie between colliding nodes."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Randomness makes it likely that one node goes while the other waits."
+    },
+    {
+      "accepted_answers": [
+        "3",
+        "three"
+      ],
+      "explanation": "Three S slots out of nine: the rest are collisions or empty."
+    },
+    {
+      "accepted_answers": [
+        "37",
+        "37%",
+        "36.8",
+        "36.8%"
+      ],
+      "explanation": "1/e is about 0.37, so the channel is used for useful transmissions at most 37% of the time."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Maximizing Np(1-p)^(N-1) gives p = 1/N: on average one node tries per slot."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Pure ALOHA peaks at about 18%, half of slotted ALOHA's 37%, because frames can overlap partway through."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "When only one node is busy, it gets every slot."
+    }
+  ]
+}

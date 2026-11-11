@@ -1,0 +1,59 @@
+{
+  "type": "quiz",
+  "title": "Check: The NIC",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "What hardware implements the link layer in a host? Give the three-letter abbreviation."
+    },
+    {
+      "prompt": "Which layers does a NIC implement?",
+      "options": [
+        "Network and transport",
+        "Link and physical",
+        "All seven",
+        "Only the physical layer"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "The link layer is purely software: it runs on the CPU like the transport layer."
+    },
+    {
+      "prompt": "On the sending side, what does the NIC do with the datagram it gets from the network layer?",
+      "options": [
+        "Looks up the destination's IP address",
+        "Encrypts it and sends it to the router",
+        "Encapsulates it in a frame, adding a header and error-checking bits",
+        "Splits it into TCP segments"
+      ]
+    },
+    {
+      "prompt": "On the receiving side, what's the last thing the link layer does with a good frame?",
+      "options": [
+        "Stores it on disk",
+        "Forwards it out of every port",
+        "Sends it back to confirm",
+        "Extracts the datagram and passes it up to the network layer"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What does a NIC plug into so the CPU can hand it data? (two words: host ______)"
+    },
+    {
+      "prompt": "Which device is strictly a layer 1 device, repeating every signal out of every port?",
+      "options": [
+        "Switch",
+        "Bridge",
+        "Wireless access point",
+        "Hub"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Hypervisors connect virtual machines with virtual switches."
+    }
+  ]
+}

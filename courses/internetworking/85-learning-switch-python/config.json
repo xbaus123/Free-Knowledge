@@ -1,0 +1,6 @@
+{
+  "title": "A Learning Switch in Python",
+  "language": "python",
+  "timeoutMs": 10000,
+  "capabilities": { "scratchpad": true }
+}

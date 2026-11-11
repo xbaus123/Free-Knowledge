@@ -1,0 +1,77 @@
+{
+  "type": "quiz",
+  "title": "Check: Slotted ALOHA",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "In a random access protocol, how fast does a node transmit?",
+      "options": [
+        "At 1/N of the channel rate",
+        "Only as fast as the slowest node",
+        "At the full channel data rate R",
+        "At half the rate, to leave room for others"
+      ]
+    },
+    {
+      "prompt": "Which two things must a random access protocol specify?",
+      "options": [
+        "How to pass the token and elect a master",
+        "How to encrypt and compress frames",
+        "How to assign time slots and frequency bands",
+        "How to detect collisions and how to recover from them"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "In slotted ALOHA, a node can start transmitting at any moment."
+    },
+    {
+      "prompt": "After a collision, what does a slotted ALOHA node do?",
+      "options": [
+        "Waits for a token",
+        "Retransmits in the very next slot, always",
+        "Gives up on the frame",
+        "Retransmits in each later slot with probability p until it succeeds"
+      ]
+    },
+    {
+      "prompt": "Why does slotted ALOHA randomize retransmissions?",
+      "options": [
+        "To save power",
+        "If colliding nodes all retried in the next slot, they would collide again forever",
+        "To encrypt the frames",
+        "To keep the clocks in sync"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "In the example timeline C E C S E C E S S, how many slots carried a frame successfully? (a number)"
+    },
+    {
+      "type": "written",
+      "prompt": "What's the maximum efficiency of slotted ALOHA, as a percentage? (a whole number)"
+    },
+    {
+      "prompt": "With N nodes, which transmit probability p gives slotted ALOHA its best efficiency?",
+      "options": [
+        "p = N",
+        "p = 1",
+        "p = 1/2",
+        "p = 1/N"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Pure (unslotted) ALOHA is more efficient than slotted ALOHA."
+    },
+    {
+      "prompt": "Which of these is a pro of slotted ALOHA?",
+      "options": [
+        "A single active node can transmit continuously at the full channel rate",
+        "No collisions ever",
+        "100% efficiency",
+        "No clock synchronization needed"
+      ]
+    }
+  ]
+}

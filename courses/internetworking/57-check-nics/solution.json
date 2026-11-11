@@ -1,0 +1,49 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "nic",
+        "nics",
+        "network interface card",
+        "network interface controller"
+      ],
+      "explanation": "The network interface card, or an equivalent chip on the motherboard."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The NIC's controller does the link layer and its physical part drives the medium. Layers 3 and up run in software on the CPU."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It's a combination of hardware, software, and firmware, and most of the work happens on the NIC itself."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Encapsulation at layer 2: header in front, error-checking trailer behind."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "De-encapsulation: strip the layer 2 header and trailer, hand the datagram up."
+    },
+    {
+      "accepted_answers": [
+        "bus",
+        "system bus",
+        "host bus",
+        "pci",
+        "pcie",
+        "the bus",
+        "buses"
+      ],
+      "explanation": "The host's system bus, such as PCI or PCIe."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "A hub doesn't read frames at all. Switches replaced hubs because they forward each frame only where it needs to go."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A virtual switch does in software what a physical switch does in hardware, for the VMs' virtual NICs."
+    }
+  ]
+}

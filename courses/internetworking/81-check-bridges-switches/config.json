@@ -1,0 +1,77 @@
+{
+  "type": "quiz",
+  "title": "Check: Hubs, Bridges, and Switches",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "What does a hub do with a signal that arrives on one port?",
+      "options": [
+        "Drops it if the FCS is bad",
+        "Copies it out of every other port",
+        "Sends it out of the port where the destination is",
+        "Routes it by IP address"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Every host on a hub shares one collision domain."
+    },
+    {
+      "prompt": "What does a bridge use to decide whether to pass a frame across to the other segment?",
+      "options": [
+        "The frame's size",
+        "The destination MAC address",
+        "The destination IP address",
+        "The EtherType"
+      ]
+    },
+    {
+      "prompt": "A bridge needs to deliver traffic to a different network, beyond its interfaces. What does it need?",
+      "options": [
+        "A hub",
+        "A longer cable",
+        "A bigger MAC table",
+        "A router"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "When a frame arrives, which MAC address does a switch learn from: the source or the destination? (one word)"
+    },
+    {
+      "prompt": "A switch gets a frame for a MAC address that isn't in its table yet. What does it do?",
+      "options": [
+        "Asks the router",
+        "Drops it",
+        "Floods it out of every port except the one it came in on",
+        "Sends it back"
+      ]
+    },
+    {
+      "prompt": "A frame arrives on port 2 for a host the table lists on port 2. What does the switch do?",
+      "options": [
+        "Sends it to the router",
+        "Filters it: drops it, since the destination is on the segment it came from",
+        "Floods it",
+        "Forwards it out of port 2"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A switch keeps broadcasts from reaching other ports."
+    },
+    {
+      "type": "written",
+      "prompt": "What's the name for a logical LAN carved out of a physical switch, which is its own broadcast domain? (four letters)"
+    },
+    {
+      "prompt": "Which encryption does the reading suggest for sensitive traffic across a switched network?",
+      "options": [
+        "None: switches encrypt automatically",
+        "CRC-32",
+        "L2TP over IPsec",
+        "WEP"
+      ]
+    }
+  ]
+}

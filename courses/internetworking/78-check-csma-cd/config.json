@@ -1,0 +1,85 @@
+{
+  "type": "quiz",
+  "title": "Check: CSMA/CD",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "What does the CS in CSMA stand for? (two words)"
+    },
+    {
+      "prompt": "Under CSMA, what does a node do if it senses the channel is busy?",
+      "options": [
+        "Sends a jam signal",
+        "Switches frequency",
+        "Transmits anyway",
+        "Defers: waits until the channel is idle"
+      ]
+    },
+    {
+      "prompt": "Why can collisions still happen with carrier sensing?",
+      "options": [
+        "Propagation delay: a node may not hear another's just-started transmission yet",
+        "Carrier sensing only works on fiber",
+        "The FCS is wrong",
+        "Nodes forget to listen"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "With plain CSMA, a collision wastes the entire frame's transmission time."
+    },
+    {
+      "prompt": "What does CSMA/CD add to CSMA?",
+      "options": [
+        "Acknowledgments for every frame",
+        "Listening while transmitting, and aborting as soon as a collision is detected",
+        "Time slots",
+        "A token"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Collision detection is just as easy on wireless links as on wired ones."
+    },
+    {
+      "prompt": "What does an Ethernet NIC send right after it aborts a collided frame?",
+      "options": [
+        "A broadcast ARP request",
+        "An ACK",
+        "A jam signal",
+        "The FCS"
+      ]
+    },
+    {
+      "prompt": "After its 3rd collision in a row, an Ethernet NIC picks K from which set?",
+      "options": [
+        "{0, 1, ..., 7}",
+        "{0, 1}",
+        "{0, 1, 2, 3}",
+        "{0, 1, ..., 15}"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A NIC picks K = 5. How many bit times does it wait? (a number)"
+    },
+    {
+      "type": "written",
+      "prompt": "Ethernet's backoff unit is 512 bit times. How many bytes is 512 bits? (a number)"
+    },
+    {
+      "prompt": "Which protocol does 802.11 WiFi use?",
+      "options": [
+        "TDMA",
+        "CSMA/CD",
+        "Token passing",
+        "CSMA/CA, with an acknowledgment for every frame"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "On a modern switched, full-duplex Ethernet network, CSMA/CD is rarely needed."
+    }
+  ]
+}

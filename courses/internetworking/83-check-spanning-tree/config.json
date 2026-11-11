@@ -1,0 +1,76 @@
+{
+  "type": "quiz",
+  "title": "Check: Spanning Tree",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Why is a loop in a switched LAN so harmful?",
+      "options": [
+        "It halves the speed",
+        "Broadcasts circulate forever, since Ethernet frames have no time-to-live, causing a broadcast storm",
+        "It causes CRC errors",
+        "It changes MAC addresses"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What does STP stand for? (three words)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "STP removes redundant links by making you unplug them."
+    },
+    {
+      "prompt": "Which switch becomes the root bridge?",
+      "options": [
+        "The one with the lowest bridge ID (priority, then MAC address)",
+        "The one with the most ports",
+        "The one with the highest MAC address",
+        "The first one switched on"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the default STP bridge priority? (a number)"
+    },
+    {
+      "prompt": "SW1 has priority 32768 and MAC AAA. SW2 has priority 4096 and MAC BBB. Which is root?",
+      "options": [
+        "Neither: they tie",
+        "Whichever has more links",
+        "SW1, because its MAC is lower",
+        "SW2, because its priority is lower"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the name for a switch's port on its cheapest path to the root bridge? (two words)"
+    },
+    {
+      "prompt": "What does a port in the learning state do?",
+      "options": [
+        "Is shut down",
+        "Adds MAC addresses to the table, but doesn't forward frames yet",
+        "Forwards frames normally",
+        "Sends jam signals"
+      ]
+    },
+    {
+      "prompt": "Put the STP port states in order, from a port just coming up to fully active.",
+      "options": [
+        "Learning, listening, blocking, forwarding",
+        "Forwarding, learning, listening, blocking",
+        "Listening, blocking, forwarding, learning",
+        "Blocking, listening, learning, forwarding"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "RSTP was created because classic STP can take 30 to 50 seconds to bring a port to forwarding."
+    },
+    {
+      "type": "written",
+      "prompt": "What are the messages switches exchange to run STP called? (five letters)"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "type": "quiz",
+  "title": "Check: Access Points and Hypervisors",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "What does a wireless access point do at layer 2?",
+      "options": [
+        "Assigns IP addresses",
+        "Encrypts the wired LAN",
+        "Bridges frames between 802.11 WiFi and wired Ethernet",
+        "Routes packets between networks by IP address"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What does PoE stand for? (three words)"
+    },
+    {
+      "prompt": "Which encryption should a WAP use?",
+      "options": [
+        "None, if the SSID is hidden",
+        "WPA3, or WPA2 at the very least",
+        "WEP",
+        "CRC-32"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Hiding the SSID makes a wireless network invisible to attackers."
+    },
+    {
+      "prompt": "Why create a guest network for external users?",
+      "options": [
+        "It saves electricity",
+        "Visitors get internet access without being able to reach internal machines",
+        "It hides the main SSID",
+        "Guests get faster speeds"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Remote management on a WAP should be disabled, so it can only be administered from inside."
+    },
+    {
+      "type": "written",
+      "prompt": "What's the name of the software switch inside a hypervisor that connects virtual machines' virtual NICs? (two words)"
+    },
+    {
+      "prompt": "Which hypervisor feature limits how much bandwidth a VM may use?",
+      "options": [
+        "Memory ballooning",
+        "Logging",
+        "RBAC",
+        "Traffic shaping"
+      ]
+    },
+    {
+      "prompt": "What is memory ballooning?",
+      "options": [
+        "Compressing frames",
+        "The hypervisor reclaiming memory a VM isn't using and lending it to other VMs",
+        "Adding more RAM to the server",
+        "Encrypting VM memory"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the four-letter abbreviation for giving each administrator only the permissions their role needs?"
+    }
+  ]
+}

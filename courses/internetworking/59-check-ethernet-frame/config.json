@@ -1,0 +1,67 @@
+{
+  "type": "quiz",
+  "title": "Check: The Ethernet Frame",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Which field comes first in an Ethernet II frame?",
+      "options": [
+        "Source MAC address",
+        "Destination MAC address",
+        "EtherType",
+        "Frame Check Sequence"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "How many bytes long is a MAC address field? (a number)"
+    },
+    {
+      "prompt": "A frame's EtherType is 0x0806. What does it carry?",
+      "options": [
+        "A VLAN tag",
+        "IPv4",
+        "IPv6",
+        "ARP"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What is Ethernet's standard MTU, the largest data field, in bytes? (a number)"
+    },
+    {
+      "type": "written",
+      "prompt": "What's the minimum size of an Ethernet frame, in bytes? (a number)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "The FCS is a trailer: it comes after the data."
+    },
+    {
+      "type": "written",
+      "prompt": "A host sends a 30-byte datagram. How many bytes of padding does the NIC add? (a number)"
+    },
+    {
+      "prompt": "What is a runt?",
+      "options": [
+        "The preamble in front of a frame",
+        "A frame shorter than 64 bytes, which is discarded",
+        "A frame larger than 1518 bytes",
+        "A frame with a bad checksum"
+      ]
+    },
+    {
+      "prompt": "Why is 84 bytes sometimes quoted as Ethernet's minimum?",
+      "options": [
+        "It's the minimum for IPv6 traffic only",
+        "It's the 64-byte frame plus the 8-byte preamble and the 12-byte inter-frame gap: what the frame really occupies on the wire",
+        "It includes the IP and TCP headers",
+        "It's the minimum for jumbo frames"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Jumbo frames only work if every device on the path supports the larger MTU."
+    }
+  ]
+}

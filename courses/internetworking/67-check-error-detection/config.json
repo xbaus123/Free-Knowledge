@@ -1,0 +1,72 @@
+{
+  "type": "quiz",
+  "title": "Check: Error Detection",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "What causes the bit errors the data link layer has to catch?",
+      "options": [
+        "The CPU overheating",
+        "Bugs in the application",
+        "Routers changing the data",
+        "Signal attenuation and noise on the link"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What does EDC stand for? (four words: error detection and ______ bits)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "If the receiver's check passes, the frame is guaranteed to be error-free."
+    },
+    {
+      "type": "true_false",
+      "prompt": "A larger EDC field gives better error detection and correction."
+    },
+    {
+      "type": "written",
+      "prompt": "With even parity, what's the parity bit for the data 1011001? (one digit)"
+    },
+    {
+      "type": "written",
+      "prompt": "With even parity, what's the parity bit for 1110000? (one digit)"
+    },
+    {
+      "prompt": "Which logic operation computes a parity bit?",
+      "options": [
+        "OR",
+        "XOR",
+        "NOT",
+        "AND"
+      ]
+    },
+    {
+      "prompt": "Two bits in a frame flip. What does a single parity bit show?",
+      "options": [
+        "Nothing: the number of 1s is still even, so the error slips through",
+        "The error is detected but not corrected",
+        "Which two bits flipped",
+        "The error is detected and corrected"
+      ]
+    },
+    {
+      "prompt": "What can two-dimensional parity do that a single parity bit can't?",
+      "options": [
+        "Work without any extra bits",
+        "Find and correct a single flipped bit, where the bad row and bad column cross",
+        "Detect every possible error",
+        "Encrypt the frame"
+      ]
+    },
+    {
+      "prompt": "What does an Ethernet NIC do with a frame whose FCS doesn't match?",
+      "options": [
+        "Delivers it with a warning",
+        "Fixes it using the FCS",
+        "Drops it, and leaves recovery to higher layers like TCP",
+        "Sends a NACK to ask for it again"
+      ]
+    }
+  ]
+}

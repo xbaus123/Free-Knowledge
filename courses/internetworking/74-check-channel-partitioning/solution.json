@@ -1,0 +1,45 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "time"
+      ],
+      "explanation": "Time division multiple access: each station gets a time slot in each round."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A fixed-length slot equal to one packet's transmission time, once per round."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Unused slots go idle: that's channel partitioning's big inefficiency."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Each slot belongs to one station. That's what keeps TDMA collision-free, and what wastes capacity."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The spectrum is split into frequency bands, one per station."
+    },
+    {
+      "accepted_answers": [
+        "fdma",
+        "frequency division multiple access"
+      ],
+      "explanation": "Each station has its own band, and they all transmit at the same time."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "All stations share the same time and frequencies. The codes separate them."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's the trick: the receiver separates them by code, not by time or frequency."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The same problem as circuit switching in Chapter 1: reserved capacity wasted on silence."
+    }
+  ]
+}

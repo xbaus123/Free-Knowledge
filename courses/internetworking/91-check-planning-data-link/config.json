@@ -1,0 +1,64 @@
+{
+  "type": "quiz",
+  "title": "Check: Planning the Data Link Layer",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "A new office is choosing between hubs and switches for its LAN. What should it pick, and why?",
+      "options": [
+        "Either: they behave the same",
+        "Hubs: they support VLANs",
+        "Switches: every port gets its own collision domain, and frames go only where they need to",
+        "Hubs: they're simpler"
+      ]
+    },
+    {
+      "prompt": "The office needs visitors to get internet access without reaching internal servers. What's the layer 2 answer?",
+      "options": [
+        "Give guests static IP addresses",
+        "Hide the SSID",
+        "Use a hub for guests",
+        "Put guests on their own VLAN (and guest WiFi network), with a router or firewall limiting it to the internet"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "If two switches are connected by two cables for redundancy, the network needs STP or RSTP."
+    },
+    {
+      "prompt": "Why do most organizations use VLANs rather than separate physical LANs for each group?",
+      "options": [
+        "VLANs don't need switches",
+        "VLANs are more secure than physical separation",
+        "Physical LANs can't use Ethernet",
+        "VLANs are cheaper and flexible: moving a user is a configuration change, not re-cabling"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What protocol tags frames with a VLAN ID on the links between switches? (802.1 and a letter)"
+    },
+    {
+      "prompt": "Ceiling-mounted access points have no power outlets nearby. What's the usual solution?",
+      "options": [
+        "Use wired desks only",
+        "Extension cords",
+        "Power over Ethernet from the switch",
+        "Batteries"
+      ]
+    },
+    {
+      "prompt": "Which is the best reason to choose wired over wireless for the servers?",
+      "options": [
+        "Wireless has no MAC addresses",
+        "Wired is cheaper to install everywhere",
+        "Wired is faster, more reliable, and harder to reach from outside the building",
+        "Servers can't use WiFi"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A bridge is the better choice over a switch for a new 48-desk floor."
+    }
+  ]
+}

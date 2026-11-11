@@ -1,0 +1,52 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "Each switch port is its own link with exactly two ends."
+    },
+    {
+      "accepted_answers": [
+        "ppp",
+        "point-to-point protocol",
+        "point to point protocol"
+      ],
+      "explanation": "PPP, the Point-to-Point Protocol."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Every home in the neighborhood transmits on the same cable back to the provider."
+    },
+    {
+      "accepted_answers": [
+        "collision",
+        "a collision",
+        "collisions"
+      ],
+      "explanation": "Both frames are lost and have to be sent again."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The signaling about who may speak competes for the same medium as the data."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "TDMA, FDMA, and CDMA give each node an exclusive piece."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "ALOHA and the CSMA protocols are random access."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Each node has exclusive use of its own slot, band, or code, so they never collide."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "A quiet node's share of the channel is wasted even when others have plenty to send."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "A token passes from node to node, and only the holder may transmit."
+    }
+  ]
+}

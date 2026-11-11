@@ -1,0 +1,77 @@
+{
+  "type": "quiz",
+  "title": "Check: Multiple Access",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Which of these is a point-to-point link?",
+      "options": [
+        "802.11 WiFi",
+        "Satellite radio",
+        "Old coax Ethernet shared by ten machines",
+        "A cable from an Ethernet switch port to one host"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the name of the point-to-point protocol used for dial-up access? (three letters)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Upstream traffic on a cable internet (HFC) network is a broadcast channel shared by many homes."
+    },
+    {
+      "type": "written",
+      "prompt": "When two nodes transmit on a shared channel at the same time and both frames are garbled, what is that called? (one word)"
+    },
+    {
+      "prompt": "What makes a multiple access protocol hard to design?",
+      "options": [
+        "Shared channels only work with fiber",
+        "Every node needs a different MAC address format",
+        "It must run on the CPU",
+        "Nodes have to coordinate over the same channel they're sharing: there's no separate control channel"
+      ]
+    },
+    {
+      "prompt": "Which family divides the channel into time slots, frequency bands, or codes?",
+      "options": [
+        "Spanning tree",
+        "Random access",
+        "Taking turns",
+        "Channel partitioning"
+      ]
+    },
+    {
+      "prompt": "Which family lets nodes transmit at full speed whenever they have data, and recovers from collisions afterward?",
+      "options": [
+        "Point-to-point",
+        "Channel partitioning",
+        "Random access",
+        "Taking turns"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Channel partitioning protocols have collisions."
+    },
+    {
+      "prompt": "What's the main weakness of channel partitioning?",
+      "options": [
+        "A lost token stops the network",
+        "It can't work on radio",
+        "Unused slots or bands sit idle when their node has nothing to send",
+        "Constant collisions"
+      ]
+    },
+    {
+      "prompt": "Token Ring is an example of which family?",
+      "options": [
+        "Error correction",
+        "Channel partitioning",
+        "Taking turns",
+        "Random access"
+      ]
+    }
+  ]
+}

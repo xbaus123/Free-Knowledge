@@ -1,0 +1,165 @@
+{
+  "type": "quiz",
+  "title": "Chapter Review: The Data Link Layer",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "A packet goes from a laptop over WiFi to a home router, then over Ethernet to the ISP. What happens to it at the router?",
+      "options": [
+        "Nothing: the same frame continues",
+        "It's taken out of the WiFi frame and put into a new Ethernet frame for the next link",
+        "It's split into two packets",
+        "It's converted into a TCP segment"
+      ]
+    },
+    {
+      "prompt": "Which layers does a NIC implement?",
+      "options": [
+        "Application and transport",
+        "Link and physical",
+        "Only physical",
+        "Network and link"
+      ]
+    },
+    {
+      "prompt": "Put the Ethernet II fields in order.",
+      "options": [
+        "Destination MAC, source MAC, data, EtherType, FCS",
+        "Destination MAC, source MAC, EtherType, data, FCS",
+        "Source MAC, destination MAC, EtherType, data, FCS",
+        "EtherType, destination MAC, source MAC, FCS, data"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the largest data field in a standard Ethernet frame, in bytes? (a number)"
+    },
+    {
+      "type": "written",
+      "prompt": "What's the minimum Ethernet frame size, in bytes? (a number)"
+    },
+    {
+      "prompt": "What does the first half of a MAC address identify?",
+      "options": [
+        "The switch port",
+        "The device's IP address",
+        "The manufacturer, through its OUI",
+        "The network the device is on"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A MAC address beginning 6e: is locally administered."
+    },
+    {
+      "prompt": "Why is MAC filtering weak protection on its own?",
+      "options": [
+        "It only works on hubs",
+        "It blocks broadcasts",
+        "MAC addresses can be spoofed or cloned from a trusted device",
+        "It slows the network"
+      ]
+    },
+    {
+      "prompt": "A single parity bit misses which errors?",
+      "options": [
+        "Any even number of flipped bits",
+        "None",
+        "Any single flipped bit",
+        "Errors in the header"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "D = 1101 and G = 1011. What are the 3 CRC bits?"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Ethernet asks the sender to retransmit a frame that fails its FCS check."
+    },
+    {
+      "prompt": "Which family of multiple access protocols never has collisions, but wastes the share of any idle node?",
+      "options": [
+        "Spanning tree",
+        "Channel partitioning",
+        "Taking turns",
+        "Random access"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's slotted ALOHA's maximum efficiency, as a percentage? (a whole number)"
+    },
+    {
+      "prompt": "After its 2nd collision in a row, an Ethernet NIC chooses K from which set?",
+      "options": [
+        "{0, 1, 2, 3}",
+        "{1, 2}",
+        "{0, ..., 7}",
+        "{0, 1}"
+      ]
+    },
+    {
+      "prompt": "Why does WiFi use CSMA/CA rather than CSMA/CD?",
+      "options": [
+        "Radio is faster",
+        "CSMA/CD is patented",
+        "A wireless node can't hear collisions while it's transmitting",
+        "WiFi has no MAC addresses"
+      ]
+    },
+    {
+      "prompt": "A switch receives a frame for a MAC address it hasn't learned yet. What does it do?",
+      "options": [
+        "Floods it out of every port except the incoming one",
+        "Sends it to the router",
+        "Holds it until the host speaks",
+        "Drops it"
+      ]
+    },
+    {
+      "prompt": "Which switch becomes STP's root bridge?",
+      "options": [
+        "The one with the most links",
+        "The one with the lowest bridge ID: lowest priority, then lowest MAC address",
+        "The oldest one",
+        "The one with the highest MAC address"
+      ]
+    },
+    {
+      "prompt": "Which STP port state adds MAC addresses to the table but doesn't forward frames yet?",
+      "options": [
+        "Listening",
+        "Blocking",
+        "Learning",
+        "Forwarding"
+      ]
+    },
+    {
+      "prompt": "What does ARP do?",
+      "options": [
+        "Chooses the root bridge",
+        "Maps a domain name to an IP address",
+        "Detects bit errors",
+        "Maps a local IP address to a MAC address"
+      ]
+    },
+    {
+      "prompt": "arp -a shows an entry at 0:0:5e:0:1:33. What is it?",
+      "options": [
+        "A VRRP virtual router MAC address, shared by redundant gateways",
+        "The broadcast address",
+        "A random private address",
+        "An Intel NIC"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Hiding a WAP's SSID is a strong security measure."
+    },
+    {
+      "type": "written",
+      "prompt": "Which hypervisor feature reclaims memory a VM isn't using? (two words)"
+    }
+  ]
+}

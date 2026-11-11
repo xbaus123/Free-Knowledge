@@ -1,0 +1,37 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "The NIC's address can be changed in software, and nothing in a frame proves the source address is real."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "It's spoofing with a target: borrowing a trusted device's identity to get past an allow list."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "An attacker can sniff an allowed address and clone it. MAC filtering is one layer, not the whole defense."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's why many home routers have a clone MAC address setting for the WAN port."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "One address can be used by many people, and one person can use many addresses."
+    },
+    {
+      "accepted_answers": [
+        "filtering",
+        "mac filtering",
+        "filter",
+        "mac filter"
+      ],
+      "explanation": "MAC filtering. Worth having, but easy to get past by cloning."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Ethernet has no proof of origin in the frame. The switch simply believes the source address."
+    }
+  ]
+}

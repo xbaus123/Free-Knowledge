@@ -1,0 +1,86 @@
+{
+  "type": "quiz",
+  "title": "Check: ARP",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "What does ARP find?",
+      "options": [
+        "The OUI's vendor",
+        "The route to a distant network",
+        "The IP address for a domain name",
+        "The MAC address for an IP address on the local network"
+      ]
+    },
+    {
+      "prompt": "Where is an ARP request sent?",
+      "options": [
+        "To the DNS server",
+        "To 127.0.0.1",
+        "To the broadcast MAC address, ff:ff:ff:ff:ff:ff",
+        "To the router only"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "The ARP reply is also broadcast to every host."
+    },
+    {
+      "type": "written",
+      "prompt": "What command prints the ARP cache on macOS and Windows? (two words, with the flag)"
+    },
+    {
+      "prompt": "A host wants to send a packet to a server on a different network. Whose MAC address does it ARP for?",
+      "options": [
+        "Nobody's: it broadcasts the packet",
+        "The server's",
+        "Its default gateway's (the router)",
+        "The DNS server's"
+      ]
+    },
+    {
+      "prompt": "In arp -a, an entry shows (incomplete). What does that mean?",
+      "options": [
+        "The host is the gateway",
+        "An ARP request was sent but no reply came back",
+        "The entry is permanent",
+        "The MAC address is locally administered"
+      ]
+    },
+    {
+      "prompt": "The entry for 192.168.1.255 shows ff:ff:ff:ff:ff:ff. Why?",
+      "options": [
+        "It's the router",
+        "It's a misconfigured host",
+        "ARP failed",
+        "192.168.1.255 is the subnet's broadcast address, so it maps to the Ethernet broadcast address"
+      ]
+    },
+    {
+      "prompt": "Why do da:47:5e:b3:f2:81 and 9a:c3:43:ad:95:e3 fail a vendor lookup?",
+      "options": [
+        "They're broadcast addresses",
+        "They're locally administered (second hex digit a): random private addresses, not a vendor's OUI",
+        "The lookup site is down",
+        "They belong to IANA"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "In the campus example, the gateway's MAC 00:00:5e:00:01:33 is reserved for which router-redundancy protocol? (four letters)"
+    },
+    {
+      "prompt": "What makes ARP spoofing possible?",
+      "options": [
+        "ARP has no authentication, so hosts believe replies they never asked for",
+        "ARP uses TCP",
+        "MAC addresses are too long",
+        "ARP replies are encrypted"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Dynamic ARP inspection on a switch is a defense against ARP spoofing."
+    }
+  ]
+}

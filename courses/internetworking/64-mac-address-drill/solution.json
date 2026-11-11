@@ -1,0 +1,49 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "broadcast"
+      ],
+      "explanation": "All ones: every device on the LAN."
+    },
+    {
+      "accepted_answers": [
+        "3c:bd:c5",
+        "3cbdc5",
+        "3c-bd-c5",
+        "3c bd c5"
+      ],
+      "explanation": "The first three bytes. A lookup shows Arcadyan, a Taiwanese maker of ISP gateways."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "01:00:5e is the IPv4 multicast range. This one is for 224.0.0.251, multicast DNS."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Second hex digit a: locally administered bit on, multicast bit off. That's why a vendor lookup finds nothing."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "dc = 1101 1100: both low bits are 0. Its OUI, dc:46:28, belongs to Intel."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Second hex digit 6 (0110): the locally administered bit is set. It's a phone's private WiFi address."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Those are the digits with bit 1 set and bit 0 clear: 0010, 0110, 1010, 1110."
+    },
+    {
+      "accepted_answers": [
+        "cisco"
+      ],
+      "explanation": "Cisco's IOS writes MAC addresses that way."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "ff is odd, so the group bit is set. Broadcast is the group that contains everyone."
+    }
+  ]
+}

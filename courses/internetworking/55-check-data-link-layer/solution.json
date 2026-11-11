@@ -1,0 +1,52 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Layer 2 works one hop at a time. Getting a packet end to end, across many links, is the network layer's job."
+    },
+    {
+      "accepted_answers": [
+        "frame",
+        "frames",
+        "a frame"
+      ],
+      "explanation": "Layer 3 hands down a packet (datagram); layer 2 wraps it in a frame."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Each link can use its own protocol: WiFi on the first link, Ethernet on the next, fiber after that. The datagram is re-framed at every hop."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "A link protocol's format specification includes the rules for finding frame boundaries."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Flow control paces adjacent sending and receiving nodes."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's the difference from error detection, which can only notice the damage and then drop the frame or ask for a retransmission."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "A walkie-talkie is half duplex. A phone call is full duplex."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Wired links have very low error rates, so they leave recovery to higher layers. Wireless links lose frames often enough that they acknowledge and resend at layer 2."
+    },
+    {
+      "accepted_answers": [
+        "neighboring",
+        "neighbouring",
+        "neighbor",
+        "neighbour",
+        "neighbors",
+        "neighbours",
+        "adjacent"
+      ],
+      "explanation": "Layer 2 links frames between neighboring hosts on the same segment of the LAN."
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "type": "quiz",
+  "title": "Drill: Multiple Access Protocols",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "Each station gets a fixed time slot in each round. (four letters)"
+    },
+    {
+      "type": "written",
+      "prompt": "Each station gets a fixed frequency band. (four letters)"
+    },
+    {
+      "type": "written",
+      "prompt": "Everyone transmits at once on the same frequencies, each with a unique code. (four letters)"
+    },
+    {
+      "type": "written",
+      "prompt": "Listen before transmitting, keep listening, and abort on a collision. Wired Ethernet's classic protocol. (with a slash)"
+    },
+    {
+      "type": "written",
+      "prompt": "Listen first, wait a random time, and expect an ACK for every frame, because collisions can't be heard over radio. (with a slash)"
+    },
+    {
+      "prompt": "Transmit at the start of the next slot. After a collision, retry each slot with probability p. Max efficiency 37%.",
+      "options": [
+        "Pure ALOHA",
+        "TDMA",
+        "CSMA",
+        "Slotted ALOHA"
+      ]
+    },
+    {
+      "prompt": "A token circulates, and only the node holding it may send.",
+      "options": [
+        "Polling",
+        "CSMA/CA",
+        "Token passing (Token Ring)",
+        "FDMA"
+      ]
+    },
+    {
+      "prompt": "Which protocol would you expect to waste the most capacity on a busy channel full of short bursts from many nodes?",
+      "options": [
+        "CSMA/CA",
+        "Slotted ALOHA",
+        "Pure ALOHA",
+        "CSMA/CD"
+      ]
+    },
+    {
+      "prompt": "Which protocols are random access? Pick the right group.",
+      "options": [
+        "STP, ARP",
+        "Polling, token passing",
+        "ALOHA, slotted ALOHA, CSMA, CSMA/CD, CSMA/CA",
+        "TDMA, FDMA, CDMA"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A channel partitioning protocol needs collision detection."
+    }
+  ]
+}

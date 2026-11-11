@@ -1,0 +1,54 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "A hub is a layer 1 repeater: it never reads the frame."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Only one can transmit at a time, so collisions grow with the number of hosts."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Bridges and switches are layer 2 devices: they forward by MAC address."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Bridges and switches only know the MAC addresses on their own segments. Routers move traffic between networks."
+    },
+    {
+      "accepted_answers": [
+        "source",
+        "the source",
+        "source mac",
+        "src"
+      ],
+      "explanation": "It notes the source MAC and the port it came in on."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Flooding makes sure it reaches the destination. The reply then teaches the switch where that host is."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The destination already heard the frame on that segment."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A switch floods broadcasts out of every port. The switched LAN is one broadcast domain, unless it's split with VLANs or a router."
+    },
+    {
+      "accepted_answers": [
+        "vlan",
+        "vlans",
+        "virtual lan",
+        "a vlan"
+      ],
+      "explanation": "A virtual LAN. Frames between switches carry an 802.1Q tag with the VLAN ID."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "L2TP carries the traffic; IPsec encrypts it."
+    }
+  ]
+}

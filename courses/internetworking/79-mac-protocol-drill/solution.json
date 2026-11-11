@@ -1,0 +1,60 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "tdma"
+      ],
+      "explanation": "Time division multiple access."
+    },
+    {
+      "accepted_answers": [
+        "fdma"
+      ],
+      "explanation": "Frequency division multiple access."
+    },
+    {
+      "accepted_answers": [
+        "cdma"
+      ],
+      "explanation": "Code division multiple access."
+    },
+    {
+      "accepted_answers": [
+        "csma/cd",
+        "csmacd",
+        "csma cd",
+        "csma-cd"
+      ],
+      "explanation": "Carrier sense multiple access with collision detection."
+    },
+    {
+      "accepted_answers": [
+        "csma/ca",
+        "csmaca",
+        "csma ca",
+        "csma-ca"
+      ],
+      "explanation": "Collision avoidance: the WiFi approach."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Slotted ALOHA's best case is 1/e."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Taking turns, decentralized. Losing the token stops the network."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Pure ALOHA neither listens first nor uses slots, so it peaks at about 18%."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Random access: no division, no turns, just send and recover from collisions."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Partitioning gives each node exclusive use of its piece, so collisions never happen."
+    }
+  ]
+}

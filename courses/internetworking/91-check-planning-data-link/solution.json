@@ -1,0 +1,41 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Hubs share one collision domain and repeat everything to everyone."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "A separate broadcast domain, and a router or firewall deciding what crosses it."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Two links between the same switches form a loop. STP blocks one until the other fails."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Physical separation is stronger, so it's kept for the most sensitive systems."
+    },
+    {
+      "accepted_answers": [
+        "802.1q",
+        "8021q",
+        "ieee 802.1q",
+        "dot1q"
+      ],
+      "explanation": "802.1Q adds a 4-byte tag carrying the VLAN ID."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "PoE sends power down the same cable as the data."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Radio leaks past walls; a cable has to be physically reached."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A switch gives every desk its own port and collision domain at line speed. Bridges only make sense to join two existing segments."
+    }
+  ]
+}

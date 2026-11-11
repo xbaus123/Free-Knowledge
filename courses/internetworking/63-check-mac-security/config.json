@@ -1,0 +1,50 @@
+{
+  "type": "quiz",
+  "title": "Check: MAC Address Security",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "What is MAC spoofing?",
+      "options": [
+        "Sending frames with a source MAC address that isn't your own",
+        "Flooding a switch with frames",
+        "Looking up a MAC address's vendor",
+        "Encrypting a frame's MAC addresses"
+      ]
+    },
+    {
+      "prompt": "What makes cloning different from spoofing in general?",
+      "options": [
+        "There's no difference: cloning is legal and spoofing isn't",
+        "Cloning changes the device's IP address too",
+        "Cloning needs physical access to the NIC",
+        "Cloning copies the exact MAC address of a specific device the network already trusts"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "MAC filtering on its own is strong enough to keep attackers off a WiFi network."
+    },
+    {
+      "type": "true_false",
+      "prompt": "A legitimate reason to clone a MAC address is to keep internet service when an ISP has locked it to your old computer's MAC address."
+    },
+    {
+      "prompt": "A log says MAC address 3c:22:fb:45:a4:85 downloaded a file. Why can't you be sure who did it?",
+      "options": [
+        "MAC addresses are always random",
+        "Logs never record MAC addresses",
+        "A MAC address identifies a NIC, not a person: the device could be shared, or the address spoofed",
+        "Only IP addresses are stored in frames"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the general name for an allow list of permitted MAC addresses on a switch or access point? (two words: MAC ______)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "A switch can check a frame's source MAC address to prove it really came from that device."
+    }
+  ]
+}

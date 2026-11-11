@@ -1,0 +1,47 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "48",
+        "forty-eight",
+        "forty eight"
+      ],
+      "explanation": "48 bits, written as 6 bytes or 12 hex digits."
+    },
+    {
+      "accepted_answers": [
+        "oui",
+        "organizationally unique identifier"
+      ],
+      "explanation": "Organizationally Unique Identifier, assigned to the manufacturer by the IEEE."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Media Access Control. Layer 2 is sometimes called the MAC layer for that reason."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "All 48 bits set to 1. Every NIC on the LAN accepts a frame sent to it."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Windows uses dashes and capitals, Cisco uses dotted groups of four, but the 48 bits are the same."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The second hex digit is a (1010 in binary), so the locally administered bit is set and the multicast bit isn't."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A burned-in MAC address stays the same. (A random private address is a deliberate exception, chosen per network to resist tracking.)"
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Windows calls it the Physical Address. Linux's ifconfig shows HWaddr or ether, and macOS lists it under Hardware."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "A fixed MAC address is a fixed identifier every network sees. Randomizing it per network breaks that link."
+    }
+  ]
+}

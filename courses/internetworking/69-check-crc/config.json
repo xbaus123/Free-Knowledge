@@ -1,0 +1,76 @@
+{
+  "type": "quiz",
+  "title": "Check: CRC",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "In a CRC, what is G?",
+      "options": [
+        "The generator: an r + 1 bit pattern fixed by the CRC standard",
+        "The receiver's MAC address",
+        "The data bits",
+        "The remainder appended to the frame"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A generator G has 4 bits. How many CRC bits (r) does the sender append? (a number)"
+    },
+    {
+      "prompt": "In mod-2 arithmetic, what are addition and subtraction?",
+      "options": [
+        "Both are XOR",
+        "Multiplication by 2",
+        "AND and OR",
+        "Ordinary addition with carries"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "The sender chooses R so that <D,R> divides exactly by G, with no remainder."
+    },
+    {
+      "prompt": "The receiver divides the bits it got by G and the remainder is 010. What does it conclude?",
+      "options": [
+        "The frame was a broadcast",
+        "The generator is wrong",
+        "An error happened: the remainder isn't zero",
+        "No error"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "D = 1101 and G = 1011. What are the 3 CRC bits R?"
+    },
+    {
+      "type": "written",
+      "prompt": "D = 110101 and G = 101. What are the 2 CRC bits R?"
+    },
+    {
+      "type": "written",
+      "prompt": "D = 1011 and G = 11. What is the 1 CRC bit R?"
+    },
+    {
+      "prompt": "A CRC has r = 32 check bits. Which errors is it guaranteed to detect?",
+      "options": [
+        "Every burst error shorter than 33 bits",
+        "Only single-bit errors",
+        "Only errors in the header",
+        "Every possible error"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "CRC is used in both Ethernet and 802.11 WiFi frames."
+    },
+    {
+      "prompt": "Why is CRC a good fit for hardware like a NIC?",
+      "options": [
+        "It uses floating-point math",
+        "It needs no extra bits",
+        "It only needs to run once a day",
+        "Its division is just shifts and XORs, so it can be computed as the bits stream past"
+      ]
+    }
+  ]
+}

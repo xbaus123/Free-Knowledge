@@ -1,0 +1,51 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "b",
+        "sw-b",
+        "swb",
+        "sw b"
+      ],
+      "explanation": "Priorities tie, so the lowest MAC wins: ...:02."
+    },
+    {
+      "accepted_answers": [
+        "b",
+        "sw-b",
+        "swb",
+        "sw b"
+      ],
+      "explanation": "28672 is lower than 32768. Priority beats MAC address."
+    },
+    {
+      "accepted_answers": [
+        "c",
+        "sw-c",
+        "swc",
+        "sw c"
+      ],
+      "explanation": "A and C tie on priority 4096, and C's MAC (...:50) is lower than A's (...:99)."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "SW1 is root. On the SW2-SW3 link, SW2 has the lower bridge ID, so it's designated and SW3's end blocks."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Priority is compared first, so a low priority guarantees the election."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A tree connecting n nodes has n - 1 links. Any extra links must have a blocked port."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "STP adds up link costs, and 8 is less than 19. Fewer hops doesn't matter, total cost does."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's how it knows when it needs to take over after a failure."
+    }
+  ]
+}

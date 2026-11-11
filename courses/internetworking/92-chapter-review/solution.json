@@ -1,0 +1,106 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "The datagram is re-framed for every link it crosses."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The NIC's controller handles layer 2, and its physical part drives the medium."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "6 + 6 + 2 bytes of header, 46 to 1500 bytes of data, and the 4-byte FCS trailer."
+    },
+    {
+      "accepted_answers": [
+        "1500",
+        "1,500"
+      ],
+      "explanation": "Ethernet's MTU. The whole frame is then 1518 bytes."
+    },
+    {
+      "accepted_answers": [
+        "64"
+      ],
+      "explanation": "64 bytes, which is 512 bits: the same as one backoff unit."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The IEEE assigns OUIs to manufacturers. The second half is the device's own serial."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Second hex digit e (1110): the locally administered bit is set."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Nothing in a frame proves the source address is real."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Two flips keep the count of 1s even, so the check still passes."
+    },
+    {
+      "accepted_answers": [
+        "001"
+      ],
+      "explanation": "1101000 mod-2 divided by 1011 leaves 001."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It just drops the frame. Higher layers like TCP handle recovery."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "TDMA's idle slots and FDMA's idle bands."
+    },
+    {
+      "accepted_answers": [
+        "37",
+        "37%"
+      ],
+      "explanation": "1/e, about 37%."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "{0, ..., 2^m - 1} with m = 2. Then it waits K × 512 bit times."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Its own signal drowns out the others, so it avoids collisions and relies on ACKs."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The reply will teach the switch where that host is."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Priority first (default 32768), MAC address to break ties."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Listen, learn, then forward."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "A broadcast request, a unicast reply, and a cache entry."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "00:00:5e:00:01:xx is reserved for VRRP."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The name is easy to sniff from connection requests. Encryption (WPA3) is what actually protects the traffic."
+    },
+    {
+      "accepted_answers": [
+        "memory ballooning",
+        "ballooning",
+        "memory balloon"
+      ],
+      "explanation": "A balloon driver in the guest gives unused memory back to the hypervisor."
+    }
+  ]
+}

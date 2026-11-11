@@ -1,0 +1,54 @@
+{
+  "type": "quiz",
+  "title": "Drill: Electing the Root",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "SW-A: priority 32768, MAC 00:1a:00:00:00:05. SW-B: priority 32768, MAC 00:1a:00:00:00:02. SW-C: priority 32768, MAC 00:1a:00:00:00:09. Which is root? (type A, B, or C)"
+    },
+    {
+      "type": "written",
+      "prompt": "SW-A: priority 32768, MAC 00:00:00:00:00:01. SW-B: priority 28672, MAC 00:ff:ff:ff:ff:ff. Which is root? (A or B)"
+    },
+    {
+      "type": "written",
+      "prompt": "SW-A: priority 4096, MAC 00:00:00:00:00:99. SW-B: priority 8192, MAC 00:00:00:00:00:01. SW-C: priority 4096, MAC 00:00:00:00:00:50. Which is root? (A, B, or C)"
+    },
+    {
+      "prompt": "In the triangle of SW1 (AAA), SW2 (BBB), and SW3 (CCC), all priority 32768, which port ends up blocked?",
+      "options": [
+        "SW3's Fa1/0, on the SW2-SW3 link",
+        "SW1's Fa0/0",
+        "None: STP leaves a triangle as it is",
+        "SW2's Fa0/0"
+      ]
+    },
+    {
+      "prompt": "You want the core switch to always be root, whatever MAC addresses new switches have. What do you do?",
+      "options": [
+        "Connect it first",
+        "Give the core switch the lowest MAC address",
+        "Set the core switch's priority lower than every other switch's",
+        "Disable STP on the others"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "In a loop-free tree of 5 switches, exactly 4 links are forwarding between them."
+    },
+    {
+      "prompt": "A switch has two paths to the root: one over a 100 Mbps link (cost 19), one over two 1 Gbps links (cost 4 + 4). Which does STP prefer?",
+      "options": [
+        "Neither",
+        "The two 1 Gbps links, total cost 8",
+        "The 100 Mbps link, since it's one hop",
+        "Both, sharing the load"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A blocked port still receives BPDUs."
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Please Do Not Throw Sausage Pizza Away, from the bottom up."
+    },
+    {
+      "accepted_answers": [
+        "2",
+        "two",
+        "layer 2"
+      ],
+      "explanation": "Layer 2, between the physical layer (1) and the network layer (3)."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Layer 1 is the media and signals: cables, connectors, light, and radio."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "NICs, bridges, switches, WAPs, and hypervisors' virtual switches all work with frames."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Application data, transport segment, network packet, link frame, physical bits."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "De-encapsulation works bottom up: layer 2 strips its frame first, then layer 3, then layer 4."
+    },
+    {
+      "accepted_answers": [
+        "1983"
+      ],
+      "explanation": "January 1, 1983."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The Frame Check Sequence: a 4-byte CRC-32 at the end of the frame."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Shorter data is padded to 46 bytes; longer packets must be fragmented by the network layer."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Written as 12 hex digits, like 3c:bd:c5:40:77:61."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "MAC addresses travel in the clear in every frame."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "By electing a root bridge and blocking extra ports."
+    },
+    {
+      "accepted_answers": [
+        "arp",
+        "address resolution protocol"
+      ],
+      "explanation": "The Address Resolution Protocol."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "That's circuit switching. Packet switching forwards each packet on its own over shared links."
+    }
+  ]
+}

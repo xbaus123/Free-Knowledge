@@ -1,0 +1,58 @@
+{
+  "type": "quiz",
+  "title": "Drill: Reading MAC Addresses",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "ff:ff:ff:ff:ff:ff is what kind of address? (one word)"
+    },
+    {
+      "type": "written",
+      "prompt": "What's the OUI of 3c:bd:c5:40:77:61? (write it as three hex pairs with colons)"
+    },
+    {
+      "prompt": "01:00:5e:00:00:fb is...",
+      "options": [
+        "a locally administered unicast address",
+        "a broadcast address",
+        "an invalid address",
+        "a multicast address: the first byte, 01, is odd"
+      ]
+    },
+    {
+      "prompt": "9a:c3:43:ad:95:e3 is...",
+      "options": [
+        "broadcast",
+        "locally administered unicast, likely a random private address",
+        "universal unicast, from a manufacturer",
+        "multicast"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "dc:46:28:a1:60:26 is a universally administered unicast address."
+    },
+    {
+      "type": "true_false",
+      "prompt": "a6:ab:f1:8a:2f:9f is a manufacturer-assigned address."
+    },
+    {
+      "prompt": "Which of these second hex digits marks a locally administered unicast address?",
+      "options": [
+        "0, 4, 8, C",
+        "2, 6, A, E",
+        "1, 3, 5, 7",
+        "F only"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A MAC address is written 3c22.fb45.a485. Which vendor's format uses dotted groups of four hex digits? (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "The broadcast address is also a multicast address, by the bit rules."
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "type": "quiz",
+  "title": "Check: The Data Link Layer",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "How far does the data link layer carry a packet?",
+      "options": [
+        "From the sending application to the receiving application",
+        "Across one link, to a directly connected neighbor",
+        "Only between two routers",
+        "From one end of the Internet to the other"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What is the unit of data called at the data link layer? (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "A packet crossing the Internet uses the same link protocol on every hop."
+    },
+    {
+      "prompt": "Which service lets the receiver tell where one frame ends and the next begins?",
+      "options": [
+        "Error correction",
+        "Flow control",
+        "Full duplex",
+        "Framing, with rules for recognizing frame boundaries"
+      ]
+    },
+    {
+      "prompt": "A fast server keeps overwhelming a slow device at the other end of the link. Which layer 2 service deals with that?",
+      "options": [
+        "Link addressing",
+        "Flow control",
+        "Error detection",
+        "Half duplex"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Error correction fixes flipped bits without asking the sender to send the frame again."
+    },
+    {
+      "prompt": "With half duplex, what is true?",
+      "options": [
+        "Only one end of the link can ever transmit",
+        "Both ends transmit at the same time",
+        "The link runs at half its rated speed",
+        "Both ends can transmit, but not at the same time"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Reliable delivery is more common on wireless links than on wired ones."
+    },
+    {
+      "type": "written",
+      "prompt": "Fill in the blank: hosts on the same LAN segment, which a frame can reach in one hop, are called ______ hosts. (one word)"
+    }
+  ]
+}

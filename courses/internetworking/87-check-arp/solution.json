@@ -1,0 +1,55 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "ARP maps a neighbor's IPv4 address to the MAC address a frame needs."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The asker doesn't know the target's MAC yet, so it asks everyone."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The reply is unicast, straight back to the host that asked."
+    },
+    {
+      "accepted_answers": [
+        "arp -a",
+        "arp-a",
+        "arp  -a"
+      ],
+      "explanation": "arp -a. On Linux, ip neigh shows the same table."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "ARP only works within the LAN. The frame goes to the router, which forwards the packet onward."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The target didn't answer: it's switched off, gone, or ignoring ARP."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "A packet to the subnet broadcast IP must reach every host, so the frame is a broadcast too."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "No manufacturer assigned them, so there's no vendor to find."
+    },
+    {
+      "accepted_answers": [
+        "vrrp",
+        "virtual router redundancy protocol"
+      ],
+      "explanation": "VRRP lets routers share one virtual gateway IP and MAC, so a failover doesn't break anyone's ARP cache."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "An attacker claims the gateway's IP and becomes a man-in-the-middle."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The switch checks ARP replies against a trusted table of IP-to-MAC bindings and drops lies."
+    }
+  ]
+}
