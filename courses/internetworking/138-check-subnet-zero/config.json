@@ -1,0 +1,54 @@
+{
+  "type": "quiz",
+  "title": "Check: The Lowest and Highest Subnets",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Why did the old rules skip the lowest subnet (subnet zero)?",
+      "options": [
+        "Its network address is identical to the network address of the whole network, so mask-less routing protocols couldn't tell them apart",
+        "It's reserved for the router",
+        "It's always used for multicast",
+        "It has no usable hosts"
+      ]
+    },
+    {
+      "prompt": "Why did the old rules skip the highest subnet (the all-ones subnet)?",
+      "options": [
+        "Its hosts can't reach the internet",
+        "It's too small to be useful",
+        "Its broadcast address matches the broadcast address of the whole network",
+        "Routers can't forward to it"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Under the old rule, how many usable subnets do you get by borrowing 3 bits?"
+    },
+    {
+      "type": "written",
+      "prompt": "Under modern rules (RFC 1878), how many subnets do you get by borrowing 3 bits?"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Under the old rule, splitting a /24 into two /25s gave you no usable subnets at all."
+    },
+    {
+      "prompt": "What made subnet zero safe to use?",
+      "options": [
+        "Routing protocols that carry the mask with every route, like RIPv2, OSPF, and BGP",
+        "IPv6",
+        "Bigger DHCP pools",
+        "Faster routers"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Since subnet zero is allowed now, the network and broadcast addresses inside each subnet can also be given to hosts."
+    },
+    {
+      "type": "written",
+      "prompt": "Which classful routing protocol, version 1 of a well-known one, didn't send masks? (acronym)"
+    }
+  ]
+}

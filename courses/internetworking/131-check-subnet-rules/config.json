@@ -1,0 +1,54 @@
+{
+  "type": "quiz",
+  "title": "Check: Rules to Remember",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Which of these should normally get a static address?",
+      "options": [
+        "A visitor's phone on guest WiFi",
+        "A staff laptop",
+        "The office printer",
+        "A tablet that's only in the office on Fridays"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "It's fine for a DHCP pool to overlap the range of static addresses, as long as the pool is big enough."
+    },
+    {
+      "prompt": "A coffee shop's guest WiFi uses a 7-day DHCP lease. What's the likely problem?",
+      "options": [
+        "The pool fills with addresses still leased to phones that left days ago, so new guests get none",
+        "Nothing: long leases are always better",
+        "The router can't find its own address",
+        "Guests get disconnected every few minutes"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "By convention, the router takes which usable address in a subnet: the first or the last? (one word)"
+    },
+    {
+      "type": "written",
+      "prompt": "What's the router's address, by the first-usable convention, in 10.1.1.64/26?"
+    },
+    {
+      "type": "true_false",
+      "prompt": "By borrowing more subnet bits you can get more subnets without making any of them smaller."
+    },
+    {
+      "prompt": "Going from /26 to /27 does what?",
+      "options": [
+        "Adds one host to every subnet",
+        "Changes nothing but the mask",
+        "Doubles the number of subnets and halves the hosts per subnet",
+        "Doubles the hosts per subnet and halves the number of subnets"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "How long the client may keep a DHCP address before renewing is called its ______ time. (one word)"
+    }
+  ]
+}

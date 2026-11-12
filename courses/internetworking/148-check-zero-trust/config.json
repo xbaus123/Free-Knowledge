@@ -1,0 +1,59 @@
+{
+  "type": "quiz",
+  "title": "Check: Subnets and Zero Trust",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "true_false",
+      "prompt": "In a Zero Trust Architecture, a device is trusted because it's on the internal server subnet."
+    },
+    {
+      "prompt": "What's the main weakness of the 'castle and moat' model?",
+      "options": [
+        "It needs too many subnets",
+        "Once an attacker gets one foothold inside, they inherit that location's trust and can move sideways",
+        "It only works with IPv6",
+        "It can't use DHCP"
+      ]
+    },
+    {
+      "prompt": "Which NIST publication describes Zero Trust Architecture?",
+      "options": [
+        "SP 800-207",
+        "IEEE 802.3",
+        "RFC 950",
+        "RFC 1918"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Splitting a network into very small segments, sometimes one per workload, each with its own policy, is called ______. (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Under Zero Trust, physical subnets become useless and should be removed."
+    },
+    {
+      "prompt": "Why can resizing a VLSM subnet cause problems in a ZTA?",
+      "options": [
+        "Every policy that named the old address range must be found and fixed, or access breaks or becomes too wide",
+        "It disables DHCP",
+        "Routers can't learn new masks",
+        "It changes the MAC addresses of every host"
+      ]
+    },
+    {
+      "prompt": "Under Zero Trust, what should an access policy ideally name?",
+      "options": [
+        "A MAC address",
+        "A switch port number",
+        "The workload or user identity",
+        "A subnet like 10.1.1.192/28"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Zero Trust grants each request only the access it needs. What's the two-word name for that principle?"
+    }
+  ]
+}

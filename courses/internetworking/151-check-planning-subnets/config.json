@@ -1,0 +1,59 @@
+{
+  "type": "quiz",
+  "title": "Check: Planning Your Subnets",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "In the worked example, why does the staff subnet get a /25?",
+      "options": [
+        "100 devices with growth need more than a /26's 62 hosts, and a /25 holds 126",
+        "It's the only mask that supports DHCP",
+        "Staff always get half the network",
+        "It's the default for staff"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "The example's blocks are 128 + 64 + 32 + 16 + 4 addresses. How many addresses is that in total?"
+    },
+    {
+      "type": "written",
+      "prompt": "The guest subnet is 192.168.10.128/26. What's its gateway address?"
+    },
+    {
+      "type": "true_false",
+      "prompt": "In the example, the guest subnet uses a long DHCP lease so guests keep the same address all week."
+    },
+    {
+      "prompt": "What's the cameras subnet's broadcast address, 192.168.10.192/27?",
+      "options": [
+        "192.168.10.199",
+        "192.168.10.207",
+        "192.168.10.223",
+        "192.168.10.255"
+      ]
+    },
+    {
+      "prompt": "Why is fitting everything into one class C worth bonus points?",
+      "options": [
+        "With only 256 addresses, every subnet has to be sized carefully with VLSM",
+        "Class C networks don't need a router",
+        "Class C networks are faster",
+        "Only class C supports subnetting"
+      ]
+    },
+    {
+      "prompt": "Which check belongs at the end of every subnet plan?",
+      "options": [
+        "No subnets overlap, everything is inside your block, and there's room left over",
+        "Every subnet uses the same mask",
+        "Every host is on DHCP",
+        "The router has the last address"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Staff grows to 150 devices. What's the smallest prefix the staff subnet would then need?"
+    }
+  ]
+}

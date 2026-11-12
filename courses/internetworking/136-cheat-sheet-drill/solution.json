@@ -1,0 +1,59 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "255.255.224.0"
+      ],
+      "explanation": "Three 1s in the 3rd octet: 128 + 64 + 32 = 224."
+    },
+    {
+      "accepted_answers": [
+        "6"
+      ],
+      "explanation": "8 addresses, minus 2: 6. Handy for a tiny server subnet."
+    },
+    {
+      "accepted_answers": [
+        "/23",
+        "23"
+      ],
+      "explanation": "254 is seven 1s, so 16 + 7 = 23."
+    },
+    {
+      "accepted_answers": [
+        "2046",
+        "2,046"
+      ],
+      "explanation": "2¹¹ − 2 = 2,046."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A /24 holds only 254. A /23 holds 510."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A /28 holds 14, too few. A /27 holds 30."
+    },
+    {
+      "accepted_answers": [
+        "64"
+      ],
+      "explanation": "256 ÷ 4 = 64. The cheat sheet's last column says the same."
+    },
+    {
+      "accepted_answers": [
+        "1048576",
+        "1,048,576"
+      ],
+      "explanation": "2²⁰ = 1,048,576, or 16 class Bs."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "/16: 256 class C networks, 65,536 addresses."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It has 128 addresses but 126 usable hosts."
+    }
+  ]
+}

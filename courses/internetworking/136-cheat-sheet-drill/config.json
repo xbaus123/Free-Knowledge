@@ -1,0 +1,62 @@
+{
+  "type": "quiz",
+  "title": "Drill: Cheat Sheet Speed Round",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "Netmask for a /19?"
+    },
+    {
+      "type": "written",
+      "prompt": "Usable hosts in a /29?"
+    },
+    {
+      "type": "written",
+      "prompt": "Prefix length for the mask 255.255.254.0?"
+    },
+    {
+      "type": "written",
+      "prompt": "Usable hosts in a /21?"
+    },
+    {
+      "prompt": "You need 500 hosts in one subnet. What's the smallest prefix that fits?",
+      "options": [
+        "/24",
+        "/23",
+        "/22",
+        "/25"
+      ]
+    },
+    {
+      "prompt": "You need 25 hosts. What's the smallest prefix that fits?",
+      "options": [
+        "/27",
+        "/26",
+        "/29",
+        "/28"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "How many /30s fit in one /24?"
+    },
+    {
+      "type": "written",
+      "prompt": "Total addresses (not usable) in a /12?"
+    },
+    {
+      "prompt": "Which prefix is exactly one former class B network?",
+      "options": [
+        "/16",
+        "/12",
+        "/24",
+        "/8"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A /25 has 128 usable hosts."
+    }
+  ]
+}

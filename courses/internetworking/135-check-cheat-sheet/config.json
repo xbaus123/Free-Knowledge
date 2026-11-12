@@ -1,0 +1,54 @@
+{
+  "type": "quiz",
+  "title": "Check: The CIDR Cheat Sheet",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "From the cheat sheet: how many usable hosts in a /27?"
+    },
+    {
+      "type": "written",
+      "prompt": "What's the netmask for a /28?"
+    },
+    {
+      "prompt": "A /26 is what fraction of a former class C network?",
+      "options": [
+        "1/4",
+        "1/2",
+        "1/8",
+        "1/16"
+      ]
+    },
+    {
+      "prompt": "A /22 covers how many former class C networks?",
+      "options": [
+        "8",
+        "4",
+        "2",
+        "22"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Every step to a longer prefix (like /25 to /26) halves the addresses in each subnet."
+    },
+    {
+      "prompt": "The cheat sheet says a /20 gives 16 subnets. 16 subnets of what?",
+      "options": [
+        "Of a class A",
+        "Of a class C (/24)",
+        "Of a class B (/16)",
+        "Of the whole Internet"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the formula for usable hosts with h host bits? (write it like 2^h-2)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "A mask of 255.255.255.200 is a valid subnet mask."
+    }
+  ]
+}

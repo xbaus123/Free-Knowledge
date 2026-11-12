@@ -1,0 +1,44 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Zero Trust's core idea is that network location alone never grants trust. Every request is checked on identity, device, and policy."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Trust by location means one compromised laptop or camera can reach everything its subnet is allowed to reach."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "NIST Special Publication 800-207."
+    },
+    {
+      "accepted_answers": [
+        "microsegmentation",
+        "micro-segmentation",
+        "micro segmentation"
+      ],
+      "explanation": "Microsegmentation shrinks the blast radius so a compromise in one segment reaches as little as possible."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Subnets still contain broadcasts and limit the blast radius. Zero Trust stops trusting them; it doesn't throw them away."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Policies written as address ranges are tied to the old boundaries. Miss one and the policy is wrong."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Addresses change and can be spoofed. Identity, with device health and context, is what Zero Trust checks."
+    },
+    {
+      "accepted_answers": [
+        "least privilege",
+        "principle of least privilege",
+        "least-privilege"
+      ],
+      "explanation": "Least privilege: no more access than the task needs, for no longer than it needs it."
+    }
+  ]
+}

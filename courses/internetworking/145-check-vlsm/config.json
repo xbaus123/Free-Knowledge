@@ -1,0 +1,63 @@
+{
+  "type": "quiz",
+  "title": "Check: Variable Length Subnet Masks",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "What does VLSM stand for?"
+    },
+    {
+      "prompt": "In VLSM, which order do you allocate subnets in?",
+      "options": [
+        "Smallest first",
+        "Whatever order the departments asked",
+        "Alphabetical",
+        "Largest first"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What prefix does a point-to-point link between two routers need? (it has 2 hosts)"
+    },
+    {
+      "prompt": "A department needs 100 hosts. What's the smallest subnet that fits?",
+      "options": [
+        "/24",
+        "/26",
+        "/27",
+        "/25"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "10.1.1.8/28 is a valid network address."
+    },
+    {
+      "prompt": "After allocating 10.1.1.0/25 and 10.1.1.128/26, where can the next /28 go?",
+      "options": [
+        "10.1.1.200/28",
+        "10.1.1.192/28",
+        "10.1.1.160/28",
+        "10.1.1.120/28"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the broadcast address of 10.1.1.4/30?"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Classful RIP version 1 supports VLSM."
+    },
+    {
+      "prompt": "Why does VLSM save addresses compared with fixed-length subnetting?",
+      "options": [
+        "It skips the broadcast address",
+        "It uses IPv6 underneath",
+        "Each subnet gets the smallest block that fits it, instead of one size for all",
+        "It shares one address between two hosts"
+      ]
+    }
+  ]
+}

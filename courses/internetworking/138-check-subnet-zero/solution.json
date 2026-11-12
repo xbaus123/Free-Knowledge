@@ -1,0 +1,46 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "192.168.1.0/26 and 192.168.1.0/24 share the address 192.168.1.0. Without masks, that's ambiguous."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "192.168.1.192/26 broadcasts to 192.168.1.255, which is also the broadcast for all of 192.168.1.0/24."
+    },
+    {
+      "accepted_answers": [
+        "6"
+      ],
+      "explanation": "2³ − 2 = 6. Under modern rules it's all 8."
+    },
+    {
+      "accepted_answers": [
+        "8"
+      ],
+      "explanation": "2³ = 8. Masks travel with every route now, so subnet zero and the all-ones subnet are fine."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "2¹ − 2 = 0: the only two subnets are subnet zero and the all-ones subnet."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Once every route includes its mask, 192.168.1.0/26 and 192.168.1.0/24 are clearly different routes."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The subnet rule is about whole subnets. Inside every subnet, the first and last addresses are still reserved, which is why hosts are 2ʰ − 2."
+    },
+    {
+      "accepted_answers": [
+        "RIP",
+        "RIPv1",
+        "RIP v1",
+        "RIP1",
+        "RIP version 1"
+      ],
+      "explanation": "RIP version 1 was classful. RIPv2 added masks."
+    }
+  ]
+}

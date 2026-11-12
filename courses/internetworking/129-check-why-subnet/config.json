@@ -1,0 +1,50 @@
+{
+  "type": "quiz",
+  "title": "Check: Why We Subnet",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "true_false",
+      "prompt": "A subnet is a network in its own right, with its own network and broadcast addresses."
+    },
+    {
+      "prompt": "Two hosts are on different subnets of the same company network. How does traffic get between them?",
+      "options": [
+        "It can't: hosts on different subnets can never talk",
+        "Through the DHCP server",
+        "Through a router (or firewall) that joins the subnets",
+        "Straight across the switch, since they belong to the same company"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Fill in the blank: each subnet is its own ______ domain, so ARP and DHCP chatter stays inside it. (one word)"
+    },
+    {
+      "prompt": "Which of these is NOT one of the three reasons for subnetting from the reading?",
+      "options": [
+        "Security",
+        "Manageable traffic volume",
+        "Giving every host a faster connection to the internet",
+        "Keeping things organized"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "On one flat network with no subnets, a router can still filter traffic between the guest laptops and the payroll server."
+    },
+    {
+      "prompt": "A flat network of 4,000 hosts is split into 16 subnets of about 250. How many hosts does an ARP broadcast now reach?",
+      "options": [
+        "None: subnets block ARP",
+        "16",
+        "All 4,000",
+        "About 250"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Addresses on floor 3 all look like 10.1.30.x. Which octet tells you the floor: the first, second, third, or fourth?"
+    }
+  ]
+}

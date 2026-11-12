@@ -1,0 +1,57 @@
+{
+  "type": "quiz",
+  "title": "Drill: Build a VLSM Plan",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "What prefix does Sales (60 hosts) need?"
+    },
+    {
+      "type": "written",
+      "prompt": "What prefix does Engineering (28 hosts) need?"
+    },
+    {
+      "type": "written",
+      "prompt": "What prefix does Management (10 hosts) need?"
+    },
+    {
+      "type": "written",
+      "prompt": "Sales goes first at 172.16.5.0/26. What's its broadcast address?"
+    },
+    {
+      "type": "written",
+      "prompt": "Engineering comes next. What's its network address?"
+    },
+    {
+      "type": "written",
+      "prompt": "What's Engineering's broadcast address?"
+    },
+    {
+      "type": "written",
+      "prompt": "Management comes next. What's its network address?"
+    },
+    {
+      "type": "written",
+      "prompt": "The router link comes last. What's its network address?"
+    },
+    {
+      "prompt": "What are the usable addresses on the router link?",
+      "options": [
+        "172.16.5.114 and .115",
+        "172.16.5.113 to .126",
+        "172.16.5.113 and .114",
+        "172.16.5.112 and .113"
+      ]
+    },
+    {
+      "prompt": "How much of the /24 is left free after this plan?",
+      "options": [
+        "Nothing",
+        "172.16.5.112 – 172.16.5.255",
+        "172.16.5.116 – 172.16.5.255",
+        "172.16.5.128 – 172.16.5.255 only"
+      ]
+    }
+  ]
+}

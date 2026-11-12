@@ -1,0 +1,34 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "Grouping by the kind of device or role is a layout by function."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "If 10.2.0.0/16 is the warehouse, the warehouse router can advertise just 10.2.0.0/16 instead of dozens of small routes."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "By location, everyone on a floor shares a subnet, so location alone doesn't separate people or devices by trust."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A project's machines are walled off together and can be cleaned up together."
+    },
+    {
+      "accepted_answers": [
+        "2"
+      ],
+      "explanation": "The second octet is the site, so 10.2.40.5 is site 2 (the warehouse in the example), function 40 (cameras), host 5."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Mixing them gets the routing benefits of location and the security benefits of function."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Devices with the same job need the same rules, so grouping by function keeps the rules simple."
+    }
+  ]
+}

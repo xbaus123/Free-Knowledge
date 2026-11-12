@@ -1,0 +1,55 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "166.23.200.64"
+      ],
+      "explanation": "Block size 32: blocks at 0, 32, 64, 96. 77 is in the block at 64."
+    },
+    {
+      "accepted_answers": [
+        "166.23.200.95"
+      ],
+      "explanation": "One before the next block at 96."
+    },
+    {
+      "accepted_answers": [
+        "166.23.200.65"
+      ],
+      "explanation": "One after the network address."
+    },
+    {
+      "accepted_answers": [
+        "166.21.48.0"
+      ],
+      "explanation": "Block size 16 in the 3rd octet: 0, 16, 32, 48, 64. 50 is in the block at 48."
+    },
+    {
+      "accepted_answers": [
+        "166.21.63.255"
+      ],
+      "explanation": "The next block starts at 64, so this one ends at 63.255."
+    },
+    {
+      "accepted_answers": [
+        "255.255.255.252"
+      ],
+      "explanation": "Six 1s in the last octet: 252."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Class-C-sized means /24, so only the 4th octet is host bits."
+    },
+    {
+      "accepted_answers": [
+        "4094",
+        "4,094"
+      ],
+      "explanation": "2¹² − 2 = 4,094."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A /25 splits the last octet at 128. Both 130 and 200 are in 10.5.5.128/25."
+    }
+  ]
+}

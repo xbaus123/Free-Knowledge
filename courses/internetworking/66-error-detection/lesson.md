@@ -47,6 +47,6 @@ Ethernet and WiFi use something far stronger than parity: a **cyclic redundancy 
  │ Dest MAC │ Src MAC │ Type │ Data … │ FCS │  ◀── computed over everything before it
 ```
 
-The receiving NIC recomputes the CRC as the frame arrives. If it doesn't match the FCS, the frame is silently **dropped**. Ethernet doesn't ask for it again: higher layers (TCP, in Chapter 5) notice the missing data and resend it.
+The receiving NIC recomputes the CRC as the frame arrives. If it doesn't match the FCS, the frame is silently **dropped**. Ethernet doesn't ask for it again: higher layers (TCP, in a later chapter) notice the missing data and resend it.
 
 Next, a check on error detection.

@@ -1,0 +1,48 @@
+{
+  "type": "quiz",
+  "title": "Drill: Worked Examples",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "Network address of 166.23.200.77/27?"
+    },
+    {
+      "type": "written",
+      "prompt": "Broadcast address of 166.23.200.77/27?"
+    },
+    {
+      "type": "written",
+      "prompt": "First usable (router) address in 166.23.200.64/27?"
+    },
+    {
+      "type": "written",
+      "prompt": "Network address of 166.21.50.9/20?"
+    },
+    {
+      "type": "written",
+      "prompt": "Broadcast address of 166.21.50.9/20?"
+    },
+    {
+      "type": "written",
+      "prompt": "Netmask of a /30?"
+    },
+    {
+      "prompt": "A carrier subnets 23.0.0.0/8 into class-C-sized pieces. What's the broadcast of the subnet holding 23.7.9.100?",
+      "options": [
+        "23.7.9.255",
+        "23.255.255.255",
+        "23.7.255.255",
+        "23.7.9.127"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "How many usable hosts in 166.21.48.0/20?"
+    },
+    {
+      "type": "true_false",
+      "prompt": "10.5.5.130/25 and 10.5.5.200/25 are on the same subnet."
+    }
+  ]
+}

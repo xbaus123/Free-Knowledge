@@ -21,7 +21,7 @@
     },
     {
       "correct_index": 1,
-      "explanation": "Sharing means queues, and queues mean variable delay and occasional loss. The Internet leaves recovery to the endpoints (TCP, in Chapter 5)."
+      "explanation": "Sharing means queues, and queues mean variable delay and occasional loss. The Internet leaves recovery to the endpoints (TCP, in a later chapter)."
     },
     {
       "correct_index": 2,

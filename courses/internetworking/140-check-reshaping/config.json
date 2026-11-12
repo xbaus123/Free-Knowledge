@@ -1,0 +1,58 @@
+{
+  "type": "quiz",
+  "title": "Check: Reshaping a Big Network",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "What's the default netmask of the class A network 23.0.0.0/8?"
+    },
+    {
+      "type": "written",
+      "prompt": "What's the broadcast address of 23.0.0.0/8?"
+    },
+    {
+      "prompt": "23.0.0.0/8 is subnetted into /16s. What's the broadcast address of the subnet 23.40.0.0/16?",
+      "options": [
+        "23.40.0.255",
+        "23.40.255.255",
+        "23.40.40.255",
+        "23.255.255.255"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "How many /24 subnets can 23.0.0.0/8 be split into? (a number)"
+    },
+    {
+      "type": "written",
+      "prompt": "What's the network address of 166.23.9.18/28?"
+    },
+    {
+      "type": "written",
+      "prompt": "What's the broadcast address of 166.23.9.18/28?"
+    },
+    {
+      "prompt": "What's the usable range of 166.21.16.0/20?",
+      "options": [
+        "166.21.16.1 – 166.21.16.254",
+        "166.21.16.0 – 166.21.31.255",
+        "166.21.0.1 – 166.21.15.254",
+        "166.21.16.1 – 166.21.31.254"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "The broadcast address of 166.21.16.0/20 is 166.21.16.255."
+    },
+    {
+      "prompt": "Under the old 'skip lowest and highest' rule, which values of n are valid in 23.n.0.0/16?",
+      "options": [
+        "0 to 255",
+        "1 to 254",
+        "1 to 255",
+        "0 to 254"
+      ]
+    }
+  ]
+}

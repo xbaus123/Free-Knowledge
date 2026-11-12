@@ -1,0 +1,51 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "255.0.0.0"
+      ],
+      "explanation": "Eight 1s: the first octet is the network, the other three are hosts."
+    },
+    {
+      "accepted_answers": [
+        "23.255.255.255"
+      ],
+      "explanation": "All 24 host bits set to 1."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "With a /16, the last two octets are host bits, so they're all 255 in the broadcast."
+    },
+    {
+      "accepted_answers": [
+        "65536",
+        "65,536"
+      ],
+      "explanation": "Borrowing 16 bits: 2¹⁶ = 65,536."
+    },
+    {
+      "accepted_answers": [
+        "166.23.9.16"
+      ],
+      "explanation": "Block size 16; 18 falls in the block that starts at 16."
+    },
+    {
+      "accepted_answers": [
+        "166.23.9.31"
+      ],
+      "explanation": "One before the next block, which starts at 32."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "A /20 spans 16 values of the 3rd octet, 16 to 31. Leave out the network (.16.0) and broadcast (.31.255)."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "That would be the broadcast for a /24. A /20 has 12 host bits, reaching into the 3rd octet: 166.21.31.255."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Skip n = 0 (subnet zero) and n = 255 (the all-ones subnet)."
+    }
+  ]
+}

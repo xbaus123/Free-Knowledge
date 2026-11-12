@@ -1,0 +1,66 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "/26",
+        "26"
+      ],
+      "explanation": "/27 holds 30, too few. /26 holds 62."
+    },
+    {
+      "accepted_answers": [
+        "/27",
+        "27"
+      ],
+      "explanation": "/27 holds 30. 28 fits, with 2 to spare."
+    },
+    {
+      "accepted_answers": [
+        "/28",
+        "28"
+      ],
+      "explanation": "/28 holds 14."
+    },
+    {
+      "accepted_answers": [
+        "172.16.5.63"
+      ],
+      "explanation": "A /26 is 64 addresses: .0 to .63."
+    },
+    {
+      "accepted_answers": [
+        "172.16.5.64",
+        "172.16.5.64/27"
+      ],
+      "explanation": "Right after Sales' broadcast. 64 is a multiple of 32, so it's a valid /27 start."
+    },
+    {
+      "accepted_answers": [
+        "172.16.5.95"
+      ],
+      "explanation": "64 + 32 − 1 = 95."
+    },
+    {
+      "accepted_answers": [
+        "172.16.5.96",
+        "172.16.5.96/28"
+      ],
+      "explanation": "96 is a multiple of 16, so the /28 can start there."
+    },
+    {
+      "accepted_answers": [
+        "172.16.5.112",
+        "172.16.5.112/30"
+      ],
+      "explanation": "Management runs .96 to .111, so the /30 starts at .112."
+    },
+    {
+      "correct_index": 2,
+      "explanation": ".112 is the network and .115 the broadcast, leaving .113 and .114 for the two routers."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The link ends at .115, so everything from .116 up (140 addresses) is free for later."
+    }
+  ]
+}

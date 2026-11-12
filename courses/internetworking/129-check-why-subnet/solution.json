@@ -1,0 +1,40 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "A subnet is just a network that was carved out of a bigger one. To a router it's one more network to forward to."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Different subnets are different networks, so the host sends to its default gateway and the router forwards it."
+    },
+    {
+      "accepted_answers": [
+        "broadcast"
+      ],
+      "explanation": "Broadcasts stop at the router. Smaller subnets mean each broadcast reaches fewer hosts."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Subnetting controls traffic, organization, and security. It doesn't make anyone's internet link faster."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Hosts on the same subnet talk directly, so their traffic never passes through a router. Subnetting creates the place to put the rule."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The broadcast stays on the sender's subnet, so it reaches the roughly 250 hosts there."
+    },
+    {
+      "accepted_answers": [
+        "third",
+        "the third",
+        "3rd",
+        "3",
+        "the 3rd"
+      ],
+      "explanation": "Using an octet to encode the floor or department is what makes a plan organized: you can read the address and know where it lives."
+    }
+  ]
+}

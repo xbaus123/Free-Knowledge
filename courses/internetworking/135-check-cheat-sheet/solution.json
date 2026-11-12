@@ -1,0 +1,47 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "30"
+      ],
+      "explanation": "32 addresses minus the network and broadcast addresses: 30."
+    },
+    {
+      "accepted_answers": [
+        "255.255.255.240"
+      ],
+      "explanation": "Four 1s in the last octet: 128 + 64 + 32 + 16 = 240."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "64 addresses out of 256: a quarter."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Two fewer prefix bits than /24 means 2² = 4 class C networks, 1,024 addresses."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "One more network bit means one fewer host bit, so the block size halves and the subnet count doubles."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "/20 is between /16 and /24, so the count is how many /20s fit in a class B: 2⁴ = 16."
+    },
+    {
+      "accepted_answers": [
+        "2^h-2",
+        "2^h - 2",
+        "2**h-2",
+        "2**h - 2",
+        "(2^h)-2",
+        "(2^h) - 2"
+      ],
+      "explanation": "2ʰ − 2: all the combinations of host bits, minus the all-0s network address and the all-1s broadcast."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "200 is 11001000: a 1 after a 0. Partial octets can only be 128, 192, 224, 240, 248, 252, 254, or 255."
+    }
+  ]
+}

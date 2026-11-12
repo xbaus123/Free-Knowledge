@@ -2,7 +2,7 @@
 
 *Chapter 4 · The Network Layer.*
 
-IP gets a packet to the right **host**. But a host runs many programs at once: a browser, a mail client, a game. The protocol field in the IP header says which **transport protocol** gets the data, and almost always it's one of two: **UDP** (17) or **TCP** (6). Strictly they're layer 4, but they're so tied to IP that you'll often hear the three (with ICMP) taught together. Chapter 5 goes deep; here's the first look.
+IP gets a packet to the right **host**. But a host runs many programs at once: a browser, a mail client, a game. The protocol field in the IP header says which **transport protocol** gets the data, and almost always it's one of two: **UDP** (17) or **TCP** (6). Strictly they're layer 4, but they're so tied to IP that you'll often hear the three (with ICMP) taught together. A later chapter goes deep; here's the first look.
 
 ## Ports
 

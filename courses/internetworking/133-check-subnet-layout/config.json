@@ -1,0 +1,55 @@
+{
+  "type": "quiz",
+  "title": "Check: Laying Out Your Subnets",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "The cameras, VoIP phones, and laptops each get their own subnet. Which layout is this?",
+      "options": [
+        "By project",
+        "By location",
+        "By size",
+        "By function"
+      ]
+    },
+    {
+      "prompt": "Which layout makes it easiest to summarize routes, so each site's router advertises one big prefix?",
+      "options": [
+        "By function",
+        "Random assignment",
+        "By location",
+        "By project"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A layout purely by location gives strong security, because the payroll server and the intern on the same floor end up on different subnets."
+    },
+    {
+      "prompt": "Which is a strength of laying out subnets by project?",
+      "options": [
+        "Projects never change, so the plan is permanent",
+        "When the project ends, the whole subnet can be reclaimed at once",
+        "It removes the need for a router",
+        "Every address tells you which floor it's on"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "In the pattern 10.site.function.host, which site is 10.2.40.5 at? (a number)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Most real networks combine two layouts, such as location in one octet and function in the next."
+    },
+    {
+      "prompt": "Which layout is best for writing simple firewall rules like 'cameras may only reach the video recorder'?",
+      "options": [
+        "By location",
+        "By alphabetical order of hostname",
+        "By function",
+        "By project"
+      ]
+    }
+  ]
+}

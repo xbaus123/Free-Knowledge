@@ -1,0 +1,54 @@
+{
+  "type": "quiz",
+  "title": "Check: Equal-Size Subnets",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "10.1.1.0/24 is cut into four equal subnets. What prefix does each get?"
+    },
+    {
+      "type": "written",
+      "prompt": "What's the broadcast address of 10.1.1.64/26?"
+    },
+    {
+      "prompt": "Which subnet is 10.1.1.100 on?",
+      "options": [
+        "10.1.1.128/26",
+        "10.1.1.0/26",
+        "10.1.1.64/26",
+        "10.1.1.192/26"
+      ]
+    },
+    {
+      "prompt": "What is 10.1.1.192 under these /26s?",
+      "options": [
+        "A usable host in subnet C",
+        "The network address of subnet D",
+        "The router for subnet D",
+        "The broadcast of subnet C"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "10.1.1.191 can be assigned to a host."
+    },
+    {
+      "type": "written",
+      "prompt": "By the first-usable convention, what's the router's address on 10.1.1.128/26?"
+    },
+    {
+      "prompt": "What's the main weakness of fixed-length subnets?",
+      "options": [
+        "They can't be routed",
+        "They can only be used on class A networks",
+        "They need IPv6",
+        "Every subnet gets the same size, so small groups waste addresses and big groups may not fit"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "In fixed-length subnetting, every subnet uses the same mask."
+    }
+  ]
+}

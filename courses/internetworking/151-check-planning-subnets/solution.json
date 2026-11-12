@@ -1,0 +1,43 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Pick the smallest prefix where 2ʰ − 2 covers the device count."
+    },
+    {
+      "accepted_answers": [
+        "244"
+      ],
+      "explanation": "244 of 256, which leaves 12 spare: it fits in one class C."
+    },
+    {
+      "accepted_answers": [
+        "192.168.10.129"
+      ],
+      "explanation": "First usable address, one after the network address."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It uses a 1-hour lease, so addresses held by departed phones come back to the pool quickly."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "192 + 32 − 1 = 223."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A /24 leaves no room for waste, so it tests the whole chapter."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Overlaps and blocks outside your range are the classic mistakes. Spare room is how the plan survives growth."
+    },
+    {
+      "accepted_answers": [
+        "/24",
+        "24"
+      ],
+      "explanation": "/25 holds 126, too few. /24 holds 254, which won't fit beside the other subnets in one class C anymore."
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Everyone has to find the printer, so its address must not change. Servers, printers, routers, and access points are static."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "If DHCP hands out an address that's already typed into a printer, both devices break. The ranges must never overlap."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Short-stay networks need short leases (an hour or a few) so addresses come back to the pool quickly."
+    },
+    {
+      "accepted_answers": [
+        "first",
+        "the first"
+      ],
+      "explanation": "The first usable address, like 192.168.10.1 in 192.168.10.0/24. Some sites use the last; the point is to pick one rule."
+    },
+    {
+      "accepted_answers": [
+        "10.1.1.65"
+      ],
+      "explanation": "The network address is 10.1.1.64, so the first usable host is 10.1.1.65."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "An IPv4 address is always 32 bits. Every bit added to the network part is taken from the host part: robbing Peter to pay Paul."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "One more borrowed bit: 4 subnets of 62 hosts become 8 subnets of 30."
+    },
+    {
+      "accepted_answers": [
+        "lease"
+      ],
+      "explanation": "The lease time, sometimes called its TTL. Match it to how long devices stay on that subnet."
+    }
+  ]
+}
