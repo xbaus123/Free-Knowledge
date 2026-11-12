@@ -1,0 +1,123 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "Forwarding is one interchange, per packet, in nanoseconds. Routing is planning the trip, and fills in the forwarding tables."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Every router subtracts 1, and at 0 the packet is dropped with an ICMP Time Exceeded."
+    },
+    {
+      "accepted_answers": [
+        "20",
+        "twenty",
+        "20 bytes"
+      ],
+      "explanation": "5 × 32-bit words = 5 × 4 bytes = 20."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The TTL changes at every hop, so the checksum must too."
+    },
+    {
+      "accepted_answers": [
+        "192.168.1.15"
+      ],
+      "explanation": "192, 168, 1, 15."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "128 to 191 is class B."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "192.168.0.0/16 is private. 172.32 is just outside 172.16/12."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "It needs two interfaces, one inside and one outside, and tracks each connection so replies reach the right host."
+    },
+    {
+      "accepted_answers": [
+        "127.0.0.1",
+        "localhost"
+      ],
+      "explanation": "Loopback traffic never leaves the machine."
+    },
+    {
+      "accepted_answers": [
+        "255.255.255.192"
+      ],
+      "explanation": "24 + 2 bits: 11000000 = 192 in the last octet."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Block size 4 in the 3rd octet: 216 to 219. The network is 10.104.216.0; its broadcast is 10.104.219.255."
+    },
+    {
+      "accepted_answers": [
+        "192.168.10.127"
+      ],
+      "explanation": "The block runs from .64 to .127."
+    },
+    {
+      "accepted_answers": [
+        "510"
+      ],
+      "explanation": "9 host bits: 2⁹ − 2 = 510."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Different /24, so it's off-subnet: the frame goes to the router."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "DORA."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "169.254 is link-local: the address a host gives itself when DHCP doesn't answer."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Several layer 3 addresses, one layer 2 address. Aliases are static, and need a config file to survive a reboot."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "RARP served diskless workstations that knew only their MAC. DHCP does the same job and more."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Ping sends type 8 and waits for type 0."
+    },
+    {
+      "accepted_answers": [
+        "7",
+        "seven"
+      ],
+      "explanation": "64 − 57 = 7."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "TCP is the connection-oriented, reliable one, with a 20+ byte header."
+    },
+    {
+      "accepted_answers": [
+        "SYN/ACK",
+        "SYN-ACK",
+        "SYN ACK",
+        "SYNACK"
+      ],
+      "explanation": "The server's SYN/ACK both acknowledges the client's SYN and sends its own."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "WFQ is round robin with weights. Each class's share is proportional to its weight."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "If the high queue never empties, the low queue is never served."
+    }
+  ]
+}

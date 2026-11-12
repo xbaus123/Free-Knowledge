@@ -1,0 +1,45 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "DORA: Discover, Offer, Request, Ack."
+    },
+    {
+      "accepted_answers": [
+        "DORA"
+      ],
+      "explanation": "Discover, Offer, Request, Ack."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It doesn't know the server's address, or even its own, so it broadcasts to 255.255.255.255."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Everything the host needs to start talking. MAC addresses come from the NIC, not DHCP."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "That's the point of leases: addresses are reused automatically."
+    },
+    {
+      "accepted_answers": [
+        "ipconfig /renew",
+        "ipconfig/renew"
+      ],
+      "explanation": "ipconfig /release gives the address back; ipconfig /renew runs DHCP again."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The Request and Ack are the essential part."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The home router is answering Discovers. DHCP snooping only lets trusted ports send Offers and Acks."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "DHCP runs over UDP, which suits short request-and-reply messages."
+    }
+  ]
+}

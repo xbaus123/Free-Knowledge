@@ -1,0 +1,46 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "172.20 is inside 172.16 to 172.31. 172.32 is just outside it, and 192.169 isn't 192.168."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "RFC 1918 addresses are non-routable: many networks use the same ones, so the Internet drops them."
+    },
+    {
+      "accepted_answers": [
+        "127.0.0.1"
+      ],
+      "explanation": "127.0.0.1, also known as localhost. The whole 127 network is reserved for loopback."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Loopback never touches the cable or the NIC. If it fails, look at the host itself."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The NAT router sits between the two networks and rewrites addresses as packets cross."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It tracks each connection by port number, so replies get back to the right host."
+    },
+    {
+      "accepted_answers": [
+        "1918",
+        "rfc 1918",
+        "rfc1918"
+      ],
+      "explanation": "RFC 1918: 10/8, 172.16/12, and 192.168/16."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "169.254 is link-local. It's the classic sign that DHCP failed."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "128 is an ordinary class B range. The three private ranges are the other three."
+    }
+  ]
+}

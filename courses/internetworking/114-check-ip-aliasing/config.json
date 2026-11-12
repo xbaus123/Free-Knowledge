@@ -1,0 +1,59 @@
+{
+  "type": "quiz",
+  "title": "Check: IP Aliasing",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "What is IP aliasing?",
+      "options": [
+        "Binding several IP addresses to one interface, and so one MAC address",
+        "Giving one IP address to several hosts",
+        "Renaming a host in DNS",
+        "Changing a NIC's MAC address"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "If you ARP for two aliased addresses on the same interface, you get two different MAC addresses back."
+    },
+    {
+      "prompt": "Which command adds 192.168.1.15/24 as an alias on Linux?",
+      "options": [
+        "ipconfig /renew 192.168.1.15",
+        "sudo ip addr add 192.168.1.15/24 dev en0",
+        "sudo arp -s 192.168.1.15",
+        "ping -a 192.168.1.15"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Fill in the macOS command: sudo ifconfig en0 ______ 192.168.1.15 netmask 255.255.255.0 up (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "An alias added with ip addr add survives a reboot."
+    },
+    {
+      "prompt": "Are aliased addresses usually static or dynamic?",
+      "options": [
+        "Dynamic: DHCP hands them out",
+        "Both at once",
+        "Neither: they come from ARP",
+        "Static: you set them by hand"
+      ]
+    },
+    {
+      "prompt": "Which is a good reason to use an IP alias?",
+      "options": [
+        "To get a faster connection",
+        "To hide from ARP",
+        "To move a server to a new address without downtime",
+        "To avoid needing a subnet mask"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "An alias puts a host on both 10.1.1.0/24 and 10.1.2.0/24. What device would those two networks normally need between them? (one word)"
+    }
+  ]
+}

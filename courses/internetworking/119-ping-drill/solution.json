@@ -1,0 +1,46 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "64 is the starting TTL for macOS, iOS, Linux, and Android. Nothing has decremented it, so it's zero hops away. (172.20.10.x is the range an iPhone hotspot uses.)"
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Pinging your own address never leaves the machine either, so it's about as fast as loopback. The phone at 172.20.10.1 took about 3 ms over WiFi."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Many routers start TTL at 255. A full 255 means zero hops away."
+    },
+    {
+      "accepted_answers": [
+        "10",
+        "ten"
+      ],
+      "explanation": "128 − 118 = 10. Each router subtracts 1."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "On a busy WiFi link, short bursts of loss like this are common. The replies before and after show the host is still there."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Steady times mean a quiet link. Wild jumps and a few losses point to congestion or interference."
+    },
+    {
+      "accepted_answers": [
+        "8",
+        "eight"
+      ],
+      "explanation": "56 bytes of data plus an 8-byte ICMP header: 64."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Number 3 never got a reply."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "min/avg/max: the middle number is the average."
+    }
+  ]
+}

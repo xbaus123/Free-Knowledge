@@ -1,0 +1,59 @@
+{
+  "type": "quiz",
+  "title": "Check: ARP and RARP",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "A host at 10.1.1.20/24 wants to send to 8.8.8.8. Whose MAC address does it ARP for?",
+      "options": [
+        "8.8.8.8's",
+        "Its default gateway's",
+        "The DNS server's",
+        "Nobody's: it broadcasts the packet"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A host's ARP cache can contain the MAC address of a web server on another continent."
+    },
+    {
+      "prompt": "What question does RARP ask?",
+      "options": [
+        "Who has this IP address?",
+        "Which router is the root bridge?",
+        "Here's my MAC address: what's my IP address?",
+        "What's the name of this IP address?"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "RARP was built for workstations without what? (one word)"
+    },
+    {
+      "prompt": "Which protocol replaced RARP?",
+      "options": [
+        "ICMP",
+        "STP",
+        "TCP",
+        "DHCP (by way of BOOTP)"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "RARP needs a server on the network, while ARP doesn't."
+    },
+    {
+      "prompt": "A RARP server sees two different machines claiming the same MAC address. What does that suggest?",
+      "options": [
+        "MAC spoofing",
+        "Normal DHCP behavior",
+        "A routing loop",
+        "The lease ran out"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "In arp -a you see a gateway at 0:0:c:7:ac:1. What Cisco protocol lets two routers share that virtual MAC? (four-letter abbreviation)"
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "type": "quiz",
+  "title": "Check: Special Addresses",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Which of these is a private (RFC 1918) address?",
+      "options": [
+        "172.32.5.5",
+        "192.169.1.1",
+        "172.20.10.2",
+        "11.0.0.1"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Routers on the public Internet will forward a packet addressed to 10.1.2.3."
+    },
+    {
+      "type": "written",
+      "prompt": "What is the loopback address almost everyone uses? (dotted decimal)"
+    },
+    {
+      "prompt": "You run ping 127.0.0.1 and it fails. What does that tell you?",
+      "options": [
+        "The default gateway is down",
+        "The problem is in this host's own network software, since that traffic never leaves the machine",
+        "The DNS server is down",
+        "The cable is unplugged"
+      ]
+    },
+    {
+      "prompt": "What does NAT need, at a minimum, to connect a private network to the Internet?",
+      "options": [
+        "A hub",
+        "A class A address",
+        "A DHCP server on the Internet",
+        "Two or more network interfaces: one inside, one outside with a public address"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "NAT lets many private hosts share a single public IP address."
+    },
+    {
+      "type": "written",
+      "prompt": "What RFC number defines the private address ranges? (just the number)"
+    },
+    {
+      "prompt": "A laptop shows the address 169.254.33.7. What most likely happened?",
+      "options": [
+        "It asked for an address with DHCP and got no answer, so it gave itself a link-local one",
+        "It's on a class D network",
+        "It's behind NAT",
+        "It's the loopback address"
+      ]
+    },
+    {
+      "prompt": "Which range is NOT private?",
+      "options": [
+        "10.0.0.0 to 10.255.255.255",
+        "128.0.0.0 to 128.255.255.255",
+        "192.168.0.0 to 192.168.255.255",
+        "172.16.0.0 to 172.31.255.255"
+      ]
+    }
+  ]
+}

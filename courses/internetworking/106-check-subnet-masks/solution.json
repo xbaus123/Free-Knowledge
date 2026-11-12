@@ -1,0 +1,47 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "/24",
+        "24"
+      ],
+      "explanation": "Three octets of 1s: 24 bits."
+    },
+    {
+      "accepted_answers": [
+        "255.255.252.0"
+      ],
+      "explanation": "16 bits for the first two octets, plus 6 more: 11111100 = 252. So 255.255.252.0."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A mask is all its 1s followed by all its 0s. There can't be a 1 after a 0."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "AND keeps the address bits under the mask's 1s and clears the host bits."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "216 AND 252 = 216, and the last octet is all host bits, so: 10.104.216.0/22."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The host reaches the gateway directly, by ARP. If the gateway were on another subnet, the host would need a router to reach its router."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "10.1.1.0 isn't 10.1.2.0, so the destination is off-subnet. The frame goes to the router's MAC, with the packet still addressed to 10.1.2.35."
+    },
+    {
+      "accepted_answers": [
+        "62"
+      ],
+      "explanation": "6 host bits: 2⁶ − 2 = 62."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "250 is 11111010: a 1 after a 0. Valid partial octets are 128, 192, 224, 240, 248, 252, 254, 255."
+    }
+  ]
+}

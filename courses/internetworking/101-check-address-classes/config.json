@@ -1,0 +1,63 @@
+{
+  "type": "quiz",
+  "title": "Check: Address Classes",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "What class is 150.20.3.4?",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "prompt": "Which leading bits mark a class C address?",
+      "options": [
+        "0",
+        "10",
+        "110",
+        "1110"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What is the default subnet mask for a class C network?"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Class D addresses are used for multicast."
+    },
+    {
+      "type": "written",
+      "prompt": "How many usable host addresses does a class C network have?"
+    },
+    {
+      "prompt": "Why do we subtract 2 when counting the hosts in a network?",
+      "options": [
+        "The router and the switch each need one",
+        "The first and last octets can't be used",
+        "Two addresses are kept for DHCP",
+        "The all-0s host ID names the network, and the all-1s host ID is its broadcast address"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A class A network has 8 bits for the network and 24 bits for hosts."
+    },
+    {
+      "prompt": "A company needs 300 addresses. Under the old class system, what was the problem?",
+      "options": [
+        "A class C was too small, and a class B wasted over 65,000 addresses",
+        "Class B networks didn't exist yet",
+        "300 hosts needs a class A",
+        "Class C networks can't use routers"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What 1993 scheme replaced classes, letting the network/host split fall on any bit? (four-letter abbreviation)"
+    }
+  ]
+}

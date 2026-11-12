@@ -1,0 +1,53 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "UDP just sends. TCP sets up a connection first."
+    },
+    {
+      "accepted_answers": [
+        "8",
+        "eight"
+      ],
+      "explanation": "Four 16-bit fields: source port, destination port, length, checksum."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The client says SYN, the server answers SYN/ACK, the client confirms with ACK."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Sequence numbers and acknowledgments make that possible, at the cost of more overhead."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Retransmitting a late frame would only add delay. UDP's best effort suits live, data-rich traffic."
+    },
+    {
+      "accepted_answers": [
+        "20",
+        "twenty"
+      ],
+      "explanation": "Five 32-bit rows: 20 bytes, before any options."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Every byte is numbered, so out-of-order segments can be slotted into place."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "UDP is stateless: it remembers nothing, and resends nothing."
+    },
+    {
+      "accepted_answers": [
+        "socket",
+        "a socket"
+      ],
+      "explanation": "Like a street address (the IP) plus an apartment number (the port)."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "DHCP's short messages use UDP ports 67 and 68. The others need every byte, so they use TCP."
+    }
+  ]
+}

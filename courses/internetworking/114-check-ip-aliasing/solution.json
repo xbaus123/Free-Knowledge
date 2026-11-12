@@ -1,0 +1,41 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Several layer 3 addresses, one layer 2 address."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Both addresses belong to the same NIC, so both resolve to the same MAC."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "ip addr add, with the address, prefix, and interface. On macOS: sudo ifconfig en0 alias 192.168.1.15 netmask 255.255.255.0 up."
+    },
+    {
+      "accepted_answers": [
+        "alias"
+      ],
+      "explanation": "ifconfig's alias keyword adds an address rather than replacing the main one."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Command-line changes are lost on reboot. For a permanent alias, use the OS's configuration files, such as netplan or /etc/network/interfaces on Ubuntu."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "DHCP gives one address per interface. Aliases are configured statically."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Add the new address alongside the old, move everyone over, then remove the old one."
+    },
+    {
+      "accepted_answers": [
+        "router",
+        "a router"
+      ],
+      "explanation": "Different networks normally talk through a router. An alias lets this one host reach both directly."
+    }
+  ]
+}

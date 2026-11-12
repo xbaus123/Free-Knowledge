@@ -1,0 +1,63 @@
+{
+  "type": "quiz",
+  "title": "Check: Subnetting",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "What is the block size for a /27 (mask 255.255.255.224)?"
+    },
+    {
+      "prompt": "What is the network address of 192.168.10.77/26?",
+      "options": [
+        "192.168.10.0",
+        "192.168.10.64",
+        "192.168.10.77",
+        "192.168.10.128"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What is the broadcast address of 192.168.10.77/26?"
+    },
+    {
+      "type": "true_false",
+      "prompt": "In 192.168.10.64/26, the address 192.168.10.126 can be given to a host."
+    },
+    {
+      "prompt": "You need to split 192.168.1.0/24 into 8 equal subnets. What prefix do they get?",
+      "options": [
+        "/25",
+        "/26",
+        "/27",
+        "/28"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A department needs 50 hosts. What is the smallest prefix that fits? (such as /24)"
+    },
+    {
+      "prompt": "What is the broadcast address of 10.104.216.118/22?",
+      "options": [
+        "10.104.216.255",
+        "10.104.219.255",
+        "10.104.255.255",
+        "10.104.220.255"
+      ]
+    },
+    {
+      "prompt": "Which prefix is the usual choice for a link between exactly two routers?",
+      "options": [
+        "/24",
+        "/28",
+        "/16",
+        "/30"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Subnetting a /24 into smaller subnets gives you more usable host addresses in total."
+    }
+  ]
+}

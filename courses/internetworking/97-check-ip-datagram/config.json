@@ -1,0 +1,68 @@
+{
+  "type": "quiz",
+  "title": "Check: The IP Datagram",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "How long is an IPv4 header with no options?",
+      "options": [
+        "8 bytes",
+        "64 bytes",
+        "32 bytes",
+        "20 bytes"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "The IHL field holds 5. Counted in what unit? (two words, such as \"x-bit words\")"
+    },
+    {
+      "prompt": "The protocol field says 6. What's inside the datagram?",
+      "options": [
+        "ICMP",
+        "UDP",
+        "ARP",
+        "TCP"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "The IPv4 header checksum protects the whole datagram, header and data."
+    },
+    {
+      "prompt": "What does a router do to the TTL field, and what happens when it hits 0?",
+      "options": [
+        "Subtracts 1; at 0 the packet is dropped",
+        "Adds 1; at 255 the packet is delivered",
+        "Nothing; only the destination reads it",
+        "Resets it to 64 at every hop"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Because every router changes the TTL, every router must also recompute the header checksum."
+    },
+    {
+      "type": "written",
+      "prompt": "Which flag tells routers they must not split this datagram into fragments? Give its two-letter abbreviation."
+    },
+    {
+      "prompt": "A datagram's total length field says 1500. What does that count?",
+      "options": [
+        "The data only",
+        "The header only",
+        "The header and the data together, in bytes",
+        "The number of hops it may take"
+      ]
+    },
+    {
+      "prompt": "Which field would a sender set to give a packet higher priority in a router's queue?",
+      "options": [
+        "Identification",
+        "Type of service",
+        "TTL",
+        "Fragment offset"
+      ]
+    }
+  ]
+}

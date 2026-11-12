@@ -1,0 +1,63 @@
+{
+  "type": "quiz",
+  "title": "Check: Subnet Masks and CIDR",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "What prefix length is the mask 255.255.255.0? (such as /16)"
+    },
+    {
+      "type": "written",
+      "prompt": "What mask is /22? (dotted decimal)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "255.255.0.255 is a valid subnet mask."
+    },
+    {
+      "prompt": "How do you find the network an address belongs to?",
+      "options": [
+        "Add the address and the mask",
+        "AND the address with the mask, bit by bit",
+        "OR the address with the mask",
+        "Take the last octet"
+      ]
+    },
+    {
+      "prompt": "A host has the address 10.104.216.118/22. Which network is it on?",
+      "options": [
+        "10.104.0.0",
+        "10.104.216.118",
+        "10.104.216.0",
+        "10.104.219.0"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A host's default gateway must be on the same subnet as the host."
+    },
+    {
+      "prompt": "10.1.1.20/24 sends a packet to 10.1.2.35. Where does it send the frame?",
+      "options": [
+        "Straight to 10.1.2.35",
+        "Nowhere: it can't reach another subnet",
+        "To 255.255.255.255",
+        "To its default gateway, 10.1.1.1"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "How many usable hosts does a /26 have?"
+    },
+    {
+      "prompt": "Which of these can NOT be an octet of a valid subnet mask?",
+      "options": [
+        "192",
+        "248",
+        "254",
+        "250"
+      ]
+    }
+  ]
+}

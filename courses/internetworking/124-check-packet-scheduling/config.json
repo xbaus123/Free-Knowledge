@@ -1,0 +1,59 @@
+{
+  "type": "quiz",
+  "title": "Check: Packet Scheduling",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Under priority scheduling, which packet is sent next?",
+      "options": [
+        "The oldest packet in any queue",
+        "One packet from each class in turn",
+        "A random packet",
+        "A packet from the highest-priority queue that has packets waiting"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Under strict priority scheduling, a low-priority queue that never gets served is said to ______. (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Round robin sends one packet per class per cycle, and skips classes whose queues are empty."
+    },
+    {
+      "prompt": "What does weighted fair queueing add to round robin?",
+      "options": [
+        "Encryption",
+        "A single FIFO queue",
+        "Weights, giving each class a minimum share of bandwidth",
+        "Strict priority for one class"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A 100 Mbps link uses WFQ with weights 4 and 1. What bandwidth, in Mbps, is guaranteed to the weight-4 class?"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Under WFQ, if one class has nothing to send, its share of the link sits unused."
+    },
+    {
+      "prompt": "Which header field could a router use to sort packets into classes?",
+      "options": [
+        "Only the TTL",
+        "Any header field, such as type of service, protocol, or port",
+        "Only the MAC address",
+        "None: classes are random"
+      ]
+    },
+    {
+      "prompt": "A network admin wants voice traffic never to wait behind downloads, and doesn't mind if bulk traffic is delayed a lot. Which method is simplest?",
+      "options": [
+        "Priority scheduling",
+        "FIFO",
+        "Round robin",
+        "No scheduling at all"
+      ]
+    }
+  ]
+}

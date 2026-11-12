@@ -1,0 +1,72 @@
+{
+  "type": "quiz",
+  "title": "Check: UDP and TCP",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Which is connectionless?",
+      "options": [
+        "TCP",
+        "UDP",
+        "Both",
+        "Neither"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "How many bytes is a UDP header?"
+    },
+    {
+      "prompt": "Put the TCP three-way handshake in order.",
+      "options": [
+        "ACK, SYN, SYN/ACK",
+        "SYN, ACK, SYN/ACK",
+        "SYN, SYN/ACK, ACK",
+        "SYN/ACK, SYN, ACK"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "TCP resends lost data and delivers bytes in order."
+    },
+    {
+      "prompt": "A video call app needs low delay, and a late frame is useless. Which transport fits best?",
+      "options": [
+        "TCP",
+        "UDP",
+        "ICMP",
+        "ARP"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the minimum size, in bytes, of a TCP header?"
+    },
+    {
+      "prompt": "Which TCP field lets the receiver put arriving bytes back in order?",
+      "options": [
+        "Window",
+        "Urgent pointer",
+        "Checksum",
+        "Sequence number"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "UDP keeps track of which packets have arrived, so it can resend missing ones."
+    },
+    {
+      "type": "written",
+      "prompt": "An IP address together with a port number is called a ______. (one word)"
+    },
+    {
+      "prompt": "Which of these runs over UDP?",
+      "options": [
+        "DHCP",
+        "Loading a web page over HTTPS",
+        "SSH",
+        "Downloading a file over FTP"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "type": "quiz",
+  "title": "Check: The Network Layer",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Which layer number is the network layer, and what does it call its unit of data?",
+      "options": [
+        "Layer 2, a frame",
+        "Layer 4, a segment",
+        "Layer 3, a packet (a datagram, in IP)",
+        "Layer 3, a bit"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Forwarding happens inside a single router, for every packet that arrives."
+    },
+    {
+      "prompt": "You plan a road trip from Los Angeles to New York on a map. In the trip analogy, which network-layer function is that?",
+      "options": [
+        "Routing",
+        "Forwarding",
+        "Framing",
+        "Switching"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Fill in the blank: routing algorithms fill in each router's ______ table, which forwarding then reads for every packet. (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "A packet's destination IP address changes at every router it passes through."
+    },
+    {
+      "prompt": "Which happens faster and more often?",
+      "options": [
+        "Routing: it runs for every packet",
+        "Forwarding: it runs for every packet, often in hardware",
+        "They run exactly as often as each other",
+        "Neither runs once the network is set up"
+      ]
+    },
+    {
+      "prompt": "A router receives a frame. What does it do with it?",
+      "options": [
+        "Passes the frame on unchanged",
+        "Reads the MAC address and floods the frame",
+        "Sends it back to the sender with a new IP address",
+        "Strips the frame, reads the destination IP address, and puts the packet in a new frame for the next link"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What device works at the network layer, forwarding packets between networks? (one word)"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "Five rows of 32 bits: 5 × 4 bytes = 20 bytes. Options can make it longer."
+    },
+    {
+      "accepted_answers": [
+        "32-bit words",
+        "32 bit words",
+        "32bit words",
+        "4-byte words",
+        "4 byte words",
+        "words of 32 bits"
+      ],
+      "explanation": "IHL counts 32-bit (4-byte) words, so 5 means 20 bytes and the maximum, 15, means 60 bytes."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "1 is ICMP, 6 is TCP, 17 is UDP. The receiver uses this to hand the data to the right protocol."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Only the header. The data is protected by the transport layer's own checksum and, on each link, the frame's CRC."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "TTL is a hop counter that stops packets looping forever. The router that drops it sends an ICMP Time Exceeded back to the source."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Changing any header field changes the checksum. You'll do exactly this in the Python exercise later in the chapter."
+    },
+    {
+      "accepted_answers": [
+        "DF",
+        "don't fragment",
+        "dont fragment",
+        "d.f."
+      ],
+      "explanation": "DF, Don't Fragment. If the datagram is too big for the next link and DF is set, the router drops it and reports back with ICMP."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Total length is the whole datagram. Subtract the header length (IHL × 4) to get the data size."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The type of service byte (today split into DSCP and ECN) marks the packet's class for scheduling."
+    }
+  ]
+}

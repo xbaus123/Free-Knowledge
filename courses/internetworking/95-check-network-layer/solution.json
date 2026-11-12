@@ -1,0 +1,43 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Physical carries bits, data link carries frames, network carries packets. IP calls its packets datagrams."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Forwarding is the local, per-packet step: input link to output link, using the forwarding table."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Planning the whole route is routing. Picking the right exit at one interchange is forwarding."
+    },
+    {
+      "accepted_answers": [
+        "forwarding",
+        "routing"
+      ],
+      "explanation": "The forwarding table (often loosely called the routing table) maps destinations to output links."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The IP addresses stay the same end to end. It's the frame, and its MAC addresses, that is replaced at every hop."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Forwarding is per packet, in nanoseconds. Routing runs every few seconds or minutes, in software, and only updates the table."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "That's the router's job at every hop: de-encapsulate to layer 3, decide, re-encapsulate for the next link."
+    },
+    {
+      "accepted_answers": [
+        "router",
+        "routers",
+        "a router"
+      ],
+      "explanation": "Switches work at layer 2, within a LAN. Routers work at layer 3, between networks."
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "It only reports. Fixing the problem is up to the source host."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The source address is the one thing every IP packet carries, so that's who hears about the problem."
+    },
+    {
+      "accepted_answers": [
+        "8",
+        "type 8"
+      ],
+      "explanation": "8 is the request, 0 is the reply."
+    },
+    {
+      "accepted_answers": [
+        "0",
+        "type 0",
+        "zero"
+      ],
+      "explanation": "Echo Reply is type 0."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Type 11. Traceroute sends packets with TTL 1, 2, 3... and collects these messages to map the route."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Type 3 has several codes saying exactly what couldn't be reached."
+    },
+    {
+      "accepted_answers": [
+        "1",
+        "one"
+      ],
+      "explanation": "1 is ICMP, 6 is TCP, 17 is UDP."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Everything up to the gateway is fine. Climb the ladder: the first failure marks the spot."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Many hosts and firewalls block ICMP on purpose. No reply is only a clue."
+    }
+  ]
+}

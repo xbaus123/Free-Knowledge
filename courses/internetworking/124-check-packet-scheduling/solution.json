@@ -1,0 +1,46 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "Strict priority: the top non-empty queue always goes first."
+    },
+    {
+      "accepted_answers": [
+        "starve",
+        "starves",
+        "starvation",
+        "be starved",
+        "starved"
+      ],
+      "explanation": "If the high queue never empties, the low queue is never sent: starvation."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It keeps cycling, so no class starves."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Each class's share is proportional to its weight."
+    },
+    {
+      "accepted_answers": [
+        "80",
+        "80 mbps",
+        "80mbps"
+      ],
+      "explanation": "4 / (4 + 1) = 4/5 of 100 Mbps."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Unused share is shared out among the classes that do have packets. The link isn't left idle while anyone waits."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Class is any header field. The type of service byte exists for exactly this."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Put voice in the high queue. As long as voice doesn't fill the link, the bulk traffic still gets through."
+    }
+  ]
+}

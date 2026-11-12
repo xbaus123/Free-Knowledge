@@ -1,0 +1,45 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "8.8.8.8 is off-subnet, so the frame goes to the router. The packet inside is still addressed to 8.8.8.8."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "ARP only works within one LAN. Off-subnet traffic goes to the gateway's MAC, so remote hosts never appear."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The reverse of ARP's question."
+    },
+    {
+      "accepted_answers": [
+        "disks",
+        "disk",
+        "a disk",
+        "hard drives",
+        "storage"
+      ],
+      "explanation": "Diskless workstations had nowhere to store their configuration, only the MAC in their NIC."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "DHCP gives an address plus a mask, gateway, and DNS servers. RARP could only give an address."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "In ARP the owner of the IP address answers. In RARP a RARP server has to look the MAC up in its table."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Burned-in MACs should be unique. A duplicate is a strong sign someone is spoofing."
+    },
+    {
+      "accepted_answers": [
+        "HSRP",
+        "hot standby router protocol"
+      ],
+      "explanation": "00:00:0c:07:ac:xx is HSRP's reserved range, like VRRP's 00:00:5e:00:01:xx."
+    }
+  ]
+}

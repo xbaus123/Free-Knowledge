@@ -1,0 +1,58 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "172.16.32.0"
+      ],
+      "explanation": "/20 is 255.255.240.0, block size 16 in the 3rd octet. 45 is in the block 32 to 47."
+    },
+    {
+      "accepted_answers": [
+        "172.16.47.255"
+      ],
+      "explanation": "The block 32 to 47 ends at 47, so 172.16.47.255."
+    },
+    {
+      "accepted_answers": [
+        "4094",
+        "4,094"
+      ],
+      "explanation": "12 host bits: 2¹² − 2 = 4,094."
+    },
+    {
+      "accepted_answers": [
+        "192.168.5.128"
+      ],
+      "explanation": "/25 is block size 128: .0 and .128. 130 is in the upper half."
+    },
+    {
+      "accepted_answers": [
+        "192.168.5.254"
+      ],
+      "explanation": "The broadcast is .255, so the last host is .254."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Block size 32: .64 to .95 is one subnet, and .65 and .94 are both in it. .30/.33 and .95/.96 straddle a boundary, and .40 is past .31."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "28 = 24 + 4, so the 4th octet is 11110000 = 240."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A /23 here is 10.0.0.0 to 10.0.1.255. 10.0.0.255 is in the middle of that range, not the broadcast. Watch out for addresses that only look like broadcasts."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "/24 gives 254, too few. /23 gives 510."
+    },
+    {
+      "accepted_answers": [
+        "4",
+        "four"
+      ],
+      "explanation": "2 borrowed bits: 2² = 4 subnets of 64 addresses each."
+    }
+  ]
+}

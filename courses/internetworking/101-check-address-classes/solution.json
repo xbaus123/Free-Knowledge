@@ -1,0 +1,48 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "150 is between 128 and 191: class B."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "A starts 0, B starts 10, C starts 110, D starts 1110, E starts 1111."
+    },
+    {
+      "accepted_answers": [
+        "255.255.255.0"
+      ],
+      "explanation": "Class C uses the first three octets for the network, so the mask has 24 one-bits: 255.255.255.0."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "224 to 239 are multicast groups, such as 224.0.0.251 for multicast DNS."
+    },
+    {
+      "accepted_answers": [
+        "254"
+      ],
+      "explanation": "8 host bits give 256 combinations. Take away the network address (all 0s) and the broadcast (all 1s): 254."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Those two host IDs are never given to a host."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "So there are only about 126 class A networks, but each can hold over 16 million hosts."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That waste is why CIDR replaced classes in 1993: networks can now be sized to fit."
+    },
+    {
+      "accepted_answers": [
+        "CIDR",
+        "classless inter-domain routing",
+        "classless interdomain routing"
+      ],
+      "explanation": "Classless Inter-Domain Routing, written as a prefix length like /22."
+    }
+  ]
+}

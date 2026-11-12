@@ -1,0 +1,47 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Four octets of 8 bits. (IPv6 addresses are 128 bits.)"
+    },
+    {
+      "accepted_answers": [
+        "192"
+      ],
+      "explanation": "128 + 64 = 192."
+    },
+    {
+      "accepted_answers": [
+        "00001010",
+        "0000 1010"
+      ],
+      "explanation": "8 + 2 = 10, so the 8 and 2 bits are on: 00001010."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Each octet is 8 bits, so it can only be 0 to 255. 300 doesn't fit."
+    },
+    {
+      "accepted_answers": [
+        "255"
+      ],
+      "explanation": "All eight bits on: 128+64+32+16+8+4+2+1 = 255, the largest octet."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The network ID is shared; the host ID tells hosts on that network apart."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Forwarding tables list networks. That keeps them small enough to work at the scale of the Internet."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Clients come and go, so DHCP hands out addresses as needed. Servers need a stable address that others can find."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "ipconfig on Windows, ifconfig on macOS, ip addr on Linux."
+    }
+  ]
+}

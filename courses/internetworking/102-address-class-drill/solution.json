@@ -1,0 +1,59 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "10 is between 1 and 126: class A."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "192 to 223 is class C."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "224 to 239 is class D, multicast."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "191 is the last first octet of class B. 192 would be class C."
+    },
+    {
+      "accepted_answers": [
+        "B",
+        "class b"
+      ],
+      "explanation": "172 is between 128 and 191."
+    },
+    {
+      "accepted_answers": [
+        "C",
+        "class c"
+      ],
+      "explanation": "223 is the last first octet of class C."
+    },
+    {
+      "accepted_answers": [
+        "E",
+        "class e"
+      ],
+      "explanation": "240 to 255 is class E, reserved."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "128 in binary is 10000000. It starts 10, so it's class B."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "127.x.x.x never leaves the host. Usable class A networks are 1 to 126."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It's class B, so 16 bits of network: 255.255.0.0."
+    },
+    {
+      "accepted_answers": [
+        "150.20.0.0"
+      ],
+      "explanation": "Class B keeps the first two octets and zeroes the host part: 150.20.0.0."
+    }
+  ]
+}

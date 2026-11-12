@@ -1,0 +1,63 @@
+{
+  "type": "quiz",
+  "title": "Check: IPv4 Addresses",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "How many bits are in an IPv4 address?",
+      "options": [
+        "8",
+        "16",
+        "32",
+        "128"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Convert the octet 11000000 to decimal."
+    },
+    {
+      "type": "written",
+      "prompt": "Convert 10 to an 8-bit binary octet."
+    },
+    {
+      "type": "true_false",
+      "prompt": "10.0.300.1 is a valid IPv4 address."
+    },
+    {
+      "type": "written",
+      "prompt": "Convert the octet 11111111 to decimal."
+    },
+    {
+      "prompt": "Every host on the same network shares which part of its IP address?",
+      "options": [
+        "The host ID",
+        "Nothing: every address is unique in every part",
+        "The last octet",
+        "The network ID"
+      ]
+    },
+    {
+      "prompt": "Why does splitting an address into network and host parts help routers?",
+      "options": [
+        "Routers only need to know how to reach each network, not every individual host",
+        "It makes addresses easier to remember",
+        "It encrypts the host part",
+        "It lets routers skip the TTL check"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A web server should usually have a static address, while a visitor's phone usually gets a dynamic one."
+    },
+    {
+      "prompt": "Which command shows your IP configuration on Windows?",
+      "options": [
+        "ifconfig",
+        "ipconfig",
+        "arp -a",
+        "ip neigh"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "type": "quiz",
+  "title": "Check: Planning the Network Layer",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "When sizing a subnet, what should you count?",
+      "options": [
+        "Devices, including phones, printers, cameras, and growth",
+        "Only the number of staff",
+        "Only the servers",
+        "The number of rooms"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "It's a good idea to put guests on their own subnet, with the router or firewall limiting them to the internet."
+    },
+    {
+      "prompt": "Which addressing approach suits an office's internal network best?",
+      "options": [
+        "Public addresses for every device",
+        "169.254 addresses everywhere",
+        "Private RFC 1918 addresses inside, with NAT at the edge",
+        "Class D addresses"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "The servers' subnet needs room for 10 static addresses. What's the smallest prefix that fits? (such as /24)"
+    },
+    {
+      "prompt": "Which devices should usually get static addresses?",
+      "options": [
+        "Guests' phones",
+        "Staff laptops",
+        "Every device",
+        "Routers, servers, printers, and access points"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Traffic is bursty, so links should be sized for the average load, not the busy hour."
+    },
+    {
+      "prompt": "In the scheme 10.site.VLAN.0/24, what is the staff subnet for site 2, VLAN 10?",
+      "options": [
+        "10.10.2.0/24",
+        "10.2.10.0/24",
+        "10.2.0.10/24",
+        "192.168.2.10/24"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What prefix does a point-to-point link between two routers usually get? (such as /24)"
+    }
+  ]
+}

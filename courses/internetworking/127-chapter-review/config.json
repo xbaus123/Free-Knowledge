@@ -1,0 +1,168 @@
+{
+  "type": "quiz",
+  "title": "Chapter Review: The Network Layer",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "What's the difference between forwarding and routing?",
+      "options": [
+        "Forwarding plans the whole path; routing moves one packet",
+        "Forwarding is layer 2; routing is layer 4",
+        "They're two names for the same thing",
+        "Forwarding moves a packet from a router's input link to the right output link; routing works out the path across the network"
+      ]
+    },
+    {
+      "prompt": "Which IPv4 header field stops packets from looping forever?",
+      "options": [
+        "Identification",
+        "TTL",
+        "Header checksum",
+        "Protocol"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "An IPv4 header's IHL field is 5. How many bytes long is the header?"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Routers recompute the IPv4 header checksum at every hop."
+    },
+    {
+      "type": "written",
+      "prompt": "Convert 11000000.10101000.00000001.00001111 to dotted decimal."
+    },
+    {
+      "prompt": "What class is 191.20.3.4?",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "prompt": "Which address is private (RFC 1918)?",
+      "options": [
+        "172.32.1.1",
+        "192.168.200.4",
+        "11.10.10.10",
+        "128.0.0.1"
+      ]
+    },
+    {
+      "prompt": "What does a NAT router do?",
+      "options": [
+        "Gives hosts their MAC addresses",
+        "Encrypts traffic",
+        "Rewrites private source addresses to its public address on the way out, and back again for replies",
+        "Hands out IP addresses"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What address do you ping to test only this host's own network software?"
+    },
+    {
+      "type": "written",
+      "prompt": "What is the mask for /26? (dotted decimal)"
+    },
+    {
+      "prompt": "What is the network address of 10.104.216.118/22?",
+      "options": [
+        "10.104.216.0",
+        "10.104.0.0",
+        "10.104.219.255",
+        "10.104.216.118"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What is the broadcast address of 192.168.10.77/26?"
+    },
+    {
+      "type": "written",
+      "prompt": "How many usable hosts does a /23 have?"
+    },
+    {
+      "prompt": "A host at 192.168.1.20/24 sends to 192.168.2.20. What does it do?",
+      "options": [
+        "ARPs for 192.168.2.20 directly",
+        "Drops the packet",
+        "Sends the frame to its default gateway's MAC",
+        "Sends it to 127.0.0.1"
+      ]
+    },
+    {
+      "prompt": "Put the DHCP messages in order.",
+      "options": [
+        "Discover, Request, Ack, Offer",
+        "Request, Ack, Discover, Offer",
+        "Offer, Discover, Ack, Request",
+        "Discover, Offer, Request, Ack"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A laptop with a 169.254.x.x address probably got its address from DHCP successfully."
+    },
+    {
+      "prompt": "What is IP aliasing?",
+      "options": [
+        "Several IP addresses bound to one interface and one MAC",
+        "One address shared by several hosts",
+        "A DNS nickname",
+        "A spoofed MAC address"
+      ]
+    },
+    {
+      "prompt": "What does RARP do, and what replaced it?",
+      "options": [
+        "Maps IP to MAC; replaced by ICMP",
+        "Finds the root bridge; replaced by RSTP",
+        "Maps a MAC to an IP via a RARP server; replaced by DHCP",
+        "Encrypts ARP; replaced by TLS"
+      ]
+    },
+    {
+      "prompt": "Which ICMP types does ping use?",
+      "options": [
+        "0 and 3",
+        "5 and 8",
+        "11 and 12",
+        "8 (Echo Request) and 0 (Echo Reply)"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A Linux server's ping replies arrive with ttl=57. Linux starts at 64. How many routers are in between?"
+    },
+    {
+      "prompt": "Which is true of UDP compared with TCP?",
+      "options": [
+        "UDP is connectionless, with an 8-byte header and less overhead",
+        "UDP uses a three-way handshake",
+        "UDP guarantees in-order delivery",
+        "UDP has a 20-byte header"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "TCP's three-way handshake: SYN, then ______, then ACK. (with the slash)"
+    },
+    {
+      "prompt": "Which packet scheduling method gives each class a minimum bandwidth guarantee?",
+      "options": [
+        "Weighted fair queueing",
+        "Strict priority",
+        "Plain round robin",
+        "FIFO"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Under strict priority scheduling, low-priority traffic can starve."
+    }
+  ]
+}

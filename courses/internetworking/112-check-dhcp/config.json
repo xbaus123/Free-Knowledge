@@ -1,0 +1,68 @@
+{
+  "type": "quiz",
+  "title": "Check: DHCP",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Put the four DHCP messages in order.",
+      "options": [
+        "Request, Offer, Discover, Ack",
+        "Discover, Request, Offer, Ack",
+        "Discover, Offer, Request, Ack",
+        "Offer, Discover, Ack, Request"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What four-letter word helps you remember the order of DHCP messages?"
+    },
+    {
+      "type": "true_false",
+      "prompt": "A new host sends its DHCP Discover straight to the DHCP server's IP address."
+    },
+    {
+      "prompt": "Besides an IP address, what does DHCP usually give a host?",
+      "options": [
+        "Its MAC address",
+        "The subnet mask, default gateway, and DNS servers",
+        "A new NIC driver",
+        "A public key"
+      ]
+    },
+    {
+      "prompt": "What happens to a DHCP address when the laptop using it leaves without saying anything?",
+      "options": [
+        "It's lost forever",
+        "The laptop keeps it on every network",
+        "The server crashes",
+        "The lease runs out, and the address goes back into the pool"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which Windows command asks DHCP for a fresh address? (two words, with the slash)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "DHCP Discover and Offer are optional: a host can ask straight away for the address it had last time."
+    },
+    {
+      "prompt": "Someone plugs a home WiFi router into the office network, and laptops start getting 192.168.0.x addresses with the wrong gateway. What's going on, and what prevents it?",
+      "options": [
+        "A rogue DHCP server; DHCP snooping on the switches",
+        "ARP spoofing; static ARP entries",
+        "A loop; spanning tree",
+        "Nothing is wrong: 192.168 is private"
+      ]
+    },
+    {
+      "prompt": "Which transport protocol and ports does DHCP use?",
+      "options": [
+        "TCP 80 and 443",
+        "UDP 67 (server) and 68 (client)",
+        "TCP 22",
+        "UDP 53"
+      ]
+    }
+  ]
+}

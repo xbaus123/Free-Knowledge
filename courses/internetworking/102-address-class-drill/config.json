@@ -1,0 +1,76 @@
+{
+  "type": "quiz",
+  "title": "Drill: Address Classes",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "What class is 10.104.216.118?",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "prompt": "What class is 192.168.86.1?",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "E"
+      ]
+    },
+    {
+      "prompt": "What class is 224.0.0.251?",
+      "options": [
+        "B",
+        "C",
+        "D",
+        "E"
+      ]
+    },
+    {
+      "prompt": "What class is 191.255.0.1?",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What class is 172.20.10.2? (one letter)"
+    },
+    {
+      "type": "written",
+      "prompt": "What class is 223.1.1.1? (one letter)"
+    },
+    {
+      "type": "written",
+      "prompt": "What class is 245.0.0.1? (one letter)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "128.0.0.1 is a class A address."
+    },
+    {
+      "type": "true_false",
+      "prompt": "An address whose first octet is 127 is in class A's range, but is reserved for loopback."
+    },
+    {
+      "prompt": "What is the default mask of 150.20.3.4?",
+      "options": [
+        "255.0.0.0",
+        "255.255.0.0",
+        "255.255.255.0",
+        "255.255.255.255"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What is the network ID of 150.20.3.4 under its default class mask?"
+    }
+  ]
+}

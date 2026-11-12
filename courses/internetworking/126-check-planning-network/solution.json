@@ -1,0 +1,44 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "People bring several devices each, and the network has its own devices too."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A separate subnet (and VLAN) lets the router enforce exactly what guests can reach."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Private space is free and plentiful, and NAT shares one public address."
+    },
+    {
+      "accepted_answers": [
+        "/28",
+        "28"
+      ],
+      "explanation": "2⁴ − 2 = 14 is enough; 2³ − 2 = 6 isn't. 32 − 4 = /28."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Things others need to find at a fixed address. Everything else uses DHCP."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Size for the bursts. A link sized for the average is congested exactly when people need it."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Second octet the site, third octet the VLAN."
+    },
+    {
+      "accepted_answers": [
+        "/30",
+        "30",
+        "/31",
+        "31"
+      ],
+      "explanation": "A /30 has exactly two usable addresses. (Many networks now use /31 for these links, per RFC 3021.)"
+    }
+  ]
+}

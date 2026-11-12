@@ -1,0 +1,63 @@
+{
+  "type": "quiz",
+  "title": "Check: ICMP",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "true_false",
+      "prompt": "ICMP reports errors and also fixes them."
+    },
+    {
+      "prompt": "Where does an ICMP error message get sent?",
+      "options": [
+        "To the destination",
+        "To the default gateway",
+        "Back to the source of the packet that caused it",
+        "To every host on the LAN"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What ICMP type number is an Echo Request (a ping)?"
+    },
+    {
+      "type": "written",
+      "prompt": "What ICMP type number is an Echo Reply?"
+    },
+    {
+      "prompt": "A router drops a packet because its TTL reached 0. Which ICMP message does it send back?",
+      "options": [
+        "Time Exceeded (type 11)",
+        "Redirect",
+        "Echo Reply",
+        "Source Quench"
+      ]
+    },
+    {
+      "prompt": "What does ICMP type 3, Destination Unreachable, mean?",
+      "options": [
+        "The ping worked",
+        "The header is malformed",
+        "The sender should use another router",
+        "The packet couldn't be delivered: no route, host down, or port closed"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Inside an IP datagram, what protocol number marks the data as ICMP?"
+    },
+    {
+      "prompt": "Your ping to the default gateway works, but a ping to a public server fails. Where is the problem most likely?",
+      "options": [
+        "This host's network software",
+        "Beyond the gateway: routing or the Internet connection",
+        "The NIC",
+        "The loopback address"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "If a host doesn't answer ping, it must be turned off."
+    }
+  ]
+}

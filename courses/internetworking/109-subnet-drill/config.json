@@ -1,0 +1,62 @@
+{
+  "type": "quiz",
+  "title": "Drill: Subnetting",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "Network address of 172.16.45.200/20?"
+    },
+    {
+      "type": "written",
+      "prompt": "Broadcast address of 172.16.45.200/20?"
+    },
+    {
+      "type": "written",
+      "prompt": "How many usable hosts in a /20?"
+    },
+    {
+      "type": "written",
+      "prompt": "Network address of 192.168.5.130/25?"
+    },
+    {
+      "type": "written",
+      "prompt": "Last usable host address in 192.168.5.128/25?"
+    },
+    {
+      "prompt": "Which two addresses are on the same /27 subnet?",
+      "options": [
+        "192.168.1.30 and 192.168.1.33",
+        "192.168.1.65 and 192.168.1.94",
+        "192.168.1.95 and 192.168.1.96",
+        "192.168.1.1 and 192.168.1.40"
+      ]
+    },
+    {
+      "prompt": "What mask is /28?",
+      "options": [
+        "255.255.255.224",
+        "255.255.255.240",
+        "255.255.255.248",
+        "255.255.240.0"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "10.0.0.255/23 can be given to a host."
+    },
+    {
+      "prompt": "A site needs 300 hosts on one subnet. Which prefix is the smallest that fits?",
+      "options": [
+        "/24",
+        "/23",
+        "/22",
+        "/25"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "How many /26 subnets fit in one /24?"
+    }
+  ]
+}

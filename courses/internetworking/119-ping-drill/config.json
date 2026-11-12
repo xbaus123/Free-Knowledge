@@ -1,0 +1,68 @@
+{
+  "type": "quiz",
+  "title": "Drill: Reading Ping Output",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "A Mac prints: 64 bytes from 172.20.10.1: icmp_seq=0 ttl=64 time=2.925 ms. What does ttl=64 suggest about 172.20.10.1?",
+      "options": [
+        "It's likely a macOS, Linux, or iOS device on the same network",
+        "It's a Windows PC",
+        "It's 64 hops away",
+        "The ping failed"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "The same Mac pings its own address, 172.20.10.2, and gets times around 0.14 ms, close to pinging 127.0.0.1 (about 0.14 ms)."
+    },
+    {
+      "prompt": "ping 10.104.232.1 shows ttl=255. Which is the best guess?",
+      "options": [
+        "It's a Windows laptop",
+        "It's the loopback address",
+        "It's 255 hops away",
+        "It's probably a router"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A Windows host shows TTL=118 in replies from a server. If Windows servers start at 128, how many routers did the reply cross?"
+    },
+    {
+      "prompt": "Windows ping prints \"Request timed out.\" four times in the middle of otherwise normal replies. What happened?",
+      "options": [
+        "The host shut down permanently",
+        "The TTL reached 0",
+        "Four echo requests (or their replies) were lost, or came back too late",
+        "DNS failed"
+      ]
+    },
+    {
+      "prompt": "Replies come back with times of <1ms, 42ms, 30ms, 28ms, <1ms, 482ms, 13ms. What does that variation suggest?",
+      "options": [
+        "Nothing is wrong",
+        "The link is congested or unstable, probably wireless: the delay is jumping around",
+        "The host is far away",
+        "The TTL is too low"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "macOS ping prints \"56 data bytes\" but replies say \"64 bytes\". How many bytes is the ICMP header?"
+    },
+    {
+      "type": "true_false",
+      "prompt": "A gap in icmp_seq numbers, such as 0, 1, 2, 4, 5, means a ping was lost."
+    },
+    {
+      "prompt": "The final line reads 8 packets transmitted, 8 packets received, 0.0% packet loss, round-trip min/avg/max = 3.475/8.243/10.547 ms. What's the average round trip?",
+      "options": [
+        "8.243 ms",
+        "3.475 ms",
+        "10.547 ms",
+        "8 ms exactly"
+      ]
+    }
+  ]
+}
