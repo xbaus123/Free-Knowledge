@@ -1,0 +1,69 @@
+{
+  "type": "quiz",
+  "title": "Drill: Normal or Not?",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Idle, 3% CPU.",
+      "options": [
+        "Within range",
+        "Too low",
+        "Too high"
+      ]
+    },
+    {
+      "prompt": "Idle, 70% CPU.",
+      "options": [
+        "Within range",
+        "Too low",
+        "Too high"
+      ]
+    },
+    {
+      "prompt": "Normal, 35% CPU.",
+      "options": [
+        "Within range",
+        "Too low",
+        "Too high"
+      ]
+    },
+    {
+      "prompt": "Busy, 40% CPU on Black Friday morning.",
+      "options": [
+        "Within range",
+        "Too low",
+        "Too high"
+      ]
+    },
+    {
+      "prompt": "Busy, 90% CPU.",
+      "options": [
+        "Within range",
+        "Too low",
+        "Too high"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A reading that's too low can be as important as one that's too high."
+    },
+    {
+      "prompt": "The server's serial number reported in its logs changes overnight. What does that suggest?",
+      "options": [
+        "Nothing, serial numbers change daily",
+        "A constant value changed: the hardware was swapped, or the data is being faked",
+        "The server is idle",
+        "The server is busy"
+      ]
+    },
+    {
+      "prompt": "It's December and traffic is twice the yearly average. Which baseline tells you whether that's normal?",
+      "options": [
+        "The overall yearly average",
+        "Last December's traffic (time of year)",
+        "The idle range",
+        "The server's serial number"
+      ]
+    }
+  ]
+}

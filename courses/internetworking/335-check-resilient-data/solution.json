@@ -1,0 +1,50 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Two forms of the same data let you detect when one has been changed."
+    },
+    {
+      "accepted_answers": [
+        "6",
+        "six"
+      ],
+      "explanation": "Start-up, idle, normal, busy, failing, failed."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "From booting to stopped."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "80% is fine when busy and alarming when idle. That's why ranges are set per meta-state."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Failing: degrading, not yet stopped. Catching it here is how you avoid failed."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Holidays, weekends, workdays, and time of year. An IP address isn't a time."
+    },
+    {
+      "accepted_answers": [
+        "recalculate",
+        "calculate",
+        "rebuild",
+        "recompute",
+        "compute",
+        "reconstruct"
+      ],
+      "explanation": "Rebuilding from partial information is data rapidity, the same idea as RAID 5's parity."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It should never change. If it does, something is wrong with the data or the sensor."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A slow drift fools a baseline that keeps adjusting, but not a comparison with last year's same week."
+    }
+  ]
+}

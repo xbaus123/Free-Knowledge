@@ -1,0 +1,68 @@
+{
+  "type": "quiz",
+  "title": "Check: Creating Resilient Data",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Keeping a value and its hash, so one can be checked against the other, is an example of...",
+      "options": [
+        "Showing the same data in different states",
+        "A cold site",
+        "Load sharing",
+        "A meta-state"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "How many processing meta-states are there? (number)"
+    },
+    {
+      "prompt": "Which list gives the six meta-states?",
+      "options": [
+        "Start-up, idle, normal, busy, failing, failed",
+        "Hot, warm, cold, frozen, failed, restored",
+        "Robustness, resourcefulness, redundancy, rapidity, reliability, recovery",
+        "Transmission, storage, processing, idle, busy, failed"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A server at 80% CPU is equally worrying in every meta-state."
+    },
+    {
+      "prompt": "Errors are rising and responses are slowing, but the service still answers. Which meta-state?",
+      "options": [
+        "Busy",
+        "Failing",
+        "Failed",
+        "Idle"
+      ]
+    },
+    {
+      "prompt": "Which is NOT one of the temporal baselines in the reading?",
+      "options": [
+        "Holidays",
+        "Weekends",
+        "Workdays",
+        "The server's IP address"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Fill in the blank: knowing a total and all but one of its parts lets you ______ the missing part. (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "A sensor's location is a good example of a constant value."
+    },
+    {
+      "prompt": "How do temporal baselines help against an attacker who slowly raises traffic so their activity looks normal?",
+      "options": [
+        "They block the attacker's IP address",
+        "Comparing to the same period last year shows the slow drift",
+        "They encrypt the traffic",
+        "They don't help at all"
+      ]
+    }
+  ]
+}

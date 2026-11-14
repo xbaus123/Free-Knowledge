@@ -1,0 +1,36 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Physical drives you pull and replace: hardware rapidity."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Dual firmware images: firmware redundancy."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "SOAR is software resourcefulness."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Anti-tampering is hardware robustness."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "UEFI is firmware. Obtain and verify patches is firmware rapidity."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Backups with version control: software robustness."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Having somewhere else to run is redundancy at every layer."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Each layer needs its own care. Firmware sits below the OS and needs its own updates and verification."
+    }
+  ]
+}

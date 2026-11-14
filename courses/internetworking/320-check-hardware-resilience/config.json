@@ -1,0 +1,77 @@
+{
+  "type": "quiz",
+  "title": "Check: Hardware Resilience",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Which is a hardware robustness measure?",
+      "options": [
+        "Tamper-evident seals on server cases",
+        "A cold site",
+        "Hot-swap drives",
+        "A second internet provider"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which RAID level mirrors the same data onto every drive? (number only)"
+    },
+    {
+      "prompt": "A RAID 5 array has 4 drives of 2 TB each. How much usable space does it have?",
+      "options": [
+        "2 TB",
+        "4 TB",
+        "6 TB",
+        "8 TB"
+      ]
+    },
+    {
+      "prompt": "How many drives can fail in a RAID 5 array without losing data?",
+      "options": [
+        "None",
+        "One",
+        "Two",
+        "All but one"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "RAID 0 is a redundancy measure."
+    },
+    {
+      "type": "true_false",
+      "prompt": "RAID protects you if ransomware encrypts your files."
+    },
+    {
+      "prompt": "Which site is fully equipped and running with current data, ready to take over in minutes to hours?",
+      "options": [
+        "Cold site",
+        "Warm site",
+        "Hot site",
+        "Ghost site"
+      ]
+    },
+    {
+      "prompt": "A company rents empty space with power and network, planning to move equipment in after a disaster. That's a...",
+      "options": [
+        "Hot site",
+        "Cold site",
+        "Cluster",
+        "RAID array"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the term for replacing a drive while the server keeps running? (two words, hot ...)"
+    },
+    {
+      "prompt": "What's a ghost system?",
+      "options": [
+        "A server an attacker has hidden in your network",
+        "A pre-built standby machine or ready image that can quickly replace a failed one",
+        "A system that's been turned off for good",
+        "A virtual machine with no network"
+      ]
+    }
+  ]
+}

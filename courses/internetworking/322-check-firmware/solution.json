@@ -1,0 +1,48 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Firmware is the software built into a device: BIOS or UEFI, router and switch OSes, embedded code."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Firmware runs underneath the OS, so the malware survives a reinstall. That's what makes it a prize target."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Dual (A/B) firmware is a redundancy measure."
+    },
+    {
+      "accepted_answers": [
+        "threat modeling",
+        "threat modelling",
+        "threat design"
+      ],
+      "explanation": "Threat design or threat modeling is listed under firmware resourcefulness."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Obtain and verify: a fake update is a classic way to plant malicious firmware."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "They find weaknesses before release, so the firmware holds up under attack."
+    },
+    {
+      "accepted_answers": [
+        "bricked",
+        "brick",
+        "a brick"
+      ],
+      "explanation": "Bricked. Dual firmware and tested restoration are how you avoid or fix it."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A copy the attacker can reach can be tampered with. Offline means a known-good version is always available."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Fast, automated updates shorten the window between a fix being released and every device having it."
+    }
+  ]
+}

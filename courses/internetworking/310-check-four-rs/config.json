@@ -1,0 +1,77 @@
+{
+  "type": "quiz",
+  "title": "Check: The Four Rs",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Which is the best description of resilience?",
+      "options": [
+        "The system never goes down",
+        "Keeping critical functions working during an incident, and getting back to full function afterwards",
+        "Having a firewall and antivirus",
+        "The same thing as availability"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A system that is up is always resilient."
+    },
+    {
+      "prompt": "Which R is about having a spare that can take over a failing function on the fly?",
+      "options": [
+        "Robustness",
+        "Resourcefulness",
+        "Redundancy",
+        "Rapidity"
+      ]
+    },
+    {
+      "prompt": "Which R is about prioritizing resources so critical functions can keep working?",
+      "options": [
+        "Resourcefulness",
+        "Rapidity",
+        "Robustness",
+        "Redundancy"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which R is about returning to full functionality quickly? (one word)"
+    },
+    {
+      "type": "written",
+      "prompt": "Which R is the ability to maintain full or partial functionality while under attack? (one word)"
+    },
+    {
+      "prompt": "On the resilience triangle, what does the area of the dip represent?",
+      "options": [
+        "The number of attackers",
+        "What the incident cost: lost functionality over time",
+        "The budget for security",
+        "How many servers you have"
+      ]
+    },
+    {
+      "prompt": "Which change makes the resilience triangle narrower?",
+      "options": [
+        "More robustness",
+        "More rapidity",
+        "Fewer metrics",
+        "A bigger incident"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Recovery is all or nothing: a service is either fully back or still down."
+    },
+    {
+      "prompt": "Which metric is easiest to tie to business impact?",
+      "options": [
+        "Number of firewall rules",
+        "Lost orders per hour of downtime",
+        "The color of the dashboard",
+        "How many patches were released this year"
+      ]
+    }
+  ]
+}

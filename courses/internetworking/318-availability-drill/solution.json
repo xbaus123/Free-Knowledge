@@ -1,0 +1,46 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "99.9",
+        "99.9%"
+      ],
+      "explanation": "999 / (999 + 1) = 0.999, three nines."
+    },
+    {
+      "accepted_answers": [
+        "53",
+        "53 minutes"
+      ],
+      "explanation": "0.0001 × 525,600 minutes = 52.56, which rounds to 53."
+    },
+    {
+      "accepted_answers": [
+        "5",
+        "five",
+        "five nines"
+      ],
+      "explanation": "Five nines: about 5 minutes of downtime a year."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "0.9 × 0.9 × 0.9 = 0.729. Adding parts in series always lowers availability."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "All three must fail: 1 - 0.1³ = 1 - 0.001 = 0.999."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The single database is a single point of failure in series with everything. Fix the weakest link first."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Availability is MTBF / (MTBF + MTTR). Faster repair means less downtime per failure. That's rapidity at work."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Each extra nine is ten times less downtime: 8.76 hours down to about 53 minutes."
+    }
+  ]
+}

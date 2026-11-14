@@ -1,0 +1,68 @@
+{
+  "type": "quiz",
+  "title": "Check: Robustness and Resourcefulness",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "true_false",
+      "prompt": "Robustness includes keeping partial functionality while under attack, not only full functionality."
+    },
+    {
+      "prompt": "Which is an implementation of robustness?",
+      "options": [
+        "Patching and keeping software up to date",
+        "Buying a second internet connection",
+        "Measuring recovery time",
+        "Building a cold site"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Fill in the blank: training people to spot phishing is called user ______. (one word)"
+    },
+    {
+      "prompt": "Why is \"number of attacks detected and prevented\" called a fuzzy metric?",
+      "options": [
+        "Attacks are measured in megabytes",
+        "You can't count the attacks you never noticed",
+        "Only the government is allowed to count attacks",
+        "It's always zero"
+      ]
+    },
+    {
+      "prompt": "Resourcefulness is the ability to...",
+      "options": [
+        "Encrypt every file",
+        "Prioritize, mobilize, and apply resources during an incident",
+        "Recover to full function quickly",
+        "Run two of everything"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Having an incident response firm on retainer is an example of resourcefulness."
+    },
+    {
+      "prompt": "Which is a resourcefulness metric?",
+      "options": [
+        "Number of firewall rules",
+        "Disk size",
+        "An agreed list of which functions come back first",
+        "Ping time to the gateway"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Fill in the blank: a server that can take over another server's job, or a person trained in two roles, is called ______-purpose. (one word)"
+    },
+    {
+      "prompt": "During an outage, the IT lead restores payments before the staff newsletter. Which R is that?",
+      "options": [
+        "Robustness",
+        "Resourcefulness",
+        "Redundancy",
+        "Rapidity"
+      ]
+    }
+  ]
+}

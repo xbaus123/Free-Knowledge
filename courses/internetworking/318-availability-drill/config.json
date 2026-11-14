@@ -1,0 +1,59 @@
+{
+  "type": "quiz",
+  "title": "Drill: Nines and Chains",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "A router has an MTBF of 999 hours and an MTTR of 1 hour. What's its availability, as a percentage? (number only)"
+    },
+    {
+      "type": "written",
+      "prompt": "How many minutes of downtime per year does 99.99% allow? Round to the nearest whole minute. (number only)"
+    },
+    {
+      "type": "written",
+      "prompt": "How many nines is 99.999%? (one word or number)"
+    },
+    {
+      "prompt": "Three parts in series, each 90% available. What's the total?",
+      "options": [
+        "90%",
+        "72.9%",
+        "99.9%",
+        "27%"
+      ]
+    },
+    {
+      "prompt": "Three parts in parallel, each 90% available, any one enough. What's the total?",
+      "options": [
+        "99.9%",
+        "72.9%",
+        "90%",
+        "270%"
+      ]
+    },
+    {
+      "prompt": "Which change raises availability the most for a web shop with one database and two web servers?",
+      "options": [
+        "A third web server",
+        "A second, replicated database, since the single database is the weak link in the chain",
+        "A faster CPU in a web server",
+        "A bigger monitor in the office"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Cutting MTTR in half raises availability even if MTBF stays the same."
+    },
+    {
+      "prompt": "Going from 99.9% to 99.99% availability cuts yearly downtime by about...",
+      "options": [
+        "Half",
+        "Ten times",
+        "A hundred times",
+        "Nothing"
+      ]
+    }
+  ]
+}

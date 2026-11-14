@@ -1,0 +1,40 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Training let the organization take the hit and keep working. That's robustness."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "A parallel copy replaced the failing part on the fly."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Fast detection and a written plan mean fast recovery."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Prioritizing resources toward the critical function is resourcefulness."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Multiple providers are a classic redundancy measure."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Patching kept the system working under attack."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Mobilizing external expertise is resourcefulness. (Cross-training would have helped too.)"
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Recovery time is the rapidity metric."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Multiple suppliers, for example, are redundancy and also help rapidity. The Rs overlap; the drill asks for the best fit."
+    }
+  ]
+}

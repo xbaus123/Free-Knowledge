@@ -1,0 +1,36 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "3% is inside idle's 1 to 5%."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "70% would be fine when busy, but the server is supposed to be idle. Something is running that shouldn't be: crypto-mining malware, maybe."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Inside normal's 20 to 50%."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Too low for busy. Maybe the load balancer stopped sending traffic here, or customers can't reach the shop."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "90% is the top edge of busy's range, inclusive."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Too low when busy might mean traffic isn't arriving at all. Both directions are worth an alert."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Constant values should never change. When one does, investigate."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Time-of-year baselines account for seasonal peaks."
+    }
+  ]
+}

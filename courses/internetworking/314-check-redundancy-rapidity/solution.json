@@ -1,0 +1,47 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Parallel systems that take over when one fails are redundancy."
+    },
+    {
+      "accepted_answers": [
+        "failover",
+        "fail-over",
+        "fail over"
+      ],
+      "explanation": "Failover: the standby takes over without a person having to step in."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "An untested spare might not work on the one day it matters. Test the failover."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Uptime, functionality, loss, and unreadiness are the redundancy metrics in the reading."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Identify, respond, recover, back to a full functional state."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Write it before. In the middle of an incident nobody has time to work out who calls whom."
+    },
+    {
+      "accepted_answers": [
+        "rto",
+        "recovery time objective"
+      ],
+      "explanation": "RTO, the recovery time objective. RPO is how much data you can afford to lose."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "RPO is the recovery point: anything newer than the last backup is lost, so backups must be at least that frequent."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Monitoring cuts the time to detect, the first step of a rapid recovery."
+    }
+  ]
+}

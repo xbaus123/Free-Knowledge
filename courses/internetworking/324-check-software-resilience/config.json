@@ -1,0 +1,68 @@
+{
+  "type": "quiz",
+  "title": "Check: Software Resilience",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "A firewall process crashes. What should happen if it fails closed?",
+      "options": [
+        "All traffic is allowed until it restarts",
+        "Traffic is blocked until it restarts",
+        "The firewall deletes its rules",
+        "The server reboots the whole network"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Every component should fail closed, including the lock on a fire exit."
+    },
+    {
+      "type": "written",
+      "prompt": "Fill in the blank: after restarting, a service should run with the least ______ it needs. (one word)"
+    },
+    {
+      "prompt": "Which tool collects logs from many systems, correlates them, and raises alerts?",
+      "options": [
+        "SOAR",
+        "SIEM",
+        "EDR",
+        "RAID"
+      ]
+    },
+    {
+      "prompt": "Which tool runs playbooks automatically, like disabling an account when an alert fires?",
+      "options": [
+        "SIEM",
+        "SOAR",
+        "SLA",
+        "QoS"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What does EDR stand for? (three or four words)"
+    },
+    {
+      "prompt": "Version control helps software resilience mainly by...",
+      "options": [
+        "Making code run faster",
+        "Letting you roll back to the last version that worked",
+        "Encrypting the network",
+        "Replacing the need for testing"
+      ]
+    },
+    {
+      "prompt": "A map showing that the shop, the admin site, and the mail system all break when the login service is down is...",
+      "options": [
+        "Dependency modeling",
+        "Load balancing",
+        "Patch management",
+        "Code signing"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Code signing and hashes are a form of integrity assurance."
+    }
+  ]
+}

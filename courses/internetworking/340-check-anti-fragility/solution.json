@@ -1,0 +1,38 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Resilient systems recover. Anti-fragile ones improve."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It returns to how it was, no better and no worse."
+    },
+    {
+      "accepted_answers": [
+        "chaos engineering",
+        "chaos"
+      ],
+      "explanation": "Chaos engineering finds weak spots before an attacker or an accident does."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Anti-fragility needs the lessons actually fed back into the system."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Anti-fragility is about your systems improving. Hacking back is retaliation, and illegal for most organizations too."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The machine attacking you may be a hospital's or a family's computer controlled by the real attacker."
+    },
+    {
+      "accepted_answers": [
+        "cfaa",
+        "computer fraud and abuse act"
+      ],
+      "explanation": "The Computer Fraud and Abuse Act (CFAA)."
+    }
+  ]
+}

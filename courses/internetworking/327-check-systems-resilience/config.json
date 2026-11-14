@@ -1,0 +1,68 @@
+{
+  "type": "quiz",
+  "title": "Check: Systems Resilience",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "In Meadows' view, a system is made of...",
+      "options": [
+        "Hardware, firmware, and software",
+        "Elements, interconnections, and a function",
+        "Robustness, redundancy, and rapidity",
+        "Clients and servers"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "People are elements of a system."
+    },
+    {
+      "type": "written",
+      "prompt": "In Meadows' terms, network links and trust relationships between parts are ______. (one word)"
+    },
+    {
+      "prompt": "Which part of a system do organizations usually neglect, according to the reading?",
+      "options": [
+        "The elements",
+        "The interconnections",
+        "The firewalls",
+        "The servers"
+      ]
+    },
+    {
+      "prompt": "\"Can we isolate a compromised system quickly?\" belongs under...",
+      "options": [
+        "Technology",
+        "Processes",
+        "People",
+        "Hardware"
+      ]
+    },
+    {
+      "prompt": "Which is a resourcefulness measure for a whole system?",
+      "options": [
+        "Sharing threat intelligence with other organizations",
+        "A second internet provider",
+        "RAID 1",
+        "Tamper-evident film"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Splitting a network into separate zones so an attacker can't move freely is called ______. (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Insider collusion is easy to detect because insiders use unusual connections."
+    },
+    {
+      "prompt": "Being able to follow an action back to who did it is...",
+      "options": [
+        "Traceability",
+        "Redundancy",
+        "Encryption",
+        "Load balancing"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "type": "quiz",
+  "title": "Check: Supply Chain Resilience",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "A supply chain attack is...",
+      "options": [
+        "Stealing delivery trucks",
+        "Attacking a supplier to reach its customers",
+        "A denial of service against a store",
+        "Phishing the CEO"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which company's Orion software update was backdoored in 2020? (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "If an update is digitally signed by the real vendor, it can't be malicious."
+    },
+    {
+      "prompt": "Which is a robustness measure for the supply chain?",
+      "options": [
+        "Multiple suppliers for critical components",
+        "Backup transportation routes",
+        "Cross-training staff",
+        "Automated alerts"
+      ]
+    },
+    {
+      "prompt": "Your email system is compromised and you need to warn suppliers. Which measure helps?",
+      "options": [
+        "Extra inventory",
+        "Backup communication channels",
+        "RAID 5",
+        "Cyber insurance requirements"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Cross-training staff is a resourcefulness measure."
+    },
+    {
+      "prompt": "Why give each vendor its own limited account and network access?",
+      "options": [
+        "It's cheaper",
+        "You can cut off one compromised vendor without breaking everything, and limit how far it spreads",
+        "Vendors prefer it",
+        "It makes updates faster"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the term for a list of every component inside a piece of software? (abbreviation or words)"
+    }
+  ]
+}

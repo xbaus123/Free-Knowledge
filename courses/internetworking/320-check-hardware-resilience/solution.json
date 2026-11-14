@@ -1,0 +1,54 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Anti-tampering helps the hardware withstand attack. The others are redundancy or rapidity."
+    },
+    {
+      "accepted_answers": [
+        "1",
+        "raid 1",
+        "raid1"
+      ],
+      "explanation": "RAID 1 mirrors. Lose a drive and its twin has everything."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "RAID 5 gives all but one drive's worth: (4 - 1) × 2 TB = 6 TB."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "One. The parity rebuilds a single missing drive. A second failure before the rebuild finishes loses data."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "RAID 0 only stripes for speed. Losing any drive loses the whole array."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "RAID copies the encrypted files to every drive instantly. RAID is not a backup."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "A hot site. Fast, and the most expensive."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A cold site: cheap, but days to weeks to bring up."
+    },
+    {
+      "accepted_answers": [
+        "hot swap",
+        "hot-swap",
+        "hotswap",
+        "hot swapping",
+        "hot-swapping"
+      ],
+      "explanation": "Hot swap is a rapidity measure: no shutdown, and the array rebuilds while serving."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Ghost systems are listed under both resourcefulness and redundancy: spares ready to go."
+    }
+  ]
+}

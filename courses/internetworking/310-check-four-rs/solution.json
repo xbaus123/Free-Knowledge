@@ -1,0 +1,48 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Resilience covers the whole incident. Systems do go down; resilient ones keep the critical parts working and recover."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Up isn't the same as useful. A server can answer while its data is corrupted, or be up only because nothing has tested it yet."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Redundancy: a second disk, server, link, or supplier ready to replace the one that failed."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Resourcefulness: when you can't run everything, run what matters most."
+    },
+    {
+      "accepted_answers": [
+        "rapidity"
+      ],
+      "explanation": "Rapidity is measured by recovery time: how long until everything is back."
+    },
+    {
+      "accepted_answers": [
+        "robustness"
+      ],
+      "explanation": "Robustness is how much a system can take before it stops working."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Depth times duration. A shallower or narrower dip means a cheaper incident."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Rapidity shortens recovery, so the dip ends sooner. Robustness makes it shallower."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Partial restoration counts, like checkout back at half capacity. Degrees of restoration are worth measuring."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Money and customers are what managers decide with. Turning downtime into lost orders makes the case for spending."
+    }
+  ]
+}

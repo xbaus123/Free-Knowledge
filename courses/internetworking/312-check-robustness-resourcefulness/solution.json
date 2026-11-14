@@ -1,0 +1,46 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Still taking orders at half speed during an attack counts as robust."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Closing known holes keeps the system working under attack. The second connection is redundancy, and recovery time is a rapidity metric."
+    },
+    {
+      "accepted_answers": [
+        "awareness"
+      ],
+      "explanation": "User awareness, along with alerting people when an attack is going around, is part of robustness."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A low count might mean strong defenses or blind sensors. The metric can't tell the difference by itself."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It's about focusing limited people, money, and equipment on what matters most."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Using external expertise is one way to mobilize resources you don't have in-house."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Prioritized functionality: everyone knows the order before the incident starts."
+    },
+    {
+      "accepted_answers": [
+        "multi",
+        "multiple",
+        "multi-purpose"
+      ],
+      "explanation": "Multi-purpose people and technology give you options when something fails."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Choosing what to save first is prioritizing resources."
+    }
+  ]
+}

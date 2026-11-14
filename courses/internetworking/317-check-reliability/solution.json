@@ -1,0 +1,50 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Requirements, environment, and time period all have to be stated for the claim to mean anything."
+    },
+    {
+      "accepted_answers": [
+        "mean time between failures",
+        "mean time between failure"
+      ],
+      "explanation": "Mean time between failures: on average, how long the system runs before it fails."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It's almost always up (availability), but it fails often (reliability). The two are related, not the same."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "99 / (99 + 1) = 0.99."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "0.1% of 8,760 hours is 8.76 hours. Four nines is about 52 minutes, five nines about 5."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "In series, multiply: 0.99 × 0.99 = 0.9801. A chain is weaker than any of its links."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "In parallel, both must fail: 1 - 0.01 × 0.01 = 0.9999."
+    },
+    {
+      "accepted_answers": [
+        "single point of failure",
+        "spof"
+      ],
+      "explanation": "A single point of failure. Parallel spares remove them."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The fault (the flipped bit) happened, but the system kept delivering its service. That's fault tolerance."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "They work best for complicated but predictable systems. Complex systems fail through unexpected interactions, and attackers don't fail at random."
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Fail closed means deny. Failing open would let everything through while the firewall is down."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A fire exit must fail open, or it traps people. Choose safety or security per component."
+    },
+    {
+      "accepted_answers": [
+        "privilege",
+        "privileges"
+      ],
+      "explanation": "Least privilege limits the damage if the restarted service is attacked."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "SIEM: security information and event management."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "SOAR: security orchestration, automation, and response. SIEM spots, SOAR acts."
+    },
+    {
+      "accepted_answers": [
+        "endpoint detection and response",
+        "endpoint detection & response",
+        "endpoint detection response"
+      ],
+      "explanation": "Endpoint detection and response watches each computer for attack behavior and can isolate it."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Every change is tracked, so a bad change can be undone quickly."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Dependency modeling shows what fails together, and so what to restore first."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "They let you tell if a program has been changed since it was built."
+    }
+  ]
+}

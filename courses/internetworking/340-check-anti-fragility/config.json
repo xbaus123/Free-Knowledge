@@ -1,0 +1,50 @@
+{
+  "type": "quiz",
+  "title": "Check: Anti-Fragility",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Anti-fragility is the ability to...",
+      "options": [
+        "Never fail",
+        "Come back stronger after stress",
+        "Return exactly to how things were",
+        "Break under any stress"
+      ]
+    },
+    {
+      "prompt": "A rubber ball that's squashed and springs back to its old shape is...",
+      "options": [
+        "Fragile",
+        "Resilient",
+        "Anti-fragile",
+        "None of these"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the term for deliberately breaking things in a controlled way to find weaknesses? (two words, ... engineering)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Holding a post-incident review but never making the changes it recommends makes a system anti-fragile."
+    },
+    {
+      "prompt": "Which is the strongest reason hacking back isn't anti-fragility?",
+      "options": [
+        "It's too slow",
+        "It doesn't make your own systems any stronger",
+        "Attackers never have computers",
+        "It requires a cold site"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Attacks often come through other people's hijacked machines, so hacking back can hit innocent victims."
+    },
+    {
+      "type": "written",
+      "prompt": "Which US law makes most hacking back illegal for private organizations? (abbreviation)"
+    }
+  ]
+}

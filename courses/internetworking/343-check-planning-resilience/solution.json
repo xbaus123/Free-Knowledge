@@ -1,0 +1,40 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Routers, switches, access points, and cameras run firmware that needs updates too."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Priorities are resourcefulness. The others are robustness."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "If the contacts live only on the file server that's down, you can't call anyone."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "People can be single points of failure too. Train at least two."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Segmentation and least access help the system withstand attack."
+    },
+    {
+      "accepted_answers": [
+        "closed",
+        "close",
+        "shut"
+      ],
+      "explanation": "Fail closed: a crashed firewall blocks, rather than lets everything through."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Everything else depends on the network being able to move packets safely."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The assignment asks how you address robustness and resourcefulness, including anything you've already done."
+    }
+  ]
+}

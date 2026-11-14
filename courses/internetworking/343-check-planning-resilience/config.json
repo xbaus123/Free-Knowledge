@@ -1,0 +1,59 @@
+{
+  "type": "quiz",
+  "title": "Check: Plan for Resilience",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "true_false",
+      "prompt": "A patching plan only needs to cover servers."
+    },
+    {
+      "prompt": "Which is a resourcefulness decision for the project?",
+      "options": [
+        "The order services come back in after an outage",
+        "Which RAID level the database uses",
+        "The firewall rules between subnets",
+        "Tamper seals on the closet"
+      ]
+    },
+    {
+      "prompt": "Why write vendor and ISP contact numbers somewhere off the network?",
+      "options": [
+        "Phone numbers are secret",
+        "During an outage the network, and the files on it, may be unavailable",
+        "It's required by law",
+        "Printing is faster than typing"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "If only one person knows how to restore the database, that's a single point of failure."
+    },
+    {
+      "prompt": "In the worked example, the database is reachable only from the app servers on port 5432. Which R is that?",
+      "options": [
+        "Robustness",
+        "Resourcefulness",
+        "Redundancy",
+        "Rapidity"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "The worked example's firewall is set to deny all traffic if it crashes. It fails ______. (one word)"
+    },
+    {
+      "prompt": "Which should come back first after a full outage?",
+      "options": [
+        "The blog",
+        "Product photos",
+        "Firewall and routing",
+        "The staff newsletter"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "If your chapter 9 plan already covers backups, you can point to it instead of writing it again."
+    }
+  ]
+}

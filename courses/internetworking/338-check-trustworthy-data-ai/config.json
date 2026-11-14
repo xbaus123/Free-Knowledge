@@ -1,0 +1,68 @@
+{
+  "type": "quiz",
+  "title": "Check: Trustworthy Data and AI",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "An attacker slips mislabeled examples into a model's training data. That's...",
+      "options": [
+        "Data poisoning",
+        "An adversarial perturbation",
+        "A black-box attack",
+        "Data masking"
+      ]
+    },
+    {
+      "prompt": "A few pixels changed on a stop sign make a model read it as a speed limit. That's...",
+      "options": [
+        "Data poisoning",
+        "An adversarial perturbation",
+        "Lineage",
+        "Flooding"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Adversarial perturbations are usually easy for humans to see."
+    },
+    {
+      "type": "written",
+      "prompt": "In a ______-box attack, the attacker has full access to the model. (one word)"
+    },
+    {
+      "prompt": "An attacker has no access to the model, so they send inputs and study the outputs. That's a...",
+      "options": [
+        "White-box attack",
+        "Black-box attack",
+        "Supply chain attack",
+        "Poisoning attack"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the term for a piece of data's history, from origin through every change? (one word)"
+    },
+    {
+      "prompt": "Flooding a dataset with fake examples, or restricting it so some cases are missing, is...",
+      "options": [
+        "Manipulating quantities",
+        "Model manipulation",
+        "Privacy leakage",
+        "Data masking"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A trained model can leak information about the data it was trained on."
+    },
+    {
+      "prompt": "Hiding sensitive fields, like card numbers, from people and systems that don't need them is...",
+      "options": [
+        "Data masking",
+        "Data poisoning",
+        "Load sharing",
+        "A perturbation"
+      ]
+    }
+  ]
+}

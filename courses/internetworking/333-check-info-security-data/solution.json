@@ -1,0 +1,50 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "The CIA triad: what you're protecting."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Moving, at rest, and in use."
+    },
+    {
+      "accepted_answers": [
+        "27",
+        "twenty-seven",
+        "twenty seven"
+      ],
+      "explanation": "3 × 3 × 3 = 27. Each is a question about protecting one characteristic, in one state, with one kind of countermeasure."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Backups are data at rest: the storage state."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Education, training, and awareness sit alongside technology, and policy and practice."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The mean is pulled by extreme values. The median, the middle value, barely moves."
+    },
+    {
+      "accepted_answers": [
+        "mode",
+        "the mode"
+      ],
+      "explanation": "The mode. The mean is the average, the median the middle value."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Time gives data its meaning. The same number can be normal at one time and an alarm at another."
+    },
+    {
+      "accepted_answers": [
+        "gdpr",
+        "general data protection regulation"
+      ],
+      "explanation": "The GDPR. Deleting data on request includes copies in backups, which is harder than it sounds."
+    }
+  ]
+}

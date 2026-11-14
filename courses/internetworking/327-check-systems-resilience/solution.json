@@ -1,0 +1,48 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Parts, how they relate, and what the whole is for."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Staff, admins, and users are parts of the system, and so are their mistakes."
+    },
+    {
+      "accepted_answers": [
+        "interconnections",
+        "interconnection"
+      ],
+      "explanation": "Interconnections: how the elements relate. They're often the least protected part."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "We patch the boxes and forget what happens when a trusted link between them is abused."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It's a procedure question: processes protect functions and interconnections."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Coordinating with outside groups mobilizes knowledge you don't have yourself."
+    },
+    {
+      "accepted_answers": [
+        "segmentation",
+        "network segmentation",
+        "microsegmentation",
+        "micro-segmentation"
+      ],
+      "explanation": "Segmentation limits how far an incident spreads. You'll see micro-segmentation in the network lesson."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Insiders use real, legitimate interconnections. That's what makes collusion and espionage so hard to spot."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Traceability, alongside trust modeling, is one way to make interconnections more resilient."
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "type": "quiz",
+  "title": "Check: Reliability and Availability",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Reliability is the probability that a system will perform stated requirements...",
+      "options": [
+        "...as fast as possible",
+        "...in a stated environment over a stated period of time",
+        "...whenever an attacker isn't present",
+        "...on any hardware"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What does MTBF stand for? (four words)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "A server that crashes every day but restarts in 5 seconds has high availability but poor reliability."
+    },
+    {
+      "prompt": "A system has an MTBF of 99 hours and an MTTR of 1 hour. What's its availability?",
+      "options": [
+        "1%",
+        "98%",
+        "99%",
+        "99.9%"
+      ]
+    },
+    {
+      "prompt": "About how much downtime per year does 99.9% availability allow?",
+      "options": [
+        "About 5 minutes",
+        "About 52 minutes",
+        "About 8.8 hours",
+        "About 3.7 days"
+      ]
+    },
+    {
+      "prompt": "A request passes through a firewall (99%) and then a web server (99%). Both must work. What's the combined availability?",
+      "options": [
+        "99.99%",
+        "99%",
+        "98.01%",
+        "198%"
+      ]
+    },
+    {
+      "prompt": "Two web servers, each 99% available, sit behind a load balancer. Either one can serve. Ignoring the load balancer, what's the availability of the pair?",
+      "options": [
+        "99.99%",
+        "99%",
+        "98.01%",
+        "50%"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the term for one part whose failure takes down the whole system? (four words, single point of ...)"
+    },
+    {
+      "prompt": "A bad memory chip flips a bit, and ECC memory corrects it before anything goes wrong. That's...",
+      "options": [
+        "A failure with no fault",
+        "A fault with no failure",
+        "Both a fault and a failure",
+        "Neither"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Reliability models work as well for a complex system full of people and attackers as for a RAID array."
+    }
+  ]
+}

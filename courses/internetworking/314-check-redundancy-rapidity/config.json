@@ -1,0 +1,68 @@
+{
+  "type": "quiz",
+  "title": "Check: Redundancy and Rapidity",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Which is an implementation of redundancy?",
+      "options": [
+        "User awareness training",
+        "A cluster of servers with automatic failover",
+        "An incident response plan",
+        "Counting detected attacks"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the word for automatically switching to a standby system when the main one fails? (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "A backup server that has never been tested can be counted on in a real incident."
+    },
+    {
+      "prompt": "Which is a redundancy metric?",
+      "options": [
+        "Loss metrics: data, transactions, or money lost",
+        "Number of training sessions",
+        "Lines of code",
+        "Number of vendors you've heard of"
+      ]
+    },
+    {
+      "prompt": "Rapidity is the ability to quickly...",
+      "options": [
+        "Buy new hardware",
+        "Identify, respond to, and recover from an incident",
+        "Write code",
+        "Patch every machine"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "An incident response plan should be written during the incident, when you know what happened."
+    },
+    {
+      "type": "written",
+      "prompt": "Which three-letter target answers \"how long can we be down?\" (abbreviation)"
+    },
+    {
+      "prompt": "The shop can afford to lose at most 15 minutes of orders. Which target is that, and what does it mean for backups?",
+      "options": [
+        "RTO of 15 minutes: restore within 15 minutes",
+        "RPO of 15 minutes: back up or replicate at least every 15 minutes",
+        "RTO of 15 minutes: back up every 15 days",
+        "RPO of 15 minutes: buy 15 servers"
+      ]
+    },
+    {
+      "prompt": "Which R is real-time monitoring mainly part of?",
+      "options": [
+        "Robustness",
+        "Resourcefulness",
+        "Redundancy",
+        "Rapidity"
+      ]
+    }
+  ]
+}

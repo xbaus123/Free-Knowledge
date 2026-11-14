@@ -1,0 +1,63 @@
+{
+  "type": "quiz",
+  "title": "Check: Information Security and Data",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Which are the McCumber cube's three information characteristics?",
+      "options": [
+        "Transmission, storage, processing",
+        "Confidentiality, integrity, availability",
+        "Technology, policy, education",
+        "Who, what, when"
+      ]
+    },
+    {
+      "prompt": "Which are the three information states?",
+      "options": [
+        "Transmission, storage, processing",
+        "Confidentiality, integrity, availability",
+        "Hot, warm, cold",
+        "Start-up, normal, failed"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "How many small cubes does the McCumber cube have? (number)"
+    },
+    {
+      "prompt": "A company encrypts data on the network but keeps backups in plain text. Which state did it forget?",
+      "options": [
+        "Transmission",
+        "Storage",
+        "Processing",
+        "Availability"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Security awareness training is one of the cube's countermeasures."
+    },
+    {
+      "prompt": "One huge spike in a day's traffic numbers will move which value the most?",
+      "options": [
+        "The median",
+        "The mean",
+        "The mode",
+        "None of them"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which statistic is the most common value in a set of data? (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "10,000 logins means the same thing at 9 a.m. on a Monday as at 3 a.m. on a holiday."
+    },
+    {
+      "type": "written",
+      "prompt": "Which European law gives people a right to be forgotten? (abbreviation)"
+    }
+  ]
+}

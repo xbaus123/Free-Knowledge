@@ -1,0 +1,83 @@
+{
+  "type": "quiz",
+  "title": "Drill: Which R?",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "A ransomware email goes around the office, but staff recognize it from last month's training and nobody clicks.",
+      "options": [
+        "Robustness",
+        "Resourcefulness",
+        "Redundancy",
+        "Rapidity"
+      ]
+    },
+    {
+      "prompt": "A disk in the file server fails. Its mirror keeps serving files and nobody notices.",
+      "options": [
+        "Robustness",
+        "Resourcefulness",
+        "Redundancy",
+        "Rapidity"
+      ]
+    },
+    {
+      "prompt": "Monitoring flags the outage within two minutes, and the runbook has the web servers back in twenty.",
+      "options": [
+        "Robustness",
+        "Resourcefulness",
+        "Redundancy",
+        "Rapidity"
+      ]
+    },
+    {
+      "prompt": "With half the servers down, the team shuts off the reporting jobs so checkout has enough capacity.",
+      "options": [
+        "Robustness",
+        "Resourcefulness",
+        "Redundancy",
+        "Rapidity"
+      ]
+    },
+    {
+      "prompt": "The office has two internet providers. When one has an outage, traffic moves to the other.",
+      "options": [
+        "Robustness",
+        "Resourcefulness",
+        "Redundancy",
+        "Rapidity"
+      ]
+    },
+    {
+      "prompt": "A known exploit for the web server is released, but the server was patched last week.",
+      "options": [
+        "Robustness",
+        "Resourcefulness",
+        "Redundancy",
+        "Rapidity"
+      ]
+    },
+    {
+      "prompt": "The only person who knew the backup system is on vacation, so the company calls the vendor's emergency support line.",
+      "options": [
+        "Robustness",
+        "Resourcefulness",
+        "Redundancy",
+        "Rapidity"
+      ]
+    },
+    {
+      "prompt": "After an incident, the team measures that the database took 3 hours to restore, and works to get it under 1.",
+      "options": [
+        "Robustness",
+        "Resourcefulness",
+        "Redundancy",
+        "Rapidity"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "One measure can support more than one R."
+    }
+  ]
+}

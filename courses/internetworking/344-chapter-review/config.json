@@ -1,0 +1,183 @@
+{
+  "type": "quiz",
+  "title": "Chapter Review: Resilience",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Which list gives the four Rs?",
+      "options": [
+        "Robustness, resourcefulness, redundancy, rapidity",
+        "Reliability, recovery, redundancy, routing",
+        "Robustness, reliability, readiness, restart",
+        "Redundancy, RAID, recovery, reload"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Resilience and availability mean the same thing."
+    },
+    {
+      "type": "written",
+      "prompt": "Which R is about prioritizing resources so critical functions keep working? (one word)"
+    },
+    {
+      "prompt": "On the resilience triangle, more robustness makes the dip...",
+      "options": [
+        "Shallower",
+        "Narrower",
+        "Deeper",
+        "Longer"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which target answers \"how much data can we afford to lose?\" (abbreviation)"
+    },
+    {
+      "prompt": "A system has MTBF 199 hours and MTTR 1 hour. What's its availability?",
+      "options": [
+        "99%",
+        "99.5%",
+        "99.9%",
+        "95%"
+      ]
+    },
+    {
+      "prompt": "Two parts, each 95% available, in series. What's the total?",
+      "options": [
+        "95%",
+        "90.25%",
+        "99.75%",
+        "97.5%"
+      ]
+    },
+    {
+      "prompt": "A fault is ___, and a failure is ___.",
+      "options": [
+        "a defect or cause; the system no longer delivering its service",
+        "the system no longer delivering its service; a defect or cause",
+        "a hardware problem; a software problem",
+        "the same thing; the same thing"
+      ]
+    },
+    {
+      "prompt": "A RAID 5 array of 5 drives, 4 TB each. Usable space?",
+      "options": [
+        "4 TB",
+        "8 TB",
+        "16 TB",
+        "20 TB"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "RAID is a backup."
+    },
+    {
+      "prompt": "Which site has space, power, and network but no equipment or current data?",
+      "options": [
+        "Hot site",
+        "Warm site",
+        "Cold site",
+        "Cluster"
+      ]
+    },
+    {
+      "prompt": "Which is a firmware redundancy measure?",
+      "options": [
+        "Dual (A/B) firmware images",
+        "Code reviews",
+        "Threat modeling",
+        "Pen testing"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Firmware updates should be installed only after checking the vendor's signature or hash."
+    },
+    {
+      "prompt": "A security component that denies all access when it crashes...",
+      "options": [
+        "Fails open",
+        "Fails closed",
+        "Fails over",
+        "Fails back"
+      ]
+    },
+    {
+      "prompt": "SIEM ___, and SOAR ___.",
+      "options": [
+        "acts on alerts with playbooks; collects and correlates logs",
+        "collects and correlates logs; acts on alerts with playbooks",
+        "encrypts data; backs it up",
+        "balances load; shares load"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "In Meadows' terms, a system has elements, interconnections, and a ______. (one word)"
+    },
+    {
+      "prompt": "Which 2020 attack backdoored a signed software update to reach thousands of customers?",
+      "options": [
+        "SolarWinds",
+        "WannaCry",
+        "Morris worm",
+        "Heartbleed"
+      ]
+    },
+    {
+      "prompt": "Which network services should be prioritized to come back first?",
+      "options": [
+        "Routing, name service, logging, notifications",
+        "Email newsletters and video",
+        "Printing and scanning",
+        "Guest Wi-Fi"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Reloading a service rereads its configuration without dropping connections, while restarting it stops and starts it."
+    },
+    {
+      "prompt": "Which are the McCumber cube's information states?",
+      "options": [
+        "Confidentiality, integrity, availability",
+        "Transmission, storage, processing",
+        "Technology, policy, training",
+        "Idle, busy, failed"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which meta-state comes between busy and failed? (one word)"
+    },
+    {
+      "prompt": "Tiny, invisible changes to an input that flip a model's prediction are...",
+      "options": [
+        "Data poisoning",
+        "Adversarial perturbations",
+        "Lineage",
+        "Data masking"
+      ]
+    },
+    {
+      "prompt": "An attacker with no access to a model, studying only its outputs, is making a...",
+      "options": [
+        "Black-box attack",
+        "White-box attack",
+        "Supply chain attack",
+        "Hack back"
+      ]
+    },
+    {
+      "prompt": "Which is an example of anti-fragility?",
+      "options": [
+        "Hacking back at the attacker",
+        "Running a post-incident review and fixing what it found",
+        "Restoring from backup to exactly how things were",
+        "Ignoring the incident"
+      ]
+    }
+  ]
+}

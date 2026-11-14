@@ -1,0 +1,42 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Compromise the vendor, and every customer who trusts it is exposed."
+    },
+    {
+      "accepted_answers": [
+        "solarwinds",
+        "solar winds"
+      ],
+      "explanation": "SolarWinds. Thousands of customers installed the signed, official update."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "SolarWinds' backdoored update was signed. A signature proves who built it, not that their build system was clean."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Multiple suppliers appear under robustness, redundancy, and rapidity alike."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A second way to talk to suppliers is supply chain redundancy."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It lets you move people to where they're needed during an incident."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Containment: the compromise stops at the vendor's own small slice of access."
+    },
+    {
+      "accepted_answers": [
+        "sbom",
+        "software bill of materials"
+      ],
+      "explanation": "A software bill of materials (SBOM) tells you which of your systems are affected when a component is compromised."
+    }
+  ]
+}

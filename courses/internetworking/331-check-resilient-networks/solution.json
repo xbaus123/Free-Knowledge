@@ -1,0 +1,47 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "A link already near capacity has nothing left for a bad day."
+    },
+    {
+      "accepted_answers": [
+        "micro-segmentation",
+        "microsegmentation",
+        "micro segmentation"
+      ],
+      "explanation": "Micro-segmentation enforces need to know: getting into one zone doesn't give you the rest."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Load sharing splits traffic across paths, not necessarily evenly."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "One backhoe cuts both. Real redundancy needs physically separate routes."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Everything else depends on them: without routing nothing moves, without DNS nothing is found."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Reload is faster and gentler. A restart stops the service and drops every connection."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "On Cisco gear, reload reboots the whole device. Know what the word means on each platform."
+    },
+    {
+      "accepted_answers": [
+        "ttr",
+        "mttr"
+      ],
+      "explanation": "TTR, time to recover or repair. Averaged over many incidents, it's MTTR."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Putting infrastructure services on multiple servers is network resourcefulness."
+    }
+  ]
+}

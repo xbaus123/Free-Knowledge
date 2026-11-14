@@ -1,0 +1,68 @@
+{
+  "type": "quiz",
+  "title": "Drill: Hardware, Firmware, or Software?",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Hot-swap drives in a RAID 5 array.",
+      "options": [
+        "Hardware",
+        "Firmware",
+        "Software"
+      ]
+    },
+    {
+      "prompt": "A switch boots its backup image after an update fails.",
+      "options": [
+        "Hardware",
+        "Firmware",
+        "Software"
+      ]
+    },
+    {
+      "prompt": "A SOAR playbook disables a compromised account.",
+      "options": [
+        "Hardware",
+        "Firmware",
+        "Software"
+      ]
+    },
+    {
+      "prompt": "Tamper-evident seals on a network closet's patch panel.",
+      "options": [
+        "Hardware",
+        "Firmware",
+        "Software"
+      ]
+    },
+    {
+      "prompt": "Checking the vendor's signature on a new UEFI update.",
+      "options": [
+        "Hardware",
+        "Firmware",
+        "Software"
+      ]
+    },
+    {
+      "prompt": "Rolling back the web application to yesterday's version from Git.",
+      "options": [
+        "Hardware",
+        "Firmware",
+        "Software"
+      ]
+    },
+    {
+      "prompt": "Which measure shows up in hardware, firmware, and software resilience alike?",
+      "options": [
+        "Hot and cold sites, or failover to a second system",
+        "Tamper-evident film",
+        "Dual BIOS",
+        "Code signing"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A fully patched operating system protects you from malware hidden in the router's firmware."
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "type": "quiz",
+  "title": "Check: Resilient Networks",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Why is \"proper sizing\" a robustness measure?",
+      "options": [
+        "Bigger equipment is harder to steal",
+        "Headroom lets the network absorb peaks and attack traffic instead of falling over",
+        "It saves money",
+        "It removes the need for patches"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the term for splitting a network into very small zones, even per application, with rules between them? (one word)"
+    },
+    {
+      "prompt": "Two internet links carry 70% and 30% of the traffic. That's...",
+      "options": [
+        "Load sharing",
+        "Load balancing across equal servers",
+        "A cold backup",
+        "Micro-segmentation"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Two internet providers whose cables run through the same trench are fully redundant."
+    },
+    {
+      "prompt": "Which set of network services should come back first?",
+      "options": [
+        "Video streaming, games, and music",
+        "Routing, name service, logging, and notifications",
+        "The printer and the coffee machine",
+        "The intranet's photo gallery"
+      ]
+    },
+    {
+      "prompt": "What's the advantage of reloading a service instead of restarting it?",
+      "options": [
+        "A reload also patches the software",
+        "It rereads the configuration while running, without dropping connections",
+        "It reboots the whole machine",
+        "There is no difference"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "On a Cisco router, the reload command just rereads the configuration."
+    },
+    {
+      "type": "written",
+      "prompt": "Which three-letter metric measures how long it takes to recover from a failure? (abbreviation)"
+    },
+    {
+      "prompt": "DNS and DHCP run on two servers, so either can take over the job. Which measure is that?",
+      "options": [
+        "Repurposing servers",
+        "Proper sizing",
+        "Reload versus restart",
+        "Patch management"
+      ]
+    }
+  ]
+}

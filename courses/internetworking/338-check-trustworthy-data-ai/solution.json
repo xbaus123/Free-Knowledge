@@ -1,0 +1,48 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Poisoning attacks the model while it learns."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A small, often invisible change to an input that flips the model's prediction."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "They're designed to be imperceptible to people but enough to change the model's answer."
+    },
+    {
+      "accepted_answers": [
+        "white",
+        "whitebox",
+        "white-box"
+      ],
+      "explanation": "White-box: full access to the model's design and weights."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Black-box: everything is inferred from the outputs."
+    },
+    {
+      "accepted_answers": [
+        "lineage",
+        "data lineage",
+        "provenance"
+      ],
+      "explanation": "Lineage. Without it you can't tell where poisoned data came from."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Both change how much of each kind of data the model sees."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Models can memorize and reveal training data. That's privacy leakage."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Data masking is listed under AI and ML resourcefulness."
+    }
+  ]
+}

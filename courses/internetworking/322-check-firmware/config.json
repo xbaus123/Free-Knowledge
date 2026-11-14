@@ -1,0 +1,68 @@
+{
+  "type": "quiz",
+  "title": "Check: Firmware Resilience",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Which of these is firmware?",
+      "options": [
+        "A spreadsheet file",
+        "The operating system built into a home router",
+        "A web page",
+        "A database table"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Malware in firmware is removed by reinstalling the computer's operating system."
+    },
+    {
+      "prompt": "A router has two firmware copies. An update to one fails, and the router boots the other. That's...",
+      "options": [
+        "Robustness",
+        "Resourcefulness",
+        "Redundancy",
+        "Rapidity"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the term for thinking through how a device could be attacked, before it is? (two words, threat ...)"
+    },
+    {
+      "prompt": "Before installing a firmware patch, you should...",
+      "options": [
+        "Download it from any site that has it",
+        "Verify its digital signature or hash from the vendor",
+        "Turn off the firewall",
+        "Rename the file"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Code reviews and penetration testing are robustness measures for firmware."
+    },
+    {
+      "type": "written",
+      "prompt": "What do you call a device left unable to boot by a failed update? (one word)"
+    },
+    {
+      "prompt": "Why keep offline backup copies of firmware?",
+      "options": [
+        "They load faster",
+        "An attacker on the network can't change them",
+        "Vendors require it",
+        "Offline copies don't need verifying"
+      ]
+    },
+    {
+      "prompt": "Which is a rapidity measure for firmware?",
+      "options": [
+        "Secure coding practices",
+        "An automated update system that reaches every device in hours",
+        "Data privacy",
+        "Code reviews"
+      ]
+    }
+  ]
+}

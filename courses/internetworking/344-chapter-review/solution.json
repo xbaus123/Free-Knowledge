@@ -1,0 +1,110 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Robustness, resourcefulness, redundancy, rapidity."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A system can be up and still useless. Resilience is about keeping critical functions and getting back to full function."
+    },
+    {
+      "accepted_answers": [
+        "resourcefulness"
+      ],
+      "explanation": "Resourcefulness: what do we save first?"
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Robustness limits how far functionality falls. Rapidity makes it narrower."
+    },
+    {
+      "accepted_answers": [
+        "rpo",
+        "recovery point objective"
+      ],
+      "explanation": "The recovery point objective. RTO is how long you can be down."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "199 / 200 = 0.995."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "0.95 × 0.95 = 0.9025. In parallel it would be 1 - 0.05² = 99.75%."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Faults can happen without failures. That's fault tolerance."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "(5 - 1) × 4 TB = 16 TB, and it survives one drive failing."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "RAID copies deletions and ransomware to every drive at once. Keep real backups."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "A cold site: cheap and slow to bring up."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "If one image fails, the device boots the other."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Obtain and verify: fake updates are a classic way to plant malicious firmware."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Fail closed. Restart it with least privilege."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "SIEM spots, SOAR acts."
+    },
+    {
+      "accepted_answers": [
+        "function",
+        "purpose"
+      ],
+      "explanation": "Function, or purpose: what the whole system is for."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "SolarWinds' Orion update. A classic supply chain attack."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Everything else depends on them."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Reload when you can. (On Cisco routers, though, reload reboots.)"
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Moving, at rest, and in use."
+    },
+    {
+      "accepted_answers": [
+        "failing"
+      ],
+      "explanation": "Start-up, idle, normal, busy, failing, failed."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Poisoning attacks training; perturbations attack the model's decisions."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Black-box: everything is inferred from outputs."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Coming back stronger means learning and changing. Restoring is resilience; hacking back is retaliation."
+    }
+  ]
+}
