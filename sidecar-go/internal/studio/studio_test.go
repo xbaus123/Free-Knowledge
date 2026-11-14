@@ -285,18 +285,32 @@ func TestQuizEditing(t *testing.T) {
 	id := must(s.CreateCourse(CourseMeta{Title: "Quizzes"}))
 	lid := must(s.CreateLesson(id, "Check", course.KindQuiz, ""))
 	src := must(s.Lesson(id, lid))
+	if !src.SaveProgress {
+		t.Error("new quizzes should save progress by default")
+	}
 	src.Questions = []QuestionSource{
 		{Prompt: "2 + 2?", Options: []string{"3", "4"}, CorrectIndex: 1, Explanation: "Basic arithmetic."},
 		{Type: course.QuestionTrueFalse, Prompt: "Is Go compiled?", Options: []string{"True", "False"}, CorrectIndex: 0},
 		{Type: course.QuestionWritten, Prompt: "Name Go's mascot.", Options: []string{"stale"}, AcceptedAnswers: []string{" gopher ", "", "the gopher"}},
 	}
 	src.ImmediateFeedback = true
+	src.SaveProgress = false
 	if err := s.SaveLesson(id, src); err != nil {
 		t.Fatal(err)
 	}
 	got := must(s.Lesson(id, lid))
 	if len(got.Questions) != 3 || got.Questions[0].Explanation != "Basic arithmetic." || got.Questions[1].Prompt != "Is Go compiled?" || !got.ImmediateFeedback {
 		t.Fatalf("round trip: %+v immediate=%v", got.Questions, got.ImmediateFeedback)
+	}
+	if got.SaveProgress {
+		t.Error("turning save progress off should stick")
+	}
+	got.SaveProgress = true
+	if err := s.SaveLesson(id, got); err != nil {
+		t.Fatal(err)
+	}
+	if l := must(s.Courses.Lesson(id, lid)); !l.SaveProgress {
+		t.Error("save_progress should reach the learner's lesson")
 	}
 	if q := got.Questions[0]; q.Type != course.QuestionChoice {
 		t.Errorf("choice question type: %q", q.Type)

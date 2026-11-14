@@ -69,8 +69,10 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
   const isDesign = engine.isDesignLesson(lesson);
   const isArticle = engine.isArticleLesson(lesson);
   const isQuiz = engine.isQuizLesson(lesson);
-  // Quizzes save the last answers as {"answers": [...]}.
-  const [quizAnswers, setQuizAnswers] = useState<engine.QuizResponse[]>();
+  // Quizzes save the last answers as {"answers": [...]}; quizzes that save
+  // progress also keep unanswered questions (null) and, with immediate
+  // feedback, the wrong options already tried ("tried").
+  const [quizSaved, setQuizSaved] = useState<SavedQuiz>();
   const [marking, setMarking] = useState(false);
 
   // Capabilities
@@ -117,7 +119,7 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
       .then(([l, p]) => {
         if (stale) return;
         setLesson(l);
-        setQuizAnswers(engine.isQuizLesson(l) ? parseQuizAnswers(p.code) : undefined);
+        setQuizSaved(engine.isQuizLesson(l) ? parseQuizAnswers(p.code) : undefined);
         codeRef.current = p.code ?? l.starter;
         if (l.capabilities.multi_file && l.files?.length) {
           const all = restoreFiles(l, p.code);
@@ -364,6 +366,15 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
     return res;
   };
 
+  // Quizzes that save progress: answers are autosaved like code.
+  const saveQuizProgress = (answers: (engine.QuizResponse | null)[], tried: number[][]) => {
+    const code = JSON.stringify(tried.some((t) => t.length) ? { answers, tried } : { answers });
+    pending.current = { courseId, lessonId, code };
+    setSaveState("unsaved");
+    window.clearTimeout(timer.current);
+    timer.current = window.setTimeout(flushSave, AUTOSAVE_MS);
+  };
+
   const checkAnswer = async (question: number, answer: engine.QuizResponse) => {
     const res = await engine.checkAnswer(courseId, lessonId, question, answer);
     telemetry.current?.run();
@@ -546,10 +557,12 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
             <QuizPanel
               key={`${courseId}/${lessonId}`}
               questions={lesson.questions ?? []}
-              initialAnswers={quizAnswers}
+              initialAnswers={quizSaved?.answers}
+              initialTried={quizSaved?.tried}
               completed={completed}
               onSubmit={submitAnswers}
               onCheck={lesson.immediateFeedback ? checkAnswer : undefined}
+              onProgress={lesson.saveProgress ? saveQuizProgress : undefined}
               onNext={goNext}
             />
           </Panel>
@@ -805,11 +818,19 @@ function editableFilesJSON(l: engine.Lesson, files: Record<string, string>): str
   return JSON.stringify({ files: Object.fromEntries(editable) });
 }
 
-function parseQuizAnswers(saved: string | null): engine.QuizResponse[] | undefined {
+interface SavedQuiz {
+  answers: (engine.QuizResponse | null)[];
+  tried?: number[][];
+}
+
+function parseQuizAnswers(saved: string | null): SavedQuiz | undefined {
   try {
     const parsed = saved ? JSON.parse(saved) : undefined;
-    if (Array.isArray(parsed?.answers)) return parsed.answers;
-    if (typeof parsed?.answer === "number") return [parsed.answer]; // older single-answer saves
+    if (Array.isArray(parsed?.answers)) {
+      const tried = Array.isArray(parsed.tried) ? parsed.tried.map((t: unknown) => (Array.isArray(t) ? t : [])) : undefined;
+      return { answers: parsed.answers, tried };
+    }
+    if (typeof parsed?.answer === "number") return { answers: [parsed.answer] }; // older single-answer saves
   } catch {
     // not saved, or not JSON
   }

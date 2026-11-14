@@ -76,6 +76,8 @@ export interface Lesson extends LessonSummary {
   simulation?: SimulationConfig;
   /** Quiz: check each answer as soon as it's chosen. */
   immediateFeedback?: boolean;
+  /** Quiz: answers are autosaved as they're chosen, before submit. */
+  saveProgress?: boolean;
   /** Quiz questions (answers stay on the engine). */
   questions?: QuizQuestion[];
   capabilities: Capabilities;

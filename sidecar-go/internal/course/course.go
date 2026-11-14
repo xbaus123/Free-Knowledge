@@ -31,7 +31,9 @@
 //	solution.json: {"accepted_answers": ["…", "…"], "explanation": "…"}
 //
 // With "immediate_feedback": true, the learner's choice for each question is
-// checked as soon as it's made, instead of all at once on submit.
+// checked as soon as it's made, instead of all at once on submit. With
+// "save_progress": true, answers are saved as the learner picks them, so
+// leaving the quiz part-way through doesn't lose them.
 //
 // Any lesson may enable optional capabilities in config.json:
 //
@@ -113,9 +115,11 @@ type lessonConfig struct {
 	Simulation json.RawMessage `json:"simulation"`
 	Questions  []QuizQuestion  `json:"questions"` // quiz
 	// ImmediateFeedback checks each quiz answer as soon as it's chosen.
-	ImmediateFeedback bool         `json:"immediate_feedback"`
-	Options           []string     `json:"options"` // quiz with one question (short form)
-	Capabilities      Capabilities `json:"capabilities"`
+	ImmediateFeedback bool `json:"immediate_feedback"`
+	// SaveProgress keeps a quiz's answers as they're chosen, before submit.
+	SaveProgress bool         `json:"save_progress"`
+	Options      []string     `json:"options"` // quiz with one question (short form)
+	Capabilities Capabilities `json:"capabilities"`
 }
 
 // Capabilities are optional per-lesson features.
@@ -314,8 +318,11 @@ type Lesson struct {
 	Questions  []QuizQuestion  `json:"questions,omitempty"`
 	// ImmediateFeedback: quiz answers are checked one at a time as they're
 	// chosen, instead of all together on submit.
-	ImmediateFeedback bool         `json:"immediateFeedback,omitempty"`
-	Capabilities      Capabilities `json:"capabilities"`
+	ImmediateFeedback bool `json:"immediateFeedback,omitempty"`
+	// SaveProgress: quiz answers are saved as they're chosen, so a
+	// half-finished quiz picks up where the learner left off.
+	SaveProgress bool         `json:"saveProgress,omitempty"`
+	Capabilities Capabilities `json:"capabilities"`
 	// Files is the starting workspace of a multi-file code lesson.
 	Files []LessonFile `json:"files,omitempty"`
 	Dir   string       `json:"-"`
@@ -448,7 +455,7 @@ func loadLesson(c *Course, id string) (*Lesson, error) {
 		} else {
 			l.Title, l.TimeoutMs, l.MaxLatencyMs, l.Questions = cfg.Title, cfg.TimeoutMs, cfg.MaxLatencyMs, cfg.Questions
 			l.Capabilities, l.MaxBudget, l.Simulation = cfg.Capabilities, cfg.MaxBudget, cfg.Simulation
-			l.ImmediateFeedback = cfg.ImmediateFeedback
+			l.ImmediateFeedback, l.SaveProgress = cfg.ImmediateFeedback, cfg.SaveProgress
 			if len(l.Questions) == 0 && len(cfg.Options) > 0 {
 				l.Questions = []QuizQuestion{{Options: cfg.Options}}
 			}

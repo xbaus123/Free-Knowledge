@@ -40,6 +40,8 @@ export interface LessonSource {
   languageTests?: Record<string, string>;
   /** Quiz: check each answer as soon as it's chosen. */
   immediateFeedback?: boolean;
+  /** Quiz: save answers as they're chosen, so learners can leave and come back. */
+  saveProgress?: boolean;
   capabilities: Capabilities;
   /** Multi-file code lessons: starting files, path → content. */
   starterFiles?: Record<string, string>;

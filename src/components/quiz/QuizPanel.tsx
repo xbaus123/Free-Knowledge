@@ -3,9 +3,16 @@ import type { GradeResult, QuizQuestion, QuizResponse, TestResult } from "../../
 
 interface Props {
   questions: QuizQuestion[];
-  /** The learner's last submitted answers, if any. */
-  initialAnswers?: QuizResponse[];
+  /** The learner's last answers (submitted, or saved as they went), if any. */
+  initialAnswers?: (QuizResponse | null)[];
+  /** Immediate mode: wrong options already tried, per question (saved progress). */
+  initialTried?: number[][];
   completed: boolean;
+  /**
+   * Quizzes that save progress: called whenever the learner changes an
+   * answer (or rules out an option), so leaving part-way doesn't lose it.
+   */
+  onProgress?: (answers: (QuizResponse | null)[], tried: number[][]) => void;
   onSubmit: (answers: QuizResponse[]) => Promise<GradeResult>;
   /**
    * Checks one answer as soon as it's chosen (quizzes with immediate
@@ -21,24 +28,45 @@ const isWritten = (q: QuizQuestion) => q.type === "written";
 /** Whether a is a usable answer to q (written answers need some text). */
 const answered = (q: QuizQuestion, a: QuizResponse | undefined) => (isWritten(q) ? typeof a === "string" && a.trim() !== "" : typeof a === "number");
 
-export function QuizPanel({ questions, initialAnswers, completed, onSubmit, onCheck, onNext }: Props) {
+export function QuizPanel({ questions, initialAnswers, initialTried, completed, onSubmit, onCheck, onProgress, onNext }: Props) {
   const immediate = !!onCheck;
   // Saved answers that don't fit the question (it changed type since) are dropped.
   const [answers, setAnswers] = useState<(QuizResponse | undefined)[]>(() =>
     questions.map((q, i) => {
       const a = initialAnswers?.[i];
-      return (isWritten(q) ? typeof a === "string" : typeof a === "number") ? a : undefined;
+      return isWritten(q) ? (typeof a === "string" ? a : undefined) : typeof a === "number" ? a : undefined;
     }),
   );
   // Per-question verdicts: from the last submit, or from each check.
   const [verdicts, setVerdicts] = useState<(TestResult | undefined)[]>(() => questions.map(() => undefined));
   // Immediate mode: wrong options already tried, per question.
-  const [tried, setTried] = useState<Set<number>[]>(() => questions.map(() => new Set()));
+  const [tried, setTried] = useState<Set<number>[]>(() =>
+    questions.map((q, i) => {
+      const valid = (initialTried?.[i] ?? []).filter((o) => Number.isInteger(o) && o >= 0 && o < (q.options?.length ?? 0));
+      return new Set(isWritten(q) ? [] : valid);
+    }),
+  );
   const [checking, setChecking] = useState<Set<number>>(new Set());
   const [passed, setPassed] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string>();
   const submitted = useRef(false);
+  // Bumped by each change the learner makes, so progress is saved after it
+  // (and not on open).
+  const [edits, setEdits] = useState(0);
+  const edited = () => setEdits((n) => n + 1);
+
+  const progressRef = useRef(onProgress);
+  progressRef.current = onProgress;
+  useEffect(() => {
+    if (edits === 0) return;
+    progressRef.current?.(
+      answers.map((a) => a ?? null),
+      tried.map((s) => [...s]),
+    );
+    // Only after the learner's own changes.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [edits]);
 
   const allAnswered = questions.every((q, i) => answered(q, answers[i]));
   const multiple = questions.length > 1;
@@ -66,8 +94,12 @@ export function QuizPanel({ questions, initialAnswers, completed, onSubmit, onCh
     try {
       const verdict = await onCheck(q, option);
       setVerdicts((v) => v.map((x, i) => (i === q ? verdict : x)));
-      if (verdict.status !== "pass" && !restoring && typeof option === "number")
+      // A restored wrong answer counts as tried too, so it's crossed out once
+      // the learner moves on from it.
+      if (verdict.status !== "pass" && typeof option === "number") {
         setTried((t) => t.map((s, i) => (i === q ? new Set(s).add(option) : s)));
+        if (!restoring) edited();
+      }
     } catch (e) {
       setError(e instanceof Error ? e.message : String(e));
     } finally {
@@ -103,6 +135,7 @@ export function QuizPanel({ questions, initialAnswers, completed, onSubmit, onCh
     setAnswers((a) => a.map((v, i) => (i === q ? text : v)));
     setVerdicts((v) => v.map((x, i) => (i === q ? undefined : x)));
     if (!immediate) setPassed(false);
+    edited();
   };
 
   const checkWritten = (q: number) => {
@@ -114,6 +147,7 @@ export function QuizPanel({ questions, initialAnswers, completed, onSubmit, onCh
   const choose = (q: number, option: number) => {
     if (immediate && (verdicts[q]?.status === "pass" || checking.has(q))) return; // locked once right
     setAnswers((a) => a.map((v, i) => (i === q ? option : v)));
+    edited();
     if (immediate) {
       setVerdicts((v) => v.map((x, i) => (i === q ? undefined : x)));
       check(q, option);
@@ -272,6 +306,7 @@ export function QuizPanel({ questions, initialAnswers, completed, onSubmit, onCh
           </div>
         )}
 
+        {onProgress && !passed && <p className="text-xs text-zinc-500">Your answers are saved as you go, so you can leave and come back.</p>}
         {error && <p className="text-sm text-red-400">{error}</p>}
         {passed && (
           <div className="flex items-center justify-between gap-3 rounded border border-emerald-800 bg-emerald-950/50 px-4 py-3">

@@ -71,6 +71,8 @@ type LessonSource struct {
 	Questions []QuestionSource `json:"questions,omitempty"`
 	// ImmediateFeedback checks each quiz answer as soon as it's chosen.
 	ImmediateFeedback bool `json:"immediateFeedback,omitempty"`
+	// SaveProgress saves quiz answers as they're chosen, before submit.
+	SaveProgress bool `json:"saveProgress,omitempty"`
 	// Optional features; see course.Capabilities.
 	Capabilities course.Capabilities `json:"capabilities"`
 	// Multi-file code lessons: the starting files (path → content) and the
@@ -285,7 +287,7 @@ func (s *Studio) Lesson(courseID, lessonID string) (LessonSource, error) {
 	}
 	src := LessonSource{ID: l.ID, Type: l.Kind, Title: l.Title, Language: l.Language, TimeoutMs: l.TimeoutMs,
 		MaxLatencyMs: l.MaxLatencyMs, MaxBudget: l.MaxBudget, Simulation: l.Simulation, Markdown: l.Markdown, Starter: l.Starter, Capabilities: l.Capabilities,
-		ImmediateFeedback: l.ImmediateFeedback}
+		ImmediateFeedback: l.ImmediateFeedback, SaveProgress: l.SaveProgress}
 	switch l.Kind {
 	case course.KindCode:
 		src.Languages = l.Languages
@@ -371,6 +373,7 @@ func (s *Studio) CreateLesson(courseID, title, kind, language string) (string, e
 	case course.KindQuiz:
 		src.Markdown = fmt.Sprintf(quizIntroTemplate, title)
 		src.Questions = []QuestionSource{quizTemplate}
+		src.SaveProgress = true // new quizzes remember answers; authors can turn it off
 	case course.KindSystemDesign:
 		src.Markdown = fmt.Sprintf(designMarkdownTemplate, title)
 		src.MaxLatencyMs, src.Starter, src.Reference = 200, designStarterTemplate, designSolutionTemplate
@@ -565,6 +568,7 @@ type lessonConfig struct {
 	Simulation        json.RawMessage       `json:"simulation,omitempty"`
 	Questions         []course.QuizQuestion `json:"questions,omitempty"`
 	ImmediateFeedback bool                  `json:"immediate_feedback,omitempty"`
+	SaveProgress      bool                  `json:"save_progress,omitempty"`
 	Languages         []string              `json:"languages,omitempty"`
 	Capabilities      *course.Capabilities  `json:"capabilities,omitempty"`
 }
@@ -638,7 +642,7 @@ func (s *Studio) writeLesson(courseDir, kind string, src LessonSource, oldLangua
 	case course.KindQuiz:
 		cfg.Type = kind
 		var answers []course.QuizAnswer
-		cfg.ImmediateFeedback = src.ImmediateFeedback
+		cfg.ImmediateFeedback, cfg.SaveProgress = src.ImmediateFeedback, src.SaveProgress
 		for _, q := range src.Questions {
 			cq := course.QuizQuestion{Prompt: strings.TrimSpace(q.Prompt), Options: q.Options}
 			a := course.QuizAnswer{CorrectIndex: q.CorrectIndex, Explanation: strings.TrimSpace(q.Explanation)}

@@ -579,6 +579,20 @@ export function CourseEditor({ courseId, initialLessonId, onBack, onPreview }: P
                     Check each answer immediately
                   </label>
                 )}
+                {draft.type === "quiz" && (
+                  <label
+                    className="flex cursor-pointer items-center gap-2 self-end pb-2 text-sm text-zinc-300"
+                    title="Learners' answers are saved as they pick them, so they can leave the quiz part-way and pick up where they left off"
+                  >
+                    <input
+                      type="checkbox"
+                      checked={!!draft.saveProgress}
+                      onChange={(e) => update({ saveProgress: e.target.checked || undefined })}
+                      className="accent-indigo-500"
+                    />
+                    Save progress
+                  </label>
+                )}
                 <div className="ml-auto flex items-center gap-2 text-sm">
                   <span className="text-xs text-zinc-500">{dirty ? "Unsaved changes" : "Saved"}</span>
                   <button onClick={deleteCurrent} disabled={!!busy} className="rounded px-2 py-1.5 text-xs text-zinc-500 hover:bg-zinc-800 hover:text-red-400">
