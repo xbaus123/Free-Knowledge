@@ -1,0 +1,38 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "It's cheap and needs no extra hardware, just several records."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Plain DNS has no idea a server is down, and caches keep the address until the TTL runs out. That's why real load balancers health-check."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Two views of one zone: internal and external."
+    },
+    {
+      "accepted_answers": [
+        "anycast"
+      ],
+      "explanation": "Anycast uses BGP from chapter 6 to pick the nearest copy."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Each site announces the same prefix with BGP; routers choose the closest by AS path and policy."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "With anycast, `a.root-servers.net` is one address answered from many sites."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Each attacking machine's traffic goes to its own nearest site, so the load spreads out."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The server picks the answer by location, sending each user to a nearby data center."
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "type": "quiz",
+  "title": "Check: DNS Tricks",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "How does DNS round robin spread the load?",
+      "options": [
+        "Clients take turns sending queries",
+        "The TTL is set to zero",
+        "A name has several A records, and the server rotates their order so clients pick different ones first",
+        "The server sends each packet to a different host"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "If one server in a round-robin set goes down, DNS automatically stops handing out its address."
+    },
+    {
+      "prompt": "A company returns `10.0.5.20` for `intranet.example.com` to staff, and nothing to the outside world. What's this called?",
+      "options": [
+        "Round robin",
+        "Split DNS (split horizon)",
+        "A zone transfer",
+        "Anycast"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Many servers in different places announce the same IP prefix, and each user reaches the nearest one. What's this called? (one word)"
+    },
+    {
+      "prompt": "Which protocol from chapter 6 makes anycast work?",
+      "options": [
+        "ARP",
+        "OSPF",
+        "RIP",
+        "BGP"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "The 13 root server identities are each served by many physical servers around the world."
+    },
+    {
+      "prompt": "Why is anycast a good defense against DDoS attacks?",
+      "options": [
+        "It hides the server's name",
+        "It blocks UDP",
+        "The attack traffic is split across every site, so no single server is overwhelmed",
+        "It encrypts the traffic"
+      ]
+    },
+    {
+      "prompt": "A user in Tokyo and one in Paris look up the same CDN name and get different addresses, each near them. What's happening?",
+      "options": [
+        "Split horizon based on job title",
+        "A broken zone transfer",
+        "Geo-DNS: the authoritative server answers based on where the resolver is",
+        "Cache poisoning"
+      ]
+    }
+  ]
+}

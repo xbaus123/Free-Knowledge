@@ -1,0 +1,49 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Exactly one SOA per zone, at the top. It's what marks where a zone begins."
+    },
+    {
+      "accepted_answers": [
+        "dnsadmin@marshall.edu",
+        "dnsadmin@marshall.edu."
+      ],
+      "explanation": "The first dot in RNAME stands for the @ sign."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Secondaries compare serials to decide whether to transfer. Same number, no transfer, so some servers keep answering with the old data."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's the expire field. After it, the copy is considered too stale to be authoritative."
+    },
+    {
+      "accepted_answers": [
+        "1200"
+      ],
+      "explanation": "Retry is 1200 seconds, 20 minutes, usually shorter than refresh."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "MNAME is the primary master: for marshall.edu, ns1-34.azure-dns.com, which also shows the zone is hosted in Microsoft's Azure DNS."
+    },
+    {
+      "accepted_answers": [
+        "32",
+        "thirty-two",
+        "thirty two"
+      ],
+      "explanation": "An unsigned 32-bit number, as are all the timer fields."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "nslookup shows MNAME as `origin` and RNAME as `mail addr`."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Refresh is how often to check; expire is how long to survive a dead primary. Expire is typically days or weeks, refresh hours."
+    }
+  ]
+}

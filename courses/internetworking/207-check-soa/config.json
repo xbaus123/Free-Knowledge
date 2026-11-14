@@ -1,0 +1,63 @@
+{
+  "type": "quiz",
+  "title": "Check: The SOA Record",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "true_false",
+      "prompt": "A zone can have several SOA records, one for each nameserver."
+    },
+    {
+      "type": "written",
+      "prompt": "Write the RNAME `dnsadmin.marshall.edu.` as an ordinary email address."
+    },
+    {
+      "prompt": "You change a record on the primary but forget to increase the serial. What happens?",
+      "options": [
+        "Nothing; serials are optional",
+        "Secondaries see the same serial and never copy the change",
+        "The primary refuses the change",
+        "Every client gets an error"
+      ]
+    },
+    {
+      "prompt": "In the marshall.edu SOA, how long can a secondary go without reaching the primary before it stops answering for the zone?",
+      "options": [
+        "259200 seconds (3 days)",
+        "2793 seconds",
+        "3600 seconds (1 hour)",
+        "1200 seconds (20 minutes)"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A secondary's refresh failed. Using the marshall.edu SOA, how many seconds should it wait before trying again? (a number)"
+    },
+    {
+      "prompt": "Which field names the zone's primary nameserver?",
+      "options": [
+        "Minimum",
+        "Serial",
+        "RNAME",
+        "MNAME"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "How many bits are in the SOA serial number? (a number)"
+    },
+    {
+      "prompt": "In nslookup's SOA output, which label matches RNAME?",
+      "options": [
+        "serial",
+        "origin",
+        "mail addr",
+        "minimum"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "An SOA's expire time is usually longer than its refresh time."
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Knowing the provider makes a fake login page more convincing. Information is the first step of most attacks."
+    },
+    {
+      "accepted_answers": [
+        "AXFR",
+        "zone transfer"
+      ],
+      "explanation": "AXFR, the zone transfer. It should only be allowed to your own secondaries."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Restrict by address and authenticate with TSIG. The secondaries still get their copies; nobody else does."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "They're public by design. That's exactly why defenders should check what their own records reveal."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Test and dev servers are often unpatched and forgotten. If the name resolves, the attacker has a new target."
+    },
+    {
+      "accepted_answers": [
+        "reconnaissance",
+        "recon",
+        "footprinting",
+        "enumeration"
+      ],
+      "explanation": "Reconnaissance, or footprinting: the first phase of almost every attack."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "SPF lives in a TXT record. It helps stop forged mail, but also lists your mail providers for anyone to read."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Names like payroll-db or vpn-admin tell an attacker what exists and what to aim for once they get inside."
+    }
+  ]
+}

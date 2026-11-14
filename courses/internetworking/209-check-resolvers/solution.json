@@ -1,0 +1,49 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "The name to find and a server to ask. Everything else the resolver learns along the way."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Chicken and egg: you'd need DNS to find DNS. The nameserver is always given as an IP address."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "DHCP hands out the DNS server along with the address, mask, and default gateway."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The stub is small on purpose. The recursive resolver it asks does the walking and caching."
+    },
+    {
+      "accepted_answers": [
+        "SNAME"
+      ],
+      "explanation": "SNAME is the search name. It can change mid-lookup if the resolver hits a CNAME."
+    },
+    {
+      "accepted_answers": [
+        "SBELT",
+        "safety belt"
+      ],
+      "explanation": "The safety belt. Typically it holds the root servers, so a lookup can always start somewhere."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "SLIST is the working list for one question, ordered best first. Servers that fail get removed from it."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "SNAME, STYPE, and SCLASS are the three parts of the question."
+    },
+    {
+      "accepted_answers": [
+        "/etc/resolv.conf",
+        "etc/resolv.conf",
+        "resolv.conf"
+      ],
+      "explanation": "Look for a line like `nameserver 192.168.1.1`."
+    }
+  ]
+}

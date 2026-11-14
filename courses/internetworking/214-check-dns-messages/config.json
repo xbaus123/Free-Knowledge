@@ -1,0 +1,63 @@
+{
+  "type": "quiz",
+  "title": "Check: Queries and Responses",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "true_false",
+      "prompt": "A DNS query and a DNS response use the same message format."
+    },
+    {
+      "prompt": "Which section holds QNAME, QCLASS, and QTYPE?",
+      "options": [
+        "Question",
+        "Header",
+        "Answer",
+        "Additional"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which header flag means the response came from a server that runs the zone, not from a cache? (two letters)"
+    },
+    {
+      "prompt": "Why does a response repeat the question section?",
+      "options": [
+        "So the client can match the response to what it asked (along with the header's ID)",
+        "To make the packet bigger",
+        "For encryption",
+        "Because the server forgot the question"
+      ]
+    },
+    {
+      "prompt": "A referral from a TLD server lists NS records for the next zone down. Which section are they in?",
+      "options": [
+        "Answer",
+        "Header",
+        "Authority",
+        "Question"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which QTYPE asks for an entire zone, every record in it? (four letters)"
+    },
+    {
+      "prompt": "Which QTYPE is obsolete?",
+      "options": [
+        "*",
+        "MAILA",
+        "MX",
+        "AXFR"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What single character is the QTYPE for \"all records for this name\"?"
+    },
+    {
+      "type": "true_false",
+      "prompt": "In the RFC example, SRI-NIC.ARPA had two A records because DNS always returns two addresses."
+    }
+  ]
+}

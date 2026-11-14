@@ -1,0 +1,189 @@
+{
+  "type": "quiz",
+  "title": "Chapter Review: DNS",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Why is DNS called an application but also infrastructure?",
+      "options": [
+        "It replaces IP",
+        "It runs on routers",
+        "It's built into Ethernet",
+        "It's an application-layer protocol, but nearly every other application depends on it"
+      ]
+    },
+    {
+      "prompt": "Which transport does an ordinary DNS lookup use, and when does DNS switch to the other?",
+      "options": [
+        "UDP port 67; TCP for DHCP",
+        "UDP port 53; TCP for zone transfers and answers too big for one packet",
+        "TCP always",
+        "TCP port 53; UDP for zone transfers"
+      ]
+    },
+    {
+      "prompt": "In `ftp.cs.marshall.edu.`, which part is the second-level domain?",
+      "options": [
+        "cs.marshall.edu",
+        "edu",
+        "marshall.edu",
+        "ftp.cs"
+      ]
+    },
+    {
+      "prompt": "How does the `edu` registry make `marshall.edu` someone else's job?",
+      "options": [
+        "With an MX record",
+        "With NS records that delegate it to Marshall's nameservers",
+        "With a CNAME",
+        "It copies Marshall's zone each night"
+      ]
+    },
+    {
+      "prompt": "Which record type is matched with the right job?",
+      "options": [
+        "PTR: says where mail goes",
+        "NS: holds an IPv6 address",
+        "CNAME: makes one name an alias for another",
+        "MX: maps an address back to a name"
+      ]
+    },
+    {
+      "prompt": "A domain has `MX 5 a.example.com.` and `MX 15 b.example.com.`. What happens when a.example.com is down?",
+      "options": [
+        "Mail bounces",
+        "DNS deletes the MX record",
+        "Senders fall back to b, the higher-numbered backup",
+        "Senders try the A record of example.com"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the reverse lookup name for 203.0.113.25? (the full name)"
+    },
+    {
+      "prompt": "Which SOA field must you increase after every change, or the secondaries won't copy it?",
+      "options": [
+        "Refresh",
+        "Serial",
+        "Minimum",
+        "Expire"
+      ]
+    },
+    {
+      "prompt": "A secondary can't reach its primary. What decides how long it keeps answering for the zone?",
+      "options": [
+        "The record TTLs",
+        "The expire field",
+        "The refresh field",
+        "The retry field"
+      ]
+    },
+    {
+      "prompt": "Which two things does DNS client software need?",
+      "options": [
+        "The root key and a port",
+        "The FQDN and a nameserver's IP address",
+        "A MAC address and the default gateway",
+        "The SOA and the serial"
+      ]
+    },
+    {
+      "prompt": "Which resolver field lists servers from a configuration file, used when the resolver knows nothing better?",
+      "options": [
+        "SNAME",
+        "SLIST",
+        "SBELT",
+        "STYPE"
+      ]
+    },
+    {
+      "prompt": "During a lookup, a server replies with a referral. What does the resolver do?",
+      "options": [
+        "Caches the delegation and chooses new servers closer to the answer",
+        "Returns an error to the client",
+        "Changes SNAME",
+        "Removes the server from SLIST"
+      ]
+    },
+    {
+      "prompt": "A resolver with an empty cache looks up `www.example.org`. Which servers does it ask, in order?",
+      "options": [
+        "The root, then a .org server, then example.org's server",
+        "A .org server, then the root",
+        "Only the root",
+        "example.org's, then .org, then the root"
+      ]
+    },
+    {
+      "prompt": "In a DNS response, what does the AA flag mean?",
+      "options": [
+        "The answer came from a server authoritative for the zone",
+        "All addresses returned",
+        "An AXFR is allowed",
+        "Answer attached"
+      ]
+    },
+    {
+      "prompt": "Which QTYPE copies an entire zone?",
+      "options": [
+        "AXFR",
+        "ANY",
+        "SOA",
+        "MAILB"
+      ]
+    },
+    {
+      "prompt": "Why are caching servers a favorite target?",
+      "options": [
+        "They hold zone files",
+        "They store passwords",
+        "One poisoned entry misleads every client that uses the server until the TTL runs out",
+        "They're always on Windows"
+      ]
+    },
+    {
+      "prompt": "Many sites announce the same prefix with BGP, so each user's queries reach the nearest copy. What is it?",
+      "options": [
+        "Dynamic DNS",
+        "Anycast",
+        "Split horizon",
+        "Round robin"
+      ]
+    },
+    {
+      "prompt": "`dig mx example.com` shows status NOERROR, ANSWER: 0, and an SOA in the authority section. What does it mean?",
+      "options": [
+        "The query was refused",
+        "The server failed",
+        "The name exists but has no MX records",
+        "The domain doesn't exist"
+      ]
+    },
+    {
+      "prompt": "What does DNSSEC protect, and what doesn't it?",
+      "options": [
+        "It replaces UDP with TCP",
+        "It encrypts queries but doesn't sign them",
+        "It proves answers are genuine and unchanged, but doesn't hide which names you look up",
+        "It stops DDoS attacks but not poisoning"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "nslookup is the newer tool and gives more information than dig."
+    },
+    {
+      "type": "true_false",
+      "prompt": "A name can have several A records."
+    },
+    {
+      "type": "written",
+      "prompt": "Which record type holds the zone's serial number and refresh timers? (three letters)"
+    },
+    {
+      "type": "written",
+      "prompt": "Name the attack where malware hides stolen data inside DNS query names to get it past a firewall. (two words)"
+    }
+  ]
+}

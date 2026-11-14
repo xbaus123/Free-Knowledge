@@ -1,0 +1,59 @@
+{
+  "type": "quiz",
+  "title": "Check: What DNS Does",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "Fill in the blank: turning a name into an IP address is a ______ lookup; turning an address into a name is a reverse lookup. (one word)"
+    },
+    {
+      "prompt": "Which transport and port does an ordinary DNS lookup use?",
+      "options": [
+        "UDP port 53",
+        "UDP port 67",
+        "TCP port 25",
+        "TCP port 80"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "DNS uses TCP for big jobs, such as copying a whole zone from one server to another."
+    },
+    {
+      "prompt": "What did DNS replace?",
+      "options": [
+        "ARP",
+        "The routing table",
+        "The IP header's TTL field",
+        "A single HOSTS.TXT file that every host downloaded from one computer"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "DNS is a network layer protocol, like IP."
+    },
+    {
+      "prompt": "The network is up, ping to 8.8.8.8 works, but no website loads and email fails. What's the most likely culprit?",
+      "options": [
+        "The Ethernet cable",
+        "The subnet mask",
+        "DNS",
+        "The default gateway"
+      ]
+    },
+    {
+      "prompt": "Which library call does a reverse lookup?",
+      "options": [
+        "connect",
+        "gethostbyaddr",
+        "bind",
+        "gethostbyname"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What small file on your own computer is checked before DNS, a leftover of the old way of naming hosts? (give the path)"
+    }
+  ]
+}

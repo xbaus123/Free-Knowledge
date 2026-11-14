@@ -1,0 +1,45 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "If the answer is cached and its TTL hasn't run out, nobody else needs to be asked."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "That's a referral. Caching it means the next lookup in marshall.edu can skip the root and edu servers."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The resolver follows the alias by restarting with the canonical name, starting with its cache."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's what makes DNS resilient: zones have several nameservers, and a broken one is just skipped."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Recursive: \"get me the answer.\" The resolver then makes iterative queries to the root, TLD, and authoritative servers."
+    },
+    {
+      "accepted_answers": [
+        "referral",
+        "a referral",
+        "delegation",
+        "a delegation"
+      ],
+      "explanation": "Root and TLD servers only give referrals; they don't do recursive lookups for anyone."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It saves work: a mistyped name that a program keeps retrying would otherwise go to the authoritative servers every time. The resolver algorithm caches errors too."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Root, TLD, authoritative: one level of the tree each."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The `.com` and `.net` delegations have long TTLs, so a busy resolver asks the root only occasionally."
+    }
+  ]
+}

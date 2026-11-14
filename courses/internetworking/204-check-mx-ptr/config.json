@@ -1,0 +1,63 @@
+{
+  "type": "quiz",
+  "title": "Check: MX, PTR, and More",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "A domain has `MX 10 a.example.com.` and `MX 50 b.example.com.`. Which host does a sender try first?",
+      "options": [
+        "Both at once",
+        "a, because lower priority numbers are preferred",
+        "b, because 50 is higher",
+        "Whichever answers the ping first"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Two MX records with the same priority share the mail between them."
+    },
+    {
+      "type": "written",
+      "prompt": "What's the reverse lookup name for the address 198.51.100.7? (write the full name)"
+    },
+    {
+      "prompt": "Why are the octets written backwards under in-addr.arpa?",
+      "options": [
+        "Because of byte order on Intel processors",
+        "It's a mistake nobody fixed",
+        "DNS names get more specific to the left, addresses to the right, so reversing lets the owner of a block be delegated its part of the tree",
+        "To hide the address"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which record type holds the answer to a reverse lookup? (three letters)"
+    },
+    {
+      "prompt": "Which record type usually carries a domain's SPF policy, the list of servers allowed to send its mail?",
+      "options": [
+        "MX",
+        "TXT",
+        "HINFO",
+        "PTR"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Publishing HINFO records is good practice, because it helps administrators keep track of hosts."
+    },
+    {
+      "prompt": "Which record type replaced the old MD and MF mail records?",
+      "options": [
+        "MX",
+        "TXT",
+        "MINFO",
+        "MB"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "After finding a domain's MX record, a sending server still needs another lookup before it can connect."
+    }
+  ]
+}

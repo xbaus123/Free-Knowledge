@@ -1,0 +1,47 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "SOA"
+      ],
+      "explanation": "The question section shows `IN SOA`."
+    },
+    {
+      "accepted_answers": [
+        "53"
+      ],
+      "explanation": "The `#53` after the server address. DNS is port 53."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "No `aa` in the flags, so it came from a caching resolver."
+    },
+    {
+      "accepted_answers": [
+        "3215"
+      ],
+      "explanation": "The second column of the answer is the remaining TTL."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The MNAME is ns1-34.azure-dns.com."
+    },
+    {
+      "accepted_answers": [
+        "2793"
+      ],
+      "explanation": "The first number after the RNAME."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A cache hit comes back in milliseconds. A miss needs round trips out to the authoritative servers."
+    },
+    {
+      "accepted_answers": [
+        "1",
+        "one"
+      ],
+      "explanation": "ANSWER: 1 in the header line."
+    }
+  ]
+}

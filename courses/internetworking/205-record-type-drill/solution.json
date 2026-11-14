@@ -1,0 +1,62 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "A",
+        "a record"
+      ],
+      "explanation": "A name-to-IPv4 mapping is an A record."
+    },
+    {
+      "accepted_answers": [
+        "CNAME",
+        "cname record"
+      ],
+      "explanation": "An alias is a CNAME."
+    },
+    {
+      "accepted_answers": [
+        "MX",
+        "mx record"
+      ],
+      "explanation": "Mail routing is MX, with a priority."
+    },
+    {
+      "accepted_answers": [
+        "PTR",
+        "ptr record"
+      ],
+      "explanation": "Reverse lookups are PTR records under in-addr.arpa."
+    },
+    {
+      "accepted_answers": [
+        "AAAA",
+        "quad a",
+        "aaaa record"
+      ],
+      "explanation": "IPv6 addresses go in AAAA records."
+    },
+    {
+      "accepted_answers": [
+        "NS",
+        "ns record"
+      ],
+      "explanation": "Delegation is done with NS records."
+    },
+    {
+      "accepted_answers": [
+        "TXT",
+        "txt record"
+      ],
+      "explanation": "Verification tokens and SPF go in TXT records."
+    },
+    {
+      "accepted_answers": [
+        "SOA",
+        "soa record",
+        "start of authority"
+      ],
+      "explanation": "The SOA, start of authority, is next."
+    }
+  ]
+}

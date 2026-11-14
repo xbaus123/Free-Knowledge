@@ -1,0 +1,47 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "4",
+        "four"
+      ],
+      "explanation": "smtp, cs, marshall, edu: four labels. The root is the empty label at the end."
+    },
+    {
+      "accepted_answers": [
+        "marshall.edu",
+        "marshall.edu."
+      ],
+      "explanation": "The second-level domain is the part someone registered under the TLD: marshall.edu."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Root servers hold the delegations for every TLD."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Going left adds a level down the tree. `com` delegates `example.com`."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Read right to left: one is under the `au` country TLD, the other under `com`. Different trees, often different owners."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Everything below a delegation belongs to the zone's owner. That's the point of delegating."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Read right to left: the registered domain is `login-check.net`. `marshall.edu` is just a subdomain its owner made up. Attackers count on people reading left to right."
+    },
+    {
+      "accepted_answers": [
+        ".",
+        "dot",
+        "a dot",
+        "period"
+      ],
+      "explanation": "The trailing dot: `www.example.com.`"
+    }
+  ]
+}

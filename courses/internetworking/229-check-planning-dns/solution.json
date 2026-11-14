@@ -1,0 +1,48 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "A name you own can't be registered by someone else, and won't clash with a TLD that's created later."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "If the office loses power and your only nameserver is there, mail can't even find your backup MX."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Internal names belong in the internal view. Staff at home reach them over the VPN."
+    },
+    {
+      "accepted_answers": [
+        "dynamic dns",
+        "dynamic update",
+        "ddns",
+        "dynamic updates"
+      ],
+      "explanation": "Dynamic DNS keeps names pointing at the right addresses as laptops come and go."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "An open resolver is an amplification weapon. Serve your own users only."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Otherwise one AXFR hands anyone a map of your network."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Users keep the service name; only the alias's target changes."
+    },
+    {
+      "accepted_answers": [
+        "2",
+        "two"
+      ],
+      "explanation": "A primary and a secondary, in different places, so one failure doesn't take every name down."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "If laptops use some public resolver instead, they can't see internal names, and you can't see suspicious lookups."
+    }
+  ]
+}

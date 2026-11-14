@@ -1,0 +1,53 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "An A record is the plain name-to-address mapping."
+    },
+    {
+      "accepted_answers": [
+        "AAAA",
+        "quad a",
+        "quad-a",
+        "aaaa record"
+      ],
+      "explanation": "\"Quad A\", because an IPv6 address is 128 bits, four times the 32 bits in an A record."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "A record's TTL controls caching. Lower it before you move a server, so the old address doesn't linger for days."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Same name, different job: in DNS it's a number of seconds that a record may be cached."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The canonical name is the real one; the CNAME's own name is the nickname."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "That's the point of aliases: everything that points at host1 follows it automatically."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A CNAME stands for the whole name, so nothing else may sit beside it. That's why the bare domain, which needs NS and SOA records, usually can't be a CNAME."
+    },
+    {
+      "accepted_answers": [
+        "round robin",
+        "dns round robin",
+        "round-robin",
+        "round robin dns"
+      ],
+      "explanation": "Clients usually try the first address, so rotating the order spreads them across the servers."
+    },
+    {
+      "accepted_answers": [
+        "NS",
+        "ns record"
+      ],
+      "explanation": "NS records also do the delegating, as in the hierarchy lesson."
+    }
+  ]
+}

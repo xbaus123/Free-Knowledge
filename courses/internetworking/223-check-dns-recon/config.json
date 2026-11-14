@@ -1,0 +1,59 @@
+{
+  "type": "quiz",
+  "title": "Check: What DNS Gives Away",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "An attacker looks up a company's MX record and sees `company.mail.protection.outlook.com`. How does that help them?",
+      "options": [
+        "It gives them the CEO's password",
+        "It lets them read the company's email",
+        "It tells them mail runs on Microsoft 365, so their phishing can imitate a Microsoft login page",
+        "It doesn't help at all"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which query type, if a server allows it to anyone, hands over every record in the zone? (four letters)"
+    },
+    {
+      "prompt": "What's the right way to protect zone transfers?",
+      "options": [
+        "Allow AXFR only from your secondary servers' addresses, ideally with a shared key (TSIG)",
+        "Use a longer TTL",
+        "Publish an HINFO record",
+        "Turn off DNS"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Looking up a company's public MX and TXT records is illegal."
+    },
+    {
+      "prompt": "Why do attackers try names like `vpn.`, `dev.`, and `test.` under a target domain?",
+      "options": [
+        "To slow down the DNS server",
+        "To change the records",
+        "To find forgotten or less-protected servers, like old test systems",
+        "To get a refund"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the word for gathering information about a target before an attack, such as by querying its DNS? (one word)"
+    },
+    {
+      "prompt": "Which TXT record type lists every service allowed to send mail for a domain?",
+      "options": [
+        "SOA",
+        "SPF",
+        "AXFR",
+        "HINFO"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A company's internal host names leaking into its public zone is a risk, even if those hosts use private addresses."
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "nslookup is everywhere. dig gives more detail but isn't built into Windows."
+    },
+    {
+      "accepted_answers": [
+        "set type=mx",
+        "set type = mx",
+        "set q=mx",
+        "set querytype=mx"
+      ],
+      "explanation": "`set type=` takes any record type: a, mx, soa, ns, txt, ptr."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "`aa` would mean the answering server runs the zone. Without it, it's a cached, non-authoritative answer."
+    },
+    {
+      "accepted_answers": [
+        "NXDOMAIN"
+      ],
+      "explanation": "NXDOMAIN: non-existent domain. NOERROR means the name exists, even if there's no record of the type you asked for."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "NOERROR plus an empty answer is \"no data of that type\". The SOA tells the resolver how long to cache that."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "`-x` builds the in-addr.arpa name and asks for its PTR record for you."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The @ picks the server. Handy for checking whether your own resolver is giving a different answer."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A caching resolver reports how many seconds it will keep the record. When it hits zero, the resolver fetches a fresh copy."
+    },
+    {
+      "accepted_answers": [
+        "+trace",
+        "trace"
+      ],
+      "explanation": "`+trace` makes dig do the iterative lookups itself, so you can watch root, TLD, and authoritative servers answer in turn."
+    }
+  ]
+}

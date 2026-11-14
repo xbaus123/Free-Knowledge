@@ -1,0 +1,72 @@
+{
+  "type": "quiz",
+  "title": "Check: Attacks and DNSSEC",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "In cache poisoning, what does the attacker need to match to get a forged reply accepted?",
+      "options": [
+        "The root server's key",
+        "The zone's SOA serial",
+        "The query's question, its 16-bit ID, and (since 2008) its random source port",
+        "The victim's MAC address"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Who showed in 2008 how to make DNS cache poisoning fast and reliable? (last name)"
+    },
+    {
+      "prompt": "Why does DNS amplification work so well as a DDoS weapon?",
+      "options": [
+        "A small query with a spoofed source address makes an open resolver send a much bigger reply to the victim",
+        "DNS uses TCP",
+        "It needs the victim's password",
+        "DNS servers have no bandwidth limits"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Resolvers should answer recursive queries from anyone on the Internet."
+    },
+    {
+      "prompt": "Security sees thousands of lookups for long, random names like `aGVsbG8gd29ybGQ.x7k2.net`. What's the likely cause?",
+      "options": [
+        "DNS tunneling: data hidden in the query names",
+        "A slow root server",
+        "Round robin",
+        "A zone transfer"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What does DNSSEC add to DNS records: encryption or signatures? (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "With DNSSEC, people on the network can no longer see which names you look up."
+    },
+    {
+      "prompt": "Which record, kept in the parent zone, links a child zone's key into the chain of trust?",
+      "options": [
+        "DS",
+        "NSEC",
+        "DNSKEY",
+        "RRSIG"
+      ]
+    },
+    {
+      "prompt": "Which record holds a DNSSEC signature?",
+      "options": [
+        "SOA",
+        "PTR",
+        "DS",
+        "RRSIG"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "On which TCP port does DNS over TLS run? (a number)"
+    }
+  ]
+}

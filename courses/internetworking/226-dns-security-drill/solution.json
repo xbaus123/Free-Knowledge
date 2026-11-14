@@ -1,0 +1,36 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "The server let a stranger request AXFR. Restrict it to your secondaries."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Someone spoofed the victim's address in small queries to open resolvers."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "One poisoned cache, many victims, until the TTL ran out."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The forged answer couldn't carry a valid signature from bank.com's key."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Stolen data, encoded in the names, smuggled out through allowed DNS traffic."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Whoever controls the NS records controls every name in the domain. Registrar accounts need MFA and a registry lock."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Only encryption hides the queries. DNSSEC would prove the answers are genuine but leave them visible."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Registering look-alike names and waiting for mistakes."
+    }
+  ]
+}

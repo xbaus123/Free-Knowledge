@@ -1,0 +1,73 @@
+{
+  "type": "quiz",
+  "title": "Check: The Resolver Algorithm",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "What's the very first thing a resolver does with a question?",
+      "options": [
+        "Checks its cache",
+        "Sends a zone transfer request",
+        "Asks the authoritative server",
+        "Asks a root server"
+      ]
+    },
+    {
+      "prompt": "A server replies \"I don't have that, but ask these servers for `marshall.edu`.\" What does the resolver do?",
+      "options": [
+        "Gives up and returns an error",
+        "Removes the server from SLIST",
+        "Asks the root again",
+        "Caches the delegation and picks new servers to ask (back to step 2)"
+      ]
+    },
+    {
+      "prompt": "A server answers with a CNAME, but the client asked for an A record. What next?",
+      "options": [
+        "Drop the response",
+        "Ask the same server for a PTR record",
+        "Cache the CNAME, change SNAME to the canonical name, and start the lookup again",
+        "Return the CNAME as an error"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "When a server returns a failure or a nonsense response, the resolver removes it from SLIST and tries another."
+    },
+    {
+      "prompt": "Your laptop asks its resolver for the final answer and lets it do all the work. What kind of query is that?",
+      "options": [
+        "Authoritative",
+        "Reverse",
+        "Recursive",
+        "Iterative"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A root server replies to a query for `example.net` by pointing to the .net servers. What's that kind of reply called? (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Caching a \"no such name\" answer is pointless, because the name doesn't exist."
+    },
+    {
+      "prompt": "With an empty cache, how many servers does a resolver typically ask to find `example.net`?",
+      "options": [
+        "One: the root",
+        "Thirteen, one per root identity",
+        "None",
+        "Three: the root, a .net server, and example.net's server"
+      ]
+    },
+    {
+      "prompt": "Why don't the root servers collapse under the whole Internet's traffic?",
+      "options": [
+        "They only answer on weekdays",
+        "Clients ask the root directly",
+        "Resolvers cache TLD delegations, so most lookups never reach the root",
+        "They use TCP"
+      ]
+    }
+  ]
+}

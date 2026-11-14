@@ -1,0 +1,79 @@
+{
+  "type": "quiz",
+  "title": "Drill: Name the Attack",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "An attacker runs one command and gets a list of every host name and address in a company's zone.",
+      "options": [
+        "An open zone transfer (AXFR)",
+        "Typosquatting",
+        "Amplification",
+        "Cache poisoning"
+      ]
+    },
+    {
+      "prompt": "A victim's network is flooded with large DNS replies to questions it never asked.",
+      "options": [
+        "Split horizon",
+        "DNS tunneling",
+        "Reflection and amplification DDoS",
+        "DNSSEC"
+      ]
+    },
+    {
+      "prompt": "For an hour, every customer of one ISP who types `bank.com` lands on a fake site. Their own machines are clean.",
+      "options": [
+        "HINFO leak",
+        "Cache poisoning of the ISP's resolver",
+        "Typosquatting",
+        "A zone transfer"
+      ]
+    },
+    {
+      "prompt": "Which defense would have let the ISP's resolver reject the forged `bank.com` answer?",
+      "options": [
+        "Round robin",
+        "DNSSEC validation",
+        "Turning off TCP",
+        "A longer TTL"
+      ]
+    },
+    {
+      "prompt": "Malware on a laptop sends a slow stream of lookups like `4f2a9c.data.evil.net` through a firewall that only allows web and DNS.",
+      "options": [
+        "A secondary refresh",
+        "Anycast",
+        "DNS tunneling (exfiltration)",
+        "Dynamic DNS"
+      ]
+    },
+    {
+      "prompt": "Someone steals the password to a company's domain registrar account and changes its NS records.",
+      "options": [
+        "Domain hijacking",
+        "Cache poisoning",
+        "Round robin",
+        "A zone transfer"
+      ]
+    },
+    {
+      "prompt": "Users on café Wi-Fi don't want others on the network to see which sites they look up.",
+      "options": [
+        "DNS over HTTPS or TLS",
+        "DNSSEC",
+        "A shorter TTL",
+        "More MX records"
+      ]
+    },
+    {
+      "prompt": "A site uses `micros0ft-support.com` to catch people who mistype the real name.",
+      "options": [
+        "Split DNS",
+        "Typosquatting",
+        "Anycast",
+        "Amplification"
+      ]
+    }
+  ]
+}

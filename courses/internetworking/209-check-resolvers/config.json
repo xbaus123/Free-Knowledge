@@ -1,0 +1,63 @@
+{
+  "type": "quiz",
+  "title": "Check: Clients and Resolvers",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Which two pieces of information does DNS client software need?",
+      "options": [
+        "A username and password",
+        "A MAC address and a port number",
+        "The SOA serial and the TTL",
+        "The FQDN to look up and the IP address of a nameserver"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "You can configure your nameserver by its name, like `dns.myisp.net`."
+    },
+    {
+      "prompt": "Where does a laptop on a typical network get its nameserver's address?",
+      "options": [
+        "From DHCP, along with its own address and gateway",
+        "From the root servers",
+        "From ARP",
+        "It's built into the network card"
+      ]
+    },
+    {
+      "prompt": "What does a stub resolver do?",
+      "options": [
+        "Copies zones between servers",
+        "Walks the whole tree from the root itself",
+        "Hosts the zone for its domain",
+        "Sends the full question to one nameserver and waits for the final answer"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which resolver field holds the name being searched for? (one word)"
+    },
+    {
+      "type": "written",
+      "prompt": "Which resolver field holds the servers from a configuration file, used when the resolver knows nothing better? (one word)"
+    },
+    {
+      "prompt": "What's in SLIST?",
+      "options": [
+        "The nameservers (and their zones) the resolver is currently trying for this question",
+        "Every name the resolver has ever seen",
+        "The query type",
+        "The list of blocked domains"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "STYPE and SCLASS together say what kind of record is wanted, such as an IN-class MX record."
+    },
+    {
+      "type": "written",
+      "prompt": "On Linux or macOS, which file lists the nameserver your machine uses? (give the path)"
+    }
+  ]
+}

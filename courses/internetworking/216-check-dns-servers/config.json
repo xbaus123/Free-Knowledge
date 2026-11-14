@@ -1,0 +1,59 @@
+{
+  "type": "quiz",
+  "title": "Check: Kinds of DNS Servers",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Which of these is NOT a job of an authoritative server?",
+      "options": [
+        "Looking up other domains' names on behalf of clients",
+        "Sending zone copies to secondaries",
+        "Performing zone updates",
+        "Responding to queries about its zone"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which transport does a secondary use to copy a zone from the primary? (three letters)"
+    },
+    {
+      "prompt": "How does a secondary know there's a new version of the zone?",
+      "options": [
+        "The TTL reached zero",
+        "It copies the whole zone every second",
+        "The SOA serial number has gone up",
+        "The primary emails it"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Answers from a secondary server are non-authoritative."
+    },
+    {
+      "type": "true_false",
+      "prompt": "An answer from your ISP's caching resolver is non-authoritative."
+    },
+    {
+      "prompt": "Why do zones have at least two nameservers?",
+      "options": [
+        "Because the root requires an even number",
+        "To double the speed",
+        "So the domain keeps working if one server or its network fails",
+        "To store the A and MX records separately"
+      ]
+    },
+    {
+      "prompt": "Why is a caching server a favorite target for attackers?",
+      "options": [
+        "One forged answer in its cache misleads every client that uses it, until the TTL expires",
+        "It has the most disk space",
+        "It holds every zone's private keys",
+        "It's always unpatched"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "When a laptop gets a new address from DHCP and updates its own A record in the zone, what's that called? (two words)"
+    }
+  ]
+}

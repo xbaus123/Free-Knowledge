@@ -1,0 +1,68 @@
+{
+  "type": "quiz",
+  "title": "Check: nslookup and dig",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Which tool is older and available on every platform, including Windows out of the box?",
+      "options": [
+        "nslookup",
+        "whois",
+        "dig",
+        "traceroute"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "In interactive nslookup, what command switches it to looking up mail records? (type it exactly)"
+    },
+    {
+      "prompt": "dig's flags line shows `qr rd ra` but no `aa`. What does that tell you?",
+      "options": [
+        "Recursion was refused",
+        "The answer came from a caching resolver, not an authoritative server",
+        "The record doesn't exist",
+        "The query failed"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What dig status means the name you asked for doesn't exist at all? (one word)"
+    },
+    {
+      "prompt": "`dig mx whitehouse.gov` returns status NOERROR, ANSWER: 0, and an SOA in the authority section. What does that mean?",
+      "options": [
+        "The MX record is secret",
+        "whitehouse.gov doesn't exist",
+        "The server is broken",
+        "The name exists but has no MX record"
+      ]
+    },
+    {
+      "prompt": "Which command does a reverse lookup of 52.101.42.14?",
+      "options": [
+        "dig 52.101.42.14 mx",
+        "dig -x 52.101.42.14",
+        "dig @52.101.42.14",
+        "dig +short 52.101.42.14"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "`dig @1.1.1.1 marshall.edu` sends the question to 1.1.1.1 instead of your usual resolver."
+    },
+    {
+      "prompt": "You run the same dig twice. The first answer showed TTL 3076; the second shows 3041. Why?",
+      "options": [
+        "It's the time left in the resolver's cache, counting down",
+        "The server is getting slower",
+        "dig rounds numbers randomly",
+        "The record changed"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which dig option walks the tree from the root, showing each referral? (type the option, starting with +)"
+    }
+  ]
+}

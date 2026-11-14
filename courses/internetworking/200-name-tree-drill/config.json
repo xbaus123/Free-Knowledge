@@ -1,0 +1,54 @@
+{
+  "type": "quiz",
+  "title": "Drill: Reading Names",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "How many labels are in `smtp.cs.marshall.edu`? (a number)"
+    },
+    {
+      "type": "written",
+      "prompt": "What is the second-level domain in `smtp.cs.marshall.edu`? (just the name, with its TLD)"
+    },
+    {
+      "prompt": "Which server would you ask first to find the nameservers for `edu`?",
+      "options": [
+        "A marshall.edu server",
+        "Your DHCP server",
+        "A com server",
+        "A root server"
+      ]
+    },
+    {
+      "prompt": "Which pair has a parent and child zone in the right order?",
+      "options": [
+        "com is the parent of example.com",
+        "www.example.com is the parent of example.com",
+        "example.com is the parent of com",
+        "org is the parent of example.com"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "`example.com.au` and `example.com` are the same domain."
+    },
+    {
+      "type": "true_false",
+      "prompt": "The owner of `marshall.edu` can create `anything.marshall.edu` without asking the `edu` registry."
+    },
+    {
+      "prompt": "A phishing link reads `marshall.edu.login-check.net`. Whose domain is it really?",
+      "options": [
+        "The `edu` registry's",
+        "Marshall University's",
+        "Nobody's",
+        "Whoever registered `login-check.net`"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What character ends a fully qualified name and stands for the root? (one character)"
+    }
+  ]
+}

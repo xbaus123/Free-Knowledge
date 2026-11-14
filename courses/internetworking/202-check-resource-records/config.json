@@ -1,0 +1,63 @@
+{
+  "type": "quiz",
+  "title": "Check: Resource Records",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Which record type maps a name to an IPv4 address?",
+      "options": [
+        "NS",
+        "A",
+        "MX",
+        "CNAME"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What record type holds an IPv6 address? (four letters)"
+    },
+    {
+      "prompt": "In `www.example.com. 3600 IN A 93.184.215.14`, what does 3600 mean?",
+      "options": [
+        "The record expires on day 3600",
+        "The server's port number",
+        "Other servers may cache this record for up to 3600 seconds (one hour)",
+        "The packet may cross 3600 routers"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A DNS record's TTL counts router hops, like the TTL in an IP header."
+    },
+    {
+      "prompt": "What does a CNAME record do?",
+      "options": [
+        "Lists the authoritative nameservers",
+        "Names the mail server",
+        "Makes one name an alias for another, canonical name",
+        "Maps an address back to a name"
+      ]
+    },
+    {
+      "prompt": "Your web server is moving to a new address. `www`, `shop`, and `blog` are all CNAMEs for `host1.example.com`. How many records must you change?",
+      "options": [
+        "None; DNS updates itself",
+        "Just one: host1's A record",
+        "Four",
+        "Three"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A name that is a CNAME can also have an MX record of its own."
+    },
+    {
+      "type": "written",
+      "prompt": "A name has several A records, and the server rotates their order with each answer to spread the load. What's this trick called? (two or three words)"
+    },
+    {
+      "type": "written",
+      "prompt": "Which record type says which servers are authoritative for a zone? (two letters)"
+    }
+  ]
+}

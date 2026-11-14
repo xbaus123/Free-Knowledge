@@ -1,0 +1,47 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Lower is preferred. b is the backup, used only if a doesn't answer."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Equal priorities mean the sender picks either one, which spreads the load."
+    },
+    {
+      "accepted_answers": [
+        "7.100.51.198.in-addr.arpa",
+        "7.100.51.198.in-addr.arpa."
+      ],
+      "explanation": "Reverse the four octets and add in-addr.arpa: 7.100.51.198.in-addr.arpa."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "`100.51.198.in-addr.arpa` can be handed to whoever owns 198.51.100.0/24, exactly like delegating a subdomain."
+    },
+    {
+      "accepted_answers": [
+        "PTR",
+        "pointer",
+        "ptr record"
+      ],
+      "explanation": "A PTR (pointer) record points from the reverse name back to a host name."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "TXT records started as free text and now carry SPF, DKIM keys, and domain verification tokens."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "HINFO announces a host's CPU and OS to anyone who asks. That's a gift to attackers, which is why it's almost never used."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "MX combined the destination and forwarder roles into one record with priorities."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The MX gives a host name, so the sender looks up that host's A or AAAA record to get an address."
+    }
+  ]
+}

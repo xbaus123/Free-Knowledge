@@ -1,0 +1,49 @@
+{
+  "type": "quiz",
+  "title": "Drill: Reading dig",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "What record type was asked for? (type it as dig shows it)"
+    },
+    {
+      "type": "written",
+      "prompt": "What port did the server answer on? (a number)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "This answer is authoritative."
+    },
+    {
+      "type": "written",
+      "prompt": "How many seconds will the resolver keep caching this record? (a number)"
+    },
+    {
+      "prompt": "Who hosts marshall.edu's DNS?",
+      "options": [
+        "Marshall University's own servers",
+        "Microsoft's Azure DNS",
+        "Cloudflare",
+        "The edu registry"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What is the zone's serial number? (a number)"
+    },
+    {
+      "prompt": "The query took 207 ms, much longer than the 10 ms MX lookup in the reading. What's the most likely reason?",
+      "options": [
+        "The SOA record is larger",
+        "The resolver didn't have it cached and had to ask the authoritative servers",
+        "dig was busy",
+        "IPv6 is slower"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "How many records were in the answer section? (a number)"
+    }
+  ]
+}

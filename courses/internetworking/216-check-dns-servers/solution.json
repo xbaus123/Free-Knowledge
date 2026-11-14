@@ -1,0 +1,44 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Looking things up for clients is the caching (recursive) server's job. An authoritative server answers only for its own zones."
+    },
+    {
+      "accepted_answers": [
+        "TCP"
+      ],
+      "explanation": "A zone transfer can be big, and every record must arrive, so it uses TCP on port 53."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Every refresh interval it compares serials. Higher means changed."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A secondary has a full copy of the zone and answers with the AA flag, just like the primary."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It came from a cache, not from a server that runs the zone. nslookup prints \"Non-authoritative answer\"."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "If the only nameserver is down, the entire domain disappears from the Internet, even if the web and mail servers are fine."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Poison one cache and you redirect thousands of users without touching their machines."
+    },
+    {
+      "accepted_answers": [
+        "dynamic dns",
+        "dynamic update",
+        "ddns",
+        "dynamic updates",
+        "dynamic dns update"
+      ],
+      "explanation": "Dynamic DNS lets DHCP and DNS work together, which you'll plan for in the project."
+    }
+  ]
+}

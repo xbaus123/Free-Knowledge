@@ -1,0 +1,59 @@
+{
+  "type": "quiz",
+  "title": "Drill: Follow the Lookup",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "Which server does the resolver ask first? (one word)"
+    },
+    {
+      "prompt": "What does the root server reply?",
+      "options": [
+        "A referral to the .com TLD servers",
+        "The A record",
+        "\"No such name\"",
+        "A referral to example.com's servers"
+      ]
+    },
+    {
+      "prompt": "After learning the CNAME, what is SNAME?",
+      "options": [
+        "net",
+        "www.shop.example.com",
+        "cdn.example.net",
+        "example.com"
+      ]
+    },
+    {
+      "prompt": "Following the CNAME, which server does the resolver ask next?",
+      "options": [
+        "The .com servers",
+        "The root again, since nothing about .net is cached",
+        "The client",
+        "The example.com servers"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A minute later, another user asks for `mail.example.com`. The resolver must start at the root again."
+    },
+    {
+      "type": "true_false",
+      "prompt": "The resolver caches the CNAME as well as the final A record."
+    },
+    {
+      "type": "written",
+      "prompt": "One of example.com's nameservers returns garbage. Which resolver list does the resolver remove it from? (one word)"
+    },
+    {
+      "prompt": "How many answers does the user's stub resolver get back?",
+      "options": [
+        "Two: the CNAME from one server and the A record from another",
+        "None; it reads the cache directly",
+        "One per server the resolver asked",
+        "One final answer, from the recursive resolver"
+      ]
+    }
+  ]
+}

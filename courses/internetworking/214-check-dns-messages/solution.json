@@ -1,0 +1,50 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Same five sections. In a query, only the header and question are filled in."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The question names what's being looked up, its class, and the record type wanted."
+    },
+    {
+      "accepted_answers": [
+        "AA",
+        "authoritative answer"
+      ],
+      "explanation": "AA, authoritative answer. Answers from a caching resolver don't have it set."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A busy client may have many queries out at once. The ID and question tie each answer to its query."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The authority section points to who's authoritative. The additional section usually adds those nameservers' addresses."
+    },
+    {
+      "accepted_answers": [
+        "AXFR",
+        "zone transfer"
+      ],
+      "explanation": "AXFR, the full zone transfer. It runs over TCP because a whole zone won't fit in one UDP packet."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "MAILA asked for mail agent records, which MX replaced."
+    },
+    {
+      "accepted_answers": [
+        "*",
+        "asterisk",
+        "star"
+      ],
+      "explanation": "Usually written ANY in tools. Many servers now refuse it, for reasons in the security lesson."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The host was connected to two networks, so it had an address on each. Any name can have one or many A records."
+    }
+  ]
+}

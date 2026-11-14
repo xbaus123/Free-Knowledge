@@ -1,0 +1,108 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "When DNS fails, the network is up but almost nothing works."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "One small question and answer suit UDP. Big, must-arrive-complete jobs use TCP."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Right to left: root, edu (TLD), marshall (second level), then cs and ftp below it."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Delegation is what lets one tree be run by millions of owners."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "MX is mail, PTR is reverse, NS is nameservers, AAAA is IPv6."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Lower numbers are preferred; higher ones are backups."
+    },
+    {
+      "accepted_answers": [
+        "25.113.0.203.in-addr.arpa",
+        "25.113.0.203.in-addr.arpa."
+      ],
+      "explanation": "Reverse the octets, then add in-addr.arpa."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Secondaries compare serials to decide whether to pull the zone."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "After expire, the secondary's copy is no longer authoritative."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A name to find and a server to ask, by address."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The safety belt, usually pre-loaded with the root servers."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Changing SNAME is what happens with a CNAME. A failing server is what gets removed from SLIST."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Down the tree, one referral at a time."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Answers from a cache don't have AA. In dig output it appears as `aa` in the flags."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "AXFR, over TCP. Restrict it to your secondaries."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Cache poisoning: one forged answer, many victims."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The root servers and public resolvers like 1.1.1.1 use anycast."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "That's \"no data\". A missing name would be NXDOMAIN."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Signatures, not encryption. DoT and DoH handle privacy."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The other way round: nslookup is older and everywhere; dig is newer and more detailed."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's how round robin works, and how a host on two networks lists both addresses."
+    },
+    {
+      "accepted_answers": [
+        "SOA",
+        "start of authority"
+      ],
+      "explanation": "Exactly one SOA per zone."
+    },
+    {
+      "accepted_answers": [
+        "dns tunneling",
+        "dns tunnelling",
+        "tunneling",
+        "dns exfiltration",
+        "tunnelling"
+      ],
+      "explanation": "The firewall allows DNS, so the data rides out inside it."
+    }
+  ]
+}

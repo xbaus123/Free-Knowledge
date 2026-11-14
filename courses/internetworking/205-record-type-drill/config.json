@@ -1,0 +1,39 @@
+{
+  "type": "quiz",
+  "title": "Drill: Which Record?",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "Map `shop.example.com` to 203.0.113.5."
+    },
+    {
+      "type": "written",
+      "prompt": "Make `files.example.com` another name for `nas.example.com`."
+    },
+    {
+      "type": "written",
+      "prompt": "Say that mail for `example.com` goes to `mx.mailhost.net`."
+    },
+    {
+      "type": "written",
+      "prompt": "Map 203.0.113.5 back to `shop.example.com`."
+    },
+    {
+      "type": "written",
+      "prompt": "Map `shop.example.com` to 2001:db8::5."
+    },
+    {
+      "type": "written",
+      "prompt": "Hand the subdomain `lab.example.com` to the lab's own nameservers."
+    },
+    {
+      "type": "written",
+      "prompt": "Publish a token to prove to a cloud provider that you own `example.com`."
+    },
+    {
+      "type": "written",
+      "prompt": "Hold the zone's serial number, refresh timers, and the administrator's mailbox. (the next lesson's record)"
+    }
+  ]
+}

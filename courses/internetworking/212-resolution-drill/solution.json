@@ -1,0 +1,43 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "root",
+        "a root server",
+        "the root",
+        "root server"
+      ],
+      "explanation": "With nothing cached, the root is the only place to start."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The root only knows who runs each TLD."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The resolver follows the alias by changing SNAME to the canonical name and starting over."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Its cache has .com and example.com delegations, but nothing for .net, so the closest known ancestor of cdn.example.net is the root."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The example.com delegation is cached, so it goes straight to example.com's servers."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Every step is cached, each for its own TTL."
+    },
+    {
+      "accepted_answers": [
+        "SLIST"
+      ],
+      "explanation": "It's dropped from SLIST, and the resolver tries the next server."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The stub made one recursive query and gets one reply back (which includes the CNAME and the A record together)."
+    }
+  ]
+}

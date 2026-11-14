@@ -1,0 +1,68 @@
+{
+  "type": "quiz",
+  "title": "Check: Name Your Network",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Which is the best name for internal-only hosts?",
+      "options": [
+        "A made-up TLD like `.corp`",
+        "Bare host names with no domain",
+        "`.local`, since it isn't a real TLD",
+        "A subdomain of a domain you own, like `corp.example.com`"
+      ]
+    },
+    {
+      "prompt": "Where should the public zone usually be hosted?",
+      "options": [
+        "It doesn't need hosting",
+        "With a registrar or DNS provider, so it survives the office going offline",
+        "On the guest Wi-Fi network",
+        "On a laptop in the office"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Internal servers like the file server and cameras should be listed in the public zone so staff can find them from home."
+    },
+    {
+      "type": "written",
+      "prompt": "When DHCP registers each laptop's name in DNS as it gets an address, what's that called? (two words)"
+    },
+    {
+      "prompt": "Who should your internal nameservers do recursion for?",
+      "options": [
+        "Anyone on the Internet",
+        "Only the root servers",
+        "Only internal clients",
+        "Nobody"
+      ]
+    },
+    {
+      "prompt": "Who should be allowed zone transfers from your primary?",
+      "options": [
+        "Only your secondary servers",
+        "Every client on the network",
+        "Your ISP",
+        "Anyone"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Using CNAMEs like `intranet` and `files` for services means moving a service only takes changing one record."
+    },
+    {
+      "type": "written",
+      "prompt": "At least how many internal nameservers should you run? (a number)"
+    },
+    {
+      "prompt": "Why should DHCP hand out your internal resolvers' addresses?",
+      "options": [
+        "So clients can resolve internal names, and their queries can be logged and filtered",
+        "Because DHCP requires it",
+        "To save IP addresses",
+        "So clients skip DNS"
+      ]
+    }
+  ]
+}

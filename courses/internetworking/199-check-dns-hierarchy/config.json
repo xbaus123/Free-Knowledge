@@ -1,0 +1,68 @@
+{
+  "type": "quiz",
+  "title": "Check: The DNS Hierarchy",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "In `cs.marshall.edu.`, which label is the top-level domain?",
+      "options": [
+        "The final dot",
+        "marshall",
+        "edu",
+        "cs"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the name for the top of the DNS tree, written as a single dot? (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "The root of DNS is one single server."
+    },
+    {
+      "prompt": "What makes `mail.marshall.edu.` a fully qualified domain name?",
+      "options": [
+        "It's in lowercase",
+        "It belongs to a university",
+        "It has exactly three labels",
+        "It spells out every label up to the root, ending in the root's dot"
+      ]
+    },
+    {
+      "prompt": "Which of these is a country-code TLD?",
+      "options": [
+        "edu",
+        "gov",
+        "uk",
+        "org"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "The `com` servers store the address of every web server whose name ends in `.com`."
+    },
+    {
+      "type": "written",
+      "prompt": "What record type delegates part of the tree to another set of nameservers? (two letters)"
+    },
+    {
+      "prompt": "A zone file for `example.com` contains the name `www` with no trailing dot. What full name does the server use?",
+      "options": [
+        "www",
+        "www.example.com.",
+        "www.com.",
+        "www."
+      ]
+    },
+    {
+      "prompt": "In the original DNS RFC's example tree, which top-level domain held IN-ADDR, the branch used for reverse lookups?",
+      "options": [
+        "EDU",
+        "MIL",
+        "COM",
+        "ARPA"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Randomizing the source port raised the guess from 16 bits to about 32, which made blind poisoning much harder."
+    },
+    {
+      "accepted_answers": [
+        "Kaminsky",
+        "dan kaminsky"
+      ],
+      "explanation": "Dan Kaminsky's discovery led to an emergency, coordinated patch across nearly every DNS vendor."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "UDP has no handshake, so the source address isn't checked. Small question, huge answer, wrong destination."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Open resolvers are amplification weapons. A resolver should only serve its own users."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The random-looking labels are encoded data. The attacker's nameserver for x7k2.net reads it from the queries."
+    },
+    {
+      "accepted_answers": [
+        "signatures",
+        "signature",
+        "digital signatures",
+        "a signature"
+      ],
+      "explanation": "Signatures prove an answer is genuine and unchanged. They don't hide it."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "DNSSEC doesn't encrypt anything. DNS over TLS or HTTPS hides the queries from the local network."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The DS (delegation signer) is a hash of the child's key, signed by the parent. Follow the DS records up and you reach the root."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Every signed set of records comes with an RRSIG."
+    },
+    {
+      "accepted_answers": [
+        "853"
+      ],
+      "explanation": "DoT uses 853. DoH uses 443, so it looks like ordinary web traffic."
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "forward",
+        "a forward"
+      ],
+      "explanation": "Forward lookups are by far the most common: every web page, email, and app connection starts with one."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "One small question and one small answer: UDP skips the handshake, and the client simply retries if nothing comes back. Port 67 is DHCP and 25 is mail."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Zone transfers and answers too large for one UDP packet use TCP, still on port 53."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "One file at one site couldn't keep up with a fast-growing network. DNS spreads the database across many servers."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "DNS runs at the application layer, on top of UDP. It acts like infrastructure because nearly every other application needs it."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "If you can reach an IP address but no name works, the names aren't being resolved. Pinging an address skips DNS entirely."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "gethostbyaddr takes an address and looks for a record under in-addr.arpa. gethostbyname goes the other way."
+    },
+    {
+      "accepted_answers": [
+        "/etc/hosts",
+        "etc/hosts",
+        "hosts",
+        "the hosts file",
+        "hosts file",
+        "c:\\windows\\system32\\drivers\\etc\\hosts"
+      ],
+      "explanation": "/etc/hosts maps names to addresses locally. Attackers like it too: one line there can quietly redirect a bank's name."
+    }
+  ]
+}

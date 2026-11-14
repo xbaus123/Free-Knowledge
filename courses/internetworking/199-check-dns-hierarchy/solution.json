@@ -1,0 +1,50 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Read right to left: the final dot is the root, `edu` is the TLD, `marshall` is second-level, `cs` is a subdomain."
+    },
+    {
+      "accepted_answers": [
+        "root",
+        "the root",
+        "root zone",
+        "the root zone"
+      ],
+      "explanation": "Every lookup can start at the root, which knows the servers for every TLD."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "There are 13 root server identities (a through m), and each is copied to many sites around the world using anycast, a trick later in this chapter."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "An FQDN has no missing pieces: it names the full path from the host to the root."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Two-letter TLDs belong to countries: `uk`, `de`, `jp`, `ca`. The others are generic TLDs."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "They store only delegations: NS records that point to each domain's own nameservers. The domain's servers hold its addresses."
+    },
+    {
+      "accepted_answers": [
+        "NS",
+        "ns record",
+        "an NS record",
+        "ns records"
+      ],
+      "explanation": "An NS (nameserver) record says \"for this zone, ask these servers\". Delegation is what lets millions of owners share one tree."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Without a trailing dot, the name is relative, so the server adds the zone's name. Forgetting a dot on a full name gives you mistakes like `mail.example.com.example.com.`"
+    },
+    {
+      "correct_index": 3,
+      "explanation": "`in-addr.arpa` is still where reverse lookups live today."
+    }
+  ]
+}
