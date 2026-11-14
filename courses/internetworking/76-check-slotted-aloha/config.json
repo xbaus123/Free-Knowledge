@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Slotted ALOHA",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "In a random access protocol, how fast does a node transmit?",

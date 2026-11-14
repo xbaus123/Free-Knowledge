@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Drill: Read the Response",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "A POST creates a new user, and the server says where it lives.",

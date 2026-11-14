@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Kinds of DNS Servers",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which of these is NOT a job of an authoritative server?",

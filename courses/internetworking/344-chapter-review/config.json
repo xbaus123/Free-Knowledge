@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Chapter Review: Resilience",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which list gives the four Rs?",

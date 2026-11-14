@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Drill: Follow the Call",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Put the call in order.",

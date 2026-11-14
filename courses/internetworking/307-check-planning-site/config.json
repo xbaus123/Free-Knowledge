@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Plan Your Site",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "You're hosting the project site in the cloud. Which questions do you still have to answer?",

@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: The Top of the Stack",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which OSI layer sits directly above the transport layer?",

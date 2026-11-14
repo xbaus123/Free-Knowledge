@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Address Classes",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "What class is 150.20.3.4?",

@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Attacks and DNSSEC",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "In cache poisoning, what does the attacker need to match to get a forged reply accepted?",

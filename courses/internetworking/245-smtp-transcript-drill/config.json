@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Drill: Read the Transcript",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "`C: MAIL FROM:<a@x.org>` → `S: 250 OK` → `C: RCPT TO:<b@y.com>` → `S: 250 OK`. What should the client send next?",

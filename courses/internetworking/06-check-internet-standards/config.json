@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: What Makes the Internet Special",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Your laptop moves from Wi-Fi to an Ethernet cable, and every program keeps using IP the same way. Which of the four ideas is that?",

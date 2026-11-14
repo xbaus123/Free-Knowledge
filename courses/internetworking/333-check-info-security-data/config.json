@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Information Security and Data",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which are the McCumber cube's three information characteristics?",

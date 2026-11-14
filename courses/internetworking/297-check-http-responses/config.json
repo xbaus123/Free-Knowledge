@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Status Codes and Headers",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "What does a 2xx status code mean?",

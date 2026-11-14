@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Firmware Resilience",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which of these is firmware?",

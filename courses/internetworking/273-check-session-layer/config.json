@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: The Session Layer",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which of these is **not** a session layer job?",

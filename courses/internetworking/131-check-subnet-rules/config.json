@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Rules to Remember",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which of these should normally get a static address?",

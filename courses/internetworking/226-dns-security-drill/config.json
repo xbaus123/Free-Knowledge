@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Drill: Name the Attack",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "An attacker runs one command and gets a list of every host name and address in a company's zone.",

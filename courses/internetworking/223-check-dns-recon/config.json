@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: What DNS Gives Away",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "An attacker looks up a company's MX record and sees `company.mail.protection.outlook.com`. How does that help them?",

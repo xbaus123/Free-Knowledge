@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Error Detection",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "What causes the bit errors the data link layer has to catch?",

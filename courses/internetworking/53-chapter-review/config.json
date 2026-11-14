@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Chapter Review: Topologies and the Physical Layer",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "A network with no central server, where every host shares its own resources, is...",

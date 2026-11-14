@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Who Handles a Message",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Thunderbird, Outlook, and Gmail in a browser are all examples of which agent?",

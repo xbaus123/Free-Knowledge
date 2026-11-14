@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: The Envelope and the Letter",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which of these is part of the envelope, not the message headers?",

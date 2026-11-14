@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Laying Out Your Subnets",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "The cameras, VoIP phones, and laptops each get their own subnet. Which layout is this?",

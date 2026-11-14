@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Getting Online",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Put these in the order they happen.",

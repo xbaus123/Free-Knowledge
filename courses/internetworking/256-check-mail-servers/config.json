@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Mail Server Software",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which MTA came first, out of Berkeley Unix?",

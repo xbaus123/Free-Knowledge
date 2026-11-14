@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Spread Spectrum",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "What does spread spectrum do to a radio signal?",

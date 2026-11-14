@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: The SOA Record",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "type": "true_false",

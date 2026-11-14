@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Trustworthy Data and AI",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "An attacker slips mislabeled examples into a model's training data. That's...",

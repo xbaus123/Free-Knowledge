@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Encapsulation",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which shows a frame on the wire, in order?",

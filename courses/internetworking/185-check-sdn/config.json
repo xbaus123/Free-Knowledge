@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: SDN",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "What does SDN move out of the individual switches and routers?",

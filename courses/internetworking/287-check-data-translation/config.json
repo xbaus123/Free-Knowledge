@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Data Translation",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which encoding can represent every language, plus emoji?",

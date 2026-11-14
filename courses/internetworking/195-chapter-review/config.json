@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Chapter Review: Routing",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "What's the difference between routing and forwarding?",

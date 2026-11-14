@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: HTTPS, Cookies, and Sessions",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "HTTPS is HTTP carried inside...",

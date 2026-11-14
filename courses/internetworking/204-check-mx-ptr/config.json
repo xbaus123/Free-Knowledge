@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: MX, PTR, and More",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "A domain has `MX 10 a.example.com.` and `MX 50 b.example.com.`. Which host does a sender try first?",

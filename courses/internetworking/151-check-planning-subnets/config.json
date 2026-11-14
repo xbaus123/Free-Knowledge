@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Planning Your Subnets",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "In the worked example, why does the staff subnet get a /25?",

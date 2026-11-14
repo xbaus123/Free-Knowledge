@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Access Points and Hypervisors",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "What does a wireless access point do at layer 2?",

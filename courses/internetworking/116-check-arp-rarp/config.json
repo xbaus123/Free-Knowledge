@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: ARP and RARP",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "A host at 10.1.1.20/24 wants to send to 8.8.8.8. Whose MAC address does it ARP for?",

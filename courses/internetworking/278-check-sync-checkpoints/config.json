@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Synchronization and Checkpoints",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "What does the session layer insert into the data flow so lagging streams can be lined back up?",

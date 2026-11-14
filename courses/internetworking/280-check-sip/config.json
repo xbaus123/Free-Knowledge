@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: SIP",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "type": "written",

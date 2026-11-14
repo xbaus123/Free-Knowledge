@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Dialogue Control",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Communication in only one direction is called...",

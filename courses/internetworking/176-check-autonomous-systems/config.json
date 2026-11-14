@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: ASNs",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which range of 16-bit ASNs is private?",

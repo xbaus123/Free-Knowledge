@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Where Mail Fits",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which OSI layer do mail protocols like SMTP and IMAP belong to?",

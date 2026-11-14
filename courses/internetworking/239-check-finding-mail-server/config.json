@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: How Mail Knows Where to Go",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "type": "written",

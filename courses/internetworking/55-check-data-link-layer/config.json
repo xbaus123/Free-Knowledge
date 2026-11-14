@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: The Data Link Layer",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "How far does the data link layer carry a packet?",

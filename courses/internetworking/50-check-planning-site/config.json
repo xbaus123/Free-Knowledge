@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Planning the Site and Space",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Why is physical planning so important to get right early?",

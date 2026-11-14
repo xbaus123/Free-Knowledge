@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Special Addresses",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which of these is a private (RFC 1918) address?",

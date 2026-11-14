@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Drill: Which Layer, Which Job?",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "A browser converts a page from UTF-8 bytes into characters on the screen.",

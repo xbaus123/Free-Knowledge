@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Drill: Pick the Method",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Load the home page of a news site.",

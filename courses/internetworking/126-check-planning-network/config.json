@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Planning the Network Layer",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "When sizing a subnet, what should you count?",

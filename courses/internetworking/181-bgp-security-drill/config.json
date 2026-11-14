@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Drill: Which BGP Defense?",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "An attacker announces a prefix they don't own from their own AS. Which is the cheapest widely deployed defense?",

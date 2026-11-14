@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Client-Server and Peer-to-Peer",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "type": "true_false",

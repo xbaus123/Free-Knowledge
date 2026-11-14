@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Software Resilience",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "A firewall process crashes. What should happen if it fails closed?",

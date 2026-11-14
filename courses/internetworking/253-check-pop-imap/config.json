@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: POP and IMAP",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which protocol usually downloads mail to the device and deletes it from the server?",

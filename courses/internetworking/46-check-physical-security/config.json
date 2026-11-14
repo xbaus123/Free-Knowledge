@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Layer 1 in Practice and Physical Security",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "type": "true_false",

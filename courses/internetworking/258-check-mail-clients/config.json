@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Mail Clients",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which of these is a command-line mail client?",

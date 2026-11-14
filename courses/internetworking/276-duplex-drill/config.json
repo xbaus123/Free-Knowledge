@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Drill: Simplex, Half, or Full?",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "A stadium scoreboard shows scores sent from the control booth. It never sends anything back.",

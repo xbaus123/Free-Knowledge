@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Routing Loops and RIP",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "In the A–B–C example, why does B think it can still reach C after its link fails?",

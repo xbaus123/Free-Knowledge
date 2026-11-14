@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: CRC",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "In a CRC, what is G?",

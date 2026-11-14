@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Name Your Network",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which is the best name for internal-only hosts?",

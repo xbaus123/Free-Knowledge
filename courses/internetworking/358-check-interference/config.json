@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Interference and Coverage",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which obstacle is worst for a Wi-Fi signal?",

@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Creating Resilient Data",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Keeping a value and its hash, so one can be checked against the other, is an example of...",

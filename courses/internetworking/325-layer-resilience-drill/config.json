@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Drill: Hardware, Firmware, or Software?",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Hot-swap drives in a RAID 5 array.",

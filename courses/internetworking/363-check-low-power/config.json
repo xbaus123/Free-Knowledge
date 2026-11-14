@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Bluetooth, Zigbee, and LoRa",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Why do many IoT devices avoid Wi-Fi?",

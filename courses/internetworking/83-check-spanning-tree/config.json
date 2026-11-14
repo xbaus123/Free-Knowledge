@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Spanning Tree",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Why is a loop in a switched LAN so harmful?",

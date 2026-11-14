@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: nslookup and dig",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which tool is older and available on every platform, including Windows out of the box?",

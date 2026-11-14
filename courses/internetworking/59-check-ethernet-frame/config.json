@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: The Ethernet Frame",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which field comes first in an Ethernet II frame?",

@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Intra-domain Security",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "What's still the first line of defense for routing inside a domain?",

@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: HTTP Methods",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which method requests a page?",

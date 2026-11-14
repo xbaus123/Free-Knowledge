@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Chapter Review: DNS",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Why is DNS called an application but also infrastructure?",

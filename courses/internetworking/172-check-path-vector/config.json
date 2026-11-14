@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Path Vector",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "What does a path vector router advertise that a distance vector router doesn't?",

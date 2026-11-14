@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: The Physical Layer and Media",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "type": "written",

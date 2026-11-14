@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Final Review: The Whole Course",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Put the OSI layers in order from the bottom (layer 1) up.",

@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Distance Vector",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which family of routing protocols has each router describe its own links to every router, so each can draw the whole map?",

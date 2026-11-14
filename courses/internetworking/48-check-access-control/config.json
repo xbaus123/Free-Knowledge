@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Access Control and MFA",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "What's the difference between authentication and authorization?",

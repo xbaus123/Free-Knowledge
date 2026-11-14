@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Supply Chain Resilience",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "A supply chain attack is...",

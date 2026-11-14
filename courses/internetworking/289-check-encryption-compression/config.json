@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Encryption, Compression, and Integrity",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Symmetric encryption uses...",

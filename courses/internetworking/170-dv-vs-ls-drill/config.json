@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Drill: Distance Vector vs Link State",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which uses more CPU?",

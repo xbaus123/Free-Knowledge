@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Systems Resilience",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "In Meadows' view, a system is made of...",

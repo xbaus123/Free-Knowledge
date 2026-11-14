@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: SMTP Reply Codes",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "A server replies with a code starting with 5. What does the sending MTA do?",

@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Drill: Wi-Fi Security",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "A café prints its WPA2-Personal password on the menu. Another customer records your handshake. What can they do?",

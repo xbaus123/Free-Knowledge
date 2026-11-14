@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Drill: Address Classes",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "What class is 10.104.216.118?",

@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Point-to-Point, Bus, and Ring",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "type": "written",

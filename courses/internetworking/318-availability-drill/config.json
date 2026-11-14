@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Drill: Nines and Chains",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "type": "written",

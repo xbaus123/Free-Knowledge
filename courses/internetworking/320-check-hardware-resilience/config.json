@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Hardware Resilience",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which is a hardware robustness measure?",

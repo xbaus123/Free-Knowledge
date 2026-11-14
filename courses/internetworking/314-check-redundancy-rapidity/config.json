@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Redundancy and Rapidity",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which is an implementation of redundancy?",

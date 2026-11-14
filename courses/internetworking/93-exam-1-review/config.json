@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Exam 1 Review",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Put the OSI layers in order from layer 1 up.",

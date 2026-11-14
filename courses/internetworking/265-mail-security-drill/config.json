@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Drill: Name the Fix",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Spam is being sent through your server to addresses all over the world, from IPs you've never heard of.",

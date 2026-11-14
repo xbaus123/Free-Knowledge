@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: The Network Layer",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which layer number is the network layer, and what does it call its unit of data?",

@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Drill: Follow the Message",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Put Alice's message's journey in order.",

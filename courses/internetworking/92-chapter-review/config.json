@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Chapter Review: The Data Link Layer",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "A packet goes from a laptop over WiFi to a home router, then over Ethernet to the ISP. What happens to it at the router?",

@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Drill: Build a VLSM Plan",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "type": "written",

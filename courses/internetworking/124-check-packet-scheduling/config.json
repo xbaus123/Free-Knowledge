@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Packet Scheduling",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Under priority scheduling, which packet is sent next?",

@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Drill: Which Server Gets the Mail?",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "`MX 10 mx1.shop.example.` and `MX 20 mx2.shop.example.` Both are up. Where does the mail go?",

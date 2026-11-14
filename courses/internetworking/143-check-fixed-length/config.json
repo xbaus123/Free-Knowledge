@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Equal-Size Subnets",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "type": "written",

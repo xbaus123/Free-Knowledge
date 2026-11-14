@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: The OSI Model",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "type": "written",

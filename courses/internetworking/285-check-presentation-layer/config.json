@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: The Presentation Layer",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which is **not** a presentation layer function?",

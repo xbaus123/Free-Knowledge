@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Star, Mesh, and Tree",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "In a star topology, what is the single point of failure?",

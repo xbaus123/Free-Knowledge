@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Output Port Queuing",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Where inside a router do packets most often get delayed and lost?",

@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Securing IoT",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Why are IoT devices hard to authenticate?",

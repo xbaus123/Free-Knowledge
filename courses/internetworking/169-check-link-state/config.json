@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Link State",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "What does a router flood in link state routing?",

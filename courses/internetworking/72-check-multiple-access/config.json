@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Multiple Access",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which of these is a point-to-point link?",

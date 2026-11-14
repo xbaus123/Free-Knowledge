@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: The Four Rs",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which is the best description of resilience?",

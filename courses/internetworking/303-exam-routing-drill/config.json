@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Drill: Routing and ASNs",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "RIP is which kind of routing protocol?",

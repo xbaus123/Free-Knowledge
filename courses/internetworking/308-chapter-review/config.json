@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Chapter Review: Upper Layers",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "type": "written",

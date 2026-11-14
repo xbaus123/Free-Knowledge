@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: ARPANET and TCP/IP",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Who funded ARPANET?",

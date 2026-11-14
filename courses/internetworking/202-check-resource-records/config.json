@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Resource Records",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which record type maps a name to an IPv4 address?",

@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: UDP and TCP",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which is connectionless?",

@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Inside a Router",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "A router reads a packet's destination address and pushes it out interface 2. Which job is that?",

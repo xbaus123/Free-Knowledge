@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Beyond Delivery",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Why can a mail server inspect messages so easily?",

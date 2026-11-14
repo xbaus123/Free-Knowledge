@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Planning the Data Link Layer",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "A new office is choosing between hubs and switches for its LAN. What should it pick, and why?",

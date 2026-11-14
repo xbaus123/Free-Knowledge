@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Securing BGP",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "What does origin validation check?",

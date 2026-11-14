@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Devices, Access, and Continuity",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which three kinds of things make up what's on the network?",

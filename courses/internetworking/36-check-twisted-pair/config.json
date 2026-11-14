@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Twisted Pair",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Why are the wires in a twisted-pair cable twisted?",

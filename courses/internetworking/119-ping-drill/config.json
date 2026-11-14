@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Drill: Reading Ping Output",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "A Mac prints: 64 bytes from 172.20.10.1: icmp_seq=0 ttl=64 time=2.925 ms. What does ttl=64 suggest about 172.20.10.1?",

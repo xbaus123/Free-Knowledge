@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: The Routing Algorithm",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "A packet's destination is on a network attached to one of the router's own interfaces. What does the router do?",

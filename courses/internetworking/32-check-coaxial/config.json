@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Coaxial Cable",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "From the center out, what are the four layers of a coaxial cable?",

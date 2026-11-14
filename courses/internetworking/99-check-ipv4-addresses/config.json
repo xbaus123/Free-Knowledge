@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: IPv4 Addresses",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "How many bits are in an IPv4 address?",

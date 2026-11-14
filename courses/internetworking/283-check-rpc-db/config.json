@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: RPC and Database Sessions",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "What does an RPC let a program do?",

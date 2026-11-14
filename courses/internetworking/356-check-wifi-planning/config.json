@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Usage and Channels",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which usage tier fits a few people browsing, emailing, and using social media?",

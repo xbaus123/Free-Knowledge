@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Chapter Review: Wireless and IoT",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which Wi-Fi band has longer range but is more crowded?",

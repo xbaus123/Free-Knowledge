@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Chapter Review: Subnetting in Practice",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which are the three reasons to subnet from this chapter?",

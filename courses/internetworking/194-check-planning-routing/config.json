@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Planning Your Router",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "A network has one router and one connection to its ISP. What routing setup fits best?",

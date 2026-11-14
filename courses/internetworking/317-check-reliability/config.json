@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Reliability and Availability",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Reliability is the probability that a system will perform stated requirements...",

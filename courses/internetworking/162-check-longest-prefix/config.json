@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Longest Prefix Matching",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "A destination matches both a /16 and a /24 in the table. Which route is used?",

@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Input Ports and Fabric",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Put an input port's steps in order.",

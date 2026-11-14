@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: The DNS Hierarchy",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "In `cs.marshall.edu.`, which label is the top-level domain?",

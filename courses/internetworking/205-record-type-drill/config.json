@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Drill: Which Record?",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "type": "written",

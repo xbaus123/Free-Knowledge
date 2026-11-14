@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Wireless and Radio Waves",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "What are the three types of wireless transmission?",

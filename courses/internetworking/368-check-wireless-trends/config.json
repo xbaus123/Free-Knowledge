@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Cognitive Radio and AI",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "type": "written",

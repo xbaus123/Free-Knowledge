@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Chapter Review: The Network Layer",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "What's the difference between forwarding and routing?",

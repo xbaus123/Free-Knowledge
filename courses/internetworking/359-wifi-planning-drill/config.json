@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Drill: Planning Wi-Fi",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "A small gaming café streams HD video on every screen. Which tier?",

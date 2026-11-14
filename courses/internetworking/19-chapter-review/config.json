@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Chapter Review: Intro to Networks",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Why did packet switching suit computer traffic better than the phone network's circuit switching?",

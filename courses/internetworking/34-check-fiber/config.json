@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Fiber-Optic Cable",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "How does fiber-optic cable carry data?",

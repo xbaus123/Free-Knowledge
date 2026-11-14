@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Drill: DNS, Mail, and the Upper Layers",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which is at the very top of the DNS hierarchy?",

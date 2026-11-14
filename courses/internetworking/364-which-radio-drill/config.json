@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Drill: Which Radio?",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Wireless earbuds for a phone.",

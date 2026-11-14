@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: The Lowest and Highest Subnets",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Why did the old rules skip the lowest subnet (subnet zero)?",

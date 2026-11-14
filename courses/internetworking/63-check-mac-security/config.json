@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: MAC Address Security",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "What is MAC spoofing?",

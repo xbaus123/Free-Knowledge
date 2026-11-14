@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Drill: Normal or Not?",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Idle, 3% CPU.",

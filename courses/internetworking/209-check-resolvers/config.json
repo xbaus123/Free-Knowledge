@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Check: Clients and Resolvers",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "Which two pieces of information does DNS client software need?",

@@ -2,6 +2,7 @@
   "type": "quiz",
   "title": "Drill: Which R?",
   "immediate_feedback": true,
+  "save_progress": true,
   "questions": [
     {
       "prompt": "A ransomware email goes around the office, but staff recognize it from last month's training and nobody clicks.",
