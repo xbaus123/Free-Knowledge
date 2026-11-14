@@ -1,0 +1,43 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Next-hop routing is the network layer's job."
+    },
+    {
+      "accepted_answers": [
+        "control",
+        "dialog control",
+        "dialogue control"
+      ],
+      "explanation": "Dialogue control is the next reading."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "One session can use many connections, and one connection can carry many sessions."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The old connection is long gone, but the server still remembers your session."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A match is set up, maintained while you play, and torn down when you leave."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's why termination is a job of its own, not just an afterthought."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Each user's work borrows a connection, then hands it back for someone else."
+    },
+    {
+      "accepted_answers": [
+        "call",
+        "calls"
+      ],
+      "explanation": "Remote procedure call: run a function on another machine as if it were local."
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "type": "quiz",
+  "title": "Drill: Which Layer, Which Job?",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "A browser converts a page from UTF-8 bytes into characters on the screen.",
+      "options": [
+        "Encryption",
+        "Data translation",
+        "Compression",
+        "Checkpointing"
+      ]
+    },
+    {
+      "prompt": "A server gzips a 200 KB page down to 40 KB.",
+      "options": [
+        "Integrity checks",
+        "Synchronization",
+        "Compression",
+        "Dialogue control"
+      ]
+    },
+    {
+      "prompt": "A download resumes from 90% after the Wi-Fi drops.",
+      "options": [
+        "Checkpointing and recovery",
+        "Translation",
+        "Encryption",
+        "Compression"
+      ]
+    },
+    {
+      "prompt": "A banking app makes sure nobody on the café Wi-Fi can read your balance.",
+      "options": [
+        "Synchronization",
+        "Encryption",
+        "Simplex",
+        "Compression"
+      ]
+    },
+    {
+      "prompt": "A video call holds back the audio so it lines up with the delayed video.",
+      "options": [
+        "Compression",
+        "Synchronization",
+        "Integrity checks",
+        "Termination"
+      ]
+    },
+    {
+      "prompt": "You check a downloaded installer against the SHA-256 hash on the vendor's site.",
+      "options": [
+        "Integrity checks",
+        "Translation",
+        "Checkpointing",
+        "Dialogue control"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Encryption and integrity checks belong to which OSI layer? (one word)"
+    },
+    {
+      "type": "written",
+      "prompt": "And which layer handles synchronization and checkpointing? (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Sending a photo as a JPEG means the receiver gets back exactly the original pixels."
+    }
+  ]
+}

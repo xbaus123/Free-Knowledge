@@ -1,0 +1,47 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "UTF-8 encodes all of Unicode."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "UTF-8 was designed that way, which made switching easy."
+    },
+    {
+      "accepted_answers": [
+        "128"
+      ],
+      "explanation": "128, numbered 0 to 127: seven bits."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "It's a translation problem: the bytes are fine, the interpretation is wrong."
+    },
+    {
+      "accepted_answers": [
+        "network"
+      ],
+      "explanation": "Network byte order."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Serialization, or marshalling."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "JSON and XML are text formats."
+    },
+    {
+      "accepted_answers": [
+        "4",
+        "four"
+      ],
+      "explanation": "3 bytes in, 4 characters out, about a third bigger."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It's an encoding, not encryption. Anyone can decode it."
+    }
+  ]
+}

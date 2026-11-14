@@ -1,0 +1,121 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "session",
+        "session layer",
+        "the session layer",
+        "5",
+        "layer 5"
+      ],
+      "explanation": "Layer 5."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "All People Seem To Need Data Processing: application to physical."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Like a walkie-talkie."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Xmit and rcv."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Synchronization."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Checkpointing and recovery."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Establish, communicate, terminate."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "SIP sets the session up. RTP carries the media."
+    },
+    {
+      "accepted_answers": [
+        "marshalling",
+        "marshaling",
+        "serialization",
+        "serialisation"
+      ],
+      "explanation": "Marshalling, or serialization."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "That's the session layer."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Compress, then encrypt."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It's an encoding anyone can reverse."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "gzip gives back every byte."
+    },
+    {
+      "accepted_answers": [
+        "443",
+        "port 443"
+      ],
+      "explanation": "443."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "PUT replaces, PATCH modifies part."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "HEAD."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "CONNECT opens a tunnel through the proxy."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Sending either twice has the same effect as once."
+    },
+    {
+      "accepted_answers": [
+        "server error",
+        "5xx",
+        "server"
+      ],
+      "explanation": "5xx: server error."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "401 Unauthorized. 403 means you're logged in but not allowed."
+    },
+    {
+      "accepted_answers": [
+        "cookie",
+        "cookie:"
+      ],
+      "explanation": "Cookie. The server set it with Set-Cookie."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "HttpOnly."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Each request stands alone. The cookie ties them into one session."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "What you don't store can't be stolen."
+    }
+  ]
+}

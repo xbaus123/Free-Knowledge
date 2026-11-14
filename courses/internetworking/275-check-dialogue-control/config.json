@@ -1,0 +1,59 @@
+{
+  "type": "quiz",
+  "title": "Check: Dialogue Control",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Communication in only one direction is called...",
+      "options": [
+        "Half duplex",
+        "Full duplex",
+        "Simplex",
+        "Multiplex"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "In half duplex, both sides can send, but not at the same time."
+    },
+    {
+      "prompt": "Why does simplex give **no transmission guarantee**?",
+      "options": [
+        "It always uses UDP",
+        "The receiver has no way to send an acknowledgment back",
+        "It's encrypted",
+        "It uses two paths"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Full duplex needs how many paths per device? (number)"
+    },
+    {
+      "prompt": "Which mode is a normal phone call?",
+      "options": [
+        "Simplex",
+        "Half duplex",
+        "Full duplex",
+        "None of these"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Simplex is the cheapest mode."
+    },
+    {
+      "prompt": "Two devices on a half-duplex link transmit at the same instant. What happens?",
+      "options": [
+        "Both messages arrive",
+        "A collision",
+        "The link becomes full duplex",
+        "The session ends cleanly"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A cable has separate wire pairs for transmit and receive, so both ends can send at once. Which mode? (two words)"
+    }
+  ]
+}

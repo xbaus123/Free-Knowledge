@@ -1,0 +1,59 @@
+{
+  "type": "quiz",
+  "title": "Check: The Session Layer",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Which of these is **not** a session layer job?",
+      "options": [
+        "Establishing a conversation",
+        "Choosing the next-hop router",
+        "Terminating a conversation",
+        "Deciding who talks when"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Deciding which side may send, and when, is called dialogue ____. (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "A session and a TCP connection are always the same thing."
+    },
+    {
+      "prompt": "You log in to a website, close the tab, and open the site again. You're still logged in. What survived?",
+      "options": [
+        "The TCP connection",
+        "The IP route",
+        "The ARP cache entry",
+        "The session"
+      ]
+    },
+    {
+      "prompt": "Which is an example of a session?",
+      "options": [
+        "One ARP request",
+        "A multi-player game match",
+        "A single Ethernet frame",
+        "One DNS lookup over UDP"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Ending a session cleanly lets both sides free the resources they were holding for it."
+    },
+    {
+      "prompt": "A web server keeps a pool of 10 database connections shared by hundreds of users. That's an example of...",
+      "options": [
+        "One session using many connections",
+        "One connection carrying many sessions, one after another",
+        "Simplex communication",
+        "Checkpointing"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "RPC stands for remote procedure ____. (one word)"
+    }
+  ]
+}

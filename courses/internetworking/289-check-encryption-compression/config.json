@@ -1,0 +1,59 @@
+{
+  "type": "quiz",
+  "title": "Check: Encryption, Compression, and Integrity",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Symmetric encryption uses...",
+      "options": [
+        "A public key and a private key",
+        "One shared secret key",
+        "No key",
+        "A hash"
+      ]
+    },
+    {
+      "prompt": "TLS uses asymmetric cryptography for what?",
+      "options": [
+        "Encrypting every byte of the page",
+        "Choosing a port",
+        "Compressing the data",
+        "Agreeing on a symmetric key at the start"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Lossless compression lets you get the original data back exactly."
+    },
+    {
+      "prompt": "Which is lossy?",
+      "options": [
+        "gzip",
+        "PNG",
+        "ZIP",
+        "JPEG"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A browser lists the compression it accepts in which request header? (header name)"
+    },
+    {
+      "prompt": "You change one character of a file. What happens to its SHA-256 hash?",
+      "options": [
+        "It changes completely",
+        "One character of the hash changes",
+        "Nothing",
+        "It gets longer"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A plain hash stops an attacker from changing a message undetected."
+    },
+    {
+      "type": "written",
+      "prompt": "A hash that mixes in a secret key is called a ____. (three letters)"
+    }
+  ]
+}

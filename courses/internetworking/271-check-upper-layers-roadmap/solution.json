@@ -1,0 +1,44 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Layer 5, the session layer, sits on layer 4, transport."
+    },
+    {
+      "accepted_answers": [
+        "6",
+        "layer 6",
+        "six"
+      ],
+      "explanation": "Application is 7, presentation 6, session 5."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "All (application), People (presentation), Seem (session), To (transport)."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "TCP/IP folds OSI layers 5, 6, and 7 into one application layer."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Presentation is about how data is represented: its format, encryption, and compression."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Establishing and terminating conversations is the session layer's core job."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A TLS library, for example, does presentation-layer work for a web browser."
+    },
+    {
+      "accepted_answers": [
+        "transport",
+        "the transport layer",
+        "transport layer"
+      ],
+      "explanation": "Physical, Data link, Network, Transport, Session, Presentation, Application."
+    }
+  ]
+}

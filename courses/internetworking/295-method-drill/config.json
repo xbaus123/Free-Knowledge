@@ -1,0 +1,82 @@
+{
+  "type": "quiz",
+  "title": "Drill: Pick the Method",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Load the home page of a news site.",
+      "options": [
+        "POST",
+        "OPTIONS",
+        "PUT",
+        "GET"
+      ]
+    },
+    {
+      "prompt": "Post a new comment under an article.",
+      "options": [
+        "GET",
+        "POST",
+        "PATCH",
+        "HEAD"
+      ]
+    },
+    {
+      "prompt": "Upload `report.pdf` to `/files/report.pdf`, replacing the old copy.",
+      "options": [
+        "POST",
+        "PATCH",
+        "PUT",
+        "CONNECT"
+      ]
+    },
+    {
+      "prompt": "Change only the phone number on `/users/42`.",
+      "options": [
+        "PUT",
+        "GET",
+        "DELETE",
+        "PATCH"
+      ]
+    },
+    {
+      "prompt": "Remove the photo at `/photos/9001`.",
+      "options": [
+        "PATCH",
+        "DELETE",
+        "TRACE",
+        "POST"
+      ]
+    },
+    {
+      "prompt": "A cache wants to know whether a big video's headers say it changed, without downloading it.",
+      "options": [
+        "HEAD",
+        "GET",
+        "PUT",
+        "OPTIONS"
+      ]
+    },
+    {
+      "prompt": "A browser on a corporate network needs to reach `https://bank.example` through the company proxy.",
+      "options": [
+        "GET",
+        "CONNECT",
+        "POST",
+        "TRACE"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A web app asks the API which methods `/orders` allows before sending one. Which method? (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "It's safe for a browser to automatically retry a GET that timed out."
+    },
+    {
+      "type": "true_false",
+      "prompt": "It's safe for a browser to automatically retry a POST that timed out."
+    }
+  ]
+}

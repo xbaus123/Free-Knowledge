@@ -1,0 +1,77 @@
+{
+  "type": "quiz",
+  "title": "Check: Status Codes and Headers",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "What does a 2xx status code mean?",
+      "options": [
+        "Redirection",
+        "Success",
+        "Client error",
+        "Server error"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the status code for Not Found? (number)"
+    },
+    {
+      "prompt": "Which class means the **server** failed?",
+      "options": [
+        "5xx",
+        "4xx",
+        "3xx",
+        "1xx"
+      ]
+    },
+    {
+      "prompt": "A user who isn't logged in requests a private page. Which code fits best?",
+      "options": [
+        "401 Unauthorized",
+        "403 Forbidden",
+        "404 Not Found",
+        "500 Internal Server Error"
+      ]
+    },
+    {
+      "prompt": "A logged-in student tries to open the grade-editing page meant for staff. Which code fits?",
+      "options": [
+        "401 Unauthorized",
+        "403 Forbidden",
+        "301 Moved Permanently",
+        "502 Bad Gateway"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A 304 Not Modified response includes the full page body."
+    },
+    {
+      "type": "written",
+      "prompt": "Which header tells the client where to go with a 301 or 302? (header name)"
+    },
+    {
+      "prompt": "A load balancer can't get a valid answer from the web server behind it. What does the browser see?",
+      "options": [
+        "404",
+        "502",
+        "201",
+        "100"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "In HTTP, as in SMTP, a 4xx code means \"temporary, try again later\"."
+    },
+    {
+      "prompt": "Which header says the body is JSON?",
+      "options": [
+        "Accept-Encoding",
+        "Host",
+        "ETag",
+        "Content-Type: application/json"
+      ]
+    }
+  ]
+}

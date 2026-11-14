@@ -1,0 +1,77 @@
+{
+  "type": "quiz",
+  "title": "Check: Plan Your Site",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "You're hosting the project site in the cloud. Which questions do you still have to answer?",
+      "options": [
+        "None, the provider handles them",
+        "Only the page layout",
+        "Only backups",
+        "All of them: requests, transactions, storage, sensitive data, tracking, and backups"
+      ]
+    },
+    {
+      "prompt": "Where should the database server live?",
+      "options": [
+        "In the DMZ, reachable from the Internet",
+        "On the load balancer",
+        "On an internal subnet, reachable only from the app servers",
+        "On each user's laptop"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Passwords should be stored encrypted so the site can decrypt and check them."
+    },
+    {
+      "prompt": "What's the safest way to handle customers' card numbers?",
+      "options": [
+        "Store them in the database",
+        "Store them in a cookie",
+        "Email them to the shop owner",
+        "Use a payment processor and keep only a token"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A customer clicks Buy twice. Which HTTP method makes this a risk, because it isn't idempotent? (one word)"
+    },
+    {
+      "prompt": "Which method should almost every public web server **disable**?",
+      "options": [
+        "TRACE",
+        "HEAD",
+        "GET",
+        "POST"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "In the 3-2-1 backup rule, how many copies should be off-site? (number)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "A backup isn't proven until you've tested restoring it."
+    },
+    {
+      "prompt": "Which keeps an order from being half-saved if the server crashes mid-way?",
+      "options": [
+        "A 301 redirect",
+        "A database transaction with COMMIT and ROLLBACK",
+        "A bigger load balancer",
+        "Base64"
+      ]
+    },
+    {
+      "prompt": "In the worked example, what happens to a request on port 80?",
+      "options": [
+        "It's served normally",
+        "It gets a 301 redirect to HTTPS",
+        "It's dropped silently",
+        "It goes to the database"
+      ]
+    }
+  ]
+}

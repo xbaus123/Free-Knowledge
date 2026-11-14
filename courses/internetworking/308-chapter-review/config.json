@@ -1,0 +1,172 @@
+{
+  "type": "quiz",
+  "title": "Chapter Review: Upper Layers",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "Which OSI layer establishes and terminates conversations? (one word)"
+    },
+    {
+      "prompt": "Which mnemonic lists the layers from 7 down to 1?",
+      "options": [
+        "Please Do Not Throw Sausage Pizza Away",
+        "Every Good Boy Does Fine",
+        "All People Seem To Need Data Processing",
+        "DORA"
+      ]
+    },
+    {
+      "prompt": "Both directions, but only one at a time, is...",
+      "options": [
+        "Simplex",
+        "Half duplex",
+        "Full duplex"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Full duplex needs two paths per device: one to transmit and one to receive."
+    },
+    {
+      "prompt": "What lets a receiver line up lagging audio and video streams?",
+      "options": [
+        "Checkpoints",
+        "Timestamps in the data flow",
+        "Cookies",
+        "MX records"
+      ]
+    },
+    {
+      "prompt": "What are re-entry points used after a session is interrupted?",
+      "options": [
+        "Timestamps",
+        "ETags",
+        "Status codes",
+        "Checkpoints"
+      ]
+    },
+    {
+      "prompt": "Which is the right order for a SIP call?",
+      "options": [
+        "INVITE, register, BYE, media",
+        "Register, INVITE, 200 OK, ACK, media, BYE",
+        "BYE, INVITE, media",
+        "Media, register, INVITE"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "SIP carries the call's audio."
+    },
+    {
+      "type": "written",
+      "prompt": "Packing an RPC's arguments into a message is called ____. (one word)"
+    },
+    {
+      "prompt": "Which is **not** a presentation-layer job?",
+      "options": [
+        "Translation",
+        "Encryption",
+        "Compression",
+        "Terminating a session"
+      ]
+    },
+    {
+      "prompt": "Which should happen first when sending?",
+      "options": [
+        "Encrypt",
+        "Either",
+        "Compress",
+        "Neither"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Base64 is a form of encryption."
+    },
+    {
+      "prompt": "Which is lossless?",
+      "options": [
+        "JPEG",
+        "MP3",
+        "gzip",
+        "H.264"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "HTTPS uses which port? (number)"
+    },
+    {
+      "prompt": "Which HTTP method uploads data, replacing the resource completely?",
+      "options": [
+        "POST",
+        "PUT",
+        "PATCH",
+        "HEAD"
+      ]
+    },
+    {
+      "prompt": "Which method returns metadata only and is used for caching?",
+      "options": [
+        "HEAD",
+        "GET",
+        "OPTIONS",
+        "CONNECT"
+      ]
+    },
+    {
+      "prompt": "Which method is used with a proxy?",
+      "options": [
+        "TRACE",
+        "OPTIONS",
+        "PATCH",
+        "CONNECT"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "GET and DELETE are both idempotent."
+    },
+    {
+      "type": "written",
+      "prompt": "What's the status code class for 503? (two words)"
+    },
+    {
+      "prompt": "Which code means \"log in first\"?",
+      "options": [
+        "404",
+        "403",
+        "401",
+        "302"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which request header carries the session ID back to the server? (header name)"
+    },
+    {
+      "prompt": "Which cookie attribute keeps page scripts from reading the cookie?",
+      "options": [
+        "Secure",
+        "HttpOnly",
+        "SameSite",
+        "Expires"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "HTTP is stateless, so logins need something like cookies to work."
+    },
+    {
+      "prompt": "For your project, where should card numbers be stored?",
+      "options": [
+        "Nowhere: a payment processor holds them and you keep a token",
+        "In a cookie",
+        "In the server logs",
+        "In the database"
+      ]
+    }
+  ]
+}

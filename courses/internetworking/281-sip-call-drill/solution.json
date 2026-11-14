@@ -1,0 +1,45 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Establish (register, invite, answer, ack), communicate (media), terminate (BYE)."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "200 OK means the call is answered."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The three-way handshake of SIP: INVITE, 200 OK, ACK."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "SIP sets the session up. RTP carries the media."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Those are the call's specifications."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "A 4xx reply: the request can't be completed."
+    },
+    {
+      "accepted_answers": [
+        "bye"
+      ],
+      "explanation": "BYE terminates the session."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Ending the session so both sides can free resources."
+    },
+    {
+      "accepted_answers": [
+        "5061",
+        "port 5061"
+      ],
+      "explanation": "5061 is SIP over TLS."
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Both sides use the same key, which is why it's fast but needs a safe way to share the key."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Then fast symmetric encryption takes over."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's why it's used for text, code, and files."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "JPEG throws away detail the eye won't miss."
+    },
+    {
+      "accepted_answers": [
+        "accept-encoding",
+        "accept-encoding:"
+      ],
+      "explanation": "Accept-Encoding: gzip, br. The server answers with Content-Encoding."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A tiny change gives a completely different fingerprint."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The attacker can recompute the hash. A MAC needs a secret key, so it does stop them."
+    },
+    {
+      "accepted_answers": [
+        "mac",
+        "hmac",
+        "message authentication code"
+      ],
+      "explanation": "Message authentication code, like HMAC-SHA256."
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "RIP tells its neighbors how far it is from everything."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Each router builds the whole map and runs Dijkstra."
+    },
+    {
+      "accepted_answers": [
+        "15"
+      ],
+      "explanation": "15. A metric of 16 means unreachable."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "BGP is the Internet's inter-domain protocol."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The AS path lets routers spot loops and apply policy."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Between ASes, business relationships decide the routes."
+    },
+    {
+      "accepted_answers": [
+        "as15169",
+        "15169",
+        "as 15169"
+      ],
+      "explanation": "AS15169."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "OriginAS."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Longest prefix match: /16 beats /8 and /0."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Only the default route matches."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Intra-domain choices are private. The outside world only sees BGP."
+    }
+  ]
+}

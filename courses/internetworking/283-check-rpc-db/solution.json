@@ -1,0 +1,48 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Remote procedure call: it looks like a local call."
+    },
+    {
+      "accepted_answers": [
+        "marshalling",
+        "marshaling",
+        "serialization",
+        "serialisation"
+      ],
+      "explanation": "Marshalling, or serialization."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It's about how the data is represented on the wire."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The client stub packs, the server stub unpacks and calls."
+    },
+    {
+      "accepted_answers": [
+        "135",
+        "port 135"
+      ],
+      "explanation": "Port 135, the RPC endpoint mapper."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "COMMIT keeps them all, ROLLBACK undoes them all."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Committed work is the checkpoint. Uncommitted changes are rolled back."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Opening a session takes a TCP handshake, maybe TLS, and a login."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Idle sessions time out so they don't hold resources forever."
+    }
+  ]
+}

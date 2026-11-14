@@ -1,0 +1,68 @@
+{
+  "type": "quiz",
+  "title": "Check: RPC and Database Sessions",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "What does an RPC let a program do?",
+      "options": [
+        "Route packets",
+        "Call a function that runs on another machine",
+        "Resolve a domain name",
+        "Send mail"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Packing a function's arguments into a message is called ____. (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Marshalling arguments into a standard format is presentation-layer work."
+    },
+    {
+      "prompt": "Which part of an RPC system unpacks the request and calls the real function?",
+      "options": [
+        "The client stub",
+        "The registrar",
+        "The DNS resolver",
+        "The server stub"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Microsoft RPC listens on which TCP port? (number)"
+    },
+    {
+      "prompt": "Which SQL command makes a transaction's changes permanent?",
+      "options": [
+        "BEGIN",
+        "COMMIT",
+        "ROLLBACK",
+        "SELECT"
+      ]
+    },
+    {
+      "prompt": "The database crashes halfway through a transaction that hadn't committed. What does it recover to?",
+      "options": [
+        "Halfway through the transaction",
+        "The last committed state",
+        "An empty database",
+        "The state when the server was installed"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A connection pool reuses open database sessions so the app doesn't pay the cost of logging in each time."
+    },
+    {
+      "prompt": "A database session sits idle for an hour and the server closes it. What's that called?",
+      "options": [
+        "A rollback",
+        "A checkpoint",
+        "A timeout",
+        "A collision"
+      ]
+    }
+  ]
+}

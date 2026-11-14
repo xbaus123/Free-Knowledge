@@ -1,0 +1,82 @@
+{
+  "type": "quiz",
+  "title": "Drill: Read the Response",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "A POST creates a new user, and the server says where it lives.",
+      "options": [
+        "200 OK",
+        "302 Found",
+        "204 No Content",
+        "201 Created"
+      ]
+    },
+    {
+      "prompt": "A DELETE succeeds and there's nothing to send back.",
+      "options": [
+        "301 Moved Permanently",
+        "404 Not Found",
+        "204 No Content",
+        "500 Internal Server Error"
+      ]
+    },
+    {
+      "prompt": "The site moved from `http://` to `https://` for good.",
+      "options": [
+        "302 Found",
+        "403 Forbidden",
+        "304 Not Modified",
+        "301 Moved Permanently"
+      ]
+    },
+    {
+      "prompt": "The client sent `DELETE /` to a server that only allows GET and HEAD there.",
+      "options": [
+        "405 Method Not Allowed",
+        "400 Bad Request",
+        "404 Not Found",
+        "503 Service Unavailable"
+      ]
+    },
+    {
+      "prompt": "The server is down for planned maintenance.",
+      "options": [
+        "500 Internal Server Error",
+        "502 Bad Gateway",
+        "503 Service Unavailable",
+        "401 Unauthorized"
+      ]
+    },
+    {
+      "prompt": "The application crashed with a bug while building the page.",
+      "options": [
+        "304 Not Modified",
+        "400 Bad Request",
+        "500 Internal Server Error",
+        "201 Created"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A browser sends `If-None-Match` with the ETag of its cached copy, and the page hasn't changed. Which code comes back? (number)"
+    },
+    {
+      "prompt": "The browser gets `HTTP/1.1 302 Found` with `Location: /login`. What does it do?",
+      "options": [
+        "Shows an error",
+        "Requests /login",
+        "Resends the same request forever",
+        "Closes the TCP connection and gives up"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Retrying exactly the same request after a 400 Bad Request will usually work."
+    },
+    {
+      "type": "written",
+      "prompt": "What's the class of status code 418? (one word: success, redirection, client, or server)"
+    }
+  ]
+}

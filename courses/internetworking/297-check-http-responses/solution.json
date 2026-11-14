@@ -1,0 +1,49 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "200 OK, 201 Created, 204 No Content."
+    },
+    {
+      "accepted_answers": [
+        "404"
+      ],
+      "explanation": "404: the server has nothing at that target."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "5xx: the request was fine, the server wasn't."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "401 means \"who are you?\": log in first."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "403: the server knows who you are, and you're not allowed."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It has no body. It tells the cache its copy is still good."
+    },
+    {
+      "accepted_answers": [
+        "location",
+        "location:"
+      ],
+      "explanation": "Location: the new address."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "502 Bad Gateway."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "In HTTP, 4xx means the client's request was wrong. In SMTP, 4xx is temporary."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Content-Type describes the body."
+    }
+  ]
+}

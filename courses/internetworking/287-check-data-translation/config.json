@@ -1,0 +1,63 @@
+{
+  "type": "quiz",
+  "title": "Check: Data Translation",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Which encoding can represent every language, plus emoji?",
+      "options": [
+        "ASCII",
+        "EBCDIC",
+        "Base64",
+        "UTF-8"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Plain ASCII text is also valid UTF-8."
+    },
+    {
+      "type": "written",
+      "prompt": "How many characters does ASCII define? (number)"
+    },
+    {
+      "prompt": "A page shows `cafÃ©` instead of `café`. What went wrong?",
+      "options": [
+        "A routing loop",
+        "The page was compressed",
+        "The browser decoded the text with the wrong character set",
+        "The TCP checksum failed"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Big-endian, the byte order Internet protocols use, is also called ____ byte order. (one word)"
+    },
+    {
+      "prompt": "Turning a record (like a user with a name and orders) into bytes to send is called...",
+      "options": [
+        "Serialization",
+        "Compression",
+        "Encryption",
+        "Simplex"
+      ]
+    },
+    {
+      "prompt": "Which serialization format is binary and used by gRPC?",
+      "options": [
+        "JSON",
+        "XML",
+        "Protocol Buffers",
+        "ASCII"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Base64 turns every 3 bytes into how many characters? (number)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Base64 hides data from anyone who intercepts it."
+    }
+  ]
+}

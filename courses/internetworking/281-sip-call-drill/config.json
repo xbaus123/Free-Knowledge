@@ -1,0 +1,73 @@
+{
+  "type": "quiz",
+  "title": "Drill: Follow the Call",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Put the call in order.",
+      "options": [
+        "INVITE, register, media, ACK, BYE",
+        "Register, BYE, INVITE, media, 200 OK",
+        "Register, INVITE, 180 Ringing, 200 OK, ACK, media, BYE",
+        "Media, INVITE, register, ACK, BYE"
+      ]
+    },
+    {
+      "prompt": "Bob picks up. What does his phone send?",
+      "options": [
+        "ACK",
+        "BYE",
+        "200 OK",
+        "INVITE"
+      ]
+    },
+    {
+      "prompt": "Alice's app gets the 200 OK. What does it send to confirm?",
+      "options": [
+        "100 Trying",
+        "REGISTER",
+        "BYE",
+        "ACK"
+      ]
+    },
+    {
+      "prompt": "During the call, which protocol carries the voice?",
+      "options": [
+        "RTP",
+        "SIP",
+        "SMTP",
+        "DNS"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "The INVITE tells Bob's phone which codecs and ports Alice wants to use."
+    },
+    {
+      "prompt": "Bob is already on another call and can't take this one. Which reply fits?",
+      "options": [
+        "200 OK",
+        "180 Ringing",
+        "486 Busy Here",
+        "100 Trying"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Bob hangs up. Which SIP message does his phone send? (one word)"
+    },
+    {
+      "prompt": "Which OSI session-layer job does the BYE perform?",
+      "options": [
+        "Establishing",
+        "Synchronizing",
+        "Dialogue control",
+        "Terminating"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "The call's media is encrypted with SIP over TLS. Which port does SIP use now? (number)"
+    }
+  ]
+}

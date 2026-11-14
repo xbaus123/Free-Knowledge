@@ -1,0 +1,86 @@
+{
+  "type": "quiz",
+  "title": "Drill: Routing and ASNs",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "RIP is which kind of routing protocol?",
+      "options": [
+        "Link state",
+        "Path vector",
+        "Distance vector",
+        "Static"
+      ]
+    },
+    {
+      "prompt": "OSPF is which kind?",
+      "options": [
+        "Distance vector",
+        "Link state",
+        "Path vector",
+        "Inter-domain"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the largest hop count RIP allows for a reachable route? (number)"
+    },
+    {
+      "prompt": "Which protocol routes **between** autonomous systems?",
+      "options": [
+        "RIP",
+        "BGP",
+        "IS-IS",
+        "OSPF"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "BGP is a path vector protocol: a route carries the list of ASes it passes through."
+    },
+    {
+      "prompt": "Which goal matters most for **inter**-domain routing?",
+      "options": [
+        "Policy",
+        "Fastest path",
+        "Fewest hops",
+        "Lowest MTU"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "An IP to ASN lookup says 8.8.8.8 belongs to Google. What's Google's ASN? (like AS123)"
+    },
+    {
+      "prompt": "In `whois` output for an IP address, which field gives the AS that originates it?",
+      "options": [
+        "NetRange",
+        "Name Server",
+        "Registrar",
+        "OriginAS"
+      ]
+    },
+    {
+      "prompt": "Routes for `10.0.0.0/8`, `10.1.0.0/16`, and `0.0.0.0/0`. A packet to `10.1.2.3` takes which?",
+      "options": [
+        "10.0.0.0/8",
+        "It's dropped",
+        "0.0.0.0/0",
+        "10.1.0.0/16"
+      ]
+    },
+    {
+      "prompt": "Same routes. A packet to `172.16.5.5`?",
+      "options": [
+        "10.0.0.0/8",
+        "0.0.0.0/0",
+        "10.1.0.0/16",
+        "It's dropped"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A university can switch from RIP to OSPF without anyone outside its AS noticing."
+    }
+  ]
+}

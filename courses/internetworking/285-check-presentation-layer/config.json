@@ -1,0 +1,59 @@
+{
+  "type": "quiz",
+  "title": "Check: The Presentation Layer",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Which is **not** a presentation layer function?",
+      "options": [
+        "Encryption",
+        "Compression",
+        "Setting up a phone call",
+        "Data translation"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "The presentation layer is often nicknamed the network's ____. (one word)"
+    },
+    {
+      "prompt": "In ASCII, the letter `A` is byte 65. In EBCDIC it's 193. Which job deals with this?",
+      "options": [
+        "Compression",
+        "Integrity checks",
+        "Data translation",
+        "Dialogue control"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Converting data to a common format lets systems with different internal formats work together."
+    },
+    {
+      "prompt": "Which comes first when sending?",
+      "options": [
+        "Encrypt, then compress",
+        "Compress, then encrypt",
+        "It doesn't matter",
+        "Only one can be used"
+      ]
+    },
+    {
+      "prompt": "Which job answers \"did it arrive unchanged?\"",
+      "options": [
+        "Integrity checks",
+        "Translation",
+        "Compression",
+        "Encryption"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Storing a number's most significant byte first is called ____-endian. (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "The receiver undoes the presentation jobs in reverse order: decrypt, then decompress."
+    }
+  ]
+}

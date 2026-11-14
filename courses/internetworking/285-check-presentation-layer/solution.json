@@ -1,0 +1,43 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Setting up a call is the session layer's job, like SIP."
+    },
+    {
+      "accepted_answers": [
+        "translator",
+        "translater"
+      ],
+      "explanation": "It translates between formats so both sides understand."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Translating between formats."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's interoperability."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Encrypted data looks random and won't compress, so compress first."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A hash or MAC lets the receiver detect any change."
+    },
+    {
+      "accepted_answers": [
+        "big",
+        "big-endian",
+        "big endian"
+      ],
+      "explanation": "Big-endian. Little-endian stores it last."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Last thing done on the way out is the first thing undone on the way in."
+    }
+  ]
+}

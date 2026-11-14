@@ -1,0 +1,77 @@
+{
+  "type": "quiz",
+  "title": "Check: HTTPS, Cookies, and Sessions",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "HTTPS is HTTP carried inside...",
+      "options": [
+        "TLS",
+        "SIP",
+        "SMTP",
+        "Base64"
+      ]
+    },
+    {
+      "prompt": "What does the server's certificate prove?",
+      "options": [
+        "That the server really owns that name, vouched for by a trusted CA",
+        "That the page is free of malware",
+        "That the connection is fast",
+        "The user's identity"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Someone watching café Wi-Fi can read the URL path and cookies of an HTTPS request."
+    },
+    {
+      "type": "written",
+      "prompt": "Which response header gives the browser a cookie? (header name)"
+    },
+    {
+      "prompt": "How does a stateless protocol remember that you're logged in?",
+      "options": [
+        "The TCP connection stays open forever",
+        "The server remembers your IP address",
+        "The browser sends a session ID cookie with every request",
+        "HTTP/1.1 keeps state by itself"
+      ]
+    },
+    {
+      "prompt": "Which cookie attribute stops JavaScript on the page from reading the cookie?",
+      "options": [
+        "Secure",
+        "SameSite",
+        "HttpOnly",
+        "Max-Age"
+      ]
+    },
+    {
+      "prompt": "Which attribute makes sure the cookie is only sent over HTTPS?",
+      "options": [
+        "Secure",
+        "HttpOnly",
+        "Expires",
+        "Path"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Anyone who steals your session ID can act as you until the session ends."
+    },
+    {
+      "type": "written",
+      "prompt": "HTTP/3 runs over QUIC, which uses which transport protocol? (three letters)"
+    },
+    {
+      "prompt": "Which OSI layer's job does the session cookie do for HTTP?",
+      "options": [
+        "Presentation",
+        "Network",
+        "Session",
+        "Physical"
+      ]
+    }
+  ]
+}

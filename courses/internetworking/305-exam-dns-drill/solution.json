@@ -1,0 +1,66 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "The root zone, `.`."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Your stub resolver asks it, and it asks everyone else."
+    },
+    {
+      "accepted_answers": [
+        "dig mx marshall.edu",
+        "dig marshall.edu mx",
+        "dig -t mx marshall.edu",
+        "dig marshall.edu -t mx"
+      ],
+      "explanation": "dig mx marshall.edu."
+    },
+    {
+      "accepted_answers": [
+        "-x"
+      ],
+      "explanation": "dig -x 52.101.42.14 looks up the PTR record."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "NXDOMAIN: no such name. A name with no record of that type gives NOERROR with ANSWER: 0."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "aa: authoritative answer. Without it, the answer came from a cache."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "dig comes with BIND and gives more information."
+    },
+    {
+      "accepted_answers": [
+        "set type=mx",
+        "set q=mx",
+        "set querytype=mx",
+        "set type = mx"
+      ],
+      "explanation": "set type=mx."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "25 between MTAs. 587 is for clients submitting mail."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Both ways, taking turns."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "DELETE."
+    },
+    {
+      "accepted_answers": [
+        "invite"
+      ],
+      "explanation": "INVITE."
+    }
+  ]
+}

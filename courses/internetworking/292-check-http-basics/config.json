@@ -1,0 +1,68 @@
+{
+  "type": "quiz",
+  "title": "Check: HTTP Basics",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "What does HTTP stand for? (four words)"
+    },
+    {
+      "type": "written",
+      "prompt": "Plain HTTP uses which TCP port? (number)"
+    },
+    {
+      "type": "written",
+      "prompt": "HTTPS uses which TCP port? (number)"
+    },
+    {
+      "prompt": "In `GET /menu.html HTTP/1.1`, what is `/menu.html`?",
+      "options": [
+        "The method",
+        "The target",
+        "The version",
+        "A header"
+      ]
+    },
+    {
+      "prompt": "Which header is required in every HTTP/1.1 request?",
+      "options": [
+        "User-Agent",
+        "Host",
+        "Accept",
+        "Cookie"
+      ]
+    },
+    {
+      "prompt": "What marks the end of the headers?",
+      "options": [
+        "A blank line",
+        "A dot on its own line",
+        "The word END",
+        "A 200 status"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "HTTP is stateless: the server doesn't remember earlier requests on its own."
+    },
+    {
+      "prompt": "Which transport protocol carries HTTP/1.1?",
+      "options": [
+        "TCP",
+        "UDP",
+        "ICMP",
+        "ARP"
+      ]
+    },
+    {
+      "prompt": "In the response line `HTTP/1.1 200 OK`, what is `200`?",
+      "options": [
+        "The port",
+        "The status code",
+        "The length",
+        "The method"
+      ]
+    }
+  ]
+}

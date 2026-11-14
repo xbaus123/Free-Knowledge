@@ -1,0 +1,63 @@
+{
+  "type": "quiz",
+  "title": "Check: SIP",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "What does SIP stand for? (three words)"
+    },
+    {
+      "type": "written",
+      "prompt": "Which RFC defines SIP? (number)"
+    },
+    {
+      "prompt": "What does a device do first, so the SIP server knows where to find it?",
+      "options": [
+        "Sends BYE",
+        "Sends RTP",
+        "Registers with the server",
+        "Asks for a DHCP lease on port 5060"
+      ]
+    },
+    {
+      "prompt": "Which SIP message starts a call?",
+      "options": [
+        "REGISTER",
+        "ACK",
+        "INVITE",
+        "BYE"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "SIP carries the call's audio and video."
+    },
+    {
+      "prompt": "Which message ends the call?",
+      "options": [
+        "BYE",
+        "CANCEL",
+        "QUIT",
+        "200 OK"
+      ]
+    },
+    {
+      "prompt": "Bob's phone is ringing. Which reply does it send back?",
+      "options": [
+        "200 OK",
+        "100 Trying",
+        "180 Ringing",
+        "486 Busy Here"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "SIP normally uses which port number? (number)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "SIP was modeled on HTTP and uses HTTP-style reply codes."
+    }
+  ]
+}

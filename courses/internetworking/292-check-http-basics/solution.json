@@ -1,0 +1,51 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "hypertext transfer protocol",
+        "hyper text transfer protocol"
+      ],
+      "explanation": "HyperText Transfer Protocol."
+    },
+    {
+      "accepted_answers": [
+        "80",
+        "port 80",
+        "tcp 80"
+      ],
+      "explanation": "80 for HTTP, 443 for HTTPS."
+    },
+    {
+      "accepted_answers": [
+        "443",
+        "port 443",
+        "tcp 443"
+      ],
+      "explanation": "HTTP inside TLS, on 443."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Method, target, version."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Host lets one IP address serve many websites."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A blank line. (A lone dot ends a message body in SMTP, not HTTP.)"
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Sessions have to be built on top, usually with cookies."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A TCP connection to port 80 or 443."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Version, status code, reason."
+    }
+  ]
+}

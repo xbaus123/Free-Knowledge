@@ -1,0 +1,48 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "GET asks for a representation of the resource."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "HEAD fetches metadata, handy for checking a cache."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "POST submits an entry."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "PATCH applies partial modifications."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Use PATCH to change just a few fields."
+    },
+    {
+      "accepted_answers": [
+        "connect"
+      ],
+      "explanation": "CONNECT, used to carry HTTPS through a proxy."
+    },
+    {
+      "accepted_answers": [
+        "options"
+      ],
+      "explanation": "OPTIONS."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "TRACE. Most servers disable it."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Sending a POST twice can create two entries, like two orders."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "DELETE changes things, but deleting twice leaves the same result as once."
+    }
+  ]
+}

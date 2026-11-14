@@ -1,0 +1,72 @@
+{
+  "type": "quiz",
+  "title": "Drill: Simplex, Half, or Full?",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "A stadium scoreboard shows scores sent from the control booth. It never sends anything back.",
+      "options": [
+        "Simplex",
+        "Half duplex",
+        "Full duplex"
+      ]
+    },
+    {
+      "prompt": "Two hikers with walkie-talkies. You hold the button to talk and let go to listen.",
+      "options": [
+        "Simplex",
+        "Half duplex",
+        "Full duplex"
+      ]
+    },
+    {
+      "prompt": "A Zoom call where both people can talk over each other.",
+      "options": [
+        "Simplex",
+        "Half duplex",
+        "Full duplex"
+      ]
+    },
+    {
+      "prompt": "An old Ethernet hub shared by eight computers.",
+      "options": [
+        "Simplex",
+        "Half duplex",
+        "Full duplex"
+      ]
+    },
+    {
+      "prompt": "A modern switch port connected to a laptop with a Cat 6 cable.",
+      "options": [
+        "Simplex",
+        "Half duplex",
+        "Full duplex"
+      ]
+    },
+    {
+      "prompt": "An FM radio station.",
+      "options": [
+        "Simplex",
+        "Half duplex",
+        "Full duplex"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A temperature sensor that only reports readings can tell whether its readings arrived."
+    },
+    {
+      "type": "written",
+      "prompt": "A link is upgraded so both ends can transmit at once. How many paths per device does it need now? (number)"
+    },
+    {
+      "prompt": "A command line login: you type a command, wait for the reply, then type the next. What's the **dialogue** pattern?",
+      "options": [
+        "Simplex",
+        "Half duplex (turn-taking)",
+        "Full duplex",
+        "None"
+      ]
+    }
+  ]
+}

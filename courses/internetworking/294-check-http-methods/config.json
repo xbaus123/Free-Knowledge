@@ -1,0 +1,77 @@
+{
+  "type": "quiz",
+  "title": "Check: HTTP Methods",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Which method requests a page?",
+      "options": [
+        "GET",
+        "POST",
+        "PUT",
+        "TRACE"
+      ]
+    },
+    {
+      "prompt": "Which method returns only the headers, not the body?",
+      "options": [
+        "GET",
+        "OPTIONS",
+        "PATCH",
+        "HEAD"
+      ]
+    },
+    {
+      "prompt": "A user fills in a sign-up form and presses Submit. Which method usually sends it?",
+      "options": [
+        "GET",
+        "HEAD",
+        "POST",
+        "CONNECT"
+      ]
+    },
+    {
+      "prompt": "Which method changes only part of a resource?",
+      "options": [
+        "PUT",
+        "POST",
+        "DELETE",
+        "PATCH"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "PUT replaces the whole resource, so fields you leave out are lost."
+    },
+    {
+      "type": "written",
+      "prompt": "Which method asks a proxy to open a tunnel to another server? (one word)"
+    },
+    {
+      "type": "written",
+      "prompt": "Which method asks which methods and options the server supports? (one word)"
+    },
+    {
+      "prompt": "Which method is used for troubleshooting, echoing back what the server received?",
+      "options": [
+        "HEAD",
+        "GET",
+        "OPTIONS",
+        "TRACE"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "POST is idempotent."
+    },
+    {
+      "prompt": "Which method is idempotent but **not** safe?",
+      "options": [
+        "GET",
+        "HEAD",
+        "DELETE",
+        "POST"
+      ]
+    }
+  ]
+}

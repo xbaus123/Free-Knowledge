@@ -1,0 +1,50 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "The cloud runs the hardware. The design is still yours."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Nothing on the Internet should be able to connect to it."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Store a slow, salted hash. You check a login by hashing what was typed and comparing."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Card details you never hold can't be stolen from you."
+    },
+    {
+      "accepted_answers": [
+        "post"
+      ],
+      "explanation": "A second POST could place a second order, so guard against double submission."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "TRACE can echo back cookies and isn't needed in production."
+    },
+    {
+      "accepted_answers": [
+        "1",
+        "one",
+        "at least one"
+      ],
+      "explanation": "3 copies, 2 kinds of media, 1 off-site."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Test restores regularly."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Either all of the order is committed or none of it."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Port 80 only exists to send people to 443."
+    }
+  ]
+}

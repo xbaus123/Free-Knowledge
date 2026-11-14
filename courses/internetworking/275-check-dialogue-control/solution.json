@@ -1,0 +1,43 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Simplex: one sender, one or more listeners."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "They take turns, like walkie-talkie users saying \"over\"."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "With no return path, the sender never hears \"got it\"."
+    },
+    {
+      "accepted_answers": [
+        "2",
+        "two"
+      ],
+      "explanation": "One to transmit and one to receive."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Both people can talk and hear at the same time."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "One path, and the receiving end needs no transmitter."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "That's why half-duplex media need rules like CSMA/CD from chapter 3."
+    },
+    {
+      "accepted_answers": [
+        "full duplex",
+        "full-duplex",
+        "fullduplex"
+      ],
+      "explanation": "Two paths, both directions at once."
+    }
+  ]
+}

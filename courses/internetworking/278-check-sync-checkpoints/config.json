@@ -1,0 +1,55 @@
+{
+  "type": "quiz",
+  "title": "Check: Synchronization and Checkpoints",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "What does the session layer insert into the data flow so lagging streams can be lined back up?",
+      "options": [
+        "MAC addresses",
+        "Port numbers",
+        "Timestamps",
+        "TTL values"
+      ]
+    },
+    {
+      "prompt": "In a video call the picture falls behind the sound. Which session-layer job fixes it?",
+      "options": [
+        "Simplex",
+        "Checkpointing",
+        "Termination",
+        "Synchronization"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Checkpoints are re-entry points to go back to if a session is interrupted."
+    },
+    {
+      "prompt": "A 4 GB download fails at 3.8 GB. With checkpointing, what happens?",
+      "options": [
+        "It finishes anyway",
+        "It starts again from 0",
+        "It resumes from about 3.8 GB",
+        "It switches to simplex"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Adding more checkpoints has no cost."
+    },
+    {
+      "type": "written",
+      "prompt": "Lining up the audio and video streams in a video call is commonly called lip ____. (one word)"
+    },
+    {
+      "prompt": "A player's connection drops for ten seconds, and they're put back into the same match. Which job made that possible?",
+      "options": [
+        "Dialogue control",
+        "Encryption",
+        "Compression",
+        "Checkpointing and recovery"
+      ]
+    }
+  ]
+}

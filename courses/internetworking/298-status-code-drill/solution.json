@@ -1,0 +1,50 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "201, with a Location header for the new user."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "204: success with no body."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "A permanent redirect, so browsers remember it."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "405: that method isn't allowed for this resource."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "503: temporarily unable to handle requests."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "500: a generic server-side failure."
+    },
+    {
+      "accepted_answers": [
+        "304"
+      ],
+      "explanation": "304 Not Modified: use your cached copy."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It follows the redirect."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The request itself is wrong. Fix it first."
+    },
+    {
+      "accepted_answers": [
+        "client",
+        "client error",
+        "4xx"
+      ],
+      "explanation": "Any 4xx is a client error. (418 is a joke code, \"I'm a teapot\".)"
+    }
+  ]
+}

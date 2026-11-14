@@ -1,0 +1,43 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "One direction only."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Both directions, taking turns."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Both directions at once."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Only one device on the hub can transmit at a time, or they collide."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Switched Ethernet sends and receives on separate pairs at the same time."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Listeners can't transmit back."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It's simplex: nothing comes back, so it can't know."
+    },
+    {
+      "accepted_answers": [
+        "2",
+        "two"
+      ],
+      "explanation": "Full duplex needs a transmit path and a receive path."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The conversation takes turns, even if the cable underneath is full duplex."
+    }
+  ]
+}

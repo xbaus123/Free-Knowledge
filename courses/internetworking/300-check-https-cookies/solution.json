@@ -1,0 +1,49 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "TLS encrypts the HTTP conversation."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It binds the site's name to its public key."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Those are inside the encryption. They can see the IP address and usually the site's name."
+    },
+    {
+      "accepted_answers": [
+        "set-cookie",
+        "set-cookie:"
+      ],
+      "explanation": "Set-Cookie. The browser sends it back in Cookie."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The cookie ties each request to a session stored on the server."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "HttpOnly."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Secure."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's session hijacking, and why session cookies need HTTPS."
+    },
+    {
+      "accepted_answers": [
+        "udp"
+      ],
+      "explanation": "QUIC runs on UDP and does its own reliability."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "It keeps track of one conversation across many requests."
+    }
+  ]
+}

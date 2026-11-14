@@ -1,0 +1,49 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "session initiation protocol"
+      ],
+      "explanation": "Session Initiation Protocol, RFC 3261."
+    },
+    {
+      "accepted_answers": [
+        "3261",
+        "rfc 3261",
+        "rfc3261"
+      ],
+      "explanation": "RFC 3261."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "REGISTER tells the registrar the device's current address."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The INVITE carries the call's specifications: codecs, addresses, and ports."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "SIP only manages the session. The media usually travels over RTP."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "BYE ends it, and the other side answers 200 OK."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "200 OK comes when he answers."
+    },
+    {
+      "accepted_answers": [
+        "5060",
+        "port 5060"
+      ],
+      "explanation": "5060 for plain SIP, 5061 for SIP over TLS."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "1xx for progress, 2xx for success, 4xx for the caller's problems."
+    }
+  ]
+}

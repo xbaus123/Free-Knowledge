@@ -1,0 +1,52 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Converting between formats."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Fewer bytes on the wire."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's a session-layer job."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Encryption keeps data confidential."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Timestamps let the receiver resynchronize."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Did it arrive unchanged?"
+    },
+    {
+      "accepted_answers": [
+        "presentation",
+        "the presentation layer",
+        "presentation layer",
+        "6",
+        "layer 6"
+      ],
+      "explanation": "Encryption and integrity checks are presentation-layer jobs."
+    },
+    {
+      "accepted_answers": [
+        "session",
+        "the session layer",
+        "session layer",
+        "5",
+        "layer 5"
+      ],
+      "explanation": "Layer 5, the session layer."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "JPEG is lossy. Use PNG if every pixel matters."
+    }
+  ]
+}

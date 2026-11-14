@@ -1,0 +1,89 @@
+{
+  "type": "quiz",
+  "title": "Drill: DNS, Mail, and the Upper Layers",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Which is at the very top of the DNS hierarchy?",
+      "options": [
+        "com",
+        "The recursive resolver",
+        "The root, written as a dot",
+        "marshall.edu"
+      ]
+    },
+    {
+      "prompt": "Which DNS component does the legwork of walking the tree and caches the answers?",
+      "options": [
+        "The recursive resolver",
+        "The stub resolver",
+        "The authoritative server",
+        "The registrar"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Write the dig command to get the MX records for `marshall.edu`. (three words)"
+    },
+    {
+      "type": "written",
+      "prompt": "Which dig option does a reverse lookup of an IP address? (like -a)"
+    },
+    {
+      "prompt": "dig shows `status: NXDOMAIN`. What does it mean?",
+      "options": [
+        "The answer came from a cache",
+        "The name doesn't exist",
+        "The server failed",
+        "There's no MX but the name exists"
+      ]
+    },
+    {
+      "prompt": "Which dig flag means the answer came straight from an authoritative server?",
+      "options": [
+        "rd",
+        "ra",
+        "aa",
+        "qr"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "nslookup is older than dig, and available on every platform including Windows."
+    },
+    {
+      "type": "written",
+      "prompt": "In nslookup's interactive mode, what do you type to switch to MX lookups? (three words, like set type=a)"
+    },
+    {
+      "prompt": "Which port do two mail servers use to talk SMTP?",
+      "options": [
+        "25",
+        "587",
+        "993",
+        "443"
+      ]
+    },
+    {
+      "prompt": "A walkie-talkie conversation is...",
+      "options": [
+        "Simplex",
+        "Half duplex",
+        "Full duplex"
+      ]
+    },
+    {
+      "prompt": "Which HTTP method removes a resource?",
+      "options": [
+        "PATCH",
+        "DELETE",
+        "POST",
+        "TRACE"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which SIP message starts a call? (one word)"
+    }
+  ]
+}
