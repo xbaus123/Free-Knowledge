@@ -1,0 +1,63 @@
+{
+  "type": "quiz",
+  "title": "Check: Securing BGP",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "What does origin validation check?",
+      "options": [
+        "That the AS announcing a prefix is authorized to announce it",
+        "That the BGP session is encrypted",
+        "That the router has enough memory",
+        "That the update really traveled the listed path"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What does RPKI stand for? (four words)"
+    },
+    {
+      "type": "written",
+      "prompt": "What's the signed record in RPKI that says which AS may originate a prefix? (an acronym)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Deploying RPKI requires changing the BGP protocol itself."
+    },
+    {
+      "prompt": "Which approach validates the path cryptographically, with every AS signing?",
+      "options": [
+        "soBGP",
+        "RPKI",
+        "BGPsec",
+        "Tail drop"
+      ]
+    },
+    {
+      "prompt": "soBGP uses which trust model?",
+      "options": [
+        "None",
+        "Hierarchical PKI",
+        "Passwords shared by IANA",
+        "A web of trust between peers, with no central authority"
+      ]
+    },
+    {
+      "prompt": "An announcement comes in, and a ROA covers its prefix, but the origin AS doesn't match. What's the RPKI result?",
+      "options": [
+        "Invalid",
+        "Not found",
+        "Unknown",
+        "Valid"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "S-BGP was never widely deployed, largely because of its high performance overhead."
+    },
+    {
+      "type": "written",
+      "prompt": "Which of the four approaches is the one that's widely adopted today? (an acronym)"
+    }
+  ]
+}

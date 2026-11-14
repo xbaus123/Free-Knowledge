@@ -1,0 +1,44 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Forwarding is the per-packet action. Routing is the slower work of building the table that forwarding uses."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Backwards. The control plane is software on the routing processor and works in milliseconds. The data plane is the fast hardware path."
+    },
+    {
+      "accepted_answers": [
+        "fabric"
+      ],
+      "explanation": "The switching fabric connects every input port to every output port."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Routing protocols like OSPF and BGP run on the routing processor. The other three are data plane work done per packet."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's what keeps forwarding fast: the processor builds the table once and pushes copies down to the ports."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Routing plans ahead. Forwarding is the moment-by-moment decision at each exit."
+    },
+    {
+      "accepted_answers": [
+        "data plane",
+        "the data plane",
+        "forwarding plane",
+        "the forwarding plane",
+        "forwarding data plane"
+      ],
+      "explanation": "The data plane, sometimes called the forwarding plane."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Routing and management both run in software on the routing processor."
+    }
+  ]
+}

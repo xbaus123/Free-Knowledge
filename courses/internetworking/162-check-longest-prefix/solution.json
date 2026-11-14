@@ -1,0 +1,52 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Longest match means most specific. The /24 is an exception carved out of a bigger block."
+    },
+    {
+      "accepted_answers": [
+        "0",
+        "interface 0",
+        "zero"
+      ],
+      "explanation": "20 = 00010100. Its first five bits, 00010, match 200.23.16.0/21. It doesn't match either 24 route."
+    },
+    {
+      "accepted_answers": [
+        "1",
+        "interface 1",
+        "one"
+      ],
+      "explanation": "It matches the /24 and the /21 for 200.23.24.0. The /24 is longer, so interface 1."
+    },
+    {
+      "accepted_answers": [
+        "2",
+        "interface 2",
+        "two"
+      ],
+      "explanation": "31 = 00011111: the first five bits 00011 match 200.23.24.0/21, but 31 isn't 24, so the /24 doesn't match."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It matches everything, but at length 0 it's the shortest possible prefix, so it only wins when nothing else matches."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The don't-care bits are the host part after the prefix, the asterisks in the binary table."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Every entry is compared in parallel, so the size of the table doesn't change the lookup time."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It's expensive and power-hungry. That's part of why route aggregation and small tables matter."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "An ISP can advertise one big block while a more specific route points part of it somewhere else."
+    }
+  ]
+}

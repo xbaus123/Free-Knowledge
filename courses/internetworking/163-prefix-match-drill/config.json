@@ -1,0 +1,53 @@
+{
+  "type": "quiz",
+  "title": "Drill: Longest Prefix Match",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "Which next hop does 10.1.2.200 use? (a letter)"
+    },
+    {
+      "type": "written",
+      "prompt": "Which next hop does 10.1.2.50 use? (a letter)"
+    },
+    {
+      "type": "written",
+      "prompt": "Which next hop does 10.1.99.1 use? (a letter)"
+    },
+    {
+      "type": "written",
+      "prompt": "Which next hop does 10.200.0.1 use? (a letter)"
+    },
+    {
+      "type": "written",
+      "prompt": "Which next hop does 172.16.0.1 use? (a letter)"
+    },
+    {
+      "type": "written",
+      "prompt": "How many rows in the table does 10.1.2.200 match, counting the default? (a number)"
+    },
+    {
+      "prompt": "The router loses the 10.1.2.0/24 route. Where does 10.1.2.50 go now?",
+      "options": [
+        "It's dropped",
+        "E",
+        "B",
+        "D"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "If the 10.1.2.128/25 row were deleted, 10.1.2.200 would go to next hop C."
+    },
+    {
+      "prompt": "An attacker announces 10.1.2.0/25 to this router, pointing at their own machine. What happens to 10.1.2.50?",
+      "options": [
+        "It goes to the attacker, because /25 is longer than /24",
+        "Nothing: the /24 is already there",
+        "The router refuses any /25",
+        "It goes to D"
+      ]
+    }
+  ]
+}

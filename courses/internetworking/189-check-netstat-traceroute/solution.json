@@ -1,0 +1,50 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "netstat -rn",
+        "netstat -nr",
+        "netstat -r -n",
+        "netstat -n -r"
+      ],
+      "explanation": "`-r` for routes, `-n` for numbers instead of names."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The default route, usually listed first."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "U is up, G uses a gateway, H is a host route."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "`-a` for all sockets, `-n` for numbers."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "LISTEN means a local service is waiting. 22 is SSH."
+    },
+    {
+      "accepted_answers": [
+        "1",
+        "one"
+      ],
+      "explanation": "TTL 1 expires at the first router, which replies and reveals itself."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Time Exceeded, because the TTL hit zero."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Many networks block or rate-limit these replies now."
+    },
+    {
+      "accepted_answers": [
+        "tracert"
+      ],
+      "explanation": "tracert, which uses ICMP echo requests as probes."
+    }
+  ]
+}

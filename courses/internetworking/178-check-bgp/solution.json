@@ -1,0 +1,55 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "179"
+      ],
+      "explanation": "TCP 179. BGP relies on TCP for reliable delivery of its updates."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Internal BGP shares routes learned from outside with the AS's other border routers. eBGP runs between ASes."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Each AS adds its own number to the front of the path."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "BGP can take minutes to converge. It trades speed for scale and policy."
+    },
+    {
+      "accepted_answers": [
+        "a million",
+        "million",
+        "one million",
+        "1 million",
+        "1000000",
+        "1,000,000"
+      ],
+      "explanation": "Around a million, and still growing. That's what TCAMs have to hold."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Policy first, then path length. A customer route usually beats one through a provider you pay."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Routers always prefer the more specific route, so the hijacker's /24 won everywhere it spread."
+    },
+    {
+      "accepted_answers": [
+        "bgp hijack",
+        "bgp hijacking",
+        "a bgp hijack",
+        "bgp hijacks",
+        "bgp prefix hijack"
+      ],
+      "explanation": "A BGP hijack, whether it's an accident or an attack."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It doesn't. BGP was designed when every network operator knew each other. That's the gap the next reading covers."
+    }
+  ]
+}

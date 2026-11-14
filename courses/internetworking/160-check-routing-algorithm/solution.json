@@ -1,0 +1,44 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "Directly connected networks are checked first. There's no next router: the router ARPs for the host and delivers it."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Local first, then static, then source route, then the learned routing table, and the default route only as a last resort."
+    },
+    {
+      "accepted_answers": [
+        "0.0.0.0/0",
+        "0/0",
+        "::/0"
+      ],
+      "explanation": "A prefix of length 0 matches every address, so it catches everything nothing else does."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Static routes only change when an administrator changes them. Rerouting around failures is what dynamic routing protocols are for."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Letting the sender pick the route undermines whatever path your security design depends on."
+    },
+    {
+      "accepted_answers": [
+        "default gateway",
+        "the default gateway",
+        "gateway of last resort"
+      ],
+      "explanation": "The default gateway. Your laptop's routing table is mostly just that one entry."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "As opposed to static routes, which are typed in by hand."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "With only one way out, there's nothing for a routing protocol to choose between. One default route does the job."
+    }
+  ]
+}

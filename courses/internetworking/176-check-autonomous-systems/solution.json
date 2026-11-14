@@ -1,0 +1,55 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "Like 10.0.0.0/8 for addresses: usable inside an organization, never announced publicly."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The other way around: 16-bit ASNs ran short, so 32-bit ones were added in 2007."
+    },
+    {
+      "accepted_answers": [
+        "32",
+        "thirty-two",
+        "thirty two"
+      ],
+      "explanation": "32 bits, about 4.3 billion numbers."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Two or more providers, no transit traffic: multi-homed."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Transit ASes are ISPs and backbone carriers."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "With only one way out, there's nothing to choose between."
+    },
+    {
+      "accepted_answers": [
+        "iana",
+        "the iana",
+        "internet assigned numbers authority"
+      ],
+      "explanation": "IANA, the Internet Assigned Numbers Authority."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "ARIN, the American Registry for Internet Numbers."
+    },
+    {
+      "accepted_answers": [
+        "5",
+        "five"
+      ],
+      "explanation": "ARIN, RIPE NCC, APNIC, LACNIC, and AFRINIC."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "RIPE NCC covers Europe, the Middle East, and Central Asia."
+    }
+  ]
+}

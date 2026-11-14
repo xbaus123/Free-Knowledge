@@ -1,0 +1,48 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Filtering who can even talk to the router comes before anything else."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's the trust a single domain implies. Authentication is what removes it."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "MD5 is the older option. HMAC-SHA is stronger."
+    },
+    {
+      "accepted_answers": [
+        "symmetric"
+      ],
+      "explanation": "Both neighbors hold the same key."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Rate limiting caps what reaches the CPU. The excess is dropped or permitted at low priority."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "A source outside the subnet it came from is forged. Dropping it at the edge stops spoofing."
+    },
+    {
+      "accepted_answers": [
+        "passive interface",
+        "passive interfaces",
+        "passive interfacing"
+      ],
+      "explanation": "Passive interfaces: the network is still advertised, but no one there can become a neighbor."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The opposite: prefix filtering limits what each router may advertise, and an access router announcing a default would be a red flag."
+    },
+    {
+      "accepted_answers": [
+        "savnet"
+      ],
+      "explanation": "SAVNET: Source Address Validation in Intra-domain and Inter-domain Networks."
+    }
+  ]
+}

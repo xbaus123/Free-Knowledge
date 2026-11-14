@@ -1,0 +1,63 @@
+{
+  "type": "quiz",
+  "title": "Check: Routing Loops and RIP",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "In the A–B–C example, why does B think it can still reach C after its link fails?",
+      "options": [
+        "The link didn't really fail",
+        "A advertises a route to C, and B doesn't know that route goes through B itself",
+        "B has a static route",
+        "C is still sending it updates"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the name for the slow climb of costs after a failure in distance vector routing? (three words, hyphens optional)"
+    },
+    {
+      "type": "written",
+      "prompt": "In RIP, what cost means unreachable? (a number)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "A RIP network can be at most 15 hops across."
+    },
+    {
+      "prompt": "Which rule says: never advertise a route back out the interface you learned it from?",
+      "options": [
+        "Split horizon",
+        "Longest prefix match",
+        "Tail drop",
+        "Poison reverse"
+      ]
+    },
+    {
+      "prompt": "What does poison reverse do?",
+      "options": [
+        "Advertises the route back to the neighbor it came from with cost infinity",
+        "Resets every router's table",
+        "Drops all packets to the failed network",
+        "Encrypts the routing updates"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "How often does RIP send its regular updates? (in seconds)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "RIPv1 is classless: it sends a subnet mask with every route."
+    },
+    {
+      "prompt": "Packets for C bounce back and forth between A and B. What's that called?",
+      "options": [
+        "A routing loop",
+        "Head-of-line blocking",
+        "A broadcast storm",
+        "Subnet zero"
+      ]
+    }
+  ]
+}

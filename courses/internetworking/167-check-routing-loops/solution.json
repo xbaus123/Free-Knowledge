@@ -1,0 +1,53 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Distance vector routers only see costs, not paths, so B can't tell A's route depends on B."
+    },
+    {
+      "accepted_answers": [
+        "count to infinity",
+        "count-to-infinity",
+        "counting to infinity"
+      ],
+      "explanation": "Each exchange raises the cost by a bit, and without a limit it never ends."
+    },
+    {
+      "accepted_answers": [
+        "16",
+        "sixteen"
+      ],
+      "explanation": "Infinity is defined as 16, so count to infinity stops after a few rounds."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Anything at 16 is unreachable, so 15 is the largest usable distance."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Split horizon. Poison reverse goes one step further and advertises it back with an infinite cost."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It's an explicit \"don't route through me for this\" rather than just staying quiet."
+    },
+    {
+      "accepted_answers": [
+        "30",
+        "30 seconds",
+        "thirty",
+        "30s",
+        "30 s"
+      ],
+      "explanation": "Every 30 seconds, plus triggered updates when something changes."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "RIPv1 is classful and sends no masks. RIPv2 added them."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A routing loop. The IP TTL field from chapter 4 is what eventually kills those packets."
+    }
+  ]
+}

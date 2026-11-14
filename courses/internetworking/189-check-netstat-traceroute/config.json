@@ -1,0 +1,68 @@
+{
+  "type": "quiz",
+  "title": "Check: netstat and traceroute",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "Which command lists a host's routing table with numeric addresses? (the command and its flags)"
+    },
+    {
+      "prompt": "In `netstat -rn` output, what does the `default` line show?",
+      "options": [
+        "The MAC address",
+        "The default gateway, where everything without a better route goes",
+        "The DNS server",
+        "The loopback address"
+      ]
+    },
+    {
+      "prompt": "In the routing table flags, what does G mean?",
+      "options": [
+        "Good",
+        "The route goes through a gateway",
+        "Global",
+        "Gigabit"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "`netstat -an` lists the host's open connections and listening ports."
+    },
+    {
+      "prompt": "In `netstat -an` output, a line shows `*.22  *.*  LISTEN`. What is it?",
+      "options": [
+        "A blocked port",
+        "A routing loop",
+        "A service waiting for connections on port 22 (SSH)",
+        "An open connection to port 22 on a remote host"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "traceroute starts by sending a packet with what TTL value? (a number)"
+    },
+    {
+      "prompt": "Which ICMP message does each router send back to traceroute?",
+      "options": [
+        "Destination Unreachable",
+        "Redirect",
+        "Time Exceeded",
+        "Echo Reply"
+      ]
+    },
+    {
+      "prompt": "A hop in traceroute shows `* * *`. What's the most likely reason?",
+      "options": [
+        "That router didn't reply in time, usually because replies are blocked or rate-limited",
+        "The packet was delivered",
+        "The link is fiber",
+        "The hop is the destination"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the traceroute command called on Windows? (one word)"
+    }
+  ]
+}

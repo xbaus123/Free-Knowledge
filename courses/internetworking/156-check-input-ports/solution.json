@@ -1,0 +1,49 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Bits come off the wire (layer 1), the frame is checked and stripped (layer 2), then the IP destination is looked up (layer 3)."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's the classic way IP forwards. (Some routers can also match on other fields, which SDN generalizes later in this chapter.)"
+    },
+    {
+      "accepted_answers": [
+        "line rate",
+        "line speed",
+        "wire speed",
+        "wire rate"
+      ],
+      "explanation": "If lookup is slower than line rate, packets pile up in the input queue."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "A crossbar has separate paths between each input and each output. Memory and bus fabrics move one packet at a time."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The bus is shared. Copying each packet twice through memory is the memory fabric's limit."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Each output can only take one packet at a time. That conflict is what causes head-of-line blocking."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's head-of-line blocking: the front of the queue holds up everything behind it."
+    },
+    {
+      "accepted_answers": [
+        "head of line",
+        "head-of-line",
+        "head of the line"
+      ],
+      "explanation": "Head-of-line blocking."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's why they were slow: every packet crossed the memory bus twice."
+    }
+  ]
+}

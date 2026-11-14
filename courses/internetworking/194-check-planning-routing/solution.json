@@ -1,0 +1,46 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "There's only one way out, so a routing protocol has nothing to decide."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "OSPF converges fast and scales. RIP is slow and capped at 15 hops."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "BGP is for networks with their own ASN, usually multi-homed. A single uplink only needs a default route."
+    },
+    {
+      "accepted_answers": [
+        "192.168.10.1"
+      ],
+      "explanation": "The first usable address of 192.168.10.0/25."
+    },
+    {
+      "accepted_answers": [
+        "192.168.10.129"
+      ],
+      "explanation": "The guest subnet is 192.168.10.128/26, so its first usable is .129."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The subnets are still advertised, but no one there can speak routing to the router."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Allow only what you mean to, and deny the rest."
+    },
+    {
+      "accepted_answers": [
+        "stick"
+      ],
+      "explanation": "Router on a stick: one physical link, many VLANs."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Cameras may only reach the recording server. Cameras talking to the Internet is a common way they get hijacked."
+    }
+  ]
+}

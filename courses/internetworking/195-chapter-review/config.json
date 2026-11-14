@@ -1,0 +1,174 @@
+{
+  "type": "quiz",
+  "title": "Chapter Review: Routing",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "What's the difference between routing and forwarding?",
+      "options": [
+        "Forwarding moves one packet out the right interface; routing builds the table forwarding uses",
+        "Forwarding only happens at the ISP",
+        "Routing is done in hardware, forwarding in software",
+        "They're the same thing"
+      ]
+    },
+    {
+      "prompt": "Where in a router do packets most often wait and get dropped?",
+      "options": [
+        "The TCAM",
+        "The routing processor",
+        "The output port buffer",
+        "The line termination"
+      ]
+    },
+    {
+      "prompt": "Two packets at the front of two input queues want the same output. The one that loses blocks the packets behind it. What's that?",
+      "options": [
+        "Tail drop",
+        "Head-of-line blocking",
+        "Count to infinity",
+        "A routing loop"
+      ]
+    },
+    {
+      "prompt": "In the basic routing algorithm, which is tried last?",
+      "options": [
+        "Routing table",
+        "Default route",
+        "Static route",
+        "Directly connected network"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A table has 172.16.0.0/12 → X, 172.16.5.0/24 → Y, and 0.0.0.0/0 → Z. Which next hop does 172.16.5.9 use? (a letter)"
+    },
+    {
+      "type": "written",
+      "prompt": "Same table. Which next hop does 172.20.1.1 use? (a letter)"
+    },
+    {
+      "prompt": "What lets a router look up a prefix in one clock cycle, regardless of table size?",
+      "options": [
+        "DHCP",
+        "DRAM",
+        "TCAM",
+        "A hard disk"
+      ]
+    },
+    {
+      "prompt": "Which family has each router share its best routes only with its neighbors?",
+      "options": [
+        "Path vector",
+        "Link state",
+        "Distance vector",
+        "SDN"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Split horizon means never advertising a route back out the interface you learned it from."
+    },
+    {
+      "prompt": "Which protocol floods LSAs and runs Dijkstra?",
+      "options": [
+        "ARP",
+        "OSPF",
+        "BGP",
+        "RIP"
+      ]
+    },
+    {
+      "prompt": "How does path vector routing prevent loops?",
+      "options": [
+        "A router rejects any path that already contains its own AS",
+        "It floods the whole map",
+        "It counts to 16",
+        "It doesn't"
+      ]
+    },
+    {
+      "prompt": "Which pair is correct?",
+      "options": [
+        "Both use only RIP",
+        "Inter-domain routing happens inside one AS",
+        "Intra-domain: OSPF or RIP; inter-domain: BGP",
+        "Intra-domain: BGP; inter-domain: OSPF"
+      ]
+    },
+    {
+      "prompt": "A company with two ISPs, which doesn't carry anyone else's traffic, is what type of AS?",
+      "options": [
+        "Multi-homed",
+        "Private",
+        "Stub",
+        "Transit"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which RIR serves Europe? (the registry's name)"
+    },
+    {
+      "type": "written",
+      "prompt": "Which TCP port does BGP use? (a number)"
+    },
+    {
+      "prompt": "Why did the 2008 YouTube hijack spread worldwide?",
+      "options": [
+        "YouTube's servers crashed",
+        "RPKI flagged YouTube's route as invalid",
+        "The hijacker's /24 was more specific than YouTube's /22, so longest prefix match preferred it",
+        "BGP picks the newest route"
+      ]
+    },
+    {
+      "prompt": "Which BGP security approach is widely adopted, checks origin only, and needs no changes to BGP?",
+      "options": [
+        "RPKI",
+        "soBGP",
+        "S-BGP",
+        "BGPsec"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "BGPsec validates the path by having every AS sign it."
+    },
+    {
+      "prompt": "A packet arrives from the guest subnet with a source address from a different network. What should happen?",
+      "options": [
+        "Drop it: ingress filtering",
+        "Send it to the controller",
+        "Answer with ICMP Time Exceeded",
+        "Forward it"
+      ]
+    },
+    {
+      "prompt": "In SDN, what does a switch send the controller when a packet matches no rule?",
+      "options": [
+        "OFPT_PACKET_OUT",
+        "OFPT_PACKET_IN",
+        "OFPT_METER_MOD",
+        "OFPT_FLOW_MOD"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "The SDN controller is a single point of failure, which is why redundant controllers are recommended."
+    },
+    {
+      "type": "written",
+      "prompt": "Which command shows a host's routing table with numeric addresses? (the command and its flags)"
+    },
+    {
+      "prompt": "A traceroute hop shows `* * *`. What does that most likely mean?",
+      "options": [
+        "The destination was reached",
+        "That router didn't reply, usually because replies are blocked or rate-limited",
+        "The TTL was too high",
+        "The route was hijacked"
+      ]
+    }
+  ]
+}

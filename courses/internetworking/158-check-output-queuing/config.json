@@ -1,0 +1,59 @@
+{
+  "type": "quiz",
+  "title": "Check: Output Port Queuing",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Where inside a router do packets most often get delayed and lost?",
+      "options": [
+        "The switching fabric's wires",
+        "The line termination",
+        "The output port's buffer",
+        "The routing processor"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A router has 8 input ports, each at rate R. In the worst case, how many times the output link's rate can arrive at one output port? (a number)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "If buffers were infinitely large, congestion would never cause any problems."
+    },
+    {
+      "prompt": "The buffer is full and a new packet arrives. Under tail drop, what happens?",
+      "options": [
+        "The new packet is dropped",
+        "The router stops accepting packets on that input",
+        "A random packet is dropped",
+        "The oldest packet in the buffer is dropped"
+      ]
+    },
+    {
+      "prompt": "What's the point of random early detection (RED)?",
+      "options": [
+        "To drop a few packets before the buffer is full, signaling TCP senders to slow down",
+        "To detect broken links",
+        "To pick the next packet to send",
+        "To encrypt packets in the queue"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Fill in the blank: the scheduling ______ chooses which queued packet is sent next. (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Priority drop can throw away a packet already in the buffer to make room for a more important one."
+    },
+    {
+      "prompt": "Which debate is about whether ISPs may favor some traffic over others?",
+      "options": [
+        "Zero Trust",
+        "Classful addressing",
+        "Subnet zero",
+        "Network neutrality"
+      ]
+    }
+  ]
+}

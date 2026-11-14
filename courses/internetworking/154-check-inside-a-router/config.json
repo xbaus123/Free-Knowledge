@@ -1,0 +1,59 @@
+{
+  "type": "quiz",
+  "title": "Check: Inside a Router",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "A router reads a packet's destination address and pushes it out interface 2. Which job is that?",
+      "options": [
+        "Forwarding",
+        "Encapsulation",
+        "Routing",
+        "Address resolution"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "The control plane runs in hardware and works on a nanosecond timescale."
+    },
+    {
+      "type": "written",
+      "prompt": "Fill in the blank: the part of a router that moves a packet from an input port to an output port is the switching ______. (one word)"
+    },
+    {
+      "prompt": "Which of these happens in the control plane?",
+      "options": [
+        "Looking up a destination for one packet",
+        "Exchanging routes with neighbor routers using OSPF",
+        "Putting the packet into a new frame",
+        "Holding a packet in an output buffer"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Each input port has its own copy of the forwarding table, so it doesn't have to ask the routing processor about every packet."
+    },
+    {
+      "prompt": "In the road trip analogy, routing is like:",
+      "options": [
+        "Taking the next exit",
+        "Filling up the tank",
+        "Paying a toll",
+        "Planning the whole route on a map before you leave"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the name of the half of the router that forwards packets in hardware? (two words)"
+    },
+    {
+      "prompt": "Managing the router over SSH belongs to which plane?",
+      "options": [
+        "Physical plane",
+        "Data plane",
+        "Control plane",
+        "Neither: it's handled by the switch"
+      ]
+    }
+  ]
+}

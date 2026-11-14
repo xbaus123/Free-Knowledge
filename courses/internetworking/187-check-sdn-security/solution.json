@@ -1,0 +1,45 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "6653"
+      ],
+      "explanation": "6653, though 6633 and others are common, so scan for more than one."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "FLOW_MOD rewrites the rules, which is why an attacker who can send it controls the switch's traffic."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "PACKET_IN asks the controller what to do with an unknown packet."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It tells the switch to send a given packet out a port, which an attacker could abuse."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Each unknown packet becomes a question to the controller, so the controller drowns."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Run more than one controller and lock each one down."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Control who may change the configuration, and check what they changed."
+    },
+    {
+      "accepted_answers": [
+        "status",
+        "_status"
+      ],
+      "explanation": "OFPT_PORT_STATUS is an informational, asynchronous message."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "SDN is still young. Some of its security challenges probably haven't been found yet."
+    }
+  ]
+}

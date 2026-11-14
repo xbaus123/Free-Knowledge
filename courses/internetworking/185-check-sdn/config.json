@@ -1,0 +1,59 @@
+{
+  "type": "quiz",
+  "title": "Check: SDN",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "What does SDN move out of the individual switches and routers?",
+      "options": [
+        "The data plane",
+        "The MAC addresses",
+        "The cables",
+        "The control plane"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the central piece of an SDN that computes rules and tells switches what to do? (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "In SDN, the switches can be \"dumb\": they only match packets against rules and forward them."
+    },
+    {
+      "type": "written",
+      "prompt": "What's the standard protocol between the controller and the switches? (one word)"
+    },
+    {
+      "prompt": "Which API connects the controller to applications like a firewall or load balancer?",
+      "options": [
+        "Eastbound",
+        "Inbound",
+        "Northbound",
+        "Southbound"
+      ]
+    },
+    {
+      "prompt": "What does the controller install in each switch?",
+      "options": [
+        "Routing processors",
+        "Fiber optics",
+        "DHCP leases",
+        "Flow tables"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Unlike traditional destination-based forwarding, SDN rules can match on almost any header field."
+    },
+    {
+      "prompt": "Why is the SDN controller a major security concern?",
+      "options": [
+        "It can't be patched",
+        "It's a single point of failure and a high-value target that controls every switch",
+        "It runs on the slowest hardware",
+        "It uses IPv4"
+      ]
+    }
+  ]
+}

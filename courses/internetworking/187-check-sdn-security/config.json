@@ -1,0 +1,68 @@
+{
+  "type": "quiz",
+  "title": "Check: SDN Security",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "What's the official OpenFlow TCP port? (a number)"
+    },
+    {
+      "prompt": "Which OpenFlow message lets the controller add, delete, or modify a switch's flow table?",
+      "options": [
+        "OFPT_PACKET_IN",
+        "OFPT_FLOW_REMOVED",
+        "OFPT_FLOW_MOD",
+        "OFPT_PORT_STATUS"
+      ]
+    },
+    {
+      "prompt": "Which message does a switch send when a packet matches no rule?",
+      "options": [
+        "OFPT_PACKET_IN",
+        "OFPT_GROUP_MOD",
+        "OFPT_METER_MOD",
+        "OFPT_PACKET_OUT"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "OFPT_PACKET_OUT can be used to inject packets into the data plane."
+    },
+    {
+      "prompt": "An attacker sends huge numbers of packets with random headers no rule matches. What's the attack?",
+      "options": [
+        "BGP hijacking",
+        "Count to infinity",
+        "PACKET_IN flooding, overwhelming the controller",
+        "Topology discovery"
+      ]
+    },
+    {
+      "prompt": "What's the main defense against the controller being a single point of failure?",
+      "options": [
+        "Redundant controllers and a hardened controller",
+        "Using RIP",
+        "Removing the controller",
+        "Rate limiting"
+      ]
+    },
+    {
+      "prompt": "Which threat is best addressed by strong authentication and authorization plus audits and reviews?",
+      "options": [
+        "Topology discovery",
+        "Configuration attacks",
+        "Fiber taps",
+        "PACKET_IN flooding"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Fill in the blank: SDN switches send OFPT_PORT_______ to tell the controller a port went up or down. (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Every SDN security problem has already been identified."
+    }
+  ]
+}

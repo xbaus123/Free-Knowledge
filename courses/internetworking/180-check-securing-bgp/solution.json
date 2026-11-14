@@ -1,0 +1,48 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Origin validation checks who announced it. Path validation checks the route it took."
+    },
+    {
+      "accepted_answers": [
+        "resource public key infrastructure"
+      ],
+      "explanation": "Resource Public Key Infrastructure, run by the RIRs."
+    },
+    {
+      "accepted_answers": [
+        "roa",
+        "roas",
+        "route origin authorization"
+      ],
+      "explanation": "A Route Origin Authorization."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "RPKI is out-of-band: routers fetch ROAs separately and check announcements against them. BGP is unchanged, which is why it spread."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "BGPsec replaces AS_PATH with BGPsec_Path, a chain of signatures."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "ASes vouch for their peers. S-BGP was the one with a hierarchical PKI."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Covered but wrong is invalid, and routers doing origin validation drop it."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Signing and checking both origin and path on every update was too heavy, especially for fast-changing networks like the cloud."
+    },
+    {
+      "accepted_answers": [
+        "rpki"
+      ],
+      "explanation": "RPKI: low overhead and no change to BGP."
+    }
+  ]
+}

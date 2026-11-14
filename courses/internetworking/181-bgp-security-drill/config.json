@@ -1,0 +1,72 @@
+{
+  "type": "quiz",
+  "title": "Drill: Which BGP Defense?",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "An attacker announces a prefix they don't own from their own AS. Which is the cheapest widely deployed defense?",
+      "options": [
+        "Split horizon",
+        "BGPsec",
+        "S-BGP",
+        "RPKI route origin validation"
+      ]
+    },
+    {
+      "prompt": "An attacker keeps the correct origin AS at the end of the path but inserts itself in the middle. Which defense would catch it?",
+      "options": [
+        "Path validation, such as BGPsec",
+        "Tail drop",
+        "RPKI",
+        "Longest prefix match"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "BGPsec needs RPKI."
+    },
+    {
+      "prompt": "Which pair are both legacy approaches?",
+      "options": [
+        "RPKI and BGPsec",
+        "RPKI and soBGP",
+        "BGPsec and S-BGP",
+        "S-BGP and soBGP"
+      ]
+    },
+    {
+      "prompt": "Which approach sends its security information in separate messages so normal updates stay small?",
+      "options": [
+        "S-BGP",
+        "soBGP",
+        "BGPsec",
+        "RIP"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A ROA says AS 64500 may originate 203.0.113.0/24, up to /25. AS 64500 announces 203.0.113.0/25. Valid, invalid, or not found? (one word)"
+    },
+    {
+      "type": "written",
+      "prompt": "Same ROA. AS 64999 announces 203.0.113.128/25. Valid, invalid, or not found? (one word)"
+    },
+    {
+      "type": "written",
+      "prompt": "Same ROA. AS 64500 announces 203.0.113.0/26. Valid, invalid, or not found? (one word)"
+    },
+    {
+      "type": "written",
+      "prompt": "Same ROA. AS 64999 announces 198.51.100.0/24, which no ROA covers. Valid, invalid, or not found? (two words)"
+    },
+    {
+      "prompt": "Why does path validation barely exist on the Internet today?",
+      "options": [
+        "BGP doesn't use paths",
+        "It's expensive and only works once nearly every AS on a path takes part",
+        "RPKI already does it",
+        "It's illegal"
+      ]
+    }
+  ]
+}

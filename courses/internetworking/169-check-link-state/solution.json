@@ -1,0 +1,53 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "Each router only describes its own links. Put together, every LSA makes the full map."
+    },
+    {
+      "accepted_answers": [
+        "dijkstra",
+        "dijkstra's",
+        "dijkstras",
+        "dijkstra's algorithm",
+        "dijkstra algorithm",
+        "shortest path first",
+        "spf"
+      ],
+      "explanation": "Dijkstra's algorithm, also called shortest path first, which is where OSPF gets its name."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Same map, but each router runs Dijkstra with itself as the root, so each gets its own forwarding table."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Neighbors have to find each other before they can exchange LSAs."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Link state is event-triggered: LSAs go out when something changes, plus a slow periodic refresh."
+    },
+    {
+      "accepted_answers": [
+        "3",
+        "three"
+      ],
+      "explanation": "Through B: 1 + 2 = 3."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "C–D costs 1 and D–E costs 3, so 4."
+    },
+    {
+      "accepted_answers": [
+        "open shortest path first"
+      ],
+      "explanation": "Open Shortest Path First, named after the Dijkstra calculation."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Flooding and Dijkstra get expensive on huge maps. Areas contain the detail and pass on summaries."
+    }
+  ]
+}

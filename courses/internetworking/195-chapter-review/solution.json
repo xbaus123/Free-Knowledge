@@ -1,0 +1,112 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Forwarding is the data plane's per-packet job in nanoseconds. Routing is the control plane's job in milliseconds."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "When packets arrive faster than the output link sends, they queue, and when the buffer's full, they're dropped."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Head-of-line blocking: the front of a queue holds up everything behind it."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The default route only catches what nothing else does."
+    },
+    {
+      "accepted_answers": [
+        "y"
+      ],
+      "explanation": "It matches all three, and the /24 is longest."
+    },
+    {
+      "accepted_answers": [
+        "x"
+      ],
+      "explanation": "172.16.0.0/12 covers 172.16 through 172.31, so it matches. The /24 doesn't."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Ternary content-addressable memory compares every entry in parallel."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Distance vector, using Bellman-Ford. RIP is the example."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It's one of the fixes for count to infinity. Poison reverse advertises it back with an infinite cost instead."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "OSPF is link state. IS-IS is the other common one."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Seeing yourself in the path means accepting it would make a loop."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "IGPs like OSPF run inside an AS. BGP runs between them."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Multiple providers, no transit."
+    },
+    {
+      "accepted_answers": [
+        "ripe ncc",
+        "ripe",
+        "ripencc",
+        "ripe-ncc"
+      ],
+      "explanation": "RIPE NCC covers Europe, the Middle East, and Central Asia."
+    },
+    {
+      "accepted_answers": [
+        "179"
+      ],
+      "explanation": "TCP 179."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Longest prefix match plus BGP believing what it hears."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "RPKI: RIRs sign ROAs, and routers check them out-of-band."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It replaces AS_PATH with BGPsec_Path, a chain of signatures."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A source that couldn't have come from that subnet is spoofed."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "PACKET_IN, and flooding the controller with them is a known attack."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Centralizing control makes the controller both critical and a target."
+    },
+    {
+      "accepted_answers": [
+        "netstat -rn",
+        "netstat -nr",
+        "netstat -r -n",
+        "netstat -n -r"
+      ],
+      "explanation": "netstat -rn."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Stars mean no reply came back in time."
+    }
+  ]
+}

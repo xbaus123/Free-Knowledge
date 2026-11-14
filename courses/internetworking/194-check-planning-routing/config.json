@@ -1,0 +1,63 @@
+{
+  "type": "quiz",
+  "title": "Check: Planning Your Router",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "A network has one router and one connection to its ISP. What routing setup fits best?",
+      "options": [
+        "BGP",
+        "OSPF with three areas",
+        "Static routes plus a static default route",
+        "RIP with poison reverse"
+      ]
+    },
+    {
+      "prompt": "Which would you pick for several routers with redundant links and room to grow?",
+      "options": [
+        "Source routing",
+        "RIP",
+        "Static only",
+        "OSPF"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "The worked example's router needs BGP, because it connects to the Internet."
+    },
+    {
+      "type": "written",
+      "prompt": "In the example, what's the staff subnet's gateway address? (dotted decimal)"
+    },
+    {
+      "type": "written",
+      "prompt": "In the example, what's the guest subnet's gateway address? (dotted decimal)"
+    },
+    {
+      "prompt": "Why are the user-facing interfaces passive?",
+      "options": [
+        "Passive interfaces are faster",
+        "So DHCP works",
+        "To save power",
+        "So no device on a user subnet can become a routing neighbor and inject routes"
+      ]
+    },
+    {
+      "prompt": "What should the last rule of an ACL be?",
+      "options": [
+        "Deny everything else",
+        "Allow everything else",
+        "Nothing",
+        "Log everything"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "One trunk with a subinterface per VLAN is nicknamed router on a ______. (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "The example's ACL lets cameras reach the Internet."
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "type": "quiz",
+  "title": "Check: Path Vector",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "What does a path vector router advertise that a distance vector router doesn't?",
+      "options": [
+        "A cost",
+        "The whole path to the destination",
+        "Its whole link state database",
+        "Its MAC address"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Path vector is an extension of distance vector: routers still exchange routes only with neighbors."
+    },
+    {
+      "prompt": "Network X receives \"203.0.113.0/24 via Z, Y, X\". What does it do?",
+      "options": [
+        "Counts to infinity",
+        "Accepts it, since it's the shortest",
+        "Forwards it to Z",
+        "Rejects it, because X is already in the path, so accepting would make a loop"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Fill in the blank: path vector routing can choose routes by ______, such as \"never send traffic through network W\". (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Path vector routing suffers from the count-to-infinity problem the same way distance vector does."
+    },
+    {
+      "type": "written",
+      "prompt": "What's the path vector protocol that connects the Internet's networks? (an acronym)"
+    },
+    {
+      "prompt": "In BGP's paths, what does each name in the path stand for?",
+      "options": [
+        "A port number",
+        "A single router",
+        "An autonomous system: a whole network run by one organization",
+        "A subnet mask"
+      ]
+    },
+    {
+      "prompt": "Which of these could a shortest-path protocol NOT express?",
+      "options": [
+        "Prefer the path through our customer over the one through our competitor",
+        "Use the fewest hops",
+        "Avoid a failed link",
+        "Prefer the lowest cost"
+      ]
+    }
+  ]
+}

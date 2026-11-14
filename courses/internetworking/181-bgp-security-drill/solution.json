@@ -1,0 +1,54 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "The origin is wrong, so origin validation catches it, and RPKI is what's deployed."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "RPKI only checks the origin. Only path validation notices a forged path."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "BGPsec leverages RPKI's certificates for prefix and AS information."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "S-BGP and soBGP were early designs. RPKI is deployed, and BGPsec is the current path-validation standard."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "soBGP keeps security out of the update messages to reduce overhead."
+    },
+    {
+      "accepted_answers": [
+        "valid"
+      ],
+      "explanation": "Right AS, and /25 is within the allowed length."
+    },
+    {
+      "accepted_answers": [
+        "invalid"
+      ],
+      "explanation": "The prefix is covered, but by the wrong AS. This is the YouTube-style hijack, caught."
+    },
+    {
+      "accepted_answers": [
+        "invalid"
+      ],
+      "explanation": "Right AS, but /26 is longer than the ROA's maximum of /25. Max length stops even the owner's AS from being impersonated with a more specific route."
+    },
+    {
+      "accepted_answers": [
+        "not found",
+        "notfound",
+        "unknown"
+      ],
+      "explanation": "No ROA covers it, so RPKI can't say. Most routers still accept it."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Every AS has to sign every update in real time, and a partial rollout protects very little."
+    }
+  ]
+}

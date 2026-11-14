@@ -1,0 +1,62 @@
+{
+  "type": "quiz",
+  "title": "Drill: Distance Vector vs Link State",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Which uses more CPU?",
+      "options": [
+        "Distance vector",
+        "Link state"
+      ]
+    },
+    {
+      "prompt": "Which converges faster after a link fails?",
+      "options": [
+        "Distance vector",
+        "Link state"
+      ]
+    },
+    {
+      "prompt": "Which needs split horizon and poison reverse to avoid loops?",
+      "options": [
+        "Distance vector",
+        "Link state"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A link state router knows about routers that aren't its neighbors."
+    },
+    {
+      "type": "written",
+      "prompt": "In the new network, what's P's cheapest cost to S? (a number)"
+    },
+    {
+      "type": "written",
+      "prompt": "In the new network, what's P's next hop toward R? (a letter)"
+    },
+    {
+      "type": "written",
+      "prompt": "In the new network, what's Q's cheapest cost to S? (a number)"
+    },
+    {
+      "prompt": "A small branch office with three routers and one IT person who isn't a routing expert. Which is a reasonable choice?",
+      "options": [
+        "Source routing",
+        "No routing at all",
+        "Distance vector, like RIP",
+        "BGP"
+      ]
+    },
+    {
+      "prompt": "A campus with 300 routers and redundant links everywhere. Which fits?",
+      "options": [
+        "OSPF",
+        "RIP",
+        "Source routing",
+        "Static routes only"
+      ]
+    }
+  ]
+}

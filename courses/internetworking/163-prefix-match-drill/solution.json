@@ -1,0 +1,53 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "d"
+      ],
+      "explanation": "It matches all five rows. 200 is at least 128, so the /25 for 10.1.2.128 matches, and it's the longest."
+    },
+    {
+      "accepted_answers": [
+        "c"
+      ],
+      "explanation": "50 is below 128, so it's in 10.1.2.0/25, not 10.1.2.128/25. The longest match left is the /24."
+    },
+    {
+      "accepted_answers": [
+        "b"
+      ],
+      "explanation": "It's in 10.1.0.0/16 but not 10.1.2.0/24."
+    },
+    {
+      "accepted_answers": [
+        "a"
+      ],
+      "explanation": "Only the /8 (and the default) match."
+    },
+    {
+      "accepted_answers": [
+        "e"
+      ],
+      "explanation": "Nothing but the default route matches."
+    },
+    {
+      "accepted_answers": [
+        "5",
+        "five"
+      ],
+      "explanation": "All of them: /0, /8, /16, /24, and /25. That's normal: longest match picks one."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The next longest match is 10.1.0.0/16, next hop B. Less specific routes act as a fallback."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The /24 would be the longest remaining match."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A more specific route always wins. That's exactly how the BGP hijacks later in this chapter work."
+    }
+  ]
+}

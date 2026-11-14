@@ -1,0 +1,63 @@
+{
+  "type": "quiz",
+  "title": "Check: Longest Prefix Matching",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "A destination matches both a /16 and a /24 in the table. Which route is used?",
+      "options": [
+        "Whichever was added first",
+        "The /24, because it's longer and more specific",
+        "The /16, because it covers more addresses",
+        "Both: the packet is copied"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Using the table above, which interface does 200.23.20.5 go out? (a number)"
+    },
+    {
+      "type": "written",
+      "prompt": "Using the table above, which interface does 200.23.24.9 go out? (a number)"
+    },
+    {
+      "type": "written",
+      "prompt": "Using the table above, which interface does 200.23.31.200 go out? (a number)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "The default route 0.0.0.0/0 matches every destination, so it wins every lookup."
+    },
+    {
+      "prompt": "What does the \"ternary\" in TCAM mean?",
+      "options": [
+        "Each bit can be 0, 1, or don't care",
+        "It has three ports",
+        "It stores three tables",
+        "It takes three clock cycles"
+      ]
+    },
+    {
+      "prompt": "How long does a TCAM lookup take as the table grows from 1,000 to 1,000,000 entries?",
+      "options": [
+        "The same: one clock cycle",
+        "It can't hold that many",
+        "About twice as long",
+        "1,000 times longer"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "TCAM is cheap and uses little power, so routers can have as large a table as they like."
+    },
+    {
+      "prompt": "Why does longest prefix matching suit CIDR aggregation?",
+      "options": [
+        "It makes every route the same length",
+        "It only works with classful addresses",
+        "It removes the need for a default route",
+        "It lets a specific route sit inside a bigger summary route as an exception"
+      ]
+    }
+  ]
+}

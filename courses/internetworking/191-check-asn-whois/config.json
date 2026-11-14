@@ -1,0 +1,59 @@
+{
+  "type": "quiz",
+  "title": "Check: IP to ASN and whois",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "Which AS announces 8.8.8.8? (the AS number, like AS64500)"
+    },
+    {
+      "prompt": "Which command looks up records in the registries' databases?",
+      "options": [
+        "ping",
+        "whois",
+        "netstat",
+        "traceroute"
+      ]
+    },
+    {
+      "prompt": "You run `whois` on an IP address. Whose record do you get back?",
+      "options": [
+        "The Regional Internet Registry's",
+        "The browser's",
+        "Your ISP's DHCP server's",
+        "The domain registrar's"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "whois on a domain can show when the domain was created and which name servers it uses."
+    },
+    {
+      "prompt": "A login page claiming to be your bank was registered six days ago. What does that suggest?",
+      "options": [
+        "The bank changed ISPs",
+        "It's probably phishing: real banks' domains are years old",
+        "Nothing",
+        "A BGP convergence delay"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "In a whois result for an IP address, which field tells you where to report bad traffic from it? (one word, or two)"
+    },
+    {
+      "prompt": "An address you know belongs to your bank suddenly maps to an AS you've never heard of. What might be happening?",
+      "options": [
+        "Normal TTL expiry",
+        "A routing loop",
+        "Split horizon",
+        "A BGP hijack"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Only defenders can use whois and IP-to-ASN lookups."
+    }
+  ]
+}

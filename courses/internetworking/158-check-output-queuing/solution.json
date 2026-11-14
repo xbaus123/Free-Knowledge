@@ -1,0 +1,46 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Packets wait in the output buffer when they arrive faster than the link can send them, and are dropped when it's full."
+    },
+    {
+      "accepted_answers": [
+        "8",
+        "eight",
+        "8r",
+        "8 r",
+        "8 x r",
+        "8xr",
+        "8 × r"
+      ],
+      "explanation": "N × R: all 8 inputs could send to the same output at once."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Packets wouldn't be dropped, but they'd wait longer and longer. Queuing delay grows with the queue."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Tail drop throws away the arrival: the packet at the tail of the queue."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Losing a packet is how TCP learns to back off. RED sends that signal early, before the buffer overflows and drops a lot at once."
+    },
+    {
+      "accepted_answers": [
+        "discipline"
+      ],
+      "explanation": "FIFO, priority, round robin, and WFQ are all scheduling disciplines."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's the difference from tail drop, which only ever drops the newcomer."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Scheduling decides who gets the best performance, so it's also a policy question."
+    }
+  ]
+}

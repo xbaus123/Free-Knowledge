@@ -1,0 +1,63 @@
+{
+  "type": "quiz",
+  "title": "Check: Input Ports and Fabric",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Put an input port's steps in order.",
+      "options": [
+        "Lookup, line termination, link layer",
+        "Line termination, link layer, lookup",
+        "Link layer, line termination, lookup",
+        "Lookup, link layer, line termination"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Destination-based forwarding means the router picks the output port using the packet's destination IP address."
+    },
+    {
+      "type": "written",
+      "prompt": "What's the phrase for doing the lookup as fast as packets arrive on the link? (two words)"
+    },
+    {
+      "prompt": "Which fabric lets two packets headed to two different output ports cross at the same time?",
+      "options": [
+        "Memory",
+        "Bus",
+        "Crossbar",
+        "None of them"
+      ]
+    },
+    {
+      "prompt": "Why is a bus fabric limited?",
+      "options": [
+        "It needs the CPU to copy each packet twice",
+        "Only one packet can be on the shared bus at a time, so the bus speed caps the whole router",
+        "It can't reach every output port",
+        "It only works for IPv6"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A crossbar fabric can send two packets to the same output port at the same time."
+    },
+    {
+      "prompt": "Input 1 holds [to X][to Y]. Input 2's packet to X wins the race for output X. What happens to input 1's packet to Y?",
+      "options": [
+        "It waits behind input 1's packet to X, even though output Y is free",
+        "It's dropped",
+        "It's sent back to the sender",
+        "It goes immediately, since output Y is free"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's HOL short for, in HOL blocking? (three words)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "The very first routers used memory switching, copying each packet through the CPU like an ordinary computer."
+    }
+  ]
+}

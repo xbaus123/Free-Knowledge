@@ -1,0 +1,63 @@
+{
+  "type": "quiz",
+  "title": "Check: Distance Vector",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Which family of routing protocols has each router describe its own links to every router, so each can draw the whole map?",
+      "options": [
+        "Link state",
+        "Static routing",
+        "Path vector",
+        "Distance vector"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "In distance vector routing, each router sends its vector to every router in the network."
+    },
+    {
+      "type": "written",
+      "prompt": "With hop count as the metric, what does every link cost? (a number)"
+    },
+    {
+      "prompt": "Fill in Bellman-Ford: cost(x → y) = min over neighbors v of ______.",
+      "options": [
+        "v's cost to y",
+        "link cost(x, v) × v's cost to y",
+        "the number of neighbors x has",
+        "link cost(x, v) + v's cost to y"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "B is told by C that C reaches D at cost 1. B–C costs 2 and B–D costs 5. What's B's best cost to D? (a number)"
+    },
+    {
+      "type": "written",
+      "prompt": "What's A's best cost to E? (a number)"
+    },
+    {
+      "prompt": "Which is A's next hop toward C?",
+      "options": [
+        "C, over the direct link",
+        "D",
+        "B",
+        "E"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "When a router's distance vector changes, it sends the updated vector to its neighbors, which can trigger their updates too."
+    },
+    {
+      "prompt": "Which of these could a distance vector protocol use as its metric?",
+      "options": [
+        "Delay",
+        "Packet loss",
+        "Hop count",
+        "Any of these"
+      ]
+    }
+  ]
+}

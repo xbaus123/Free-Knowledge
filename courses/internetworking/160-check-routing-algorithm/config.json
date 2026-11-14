@@ -1,0 +1,59 @@
+{
+  "type": "quiz",
+  "title": "Check: The Routing Algorithm",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "A packet's destination is on a network attached to one of the router's own interfaces. What does the router do?",
+      "options": [
+        "Drops it",
+        "Looks for a static route first",
+        "Sends it to the default route",
+        "Delivers it directly on that local network"
+      ]
+    },
+    {
+      "prompt": "Put these in the order the basic algorithm tries them.",
+      "options": [
+        "Routing table, local network, static route, default route",
+        "Local network, static route, routing table, default route",
+        "Default route, routing table, static route, local network",
+        "Static route, local network, default route, routing table"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Write the default route in CIDR notation."
+    },
+    {
+      "type": "true_false",
+      "prompt": "A static route automatically switches to a backup path when its link fails."
+    },
+    {
+      "prompt": "Why do most networks block source-routed packets?",
+      "options": [
+        "They're too large",
+        "The sender chooses the path, so an attacker can steer traffic around firewalls",
+        "They need IPv6",
+        "They can't carry TCP"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's another name for the router a host sends everything to when it has no better route? (two words)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Routes learned from other routers by a routing protocol are called dynamic routes."
+    },
+    {
+      "prompt": "A small office has exactly one connection, to its ISP. What's the simplest sensible routing setup for its router?",
+      "options": [
+        "No routes at all",
+        "A static default route pointing at the ISP",
+        "Run BGP with the ISP",
+        "Source routing on every packet"
+      ]
+    }
+  ]
+}

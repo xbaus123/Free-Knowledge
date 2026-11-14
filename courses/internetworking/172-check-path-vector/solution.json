@@ -1,0 +1,45 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Distance vector sends a number. Path vector sends the list of networks the route passes through."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It's distance vector with the path attached."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Seeing your own name in the path is how path vector prevents loops."
+    },
+    {
+      "accepted_answers": [
+        "policy",
+        "policies",
+        "rules"
+      ],
+      "explanation": "Policy is the big reason the Internet's inter-network routing is path vector."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Because a router can see itself in a looping path, it rejects the loop immediately."
+    },
+    {
+      "accepted_answers": [
+        "bgp",
+        "bgp4",
+        "bgp-4",
+        "border gateway protocol"
+      ],
+      "explanation": "The Border Gateway Protocol, coming up shortly."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Paths list autonomous systems, not routers. One AS might contain thousands of routers."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's a business rule, not a distance. Path vector handles it; Bellman-Ford and Dijkstra can't."
+    }
+  ]
+}

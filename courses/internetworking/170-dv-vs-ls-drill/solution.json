@@ -1,0 +1,48 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Running Dijkstra over a full map costs more than a Bellman-Ford comparison per neighbor."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The failure is flooded to everyone in seconds, and every router recomputes."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Link state routers all share one map, so loops are prevented by design."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's the point: every LSA reaches every router in the area."
+    },
+    {
+      "accepted_answers": [
+        "6",
+        "six"
+      ],
+      "explanation": "P–Q–R–S: 2 + 3 + 1 = 6. P–R–S costs 7, and P–Q–S costs 9."
+    },
+    {
+      "accepted_answers": [
+        "q"
+      ],
+      "explanation": "Through Q costs 2 + 3 = 5, cheaper than the direct link at 6."
+    },
+    {
+      "accepted_answers": [
+        "4",
+        "four"
+      ],
+      "explanation": "Q–R–S: 3 + 1 = 4, cheaper than the direct Q–S link at 7."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Small and simple is where distance vector shines: easy to configure, and the network is far below 15 hops."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Link state scales and converges fast. RIP would be slow and could hit the 15-hop limit."
+    }
+  ]
+}

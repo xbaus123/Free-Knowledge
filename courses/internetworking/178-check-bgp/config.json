@@ -1,0 +1,63 @@
+{
+  "type": "quiz",
+  "title": "Check: BGP",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "Which TCP port do BGP sessions use? (a number)"
+    },
+    {
+      "prompt": "BGP between two border routers in the same AS is called:",
+      "options": [
+        "eBGP",
+        "RIP",
+        "OSPF",
+        "iBGP"
+      ]
+    },
+    {
+      "prompt": "AS 64501 receives 203.0.113.0/24 with path [64500] and passes it on. What path does it send?",
+      "options": [
+        "[64500]",
+        "[64501 64500]",
+        "[64500 64501]",
+        "[64501]"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "BGP converges in milliseconds, much faster than OSPF."
+    },
+    {
+      "type": "written",
+      "prompt": "Roughly how many IPv4 prefixes are in the global BGP table: a thousand, a million, or a billion? (one word)"
+    },
+    {
+      "prompt": "Which usually comes first in BGP's choice between routes to the same prefix?",
+      "options": [
+        "Lowest IP address",
+        "Shortest AS path",
+        "Fewest router hops",
+        "Local preference: the AS's own policy"
+      ]
+    },
+    {
+      "prompt": "In 2008 YouTube announced a /22, and a Pakistani ISP announced a /24 inside it. Why did the world follow the /24?",
+      "options": [
+        "YouTube's route was withdrawn",
+        "Longest prefix match: the /24 is more specific",
+        "It was announced first",
+        "It had a shorter AS path"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the name for announcing a prefix you're not authorized to announce? (two words, starting with BGP)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Plain BGP checks that an AS owns a prefix before accepting its announcement."
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "type": "quiz",
+  "title": "Check: Intra vs Inter-domain",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "What's the term for a network run by one organization with one routing policy? (two words)"
+    },
+    {
+      "prompt": "Which protocol is used between autonomous systems?",
+      "options": [
+        "OSPF",
+        "RIP",
+        "IS-IS",
+        "BGP"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Routers inside an AS running OSPF know about every router on the Internet."
+    },
+    {
+      "prompt": "What's the main goal of inter-domain routing?",
+      "options": [
+        "Using the fewest routers",
+        "Avoiding ARP",
+        "Policy: which networks are willing to carry whose traffic",
+        "The fastest path"
+      ]
+    },
+    {
+      "prompt": "A university switches its internal routing from RIP to OSPF. Who else has to change anything?",
+      "options": [
+        "No one outside the university",
+        "IANA",
+        "Its ISP",
+        "Every other AS"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's another name for an intra-domain routing protocol? (an acronym)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Inter-domain routing is harder to secure than intra-domain routing because the neighbors belong to different organizations."
+    },
+    {
+      "prompt": "Which is NOT a reason routing is split into intra- and inter-domain?",
+      "options": [
+        "Scale: each AS hides its internal detail",
+        "It lets every router run Dijkstra on the whole Internet",
+        "Independence: each AS picks its own internal protocol",
+        "Policy: business relationships are handled at the border"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "type": "quiz",
+  "title": "Check: ASNs",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Which range of 16-bit ASNs is private?",
+      "options": [
+        "1 – 1,023",
+        "There are no private ASNs",
+        "23,456 – 32,767",
+        "64,512 – 65,534"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "ASNs were originally 32 bits, and 16-bit ASNs were added later."
+    },
+    {
+      "type": "written",
+      "prompt": "How many bits are in a modern, extended ASN? (a number)"
+    },
+    {
+      "prompt": "A company connects to two ISPs for redundancy but doesn't carry anyone else's traffic. What type of AS is it?",
+      "options": [
+        "Stub",
+        "Transit",
+        "Private",
+        "Multi-homed"
+      ]
+    },
+    {
+      "prompt": "Which type of AS carries traffic between other ASes as its business?",
+      "options": [
+        "Documentation",
+        "Stub",
+        "Transit",
+        "Multi-homed"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A stub AS, connected to a single provider, could reach the whole Internet with just a default route."
+    },
+    {
+      "type": "written",
+      "prompt": "Which organization sits at the top of the chain, handing out blocks of ASNs and IP addresses to the registries? (an acronym)"
+    },
+    {
+      "prompt": "Which RIR serves North America?",
+      "options": [
+        "ARIN",
+        "LACNIC",
+        "APNIC",
+        "RIPE NCC"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "How many Regional Internet Registries are there? (a number)"
+    },
+    {
+      "prompt": "Which RIR would a network in Germany request an ASN from?",
+      "options": [
+        "ARIN",
+        "APNIC",
+        "RIPE NCC",
+        "AFRINIC"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "The control plane moves to a central controller. The switches keep only the data plane."
+    },
+    {
+      "accepted_answers": [
+        "controller",
+        "the controller",
+        "sdn controller",
+        "an sdn controller"
+      ],
+      "explanation": "The SDN controller."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "All the decisions, including ACLs, come down from the controller."
+    },
+    {
+      "accepted_answers": [
+        "openflow"
+      ],
+      "explanation": "OpenFlow is the classic southbound API."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Northbound faces the apps above. Southbound faces the switches below."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Flow table entries say what to do with packets that match a pattern."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Source, destination, ports, protocol, VLAN: a flow rule can use any of them."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Like a hypervisor, whoever owns it owns everything below it."
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "type": "quiz",
+  "title": "Check: Link State",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "What does a router flood in link state routing?",
+      "options": [
+        "The packets it can't deliver",
+        "Its default route",
+        "Its whole routing table",
+        "A description of its own links and their costs (an LSA)"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which algorithm does each link state router run to find shortest paths? (one name)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "After flooding, every router in an area has the same link state database."
+    },
+    {
+      "prompt": "What are hello messages for?",
+      "options": [
+        "Resolving MAC addresses",
+        "Discovering neighbors and forming adjacencies",
+        "Assigning IP addresses",
+        "Carrying user data"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Link state routers resend their whole table to neighbors every 30 seconds, like RIP."
+    },
+    {
+      "type": "written",
+      "prompt": "In the Dijkstra table, C's cost drops from 4 to what once B is finalized? (a number)"
+    },
+    {
+      "prompt": "Running Dijkstra from C on the same network, what's C's cost to E?",
+      "options": [
+        "4",
+        "3",
+        "5",
+        "7"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What does OSPF stand for? (four words)"
+    },
+    {
+      "prompt": "Why do OSPF and IS-IS split large networks into areas?",
+      "options": [
+        "Because Dijkstra only works on five routers",
+        "To stop all traffic between areas",
+        "To give each area a different protocol",
+        "So each router only needs the full map of its own area, keeping the database and the computation small"
+      ]
+    }
+  ]
+}

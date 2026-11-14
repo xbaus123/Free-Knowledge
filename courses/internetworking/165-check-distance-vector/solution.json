@@ -1,0 +1,49 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Link state floods each router's links everywhere. Distance vector only talks to neighbors."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Only to its directly connected neighbors. Information spreads one hop at a time."
+    },
+    {
+      "accepted_answers": [
+        "1",
+        "one"
+      ],
+      "explanation": "Hop count just counts links: each one costs 1."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Get to the neighbor, then add however far the neighbor says it is from the destination."
+    },
+    {
+      "accepted_answers": [
+        "3",
+        "three"
+      ],
+      "explanation": "Through C: 2 + 1 = 3. That beats B's direct link at 5."
+    },
+    {
+      "accepted_answers": [
+        "7",
+        "seven"
+      ],
+      "explanation": "A to D costs 4 (via B, then C), and D–E is 3, so 7."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Through B costs 1 + 2 = 3, which beats the direct link at 4. The direct link isn't always best."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Updates ripple outward, one hop at a time, until nothing changes. That's called convergence."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Hop count is simplest, but cost can reflect delay or loss too. Lower is always better."
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "as15169",
+        "15169",
+        "as 15169"
+      ],
+      "explanation": "AS15169, Google."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "whois queries the registry databases for addresses and domains."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "IP address blocks are recorded by the RIRs. Domains are recorded by registrars."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Registrar, creation and expiry dates, and name servers."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A brand-new domain pretending to be an old institution is a classic phishing sign."
+    },
+    {
+      "accepted_answers": [
+        "abuse contact",
+        "abuse",
+        "orgabuseemail",
+        "abuse email",
+        "abuse e-mail"
+      ],
+      "explanation": "The abuse contact. That's where you send a report."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "A prefix announced by the wrong AS is what a hijack looks like from the outside."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "They're public. Attackers use them for reconnaissance, so assume your own records are visible."
+    }
+  ]
+}

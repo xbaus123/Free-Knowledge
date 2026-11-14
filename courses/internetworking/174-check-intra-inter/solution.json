@@ -1,0 +1,43 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "autonomous system",
+        "an autonomous system",
+        "as"
+      ],
+      "explanation": "An autonomous system, identified by its ASN."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "BGP is the one inter-domain protocol everyone speaks. The others run inside an AS."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "They know their own domain. Anything outside is reached through the default route toward the border."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Inside an AS, performance rules. Between ASes, business relationships do."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Intra-domain routing is the AS's own business. Only BGP at the border has to stay compatible."
+    },
+    {
+      "accepted_answers": [
+        "igp",
+        "interior gateway protocol"
+      ],
+      "explanation": "Interior gateway protocol. Inter-domain ones are exterior gateway protocols (EGPs)."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Inside one AS, the operator controls every router. Across ASes, you're trusting strangers."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The opposite: the split exists because no router could hold a map of the whole Internet."
+    }
+  ]
+}
