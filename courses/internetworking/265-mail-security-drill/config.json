@@ -1,0 +1,73 @@
+{
+  "type": "quiz",
+  "title": "Drill: Name the Fix",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Spam is being sent through your server to addresses all over the world, from IPs you've never heard of.",
+      "options": [
+        "Turn on greylisting for outbound mail",
+        "Switch to POP3",
+        "Publish a PTR",
+        "You're an open relay: only relay for your own domains and logged-in users"
+      ]
+    },
+    {
+      "prompt": "Customers get emails with From: billing@yourcompany.com that you never sent. Which record tells receivers to refuse them?",
+      "options": [
+        "MX",
+        "SOA",
+        "CNAME",
+        "A DMARC policy of p=reject (with SPF and DKIM set up)"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Your new marketing service sends mail for your domain, and it's failing SPF. What do you add to the SPF record? (one word, the mechanism that pulls in another domain's list)"
+    },
+    {
+      "prompt": "A user reads mail on port 110 from a coffee shop's Wi-Fi.",
+      "options": [
+        "Fine as it is",
+        "Turn off DKIM",
+        "Their password crosses the network in plain text: move them to 995 (or IMAP on 993)",
+        "Move them to port 25"
+      ]
+    },
+    {
+      "prompt": "An attachment named `scan.pdf.exe` arrives. Which control should have stopped it?",
+      "options": [
+        "Blocking risky file types and scanning attachments",
+        "Round robin",
+        "SPF",
+        "IMAP IDLE"
+      ]
+    },
+    {
+      "prompt": "A brand-new malware sample, with no known signature, arrives in a Word document. Which defense has the best chance?",
+      "options": [
+        "Antivirus signatures",
+        "A sandbox",
+        "An MX record",
+        "A bigger mailbox quota"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Your server's 220 greeting shows its exact software version. What's that problem called? (two words)"
+    },
+    {
+      "prompt": "Staff mail is DKIM-signed and passes SPF, but forwarded copies at a university fail SPF. Do they still pass DMARC?",
+      "options": [
+        "Only with p=none",
+        "Only on port 465",
+        "Yes, if the DKIM signature is intact and its domain matches the From: domain",
+        "No, SPF failed"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Publishing a PTR record for your mail server's IP helps other servers accept your mail."
+    }
+  ]
+}

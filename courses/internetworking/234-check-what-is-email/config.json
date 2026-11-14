@@ -1,0 +1,59 @@
+{
+  "type": "quiz",
+  "title": "Check: What Email Is",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "Fill in the blank: email is an ______ message exchange service, because sender and recipient don't have to be online at the same time. (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "To deliver an email, the recipient's computer has to be switched on when the message is sent."
+    },
+    {
+      "prompt": "Why is it a little ironic that mail uses TCP?",
+      "options": [
+        "TCP can't carry text",
+        "TCP is unreliable",
+        "A send-it-and-it-arrives-eventually service runs on a connection-oriented, reliable transport",
+        "Mail was designed before TCP existed, so it doesn't use ports"
+      ]
+    },
+    {
+      "prompt": "A sending server can't reach the next server. What normally happens to the message?",
+      "options": [
+        "It's sent over UDP instead",
+        "It's deleted",
+        "It's returned to the sender at once",
+        "The server keeps it and tries again later"
+      ]
+    },
+    {
+      "prompt": "Which two DNS lookups does a sending server need before it can deliver to alice@example.com?",
+      "options": [
+        "Just an A record for alice",
+        "MX for example.com, then the A record of the host it names",
+        "CNAME, then NS",
+        "PTR, then SOA"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Email uses a client-server architecture."
+    },
+    {
+      "prompt": "Which of these is NOT one of the three security issues named in the reading?",
+      "options": [
+        "Privacy",
+        "Attachments",
+        "Running out of IPv4 addresses",
+        "Hacking"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Mail planning has two audiences: your own users inside the organization, and ______ outside it. (one word)"
+    }
+  ]
+}

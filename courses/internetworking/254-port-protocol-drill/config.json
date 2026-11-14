@@ -1,0 +1,58 @@
+{
+  "type": "quiz",
+  "title": "Drill: Ports and Protocols",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "Postfix on mx.example.com accepts mail from Gmail's servers. Port? (number)"
+    },
+    {
+      "type": "written",
+      "prompt": "Thunderbird reads mail over TLS, keeping it on the server. Port? (number)"
+    },
+    {
+      "type": "written",
+      "prompt": "An old client downloads mail with POP3 over TLS. Port? (number)"
+    },
+    {
+      "type": "written",
+      "prompt": "Outlook on a laptop sends a new message to its own server with STARTTLS. Port? (number)"
+    },
+    {
+      "prompt": "A firewall rule allows inbound TCP 143 and 110 from the Internet. What's the problem?",
+      "options": [
+        "Those are SMTP ports",
+        "They're the plain-text IMAP and POP ports, so passwords can cross the Internet unencrypted",
+        "Nothing, they're the TLS ports",
+        "They're DNS ports"
+      ]
+    },
+    {
+      "prompt": "Which protocol is used to READ mail?",
+      "options": [
+        "DHCP",
+        "IMAP",
+        "SMTP",
+        "DNS"
+      ]
+    },
+    {
+      "prompt": "Your mail server must receive mail from the Internet, and staff must send and read from home. Which inbound ports do you open?",
+      "options": [
+        "25, 587, 993",
+        "25 only",
+        "110, 143, 25",
+        "53, 67, 68"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "DHCP and ordinary DNS lookups use UDP; SMTP, IMAP, and POP use TCP."
+    },
+    {
+      "type": "written",
+      "prompt": "Which port does an MSA using implicit TLS (TLS from the first byte) listen on? (number)"
+    }
+  ]
+}

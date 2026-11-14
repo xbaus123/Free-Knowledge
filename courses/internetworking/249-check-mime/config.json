@@ -1,0 +1,59 @@
+{
+  "type": "quiz",
+  "title": "Check: Attachments and MIME",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "What does MIME stand for? (four words)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "MIME replaced SMTP with a new binary protocol."
+    },
+    {
+      "prompt": "Which Content-Type does a message with an attachment use?",
+      "options": [
+        "message/bounce",
+        "application/smtp",
+        "multipart/mixed",
+        "text/plain"
+      ]
+    },
+    {
+      "prompt": "A message is sent as both plain text and HTML, and the client shows whichever it can. Which type is that?",
+      "options": [
+        "text/both",
+        "multipart/related",
+        "multipart/alternative",
+        "multipart/mixed"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which encoding turns every 3 bytes into 4 printable characters? (one word)"
+    },
+    {
+      "prompt": "About how big is a 9 MB attachment once it's base64-encoded?",
+      "options": [
+        "About 3 MB",
+        "About 12 MB",
+        "9 MB",
+        "About 18 MB"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "If an attachment's Content-Type says application/pdf, it must be a PDF."
+    },
+    {
+      "prompt": "How do you know where one part ends and the next begins?",
+      "options": [
+        "The Content-Length header",
+        "A lone dot",
+        "A line of two dashes then the boundary string",
+        "A blank line"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Once the recipients are accepted, DATA starts the message."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "451 is a temporary local error, and greylisting uses exactly this code."
+    },
+    {
+      "accepted_answers": [
+        "space",
+        "a space",
+        " "
+      ],
+      "explanation": "A space marks the final line of the reply."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Each recipient is accepted or refused on its own. The 550 one gets a bounce sent back to the sender."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "252 is a polite non-answer. Saying yes or no would help spammers."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "5xx is permanent. The sender gets a bounce."
+    },
+    {
+      "accepted_answers": [
+        "221"
+      ],
+      "explanation": "221: closing the connection."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "RSET drops the transaction in progress but keeps the session."
+    }
+  ]
+}

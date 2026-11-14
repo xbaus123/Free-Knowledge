@@ -1,0 +1,59 @@
+{
+  "type": "quiz",
+  "title": "Check: POP and IMAP",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Which protocol usually downloads mail to the device and deletes it from the server?",
+      "options": [
+        "JMAP",
+        "SMTP",
+        "IMAP",
+        "POP3"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "With IMAP, a message you read on your phone shows as read on your laptop too."
+    },
+    {
+      "type": "written",
+      "prompt": "What does IMAP stand for? (four words)"
+    },
+    {
+      "prompt": "Which POP3 command downloads a message?",
+      "options": [
+        "FETCH",
+        "DATA",
+        "GET",
+        "RETR"
+      ]
+    },
+    {
+      "prompt": "Which is a drawback of IMAP compared with POP3?",
+      "options": [
+        "It can't do folders",
+        "The server has to store everyone's mail, with backups and quotas",
+        "It only works on one device",
+        "It has no TLS version"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Gmail in a web browser reads your mail with POP3."
+    },
+    {
+      "type": "written",
+      "prompt": "Which IMAP command lets the server push new mail to a waiting client? (one word)"
+    },
+    {
+      "prompt": "A user reads mail on a laptop, a desktop, and a phone, and wants one shared set of folders. What do you set them up with?",
+      "options": [
+        "Three separate accounts",
+        "IMAP",
+        "SMTP on port 25",
+        "POP3, deleting from the server"
+      ]
+    }
+  ]
+}

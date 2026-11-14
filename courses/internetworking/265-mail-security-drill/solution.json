@@ -1,0 +1,49 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "Relaying from anyone to anywhere is the definition of an open relay."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "DMARC ties SPF and DKIM to the visible From: and tells receivers what to do with failures."
+    },
+    {
+      "accepted_answers": [
+        "include",
+        "include:",
+        "an include"
+      ],
+      "explanation": "include:the-service's-spf-domain adds its servers to your list."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Plain POP3 sends USER and PASS unencrypted."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's an executable hiding behind a double extension."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The sandbox watches what the document does, so it doesn't need a signature."
+    },
+    {
+      "accepted_answers": [
+        "banner disclosure",
+        "banner grabbing",
+        "information disclosure",
+        "version disclosure"
+      ],
+      "explanation": "Banner disclosure. Trim the greeting."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "DMARC needs SPF or DKIM, aligned. DKIM survives forwarding."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Many receivers reject or score down mail from addresses with no reverse DNS."
+    }
+  ]
+}

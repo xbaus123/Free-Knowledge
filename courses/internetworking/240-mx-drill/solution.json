@@ -1,0 +1,47 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Lowest number first, and mx1 is up, so it gets everything."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's what the backup is for. Only if every MX fails does the message queue for a retry."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Equal priorities share the load."
+    },
+    {
+      "accepted_answers": [
+        "mail.example.org",
+        "mail.example.org."
+      ],
+      "explanation": "0 beats 100."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Only the order matters, and 1 and 2 are in the same order as 10 and 20."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "With nothing to connect to, the sender gives up and returns a bounce."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "RFC 5321's fallback: the domain's own address becomes the mail host."
+    },
+    {
+      "accepted_answers": [
+        ".",
+        "a dot",
+        "dot"
+      ],
+      "explanation": "A null MX points at the root, '.', meaning no mail here."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "An MX names a host. The sender looks up that host's A or AAAA record to get the address."
+    }
+  ]
+}

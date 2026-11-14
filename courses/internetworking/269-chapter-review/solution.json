@@ -1,0 +1,119 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "Store and forward on the servers lets the two ends work at different times."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "SMTP, IMAP, and POP are all TCP. Only the DNS lookups along the way normally use UDP."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The mail transfer agent."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Strip out the FQDN, ask for its MX, get the answer, send."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Lowest number first."
+    },
+    {
+      "accepted_answers": [
+        "null mx",
+        "a null mx",
+        "null mx record"
+      ],
+      "explanation": "A null MX: this domain accepts no mail."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "MAIL FROM: says where bounces go."
+    },
+    {
+      "accepted_answers": [
+        "354"
+      ],
+      "explanation": "354: start mail input."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "4 is not now, 5 is never."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It's the reverse: Bcc recipients are in the envelope (RCPT TO:) but not the headers."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Each MTA adds its header on top, so the oldest hop is at the bottom."
+    },
+    {
+      "accepted_answers": [
+        "base64",
+        "base 64",
+        "base-64"
+      ],
+      "explanation": "Base64: 3 bytes become 4 characters."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "25, 587 (and 465), 993, 995."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "IMAP. POP3 usually downloads and deletes."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "It re-directs egress traffic to one relay."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Exchange ties mail to calendars, contacts, and tasks."
+    },
+    {
+      "accepted_answers": [
+        "sandboxing",
+        "sandbox",
+        "a sandbox"
+      ],
+      "explanation": "Sandboxing catches malware that signatures don't know yet."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Data loss prevention."
+    },
+    {
+      "accepted_answers": [
+        "relay"
+      ],
+      "explanation": "An open relay, and it'll be blocklisted within days."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "TLS protects each hop. For end to end, you need S/MIME or PGP."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "SPF, in a TXT record at the domain."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Alignment, a p= policy, and rua= reports."
+    },
+    {
+      "accepted_answers": [
+        "_dmarc.example.com",
+        "_dmarc.example.com."
+      ],
+      "explanation": "_dmarc in front of the domain."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "One filtered entry point, with internal servers never facing the Internet."
+    }
+  ]
+}

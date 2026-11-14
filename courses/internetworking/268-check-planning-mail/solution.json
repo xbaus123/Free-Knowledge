@@ -1,0 +1,43 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Hosted mail leaves you with just DNS records and accounts to manage."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "It keeps the reputation of bulk mail apart from day-to-day mail."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Public mail should come in through one filtered door: a filtering service or a DMZ relay."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Webmail, ActiveSync, and Outlook on Exchange all ride on HTTPS."
+    },
+    {
+      "accepted_answers": [
+        "none",
+        "p=none"
+      ],
+      "explanation": "Start at none, read the reports, then tighten to quarantine."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The internal relay never takes mail from outside."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It's an ordinary TXT lookup, so a CNAME to the provider's key works. Only the target of an MX can't be an alias."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The public zone only carries MX, SPF, DKIM, and DMARC. Internal names stay internal."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The MX points at Microsoft. Opening 25 inward would only add risk."
+    }
+  ]
+}

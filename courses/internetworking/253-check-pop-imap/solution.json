@@ -1,0 +1,40 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "POP3 is download-and-delete, like emptying a PO box."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Flags are stored on the server, so every device sees them."
+    },
+    {
+      "accepted_answers": [
+        "internet message access protocol"
+      ],
+      "explanation": "Internet Message Access Protocol."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "RETR retrieves it, DELE marks it deleted."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Keeping mail on the server costs storage, but that's also what lets every device see it."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Webmail is a website over HTTPS. The server does the mailbox work."
+    },
+    {
+      "accepted_answers": [
+        "idle"
+      ],
+      "explanation": "IDLE keeps the connection open so the server can announce new messages."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "IMAP: folders and flags live on the server."
+    }
+  ]
+}

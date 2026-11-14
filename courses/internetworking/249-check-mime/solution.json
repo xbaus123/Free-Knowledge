@@ -1,0 +1,43 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "multipurpose internet mail extensions",
+        "multipurpose internet mail extension"
+      ],
+      "explanation": "Multipurpose Internet Mail Extensions."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "MIME works inside the message. SMTP still carries text; MIME labels and encodes the content so it fits."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "multipart/mixed: several parts of different types, split by a boundary."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Alternative parts are the same content in different forms."
+    },
+    {
+      "accepted_answers": [
+        "base64",
+        "base 64",
+        "base-64"
+      ],
+      "explanation": "Base64. It's the usual Content-Transfer-Encoding for attachments."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Base64 adds a third: 9 × 4/3 = 12."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The sender writes that label. It can say anything."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Each part starts with --boundary, and the last one is --boundary--."
+    }
+  ]
+}

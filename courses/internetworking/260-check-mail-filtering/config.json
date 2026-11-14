@@ -1,0 +1,68 @@
+{
+  "type": "quiz",
+  "title": "Check: Beyond Delivery",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Why can a mail server inspect messages so easily?",
+      "options": [
+        "SMTP is a UDP protocol",
+        "Clients send a copy to the filter",
+        "Store and forward: every message sits on the server before it's passed on",
+        "Mail is encrypted end to end"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the word for holding a suspicious message aside for a person to release or delete? (one word)"
+    },
+    {
+      "prompt": "Outbound 'dirty word' filtering that stops credit card numbers leaving is called what?",
+      "options": [
+        "Journaling",
+        "Greylisting",
+        "Data loss prevention (DLP)",
+        "Round robin"
+      ]
+    },
+    {
+      "prompt": "What does a sandbox do with an attachment?",
+      "options": [
+        "Opens it in an isolated virtual machine and watches what it does",
+        "Encodes it as base64",
+        "Compresses it",
+        "Deletes it"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Antivirus signatures catch every new piece of malware."
+    },
+    {
+      "prompt": "Why are password-protected zip attachments suspicious?",
+      "options": [
+        "Scanners can't look inside them",
+        "They can't be base64-encoded",
+        "They're too big",
+        "SMTP doesn't allow them"
+      ]
+    },
+    {
+      "prompt": "Which of these is an example of re-directing?",
+      "options": [
+        "Sending info@ to three people",
+        "Scanning for viruses",
+        "Checking SPF",
+        "Greylisting"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the word for sending a copy of every message to an archive for legal reasons? (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "A spam filter usually decides from one single test."
+    }
+  ]
+}

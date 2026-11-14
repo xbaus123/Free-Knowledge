@@ -1,0 +1,44 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Alice submits it, her MTA finds Bob's server through DNS, the MTAs talk SMTP, the MDA files it, and Bob's MUA fetches it."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Server-to-server transfer is always SMTP."
+    },
+    {
+      "accepted_answers": [
+        "25",
+        "port 25",
+        "tcp 25"
+      ],
+      "explanation": "Port 25 is SMTP between MTAs."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Mail for bob@example.com goes wherever example.com's MX says."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Delivery is to Bob's server. His laptop picks the message up later with IMAP or POP."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Store and forward: it waits in the queue and the MTA tries again."
+    },
+    {
+      "accepted_answers": [
+        "imap",
+        "imap4",
+        "imaps"
+      ],
+      "explanation": "IMAP keeps mail on the server, so every device sees the same folders. You'll meet it properly later in the chapter."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The user agent is the program the person sees. The other agents run on servers."
+    }
+  ]
+}

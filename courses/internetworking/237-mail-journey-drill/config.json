@@ -1,0 +1,64 @@
+{
+  "type": "quiz",
+  "title": "Drill: Follow the Message",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Put Alice's message's journey in order.",
+      "options": [
+        "MX lookup, submission, MTA to MTA, delivery to mailbox, Bob reads it",
+        "Submission, MX lookup, MTA to MTA, delivery to mailbox, Bob reads it",
+        "Submission, MTA to MTA, MX lookup, Bob reads it, delivery to mailbox",
+        "Bob reads it, submission, MX lookup, delivery to mailbox, MTA to MTA"
+      ]
+    },
+    {
+      "prompt": "Alice's provider's server opens a TCP connection to Bob's server. Which protocol do they speak?",
+      "options": [
+        "SMTP",
+        "DHCP",
+        "POP",
+        "IMAP"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which port does that server-to-server connection go to? (number)"
+    },
+    {
+      "prompt": "Which DNS question does Alice's provider ask first?",
+      "options": [
+        "SOA of the root",
+        "A record of example.org",
+        "PTR of Bob's laptop",
+        "MX of example.com"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Bob's laptop has to be online when Alice's server delivers the message."
+    },
+    {
+      "prompt": "Bob's server is down for an hour. What does Alice's provider's MTA do?",
+      "options": [
+        "Deletes the message",
+        "Delivers it to Alice instead",
+        "Sends it to a root server",
+        "Keeps it in its queue and retries"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Bob reads his mail on three devices and wants them all to stay in sync. Which retrieval protocol should he use? (four letters)"
+    },
+    {
+      "prompt": "Which program runs on Bob's laptop?",
+      "options": [
+        "The MTA",
+        "The MUA",
+        "The MDA",
+        "The MSA"
+      ]
+    }
+  ]
+}

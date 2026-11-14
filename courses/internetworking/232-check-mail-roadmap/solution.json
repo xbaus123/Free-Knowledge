@@ -1,0 +1,49 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "SMTP, IMAP, and POP are application-layer protocols. They ride on TCP at the transport layer."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Every mail protocol in this chapter is a TCP conversation. DHCP and ordinary DNS lookups are the ones that use UDP."
+    },
+    {
+      "accepted_answers": [
+        "67",
+        "udp 67",
+        "port 67"
+      ],
+      "explanation": "The server is on 67 and the client on 68."
+    },
+    {
+      "accepted_answers": [
+        "68",
+        "udp 68",
+        "port 68"
+      ],
+      "explanation": "Port 68 for the client, 67 for the server."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "MX, mail exchange. Each one names a host and a priority."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "An MX must name a real host with its own A or AAAA record, not an alias."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "PTR records live under in-addr.arpa and map addresses back to names. Many receivers reject mail from addresses with no PTR."
+    },
+    {
+      "accepted_answers": [
+        "ack",
+        "acknowledge",
+        "acknowledgement",
+        "acknowledgment"
+      ],
+      "explanation": "Discover, Offer, Request, Ack."
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "type": "quiz",
+  "title": "Check: The Envelope and the Letter",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Which of these is part of the envelope, not the message headers?",
+      "options": [
+        "Date:",
+        "RCPT TO:",
+        "Subject:",
+        "From:"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Your mail program normally shows you the envelope sender."
+    },
+    {
+      "prompt": "How does Bcc keep a recipient hidden?",
+      "options": [
+        "They get a RCPT TO: in the envelope but don't appear in the headers",
+        "It uses POP instead of IMAP",
+        "It encrypts their address",
+        "It sends their copy a day later"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which RFC sets the format of email headers? (number)"
+    },
+    {
+      "prompt": "What separates the headers from the body?",
+      "options": [
+        "The word BODY:",
+        "A 354 code",
+        "A line with a single dot",
+        "A blank line"
+      ]
+    },
+    {
+      "prompt": "Where does each MTA put its Received: header?",
+      "options": [
+        "In the body",
+        "In the envelope",
+        "At the top",
+        "At the bottom of the headers"
+      ]
+    },
+    {
+      "prompt": "To trace a message from its sender to you, in which order do you read the Received: headers?",
+      "options": [
+        "Top to bottom",
+        "Alphabetically",
+        "Only the top one matters",
+        "Bottom to top"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Plain SMTP checks that the From: header matches the envelope sender."
+    },
+    {
+      "type": "written",
+      "prompt": "Which header does the receiving server add to record the envelope sender? (hyphenated, two words)"
+    }
+  ]
+}

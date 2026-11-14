@@ -1,0 +1,59 @@
+{
+  "type": "quiz",
+  "title": "Check: Mail Clients",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Which of these is a command-line mail client?",
+      "options": [
+        "mutt",
+        "Thunderbird",
+        "Apple Mail",
+        "Gmail"
+      ]
+    },
+    {
+      "prompt": "Which kind of client is Gmail in a browser?",
+      "options": [
+        "Cloud (web-based)",
+        "Command line",
+        "Groupware",
+        "Desktop"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which Unix command can send an email from a script, e.g. `echo hi | ____ -s Alert admin@example.com`? (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "A webmail client needs the firewall to allow IMAP on port 993 from the user's computer."
+    },
+    {
+      "prompt": "What makes a client groupware rather than just mail?",
+      "options": [
+        "Mail is joined with calendars, contacts, tasks, or customer records",
+        "It runs on a phone",
+        "It runs in a browser",
+        "It only uses POP"
+      ]
+    },
+    {
+      "prompt": "Which pair is a desktop client and a mobile app?",
+      "options": [
+        "pine and elm",
+        "mutt and Alpine",
+        "Thunderbird and the Outlook app",
+        "Gmail and Exchange"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which client was pine's successor? (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Command-line clients are useful for reading mail over SSH on a server with no screen."
+    }
+  ]
+}

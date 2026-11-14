@@ -1,0 +1,73 @@
+{
+  "type": "quiz",
+  "title": "Check: Plan Your Mail",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Which option suits most small and mid-sized organizations?",
+      "options": [
+        "Hosted mail, such as Microsoft 365 or Google Workspace",
+        "Writing your own MTA",
+        "Running Sendmail on every desktop",
+        "No mail at all"
+      ]
+    },
+    {
+      "prompt": "Why send customer newsletters through a separate sending service?",
+      "options": [
+        "It avoids needing DNS",
+        "It's cheaper per message",
+        "Newsletters can't use SMTP",
+        "So spam complaints about bulk mail can't get your staff mail blocklisted"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "The public MX should point directly at your internal Exchange server."
+    },
+    {
+      "prompt": "Your users only use Outlook on the web and the Outlook phone app with Microsoft 365. Which ports do they need?",
+      "options": [
+        "443",
+        "25 inbound",
+        "110 and 143",
+        "993 and 995"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "In the worked example, which DMARC policy does the office start at? (one word, the value of p=)"
+    },
+    {
+      "prompt": "How does the worked example keep printer and server alerts internal?",
+      "options": [
+        "They're sent as attachments",
+        "They go to an internal relay that only accepts connections from the office subnet",
+        "They use POP3",
+        "They use port 25 from the Internet"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A DKIM key may be published with a CNAME record."
+    },
+    {
+      "prompt": "Which chapter 7 idea keeps internal mail server names out of the public zone?",
+      "options": [
+        "Split DNS (split configuration)",
+        "Round robin",
+        "Zone transfers",
+        "Anycast"
+      ]
+    },
+    {
+      "prompt": "Why close inbound port 25 in the worked example?",
+      "options": [
+        "Port 25 is only for IMAP",
+        "SMTP doesn't work over the Internet",
+        "It's needed for DHCP",
+        "Microsoft 365 receives the office's mail, so nothing inside needs mail from the Internet"
+      ]
+    }
+  ]
+}

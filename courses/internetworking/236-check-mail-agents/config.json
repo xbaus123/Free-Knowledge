@@ -1,0 +1,63 @@
+{
+  "type": "quiz",
+  "title": "Check: Who Handles a Message",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Thunderbird, Outlook, and Gmail in a browser are all examples of which agent?",
+      "options": [
+        "MTA",
+        "MDA",
+        "MUA",
+        "MSA"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the abbreviation for the agent that relays mail from server to server? (three letters)"
+    },
+    {
+      "prompt": "Which agent files a message into the recipient's mailbox?",
+      "options": [
+        "MSA",
+        "DNS",
+        "MDA",
+        "MUA"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Bob reads his mail by connecting to his server with SMTP."
+    },
+    {
+      "prompt": "Which agent does your mail program connect to when you submit a new message, after logging in?",
+      "options": [
+        "The recipient's MUA",
+        "A root nameserver",
+        "The MSA",
+        "The recipient's MDA"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Mail servers write each message to disk before passing it on. What's that approach called? (three words, joined with 'and')"
+    },
+    {
+      "type": "true_false",
+      "prompt": "If the next server is down, a sending MTA gives up and bounces the message straight away."
+    },
+    {
+      "prompt": "Which chapter 1 network also used store and forward of whole messages?",
+      "options": [
+        "Ethernet",
+        "AUTODIN",
+        "DECnet",
+        "ARPANET"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the word for the message a sender gets back when delivery finally fails? (one word)"
+    }
+  ]
+}

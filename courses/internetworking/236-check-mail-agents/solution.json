@@ -1,0 +1,54 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "The mail user agent is the program a person reads and writes mail in."
+    },
+    {
+      "accepted_answers": [
+        "mta",
+        "mail transfer agent"
+      ],
+      "explanation": "The mail transfer agent: Sendmail, Postfix, Exim, Exchange."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The mail delivery agent does the last step on the receiving server."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "SMTP moves mail toward the recipient. Reading it uses IMAP or POP."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The mail submission agent accepts new mail from authenticated users."
+    },
+    {
+      "accepted_answers": [
+        "store and forward",
+        "store-and-forward",
+        "store & forward"
+      ],
+      "explanation": "Store and forward: the message waits in a queue until the next hop takes it."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It keeps the message queued and retries, typically for days, before bouncing it."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "AUTODIN stored whole messages at relay centers and forwarded them on, just like mail servers do."
+    },
+    {
+      "accepted_answers": [
+        "bounce",
+        "a bounce",
+        "bounce message",
+        "ndr",
+        "non-delivery report",
+        "bounced"
+      ],
+      "explanation": "A bounce, also called a non-delivery report (NDR)."
+    }
+  ]
+}

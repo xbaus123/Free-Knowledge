@@ -1,0 +1,63 @@
+{
+  "type": "quiz",
+  "title": "Check: SMTP Reply Codes",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "A server replies with a code starting with 5. What does the sending MTA do?",
+      "options": [
+        "Send the message body",
+        "Retry in ten minutes",
+        "Stop, and bounce the message to the sender",
+        "Switch to port 587"
+      ]
+    },
+    {
+      "prompt": "And a code starting with 4?",
+      "options": [
+        "Delete the message",
+        "Bounce at once",
+        "Carry on as normal",
+        "Keep the message queued and try again later"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which code does the server send after DATA, inviting the client to send the message? (number)"
+    },
+    {
+      "type": "written",
+      "prompt": "Which code means a plain OK? (number)"
+    },
+    {
+      "prompt": "`550 5.1.1 User unknown` after a RCPT TO. What's wrong?",
+      "options": [
+        "There's no such mailbox, so that recipient fails permanently",
+        "TLS is required",
+        "The server is busy",
+        "The message is too big"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "In a multi-line reply, the last line has a space after the code and the others have a dash."
+    },
+    {
+      "prompt": "A client sends DATA before any RCPT TO. Which code fits?",
+      "options": [
+        "250",
+        "354",
+        "503",
+        "221"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Greylisting works by sending a 550 to unknown senders."
+    },
+    {
+      "type": "written",
+      "prompt": "Which code does the server send when it greets a new connection? (number)"
+    }
+  ]
+}

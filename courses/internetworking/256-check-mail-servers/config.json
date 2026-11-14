@@ -1,0 +1,68 @@
+{
+  "type": "quiz",
+  "title": "Check: Mail Server Software",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Which MTA came first, out of Berkeley Unix?",
+      "options": [
+        "Postfix",
+        "Exim",
+        "Exchange",
+        "Sendmail"
+      ]
+    },
+    {
+      "prompt": "Which product bundles mail with calendars, contacts, and groupware?",
+      "options": [
+        "Postfix",
+        "Sendmail",
+        "Microsoft Exchange",
+        "Dovecot"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Postfix stores mailboxes and serves IMAP all by itself."
+    },
+    {
+      "type": "written",
+      "prompt": "Sendmail's real configuration file is sendmail.cf. Which file do administrators edit to generate it? (file name)"
+    },
+    {
+      "type": "written",
+      "prompt": "What's the term for a single relay that all outgoing mail is sent through? (two words)"
+    },
+    {
+      "prompt": "What does Sendmail's mailertable do?",
+      "options": [
+        "Maps domains to the next host their mail should go to",
+        "Stores user passwords",
+        "Lists blocked spammers",
+        "Holds the queue"
+      ]
+    },
+    {
+      "prompt": "Why put a Sendmail relay in front of an internal Exchange server?",
+      "options": [
+        "To avoid needing DNS",
+        "So the internal server never takes connections from the Internet on port 25, and mail is filtered first",
+        "To make mail faster",
+        "Exchange can't receive mail"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Marshall's MX record points at a cloud service that plays the same role as an Internet-facing relay."
+    },
+    {
+      "prompt": "Which of these is a real chore of running your own mail server?",
+      "options": [
+        "Registering a TLD",
+        "Choosing an OSI layer",
+        "Getting a DHCP lease",
+        "Keeping its IP address off spam blocklists"
+      ]
+    }
+  ]
+}

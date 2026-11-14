@@ -1,0 +1,54 @@
+{
+  "type": "quiz",
+  "title": "Check: Where Mail Fits",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Which OSI layer do mail protocols like SMTP and IMAP belong to?",
+      "options": [
+        "Transport (4)",
+        "Application (7)",
+        "Network (3)",
+        "Data link (2)"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Mail protocols run over UDP, like DHCP and most DNS lookups."
+    },
+    {
+      "type": "written",
+      "prompt": "A DHCP server listens on which UDP port? (number)"
+    },
+    {
+      "type": "written",
+      "prompt": "And a DHCP client listens on which UDP port? (number)"
+    },
+    {
+      "prompt": "Which DNS record type tells a sender where to deliver mail for a domain?",
+      "options": [
+        "MX",
+        "SOA",
+        "CNAME",
+        "PTR"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "An MX record may point at a CNAME alias."
+    },
+    {
+      "prompt": "Why would a receiving mail server look up a PTR record?",
+      "options": [
+        "To get a DHCP lease",
+        "To find its own MX",
+        "To pick an IMAP port",
+        "To check that the sending server's IP address maps back to a name"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What does the A in DORA stand for? (one word)"
+    }
+  ]
+}

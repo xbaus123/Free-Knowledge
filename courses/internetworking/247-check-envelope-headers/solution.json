@@ -1,0 +1,48 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "MAIL FROM: and RCPT TO: are SMTP commands: the envelope. The rest are headers."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It shows the From: header. The envelope sender only shows up if you look at Return-Path."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The envelope delivers to them, while the headers everyone sees don't mention them."
+    },
+    {
+      "accepted_answers": [
+        "5322",
+        "rfc 5322",
+        "rfc5322"
+      ],
+      "explanation": "RFC 5322, the Internet Message Format. SMTP itself is RFC 5321."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The first empty line ends the headers. The lone dot ends the whole message."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "On top, so the newest hop is first."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The bottom header is the first hop, the top header the last."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It doesn't check at all, which is why spoofing is easy without SPF, DKIM, and DMARC."
+    },
+    {
+      "accepted_answers": [
+        "return-path",
+        "return-path:",
+        "return path"
+      ],
+      "explanation": "Return-Path: holds the MAIL FROM: address, where bounces go."
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "txt",
+        "txt record"
+      ],
+      "explanation": "All three are TXT records."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Sender Policy Framework: IP addresses and includes of permitted senders."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "-all is a hard fail. ~all is the softer version."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "SPF checks the envelope domain from MAIL FROM:. DMARC is what ties things to the visible From:."
+    },
+    {
+      "accepted_answers": [
+        "s1._domainkey.example.com",
+        "s1._domainkey.example.com."
+      ],
+      "explanation": "selector._domainkey.domain."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "A forwarder's IP isn't in the original domain's SPF, but the DKIM signature still matches."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "reject. quarantine sends it to spam, and none just reports."
+    },
+    {
+      "accepted_answers": [
+        "_dmarc.example.com",
+        "_dmarc.example.com."
+      ],
+      "explanation": "_dmarc in front of the domain."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Start at p=none, read the rua reports, fix every legitimate sender, then tighten to quarantine and reject."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "That match is called alignment."
+    }
+  ]
+}

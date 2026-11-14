@@ -1,0 +1,48 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "The message is stored anyway, which is the chance to scan it."
+    },
+    {
+      "accepted_answers": [
+        "quarantine",
+        "quarantined",
+        "quarantining"
+      ],
+      "explanation": "Quarantine."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "DLP scans outgoing mail for sensitive data."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It catches new malware that signatures haven't seen yet."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Signatures only match malware that's already known. That's why sandboxes exist."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Attackers encrypt the archive and put the password in the email body to slip past scanners."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Aliases and forwarding change where a message goes."
+    },
+    {
+      "accepted_answers": [
+        "journaling",
+        "journalling",
+        "journal"
+      ],
+      "explanation": "Journaling."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It adds up many small signs into a score."
+    }
+  ]
+}

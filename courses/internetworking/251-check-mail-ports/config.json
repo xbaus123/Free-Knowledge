@@ -1,0 +1,59 @@
+{
+  "type": "quiz",
+  "title": "Check: Mail Ports",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "Which port do mail servers use to talk to each other? (number)"
+    },
+    {
+      "type": "written",
+      "prompt": "Which port does your mail program use to submit new mail, after logging in, with STARTTLS? (number)"
+    },
+    {
+      "prompt": "Which port carries IMAP over TLS from the start?",
+      "options": [
+        "110",
+        "995",
+        "143",
+        "993"
+      ]
+    },
+    {
+      "prompt": "Which port carries POP3 over TLS?",
+      "options": [
+        "110",
+        "993",
+        "995",
+        "25"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Port 25 must accept mail for its own domains without a password."
+    },
+    {
+      "prompt": "Why do many ISPs block outbound port 25 from home connections?",
+      "options": [
+        "Port 25 is only for IPv6",
+        "Port 25 is too slow",
+        "To stop infected home computers sending spam directly to mail servers",
+        "Home users should only receive mail"
+      ]
+    },
+    {
+      "prompt": "What's the difference between port 465 and port 587?",
+      "options": [
+        "465 is for reading, 587 for sending",
+        "465 is TLS from the first byte; 587 starts plain and upgrades with STARTTLS",
+        "There's no difference",
+        "465 is server to server"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Plain (non-TLS) IMAP uses which port? (number)"
+    }
+  ]
+}

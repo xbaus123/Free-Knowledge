@@ -1,0 +1,51 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "cs.example.edu",
+        "cs.example.edu."
+      ],
+      "explanation": "Everything after the @. The mailbox name, carol, only matters once the message arrives."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Strip out the FQDN, ask for its MX, get the answer, and deliver to that host."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The lowest priority number wins. b is the backup."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Senders pick at random among equal priorities, which spreads the load."
+    },
+    {
+      "accepted_answers": [
+        "getmxrr",
+        "getmxrr()"
+      ],
+      "explanation": "getmxrr(hostname, hosts, weights) fills in the host list and the matching priorities."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Lower is preferred, and 0 is as low as it goes. A null MX has 0 but points at '.', not a host."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The sender treats the A record as an implicit MX."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "That's a null MX (RFC 7505): an explicit no-mail flag, so senders don't retry for days."
+    },
+    {
+      "accepted_answers": [
+        "round robin",
+        "dns round robin",
+        "round-robin",
+        "round robin dns"
+      ],
+      "explanation": "DNS round robin spreads connections across the addresses."
+    }
+  ]
+}

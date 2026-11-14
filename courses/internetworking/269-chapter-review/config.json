@@ -1,0 +1,178 @@
+{
+  "type": "quiz",
+  "title": "Chapter Review: Mail",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "What makes email asynchronous?",
+      "options": [
+        "It uses UDP",
+        "It's encrypted",
+        "It runs on routers",
+        "Sender and recipient don't have to be online at the same time, because messages wait on servers"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Mail uses TCP for every hop."
+    },
+    {
+      "prompt": "Which agent relays mail from server to server?",
+      "options": [
+        "MTA",
+        "MUA",
+        "MDA",
+        "DHCP"
+      ]
+    },
+    {
+      "prompt": "Put the sender's steps in order.",
+      "options": [
+        "Query MX, send, strip the domain, DNS answers",
+        "Send, query MX, strip the domain, DNS answers",
+        "Strip the domain, query MX, DNS answers, send to the MX host's address",
+        "DNS answers, strip the domain, query MX, send"
+      ]
+    },
+    {
+      "prompt": "`MX 20 b.example.com` and `MX 5 a.example.com`. Which is tried first?",
+      "options": [
+        "Neither, they need equal priorities",
+        "a",
+        "b",
+        "Random"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What does a domain publish as `MX 0 .`? (two words)"
+    },
+    {
+      "prompt": "Which SMTP command gives the envelope sender?",
+      "options": [
+        "RCPT TO:",
+        "DATA",
+        "MAIL FROM:",
+        "HELO"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which reply code invites the client to send the message after DATA? (number)"
+    },
+    {
+      "prompt": "What does a 4xx reply tell the sending MTA?",
+      "options": [
+        "Success",
+        "Temporary failure: queue and retry",
+        "Permanent failure: bounce",
+        "Send the body"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A Bcc recipient appears in the message headers but not in the envelope."
+    },
+    {
+      "prompt": "How do you read Received: headers to follow a message from sender to recipient?",
+      "options": [
+        "Alphabetically",
+        "Only the From: matters",
+        "Bottom to top",
+        "Top to bottom"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which encoding carries binary attachments as text, growing them by about a third? (one word)"
+    },
+    {
+      "prompt": "Which port pairs are right?",
+      "options": [
+        "SMTP 110, IMAP 25, POP 993",
+        "SMTP between servers 25, submission 587, IMAPS 993, POP3S 995",
+        "SMTP 53, IMAP 67",
+        "Submission 143, IMAPS 587"
+      ]
+    },
+    {
+      "prompt": "Which retrieval protocol keeps mail and folders on the server so every device sees the same thing?",
+      "options": [
+        "IMAP",
+        "POP3",
+        "SMTP",
+        "MIME"
+      ]
+    },
+    {
+      "prompt": "In Sendmail, what's a smart host?",
+      "options": [
+        "The fastest MX",
+        "The DMARC report address",
+        "A DNS server",
+        "A relay all outgoing mail is sent through"
+      ]
+    },
+    {
+      "prompt": "Which of these is a groupware client?",
+      "options": [
+        "Exchange (with Outlook)",
+        "mutt",
+        "Alpine",
+        "elm"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the term for opening an attachment in an isolated virtual machine to see what it does? (one word)"
+    },
+    {
+      "prompt": "Outbound 'dirty word' filtering that blocks credit card numbers leaving is called what?",
+      "options": [
+        "DLP",
+        "Greylisting",
+        "IDLE",
+        "SPF"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A server that forwards mail from anyone to anywhere is called an open ______. (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "STARTTLS gives end-to-end encryption, so no server on the path can read the message."
+    },
+    {
+      "prompt": "Which record lists the servers allowed to send mail for a domain?",
+      "options": [
+        "SPF",
+        "PTR",
+        "DKIM",
+        "DMARC"
+      ]
+    },
+    {
+      "prompt": "What does DMARC add on top of SPF and DKIM?",
+      "options": [
+        "A new port",
+        "Faster delivery",
+        "Encryption",
+        "A check that they match the visible From: domain, a policy for failures, and reports"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "At what name is example.com's DMARC record published? (the full name)"
+    },
+    {
+      "prompt": "Which is the safest way to bring public mail into your network?",
+      "options": [
+        "Open port 25 on every server",
+        "Through one filtered door: a filtering service or a DMZ relay",
+        "Point the MX straight at an internal server",
+        "Use POP3 on port 110"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "Sendmail, from 1983. Postfix was written later as a safer replacement."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Exchange is a groupware server, not just an MTA."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Postfix moves mail. A separate server, usually Dovecot, handles mailboxes, IMAP, and POP."
+    },
+    {
+      "accepted_answers": [
+        "sendmail.mc",
+        "the mc file",
+        ".mc"
+      ],
+      "explanation": "sendmail.mc, processed with m4 into sendmail.cf."
+    },
+    {
+      "accepted_answers": [
+        "smart host",
+        "smarthost",
+        "a smart host",
+        "smart_host"
+      ],
+      "explanation": "A smart host, set with SMART_HOST in sendmail.mc."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It re-directs ingress mail: accept it, then hand it to another IP for final delivery."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The relay faces the Internet, filters, and forwards clean mail inward."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Exchange Online Protection receives the mail, filters it, and delivers it to the mailboxes."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "If your server's IP lands on a blocklist, other servers refuse your mail."
+    }
+  ]
+}

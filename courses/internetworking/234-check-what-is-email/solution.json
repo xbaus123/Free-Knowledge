@@ -1,0 +1,46 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "asynchronous",
+        "async",
+        "an asynchronous"
+      ],
+      "explanation": "Asynchronous: the message waits on servers until the recipient collects it."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The message waits on the recipient's mail server. Their computer collects it later."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Each hop is a reliable TCP conversation, but delivery as a whole is asynchronous."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Mail servers queue the message and retry. Only after days of failure does the sender get a bounce."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "MX says which host takes the mail. Its A (or AAAA) record gives the address to connect to."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Clients hand messages to servers, servers pass them between each other, and the recipient's client collects them."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Hacking, attachments, and privacy. Address exhaustion was chapter 1's problem."
+    },
+    {
+      "accepted_answers": [
+        "customers",
+        "customer",
+        "clients",
+        "the public",
+        "public"
+      ],
+      "explanation": "Your users and your customers have different needs, as the project at the end of the chapter shows."
+    }
+  ]
+}

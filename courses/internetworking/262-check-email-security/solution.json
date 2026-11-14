@@ -1,0 +1,50 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "open relay",
+        "an open relay",
+        "open mail relay"
+      ],
+      "explanation": "An open relay. Spammers find them fast, and the server's IP gets blocklisted."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "BEC: impersonating an executive to trick staff into paying."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "TLS protects each hop. Every server on the path still decrypts and can read the message."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "S/MIME and PGP encrypt the message itself."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "STARTTLS is opportunistic, so stripping it forces plain text. MTA-STS and DANE defend against it."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The same reason chapter 7 said not to publish HINFO."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "USER and PASS go in the clear. Use 995 instead."
+    },
+    {
+      "accepted_answers": [
+        "mfa",
+        "2fa",
+        "multi-factor authentication",
+        "multifactor authentication",
+        "two-factor authentication"
+      ],
+      "explanation": "MFA, from chapter 2's access control lesson."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "VRFY confirms a mailbox, EXPN expands a mailing list."
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "type": "quiz",
+  "title": "Drill: Read the Transcript",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "`C: MAIL FROM:<a@x.org>` → `S: 250 OK` → `C: RCPT TO:<b@y.com>` → `S: 250 OK`. What should the client send next?",
+      "options": [
+        "EHLO",
+        "QUIT",
+        "DATA (or another RCPT TO)",
+        "The lone dot"
+      ]
+    },
+    {
+      "prompt": "`S: 451 4.7.1 Please try again later`. Which is the most likely explanation?",
+      "options": [
+        "The mailbox doesn't exist",
+        "The command was misspelled",
+        "Greylisting or a temporary problem: the message should be retried",
+        "The message was delivered"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "`S: 250-mx.y.com`, `S: 250-STARTTLS`, `S: 250-SIZE 10240000`, then one more line. What character follows 250 on that last line? (one word)"
+    },
+    {
+      "prompt": "Two RCPT TO lines: the first gets `250 OK`, the second `550 No such user`. Then the client sends DATA and the message. Who gets it?",
+      "options": [
+        "Only the first recipient",
+        "Only the second",
+        "Nobody",
+        "Both"
+      ]
+    },
+    {
+      "prompt": "`C: VRFY admin` → `S: 252 Cannot VRFY user, but will accept message and attempt delivery`. What's the server doing?",
+      "options": [
+        "Confirming admin exists",
+        "Declining to say whether the mailbox exists, to stop address harvesting",
+        "Rejecting the connection",
+        "Asking for a password"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "`S: 554 5.7.1 Message rejected as spam` means the sending server should retry in an hour."
+    },
+    {
+      "type": "written",
+      "prompt": "The client sends `QUIT`. What code does the server reply with? (number)"
+    },
+    {
+      "prompt": "Halfway through, the client realizes it gave the wrong sender. Which command lets it start the message again without hanging up?",
+      "options": [
+        "HELO",
+        "RSET",
+        "QUIT",
+        "NOOP"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "type": "quiz",
+  "title": "Check: Email Security",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "What's an email server called that forwards mail from anyone to anywhere? (two words)"
+    },
+    {
+      "prompt": "A message that pretends to be the CFO asking for an urgent wire transfer is called what?",
+      "options": [
+        "Round robin",
+        "A bounce",
+        "Business email compromise",
+        "Greylisting"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "STARTTLS between servers means only the recipient can read the message."
+    },
+    {
+      "prompt": "Which of these gives true end-to-end encryption for email?",
+      "options": [
+        "SPF",
+        "S/MIME or PGP",
+        "Port 993",
+        "STARTTLS"
+      ]
+    },
+    {
+      "prompt": "An attacker removes `STARTTLS` from a server's EHLO reply so the session stays in plain text. What's that called?",
+      "options": [
+        "Dot-stuffing",
+        "A downgrade attack",
+        "Greylisting",
+        "Phishing"
+      ]
+    },
+    {
+      "prompt": "Why trim a 220 banner like `220 mail ESMTP Sendmail 8.12.3`?",
+      "options": [
+        "It breaks EHLO",
+        "The version number tells attackers which exploits to try",
+        "It's longer than 512 bytes",
+        "It slows the connection"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Plain POP3 on port 110 sends the user's password unencrypted."
+    },
+    {
+      "type": "written",
+      "prompt": "Which defense stops a stolen mailbox password from being enough to log in? (abbreviation)"
+    },
+    {
+      "prompt": "Which two SMTP commands should be disabled to stop address harvesting?",
+      "options": [
+        "VRFY and EXPN",
+        "HELO and EHLO",
+        "DATA and QUIT",
+        "RSET and NOOP"
+      ]
+    }
+  ]
+}

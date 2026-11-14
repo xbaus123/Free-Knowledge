@@ -1,0 +1,63 @@
+{
+  "type": "quiz",
+  "title": "Check: How Mail Knows Where to Go",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "For carol@cs.example.edu, what domain does the sender look up the MX for?"
+    },
+    {
+      "prompt": "Put the sender's steps in order.",
+      "options": [
+        "Query MX, strip the domain, send, DNS answers",
+        "Send, then query MX if it bounces",
+        "Strip the domain, query MX, DNS answers, send to the address of the MX host",
+        "Query the PTR, strip the domain, send"
+      ]
+    },
+    {
+      "prompt": "A domain has MX 5 a.example.com and MX 50 b.example.com. Which does a sender try first?",
+      "options": [
+        "b, because 50 is bigger",
+        "Both at once",
+        "Whichever answers DNS first",
+        "a, because lower numbers are preferred"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Two MX records with the same priority share the load between them."
+    },
+    {
+      "type": "written",
+      "prompt": "In PHP, which function returns a domain's mail hosts and their weights? (function name)"
+    },
+    {
+      "prompt": "marshall.edu's single MX is priority 0. What does the 0 mean?",
+      "options": [
+        "The record has expired",
+        "Mail is disabled",
+        "It's a null MX",
+        "It's the most preferred (and only) choice"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A domain with no MX records but with an A record can still receive mail."
+    },
+    {
+      "prompt": "What does `example.com. IN MX 0 .` say?",
+      "options": [
+        "Send mail to the root servers",
+        "This domain accepts no mail, so bounce at once",
+        "Use any server",
+        "Retry later"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Marshall's MX host name resolves to several A records. What's the chapter 7 trick for one name with several addresses? (two or three words)"
+    }
+  ]
+}

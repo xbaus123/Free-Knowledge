@@ -1,0 +1,68 @@
+{
+  "type": "quiz",
+  "title": "Drill: Which Server Gets the Mail?",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "`MX 10 mx1.shop.example.` and `MX 20 mx2.shop.example.` Both are up. Where does the mail go?",
+      "options": [
+        "mx2",
+        "Half to each",
+        "mx1",
+        "Neither"
+      ]
+    },
+    {
+      "prompt": "Same records, but mx1 refuses the connection. What next?",
+      "options": [
+        "Try mx2",
+        "Wait five days for mx1",
+        "Look up the PTR",
+        "Bounce at once"
+      ]
+    },
+    {
+      "prompt": "`MX 10 a.example.net`, `MX 10 b.example.net`, `MX 10 c.example.net`. How is mail spread?",
+      "options": [
+        "All to c",
+        "All to a",
+        "Roughly evenly, since senders pick at random among equal priorities",
+        "In alphabetical order, one per day"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A domain has `MX 0 mail.example.org` and `MX 100 backup.example.org`. Which host name gets mail normally? (the full name)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Changing priorities from 10 and 20 to 1 and 2 changes which server is tried first."
+    },
+    {
+      "prompt": "A domain has no MX records and no A record. What happens to mail sent there?",
+      "options": [
+        "It's delivered to the registrar",
+        "It goes to the TLD's servers",
+        "It waits forever",
+        "It bounces: there's nowhere to deliver it"
+      ]
+    },
+    {
+      "prompt": "A domain has no MX but its name has an A record of 203.0.113.9. What does the sender do?",
+      "options": [
+        "Connects on port 993",
+        "Connects to 203.0.113.9 port 25, treating it as an implicit MX",
+        "Bounces",
+        "Asks the root"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "You want to publish that `noreply.example.com` never accepts mail. What goes after `MX 0`? (one character)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "An MX record's value can be an IP address, like `MX 10 192.0.2.25`."
+    }
+  ]
+}

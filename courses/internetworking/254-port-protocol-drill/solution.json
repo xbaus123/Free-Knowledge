@@ -1,0 +1,50 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "25"
+      ],
+      "explanation": "Server to server is always 25."
+    },
+    {
+      "accepted_answers": [
+        "993"
+      ],
+      "explanation": "IMAPS is 993."
+    },
+    {
+      "accepted_answers": [
+        "995"
+      ],
+      "explanation": "POP3S is 995."
+    },
+    {
+      "accepted_answers": [
+        "587"
+      ],
+      "explanation": "Submission is 587."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Open 993 and 995 instead, and keep 143 and 110 inside, if at all."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "IMAP (or POP) reads. SMTP only sends toward the recipient."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "25 for incoming mail, 587 for staff submission, 993 for reading. (465 too if your clients use it.)"
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The lookup and address protocols are UDP, the mail protocols are TCP."
+    },
+    {
+      "accepted_answers": [
+        "465"
+      ],
+      "explanation": "465, standardized by RFC 8314."
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "mutt, along with Alpine, pine, elm, and mail."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It's a website: the client is the browser."
+    },
+    {
+      "accepted_answers": [
+        "mail",
+        "mailx"
+      ],
+      "explanation": "mail (or mailx). Cron jobs and monitoring scripts send alerts this way."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Webmail only needs HTTPS (443). The web server does the mailbox work."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Exchange, Notes, and Salesforce tie mail to the rest of the work."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Thunderbird runs on a desktop. The Outlook app runs on a phone."
+    },
+    {
+      "accepted_answers": [
+        "alpine"
+      ],
+      "explanation": "Alpine, from the University of Washington, like pine."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's one reason administrators still use them."
+    }
+  ]
+}

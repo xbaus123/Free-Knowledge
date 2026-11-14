@@ -1,0 +1,72 @@
+{
+  "type": "quiz",
+  "title": "Check: SPF, DKIM, and DMARC",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "Which DNS record type holds SPF, DKIM, and DMARC policies? (three letters)"
+    },
+    {
+      "prompt": "What does SPF list?",
+      "options": [
+        "The domain's public key",
+        "Where to send reports",
+        "The servers allowed to send mail for the domain",
+        "The domain's users"
+      ]
+    },
+    {
+      "prompt": "What does `-all` at the end of an SPF record mean?",
+      "options": [
+        "Accept everything",
+        "Soft fail: accept but mark",
+        "No opinion",
+        "Mail from any server not listed fails"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "SPF checks the From: header that people see in their mail program."
+    },
+    {
+      "type": "written",
+      "prompt": "Where would a receiver find the DKIM public key for selector `s1` at `example.com`? (the full name)"
+    },
+    {
+      "prompt": "Why does DKIM usually survive forwarding when SPF doesn't?",
+      "options": [
+        "DKIM uses UDP",
+        "DKIM isn't checked after forwarding",
+        "Forwarders re-sign every message with SPF",
+        "The signature travels inside the message, while SPF depends on which server's IP connects"
+      ]
+    },
+    {
+      "prompt": "Which DMARC policy tells receivers to refuse failing mail outright?",
+      "options": [
+        "p=quarantine",
+        "p=reject",
+        "p=all",
+        "p=none"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Under which name is a domain's DMARC record published, for example.com? (the full name)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "The usual DMARC rollout starts at p=reject on day one."
+    },
+    {
+      "prompt": "To pass DMARC, what has to be true?",
+      "options": [
+        "The sender uses port 587",
+        "Both SPF and DKIM pass",
+        "The message has an attachment",
+        "SPF or DKIM passes, and its domain matches the From: header's domain"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "type": "quiz",
+  "title": "Check: Talking SMTP",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "What does SMTP stand for? (four words)"
+    },
+    {
+      "prompt": "Which command starts the conversation and asks the server to list its extensions?",
+      "options": [
+        "START",
+        "DATA",
+        "HELO",
+        "EHLO"
+      ]
+    },
+    {
+      "prompt": "Which command gives the address bounces should go back to?",
+      "options": [
+        "VRFY",
+        "MAIL FROM:",
+        "From: in the headers",
+        "RCPT TO:"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A message to three people needs three RCPT TO: commands."
+    },
+    {
+      "type": "written",
+      "prompt": "After DATA, the client sends the message. What does it send on a line by itself to end it? (one character)"
+    },
+    {
+      "prompt": "A body line reads `.hidden file`. What does the client actually send?",
+      "options": [
+        "`.hidden file`",
+        "It can't send that line",
+        "`..hidden file`",
+        "`hidden file`"
+      ]
+    },
+    {
+      "prompt": "Which command throws away the message in progress but keeps the connection open?",
+      "options": [
+        "DATA",
+        "RSET",
+        "QUIT",
+        "NOOP"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Most public mail servers will happily tell you whether any mailbox exists if you send VRFY."
+    },
+    {
+      "prompt": "What does STARTTLS do?",
+      "options": [
+        "Logs the user in",
+        "Moves the session to port 993",
+        "Switches the rest of the SMTP session into an encrypted TLS session",
+        "Starts the message body"
+      ]
+    }
+  ]
+}
