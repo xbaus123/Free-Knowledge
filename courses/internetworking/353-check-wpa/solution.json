@@ -1,0 +1,51 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "wi-fi protected access",
+        "wifi protected access",
+        "wi fi protected access",
+        "wireless protected access"
+      ],
+      "explanation": "Wi-Fi Protected Access."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "One key for everyone. WPA2-Enterprise gives each user their own credentials instead."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Offline guessing has no rate limit, and the network never knows it's happening."
+    },
+    {
+      "accepted_answers": [
+        "simultaneous authentication of equals"
+      ],
+      "explanation": "Simultaneous Authentication of Equals, WPA3's handshake."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "SAE (commit, then confirm) makes a fresh key. The 4-way handshake then turns it into session keys."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That symmetry is the \"equals\" in the name."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "H2E turns the password and SSID into the PWE that SAE's math is built on."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Each session's key is fresh and never sent, so old recordings stay encrypted."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "AES-128 at home, AES-256 for commercial and government use."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "WEP is broken by design. A long password doesn't help."
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Find the network, prove yourself, join at layer 2, then get an address at layer 3."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Once the association response arrives, the layer 2 link is up and DHCP can run over it."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's passive scanning. Active scanning sends probe requests."
+    },
+    {
+      "accepted_answers": [
+        "association request",
+        "an association request"
+      ],
+      "explanation": "The association request. The WAP's association response completes it."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Layers 2 and 3 are working locally. Getting off the LAN is the router's and modem's job."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Association is a layer 2 link. DHCP hands out a layer 3 address."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Separate boxes in a business, one box at home."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The modem. The antennas handle the radio side."
+    }
+  ]
+}

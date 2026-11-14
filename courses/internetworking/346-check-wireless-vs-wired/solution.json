@@ -1,0 +1,46 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Laptops, phones, and access points all transmit and receive. Nothing physically joins them, so they share the air with every radio in range."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Chapter 2's rule of thumb: lower frequencies travel farther and get through obstacles better. The price is fewer channels and a crowded band."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Wired links give stable, guaranteed performance and are harder to eavesdrop on. That's exactly what a data center needs."
+    },
+    {
+      "accepted_answers": [
+        "patterns",
+        "pattern"
+      ],
+      "explanation": "Encryption hides what's said, not that something was said. Timing and volume can reveal a lot."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Pulling cable through walls is expensive. Once it's in, it needs little attention. Wireless is cheap to install but needs ongoing tuning and upgrades."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "A switch port is a physical location. A radio signal could have come from anywhere in range, including the parking lot."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Everyone on a channel shares it, and interference from other radios makes speed vary."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Mobility is where wireless shines. The other three need throughput and stability, so they're wired."
+    },
+    {
+      "accepted_answers": [
+        "core",
+        "backbone"
+      ],
+      "explanation": "Access points at the edge bridge the radio side onto the wired core."
+    }
+  ]
+}

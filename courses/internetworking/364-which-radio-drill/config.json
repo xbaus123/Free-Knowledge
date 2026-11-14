@@ -1,0 +1,69 @@
+{
+  "type": "quiz",
+  "title": "Drill: Which Radio?",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Wireless earbuds for a phone.",
+      "options": [
+        "Zigbee",
+        "LTE",
+        "LoRa",
+        "Bluetooth"
+      ]
+    },
+    {
+      "prompt": "Soil moisture sensors spread across a 10 km farm, reporting a few bytes an hour.",
+      "options": [
+        "Zigbee",
+        "Bluetooth",
+        "LoRa",
+        "Wi-Fi"
+      ]
+    },
+    {
+      "prompt": "Thirty smart bulbs and door sensors throughout a house, talking to one hub.",
+      "options": [
+        "LoRa",
+        "GSM",
+        "Wired Ethernet",
+        "Zigbee"
+      ]
+    },
+    {
+      "prompt": "A laptop streaming HD video in an office.",
+      "options": [
+        "Wi-Fi",
+        "LoRa",
+        "Bluetooth",
+        "Zigbee"
+      ]
+    },
+    {
+      "prompt": "A delivery truck's tracker reporting from highways across the country.",
+      "options": [
+        "Zigbee",
+        "Wi-Fi",
+        "Cellular (LTE or 5G)",
+        "Bluetooth"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A remote patient monitor sends a heart-rate reading every few minutes from a farmhouse 8 km from town. Which low-power radio fits? (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Bluetooth is a good choice for linking two buildings 2 km apart."
+    },
+    {
+      "prompt": "Smart bulbs keep dropping off a Zigbee hub whenever the office Wi-Fi gets busy. What's the likely cause?",
+      "options": [
+        "Zigbee and Wi-Fi share 2.4 GHz, and their channels overlap",
+        "Zigbee only works in Europe",
+        "LoRa is jamming them",
+        "The bulbs need a SIM card"
+      ]
+    }
+  ]
+}

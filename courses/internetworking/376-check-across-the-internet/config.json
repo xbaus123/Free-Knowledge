@@ -1,0 +1,51 @@
+{
+  "type": "quiz",
+  "title": "Check: Across the Internet",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Put the second half in order.",
+      "options": [
+        "TCP handshake, TLS, HTTP GET",
+        "TLS, HTTP GET, TCP handshake",
+        "TCP handshake, HTTP GET, TLS",
+        "HTTP GET, TCP handshake, TLS"
+      ]
+    },
+    {
+      "prompt": "What does every router along the way do to the packet?",
+      "options": [
+        "Ask DNS where it goes",
+        "Longest prefix match on the destination, decrement the TTL, forward it",
+        "Rewrite the destination address",
+        "Send it back to check it"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which protocol carries routes between autonomous systems across the Internet? (abbreviation)"
+    },
+    {
+      "prompt": "The TCP handshake to port 443 is...",
+      "options": [
+        "Discover, Offer, Request, Ack",
+        "SYN, SYN/ACK, ACK",
+        "GET, 200 OK, ACK",
+        "Commit, confirm, confirm"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Each layer adds its own header on the way down, and routers only unwrap as far as the network layer."
+    },
+    {
+      "prompt": "Which chapter's ideas keep the shop online when a disk dies?",
+      "options": [
+        "Resilience",
+        "Mail",
+        "DNS",
+        "Subnetting"
+      ]
+    }
+  ]
+}

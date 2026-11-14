@@ -1,0 +1,64 @@
+{
+  "type": "quiz",
+  "title": "Drill: The Join Sequence",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Put these in order: association, DHCP, probe request, authentication.",
+      "options": [
+        "Authentication, probe request, DHCP, association",
+        "Probe request, association, authentication, DHCP",
+        "Probe request, authentication, association, DHCP",
+        "DHCP, probe request, authentication, association"
+      ]
+    },
+    {
+      "prompt": "Which step comes right before DHCP?",
+      "options": [
+        "Association",
+        "Probe request",
+        "Authentication",
+        "Beacon"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A client can find a network without sending anything at all, just by listening for beacons."
+    },
+    {
+      "type": "written",
+      "prompt": "Which frame does a client send to ask the WAP to connect it? (two words)"
+    },
+    {
+      "prompt": "A laptop is associated and has an IP address from DHCP, but no website loads. The WAP is fine. Where should you look next?",
+      "options": [
+        "The laptop's chipping code",
+        "The router or the modem's link to the ISP",
+        "The beacon interval",
+        "The SSID"
+      ]
+    },
+    {
+      "prompt": "Association happens at layer ___, and DHCP at layer ___.",
+      "options": [
+        "2; 3",
+        "1; 7",
+        "2; 2",
+        "3; 2"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A home \"wireless router\" often combines a WAP, a switch, a router, and a modem in one box."
+    },
+    {
+      "prompt": "Which device converts between Ethernet and the ISP's line signal (cable, DSL, or fiber)?",
+      "options": [
+        "The switch",
+        "The antenna",
+        "The modem",
+        "The WAP"
+      ]
+    }
+  ]
+}

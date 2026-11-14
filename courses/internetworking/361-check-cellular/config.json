@@ -1,0 +1,68 @@
+{
+  "type": "quiz",
+  "title": "Check: GSM and LTE",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "What does GSM stand for?"
+    },
+    {
+      "prompt": "Which multiple access method does GSM use?",
+      "options": [
+        "FHSS only",
+        "CSMA/CA",
+        "TDMA",
+        "Token passing"
+      ]
+    },
+    {
+      "prompt": "Which part is the cell tower that talks by radio to the phones in its cell?",
+      "options": [
+        "SIM",
+        "MS",
+        "BSC",
+        "BTS"
+      ]
+    },
+    {
+      "prompt": "Which part controls several towers, assigns radio channels, and hands calls between towers?",
+      "options": [
+        "BSC",
+        "MS",
+        "SIM",
+        "BTS"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "The Base Station Subsystem (BSS) is the BTSs and their BSC together."
+    },
+    {
+      "type": "written",
+      "prompt": "Which small card holds the subscriber's identity, so moving it to a new phone moves your number? (three letters)"
+    },
+    {
+      "prompt": "What does LTE stand for?",
+      "options": [
+        "Large Transmission Equipment",
+        "Low Traffic Ethernet",
+        "Long Term Evolution",
+        "Linked Tower Exchange"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "LTE carries voice calls over reserved circuits, like the old phone network."
+    },
+    {
+      "prompt": "Why can cells far apart use the same frequencies?",
+      "options": [
+        "Every cell uses a different SSID",
+        "GSM encrypts the frequencies",
+        "They're too far apart to interfere: frequency reuse",
+        "Cell towers use cables between phones"
+      ]
+    }
+  ]
+}

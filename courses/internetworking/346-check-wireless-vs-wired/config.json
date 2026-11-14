@@ -1,0 +1,63 @@
+{
+  "type": "quiz",
+  "title": "Check: Wireless vs Wired",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "true_false",
+      "prompt": "A Wi-Fi device is a two-way radio: it both transmits and receives."
+    },
+    {
+      "prompt": "Which Wi-Fi band reaches farther and gets through walls better?",
+      "options": [
+        "Neither goes through walls",
+        "2.4 GHz",
+        "Both reach exactly as far",
+        "5 GHz"
+      ]
+    },
+    {
+      "prompt": "A data center needs guaranteed throughput and high availability between its servers. What should connect them?",
+      "options": [
+        "Bluetooth",
+        "A chain of wireless repeaters",
+        "Wired links",
+        "Wi-Fi on the 5 GHz band"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Fill in the blank: even encrypted wireless traffic shows ______ to an eavesdropper: who's talking, when, and how much. (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Wired networks usually cost more up front but less over time."
+    },
+    {
+      "prompt": "Why is forensics easier on a wired network?",
+      "options": [
+        "Wired traffic is never encrypted",
+        "Cables can't be tapped at all",
+        "Switches keep a video recording of every frame",
+        "Every cable runs to a known switch port, so you can trace where a device was plugged in"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "On a wireless network, each device gets guaranteed speed because it has its own channel."
+    },
+    {
+      "prompt": "Which is the best fit for wireless?",
+      "options": [
+        "The link between two core switches",
+        "The storage network in a data center",
+        "A warehouse where handheld scanners move around all day",
+        "A server room's uplink to the core"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Most networks combine both: a wired ______ with wireless at the edge. (one word)"
+    }
+  ]
+}

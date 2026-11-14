@@ -1,0 +1,46 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Light use. Video calls push you to medium, and HD streaming or gaming to heavy."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Video calls with multiple users is the medium tier, 50 to 300 Mbps."
+    },
+    {
+      "accepted_answers": [
+        "11",
+        "eleven",
+        "channel 11"
+      ],
+      "explanation": "1, 6, and 11: the only three that stay clear of each other."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Their centers are 10 MHz apart, but each signal is about 22 MHz wide, so they overlap."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Wi-Fi 6E and Wi-Fi 7 devices only. Moving heavy users there also frees up 5 GHz."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "More MHz carries more data. Save the wide channels for where speed is needed."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Overlap the coverage so users roam and failures are covered. Separate the channels so they don't interfere."
+    },
+    {
+      "accepted_answers": [
+        "redundancy"
+      ],
+      "explanation": "Redundancy: spare capacity that can take over."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Most people bring more than one device, and every device uses the Wi-Fi."
+    }
+  ]
+}

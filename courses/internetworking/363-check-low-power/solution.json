@@ -1,0 +1,50 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Low-power networks trade speed for battery life."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Same 2.4 GHz band, much less power: typically about 10 meters."
+    },
+    {
+      "accepted_answers": [
+        "7",
+        "seven"
+      ],
+      "explanation": "A piconet: one central device and up to 7 active devices."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Be discoverable, be found, prove it, save the keys, and reconnect automatically next time."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's why your headphones reconnect on their own."
+    },
+    {
+      "accepted_answers": [
+        "250",
+        "250 kbps"
+      ],
+      "explanation": "250 kbps: slow, but plenty for switching a light."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "A mesh, so messages hop around obstacles to reach the hub."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "They share the band. Place Zigbee's channels between your busy Wi-Fi channels."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "868 MHz in Europe, 915 MHz in the Americas, 784 MHz in China, and 2.4 GHz everywhere."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Long range and long battery life, paid for in size and speed."
+    }
+  ]
+}

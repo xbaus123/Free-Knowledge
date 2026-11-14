@@ -1,0 +1,37 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "software-defined radio",
+        "software defined radio"
+      ],
+      "explanation": "Software-Defined Radio: tuning and modulation done in software."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Using AI to optimize performance and avoid interference."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Only a radio built in software can change its frequency on the fly."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "You can't spot what's abnormal until you know what normal looks like."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Congestion and interference are what it watches for. It might move the WAP to another channel."
+    },
+    {
+      "accepted_answers": [
+        "white"
+      ],
+      "explanation": "White space: spectrum that's free right now."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The same idea as a baseline or a known-good profile."
+    }
+  ]
+}

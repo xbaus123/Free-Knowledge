@@ -1,0 +1,114 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "Lower frequency travels farther, but it shares the band with microwaves, Bluetooth, and Zigbee."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Speed, reliability, and forensics all favor the wire. Wireless wins on flexibility."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It changes the physical signal."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Direct sequence. FHSS hops between channels instead."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Without the hop sequence, a listener hears fragments and a jammer hits few hops."
+    },
+    {
+      "accepted_answers": [
+        "ssid"
+      ],
+      "explanation": "The Service Set Identifier."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Find it, prove yourself, join at layer 2, then get an IP address."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A WAP is layer 2. It needs a router, and the router a modem."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "SAE makes each guess need a live exchange with the WAP."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Simultaneous Authentication of Equals."
+    },
+    {
+      "accepted_answers": [
+        "pwe",
+        "password element",
+        "the password element"
+      ],
+      "explanation": "The Password Element."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "AES-256. WPA3-Personal uses AES-128."
+    },
+    {
+      "accepted_answers": [
+        "1, 6, 11",
+        "1,6,11",
+        "1 6 11"
+      ],
+      "explanation": "1, 6, and 11."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Metal reflects radio almost completely."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "8 + 12 = 20 dB."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The Base Station Controller manages channels and handoffs for multiple BTS units."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "8 time slots per 200 kHz carrier."
+    },
+    {
+      "accepted_answers": [
+        "lte"
+      ],
+      "explanation": "Long Term Evolution."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Long range, low power, small messages."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Slow, and plenty for smart home devices."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Enable, scan, connect and authenticate, bond, auto-connect."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Contain the damage. Then firewall each device down to what it needs."
+    },
+    {
+      "accepted_answers": [
+        "good"
+      ],
+      "explanation": "Known good: alert when behavior changes."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Only a radio built in software can change its frequency on the fly."
+    }
+  ]
+}

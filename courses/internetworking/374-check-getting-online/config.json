@@ -1,0 +1,46 @@
+{
+  "type": "quiz",
+  "title": "Check: Getting Online",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Put these in the order they happen.",
+      "options": [
+        "DHCP, associate with the WAP, DNS lookup",
+        "DNS lookup, associate with the WAP, DHCP",
+        "DNS lookup, DHCP, associate with the WAP",
+        "Associate with the WAP, DHCP, DNS lookup"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which protocol gives the laptop its address, mask, gateway, and DNS server? (abbreviation)"
+    },
+    {
+      "prompt": "With an empty cache, which servers does the resolver ask, in order?",
+      "options": [
+        "example.org's server, then .org, then the root",
+        "The root, then a .org server, then example.org's server",
+        "The café router, then the ISP",
+        "Only the root"
+      ]
+    },
+    {
+      "prompt": "The web server isn't on your subnet. Whose MAC address does your laptop put on the frame?",
+      "options": [
+        "The DNS server's",
+        "The web server's",
+        "The default gateway's",
+        "Its own"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "The WAP forwards the original 802.11 frame unchanged onto the Ethernet cable."
+    },
+    {
+      "type": "written",
+      "prompt": "Your laptop's address is private. What does the café router do to it on the way out? (abbreviation)"
+    }
+  ]
+}

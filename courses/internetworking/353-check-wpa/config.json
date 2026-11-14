@@ -1,0 +1,72 @@
+{
+  "type": "quiz",
+  "title": "Check: WPA2 and WPA3",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "What does WPA stand for?"
+    },
+    {
+      "prompt": "How do devices authenticate on WPA2-Personal?",
+      "options": [
+        "Each user has their own certificate",
+        "With SAE commit and confirm messages",
+        "Everyone shares one pre-shared key, the Wi-Fi password",
+        "They don't authenticate at all"
+      ]
+    },
+    {
+      "prompt": "What is WPA2-Personal's biggest weakness?",
+      "options": [
+        "It doesn't encrypt anything",
+        "It only allows four devices",
+        "An attacker who records a handshake can guess passwords offline, at full speed",
+        "It can't use the 5 GHz band"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What does SAE stand for?"
+    },
+    {
+      "prompt": "Put WPA3-Personal's key setup in order.",
+      "options": [
+        "4-way handshake, commit, confirm",
+        "Confirm, commit, 4-way handshake",
+        "Commit, 4-way handshake, confirm",
+        "Commit, confirm, 4-way handshake"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "In SAE, both sides send a commit, and both sides send a confirm."
+    },
+    {
+      "prompt": "What does Hash-to-Element (H2E) produce?",
+      "options": [
+        "The beacon",
+        "The SSID",
+        "The Password Element (PWE)",
+        "The DHCP lease"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "With WPA3's forward secrecy, an attacker who learns the password later can decrypt traffic they recorded earlier."
+    },
+    {
+      "prompt": "WPA3-Personal uses ___-bit AES, and WPA3-Enterprise's 192-bit mode uses ___-bit AES.",
+      "options": [
+        "256; 128",
+        "64; 128",
+        "128; 256",
+        "40; 104"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "WEP is fine for a home network as long as the password is long."
+    }
+  ]
+}

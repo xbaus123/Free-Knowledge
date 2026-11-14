@@ -1,0 +1,45 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Metal reflects radio almost completely: 20 dB or more."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "They leak energy at around 2.4 GHz, right in Wi-Fi's band."
+    },
+    {
+      "accepted_answers": [
+        "water"
+      ],
+      "explanation": "Water, which is also why a packed room gets slower Wi-Fi."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Keep the area around it open and away from noisy electronics."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It spends half its airtime hearing and half resending. Mesh with a dedicated link radio, or wired backhaul, avoids that."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's how three channels can cover a whole building."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Losses in dB add up: 12 + 12 = 24 dB."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "NetSpot does site surveys. Wireshark captures frames."
+    },
+    {
+      "accepted_answers": [
+        "monitor",
+        "monitor mode"
+      ],
+      "explanation": "Monitor mode captures every frame on the channel, not just traffic for your own machine."
+    }
+  ]
+}

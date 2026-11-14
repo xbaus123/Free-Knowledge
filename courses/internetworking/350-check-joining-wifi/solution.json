@@ -1,0 +1,49 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "service set identifier",
+        "service set id"
+      ],
+      "explanation": "The Service Set Identifier is the network's name, carried in every beacon."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Beacons are how networks announce they exist. Your list of available networks is built from them."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A WAP is layer 2. It needs a router, and the router needs a modem to reach the ISP."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Each entry is a network whose beacon (or probe response) reached your laptop."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Radios can't detect collisions while sending, so Wi-Fi avoids them: listen, wait a random time, and expect an ACK."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Probe request out, probe response back. Passive scanning skips the request and just listens for beacons."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Association comes first, at layer 2. Then DHCP hands out the address, at layer 3."
+    },
+    {
+      "accepted_answers": [
+        "dhcp"
+      ],
+      "explanation": "DHCP, from chapter 4: address, gateway, and DNS server in one go."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Periodic probing is what keeps mobile devices connected as they move between access points."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Association is a layer 2 relationship. IP addressing comes after."
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "type": "quiz",
+  "title": "Chapter Review: Wireless and IoT",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Which Wi-Fi band has longer range but is more crowded?",
+      "options": [
+        "5 GHz",
+        "6 GHz",
+        "60 GHz",
+        "2.4 GHz"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Wired networks are generally faster, more stable, and easier to investigate after an incident than wireless ones."
+    },
+    {
+      "prompt": "Spread spectrum works at which layer?",
+      "options": [
+        "Layer 1",
+        "Layer 2",
+        "Layer 7",
+        "Layer 3"
+      ]
+    },
+    {
+      "prompt": "Which spread spectrum technique turns every bit into a chipping code?",
+      "options": [
+        "CSMA/CA",
+        "MF-TDMA",
+        "FHSS",
+        "DSSS"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "FHSS helps prevent eavesdropping and denial of service."
+    },
+    {
+      "type": "written",
+      "prompt": "What's the network name a WAP advertises in its beacons? (abbreviation)"
+    },
+    {
+      "prompt": "Put these in order: DHCP, association, probe request, authentication.",
+      "options": [
+        "Probe request, DHCP, authentication, association",
+        "Probe request, authentication, association, DHCP",
+        "DHCP, association, authentication, probe request",
+        "Authentication, probe request, DHCP, association"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A WAP is a layer 3 device that routes traffic to the Internet by itself."
+    },
+    {
+      "prompt": "WPA2-Personal's weakness that WPA3 fixes is...",
+      "options": [
+        "Offline password guessing from a recorded handshake",
+        "No encryption at all",
+        "A limit of 7 devices",
+        "No support for 2.4 GHz"
+      ]
+    },
+    {
+      "prompt": "SAE's steps are...",
+      "options": [
+        "Enable, scan, bond",
+        "Beacon, probe, confirm",
+        "Commit and confirm on both sides, then the 4-way handshake",
+        "Probe, associate, DHCP"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What does H2E produce from the password? (abbreviation)"
+    },
+    {
+      "prompt": "WPA3-Enterprise's 192-bit mode uses which AES key size?",
+      "options": [
+        "512-bit",
+        "128-bit",
+        "256-bit",
+        "40-bit"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Name the three non-overlapping 2.4 GHz channels, in order, separated by commas. (like 2, 7, 12)"
+    },
+    {
+      "prompt": "Which obstacle blocks Wi-Fi most?",
+      "options": [
+        "Brick",
+        "Glass",
+        "Drywall",
+        "Metal"
+      ]
+    },
+    {
+      "prompt": "A signal crosses a brick wall and a concrete wall. Using the rough table, how many dB do the walls cost?",
+      "options": [
+        "20 dB",
+        "15 dB",
+        "11 dB",
+        "96 dB"
+      ]
+    },
+    {
+      "prompt": "In GSM, which part controls several cell towers?",
+      "options": [
+        "BSC",
+        "BTS",
+        "MS",
+        "SIM"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "GSM uses TDMA."
+    },
+    {
+      "type": "written",
+      "prompt": "Which 4G cellular standard carries even voice as IP packets? (abbreviation)"
+    },
+    {
+      "prompt": "Which radio fits a sensor 10 km away that sends a few bytes an hour on a battery?",
+      "options": [
+        "Zigbee",
+        "Bluetooth",
+        "Wi-Fi",
+        "LoRa"
+      ]
+    },
+    {
+      "prompt": "What's Zigbee's maximum data rate?",
+      "options": [
+        "250 kbps",
+        "54 Mbps",
+        "1 Gbps",
+        "250 Mbps"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Bluetooth bonding saves keys so devices reconnect automatically later."
+    },
+    {
+      "prompt": "Why should IoT devices get their own network segment?",
+      "options": [
+        "So they get faster Wi-Fi",
+        "Because IoT can't use IP",
+        "So they don't need passwords",
+        "So a compromised device can't reach staff laptops and servers"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A recorded profile of a sensor's normal behavior is called its known ______ profile. (one word)"
+    },
+    {
+      "prompt": "A cognitive radio relies on which technology?",
+      "options": [
+        "WEP",
+        "Token Ring",
+        "Fiber optics",
+        "Software-defined radio"
+      ]
+    }
+  ]
+}

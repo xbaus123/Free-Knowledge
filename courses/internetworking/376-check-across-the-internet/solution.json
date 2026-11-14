@@ -1,0 +1,30 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Open the connection, encrypt it, then ask for the page."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "And if the TTL hits zero, drop it and send an ICMP message back."
+    },
+    {
+      "accepted_answers": [
+        "bgp"
+      ],
+      "explanation": "BGP, the path vector protocol from chapter 6."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Three messages, then TLS, then HTTP."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's encapsulation, from chapter 1."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "RAID, redundant servers, and tested backups: chapter 10."
+    }
+  ]
+}

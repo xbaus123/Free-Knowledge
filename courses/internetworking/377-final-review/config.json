@@ -1,0 +1,212 @@
+{
+  "type": "quiz",
+  "title": "Final Review: The Whole Course",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Put the OSI layers in order from the bottom (layer 1) up.",
+      "options": [
+        "Physical, Data Link, Network, Transport, Session, Presentation, Application",
+        "Application, Presentation, Session, Transport, Network, Data Link, Physical",
+        "Physical, Network, Data Link, Transport, Session, Application, Presentation",
+        "Physical, Data Link, Transport, Network, Presentation, Session, Application"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "In what year did every ARPANET host switch to TCP/IP on flag day? (four digits)"
+    },
+    {
+      "prompt": "During encapsulation, the network layer's unit is a ___, and the data link layer's is a ___.",
+      "options": [
+        "packet; frame",
+        "message; segment",
+        "segment; bit",
+        "frame; packet"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Every device connects to a central switch. Which topology is that? (one word)"
+    },
+    {
+      "type": "written",
+      "prompt": "The loss of signal strength as it travels is called ______. (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Fiber-optic cable is prone to electromagnetic interference."
+    },
+    {
+      "prompt": "A switch receives a frame for a MAC address it hasn't learned yet. What does it do?",
+      "options": [
+        "Sends it back",
+        "Drops it",
+        "Asks DNS",
+        "Floods it out of every port except the one it came in on"
+      ]
+    },
+    {
+      "prompt": "What does ARP do?",
+      "options": [
+        "Finds routes between ASes",
+        "Maps a name to an IP address",
+        "Assigns IP addresses",
+        "Maps a local IP address to a MAC address"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Wi-Fi uses CSMA/CA because a wireless node can't hear collisions while it's transmitting."
+    },
+    {
+      "type": "written",
+      "prompt": "Which IPv4 header field stops packets from looping forever? (abbreviation)"
+    },
+    {
+      "prompt": "Put the DHCP messages in order.",
+      "options": [
+        "Request, Offer, Discover, Ack",
+        "Offer, Discover, Ack, Request",
+        "Discover, Request, Offer, Ack",
+        "Discover, Offer, Request, Ack"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which address do you ping to test only your own host's network software?"
+    },
+    {
+      "type": "written",
+      "prompt": "How many usable hosts does a /26 have? (a number)"
+    },
+    {
+      "prompt": "What is the network address of 192.168.10.77/26?",
+      "options": [
+        "192.168.10.77",
+        "192.168.10.127",
+        "192.168.10.0",
+        "192.168.10.64"
+      ]
+    },
+    {
+      "prompt": "A table has 172.16.0.0/12 to X, 172.16.5.0/24 to Y, and 0.0.0.0/0 to Z. Where does 172.16.5.9 go?",
+      "options": [
+        "Y",
+        "Nowhere",
+        "X",
+        "Z"
+      ]
+    },
+    {
+      "prompt": "Which pair is right?",
+      "options": [
+        "Inside an AS: SMTP; between ASes: HTTP",
+        "Inside an AS: DNS; between ASes: ARP",
+        "Inside an AS: BGP; between ASes: OSPF",
+        "Inside an AS: OSPF or RIP; between ASes: BGP"
+      ]
+    },
+    {
+      "prompt": "Which transport does an ordinary DNS lookup use?",
+      "options": [
+        "TCP port 25",
+        "UDP port 67",
+        "UDP port 53",
+        "TCP port 443"
+      ]
+    },
+    {
+      "prompt": "Which DNS record makes one name an alias for another?",
+      "options": [
+        "MX",
+        "SOA",
+        "A",
+        "CNAME"
+      ]
+    },
+    {
+      "prompt": "Which retrieval protocol keeps mail and folders on the server, so every device sees the same thing?",
+      "options": [
+        "MIME",
+        "IMAP",
+        "SMTP",
+        "POP3"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which DNS record lists the servers allowed to send mail for a domain? (abbreviation)"
+    },
+    {
+      "type": "written",
+      "prompt": "Which port does HTTPS use? (a number)"
+    },
+    {
+      "prompt": "Which HTTP status code means \"log in first\"?",
+      "options": [
+        "401",
+        "200",
+        "301",
+        "503"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "HTTP is stateless, so logins need something like cookies to work."
+    },
+    {
+      "prompt": "Which list gives the four Rs of resilience?",
+      "options": [
+        "Robustness, readiness, reliability, repair",
+        "Robustness, resourcefulness, redundancy, rapidity",
+        "Reliability, recovery, routing, RAID",
+        "Redundancy, restart, reload, reboot"
+      ]
+    },
+    {
+      "prompt": "A system has an MTBF of 99 hours and an MTTR of 1 hour. What's its availability?",
+      "options": [
+        "100%",
+        "99%",
+        "99.9%",
+        "90%"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "RAID is a backup."
+    },
+    {
+      "type": "written",
+      "prompt": "Name the three non-overlapping 2.4 GHz Wi-Fi channels, separated by commas. (like 2, 7, 12)"
+    },
+    {
+      "prompt": "What does WPA3's SAE stop that WPA2-Personal allows?",
+      "options": [
+        "Using 5 GHz",
+        "Roaming between WAPs",
+        "Offline password guessing from a recorded handshake",
+        "DHCP"
+      ]
+    },
+    {
+      "prompt": "Why do IoT devices get their own network segment?",
+      "options": [
+        "So a compromised device can't reach anything important",
+        "Because they can't use IP",
+        "So they don't need firmware updates",
+        "So they get faster speeds"
+      ]
+    },
+    {
+      "prompt": "Which idea, from the very first reading, runs through the whole course?",
+      "options": [
+        "One vendor's equipment everywhere",
+        "A central hub that every packet passes through",
+        "Reserved circuits for every conversation",
+        "Separate networks joined by common, open standards into a network of networks"
+      ]
+    }
+  ]
+}

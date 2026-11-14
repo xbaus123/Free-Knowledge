@@ -1,0 +1,50 @@
+{
+  "type": "quiz",
+  "title": "Check: Cognitive Radio and AI",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "What does SDR stand for?"
+    },
+    {
+      "prompt": "What does a cognitive radio do?",
+      "options": [
+        "Hands calls between cell towers",
+        "Pairs Bluetooth devices",
+        "Senses the spectrum, finds unused portions, and moves there automatically",
+        "Encrypts traffic with AES-256"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Cognitive radio relies on software-defined radio."
+    },
+    {
+      "prompt": "Put AI-based optimization in order.",
+      "options": [
+        "Look for anomalies, adjust, collect, profile",
+        "Collect traffic, build an operational profile, look for anomalies, adjust",
+        "Adjust, collect, profile, look for anomalies",
+        "Profile, adjust, collect, look for anomalies"
+      ]
+    },
+    {
+      "prompt": "Which is an anomaly an AI-tuned Wi-Fi system might react to?",
+      "options": [
+        "Interference appearing on one channel",
+        "The SSID being too long",
+        "A printer running out of paper",
+        "A new staff member's birthday"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Unused frequencies a cognitive radio can borrow are sometimes called ______ space. (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "An operational profile is a record of what normal looks like on the network."
+    }
+  ]
+}

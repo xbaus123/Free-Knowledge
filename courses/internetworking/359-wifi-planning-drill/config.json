@@ -1,0 +1,59 @@
+{
+  "type": "quiz",
+  "title": "Drill: Planning Wi-Fi",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "A small gaming café streams HD video on every screen. Which tier?",
+      "options": [
+        "Light",
+        "Medium, if the SSID is hidden",
+        "Medium",
+        "Heavy"
+      ]
+    },
+    {
+      "prompt": "Four WAPs in a row down a hallway. Which 2.4 GHz plan is best?",
+      "options": [
+        "1, 6, 11, 1",
+        "6, 7, 6, 7",
+        "1, 2, 3, 4",
+        "1, 1, 1, 1"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A signal crosses one brick wall and one drywall partition. Using the table, how many dB does it lose to them? (a number)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "A 3 dB loss leaves about half the power."
+    },
+    {
+      "prompt": "A neighbor's WAP is on channel 6. You have one WAP to place. Which channel?",
+      "options": [
+        "7",
+        "5",
+        "1 or 11",
+        "6"
+      ]
+    },
+    {
+      "prompt": "Users in the far corner of a concrete building keep dropping. You can run cable. Best fix?",
+      "options": [
+        "Turn the existing WAP up to channel 14",
+        "Hide the SSID",
+        "Add a WAP there with wired backhaul",
+        "Add a single-radio repeater halfway"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which band would you move heavy users to, to get them off the crowded 5 GHz band? (answer like 2.4 GHz)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Two WAPs on the same channel in the same room give twice the capacity."
+    }
+  ]
+}

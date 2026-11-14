@@ -1,0 +1,53 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Spreading makes the signal harder to jam, harder to eavesdrop on, and better at surviving noise."
+    },
+    {
+      "accepted_answers": [
+        "1",
+        "layer 1",
+        "one",
+        "physical",
+        "physical layer",
+        "the physical layer"
+      ],
+      "explanation": "Layer 1, the physical layer: it changes how bits become radio waves."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Early Wi-Fi turned each bit into 11 chips with the Barker code. Hopping between frequencies is FHSS."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The remaining chips still match one pattern far better than the other."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Without the sequence, a listener hears fragments, and a jammer only hits the hops that land on its frequency."
+    },
+    {
+      "accepted_answers": [
+        "79"
+      ],
+      "explanation": "79 channels, 1,600 hops a second."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Only about 1 hop in 79 lands on the jammed channel."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Many users share the band at once, each picked out by its code, as in the room-of-languages analogy from chapter 3."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Senders get time slots, and the slots can be on different carriers. Satellite networks use it."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A film star and a composer, to keep radio-guided torpedoes from being jammed."
+    }
+  ]
+}

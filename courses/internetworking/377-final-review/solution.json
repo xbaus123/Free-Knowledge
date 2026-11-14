@@ -1,0 +1,150 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Chapter 1. All People Seem To Need Data Processing, read from 7 down."
+    },
+    {
+      "accepted_answers": [
+        "1983"
+      ],
+      "explanation": "Chapter 1: January 1, 1983."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Chapter 1: segment, packet, frame, bits."
+    },
+    {
+      "accepted_answers": [
+        "star",
+        "star topology",
+        "a star"
+      ],
+      "explanation": "Chapter 2: a star."
+    },
+    {
+      "accepted_answers": [
+        "attenuation"
+      ],
+      "explanation": "Chapter 2: attenuation, measured in dB."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Chapter 2: fiber carries light, so EMI and RFI don't affect it."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Chapter 3: flood, and learn from the reply."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Chapter 3. Names to addresses is DNS, assigning addresses is DHCP."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Chapters 3 and 11."
+    },
+    {
+      "accepted_answers": [
+        "ttl",
+        "time to live"
+      ],
+      "explanation": "Chapter 4: Time To Live, decremented at every router."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Chapter 4: DORA."
+    },
+    {
+      "accepted_answers": [
+        "127.0.0.1",
+        "localhost",
+        "::1"
+      ],
+      "explanation": "Chapter 4: the loopback address."
+    },
+    {
+      "accepted_answers": [
+        "62"
+      ],
+      "explanation": "Chapter 5: 2^6 = 64 addresses, minus the network and broadcast addresses."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Chapter 5: /26 blocks start at 0, 64, 128, 192. 77 is in the 64 block, whose broadcast is .127."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Chapter 6: all three match, and the longest prefix, /24, wins."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Chapter 6: intra-domain and inter-domain routing."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Chapter 7: UDP 53, switching to TCP for zone transfers and big answers."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Chapter 7: CNAME, the canonical name."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Chapter 8: IMAP. POP usually downloads and deletes."
+    },
+    {
+      "accepted_answers": [
+        "spf"
+      ],
+      "explanation": "Chapter 8: SPF. DKIM signs, and DMARC ties them to the From: domain."
+    },
+    {
+      "accepted_answers": [
+        "443",
+        "port 443"
+      ],
+      "explanation": "Chapter 9."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Chapter 9: 401 Unauthorized."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Chapter 9."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Chapter 10."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Chapter 10: 99 / (99 + 1)."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Chapter 10: RAID copies deletions and ransomware to every drive at once."
+    },
+    {
+      "accepted_answers": [
+        "1, 6, 11",
+        "1,6,11",
+        "1 6 11"
+      ],
+      "explanation": "Chapter 11."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Chapter 11: every guess needs a live exchange with the WAP."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Chapter 11, and chapter 5's Zero Trust thinking."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Internetworking. The name of the course, and the reason the Internet works at all."
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "Short range, peer-to-peer, low power."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Kilometers of range and years of battery. A few bytes an hour fits easily."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "A low-power mesh made for home automation."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It needs real bandwidth: Wi-Fi."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Only cellular covers a whole country while the truck moves."
+    },
+    {
+      "accepted_answers": [
+        "lora",
+        "lorawan"
+      ],
+      "explanation": "LoRa: long range, low power, and small readings."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Bluetooth reaches about 10 meters. Use fiber, a microwave link, or LoRa for small data."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Move Zigbee to a channel between the busy Wi-Fi channels."
+    }
+  ]
+}

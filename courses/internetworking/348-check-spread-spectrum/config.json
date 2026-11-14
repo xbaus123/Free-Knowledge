@@ -1,0 +1,77 @@
+{
+  "type": "quiz",
+  "title": "Check: Spread Spectrum",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "What does spread spectrum do to a radio signal?",
+      "options": [
+        "Squeezes it into the narrowest band possible",
+        "Spreads it over a much wider band than it needs, using a code both ends know",
+        "Encrypts it with AES",
+        "Splits it into IP packets"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Spread spectrum changes the physical radio signal itself. Which OSI layer is that? (a number)"
+    },
+    {
+      "prompt": "In DSSS, what happens to each data bit?",
+      "options": [
+        "It's sent on a different frequency each time",
+        "It's replaced by a fast pattern of chips, the chipping code",
+        "It gets its own time slot",
+        "It's repeated until the receiver acknowledges it"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "With DSSS, a receiver can still recover a bit even if noise flips a few of its chips."
+    },
+    {
+      "prompt": "Why does FHSS resist eavesdropping and jamming?",
+      "options": [
+        "It only works over cables",
+        "It hops between narrow channels in a pseudo-random order that only the two ends know",
+        "It transmits at much higher power",
+        "It encrypts every hop with WPA3"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Classic Bluetooth hops across how many channels? (a number)"
+    },
+    {
+      "prompt": "A jammer blasts noise on one frequency. Which radio suffers least?",
+      "options": [
+        "A narrowband radio fixed on that frequency",
+        "Both suffer equally",
+        "An FHSS radio hopping across 79 channels",
+        "Neither, because jamming is impossible"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "CDMA cellular gives each user their own spreading code, the same idea as DSSS."
+    },
+    {
+      "prompt": "MF-TDMA combines which two ideas?",
+      "options": [
+        "Circuit switching and message switching",
+        "Time slots, and hopping between carrier frequencies",
+        "CSMA/CD and CSMA/CA",
+        "SSIDs and beacons"
+      ]
+    },
+    {
+      "prompt": "Who patented frequency hopping in 1942?",
+      "options": [
+        "Hedy Lamarr and George Antheil",
+        "Jon Postel and Steve Crocker",
+        "Bell Labs, for the first cell phones",
+        "Vint Cerf and Bob Kahn"
+      ]
+    }
+  ]
+}

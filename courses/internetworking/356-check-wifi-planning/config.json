@@ -1,0 +1,63 @@
+{
+  "type": "quiz",
+  "title": "Check: Usage and Channels",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Which usage tier fits a few people browsing, emailing, and using social media?",
+      "options": [
+        "Light, 5 to 25 Mbps",
+        "None: they don't need bandwidth",
+        "Medium, 50 to 300 Mbps",
+        "Heavy, 500+ Mbps"
+      ]
+    },
+    {
+      "prompt": "An office of 30 people doing video calls all day. Which tier?",
+      "options": [
+        "Heavy",
+        "Light",
+        "It depends only on the SSID",
+        "Medium"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "On 2.4 GHz, channel 1 and channel 6 don't overlap. Which other channel completes the set of three? (a number)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "2.4 GHz channels 1 and 3 can be used side by side without interfering."
+    },
+    {
+      "prompt": "Why is 6 GHz less saturated than 5 GHz?",
+      "options": [
+        "It's a newer band that older devices can't use, so it's far less crowded",
+        "It has only one channel",
+        "It uses cables",
+        "It's reserved for cell phones"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Bonding 5 GHz channels into a wider 80 or 160 MHz channel gives more speed."
+    },
+    {
+      "prompt": "Neighboring access points should have...",
+      "options": [
+        "The same channel and overlapping coverage",
+        "The same channel, with no overlap in coverage",
+        "Overlapping coverage, on different non-overlapping channels",
+        "No coverage overlap and random channels"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Overlapping access point coverage so one can fail without a dead spot is which of chapter 10's four Rs? (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "When planning Wi-Fi, count people, not devices."
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "With a shared key, knowing the password plus your handshake is enough. WPA3's SAE fixes this."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Nothing in the recording lets them test a guess."
+    },
+    {
+      "accepted_answers": [
+        "wep"
+      ],
+      "explanation": "WEP, Wired Equivalent Privacy. It was anything but."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Both sides commit and both confirm."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "AES-256 and per-user credentials."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Keep the weak device away from everything else, without dragging the whole network down to its level."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "As chapter 3 said, the name still shows up in clients' probe requests and is easy to sniff."
+    },
+    {
+      "accepted_answers": [
+        "forward secrecy",
+        "perfect forward secrecy"
+      ],
+      "explanation": "Forward secrecy: every session gets a fresh key that's never sent."
+    }
+  ]
+}

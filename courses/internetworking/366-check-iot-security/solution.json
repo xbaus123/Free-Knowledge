@@ -1,0 +1,45 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Strong authentication takes computing power that many IoT devices don't have."
+    },
+    {
+      "accepted_answers": [
+        "sensors",
+        "sensor"
+      ],
+      "explanation": "Sensors measure temperature, motion, doors opening, heart rates, and more."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Lists of factory default passwords. Then it flooded the DNS provider Dyn."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Give IoT its own segment, so a compromised device can't reach anything important."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Tight firewall rules: only what it needs."
+    },
+    {
+      "accepted_answers": [
+        "good"
+      ],
+      "explanation": "Known good: chapter 10's baselines applied to IoT."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Simple devices have predictable traffic, so a big change stands out."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It's good practice, not a requirement."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "That's why it's slower and less predictable than a switched, wired link."
+    }
+  ]
+}

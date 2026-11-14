@@ -1,0 +1,59 @@
+{
+  "type": "quiz",
+  "title": "Check: Plan Your Wireless and IoT",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "true_false",
+      "prompt": "Each SSID that separates a group (staff, guests, IoT) should map to its own VLAN and subnet."
+    },
+    {
+      "prompt": "In the worked example, which VLAN holds the IoT devices?",
+      "options": [
+        "VLAN 40",
+        "VLAN 50",
+        "VLAN 30",
+        "VLAN 10"
+      ]
+    },
+    {
+      "prompt": "Why does the worked example add an LTE router?",
+      "options": [
+        "As a backup internet link, for redundancy",
+        "To replace the WAPs",
+        "To give guests faster Wi-Fi",
+        "To run Zigbee"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which tool would you use to survey signal strength across your floor plan after installing? (one word)"
+    },
+    {
+      "prompt": "The old printer only supports WPA2. Where does it go?",
+      "options": [
+        "On an open network",
+        "On the staff SSID, so staff can print",
+        "On the IoT segment, with WPA2 kept off the staff and guest networks",
+        "Directly on the Internet"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A Zigbee hub's channel can be ignored when planning Wi-Fi channels."
+    },
+    {
+      "prompt": "Which is a good rule for IoT devices on arrival?",
+      "options": [
+        "Turn off its firmware updates",
+        "Leave the default password so the vendor can help",
+        "Give it access to every VLAN",
+        "Change the default password before it goes on the network"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What should you count when estimating usage: people or devices? (one word)"
+    }
+  ]
+}

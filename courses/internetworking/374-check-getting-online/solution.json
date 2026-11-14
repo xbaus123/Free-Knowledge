@@ -1,0 +1,34 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "Join the network at layer 2, get an address at layer 3, then you can ask DNS anything."
+    },
+    {
+      "accepted_answers": [
+        "dhcp"
+      ],
+      "explanation": "DHCP: Discover, Offer, Request, Ack."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "From the top of the hierarchy down, following referrals."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Frames only cross one link. The gateway's MAC, learned with ARP, gets the packet off the subnet."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It takes the packet out of the 802.11 frame and puts it in a new Ethernet frame. Frames change at every link; the packet carries on."
+    },
+    {
+      "accepted_answers": [
+        "nat",
+        "network address translation",
+        "pat"
+      ],
+      "explanation": "NAT rewrites the private source address to the router's public one."
+    }
+  ]
+}

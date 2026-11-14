@@ -1,0 +1,68 @@
+{
+  "type": "quiz",
+  "title": "Check: Securing IoT",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Why are IoT devices hard to authenticate?",
+      "options": [
+        "They have low memory and limited processing power",
+        "They have too much memory",
+        "They can't have IP addresses",
+        "They only use cables"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Fill in the blank: in an IoT environment, ______ are how information gets collected. (one word)"
+    },
+    {
+      "prompt": "How did the 2016 Mirai botnet take over so many devices?",
+      "options": [
+        "By forging SIM cards",
+        "By cutting fiber cables",
+        "By guessing default passwords on cameras and routers",
+        "By breaking AES-256"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "IoT devices should share a VLAN with staff laptops, so they're easy to manage."
+    },
+    {
+      "prompt": "A smart camera on the IoT segment should be allowed to reach...",
+      "options": [
+        "Everything, to keep it simple",
+        "The HR file server",
+        "Every staff laptop",
+        "Only what it needs, such as its recorder or the vendor's service"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Recording a sensor's normal traffic so you can spot changes is building its \"known ______\" profile. (one word)"
+    },
+    {
+      "prompt": "A thermostat that usually sends 2 KB to its vendor every 10 minutes suddenly starts scanning the network. What does that suggest?",
+      "options": [
+        "It has probably been compromised",
+        "Normal busy-season behavior",
+        "Its battery is low",
+        "It needs a firmware update for the weather"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Wi-Fi networks should, though it isn't required, sit on their own segment, separate from the wired core."
+    },
+    {
+      "prompt": "What does it mean that Wi-Fi is asynchronous?",
+      "options": [
+        "It only works in one direction",
+        "Devices contend for the air when they have data, with no guaranteed slots",
+        "Every device gets a fixed time slot",
+        "It never needs authentication"
+      ]
+    }
+  ]
+}

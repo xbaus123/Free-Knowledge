@@ -1,0 +1,72 @@
+{
+  "type": "quiz",
+  "title": "Check: Joining a Wi-Fi Network",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "What does SSID stand for?"
+    },
+    {
+      "prompt": "What is a beacon?",
+      "options": [
+        "The light on the front of the access point",
+        "The DHCP server's offer of an address",
+        "The client's request to join",
+        "A frame the WAP broadcasts about 10 times a second, advertising its SSID"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A WAP by itself is enough to reach the Internet."
+    },
+    {
+      "prompt": "Your laptop shows a list of available Wi-Fi networks. Where does that list come from?",
+      "options": [
+        "Your ISP",
+        "The router's ARP table",
+        "The beacons and probe responses it has heard",
+        "A DNS lookup"
+      ]
+    },
+    {
+      "prompt": "Which access method do 802.11 devices use to share the channel?",
+      "options": [
+        "Polling",
+        "CSMA/CD",
+        "CSMA/CA",
+        "Token passing"
+      ]
+    },
+    {
+      "prompt": "In active scanning, the client sends a ___ and the WAP answers with a ___.",
+      "options": [
+        "DHCP offer; DHCP request",
+        "beacon; probe request",
+        "association response; association request",
+        "probe request; probe response"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "The client gets its IP address before it associates with the WAP."
+    },
+    {
+      "type": "written",
+      "prompt": "After association, which protocol gives the client its IP address? (abbreviation)"
+    },
+    {
+      "prompt": "Why does a connected client keep sending probes now and then?",
+      "options": [
+        "To renew its IP address",
+        "To measure the room's temperature",
+        "To change the Wi-Fi password",
+        "To find a stronger WAP as it moves, so it can roam"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Association links the client and the WAP at layer 2."
+    }
+  ]
+}

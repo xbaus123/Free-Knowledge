@@ -1,0 +1,68 @@
+{
+  "type": "quiz",
+  "title": "Check: Interference and Coverage",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Which obstacle is worst for a Wi-Fi signal?",
+      "options": [
+        "A metal door",
+        "A glass window",
+        "An open doorway",
+        "Drywall"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Microwave ovens can interfere with 2.4 GHz Wi-Fi."
+    },
+    {
+      "type": "written",
+      "prompt": "Fill in the blank: fish tanks and crowds of people weaken Wi-Fi because ______ absorbs 2.4 GHz. (one word)"
+    },
+    {
+      "prompt": "Where should a WAP go?",
+      "options": [
+        "On the floor behind a filing cabinet",
+        "Next to the microwave in the break room",
+        "Inside a metal network cabinet, for safety",
+        "High up and in the open"
+      ]
+    },
+    {
+      "prompt": "What's the catch with a single-radio repeater?",
+      "options": [
+        "It can't be used on 2.4 GHz",
+        "It receives and resends on the same channel, which roughly halves the speed",
+        "It disables WPA3",
+        "It needs a modem"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Frequency reuse means two WAPs far enough apart that they can't hear each other may use the same channel."
+    },
+    {
+      "prompt": "A signal passes through two concrete walls. Using the table's rough values, how much does it lose to the walls?",
+      "options": [
+        "144 dB",
+        "6 dB",
+        "24 dB",
+        "12 dB"
+      ]
+    },
+    {
+      "prompt": "Which tool draws a heatmap of Wi-Fi signal strength across a floor plan?",
+      "options": [
+        "ping",
+        "traceroute",
+        "Wireshark",
+        "NetSpot"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Wireshark can only see 802.11 frames like beacons when the wireless adapter is in which mode? (one word)"
+    }
+  ]
+}

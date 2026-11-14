@@ -1,0 +1,59 @@
+{
+  "type": "quiz",
+  "title": "Drill: Wi-Fi Security",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "A café prints its WPA2-Personal password on the menu. Another customer records your handshake. What can they do?",
+      "options": [
+        "Decrypt your traffic, since they know the key and saw the handshake",
+        "Nothing, because WPA2 hides everything",
+        "Change your laptop's password",
+        "Only see the SSID"
+      ]
+    },
+    {
+      "prompt": "An attacker records a WPA3 SAE exchange and wants to guess the password at home. What happens?",
+      "options": [
+        "They crack it in minutes",
+        "They get the password from the beacon",
+        "They need only the SSID",
+        "Offline guessing doesn't work: each guess needs a live exchange with the WAP"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which Wi-Fi security protocol from 1997 can be cracked in minutes? (abbreviation)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "SAE is called \"of Equals\" because neither side acts as a client or a server in the exchange."
+    },
+    {
+      "prompt": "A bank branch's Wi-Fi carries commercial transactions. Which is the best choice?",
+      "options": [
+        "WEP",
+        "An open network with a hidden SSID",
+        "WPA3-Enterprise in 192-bit mode",
+        "WPA2-Personal"
+      ]
+    },
+    {
+      "prompt": "An old label printer only supports WPA2. What's the best approach?",
+      "options": [
+        "Turn off encryption for everyone",
+        "Hide the SSID instead",
+        "Put it on its own segment with a WPA2 (or transition mode) SSID, and replace it when you can",
+        "Switch the whole network to WEP"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Hiding the SSID is a good replacement for encryption."
+    },
+    {
+      "type": "written",
+      "prompt": "Which WPA3 property means that if the password leaks later, recorded old traffic stays safe? (two words)"
+    }
+  ]
+}

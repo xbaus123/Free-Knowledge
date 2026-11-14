@@ -1,0 +1,41 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "The SSID is the radio side. The VLAN and subnet let the firewall control what each group reaches."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A new VLAN 50 on 10.1.50.0/24. Staff are 10, guests 30, and cameras 40."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "If the main line goes down, cellular keeps the site online: chapter 10's redundancy."
+    },
+    {
+      "accepted_answers": [
+        "netspot"
+      ],
+      "explanation": "NetSpot draws a heatmap. Wireshark is for capturing frames."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Keep the weaker security fenced off on its own segment."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Zigbee shares 2.4 GHz, so the worked example puts it between Wi-Fi channels 6 and 11."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Default passwords are how Mirai built its botnet."
+    },
+    {
+      "accepted_answers": [
+        "devices",
+        "device"
+      ],
+      "explanation": "Devices. Most people carry more than one."
+    }
+  ]
+}

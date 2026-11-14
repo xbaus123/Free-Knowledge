@@ -1,0 +1,77 @@
+{
+  "type": "quiz",
+  "title": "Check: Bluetooth, Zigbee, and LoRa",
+  "immediate_feedback": true,
+  "questions": [
+    {
+      "prompt": "Why do many IoT devices avoid Wi-Fi?",
+      "options": [
+        "Wi-Fi uses too much power for a device that has to run for years on a battery",
+        "Wi-Fi only works outdoors",
+        "Wi-Fi can't carry sensor readings",
+        "Wi-Fi is illegal for sensors"
+      ]
+    },
+    {
+      "prompt": "Bluetooth uses the same band as Wi-Fi. Why is its range so much shorter?",
+      "options": [
+        "It uses 60 GHz",
+        "It sends only on Sundays",
+        "It uses cables",
+        "It uses much lower power"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "How many active devices can connect to one Bluetooth central device at once? (a number)"
+    },
+    {
+      "prompt": "Put Bluetooth pairing in order.",
+      "options": [
+        "Bond, scan, enable pairing, connect and authenticate, auto-connect",
+        "Connect and authenticate, enable pairing, scan, bond, auto-connect",
+        "Scan, auto-connect, bond, enable pairing, connect and authenticate",
+        "Enable pairing, scan, connect and authenticate, bond, auto-connect"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Bonding means saving the keys so the devices can reconnect later without pairing again."
+    },
+    {
+      "type": "written",
+      "prompt": "What's Zigbee's maximum data rate, in kbps? (a number)"
+    },
+    {
+      "prompt": "Which network shape does Zigbee use, with mains-powered devices relaying for others?",
+      "options": [
+        "Ring",
+        "Point-to-point",
+        "Mesh",
+        "Bus"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Zigbee and Wi-Fi can interfere with each other on 2.4 GHz."
+    },
+    {
+      "prompt": "Which Zigbee band is used in Europe?",
+      "options": [
+        "915 MHz",
+        "5 GHz",
+        "784 MHz",
+        "868 MHz"
+      ]
+    },
+    {
+      "prompt": "What's LoRa's trade-off?",
+      "options": [
+        "Unlimited message size, but only 7 devices",
+        "No battery needed, but only works indoors",
+        "Kilometers of range on a battery, but tiny, slow messages of about 256 bytes at most",
+        "Huge speed, but only a meter of range"
+      ]
+    }
+  ]
+}

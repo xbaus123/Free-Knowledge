@@ -1,0 +1,47 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "global system for mobile communications",
+        "global system for mobile communication",
+        "global system for mobile"
+      ],
+      "explanation": "The Global System for Mobile Communications, the 2G standard."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "TDMA: each 200 kHz carrier is cut into 8 time slots."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The Base Transceiver Station."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The Base Station Controller."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The BSS manages the radio connection between the phones and the core network."
+    },
+    {
+      "accepted_answers": [
+        "sim",
+        "sim card"
+      ],
+      "explanation": "The SIM, introduced by GSM."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Long Term Evolution, the 4G standard."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "LTE is all IP. Voice travels as packets: Voice over LTE."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The same idea as reusing Wi-Fi channels 1, 6, and 11 across a building."
+    }
+  ]
+}
