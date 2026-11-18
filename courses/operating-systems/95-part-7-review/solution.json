@@ -1,0 +1,67 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "Their real work happens on servers."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "iOS and Android."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Plus a communication scheme for exchanging messages."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Each peer can be a client, a server, or both."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Emulation translates every instruction for a different CPU."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Platform as a Service."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It uses virtualization as its base."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Late is wrong."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "macOS is built on BSD."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The VMM is the host: VMware ESX, Citrix XenServer."
+    },
+    {
+      "accepted_answers": [
+        "man",
+        "metropolitan area network"
+      ],
+      "explanation": "A Metropolitan Area Network."
+    },
+    {
+      "accepted_answers": [
+        "gpl",
+        "gnu gpl",
+        "gnu public license"
+      ],
+      "explanation": "The GNU Public License."
+    },
+    {
+      "accepted_answers": [
+        "firewall",
+        "firewalls",
+        "a firewall"
+      ],
+      "explanation": "Even home systems use firewalls."
+    }
+  ]
+}

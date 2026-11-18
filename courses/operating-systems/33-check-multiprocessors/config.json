@@ -1,0 +1,60 @@
+{
+  "type": "quiz",
+  "title": "Check: One CPU or Many?",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "type": "true_false",
+      "prompt": "A system with one general-purpose CPU and a disk controller that has its own microprocessor is a multiprocessor system."
+    },
+    {
+      "prompt": "Multiprocessor systems are also known as:",
+      "options": [
+        "Embedded systems and real-time systems",
+        "Clustered systems and distributed systems",
+        "Parallel systems and tightly-coupled systems",
+        "Batch systems and timesharing systems"
+      ]
+    },
+    {
+      "prompt": "A system has 8 processors. What speedup should you expect over 1 processor?",
+      "options": [
+        "Less than 8×, because of overhead and competition for shared resources",
+        "No speedup at all",
+        "More than 8×",
+        "Exactly 8×"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Multiprocessors can cost less than several single-processor machines because they share peripherals, storage, and power. What's that advantage called? (three words)"
+    },
+    {
+      "prompt": "One of 10 CPUs fails, and the system keeps running at about 90% speed. What is that called?",
+      "options": [
+        "Economy of scale",
+        "Fault tolerance",
+        "Throughput",
+        "Graceful degradation"
+      ]
+    },
+    {
+      "prompt": "What does fault tolerance mean?",
+      "options": [
+        "The system shuts down safely after a failure",
+        "The system never has faults",
+        "The system can survive any single component failure and keep operating as if nothing happened",
+        "The user is told to fix the hardware"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which of the three advantages means more work done in less time? (two words)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Nearly every modern phone, laptop, and server is a multiprocessor system."
+    }
+  ]
+}

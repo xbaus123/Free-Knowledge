@@ -1,0 +1,35 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "It climbs the hierarchy toward the CPU."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Until it's written back, the register's copy differs from the cache, memory, and disk copies."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Using a stale copy would give wrong results."
+    },
+    {
+      "accepted_answers": [
+        "coherency",
+        "coherence"
+      ],
+      "explanation": "Cache coherency invalidates or updates other CPUs' copies when one CPU writes."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "One CPU's update makes another CPU's cached copy stale."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It has to be fast, so the hardware handles it."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Replicas on separate machines must be kept consistent over a network that can be slow or broken."
+    }
+  ]
+}

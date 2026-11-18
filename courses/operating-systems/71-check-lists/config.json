@@ -1,0 +1,51 @@
+{
+  "type": "quiz",
+  "title": "Check: Lists",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "In a singly linked list, what does each item point to?",
+      "options": [
+        "The first item",
+        "Both neighbors",
+        "Its successor",
+        "Its predecessor only"
+      ]
+    },
+    {
+      "prompt": "In a doubly linked list, what does each item point to?",
+      "options": [
+        "Both its predecessor and its successor",
+        "Only its predecessor",
+        "Only its successor",
+        "Nothing"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "In which kind of list does the last item point back to the first? (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "In a singly linked list, the last item points to null."
+    },
+    {
+      "prompt": "Which kind of list is best for a scheduler taking turns through processes forever?",
+      "options": [
+        "Circular linked",
+        "Singly linked",
+        "None: use an array",
+        "Doubly linked"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "In a doubly linked list, the first item's predecessor and the last item's successor are null."
+    },
+    {
+      "type": "written",
+      "prompt": "Which Linux include file defines its list structures? Type it as linux/____.h (one word)"
+    }
+  ]
+}

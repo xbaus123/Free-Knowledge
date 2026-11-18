@@ -1,0 +1,36 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Programs keep stopping to wait, and the CPU sits idle unless there's other work."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Switching to another ready job keeps the CPU busy."
+    },
+    {
+      "accepted_answers": [
+        "batch"
+      ],
+      "explanation": "Batch systems ran jobs one after another, keeping the hardware busy."
+    },
+    {
+      "accepted_answers": [
+        "scheduling"
+      ],
+      "explanation": "Job scheduling picks which job runs."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It keeps only a subset of the total jobs in memory."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "2 ms of 10 ms is 20%. The other 80% is wasted without another job to run."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The OS sits in low memory; jobs share the rest."
+    }
+  ]
+}

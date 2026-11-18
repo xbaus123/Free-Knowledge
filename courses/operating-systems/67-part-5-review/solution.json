@@ -1,0 +1,65 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "One program can become many processes."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "One per thread."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Memory management decides what's in memory and when."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The file is the logical storage unit."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Synchronization is process management."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Write once, read many times, like a burned CD-R."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Without it, one CPU could read a stale copy another CPU already changed."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Spooling, as in a print queue."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Memory, files, and devices go back."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It's managed by the OS or by applications."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The rest of the kernel uses the general device-driver interface."
+    },
+    {
+      "accepted_answers": [
+        "buffering",
+        "buffer",
+        "buffers"
+      ],
+      "explanation": "Buffering, caching, and spooling."
+    },
+    {
+      "accepted_answers": [
+        "multiplexing",
+        "sharing",
+        "time-slicing",
+        "timesharing"
+      ],
+      "explanation": "Each process gets a turn."
+    }
+  ]
+}

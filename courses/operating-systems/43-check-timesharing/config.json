@@ -1,0 +1,60 @@
+{
+  "type": "quiz",
+  "title": "Check: Timesharing",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "Timesharing is also called ______. (one word)"
+    },
+    {
+      "prompt": "How is timesharing different from plain multiprogramming?",
+      "options": [
+        "It runs only one job",
+        "The CPU switches so frequently that users can interact with each job while it runs",
+        "It never switches jobs",
+        "It doesn't need memory"
+      ]
+    },
+    {
+      "prompt": "What response time should a timesharing system aim for?",
+      "options": [
+        "Under 1 second",
+        "It doesn't matter",
+        "About 10 seconds",
+        "Under 1 hour"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A program loaded into memory and executing is called a ______. (one word)"
+    },
+    {
+      "prompt": "Several processes are ready to run at the same time. What must the OS do?",
+      "options": [
+        "CPU scheduling",
+        "Swapping",
+        "Spooling",
+        "Bootstrapping"
+      ]
+    },
+    {
+      "prompt": "Processes don't all fit in memory, so the OS moves them in and out of memory to run. What's that called?",
+      "options": [
+        "DMA",
+        "Polling",
+        "Caching",
+        "Swapping"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which technique lets a process execute even though it is not completely in memory? (two words)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Your laptop's OS is a timesharing system."
+    }
+  ]
+}

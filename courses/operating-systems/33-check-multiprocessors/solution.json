@@ -1,0 +1,44 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Special-purpose processors don't run user programs. It's still a single-processor system."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Tightly coupled: they share the bus, and often the clock, memory, and devices."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Keeping parts working together costs time, and processors compete for memory."
+    },
+    {
+      "accepted_answers": [
+        "economy of scale",
+        "economies of scale"
+      ],
+      "explanation": "Sharing one disk beats copying the data to many machines."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Service continues in proportion to the surviving hardware."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "It goes beyond graceful degradation, and needs duplicated hardware plus failure detection."
+    },
+    {
+      "accepted_answers": [
+        "increased throughput",
+        "throughput",
+        "more throughput",
+        "higher throughput"
+      ],
+      "explanation": "Throughput is work completed per unit of time."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Multicore chips put several processors in every device."
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "type": "quiz",
+  "title": "Part Review: Computing Environments",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Network computers (thin clients) are like:",
+      "options": [
+        "Servers",
+        "Mainframes",
+        "Peers",
+        "Web terminals"
+      ]
+    },
+    {
+      "prompt": "Which two OSes lead mobile computing?",
+      "options": [
+        "BSD and VMware ESX",
+        "Windows and Linux",
+        "Apple iOS and Google Android",
+        "macOS and XenServer"
+      ]
+    },
+    {
+      "prompt": "What does a network operating system provide?",
+      "options": [
+        "A firewall only",
+        "Emulation of other CPUs",
+        "The illusion of a single system across the network",
+        "Faster disks"
+      ]
+    },
+    {
+      "prompt": "How does P2P differ from client-server?",
+      "options": [
+        "P2P doesn't distinguish clients and servers; every node is a peer",
+        "There's no difference",
+        "P2P has only one server",
+        "P2P has no network"
+      ]
+    },
+    {
+      "prompt": "Which is generally the slowest: emulation or virtualization?",
+      "options": [
+        "They're equal",
+        "Emulation",
+        "Virtualization",
+        "Neither runs programs"
+      ]
+    },
+    {
+      "prompt": "Which cloud service model provides a software stack ready for application use?",
+      "options": [
+        "IaaS",
+        "SaaS",
+        "PaaS",
+        "Private cloud"
+      ]
+    },
+    {
+      "prompt": "Cloud computing is a logical extension of:",
+      "options": [
+        "Bitmaps",
+        "Virtualization",
+        "Real-time systems",
+        "Peer-to-peer"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A real-time OS is correct only if its time constraints are met."
+    },
+    {
+      "type": "true_false",
+      "prompt": "BSD UNIX is the core of Mac OS X."
+    },
+    {
+      "type": "true_false",
+      "prompt": "When a VMM runs natively on the hardware, there's still a general-purpose host OS beneath it."
+    },
+    {
+      "type": "written",
+      "prompt": "Which network type covers a city? (three letters)"
+    },
+    {
+      "type": "written",
+      "prompt": "Which \"copyleft\" license did the FSF create? (three letters)"
+    },
+    {
+      "type": "written",
+      "prompt": "What protects home computers from Internet attacks? (one word)"
+    }
+  ]
+}

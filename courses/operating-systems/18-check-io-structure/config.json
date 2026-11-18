@@ -1,0 +1,51 @@
+{
+  "type": "quiz",
+  "title": "Check: I/O Structure",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "In synchronous I/O, when does control return to the user program?",
+      "options": [
+        "Immediately after the I/O starts",
+        "Only when the I/O completes",
+        "Never",
+        "When the user presses a key"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "With synchronous I/O, at most one I/O request is outstanding at a time."
+    },
+    {
+      "prompt": "Why does a wait loop cause contention for memory access?",
+      "options": [
+        "It erases memory",
+        "It doesn't: wait loops never touch memory",
+        "It keeps reading memory over the bus while devices also need it",
+        "It turns off the memory controller"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "In asynchronous I/O, which table has an entry for each I/O device giving its type, address, and state? (three words)"
+    },
+    {
+      "prompt": "How does a program using asynchronous I/O wait for a result when it finally needs it?",
+      "options": [
+        "It reads the disk directly",
+        "It reboots",
+        "It runs a wait loop forever",
+        "It makes a system call asking the OS to wait for the I/O to complete"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Asynchronous I/O lets many I/O operations be in progress at the same time."
+    },
+    {
+      "type": "written",
+      "prompt": "Which kind of I/O, synchronous or asynchronous, do modern general-purpose operating systems mostly use? (one word)"
+    }
+  ]
+}

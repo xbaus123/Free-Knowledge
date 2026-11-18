@@ -1,0 +1,41 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "One bit per frame is as compact as it gets."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Hash the PID and jump straight to the entry: O(1) on average."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Walking a circular list never ends."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Balanced BSTs keep search at O(lg n)."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Sorted keys make it a chain: O(n). Only a balanced BST guarantees O(lg n)."
+    },
+    {
+      "accepted_answers": [
+        "64",
+        "sixty-four",
+        "sixty four"
+      ],
+      "explanation": "One bit per item."
+    },
+    {
+      "accepted_answers": [
+        "10",
+        "ten",
+        "11",
+        "eleven"
+      ],
+      "explanation": "lg 1,024 = 10."
+    }
+  ]
+}

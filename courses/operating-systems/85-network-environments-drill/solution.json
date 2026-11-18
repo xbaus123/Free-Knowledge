@@ -1,0 +1,43 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Augmented reality on a handheld: mobile computing."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Requesting a service is compute-server."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Each node is a client and a server: a peer."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A personal area network surrounds one person."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Metropolitan Area Network."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Thin clients are like web terminals; the work happens on servers."
+    },
+    {
+      "accepted_answers": [
+        "wan",
+        "wide area network"
+      ],
+      "explanation": "A Wide Area Network."
+    },
+    {
+      "accepted_answers": [
+        "portal",
+        "a portal",
+        "portals"
+      ],
+      "explanation": "Portals provide web access to internal systems."
+    }
+  ]
+}

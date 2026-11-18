@@ -1,0 +1,49 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "That ordering is what makes searching fast."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "14 < 17 so go left to 12; 14 > 12 so go right to 14."
+    },
+    {
+      "accepted_answers": [
+        "o(n)",
+        "on",
+        "o (n)",
+        "linear"
+      ],
+      "explanation": "A badly built tree is just a linked list."
+    },
+    {
+      "accepted_answers": [
+        "o(lg n)",
+        "o(log n)",
+        "o(logn)",
+        "o(lgn)",
+        "o(log2 n)",
+        "logarithmic"
+      ],
+      "explanation": "Height about lg n keeps every search short."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Each new item goes to the right of the last one."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "lg 1,000,000 is about 20."
+    },
+    {
+      "accepted_answers": [
+        "rbtree",
+        "rbtree.h",
+        "linux/rbtree.h",
+        "<linux/rbtree.h>"
+      ],
+      "explanation": "<linux/rbtree.h>."
+    }
+  ]
+}

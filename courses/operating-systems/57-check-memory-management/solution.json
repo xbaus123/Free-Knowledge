@@ -1,0 +1,37 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "The CPU can only fetch instructions from memory."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It decides what's in memory at each moment."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Keep a ready process in memory, and keep what the user needs close at hand."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Disk scheduling belongs to mass-storage management."
+    },
+    {
+      "accepted_answers": [
+        "whom",
+        "who"
+      ],
+      "explanation": "Ownership matters: when a process ends, its memory must be reclaimed."
+    },
+    {
+      "accepted_answers": [
+        "deallocation",
+        "deallocating",
+        "deallocate",
+        "freeing",
+        "free"
+      ],
+      "explanation": "The OS allocates and deallocates memory as needed."
+    }
+  ]
+}

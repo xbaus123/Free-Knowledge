@@ -1,0 +1,56 @@
+{
+  "type": "quiz",
+  "title": "Check: Storage Management",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "What logical storage unit does the OS abstract the physical properties of storage into? (one word)"
+    },
+    {
+      "prompt": "Why does the file abstraction matter?",
+      "options": [
+        "It makes disks spin faster",
+        "It removes the need for directories",
+        "Programs can use storage the same way no matter what device it's on",
+        "It encrypts every file"
+      ]
+    },
+    {
+      "prompt": "Which device uses sequential access?",
+      "options": [
+        "A hard disk",
+        "A magnetic tape",
+        "Main memory",
+        "A solid-state disk"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Access control determines who can access which files."
+    },
+    {
+      "prompt": "Which is NOT a file-system management activity?",
+      "options": [
+        "Mapping files onto secondary storage",
+        "Allocating CPU time to processes",
+        "Backing up files onto stable storage",
+        "Creating and deleting files and directories"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Files are usually organized into ______. (one word)"
+    },
+    {
+      "prompt": "Which is NOT a property that varies between storage media?",
+      "options": [
+        "Access speed",
+        "Access method",
+        "Capacity",
+        "The name of the file"
+      ]
+    }
+  ]
+}

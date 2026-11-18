@@ -1,0 +1,60 @@
+{
+  "type": "quiz",
+  "title": "Check: Clustered Systems",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "How does a clustered system differ from a multiprocessor system?",
+      "options": [
+        "A cluster has only one CPU",
+        "A cluster joins multiple whole computers; a multiprocessor puts several CPUs in one computer",
+        "A cluster can't share storage",
+        "There's no difference"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Cluster nodes usually share disks through what kind of network? (three words, or its abbreviation)"
+    },
+    {
+      "type": "written",
+      "prompt": "A service that keeps running even when one or more machines fail is called high ______. (one word)"
+    },
+    {
+      "prompt": "In asymmetric clustering, what does the hot-standby machine do?",
+      "options": [
+        "Nothing but monitor the active server, ready to take over if it fails",
+        "Runs half the applications",
+        "Runs the distributed lock manager only",
+        "Stores the backups on tape"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "In symmetric clustering, multiple nodes run applications and monitor each other."
+    },
+    {
+      "prompt": "What must be true of a program to benefit from a high-performance computing cluster?",
+      "options": [
+        "It must be written in assembly",
+        "It must be written to use parallelization",
+        "It must use only one node",
+        "Nothing: every program speeds up automatically"
+      ]
+    },
+    {
+      "prompt": "What does a distributed lock manager (DLM) prevent?",
+      "options": [
+        "Disks from spinning too fast",
+        "Users logging in twice",
+        "Conflicting operations when several nodes access shared data",
+        "Network packets from being lost"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Clusters are tightly coupled systems."
+    }
+  ]
+}

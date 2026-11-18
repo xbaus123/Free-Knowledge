@@ -1,0 +1,60 @@
+{
+  "type": "quiz",
+  "title": "Check: Open-Source Operating Systems",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What makes an operating system open source?",
+      "options": [
+        "It has no kernel",
+        "It's made available in source-code format, not just as a binary",
+        "It's free to download",
+        "It runs only in a VM"
+      ]
+    },
+    {
+      "prompt": "Open source runs counter to which movement?",
+      "options": [
+        "Virtualization",
+        "Copy protection and Digital Rights Management (DRM)",
+        "The peer-to-peer movement",
+        "The cloud computing movement"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which organization started the free software movement? (three words, or its abbreviation)"
+    },
+    {
+      "type": "written",
+      "prompt": "What does GPL stand for? (three words)"
+    },
+    {
+      "prompt": "What does \"copyleft\" require?",
+      "options": [
+        "That nobody may change the software",
+        "That source code stays secret",
+        "That you pay for every copy",
+        "That changed versions you distribute stay open, under the same license"
+      ]
+    },
+    {
+      "prompt": "Which is the core of Mac OS X?",
+      "options": [
+        "Windows",
+        "BSD UNIX",
+        "Android",
+        "VMware ESX"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "VirtualBox is open source and free on many platforms."
+    },
+    {
+      "type": "written",
+      "prompt": "Name one open-source OS from the slides. (one or two words)"
+    }
+  ]
+}

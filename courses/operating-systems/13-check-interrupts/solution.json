@@ -1,0 +1,45 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "The ISR handles the event, then the interrupted program resumes."
+    },
+    {
+      "accepted_answers": [
+        "interrupt vector",
+        "the interrupt vector",
+        "interrupt vector table",
+        "ivt"
+      ],
+      "explanation": "The interrupt number indexes straight into it, so no searching is needed."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Otherwise the CPU couldn't resume the program where it left off."
+    },
+    {
+      "accepted_answers": [
+        "exception",
+        "an exception",
+        "exceptions"
+      ],
+      "explanation": "Division by zero and system calls both cause traps."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Errors in the running program, and its requests for OS services, are software-generated."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Indexing a table takes one lookup, no matter how many kinds of interrupt there are."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Every OS action is a response to some event."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "System calls are traps: the program deliberately interrupts itself to ask the OS for service."
+    }
+  ]
+}

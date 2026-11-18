@@ -1,0 +1,49 @@
+{
+  "type": "quiz",
+  "title": "Drill: Privileged or Not?",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "type": "true_false",
+      "prompt": "Setting the value of the timer should be privileged."
+    },
+    {
+      "type": "true_false",
+      "prompt": "Reading the clock (the time of day) should be privileged."
+    },
+    {
+      "type": "true_false",
+      "prompt": "Turning off interrupts should be privileged."
+    },
+    {
+      "type": "true_false",
+      "prompt": "Clearing all of memory should be privileged."
+    },
+    {
+      "type": "true_false",
+      "prompt": "Issuing a trap instruction (to make a system call) should be privileged."
+    },
+    {
+      "type": "true_false",
+      "prompt": "Switching from user mode to kernel mode directly should be privileged."
+    },
+    {
+      "type": "true_false",
+      "prompt": "Accessing an I/O device directly should be privileged."
+    },
+    {
+      "prompt": "A program wants to read a file. What should it do?",
+      "options": [
+        "Turn off interrupts so nothing disturbs it",
+        "Set the mode bit to 0",
+        "Execute the disk controller's I/O instructions itself",
+        "Make a system call, which traps into the kernel, which does the I/O"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "After a system call finishes, the mode bit goes back to which value? (a number)"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "type": "quiz",
+  "title": "Drill: Unit Arithmetic",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "How many bytes are in 4 KB? (a number)"
+    },
+    {
+      "type": "written",
+      "prompt": "How many KB are in 2 MB? (a number)"
+    },
+    {
+      "type": "written",
+      "prompt": "How many bits are in 1 KB? (a number)"
+    },
+    {
+      "type": "written",
+      "prompt": "A 64-bit word is how many bytes? (a number)"
+    },
+    {
+      "prompt": "A link runs at 80 Mbps (megabits per second). Roughly how many megabytes per second is that?",
+      "options": [
+        "80 MB/s",
+        "640 MB/s",
+        "10 MB/s",
+        "8 MB/s"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "1 MB is 1,024 times bigger than 1 KB."
+    },
+    {
+      "prompt": "A manufacturer sells a \"500 GB\" drive, meaning 500 × 10⁹ bytes. About how many GB will the OS report?",
+      "options": [
+        "About 500 GB",
+        "About 50 GB",
+        "About 466 GB",
+        "About 512 GB"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "2²⁰ bytes is exactly one what? (a unit name or its abbreviation)"
+    }
+  ]
+}

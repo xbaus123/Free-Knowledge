@@ -1,0 +1,46 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "process",
+        "a process"
+      ],
+      "explanation": "A process is the unit of work within the system."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "A program is a file of instructions. A process is those instructions running."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Two browser windows can be two processes from one program."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "A process needs CPU, memory, I/O, files, and initialization data."
+    },
+    {
+      "accepted_answers": [
+        "program counter",
+        "pc"
+      ],
+      "explanation": "A multi-threaded process has one program counter per thread."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "One program counter per thread."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Each process gets a turn, switched quickly by the scheduler."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Memory, open files, and devices go back to the pool."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Compiling is a job for the compiler, an application."
+    }
+  ]
+}

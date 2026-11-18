@@ -1,0 +1,74 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "It lives in firmware and hands control to the kernel."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Because they share the bus, they compete for memory cycles."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The interrupt number indexes straight into it."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Division by zero and system calls both cause traps."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Vectored interrupts jump straight to the handler; polling asks each device in turn."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The device-status table tracks every device and its queue of requests."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Everything else has to be copied into memory first."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's a cache hit: the fast path."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "That frees the CPU for other work during the transfer."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Secondary storage is nonvolatile; main memory is typically volatile."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "CPU caches, the OS's file-block cache, and browser caches are all examples."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "64 bits ÷ 8 = 8 bytes."
+    },
+    {
+      "accepted_answers": [
+        "1048576",
+        "1,048,576"
+      ],
+      "explanation": "1,024² = 1,048,576."
+    },
+    {
+      "accepted_answers": [
+        "program counter",
+        "the program counter",
+        "pc"
+      ],
+      "explanation": "The program counter says where to resume."
+    },
+    {
+      "accepted_answers": [
+        "sectors",
+        "sector"
+      ],
+      "explanation": "Sectors are the smallest units the disk reads or writes."
+    }
+  ]
+}

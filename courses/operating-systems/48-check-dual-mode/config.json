@@ -1,0 +1,64 @@
+{
+  "type": "quiz",
+  "title": "Check: Dual-Mode Operation",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What are the two modes in dual-mode operation?",
+      "options": [
+        "User mode and kernel mode",
+        "Online and offline",
+        "Fast mode and slow mode",
+        "Read mode and write mode"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What is the value of the mode bit in kernel mode? (a number)"
+    },
+    {
+      "type": "written",
+      "prompt": "What is the value of the mode bit in user mode? (a number)"
+    },
+    {
+      "type": "written",
+      "prompt": "Instructions that can only be executed in kernel mode are called ______ instructions. (one word)"
+    },
+    {
+      "prompt": "A user program tries to execute a privileged instruction. What happens?",
+      "options": [
+        "It isn't executed; the hardware traps to the OS",
+        "It runs normally",
+        "The computer switches to kernel mode and runs it",
+        "The mode bit is set to 0"
+      ]
+    },
+    {
+      "prompt": "What does a system call do to the mode bit?",
+      "options": [
+        "Deletes it",
+        "Nothing",
+        "The trap sets it to 0 (kernel), and the return sets it back to 1 (user)",
+        "Sets it to 1 permanently"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Every interrupt or trap switches the CPU to kernel mode."
+    },
+    {
+      "prompt": "Which of these is NOT typically a privileged instruction?",
+      "options": [
+        "I/O control",
+        "Setting the timer",
+        "Turning off interrupts",
+        "Adding two numbers in registers"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Many CPUs have an extra mode for running guest virtual machines. What does VMM stand for? (three words)"
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "type": "quiz",
+  "title": "Drill: Whose Job Is It?",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Deciding which process's pages to move out of memory to make room:",
+      "options": [
+        "The I/O subsystem",
+        "Process management",
+        "File-system management",
+        "Memory management"
+      ]
+    },
+    {
+      "prompt": "Creating a new process when you open an app:",
+      "options": [
+        "Memory management",
+        "The I/O subsystem",
+        "Mass-storage management",
+        "Process management"
+      ]
+    },
+    {
+      "prompt": "Choosing the order to serve 20 waiting disk read requests:",
+      "options": [
+        "File-system management",
+        "Memory management",
+        "Mass-storage management",
+        "Process management"
+      ]
+    },
+    {
+      "prompt": "Renaming a directory:",
+      "options": [
+        "Process management",
+        "Mass-storage management",
+        "File-system management",
+        "Memory management"
+      ]
+    },
+    {
+      "prompt": "Queuing print jobs on disk for a busy printer:",
+      "options": [
+        "Process management",
+        "File-system backup",
+        "The I/O subsystem (spooling)",
+        "Memory management"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Stopping two processes from waiting on each other forever (deadlock) is a process-management job."
+    },
+    {
+      "type": "true_false",
+      "prompt": "Keeping track of which bytes of memory are free is a file-system job."
+    },
+    {
+      "type": "written",
+      "prompt": "Two CPUs both cache variable A, and one updates it. What hardware feature makes the other see the update? (two words)"
+    },
+    {
+      "type": "written",
+      "prompt": "Which tertiary-storage medium is read in order, from start to finish? (two words, or one)"
+    }
+  ]
+}

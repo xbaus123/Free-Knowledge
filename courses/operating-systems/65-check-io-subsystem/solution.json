@@ -1,0 +1,35 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Programs see a uniform interface; drivers deal with the quirks."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A buffer holds data in transit, like a video player loading ahead."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "A cache holds a copy of data that also lives somewhere slower."
+    },
+    {
+      "accepted_answers": [
+        "spooling",
+        "spool"
+      ],
+      "explanation": "Print jobs are queued on disk while the printer works through them."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Only the driver knows its device; the rest of the kernel uses the general interface."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Every driver provides the same standard functions."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The jobs wait in the spool on disk, and the printer takes them one at a time."
+    }
+  ]
+}

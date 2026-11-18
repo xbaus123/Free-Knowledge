@@ -1,0 +1,8 @@
+{
+  "title": "Kernel Data Structures in Python",
+  "language": "python",
+  "timeoutMs": 10000,
+  "capabilities": {
+    "scratchpad": true
+  }
+}

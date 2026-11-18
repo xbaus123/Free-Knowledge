@@ -1,0 +1,39 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "There isn't. \"Everything the vendor ships\" is a good approximation, but vendors ship very different things."
+    },
+    {
+      "accepted_answers": [
+        "kernel",
+        "the kernel",
+        "os kernel"
+      ],
+      "explanation": "The kernel loads at startup and stays in memory until shutdown."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "System programs, like the shell and file utilities, come with the OS but run outside the kernel."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Applications are everything not associated with running the system itself."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's why it's only an approximation."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "System programs ship with the OS; application programs are everything else."
+    },
+    {
+      "accepted_answers": [
+        "kernel",
+        "the kernel"
+      ],
+      "explanation": "The kernel is the part that actually manages the hardware."
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "One pointer, to the next item. The last points to null."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Two pointers let you walk either way."
+    },
+    {
+      "accepted_answers": [
+        "circular",
+        "circular linked list",
+        "circular list"
+      ],
+      "explanation": "No null at the end: it goes round and round."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Null marks the end."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Walking a circular list never hits the end."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Null marks both ends."
+    },
+    {
+      "accepted_answers": [
+        "list",
+        "list.h",
+        "linux/list.h",
+        "<linux/list.h>"
+      ],
+      "explanation": "<linux/list.h>."
+    }
+  ]
+}

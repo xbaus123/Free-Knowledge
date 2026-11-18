@@ -1,0 +1,40 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "The program waits for its I/O. The CPU idles with a wait instruction or spins in a wait loop."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's its main weakness: no simultaneous I/O processing."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Spinning keeps the CPU hammering the shared bus, competing with the devices."
+    },
+    {
+      "accepted_answers": [
+        "device-status table",
+        "device status table",
+        "the device-status table",
+        "the device status table"
+      ],
+      "explanation": "The OS indexes into it to find and update a device's entry when an interrupt arrives."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The system call puts it to sleep until the OS sees the transfer-done interrupt."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Each device has its own entry and its own queue of waiting requests."
+    },
+    {
+      "accepted_answers": [
+        "asynchronous",
+        "async"
+      ],
+      "explanation": "Keeping the CPU and all the devices busy at once is worth the bookkeeping."
+    }
+  ]
+}

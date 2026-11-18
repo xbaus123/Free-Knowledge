@@ -1,0 +1,46 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "Rented, over the network, paid by usage."
+    },
+    {
+      "accepted_answers": [
+        "virtualization",
+        "virtualisation"
+      ],
+      "explanation": "Millions of virtual machines run on the cloud's servers."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Run by a company for the company's own use."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Hybrid mixes the two."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Software as a Service: a finished application."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Platform as a Service: a software stack ready for application use."
+    },
+    {
+      "accepted_answers": [
+        "iaas",
+        "infrastructure as a service"
+      ],
+      "explanation": "Infrastructure as a Service."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Firewalls provide security; load balancers spread traffic."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's the slide's definition of what's inside."
+    }
+  ]
+}

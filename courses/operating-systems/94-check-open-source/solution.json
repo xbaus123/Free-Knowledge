@@ -1,0 +1,51 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Closed source ships only the compiled binary."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "DRM restricts use; open source opens it up."
+    },
+    {
+      "accepted_answers": [
+        "free software foundation",
+        "fsf",
+        "the free software foundation"
+      ],
+      "explanation": "The FSF, with the GPL."
+    },
+    {
+      "accepted_answers": [
+        "gnu public license",
+        "gnu general public license",
+        "general public license"
+      ],
+      "explanation": "The slides call it the GNU Public License."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The freedom is passed on with the code."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "BSD UNIX is open source, and macOS is built on it."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Use it to run guest OSes for exploration."
+    },
+    {
+      "accepted_answers": [
+        "linux",
+        "gnu/linux",
+        "gnu linux",
+        "bsd",
+        "bsd unix",
+        "freebsd"
+      ],
+      "explanation": "GNU/Linux and BSD UNIX are the slides' examples."
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "type": "quiz",
+  "title": "Drill: Who's Who",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "The shell you type commands into is best described as:",
+      "options": [
+        "The kernel",
+        "A system program",
+        "Hardware",
+        "A user"
+      ]
+    },
+    {
+      "prompt": "A photo-editing app you bought is:",
+      "options": [
+        "A system program",
+        "The kernel",
+        "Hardware",
+        "An application program"
+      ]
+    },
+    {
+      "prompt": "The code that decides which program gets the CPU next lives in:",
+      "options": [
+        "The users",
+        "A system program",
+        "An application program",
+        "The kernel"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A server that sends requests to another server counts as a user of that second server."
+    },
+    {
+      "prompt": "A keyboard is:",
+      "options": [
+        "Hardware",
+        "An application program",
+        "The kernel",
+        "A system program"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which role is the OS playing when it stops one program from overwriting another program's memory? (two words)"
+    },
+    {
+      "type": "written",
+      "prompt": "Which role is the OS playing when it decides which of two programs gets the printer first? (two words)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "The kernel is loaded at startup and keeps running until the computer shuts down."
+    }
+  ]
+}

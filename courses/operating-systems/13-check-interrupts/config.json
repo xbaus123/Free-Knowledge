@@ -1,0 +1,60 @@
+{
+  "type": "quiz",
+  "title": "Check: Interrupts",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "When an interrupt arrives, where does the CPU transfer control?",
+      "options": [
+        "To the user",
+        "To the next instruction of the current program",
+        "To the interrupt service routine for that interrupt",
+        "To the bootstrap program"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What is the table that holds the addresses of all the interrupt service routines called? (two words)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "The interrupt architecture must save the address of the interrupted instruction."
+    },
+    {
+      "type": "written",
+      "prompt": "A software-generated interrupt caused by an error or a user request is called a trap or an ______. (one word)"
+    },
+    {
+      "prompt": "Which of these causes a trap rather than a hardware interrupt?",
+      "options": [
+        "A program divides by zero",
+        "A key is pressed",
+        "A network packet arrives",
+        "The disk finishes reading a block"
+      ]
+    },
+    {
+      "prompt": "Why is jumping through the interrupt vector fast?",
+      "options": [
+        "The vector is stored on disk",
+        "The interrupt number is an index into the table, so the address is found in one step",
+        "Interrupts skip the CPU entirely",
+        "The CPU searches every service routine until it finds the right one"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "An operating system is interrupt driven: with nothing to do, it waits for an interrupt or trap."
+    },
+    {
+      "prompt": "A program asks the OS to open a file. What kind of event is that?",
+      "options": [
+        "A hardware interrupt from the disk",
+        "A trap caused by a user request (a system call)",
+        "A power failure",
+        "A bootstrap"
+      ]
+    }
+  ]
+}

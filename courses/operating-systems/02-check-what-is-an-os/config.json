@@ -1,0 +1,60 @@
+{
+  "type": "quiz",
+  "title": "Check: What Is an OS?",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Which is the best one-sentence definition of an operating system?",
+      "options": [
+        "A program that acts as an intermediary between the user of a computer and the computer hardware",
+        "The program you use to browse the web",
+        "The physical chips inside a computer",
+        "A program that translates source code into machine code"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Application programs usually talk to the hardware directly, without going through the operating system."
+    },
+    {
+      "prompt": "Which of these is NOT one of the three goals of an operating system?",
+      "options": [
+        "Execute user programs and make solving user problems easier",
+        "Use the computer hardware efficiently",
+        "Make every program run in the same amount of time",
+        "Make the computer system convenient to use"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Fill in the blank: the four components of a computer system are hardware, the operating system, application programs, and ______. (one word)"
+    },
+    {
+      "prompt": "A web browser, a compiler, and a video game are all examples of which component?",
+      "options": [
+        "The operating system",
+        "Users",
+        "Application programs",
+        "Hardware"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "In the four-component picture, a \"user\" can be another computer, not only a person."
+    },
+    {
+      "prompt": "CPU, memory, and I/O devices belong to which component?",
+      "options": [
+        "Hardware",
+        "Users",
+        "Application programs",
+        "Operating system"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which component controls and coordinates the use of the hardware among the various applications and users? (two words)"
+    }
+  ]
+}

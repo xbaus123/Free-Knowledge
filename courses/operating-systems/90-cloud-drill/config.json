@@ -1,0 +1,64 @@
+{
+  "type": "quiz",
+  "title": "Drill: SaaS, PaaS, or IaaS?",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "You rent a virtual server and install whatever you like on it:",
+      "options": [
+        "SaaS",
+        "PaaS",
+        "IaaS"
+      ]
+    },
+    {
+      "prompt": "You use an online spreadsheet app in your browser:",
+      "options": [
+        "SaaS",
+        "PaaS",
+        "IaaS"
+      ]
+    },
+    {
+      "prompt": "You upload your code to a service that already provides the database and web server stack it runs on:",
+      "options": [
+        "SaaS",
+        "PaaS",
+        "IaaS"
+      ]
+    },
+    {
+      "prompt": "You rent storage over the Internet to keep backups:",
+      "options": [
+        "SaaS",
+        "PaaS",
+        "IaaS"
+      ]
+    },
+    {
+      "prompt": "A cloud anyone can sign up for and pay to use:",
+      "options": [
+        "Public",
+        "Private",
+        "Hybrid"
+      ]
+    },
+    {
+      "prompt": "A company keeps sensitive data in its own cloud, and rents extra capacity from Amazon EC2 when busy:",
+      "options": [
+        "Public",
+        "Private",
+        "Hybrid"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Amazon EC2 customers pay based on usage."
+    },
+    {
+      "type": "written",
+      "prompt": "What does SaaS stand for? (four words)"
+    }
+  ]
+}

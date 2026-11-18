@@ -1,0 +1,50 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "Deciding what to move into and out of memory is memory management."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Creating and deleting processes is process management."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "That's disk scheduling."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Primitives to manipulate files and directories belong to file-system management."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Spooling is part of the I/O subsystem's memory management of I/O."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Deadlock handling is one of the five process-management activities."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Tracking memory use is memory management. Tracking free DISK blocks is mass-storage management."
+    },
+    {
+      "accepted_answers": [
+        "cache coherency",
+        "cache coherence",
+        "coherency",
+        "coherence"
+      ],
+      "explanation": "Cache coherency keeps every CPU's cache up to date."
+    },
+    {
+      "accepted_answers": [
+        "magnetic tape",
+        "tape",
+        "tapes",
+        "magnetic tapes"
+      ],
+      "explanation": "Tape is sequential access."
+    }
+  ]
+}

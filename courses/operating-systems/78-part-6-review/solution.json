@@ -1,0 +1,63 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Protection is the mechanism; security is the defense."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's how access control knows who owns what."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "sudo on UNIX is the everyday example."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The last item points back to the first."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A plain BST is O(n) in the worst case."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The number picks the slot."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Two pointers per item."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "0 or 1: free or in use."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Kernel data structures, ready for every part of the kernel to use."
+    },
+    {
+      "accepted_answers": [
+        "security"
+      ],
+      "explanation": "Security is defense against internal and external attacks."
+    },
+    {
+      "accepted_answers": [
+        "group id",
+        "group identifier",
+        "gid",
+        "a group id"
+      ],
+      "explanation": "Group IDs are attached to processes and files too."
+    },
+    {
+      "accepted_answers": [
+        "3",
+        "three",
+        "item 3"
+      ],
+      "explanation": "Item 3 is the only 0 bit."
+    }
+  ]
+}

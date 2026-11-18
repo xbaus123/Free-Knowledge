@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Check: The Timer",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Why isn't dual-mode operation enough to stop an infinite loop?",
+      "options": [
+        "Infinite loops are privileged instructions",
+        "Dual mode turns off the timer",
+        "The loop uses only ordinary instructions, so it never traps and never gives the CPU back",
+        "Infinite loops run in kernel mode"
+      ]
+    },
+    {
+      "prompt": "What decrements the timer's counter?",
+      "options": [
+        "The disk controller",
+        "The physical clock",
+        "The compiler",
+        "The user program"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What does the timer generate when its counter reaches zero? (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Setting the timer is a privileged instruction."
+    },
+    {
+      "prompt": "When does the OS set the timer?",
+      "options": [
+        "Only when a program crashes",
+        "Before scheduling a process, so it is sure to regain control",
+        "Only at boot",
+        "Never: the user sets it"
+      ]
+    },
+    {
+      "prompt": "The timer fires and a program has used up its allotted time. Which can the OS do?",
+      "options": [
+        "Nothing: it must wait for the program",
+        "Increase the timer forever",
+        "Only reboot the machine",
+        "Terminate it, or pause it and run another process"
+      ]
+    },
+    {
+      "prompt": "Which hardware feature defends against a program that never gives up the CPU?",
+      "options": [
+        "The cache",
+        "DMA",
+        "The mode bit",
+        "The timer"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Submit and come back later: batch."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Interactive use by many people at once is timesharing."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Swapping moves processes in and out of memory."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "CPU scheduling chooses among ready processes."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Timesharing adds regular short time slices on top of that."
+    },
+    {
+      "accepted_answers": [
+        "40",
+        "40%",
+        "40 percent"
+      ],
+      "explanation": "Each job alone keeps the CPU busy 1 ms in 5, or 20%. Two jobs that never collide give 40%."
+    },
+    {
+      "accepted_answers": [
+        "virtual memory"
+      ],
+      "explanation": "Only part of the process needs to be in memory at a time."
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "4096",
+        "4,096"
+      ],
+      "explanation": "4 × 1,024 = 4,096."
+    },
+    {
+      "accepted_answers": [
+        "2048",
+        "2,048"
+      ],
+      "explanation": "2 × 1,024 = 2,048 KB."
+    },
+    {
+      "accepted_answers": [
+        "8192",
+        "8,192"
+      ],
+      "explanation": "1,024 bytes × 8 bits = 8,192 bits."
+    },
+    {
+      "accepted_answers": [
+        "8",
+        "eight"
+      ],
+      "explanation": "64 ÷ 8 = 8 bytes."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Divide bits by 8: 80 ÷ 8 = 10 megabytes a second."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Each step up the table multiplies by 1,024."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "500 × 10⁹ ÷ 1,024³ ≈ 465.7. Rounding makes it look like space went missing."
+    },
+    {
+      "accepted_answers": [
+        "mb",
+        "1 mb",
+        "megabyte",
+        "a megabyte",
+        "1mb",
+        "one megabyte",
+        "1 megabyte"
+      ],
+      "explanation": "2²⁰ = 1,048,576 bytes: one megabyte."
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "type": "quiz",
+  "title": "Part Review: Computer-System Architecture",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Which is NOT one of the three advantages of multiprocessor systems?",
+      "options": [
+        "Economy of scale",
+        "Increased reliability",
+        "Programs no longer need memory",
+        "Increased throughput"
+      ]
+    },
+    {
+      "prompt": "Why don't N processors give an N× speedup?",
+      "options": [
+        "The OS turns all but one off",
+        "Overhead keeping the processors working together, and competition for shared resources",
+        "Each processor runs at 1/N speed",
+        "Only one processor can ever run at a time"
+      ]
+    },
+    {
+      "prompt": "What's the difference between graceful degradation and fault tolerance?",
+      "options": [
+        "Graceful degradation needs duplicated hardware; fault tolerance doesn't",
+        "There's none",
+        "Fault tolerance shuts the system down; graceful degradation doesn't",
+        "Graceful degradation keeps going at reduced capacity; fault tolerance keeps going as if nothing happened"
+      ]
+    },
+    {
+      "prompt": "In which kind of multiprocessing is each processor assigned a specific task?",
+      "options": [
+        "Multicore",
+        "Symmetric multiprocessing",
+        "Hot standby",
+        "Asymmetric multiprocessing"
+      ]
+    },
+    {
+      "prompt": "In an SMP diagram, what does each CPU have of its own?",
+      "options": [
+        "Its own registers and cache",
+        "Its own OS",
+        "Its own disk",
+        "Its own physical memory"
+      ]
+    },
+    {
+      "prompt": "What does a high-availability cluster provide?",
+      "options": [
+        "Faster single-processor performance",
+        "A cheaper single computer",
+        "A service that survives failures",
+        "A way to avoid using storage"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Special-purpose processors, like a disk controller's, run user programs."
+    },
+    {
+      "type": "true_false",
+      "prompt": "A multicore chip has multiple computing cores on a single chip."
+    },
+    {
+      "type": "true_false",
+      "prompt": "An ordinary program written for one CPU automatically runs faster on an HPC cluster."
+    },
+    {
+      "type": "written",
+      "prompt": "Multiprocessors are tightly coupled. Clusters are ______ coupled. (one word)"
+    },
+    {
+      "type": "written",
+      "prompt": "What does SAN stand for? (three words)"
+    },
+    {
+      "type": "written",
+      "prompt": "Which software component stops two cluster nodes from changing shared data at the same time? (three words, or its abbreviation)"
+    }
+  ]
+}

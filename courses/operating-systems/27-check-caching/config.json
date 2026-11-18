@@ -1,0 +1,60 @@
+{
+  "type": "quiz",
+  "title": "Check: Caching",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What is caching?",
+      "options": [
+        "Copying information in use from slower storage into faster storage temporarily",
+        "Moving data from memory to tape",
+        "Deleting data you don't need",
+        "Compressing files on disk"
+      ]
+    },
+    {
+      "prompt": "When the CPU needs some data, where does it look first?",
+      "options": [
+        "The hard disk",
+        "The cache",
+        "Main memory",
+        "The network"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "The data you need is already in the cache. What is that called? (two words)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Main memory can be viewed as a cache for secondary storage."
+    },
+    {
+      "type": "true_false",
+      "prompt": "A cache is usually larger than the storage it caches."
+    },
+    {
+      "type": "written",
+      "prompt": "When the cache is full, the rule that decides what gets thrown out is called the replacement ______. (one word)"
+    },
+    {
+      "prompt": "Why is cache management an important design problem?",
+      "options": [
+        "The cache is smaller than the storage being cached, so not everything fits",
+        "Caches are slower than the storage they cache",
+        "Caches are nonvolatile",
+        "Only users can manage caches"
+      ]
+    },
+    {
+      "prompt": "Which of these is NOT an example of caching?",
+      "options": [
+        "The OS keeping recently read file blocks in memory",
+        "The CPU keeping recently used memory words close by",
+        "Permanently deleting old files to free space",
+        "A browser keeping images it has already downloaded"
+      ]
+    }
+  ]
+}

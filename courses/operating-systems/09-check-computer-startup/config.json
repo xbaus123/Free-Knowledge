@@ -1,0 +1,47 @@
+{
+  "type": "quiz",
+  "title": "Check: Computer Startup",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "What is the name of the small program that runs at power-up or reboot and loads the kernel? (two words)"
+    },
+    {
+      "prompt": "Why is the bootstrap program stored in ROM or EEPROM rather than in main memory?",
+      "options": [
+        "Main memory can only hold data, not programs",
+        "So that the user can edit it easily",
+        "ROM is faster than every other kind of memory",
+        "Main memory is empty at power-up, so the first program must live in storage that survives power loss"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Software stored in hardware such as ROM or EEPROM is generally known as ______. (one word)"
+    },
+    {
+      "prompt": "Which of these is NOT a job of the bootstrap program?",
+      "options": [
+        "Initializing the system: registers, device controllers, memory",
+        "Starting the kernel's execution",
+        "Loading the operating system kernel",
+        "Scheduling user programs on the CPU for the rest of the day"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "The bootstrap program is loaded at power-up or reboot."
+    },
+    {
+      "prompt": "Put the startup steps in order.",
+      "options": [
+        "Run the bootstrap program, initialize the system, load and start the kernel",
+        "Load the kernel, initialize the system, run the bootstrap program",
+        "Start the kernel, run the bootstrap program, initialize the system",
+        "Initialize the system, start the kernel, run the bootstrap program"
+      ]
+    }
+  ]
+}

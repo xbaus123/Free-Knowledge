@@ -1,0 +1,43 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "8",
+        "eight"
+      ],
+      "explanation": "A byte is 8 bits, the smallest chunk most computers can move in one instruction."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "A word is one or more bytes. Its size depends on the architecture."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The word matches the registers: 64 bits is 8 bytes."
+    },
+    {
+      "accepted_answers": [
+        "1024",
+        "1,024",
+        "2^10"
+      ],
+      "explanation": "A kilobyte is 2¹⁰ = 1,024 bytes."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "KB = 1,024, MB = 1,024², GB = 1,024³, TB = 1,024⁴, PB = 1,024⁵."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "10¹² ÷ 1,073,741,824 ≈ 931. Nothing is missing; the units differ."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Networks are measured in bits per second, because they move data one bit at a time."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "PB is 1,024 TB, which is 1,024 × 1,024 GB."
+    }
+  ]
+}

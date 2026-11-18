@@ -1,0 +1,42 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Only a cluster survives the loss of a whole machine."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Multiple cores on one chip: multicore."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The idle watcher is in hot-standby mode."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "SMP: each processor performs all tasks."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Speedup is less than N×, and a program written for one CPU may not use the second at all."
+    },
+    {
+      "accepted_answers": [
+        "high-performance computing",
+        "high performance computing",
+        "hpc"
+      ],
+      "explanation": "HPC clusters need programs written to use parallelization."
+    },
+    {
+      "accepted_answers": [
+        "graceful degradation"
+      ],
+      "explanation": "Service continues in proportion to the hardware that's left."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Cluster nodes have their own memory and OS, linked by a network."
+    }
+  ]
+}

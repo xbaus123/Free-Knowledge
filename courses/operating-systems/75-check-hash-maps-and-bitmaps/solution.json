@@ -1,0 +1,50 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "The number tells you which slot of the table to look in."
+    },
+    {
+      "accepted_answers": [
+        "map",
+        "table",
+        "hashmap"
+      ],
+      "explanation": "Look up the key's hash to jump straight to its value."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "One hash and one look, however many items there are."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Hash the key, and the number picks the slot holding its value."
+    },
+    {
+      "accepted_answers": [
+        "bitmap",
+        "bit map",
+        "bit-map",
+        "bit vector",
+        "bitvector"
+      ],
+      "explanation": "Each bit says whether its item is available or in use."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The 1 bits are at positions 2, 4, 5, and 8."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "About 122 KB tracks a million blocks."
+    },
+    {
+      "accepted_answers": [
+        "0",
+        "zero",
+        "item 0"
+      ],
+      "explanation": "Item 0's bit is 0, so it's free. Finding a free item means finding the first 0 bit."
+    }
+  ]
+}

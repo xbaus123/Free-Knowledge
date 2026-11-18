@@ -1,0 +1,45 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "The OS sits between users (and their programs) and the hardware. A compiler translates code, and it's an application, not the OS."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The OS sits between them. Programs ask the OS to read files, draw windows, or send packets, and the OS drives the hardware."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The three goals are executing programs, convenience, and efficiency. Programs take as long as their work needs."
+    },
+    {
+      "accepted_answers": [
+        "users",
+        "user",
+        "the users"
+      ],
+      "explanation": "Users can be people, machines, or other computers: whoever wants work done."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Application programs define how the system's resources are used to solve users' problems."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A server answering requests from other machines has computers as its users."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Hardware provides the basic computing resources the rest of the system shares."
+    },
+    {
+      "accepted_answers": [
+        "operating system",
+        "the operating system",
+        "os",
+        "an operating system"
+      ],
+      "explanation": "That's the OS's whole job: coordinating shared hardware."
+    }
+  ]
+}

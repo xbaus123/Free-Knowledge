@@ -1,0 +1,113 @@
+{
+  "type": "quiz",
+  "title": "Part Review: Computer-System Organization",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What does the bootstrap program do?",
+      "options": [
+        "Manages the CPU cache",
+        "Initializes the system, then loads the kernel and starts it",
+        "Schedules every user program",
+        "Handles every interrupt for the life of the system"
+      ]
+    },
+    {
+      "prompt": "What connects the CPUs and device controllers to shared memory?",
+      "options": [
+        "The interrupt vector",
+        "A common bus",
+        "The kernel",
+        "A cache"
+      ]
+    },
+    {
+      "prompt": "What holds the addresses of all the interrupt service routines?",
+      "options": [
+        "The cache",
+        "The device-status table",
+        "The interrupt vector",
+        "The bootstrap program"
+      ]
+    },
+    {
+      "prompt": "What is a trap?",
+      "options": [
+        "A part of memory reserved for the kernel",
+        "A broken disk sector",
+        "A hardware interrupt from a device",
+        "A software-generated interrupt caused by an error or a user request"
+      ]
+    },
+    {
+      "prompt": "Which is faster at finding the right interrupt handler with many devices?",
+      "options": [
+        "A vectored interrupt system",
+        "Neither ever finds it",
+        "Polling",
+        "They're always the same"
+      ]
+    },
+    {
+      "prompt": "What does asynchronous I/O allow that synchronous I/O doesn't?",
+      "options": [
+        "Using the CPU at all",
+        "Many I/O requests in progress at once, while the program keeps running",
+        "Reading from main memory",
+        "Skipping interrupts"
+      ]
+    },
+    {
+      "prompt": "Which is the only large storage the CPU can access directly?",
+      "options": [
+        "Hard disk",
+        "Tape",
+        "Main memory",
+        "SSD"
+      ]
+    },
+    {
+      "prompt": "Information is in the cache when the CPU asks for it. What happens?",
+      "options": [
+        "It's used directly from the cache",
+        "It's copied from disk first",
+        "A trap occurs",
+        "The cache is emptied"
+      ]
+    },
+    {
+      "prompt": "Why does DMA generate one interrupt per block instead of one per byte?",
+      "options": [
+        "Interrupts are disabled forever",
+        "The controller moves the whole block to memory itself, then signals once",
+        "The CPU copies the bytes in secret",
+        "Bytes don't need to reach memory"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Secondary storage is volatile."
+    },
+    {
+      "type": "true_false",
+      "prompt": "Caching happens at many levels: in hardware, in the OS, and in software."
+    },
+    {
+      "type": "true_false",
+      "prompt": "A word on a 64-bit machine is typically 8 bytes."
+    },
+    {
+      "type": "written",
+      "prompt": "How many bytes are in a megabyte, as the OS counts it? (a number, digits only)"
+    },
+    {
+      "type": "written",
+      "prompt": "Before handling an interrupt, the OS stores the registers and which other piece of CPU state? (two words)"
+    },
+    {
+      "type": "written",
+      "prompt": "A hard disk's tracks are subdivided into ______. (one word)"
+    }
+  ]
+}

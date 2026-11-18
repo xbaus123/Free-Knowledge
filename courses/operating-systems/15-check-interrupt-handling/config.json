@@ -1,0 +1,60 @@
+{
+  "type": "quiz",
+  "title": "Check: Handling an Interrupt",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What does the OS save first when an interrupt arrives?",
+      "options": [
+        "The contents of the disk",
+        "The registers and the program counter",
+        "The user's password",
+        "The interrupt vector"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Asking each device in turn whether it caused the interrupt is called ______. (one word)"
+    },
+    {
+      "prompt": "In a vectored interrupt system, how does the CPU find the right handler?",
+      "options": [
+        "It polls every device",
+        "The device sends a number that indexes the interrupt vector",
+        "It restarts the computer",
+        "It asks the user"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Polling is generally faster than a vectored interrupt system when there are many devices."
+    },
+    {
+      "prompt": "After identifying the interrupt, what decides what action to take?",
+      "options": [
+        "The bootstrap program",
+        "Separate segments of code for each type of interrupt",
+        "The device-status table alone",
+        "The user"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which interrupt system, polling or vectored, has the device's interrupt lead straight to the right routine? (one word)"
+    },
+    {
+      "prompt": "In the interrupt timeline, what is the CPU doing while the device is transferring?",
+      "options": [
+        "Processing interrupts the whole time",
+        "Shutting down",
+        "Running the user process",
+        "Waiting for the transfer to finish"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "After handling an interrupt, the CPU restores the saved state and returns to the interrupted program."
+    }
+  ]
+}

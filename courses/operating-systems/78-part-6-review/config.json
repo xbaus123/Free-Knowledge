@@ -1,0 +1,86 @@
+{
+  "type": "quiz",
+  "title": "Part Review: Protection, Security, and Data Structures",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What's the difference between protection and security?",
+      "options": [
+        "They mean the same thing",
+        "Protection controls access to OS resources; security defends the system against attacks",
+        "Security controls file permissions; protection stops viruses",
+        "Protection is only for networks"
+      ]
+    },
+    {
+      "prompt": "What is the user ID associated with?",
+      "options": [
+        "All of the user's files and processes",
+        "The network card",
+        "Only the user's password",
+        "The kernel's memory"
+      ]
+    },
+    {
+      "prompt": "What does privilege escalation do?",
+      "options": [
+        "Lets a user change to an effective ID with more rights",
+        "Sets the timer",
+        "Lowers a user's rights",
+        "Deletes a user"
+      ]
+    },
+    {
+      "prompt": "Which list has no null at the end?",
+      "options": [
+        "Doubly linked",
+        "Circular linked",
+        "Singly linked",
+        "None"
+      ]
+    },
+    {
+      "prompt": "Which has O(lg n) search?",
+      "options": [
+        "A balanced BST",
+        "A bitmap",
+        "A singly linked list",
+        "A plain BST in the worst case"
+      ]
+    },
+    {
+      "prompt": "What does a hash function's output index into?",
+      "options": [
+        "A tape",
+        "The interrupt vector",
+        "A linked list of users",
+        "A table (the hash map)"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A doubly linked list item points to both its predecessor and its successor."
+    },
+    {
+      "type": "true_false",
+      "prompt": "A bitmap stores one bit for each item it tracks."
+    },
+    {
+      "type": "true_false",
+      "prompt": "Linux's include files <linux/list.h>, <linux/kfifo.h>, and <linux/rbtree.h> define kernel data structures."
+    },
+    {
+      "type": "written",
+      "prompt": "Worms, viruses, and denial-of-service are threats to a system's ______. (one word)"
+    },
+    {
+      "type": "written",
+      "prompt": "What do we call an ID that lets a set of users share access controls? (two words)"
+    },
+    {
+      "type": "written",
+      "prompt": "In the bitmap 1 1 1 0 1 (items 0 to 4), which item is free? (a number)"
+    }
+  ]
+}

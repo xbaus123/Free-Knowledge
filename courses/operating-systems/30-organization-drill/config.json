@@ -1,0 +1,65 @@
+{
+  "type": "quiz",
+  "title": "Drill: Which Mechanism?",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "A keyboard sends one keypress. How does the CPU find out?",
+      "options": [
+        "The bootstrap program",
+        "An interrupt",
+        "Magnetic tape",
+        "DMA"
+      ]
+    },
+    {
+      "prompt": "A network card is receiving 1 GB a second. How should the data reach memory?",
+      "options": [
+        "The CPU copies each byte after a per-byte interrupt",
+        "The user types it in",
+        "Through the interrupt vector",
+        "DMA: the card writes blocks straight to memory and interrupts once per block"
+      ]
+    },
+    {
+      "prompt": "Where should a program's loop counter, used on every iteration, live?",
+      "options": [
+        "In a register",
+        "On the hard disk",
+        "On magnetic tape",
+        "On an optical disk"
+      ]
+    },
+    {
+      "prompt": "You need to keep backups for ten years as cheaply as possible. Which level?",
+      "options": [
+        "Magnetic tape",
+        "Cache",
+        "Registers",
+        "Main memory"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A divide-by-zero error is signaled with DMA."
+    },
+    {
+      "type": "written",
+      "prompt": "Which program, stored in firmware, runs first at power-up? (one word or two)"
+    },
+    {
+      "type": "written",
+      "prompt": "The OS needs to find out that disk 0 just finished. Which table does it index into to update disk 0's entry? (three words)"
+    },
+    {
+      "prompt": "The data you want is in main memory but not in the CPU cache. What happens?",
+      "options": [
+        "The computer reboots",
+        "A trap to the OS",
+        "A cache hit",
+        "A cache miss: the data is copied into the cache and used there"
+      ]
+    }
+  ]
+}

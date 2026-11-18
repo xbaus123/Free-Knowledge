@@ -1,0 +1,60 @@
+{
+  "type": "quiz",
+  "title": "Check: Storage Structure",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What is the only large storage area the CPU can access directly?",
+      "options": [
+        "Magnetic tape",
+        "The hard disk",
+        "The SSD",
+        "Main memory"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Main memory loses its contents when the power is turned off. What's the word for that? (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Secondary storage is nonvolatile."
+    },
+    {
+      "prompt": "A hard disk surface is logically divided into tracks. What are tracks divided into?",
+      "options": [
+        "Words",
+        "Pages",
+        "Platters",
+        "Sectors"
+      ]
+    },
+    {
+      "prompt": "What does the disk controller do?",
+      "options": [
+        "It stores the bootstrap program",
+        "It cools the disk",
+        "It decides which user gets the CPU",
+        "It determines the logical interaction between the disk and the computer"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Solid-state disks are slower than hard disks because they have no moving parts."
+    },
+    {
+      "type": "written",
+      "prompt": "Main memory lets you read any byte, in any order, about as quickly as any other. What is that kind of access called? (two words)"
+    },
+    {
+      "prompt": "Why can't all programs and data simply stay in main memory forever?",
+      "options": [
+        "Main memory is too fast",
+        "Main memory has moving parts",
+        "Main memory is too small and is volatile",
+        "The CPU can't read main memory"
+      ]
+    }
+  ]
+}

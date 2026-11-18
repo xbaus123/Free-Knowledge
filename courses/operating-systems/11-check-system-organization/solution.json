@@ -1,0 +1,46 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "One shared bus connects them all to memory, which is why they compete for memory cycles."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The disk can be transferring data while the CPU runs a program. That overlap is what makes computers fast."
+    },
+    {
+      "accepted_answers": [
+        "local buffer",
+        "a local buffer",
+        "buffer",
+        "buffers",
+        "local buffers"
+      ],
+      "explanation": "Data moves between the device and the local buffer, then between the buffer and main memory."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The controller fills its buffer from the device; the CPU copies between the buffer and main memory."
+    },
+    {
+      "accepted_answers": [
+        "interrupt",
+        "an interrupt",
+        "interrupts"
+      ],
+      "explanation": "Interrupts are how hardware gets the CPU's attention."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The driver hides the details of one controller behind a standard interface."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A controller handles one TYPE of device, but may run several of them. A USB controller runs many USB devices."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A memory controller arbitrates between them on the common bus."
+    }
+  ]
+}

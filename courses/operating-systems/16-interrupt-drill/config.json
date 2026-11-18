@@ -1,0 +1,51 @@
+{
+  "type": "quiz",
+  "title": "Drill: Interrupt Walkthrough",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Put the interrupt handling steps in order.",
+      "options": [
+        "Run the handler, save state, identify the interrupt, restore state",
+        "Restore state, run the handler, save state, identify the interrupt",
+        "Save state, identify the interrupt, run the handler, restore state",
+        "Identify the interrupt, restore state, save state, run the handler"
+      ]
+    },
+    {
+      "prompt": "Which of these is a hardware interrupt?",
+      "options": [
+        "A program divides by zero",
+        "The timer counts down to zero",
+        "A program makes a system call",
+        "A program reads memory it doesn't own"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A system call is a trap."
+    },
+    {
+      "type": "true_false",
+      "prompt": "Division by zero causes a hardware interrupt from the disk controller."
+    },
+    {
+      "type": "written",
+      "prompt": "Interrupt number 33 arrives. Which entry of the interrupt vector does the CPU use? (a number)"
+    },
+    {
+      "prompt": "Two disk reads in a row. Roughly how much of the time is the CPU busy with interrupt processing?",
+      "options": [
+        "None: disks never interrupt",
+        "A small sliver around each transfer-done event",
+        "All of it",
+        "About half"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Fill in the blank: an operating system is interrupt ______. (one word)"
+    }
+  ]
+}

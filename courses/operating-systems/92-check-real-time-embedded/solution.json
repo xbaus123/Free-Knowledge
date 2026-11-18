@@ -1,0 +1,47 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "They're in cars, appliances, and devices everywhere."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "They're special purpose, with a limited-purpose OS."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Some have OSes, some don't."
+    },
+    {
+      "accepted_answers": [
+        "real-time",
+        "real time",
+        "real-time os",
+        "real time os",
+        "rtos",
+        "real-time operating system",
+        "real time operating system"
+      ],
+      "explanation": "A real-time OS must finish processing within its constraints."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A right answer that's too late is a wrong answer."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Missing the deadline there is a failure."
+    },
+    {
+      "accepted_answers": [
+        "constraint",
+        "constraints",
+        "deadline",
+        "deadlines",
+        "time constraint",
+        "time constraints"
+      ],
+      "explanation": "Correct operation only if the constraints are met."
+    }
+  ]
+}

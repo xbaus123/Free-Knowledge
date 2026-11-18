@@ -1,0 +1,56 @@
+{
+  "type": "quiz",
+  "title": "Check: An Interrupt-Driven OS",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Which of these is a hardware interrupt?",
+      "options": [
+        "A program divides by zero",
+        "A network packet arrives",
+        "A program makes a system call",
+        "A program touches memory it doesn't own"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A software-generated interrupt is called an exception or a ______. (one word)"
+    },
+    {
+      "prompt": "Which two things cause traps?",
+      "options": [
+        "Keyboards and mice",
+        "Software errors, and requests for operating-system services",
+        "Timers and clocks",
+        "Power failures and disk crashes"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A system call is a request for an operating-system service, and it causes a trap."
+    },
+    {
+      "prompt": "Which of these is NOT a process problem the OS must guard against?",
+      "options": [
+        "A process finishing its work quickly",
+        "A process modifying the operating system",
+        "An infinite loop that never gives up the CPU",
+        "One process modifying another's memory"
+      ]
+    },
+    {
+      "prompt": "What does the OS usually do when a program causes a software error trap, like division by zero?",
+      "options": [
+        "Terminate the program and report the problem",
+        "Give the program more memory",
+        "Ignore it",
+        "Reboot the computer"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What hardware feature lets the OS get the CPU back from a program stuck in an infinite loop? (one word)"
+    }
+  ]
+}

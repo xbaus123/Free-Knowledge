@@ -1,0 +1,51 @@
+{
+  "type": "quiz",
+  "title": "Check: Real-Time Embedded Systems",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What is the most prevalent form of computer?",
+      "options": [
+        "Laptops",
+        "Real-time embedded systems",
+        "Mainframes",
+        "Smartphones"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Embedded systems are general-purpose computers that run any kind of program."
+    },
+    {
+      "type": "true_false",
+      "prompt": "Some special computing environments perform their tasks without an OS at all."
+    },
+    {
+      "type": "written",
+      "prompt": "What kind of OS has well-defined, fixed time constraints? (two words, or hyphenated)"
+    },
+    {
+      "prompt": "When does a real-time system operate correctly?",
+      "options": [
+        "Only when no user is present",
+        "Only if its time constraints are met",
+        "Whenever it's turned on",
+        "Whenever it eventually produces the right answer"
+      ]
+    },
+    {
+      "prompt": "Which is most likely to need a real-time OS?",
+      "options": [
+        "A web browser",
+        "A word processor",
+        "A car's airbag controller",
+        "A music library"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Fill in the blank: in a real-time system, processing must be done within the ______. (one word)"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Disks hold everything too big or too long-lived for main memory."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Programs and data come from disk, so a slow disk subsystem slows everything."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A good order avoids moving the heads back and forth."
+    },
+    {
+      "accepted_answers": [
+        "space"
+      ],
+      "explanation": "Free-space management, storage allocation, and disk scheduling are the three main activities."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Optical disks and tape are slow, cheap, and used for backups and archives."
+    },
+    {
+      "accepted_answers": [
+        "write-once, read-many-times",
+        "write once read many times",
+        "write-once read-many-times",
+        "write once, read many times",
+        "write once read many",
+        "write-once, read-many",
+        "write-once read-many"
+      ],
+      "explanation": "A WORM disc can be written once and then only read."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It still must be managed, by the OS or by applications like backup programs."
+    }
+  ]
+}

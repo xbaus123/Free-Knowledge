@@ -1,0 +1,66 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Keeping several jobs in memory means the CPU always has one to run."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Interactive computing, with response times under a second."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Swapping moves whole processes; virtual memory needs only part of one in memory."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The others are hardware interrupts."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Privileged instructions only work in kernel mode."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The OS sets the timer before running the program, and the interrupt always comes."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The trap sets kernel mode (0); the return sets user mode (1)."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It can't harm anyone."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Only a subset of the total jobs is kept in memory."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Increasingly, CPUs support multi-mode operation, like VMM mode for guest VMs."
+    },
+    {
+      "accepted_answers": [
+        "mode bit",
+        "the mode bit"
+      ],
+      "explanation": "0 for kernel, 1 for user."
+    },
+    {
+      "accepted_answers": [
+        "1",
+        "one",
+        "1 second"
+      ],
+      "explanation": "Under a second feels interactive."
+    },
+    {
+      "accepted_answers": [
+        "process",
+        "a process"
+      ],
+      "explanation": "Processes get a whole chapter of their own later in the course."
+    }
+  ]
+}

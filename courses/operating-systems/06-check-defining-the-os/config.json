@@ -1,0 +1,51 @@
+{
+  "type": "quiz",
+  "title": "Check: Defining the OS",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "type": "true_false",
+      "prompt": "There is one universally accepted definition of exactly what is part of an operating system."
+    },
+    {
+      "type": "written",
+      "prompt": "What is the name of the one program running at all times on the computer? (one word)"
+    },
+    {
+      "prompt": "A program ships with the operating system but isn't part of the kernel. What is it called?",
+      "options": [
+        "The bootstrap program",
+        "Firmware",
+        "A system program",
+        "An application program"
+      ]
+    },
+    {
+      "prompt": "Which of these is most likely an application program?",
+      "options": [
+        "A spreadsheet you installed",
+        "The kernel's memory manager",
+        "The bootstrap program",
+        "The login program"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "\"Everything a vendor ships when you order an operating system\" is a good approximation of what an OS is, but it varies wildly between vendors."
+    },
+    {
+      "prompt": "Everything on a computer that isn't the kernel is either:",
+      "options": [
+        "A user or a device",
+        "A system program or an application program",
+        "Hardware or firmware",
+        "A trap or an interrupt"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "When this course says \"the OS does X\", which part of the OS does it usually mean? (one word)"
+    }
+  ]
+}

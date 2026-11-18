@@ -1,0 +1,38 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Raw machines: Infrastructure as a Service."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A finished application: Software as a Service."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A ready software stack: Platform as a Service."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Storage available for backup use is the slide's IaaS example."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Public clouds are available to anyone willing to pay."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Both public and private components."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Thousands of servers, millions of VMs, pay as you go."
+    },
+    {
+      "accepted_answers": [
+        "software as a service"
+      ],
+      "explanation": "SaaS, PaaS, IaaS: software, platform, infrastructure."
+    }
+  ]
+}

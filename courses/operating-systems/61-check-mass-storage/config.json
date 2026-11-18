@@ -1,0 +1,51 @@
+{
+  "type": "quiz",
+  "title": "Check: Mass-Storage Management",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What is mass storage (disk) used for?",
+      "options": [
+        "Only the bootstrap program",
+        "Nothing; it's obsolete",
+        "Data that doesn't fit in main memory, or must be kept for a long time",
+        "Only CPU registers"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "The entire speed of computer operation can hinge on the disk subsystem and its algorithms."
+    },
+    {
+      "prompt": "Choosing the order in which to serve waiting disk requests is called:",
+      "options": [
+        "Storage allocation",
+        "Disk scheduling",
+        "Spooling",
+        "Free-space management"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Tracking which disk blocks are unused is called free-______ management. (one word)"
+    },
+    {
+      "prompt": "Which of these is tertiary storage?",
+      "options": [
+        "Main memory",
+        "Magnetic tape",
+        "An SSD",
+        "Cache"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What does WORM stand for? (four words, with hyphens or spaces)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Tertiary storage doesn't need to be managed because it's slow."
+    }
+  ]
+}

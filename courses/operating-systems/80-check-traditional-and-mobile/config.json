@@ -1,0 +1,60 @@
+{
+  "type": "quiz",
+  "title": "Check: Traditional and Mobile",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What did traditional computing originally mean?",
+      "options": [
+        "Cloud services",
+        "Stand-alone, general-purpose machines",
+        "Smartphones and tablets",
+        "Clusters of servers"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What do portals provide? Web access to internal ______. (one word)"
+    },
+    {
+      "prompt": "Network computers, also called thin clients, are like:",
+      "options": [
+        "Embedded systems",
+        "Tape drives",
+        "Mainframes",
+        "Web terminals"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Even home systems use firewalls to protect home computers from Internet attacks."
+    },
+    {
+      "prompt": "Which extra features do mobile OSes support that traditional laptops usually don't?",
+      "options": [
+        "Keyboards and mice",
+        "GPS and a gyroscope",
+        "Hard disks",
+        "Printers"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which new type of app, made possible by mobile sensors, overlays information on the camera's view of the world? (two words)"
+    },
+    {
+      "prompt": "Which two networks do mobile devices use for connectivity?",
+      "options": [
+        "Storage-area networks",
+        "IEEE 802.11 wireless, or cellular data networks",
+        "Only Bluetooth",
+        "Only wired Ethernet"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Name one of the two leading mobile operating systems. (one or two words)"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Faster storage costs more per byte, and the fastest kinds are volatile."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Registers sit inside the CPU and take well under a nanosecond."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Registers, cache, main memory, SSD, hard disk, optical disk, tape."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "And slower. That's the trade-off."
+    },
+    {
+      "accepted_answers": [
+        "cache",
+        "the cache",
+        "caches"
+      ],
+      "explanation": "The CPU fills and empties its cache automatically."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The compiler decides register allocation when it translates your code."
+    },
+    {
+      "accepted_answers": [
+        "5000000",
+        "5,000,000",
+        "5 million",
+        "5000000 ns"
+      ],
+      "explanation": "5 million ns is 5 milliseconds, about 10 million times slower than a register."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Main memory acts as a cache for what's stored on disk."
+    }
+  ]
+}

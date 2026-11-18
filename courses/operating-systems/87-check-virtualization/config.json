@@ -1,0 +1,69 @@
+{
+  "type": "quiz",
+  "title": "Check: Virtualization",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What does virtualization allow?",
+      "options": [
+        "Operating systems to run applications within other operating systems",
+        "Two users to share one password",
+        "A program to run without any OS",
+        "Disks to run faster"
+      ]
+    },
+    {
+      "prompt": "When is emulation used?",
+      "options": [
+        "Only for networking",
+        "Only for printers",
+        "When the source CPU type is different from the target CPU type",
+        "When both CPUs are the same"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Emulation is generally the slowest method."
+    },
+    {
+      "type": "written",
+      "prompt": "When a language isn't compiled to native code but is run by a program that reads it, that's called ______. (one word)"
+    },
+    {
+      "prompt": "In virtualization, how are the host and guest OSes compiled?",
+      "options": [
+        "Guests aren't compiled",
+        "Neither natively",
+        "The host natively, the guests for a different CPU",
+        "Both natively for the CPU"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What does VMM stand for? (three words)"
+    },
+    {
+      "prompt": "A Mac runs Windows in a virtual machine. Which is the host and which is the guest?",
+      "options": [
+        "Windows is the host; macOS is the guest",
+        "Neither: it's emulation",
+        "macOS is the host; Windows is the guest",
+        "Both are hosts"
+      ]
+    },
+    {
+      "prompt": "When the VMM runs natively on the hardware, like VMware ESX:",
+      "options": [
+        "Guests can't run",
+        "It needs Windows underneath",
+        "The VMM is also the host, and there's no general-purpose host OS",
+        "It becomes an emulator"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "QA testing applications without having multiple systems is a use case for virtualization."
+    }
+  ]
+}

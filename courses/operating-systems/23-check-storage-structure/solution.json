@@ -1,0 +1,42 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "Programs and data must be loaded into main memory before the CPU can use them."
+    },
+    {
+      "accepted_answers": [
+        "volatile"
+      ],
+      "explanation": "Volatile storage forgets without power; nonvolatile storage remembers."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's its purpose: a large, permanent extension of main memory."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Circular tracks are cut into sectors, the smallest unit the disk reads or writes."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "It turns a request for a block into the physical work of moving heads and reading sectors."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "SSDs are faster than hard disks precisely because nothing has to move."
+    },
+    {
+      "accepted_answers": [
+        "random access",
+        "random-access",
+        "random"
+      ],
+      "explanation": "Random access is the opposite of sequential access, where you have to go through the data in order, like a tape."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "It's limited in size and forgets everything at power off, so secondary storage holds things long term."
+    }
+  ]
+}

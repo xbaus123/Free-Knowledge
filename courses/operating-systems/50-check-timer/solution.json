@@ -1,0 +1,36 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Nothing about the loop is illegal. It just never stops."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Each clock tick takes one off the counter."
+    },
+    {
+      "accepted_answers": [
+        "interrupt",
+        "an interrupt",
+        "a timer interrupt"
+      ],
+      "explanation": "The interrupt hands control back to the OS in kernel mode."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Otherwise a program could just turn the timer off."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Every time the OS hands the CPU to a process, the timer is set."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Pausing and switching is how timesharing works."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Dual mode handles dangerous instructions; the timer handles hogging."
+    }
+  ]
+}

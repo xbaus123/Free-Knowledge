@@ -1,0 +1,36 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "bootstrap program",
+        "bootstrap",
+        "the bootstrap program",
+        "boot program",
+        "bootstrap loader"
+      ],
+      "explanation": "It \"pulls the system up by its bootstraps\", starting from nothing in memory."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "RAM is volatile. Something nonvolatile has to hold the very first instructions the CPU runs."
+    },
+    {
+      "accepted_answers": [
+        "firmware"
+      ],
+      "explanation": "Firmware sits between hardware and software: code that comes with the machine."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Once the kernel starts, the kernel takes over all scheduling. The bootstrap's work is done."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Both a cold start and a reboot begin by running the bootstrap program."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The bootstrap runs first, initializes everything, then loads the kernel and starts it."
+    }
+  ]
+}

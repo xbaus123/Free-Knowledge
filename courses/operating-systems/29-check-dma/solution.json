@@ -1,0 +1,39 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "direct memory access"
+      ],
+      "explanation": "The device accesses memory directly, without the CPU copying each byte."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "A fast disk or network card would swamp the CPU with per-byte interrupts."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The controller interrupts once, when the whole block has been moved."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The controller copies the block straight to memory, without CPU intervention."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "With the buffer address and the count, the controller can do the rest by itself."
+    },
+    {
+      "accepted_answers": [
+        "von neumann",
+        "von neumann architecture",
+        "a von neumann architecture",
+        "neumann"
+      ],
+      "explanation": "John von Neumann described it in 1945. Nearly every computer today follows it."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's the point: the CPU and device work in parallel."
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "type": "quiz",
+  "title": "Check: Process Management",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "A program in execution is called a ______. (one word)"
+    },
+    {
+      "prompt": "Which is a passive entity, and which is an active one?",
+      "options": [
+        "A process is passive; a program is active",
+        "Both are passive",
+        "A program is passive; a process is active",
+        "Both are active"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Running the same program twice creates two processes."
+    },
+    {
+      "prompt": "Which of these is NOT a resource a process needs?",
+      "options": [
+        "CPU time",
+        "Memory",
+        "Files and I/O devices",
+        "Another computer's kernel"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A single-threaded process has one ______, which specifies the next instruction to execute. (two words)"
+    },
+    {
+      "prompt": "How many program counters does a process with 4 threads have?",
+      "options": [
+        "4",
+        "None",
+        "1",
+        "2"
+      ]
+    },
+    {
+      "prompt": "With 2 CPUs and 50 processes, how are all 50 able to run concurrently?",
+      "options": [
+        "Through DMA",
+        "Each process gets its own CPU",
+        "They can't",
+        "By multiplexing the CPUs among the processes"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "When a process terminates, the OS must reclaim any reusable resources it held."
+    },
+    {
+      "prompt": "Which is NOT one of the OS's process-management activities?",
+      "options": [
+        "Suspending and resuming processes",
+        "Creating and deleting processes",
+        "Compiling processes from source code",
+        "Providing mechanisms for deadlock handling"
+      ]
+    }
+  ]
+}

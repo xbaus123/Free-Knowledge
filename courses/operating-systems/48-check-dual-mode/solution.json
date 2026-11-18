@@ -1,0 +1,51 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "User programs run in user mode; the OS runs in kernel mode."
+    },
+    {
+      "accepted_answers": [
+        "0",
+        "zero"
+      ],
+      "explanation": "Kernel is 0, user is 1."
+    },
+    {
+      "accepted_answers": [
+        "1",
+        "one"
+      ],
+      "explanation": "Kernel is 0, user is 1."
+    },
+    {
+      "accepted_answers": [
+        "privileged"
+      ],
+      "explanation": "Setting the timer and I/O control are privileged."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Privileged instructions only run in kernel mode."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The system call is the controlled doorway into kernel mode and back."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "So the OS is in control whenever anything important happens."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Ordinary arithmetic is harmless, so any program can do it."
+    },
+    {
+      "accepted_answers": [
+        "virtual machine manager",
+        "virtual machine monitor"
+      ],
+      "explanation": "VMM mode is more privileged than a guest's kernel."
+    }
+  ]
+}

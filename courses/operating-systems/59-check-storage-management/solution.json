@@ -1,0 +1,42 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "file",
+        "a file",
+        "the file",
+        "files"
+      ],
+      "explanation": "Programs work with files, not sectors and tracks."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "A uniform, logical view: report.txt opens the same way on an SSD or a hard disk."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Tape must be read in order. Disks and memory are random access."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Read, write, and execute permissions are set per file and user."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "CPU allocation is process management."
+    },
+    {
+      "accepted_answers": [
+        "directories",
+        "directory",
+        "folders",
+        "folder"
+      ],
+      "explanation": "Directories give files a hierarchy of names."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The file name is part of the logical view, which is the same on every device."
+    }
+  ]
+}

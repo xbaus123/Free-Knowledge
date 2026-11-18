@@ -1,0 +1,51 @@
+{
+  "type": "quiz",
+  "title": "Check: Direct Memory Access",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "What does DMA stand for? (three words)"
+    },
+    {
+      "prompt": "What kind of device is DMA used for?",
+      "options": [
+        "Slow devices that send a byte now and then, like a keyboard",
+        "Only the CPU's registers",
+        "High-speed I/O devices able to transmit at close to memory speeds",
+        "Only printers"
+      ]
+    },
+    {
+      "prompt": "With DMA, how many interrupts does a block transfer generate?",
+      "options": [
+        "One per block",
+        "One per byte",
+        "One per word",
+        "None, ever"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "During a DMA transfer, the CPU must copy each byte from the controller's buffer into memory."
+    },
+    {
+      "prompt": "What does the OS have to tell the controller before a DMA transfer starts?",
+      "options": [
+        "The CPU's clock speed",
+        "The interrupt vector",
+        "Where in memory the data goes and how much to move",
+        "The user's name"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "In which architecture do instructions and data share the same memory? (two words, a person's name and a word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "DMA frees the CPU to do other work while a block is being transferred."
+    }
+  ]
+}

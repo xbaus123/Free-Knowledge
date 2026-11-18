@@ -1,0 +1,47 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Guest OSes run inside a host."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "For example, PowerPC code on an Intel x86 CPU."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Every instruction must be translated."
+    },
+    {
+      "accepted_answers": [
+        "interpretation",
+        "interpreting",
+        "interpreted"
+      ],
+      "explanation": "Interpretation is a close relative of emulation."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "That's why no translation is needed."
+    },
+    {
+      "accepted_answers": [
+        "virtual machine manager",
+        "virtual machine monitor"
+      ],
+      "explanation": "The VMM provides virtualization services."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The OS running on the hardware is the host; the one inside the VM is the guest."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "VMware ESX and Citrix XenServer are examples."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "So is developing apps for multiple OSes, and running data-center compute environments."
+    }
+  ]
+}

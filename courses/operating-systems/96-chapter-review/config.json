@@ -1,0 +1,166 @@
+{
+  "type": "quiz",
+  "title": "Chapter Review: Introduction",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Which best defines an operating system?",
+      "options": [
+        "A program that acts as an intermediary between the user of a computer and the computer hardware",
+        "A web browser",
+        "A compiler",
+        "The physical CPU"
+      ]
+    },
+    {
+      "prompt": "\"The one program running at all times on the computer\" is:",
+      "options": [
+        "The shell",
+        "The bootstrap program",
+        "The kernel",
+        "A system program"
+      ]
+    },
+    {
+      "prompt": "What does an interrupt transfer control to?",
+      "options": [
+        "The disk",
+        "The interrupt service routine, generally through the interrupt vector",
+        "The user",
+        "The bootstrap program"
+      ]
+    },
+    {
+      "prompt": "Why is DMA used for high-speed devices?",
+      "options": [
+        "It turns off interrupts",
+        "It makes one interrupt per block instead of one per byte, without CPU intervention",
+        "It speeds up the CPU's clock",
+        "It stores the bootstrap program"
+      ]
+    },
+    {
+      "prompt": "Order the storage hierarchy from fastest to slowest:",
+      "options": [
+        "Main memory, registers, cache, hard disk, SSD, tape, optical disk",
+        "Registers, cache, main memory, SSD, hard disk, optical disk, magnetic tape",
+        "Tape, optical disk, hard disk, SSD, main memory, cache, registers",
+        "Cache, registers, SSD, main memory, hard disk, tape, optical disk"
+      ]
+    },
+    {
+      "prompt": "Which multiprocessing type has each processor perform all tasks?",
+      "options": [
+        "Embedded",
+        "Clustered",
+        "Symmetric",
+        "Asymmetric"
+      ]
+    },
+    {
+      "prompt": "How does timesharing extend multiprogramming?",
+      "options": [
+        "It runs only one job",
+        "It switches jobs so frequently that users can interact with each one while it runs",
+        "It removes the need for memory",
+        "It turns off the CPU between jobs"
+      ]
+    },
+    {
+      "prompt": "What is the mode bit in kernel mode, and in user mode?",
+      "options": [
+        "1 and 0",
+        "0 and 1",
+        "Both 1",
+        "Both 0"
+      ]
+    },
+    {
+      "prompt": "What keeps a process in an infinite loop from hogging the CPU?",
+      "options": [
+        "The cache",
+        "The timer",
+        "A bitmap",
+        "The mode bit"
+      ]
+    },
+    {
+      "prompt": "Which is a process-management activity?",
+      "options": [
+        "Disk scheduling",
+        "Backing up files",
+        "Spooling",
+        "Providing mechanisms for deadlock handling"
+      ]
+    },
+    {
+      "prompt": "What does cache coherency make sure of?",
+      "options": [
+        "That users can't read files",
+        "That the cache is larger than memory",
+        "That disks never fail",
+        "That all CPUs have the most recent value in their cache"
+      ]
+    },
+    {
+      "prompt": "Which is security rather than protection?",
+      "options": [
+        "File permissions",
+        "The timer",
+        "Privileged instructions",
+        "Defending against worms, viruses, and denial-of-service"
+      ]
+    },
+    {
+      "prompt": "A balanced binary search tree has search performance of:",
+      "options": [
+        "O(n²)",
+        "O(lg n)",
+        "O(1)",
+        "O(n)"
+      ]
+    },
+    {
+      "prompt": "Which cloud model provides servers or storage over the Internet?",
+      "options": [
+        "PaaS",
+        "SaaS",
+        "IaaS",
+        "Private"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Main memory is the only large storage the CPU can access directly."
+    },
+    {
+      "type": "true_false",
+      "prompt": "A trap is a software-generated interrupt caused by an error or a user request."
+    },
+    {
+      "type": "true_false",
+      "prompt": "Clustered systems are tightly coupled."
+    },
+    {
+      "type": "true_false",
+      "prompt": "Emulation is used when the source and target CPU types are the same."
+    },
+    {
+      "type": "written",
+      "prompt": "What is the program loaded at power-up that loads the kernel? (two words)"
+    },
+    {
+      "type": "written",
+      "prompt": "What is a program in execution called? (one word)"
+    },
+    {
+      "type": "written",
+      "prompt": "Copying information into faster storage temporarily is called ______. (one word)"
+    },
+    {
+      "type": "written",
+      "prompt": "Instructions that can only run in kernel mode are called ______. (one word)"
+    }
+  ]
+}

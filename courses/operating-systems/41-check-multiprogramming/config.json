@@ -1,0 +1,51 @@
+{
+  "type": "quiz",
+  "title": "Check: Multiprogramming",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Why is multiprogramming needed?",
+      "options": [
+        "Computers have too much memory",
+        "Programs never wait for I/O",
+        "A single user can't keep the CPU and I/O devices busy at all times",
+        "It makes each program use less memory"
+      ]
+    },
+    {
+      "prompt": "What does the OS do when the running job has to wait for I/O?",
+      "options": [
+        "Restarts the computer",
+        "Switches to another job",
+        "Waits for the I/O to finish",
+        "Deletes the job"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Early multiprogrammed systems, where users handed in jobs and came back later for results, were called ______ systems. (one word)"
+    },
+    {
+      "type": "written",
+      "prompt": "Selecting the job to run is done via job ______. (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Multiprogramming keeps all the jobs in the system in memory at once."
+    },
+    {
+      "prompt": "A job computes 2 ms, then waits 8 ms for the disk, over and over. Running alone, how busy is the CPU?",
+      "options": [
+        "80%",
+        "8%",
+        "100%",
+        "20%"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "In the multiprogramming memory layout, the operating system shares memory with several jobs."
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "type": "quiz",
+  "title": "Drill: Pick the Structure",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Track which of 4 million memory frames are free, using as little memory as possible:",
+      "options": [
+        "A bitmap",
+        "A hash map",
+        "A doubly linked list",
+        "A BST"
+      ]
+    },
+    {
+      "prompt": "Look up a process's details from its process ID, as fast as possible on average:",
+      "options": [
+        "A circular list",
+        "A hash map",
+        "A singly linked list",
+        "A bitmap"
+      ]
+    },
+    {
+      "prompt": "Cycle through the ready processes, giving each a turn, forever:",
+      "options": [
+        "A hash map",
+        "A bitmap",
+        "A BST",
+        "A circular linked list"
+      ]
+    },
+    {
+      "prompt": "Keep thousands of items in order and search them in O(lg n), even as items come and go:",
+      "options": [
+        "A singly linked list",
+        "A balanced binary search tree",
+        "A circular list",
+        "A bitmap"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Inserting sorted keys into a plain BST gives O(lg n) search."
+    },
+    {
+      "type": "written",
+      "prompt": "How many bits does a bitmap need to track 64 items? (a number)"
+    },
+    {
+      "type": "written",
+      "prompt": "A balanced BST holds 1,024 items. About how many steps does a search take? (a number)"
+    }
+  ]
+}

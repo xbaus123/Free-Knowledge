@@ -1,0 +1,47 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "One computer, on its own. That line has blurred as everything connects."
+    },
+    {
+      "accepted_answers": [
+        "systems",
+        "system"
+      ],
+      "explanation": "A portal lets you reach internal systems through a web page."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The real work happens on servers."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Networking is ubiquitous, so protection is too."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Those sensors make new kinds of apps possible."
+    },
+    {
+      "accepted_answers": [
+        "augmented reality",
+        "ar"
+      ],
+      "explanation": "Augmented reality depends on GPS, gyroscopes, and cameras."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Wi-Fi (802.11) or cellular data."
+    },
+    {
+      "accepted_answers": [
+        "ios",
+        "apple ios",
+        "android",
+        "google android"
+      ],
+      "explanation": "Apple iOS and Google Android."
+    }
+  ]
+}

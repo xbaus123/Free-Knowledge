@@ -1,0 +1,45 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "The shell ships with the OS and runs outside the kernel."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "It solves a user's problem and has nothing to do with running the system."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Allocating the CPU is core OS work, so it's in the kernel."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Users can be people, machines, or other computers."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "An I/O device, one of the basic computing resources."
+    },
+    {
+      "accepted_answers": [
+        "control program",
+        "a control program",
+        "the control program"
+      ],
+      "explanation": "Preventing errors and improper use is the control program's job."
+    },
+    {
+      "accepted_answers": [
+        "resource allocator",
+        "a resource allocator",
+        "the resource allocator",
+        "allocator"
+      ],
+      "explanation": "Resolving conflicting requests for resources is the allocator's job."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's what \"the one program running at all times\" means."
+    }
+  ]
+}

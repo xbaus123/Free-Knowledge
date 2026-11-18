@@ -1,0 +1,56 @@
+{
+  "type": "quiz",
+  "title": "Drill: Batch or Interactive?",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "In a 1970s computer center, students drop off decks of punched cards in the morning and pick up printouts in the afternoon. That's:",
+      "options": [
+        "A batch (multiprogramming) system",
+        "Timesharing",
+        "A cluster",
+        "An embedded system"
+      ]
+    },
+    {
+      "prompt": "Twenty people at terminals each edit files, and each sees their keystrokes echoed instantly. That's:",
+      "options": [
+        "Timesharing",
+        "A single-job system",
+        "DMA",
+        "A batch system"
+      ]
+    },
+    {
+      "prompt": "Match: \"more processes than fit in memory\"",
+      "options": [
+        "Swapping",
+        "Response time",
+        "CPU scheduling",
+        "Job scheduling"
+      ]
+    },
+    {
+      "prompt": "Match: \"three processes are ready; which one runs now?\"",
+      "options": [
+        "Virtual memory",
+        "Swapping",
+        "CPU scheduling",
+        "Bootstrapping"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "In multiprogramming, the CPU switches jobs when the running job has to wait."
+    },
+    {
+      "type": "written",
+      "prompt": "Two jobs each compute 1 ms then wait 4 ms, and their waits never overlap with the other's computing. With perfect switching, what percentage of the time is the CPU busy? (a number)"
+    },
+    {
+      "type": "written",
+      "prompt": "Which technique runs a 4 GB program on a machine with 2 GB of memory? (two words)"
+    }
+  ]
+}

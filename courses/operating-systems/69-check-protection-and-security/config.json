@@ -1,0 +1,55 @@
+{
+  "type": "quiz",
+  "title": "Check: Protection and Security",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Which is the definition of protection?",
+      "options": [
+        "Backing up files to tape",
+        "Encrypting the network",
+        "Defense of the system against internal and external attacks",
+        "Any mechanism for controlling the access of processes or users to resources defined by the OS"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Defense of the system against internal and external attacks is called ______. (one word)"
+    },
+    {
+      "prompt": "Which of these is NOT listed as a security threat?",
+      "options": [
+        "Identity theft",
+        "Denial-of-service",
+        "A cache miss",
+        "Worms and viruses"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A system with perfect protection mechanisms is automatically secure."
+    },
+    {
+      "prompt": "What does a user ID include?",
+      "options": [
+        "The kernel's address",
+        "The user's files",
+        "A name and an associated number, one per user",
+        "Only a password"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which identifier lets a set of users be defined and managed together? (two words)"
+    },
+    {
+      "type": "written",
+      "prompt": "Changing to an effective ID with more rights is called privilege ______. (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "The user ID is associated with all of that user's files and processes, to determine access control."
+    }
+  ]
+}

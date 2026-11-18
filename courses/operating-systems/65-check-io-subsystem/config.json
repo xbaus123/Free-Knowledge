@@ -1,0 +1,56 @@
+{
+  "type": "quiz",
+  "title": "Check: The I/O Subsystem",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "type": "true_false",
+      "prompt": "One purpose of the OS is to hide the peculiarities of hardware devices from the user."
+    },
+    {
+      "prompt": "Storing data temporarily while it is being transferred is called:",
+      "options": [
+        "Polling",
+        "Buffering",
+        "Caching",
+        "Spooling"
+      ]
+    },
+    {
+      "prompt": "Storing parts of data in faster storage for performance is called:",
+      "options": [
+        "Swapping",
+        "Spooling",
+        "Buffering",
+        "Caching"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Overlapping the output of one job with the input of other jobs, as a print queue does, is called ______. (one word)"
+    },
+    {
+      "prompt": "Who knows the peculiarities of a specific device?",
+      "options": [
+        "The bootstrap program",
+        "The device driver for that device",
+        "The application",
+        "The user"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A general device-driver interface lets the kernel treat all devices alike."
+    },
+    {
+      "prompt": "You print three documents and keep working right away. Which technique makes that possible?",
+      "options": [
+        "DMA",
+        "Swapping",
+        "Spooling",
+        "Polling"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "multitasking",
+        "multi-tasking"
+      ],
+      "explanation": "The CPU switches between jobs so often that users can interact with each one."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Timesharing is the logical extension: same switching idea, much faster, for interactive use."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Anything slower and interaction feels broken."
+    },
+    {
+      "accepted_answers": [
+        "process",
+        "a process"
+      ],
+      "explanation": "Each timesharing user has at least one process."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "CPU scheduling picks which ready process runs next."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Swapping moves whole processes between memory and disk."
+    },
+    {
+      "accepted_answers": [
+        "virtual memory"
+      ],
+      "explanation": "Virtual memory is one of the biggest topics later in the course."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Dozens of processes share the CPU, switched many times a second."
+    }
+  ]
+}

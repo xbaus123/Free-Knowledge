@@ -1,0 +1,39 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Save first so nothing is lost, find out what happened, deal with it, then put everything back."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The timer is a hardware device. The other three are traps caused by the running program."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It's a software-generated interrupt caused by a user request."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It's a trap (exception) caused by the running program's error."
+    },
+    {
+      "accepted_answers": [
+        "33",
+        "entry 33",
+        "thirty-three",
+        "thirty three"
+      ],
+      "explanation": "The interrupt number is the index into the vector."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The interrupt handler is short. The rest of the time the CPU runs the user program while the disk transfers."
+    },
+    {
+      "accepted_answers": [
+        "driven"
+      ],
+      "explanation": "Everything the OS does is a response to an interrupt or trap."
+    }
+  ]
+}

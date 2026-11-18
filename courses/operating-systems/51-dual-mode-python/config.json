@@ -1,0 +1,8 @@
+{
+  "title": "A Dual-Mode Machine in Python",
+  "language": "python",
+  "timeoutMs": 10000,
+  "capabilities": {
+    "scratchpad": true
+  }
+}

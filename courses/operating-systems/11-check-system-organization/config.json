@@ -1,0 +1,60 @@
+{
+  "type": "quiz",
+  "title": "Check: System Organization",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "How do the CPUs and device controllers reach shared memory?",
+      "options": [
+        "Through the network card",
+        "Each one has a private cable to memory",
+        "Through a common bus",
+        "They don't: only the CPU can touch memory"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "The CPU and I/O devices can execute concurrently."
+    },
+    {
+      "type": "written",
+      "prompt": "Each device controller has a small storage area of its own. What is it called? (two words)"
+    },
+    {
+      "prompt": "Who moves data between main memory and a controller's local buffer (without DMA)?",
+      "options": [
+        "The user",
+        "The bootstrap program",
+        "The CPU",
+        "The device itself"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "How does a device controller tell the CPU it has finished its operation? It causes an ______. (one word)"
+    },
+    {
+      "prompt": "What does a device driver give the rest of the kernel?",
+      "options": [
+        "Extra memory",
+        "A uniform interface to a device controller",
+        "A faster CPU",
+        "A list of users"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A single device controller can only ever control one device."
+    },
+    {
+      "prompt": "Why do the CPU and devices \"compete for memory cycles\"?",
+      "options": [
+        "The CPU erases memory between cycles",
+        "They all reach memory over the same shared bus, so only one can use it at a time",
+        "Devices are not allowed to read memory",
+        "Memory is too small to hold all their data"
+      ]
+    }
+  ]
+}

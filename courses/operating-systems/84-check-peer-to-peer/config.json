@@ -1,0 +1,60 @@
+{
+  "type": "quiz",
+  "title": "Check: Peer-to-Peer",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "type": "true_false",
+      "prompt": "Peer-to-peer systems distinguish clearly between clients and servers."
+    },
+    {
+      "type": "written",
+      "prompt": "In a P2P system, what is every node considered? (one word)"
+    },
+    {
+      "prompt": "What must a node do before taking part in a P2P system?",
+      "options": [
+        "Install a firewall",
+        "Shut down its server",
+        "Become a dumb terminal",
+        "Join the P2P network"
+      ]
+    },
+    {
+      "prompt": "In the first way of finding services, what does a node do when it joins?",
+      "options": [
+        "Becomes the only server",
+        "Broadcasts every file it has",
+        "Deletes the lookup service",
+        "Registers its service with a central lookup service"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "With no central lookup, a node broadcasts a request and peers respond. That's done with a discovery ______. (one word)"
+    },
+    {
+      "prompt": "Which example used a central lookup service?",
+      "options": [
+        "Napster",
+        "Gnutella",
+        "A thin client",
+        "A file server"
+      ]
+    },
+    {
+      "prompt": "Which example broadcast its requests with no central server?",
+      "options": [
+        "A portal",
+        "A compute server",
+        "Gnutella",
+        "Napster"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What does VoIP stand for? (three words)"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "type": "quiz",
+  "title": "Drill: Pick the Architecture",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "A bank's payment service must stay up even if a whole server dies. Which fits best?",
+      "options": [
+        "A high-availability cluster",
+        "Asymmetric multiprocessing",
+        "A single-processor system",
+        "A dual-core laptop"
+      ]
+    },
+    {
+      "prompt": "A laptop's chip has two cores, each with its own registers and cache, sharing memory. That's:",
+      "options": [
+        "Asymmetric clustering",
+        "A storage-area network",
+        "A dual-core design",
+        "A cluster"
+      ]
+    },
+    {
+      "prompt": "A cluster has one machine running the database and a second doing nothing but watching it. That's:",
+      "options": [
+        "Symmetric clustering",
+        "SMP",
+        "HPC",
+        "Asymmetric clustering"
+      ]
+    },
+    {
+      "prompt": "Every processor in a machine performs all tasks. That's:",
+      "options": [
+        "Asymmetric multiprocessing",
+        "Symmetric multiprocessing",
+        "Hot standby",
+        "A cluster"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Adding a second processor will always halve the time a program takes."
+    },
+    {
+      "type": "written",
+      "prompt": "A weather model is split into 1,000 pieces that run on 1,000 nodes at once. What's that kind of computing called? (three words, or its abbreviation)"
+    },
+    {
+      "type": "written",
+      "prompt": "A server loses 2 of its 16 CPUs and keeps going, a bit slower. Which reliability term describes that? (two words)"
+    },
+    {
+      "prompt": "Which is loosely coupled?",
+      "options": [
+        "A dual-core chip",
+        "A cluster of separate computers",
+        "A single-processor PC",
+        "An SMP server"
+      ]
+    }
+  ]
+}

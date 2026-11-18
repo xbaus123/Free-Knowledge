@@ -1,0 +1,95 @@
+{
+  "type": "quiz",
+  "title": "Part Review: Structure and Operations",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What does multiprogramming do when the running job must wait for I/O?",
+      "options": [
+        "Swaps the OS to disk",
+        "Switches to another job in memory",
+        "Turns off the CPU",
+        "Waits"
+      ]
+    },
+    {
+      "prompt": "What's the main goal of timesharing, beyond multiprogramming?",
+      "options": [
+        "Switching so often that users can interact with each program as it runs",
+        "Avoiding interrupts",
+        "Keeping one user's job running uninterrupted",
+        "Using less memory"
+      ]
+    },
+    {
+      "prompt": "Which lets a process run when it isn't completely in memory?",
+      "options": [
+        "Job scheduling",
+        "Virtual memory",
+        "Swapping",
+        "CPU scheduling"
+      ]
+    },
+    {
+      "prompt": "Which causes a trap?",
+      "options": [
+        "A key press",
+        "A system call",
+        "A disk transfer finishing",
+        "The timer reaching zero"
+      ]
+    },
+    {
+      "prompt": "A user program tries to turn off interrupts. What happens?",
+      "options": [
+        "Interrupts go off",
+        "The program switches to kernel mode",
+        "It's a privileged instruction, so the hardware traps to the OS instead",
+        "The timer resets"
+      ]
+    },
+    {
+      "prompt": "What guarantees the OS gets the CPU back from a program in an infinite loop?",
+      "options": [
+        "The mode bit",
+        "The cache",
+        "The timer",
+        "A system call"
+      ]
+    },
+    {
+      "prompt": "What happens to the mode bit when a system call is made, and when it returns?",
+      "options": [
+        "It stays 0",
+        "1 then 0",
+        "It stays 1",
+        "0 then 1"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Reading the time of day should be a privileged instruction."
+    },
+    {
+      "type": "true_false",
+      "prompt": "In multiprogramming, every job in the system is kept in memory."
+    },
+    {
+      "type": "true_false",
+      "prompt": "Some CPUs have more than two modes, for example a mode for a virtual machine manager."
+    },
+    {
+      "type": "written",
+      "prompt": "Which bit does the hardware use to tell user code from kernel code? (two words)"
+    },
+    {
+      "type": "written",
+      "prompt": "Timesharing should aim for a response time under how many seconds? (a number)"
+    },
+    {
+      "type": "written",
+      "prompt": "A program in memory and executing is a ______. (one word)"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Devices raise hardware interrupts. The other three are traps."
+    },
+    {
+      "accepted_answers": [
+        "trap",
+        "a trap"
+      ],
+      "explanation": "Traps come from the running program, not from a device."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Errors like division by zero, and system calls."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's how a program asks the kernel to do something for it."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Finishing quickly is what we want."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The error is the program's fault, so the program is stopped."
+    },
+    {
+      "accepted_answers": [
+        "timer",
+        "a timer",
+        "the timer"
+      ],
+      "explanation": "The timer interrupts the CPU after a set time, whatever the program is doing. Coming up shortly."
+    }
+  ]
+}

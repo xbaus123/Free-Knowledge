@@ -1,0 +1,43 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "The cache holds copies of what's in use so it can be reached quickly."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Faster storage is checked first. Only on a miss do we go to the slower level."
+    },
+    {
+      "accepted_answers": [
+        "cache hit",
+        "a cache hit",
+        "hit"
+      ],
+      "explanation": "A hit uses the data straight from the cache."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The OS keeps recently used disk blocks in memory, exactly like a cache."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It's smaller, which is why we need a replacement policy."
+    },
+    {
+      "accepted_answers": [
+        "policy",
+        "policies"
+      ],
+      "explanation": "Cache size and replacement policy are the two big cache-management decisions."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Because it can't hold everything, you have to choose its size and what to replace."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Deleting files doesn't keep a faster copy of anything."
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "type": "quiz",
+  "title": "Check: Keeping Copies Consistent",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "In what order does data A move when a program loads it from a file?",
+      "options": [
+        "Disk, register, cache, main memory",
+        "Register, cache, main memory, disk",
+        "Cache, disk, register, main memory",
+        "Disk, main memory, cache, register"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "After A is incremented in a register, A has the same value everywhere in the hierarchy."
+    },
+    {
+      "prompt": "In a multitasking environment, what must every process get when it reads A?",
+      "options": [
+        "The most recently updated value, wherever it's stored",
+        "The copy on disk",
+        "A random copy",
+        "The oldest value"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "On a multiprocessor, the hardware that makes sure all CPUs' caches have the most recent value is called cache ______. (one word)"
+    },
+    {
+      "prompt": "Why is cache coherency a problem on multiprocessors but not on a single CPU?",
+      "options": [
+        "Each CPU has its own cache, so one value can be cached in several places at once",
+        "It's not a problem on multiprocessors",
+        "Single CPUs have no cache",
+        "Multiprocessors have no main memory"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Cache coherency on a multiprocessor is usually provided in hardware."
+    },
+    {
+      "prompt": "Why are distributed systems even harder?",
+      "options": [
+        "They don't use networks",
+        "They have no caches",
+        "They only have one copy of every datum",
+        "Several copies (replicas) of a datum can exist on different computers, connected by a network"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Throughput, economy of scale, and reliability are the three."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Coordination and contention eat into the gain."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Fault tolerance is the stronger guarantee, and needs duplicated hardware."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Asymmetric assigns tasks; symmetric has each processor perform all tasks."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Registers and cache are private; physical memory is shared."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "If one machine fails, another takes over its work."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "They run a limited instruction set for one job and are managed by the OS."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Multi-chip uses separate chips; multicore puts the cores on one."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Programs must be written to use parallelization."
+    },
+    {
+      "accepted_answers": [
+        "loosely"
+      ],
+      "explanation": "Separate machines, each with its own memory and OS."
+    },
+    {
+      "accepted_answers": [
+        "storage-area network",
+        "storage area network"
+      ],
+      "explanation": "It lets cluster nodes share disks."
+    },
+    {
+      "accepted_answers": [
+        "distributed lock manager",
+        "dlm",
+        "a distributed lock manager"
+      ],
+      "explanation": "Nodes lock before they touch shared data."
+    }
+  ]
+}

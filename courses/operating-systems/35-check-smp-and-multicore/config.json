@@ -1,0 +1,55 @@
+{
+  "type": "quiz",
+  "title": "Check: SMP and Multicore",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "In asymmetric multiprocessing:",
+      "options": [
+        "Each processor is assigned a specific task",
+        "There's only one processor",
+        "Each processor performs all tasks",
+        "Processors don't share memory at all"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "In which kind of multiprocessing does each processor perform all tasks? (one word, or its three-letter abbreviation)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "In an SMP system, each CPU has its own registers and cache, but they share memory."
+    },
+    {
+      "type": "written",
+      "prompt": "What is it called when multiple computing cores are put on a single chip? (one word)"
+    },
+    {
+      "prompt": "In the dual-core design, what does each core have of its own?",
+      "options": [
+        "Nothing: cores share everything",
+        "Its own registers and cache",
+        "Its own memory",
+        "Its own disk"
+      ]
+    },
+    {
+      "prompt": "What's the difference between multi-chip and multicore?",
+      "options": [
+        "There's no difference",
+        "Multi-chip systems can't share memory",
+        "Multicore has only one processor",
+        "Multi-chip uses several separate chips; multicore puts several cores on one chip"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Some systems are a chassis containing multiple separate systems."
+    },
+    {
+      "type": "true_false",
+      "prompt": "In asymmetric multiprocessing, every processor runs every kind of task."
+    }
+  ]
+}

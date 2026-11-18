@@ -1,0 +1,44 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Saving the CPU state lets the interrupted program continue exactly where it was."
+    },
+    {
+      "accepted_answers": [
+        "polling",
+        "poll"
+      ],
+      "explanation": "Polling is simple but slow when there are many devices."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A vectored system goes straight to the right routine, without asking around."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Polling checks devices one by one; a vectored system jumps straight to the right handler."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Each type of interrupt has its own code that knows what to do."
+    },
+    {
+      "accepted_answers": [
+        "vectored",
+        "vectored interrupt system",
+        "vectored interrupts",
+        "vector"
+      ],
+      "explanation": "Vectored interrupts go straight through the interrupt vector."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The CPU keeps running the program. It only stops briefly when the transfer-done interrupt arrives."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The interrupted program never knows it was paused."
+    }
+  ]
+}

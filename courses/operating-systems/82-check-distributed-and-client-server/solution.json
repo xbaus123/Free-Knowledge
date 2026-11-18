@@ -1,0 +1,52 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Separate systems, possibly of different kinds, connected by a network."
+    },
+    {
+      "accepted_answers": [
+        "tcp/ip",
+        "tcp ip",
+        "tcpip"
+      ],
+      "explanation": "TCP/IP is the protocol of the Internet."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Personal, local, metropolitan, wide."
+    },
+    {
+      "accepted_answers": [
+        "local area network",
+        "local-area network"
+      ],
+      "explanation": "A LAN covers a room, building, or campus."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It makes resources on other machines feel almost local."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Clients ask; servers answer."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "A compute server provides an interface for clients to request services."
+    },
+    {
+      "accepted_answers": [
+        "file server",
+        "file-server",
+        "file-server system",
+        "file server system"
+      ],
+      "explanation": "That's a file server."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The clients do much more of the work now."
+    }
+  ]
+}

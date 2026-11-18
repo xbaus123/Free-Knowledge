@@ -1,0 +1,47 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Users care about ease of use and performance. Utilization matters to the people who pay for shared machines."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "On a shared machine, one user hogging the CPU slows everyone else down, so fair, efficient sharing is the priority."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Small batteries and limited hardware push mobile OSes to focus on the touch experience and power."
+    },
+    {
+      "accepted_answers": [
+        "embedded",
+        "embedded computer",
+        "embedded computers",
+        "embedded system",
+        "embedded systems"
+      ],
+      "explanation": "Embedded computers just run their task. They're the most common kind of computer there is."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "As resource allocator, the OS shares CPU time, memory, storage, and devices among everyone who wants them."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "As control program, the OS stops a buggy or malicious program from damaging the system or other programs."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A workstation user has their own machine, yet their files and printers often live on servers."
+    },
+    {
+      "accepted_answers": [
+        "protects",
+        "protect",
+        "guards",
+        "controls"
+      ],
+      "explanation": "Sharing and protecting: the two jobs from the system's view."
+    }
+  ]
+}

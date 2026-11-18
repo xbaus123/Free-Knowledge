@@ -1,0 +1,60 @@
+{
+  "type": "quiz",
+  "title": "Check: The Storage Hierarchy",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Which three properties is the storage hierarchy organized by?",
+      "options": [
+        "Color, size, and brand",
+        "Speed, cost, and volatility",
+        "Users, programs, and files",
+        "Age, weight, and noise"
+      ]
+    },
+    {
+      "prompt": "Which is at the top of the storage hierarchy (fastest)?",
+      "options": [
+        "Solid-state disk",
+        "Registers",
+        "Main memory",
+        "Cache"
+      ]
+    },
+    {
+      "prompt": "Order these from fastest to slowest.",
+      "options": [
+        "Hard disk, main memory, cache, registers",
+        "Cache, registers, hard disk, main memory",
+        "Registers, cache, main memory, hard disk",
+        "Main memory, cache, registers, hard disk"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "As you go down the hierarchy, storage gets bigger and cheaper per byte."
+    },
+    {
+      "type": "written",
+      "prompt": "According to the table, which level is managed by hardware rather than by the compiler or OS? (one word)"
+    },
+    {
+      "prompt": "Who manages which variables are kept in registers?",
+      "options": [
+        "The hardware",
+        "The operating system",
+        "The compiler",
+        "The user"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Roughly how many nanoseconds does a magnetic disk access take, according to the table? (a number, digits only)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Main memory is backed by disk."
+    }
+  ]
+}

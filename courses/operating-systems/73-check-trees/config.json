@@ -1,0 +1,51 @@
+{
+  "type": "quiz",
+  "title": "Check: Trees",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "In a binary search tree, what's the ordering rule?",
+      "options": [
+        "The root is always the smallest item",
+        "Items are in random order",
+        "Larger items always go left",
+        "Left ≤ right: smaller items go left, larger go right"
+      ]
+    },
+    {
+      "prompt": "In the example tree (17 at the root; 12 and 35 below; then 6, 14, 32, 40), which nodes do you visit to find 14?",
+      "options": [
+        "6, 12, 14",
+        "17, 14",
+        "17, 12, 14",
+        "17, 35, 14"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What is the worst-case search performance of an ordinary (unbalanced) BST? Use big-O. (for example O(1))"
+    },
+    {
+      "type": "written",
+      "prompt": "What is the search performance of a balanced BST? Use big-O."
+    },
+    {
+      "prompt": "Which insertion order turns a BST into a linked list?",
+      "options": [
+        "Sorted order",
+        "Alternating large and small",
+        "Any order",
+        "Random order"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A balanced BST with about 1,000,000 items needs only about 20 steps to find any item."
+    },
+    {
+      "type": "written",
+      "prompt": "Which Linux include file defines its balanced tree? Type it as linux/____.h (one word)"
+    }
+  ]
+}

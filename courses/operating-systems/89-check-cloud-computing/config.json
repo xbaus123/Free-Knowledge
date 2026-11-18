@@ -1,0 +1,74 @@
+{
+  "type": "quiz",
+  "title": "Check: Cloud Computing",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What does cloud computing deliver?",
+      "options": [
+        "Faster CPUs for laptops",
+        "Only email",
+        "Firmware updates",
+        "Computing, storage, and even apps as a service across a network"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Cloud computing is a logical extension of what? It uses it as the base for its functionality. (one word)"
+    },
+    {
+      "prompt": "A company runs a cloud for its own use only. Which type is it?",
+      "options": [
+        "SaaS",
+        "Private cloud",
+        "Hybrid cloud",
+        "Public cloud"
+      ]
+    },
+    {
+      "prompt": "Which type includes both public and private components?",
+      "options": [
+        "Public",
+        "Hybrid",
+        "Private",
+        "IaaS"
+      ]
+    },
+    {
+      "prompt": "A word processor available through the Internet is an example of:",
+      "options": [
+        "IaaS",
+        "PaaS",
+        "A private cloud",
+        "SaaS"
+      ]
+    },
+    {
+      "prompt": "A database server ready for your application to use, over the Internet, is:",
+      "options": [
+        "A hybrid cloud",
+        "PaaS",
+        "SaaS",
+        "IaaS"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Servers or storage available over the Internet is which service model? (four letters)"
+    },
+    {
+      "prompt": "What spreads traffic across multiple applications in a cloud?",
+      "options": [
+        "A firewall",
+        "A bootstrap program",
+        "A load balancer",
+        "A bitmap"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Cloud environments are composed of traditional OSes, plus VMMs, plus cloud management tools."
+    }
+  ]
+}

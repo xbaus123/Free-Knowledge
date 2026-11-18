@@ -1,0 +1,45 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "All nodes are peers, and each may be a client, a server, or both."
+    },
+    {
+      "accepted_answers": [
+        "peer",
+        "a peer",
+        "peers"
+      ],
+      "explanation": "Each peer may act as a client, a server, or both."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "A node must join the network first."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Other nodes ask the lookup service who provides what."
+    },
+    {
+      "accepted_answers": [
+        "protocol"
+      ],
+      "explanation": "A discovery protocol finds services without a central lookup."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Napster looked songs up centrally, then transferred files peer to peer."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Gnutella was fully decentralized."
+    },
+    {
+      "accepted_answers": [
+        "voice over ip",
+        "voice over internet protocol"
+      ],
+      "explanation": "Skype is a VoIP example."
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "type": "quiz",
+  "title": "Check: Memory Management",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "type": "true_false",
+      "prompt": "To execute a program, all or part of its instructions must be in main memory."
+    },
+    {
+      "prompt": "What does memory management determine?",
+      "options": [
+        "How fast the CPU runs",
+        "What is in memory and when",
+        "Which user owns which file",
+        "Which network to join"
+      ]
+    },
+    {
+      "prompt": "Memory management tries to optimize which two things?",
+      "options": [
+        "Disk space and network speed",
+        "File names and directory sizes",
+        "Battery life and screen brightness",
+        "CPU utilization and the computer's response to users"
+      ]
+    },
+    {
+      "prompt": "Which is NOT a memory-management activity?",
+      "options": [
+        "Scheduling disk arm movements",
+        "Allocating and deallocating memory space",
+        "Deciding which processes and data to move into and out of memory",
+        "Keeping track of which parts of memory are in use and by whom"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Fill in the blank: the OS keeps track of which parts of memory are currently being used and by ______. (one word)"
+    },
+    {
+      "type": "written",
+      "prompt": "Giving memory to a process is allocation. What's taking it back called? (one word)"
+    }
+  ]
+}

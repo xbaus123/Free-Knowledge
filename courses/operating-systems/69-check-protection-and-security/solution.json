@@ -1,0 +1,46 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "Protection is the access-control machinery. Defense against attacks is security."
+    },
+    {
+      "accepted_answers": [
+        "security"
+      ],
+      "explanation": "Security covers denial-of-service, worms, viruses, identity theft, and theft of service."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "A cache miss is a normal performance event, not an attack."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "If an attacker steals a password, protection works perfectly for the attacker."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "That ID is then attached to all the user's files and processes."
+    },
+    {
+      "accepted_answers": [
+        "group id",
+        "group identifier",
+        "gid",
+        "a group id",
+        "group ids"
+      ],
+      "explanation": "Group IDs are associated with each process and file too."
+    },
+    {
+      "accepted_answers": [
+        "escalation"
+      ],
+      "explanation": "On UNIX, sudo runs a command as root."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's how the OS knows whose file is whose."
+    }
+  ]
+}

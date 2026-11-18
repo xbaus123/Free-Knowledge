@@ -1,0 +1,100 @@
+{
+  "type": "quiz",
+  "title": "Part Review: Resource Management",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What's the difference between a program and a process?",
+      "options": [
+        "They're the same thing",
+        "A process is stored on disk; a program runs",
+        "A program is a passive file of instructions; a process is a program in execution",
+        "A program is active; a process is passive"
+      ]
+    },
+    {
+      "prompt": "A process with 3 threads has how many program counters?",
+      "options": [
+        "6",
+        "1",
+        "3",
+        "0"
+      ]
+    },
+    {
+      "prompt": "Which is a memory-management activity?",
+      "options": [
+        "Backing up files",
+        "Deciding which processes and data to move into and out of memory",
+        "Disk scheduling",
+        "Spooling"
+      ]
+    },
+    {
+      "prompt": "What does the OS abstract the physical properties of storage into?",
+      "options": [
+        "A cache line",
+        "A file",
+        "A process",
+        "A thread"
+      ]
+    },
+    {
+      "prompt": "Which is NOT a mass-storage activity?",
+      "options": [
+        "Process synchronization",
+        "Free-space management",
+        "Storage allocation",
+        "Disk scheduling"
+      ]
+    },
+    {
+      "prompt": "What does WORM media allow?",
+      "options": [
+        "Neither reading nor writing",
+        "Writing many times, reading once",
+        "Only sequential writes",
+        "Writing once, reading many times"
+      ]
+    },
+    {
+      "prompt": "What is cache coherency?",
+      "options": [
+        "Making caches bigger",
+        "Hardware ensuring all CPUs' caches have the most recent value",
+        "Deleting caches when the power goes off",
+        "Copying the cache to disk"
+      ]
+    },
+    {
+      "prompt": "Which technique overlaps one job's output with other jobs' input?",
+      "options": [
+        "Buffering",
+        "Caching",
+        "Swapping",
+        "Spooling"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Process termination requires the OS to reclaim any reusable resources."
+    },
+    {
+      "type": "true_false",
+      "prompt": "Tertiary storage, like tape, is managed only by hardware."
+    },
+    {
+      "type": "true_false",
+      "prompt": "Only the device driver knows the peculiarities of the specific device it's assigned to."
+    },
+    {
+      "type": "written",
+      "prompt": "Name one of the three memory-management-of-I/O techniques besides caching and spooling. (one word)"
+    },
+    {
+      "type": "written",
+      "prompt": "Concurrency with more processes than CPUs is achieved by ______ the CPUs among the processes. (one word)"
+    }
+  ]
+}

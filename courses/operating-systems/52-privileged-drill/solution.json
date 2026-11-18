@@ -1,0 +1,43 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "A program that could reset the timer could keep the CPU forever."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Reading the time harms nobody. Programs do it all the time."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "With interrupts off, the timer couldn't take the CPU back."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That would wipe the OS and every other program."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The trap is how user programs ask for OS services, so it has to be allowed in user mode."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "If a program could set the mode bit to 0 itself, there'd be no protection at all."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Devices are shared; programs go through the OS with system calls."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The system call is the only legitimate doorway into kernel mode."
+    },
+    {
+      "accepted_answers": [
+        "1",
+        "one"
+      ],
+      "explanation": "Returning to the user program sets user mode, bit 1."
+    }
+  ]
+}

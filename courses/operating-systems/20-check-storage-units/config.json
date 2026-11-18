@@ -1,0 +1,60 @@
+{
+  "type": "quiz",
+  "title": "Check: Storage Units",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "How many bits are in a byte? (a number)"
+    },
+    {
+      "prompt": "What is a word?",
+      "options": [
+        "The same as a bit",
+        "Always exactly 2 bytes",
+        "One character of text",
+        "A given computer architecture's native unit of data"
+      ]
+    },
+    {
+      "prompt": "A computer has 64-bit registers and 64-bit addressing. How big is its word, typically?",
+      "options": [
+        "8 bits",
+        "64 bits (8 bytes)",
+        "16 bits",
+        "32 bits"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "How many bytes are in a kilobyte, as an operating system counts it? (a number)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "A gigabyte is 1,024³ bytes."
+    },
+    {
+      "prompt": "Why does a \"1 TB\" drive show up as about 931 GB on your computer?",
+      "options": [
+        "The manufacturer counts 1 TB as 10¹² bytes, but the OS divides by 1,024³ per GB",
+        "Files are compressed",
+        "The drive is broken",
+        "The OS uses part of it for the kernel"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Network speeds are usually measured in bytes per second."
+    },
+    {
+      "prompt": "Which is larger?",
+      "options": [
+        "A gigabyte",
+        "A terabyte",
+        "A petabyte",
+        "A megabyte"
+      ]
+    }
+  ]
+}

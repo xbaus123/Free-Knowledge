@@ -1,0 +1,44 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Clusters are loosely coupled machines; multiprocessors are tightly coupled CPUs."
+    },
+    {
+      "accepted_answers": [
+        "storage-area network",
+        "storage area network",
+        "san",
+        "a storage area network",
+        "a storage-area network"
+      ],
+      "explanation": "A SAN lets many machines reach the same storage."
+    },
+    {
+      "accepted_answers": [
+        "availability"
+      ],
+      "explanation": "High availability is the main reason to build a cluster."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It's idle capacity waiting for a failure."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "No node sits idle in standby."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The program has to be split into pieces that run on different nodes at once."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "A node takes a lock before touching shared data, and others wait."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "They're loosely coupled: separate machines with their own memory and OS."
+    }
+  ]
+}

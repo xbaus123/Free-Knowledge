@@ -1,0 +1,60 @@
+{
+  "type": "quiz",
+  "title": "Check: Two Points of View",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "type": "true_false",
+      "prompt": "A person using a laptop typically cares a lot about resource utilization."
+    },
+    {
+      "prompt": "Why must the OS on a mainframe care more about resource utilization than the OS on a personal laptop?",
+      "options": [
+        "Mainframes run only one program at a time",
+        "Mainframes have no user interface",
+        "Mainframe hardware never fails",
+        "Many users share one machine, so the OS must keep all of them happy"
+      ]
+    },
+    {
+      "prompt": "Phones and tablets are described as resource poor. What do their operating systems optimize for?",
+      "options": [
+        "Having no user interface",
+        "Maximum CPU utilization",
+        "Running as many users as possible at once",
+        "Usability and battery life"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What kind of computer, like the one in a car or a microwave, has little or no user interface? (one word)"
+    },
+    {
+      "prompt": "\"Manages all resources and decides between conflicting requests for efficient and fair use.\" Which role is that?",
+      "options": [
+        "Resource allocator",
+        "Control program",
+        "Application program",
+        "Bootstrap program"
+      ]
+    },
+    {
+      "prompt": "\"Controls the execution of programs to prevent errors and improper use of the computer.\" Which role is that?",
+      "options": [
+        "Control program",
+        "Firmware",
+        "Resource allocator",
+        "Device driver"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A workstation has dedicated resources but frequently uses shared resources from servers."
+    },
+    {
+      "type": "written",
+      "prompt": "Fill in the blank: as a control program, the OS ______ the machine; as a resource allocator, it shares it. (one word)"
+    }
+  ]
+}

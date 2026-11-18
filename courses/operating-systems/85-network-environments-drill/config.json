@@ -1,0 +1,65 @@
+{
+  "type": "quiz",
+  "title": "Drill: Which Environment?",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Your phone uses GPS and the gyroscope to show directions over the live camera view. Which environment?",
+      "options": [
+        "Traditional",
+        "Peer-to-peer",
+        "Mobile",
+        "Client-server"
+      ]
+    },
+    {
+      "prompt": "Your laptop asks the office's server to run a database query and send back the result:",
+      "options": [
+        "Peer-to-peer",
+        "Thin client only",
+        "File-server system",
+        "Compute-server system"
+      ]
+    },
+    {
+      "prompt": "Every computer in a file-sharing network both downloads files and uploads them to others:",
+      "options": [
+        "Client-server",
+        "Traditional",
+        "Peer-to-peer",
+        "Mobile"
+      ]
+    },
+    {
+      "prompt": "Your earbuds connect to your phone. What kind of network is that?",
+      "options": [
+        "PAN",
+        "MAN",
+        "LAN",
+        "WAN"
+      ]
+    },
+    {
+      "prompt": "A network covering a whole city:",
+      "options": [
+        "PAN",
+        "MAN",
+        "WAN",
+        "LAN"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A thin client does most of its real work on its own hardware."
+    },
+    {
+      "type": "written",
+      "prompt": "Which kind of network connects computers across countries and continents? (three letters)"
+    },
+    {
+      "type": "written",
+      "prompt": "Employees reach the company's internal systems through a web page. What is that web page called? (one word)"
+    }
+  ]
+}
