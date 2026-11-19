@@ -1,0 +1,65 @@
+{
+  "type": "quiz",
+  "title": "Check: Active-Active and CRDTs",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Two regions each read likes = 100 and write likes = 101 at the same time. Under last write wins, what's the result?",
+      "options": [
+        "200",
+        "102",
+        "100",
+        "101"
+      ]
+    },
+    {
+      "prompt": "Cassandra's LOCAL_QUORUM vs. EACH_QUORUM: which is faster?",
+      "options": [
+        "They're equal",
+        "LOCAL_QUORUM",
+        "Neither works across regions",
+        "EACH_QUORUM"
+      ]
+    },
+    {
+      "prompt": "What does Spanner pay for linearizable writes across regions?",
+      "options": [
+        "No replication",
+        "Last write wins",
+        "Every write waits for a round trip to the nearest majority",
+        "Data loss"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which trade-off says that even with no partition, a geo-distributed system chooses between latency and consistency? (one word)"
+    },
+    {
+      "prompt": "A G-counter has {us: 5, eu: 0} in one region and {us: 3, eu: 4} in another. What's the merged value?",
+      "options": [
+        "7",
+        "5",
+        "12",
+        "9"
+      ]
+    },
+    {
+      "prompt": "Why does taking the max per entry make merging safe over an unreliable network?",
+      "options": [
+        "It uses timestamps",
+        "It's commutative, associative, and idempotent",
+        "It's fast",
+        "It discards old data"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A counter that supports decrements with a second map is a ______-counter. (two letters)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Most designs choose consensus for some data, like bank balances, and CRDTs for other data, like like counts."
+    }
+  ]
+}

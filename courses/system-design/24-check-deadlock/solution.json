@@ -1,0 +1,31 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "Each holds the lock the other needs, and neither will let go."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Mutual exclusion, hold-and-wait, no preemption, and a cycle of waiting. Break any one and deadlock is impossible."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "If every thread takes locks in the same global order, no cycle can form."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Source-first deadlocks when two transfers go in opposite directions. Id order is the same for every thread."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "That's why application code that uses transactions needs retry logic."
+    },
+    {
+      "accepted_answers": [
+        "2",
+        "two"
+      ],
+      "explanation": "Each thread holds one and waits for the other's."
+    }
+  ]
+}

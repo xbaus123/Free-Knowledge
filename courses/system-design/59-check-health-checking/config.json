@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Check: Health Checks",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Why require several consecutive failures before marking a backend down?",
+      "options": [
+        "Because probes are always wrong",
+        "To keep sticky sessions",
+        "To avoid flapping on one lost packet",
+        "To save bandwidth"
+      ]
+    },
+    {
+      "prompt": "What's a passive health check?",
+      "options": [
+        "Watching real traffic and ejecting a backend that keeps failing",
+        "A check that never ejects anything",
+        "Asking the backend to report its own load",
+        "Probing /healthz every few seconds"
+      ]
+    },
+    {
+      "prompt": "Every backend's /healthz checks the shared database. The database blips. What happens?",
+      "options": [
+        "Every backend reports unhealthy and the balancer ejects the whole pool",
+        "The database is ejected",
+        "Only one backend is ejected",
+        "Nothing changes"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Stopping new requests to a backend while letting in-flight ones finish is called connection ______. (one word)"
+    },
+    {
+      "prompt": "A backend just started with cold caches. What should the balancer do?",
+      "options": [
+        "Slow start: ramp its share of traffic up gradually",
+        "Never send it traffic",
+        "Send it all traffic to warm it faster",
+        "Give it a full share immediately"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A health check can always tell a dead server from a slow one."
+    },
+    {
+      "prompt": "How does an active-passive load balancer pair fail over?",
+      "options": [
+        "They share a floating IP, and the standby claims it when the active one dies",
+        "Clients retry the other balancer's address",
+        "The backends elect a new balancer",
+        "DNS is changed by hand"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Check: Rate Limiting",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Which status code rejects a rate-limited request?",
+      "options": [
+        "429 Too Many Requests",
+        "401 Unauthorized",
+        "503 Service Unavailable",
+        "409 Conflict"
+      ]
+    },
+    {
+      "prompt": "Which algorithm allows short bursts up to B while capping the average rate at R?",
+      "options": [
+        "Token bucket",
+        "Round robin",
+        "Fixed window",
+        "Leaky bucket"
+      ]
+    },
+    {
+      "prompt": "What's the fixed window's flaw?",
+      "options": [
+        "It rejects every burst",
+        "It needs Redis",
+        "A client can send twice the limit across a window boundary",
+        "It can't count"
+      ]
+    },
+    {
+      "prompt": "Which algorithm produces smooth output by queueing requests and draining them at a fixed rate?",
+      "options": [
+        "Leaky bucket",
+        "Token bucket",
+        "Sliding window",
+        "Fixed window"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "With many API servers, rate-limit counters must be shared (often in Redis) or kept approximately per server."
+    },
+    {
+      "prompt": "Where should rate limits go?",
+      "options": [
+        "Early, at the edge or API gateway, so rejected requests cost almost nothing",
+        "In the database",
+        "After the expensive work",
+        "In the browser only"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which response header tells a rate-limited client when to try again? (hyphenated)"
+    }
+  ]
+}

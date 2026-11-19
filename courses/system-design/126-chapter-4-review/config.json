@@ -1,0 +1,101 @@
+{
+  "type": "quiz",
+  "title": "Chapter Review: Search, Blobs, Time Series, and Encoding",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Which structure answers \"every document containing wireless\"?",
+      "options": [
+        "A Bloom filter",
+        "An inverted index",
+        "A hash index on id",
+        "A B-tree on title"
+      ]
+    },
+    {
+      "prompt": "Why must queries go through the same analyzer as documents?",
+      "options": [
+        "To make BM25 faster",
+        "To compress postings",
+        "Otherwise terms like \"Running\" won't match the indexed \"run\"",
+        "To reduce shards"
+      ]
+    },
+    {
+      "prompt": "A page repeats \"cheap\" 200 times. Which scoring resists it best?",
+      "options": [
+        "Document length",
+        "BM25, because of saturation",
+        "Plain TF-IDF",
+        "Raw term frequency"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Lucene segments are immutable, so deletes are bits in a live-docs bitmap."
+    },
+    {
+      "prompt": "Search results feel slow at p99 on a 100-shard index. What's a standard mitigation?",
+      "options": [
+        "Disabling replicas",
+        "More primary shards",
+        "Hedged requests to replicas and timeouts with partial results",
+        "Deeper pagination"
+      ]
+    },
+    {
+      "prompt": "How should a search index stay in sync with the database?",
+      "options": [
+        "Treat it as derived data fed from the database's changes",
+        "Rebuild it by hand monthly",
+        "Make it the system of record",
+        "Dual-write from the application"
+      ]
+    },
+    {
+      "prompt": "Where should a 2 GB backup file go?",
+      "options": [
+        "A database BLOB column",
+        "A search index",
+        "An object store, with its key in the database",
+        "A TSDB"
+      ]
+    },
+    {
+      "prompt": "Which gives the lowest storage overhead while surviving 4 failures?",
+      "options": [
+        "XOR parity",
+        "Reed-Solomon (10, 4)",
+        "5× replication",
+        "3× replication"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "In a TSDB, what's the term for the number of distinct label combinations? (one word)"
+    },
+    {
+      "prompt": "A steady 15-second scrape interval costs Gorilla about how many bits per timestamp?",
+      "options": [
+        "1",
+        "64",
+        "0",
+        "16"
+      ]
+    },
+    {
+      "prompt": "You add a new optional field with a new tag number to a Protocol Buffers message. Which compatibility holds?",
+      "options": [
+        "Only backward",
+        "Neither",
+        "Both: old code skips the tag and new code uses a default",
+        "Only forward"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "In Avro, the reader must know the exact schema the data was written with."
+    }
+  ]
+}

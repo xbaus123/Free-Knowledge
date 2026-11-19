@@ -1,0 +1,70 @@
+{
+  "type": "quiz",
+  "title": "Check: Retries",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Which error should a client retry?",
+      "options": [
+        "403 Forbidden",
+        "400 Bad Request",
+        "503 Service Unavailable",
+        "404 Not Found"
+      ]
+    },
+    {
+      "prompt": "With a 100 ms base and exponential backoff, what's the wait before the fourth retry (attempt 3)?",
+      "options": [
+        "1,600 ms",
+        "300 ms",
+        "400 ms",
+        "800 ms"
+      ]
+    },
+    {
+      "prompt": "Why add jitter to backoff?",
+      "options": [
+        "To make retries faster",
+        "To skip retries",
+        "So a thousand clients that failed together don't retry in synchronized waves",
+        "To guarantee success"
+      ]
+    },
+    {
+      "prompt": "Which strategy did AWS's simulations find does the least work and finishes clients soonest?",
+      "options": [
+        "Equal jitter",
+        "No jitter",
+        "Fixed delay",
+        "Full jitter"
+      ]
+    },
+    {
+      "prompt": "Where should retries happen in a call chain?",
+      "options": [
+        "Only in the browser",
+        "At one layer, usually the one directly calling the failing dependency",
+        "Nowhere",
+        "At every layer"
+      ]
+    },
+    {
+      "prompt": "A retry budget of 10% means what during a total outage?",
+      "options": [
+        "10 retries per request",
+        "Retries stop after 10 seconds",
+        "The dependency sees about 1.1 times its usual load, not 3 times",
+        "Only 10% of requests are sent"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A timed-out payment can be retried blindly, since it definitely didn't go through."
+    },
+    {
+      "type": "written",
+      "prompt": "Sending the same slow read to a second replica and taking whichever answers first is a ______ request. (one word)"
+    }
+  ]
+}

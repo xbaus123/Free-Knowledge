@@ -1,0 +1,40 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "About 100 ns, 100 µs, and 10 ms: each step is roughly a thousand times slower."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "RAM is volatile. SSDs and spinning disks keep their data."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Data near what you just used is likely to be used next."
+    },
+    {
+      "accepted_answers": [
+        "lru"
+      ],
+      "explanation": "Least recently used bets on temporal locality."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "0.99 × 100 + 0.01 × (100 + 100,000) = 1,100 ns, eleven times slower than RAM, caused by 1% of accesses."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Disks and SSDs are much faster sequentially than randomly."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "That's write-back. It's fast but not durable on its own."
+    },
+    {
+      "accepted_answers": [
+        "fsync"
+      ],
+      "explanation": "A database calls fsync before reporting a commit, which is one reason commits are slow."
+    }
+  ]
+}

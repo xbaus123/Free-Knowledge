@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Check: Task Queues",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "When does a task queue delete a message?",
+      "options": [
+        "When it's received",
+        "After a fixed retention period",
+        "Never",
+        "After the consumer acknowledges it"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "In SQS, how long a received message stays hidden before it reappears is the ______ timeout. (one word)"
+    },
+    {
+      "prompt": "A consumer finishes the work and crashes before acknowledging. What happens?",
+      "options": [
+        "The queue stops",
+        "The broker knows it's done",
+        "The message is lost",
+        "The broker redelivers and the work happens twice"
+      ]
+    },
+    {
+      "prompt": "A long task's visibility timeout expired and another consumer received the message. What should long tasks do?",
+      "options": [
+        "Extend their visibility timeout as they go",
+        "Delete the queue",
+        "Ignore it",
+        "Acknowledge before starting"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Task queues with competing consumers preserve message order."
+    },
+    {
+      "prompt": "A message crashes its consumer every time. What should happen after N failed deliveries?",
+      "options": [
+        "Restart the broker",
+        "Delete the queue",
+        "Redeliver forever",
+        "Move it to a dead-letter queue for a human"
+      ]
+    },
+    {
+      "prompt": "Which RabbitMQ feature sends messages to queues by key, topic pattern, or to all bound queues?",
+      "options": [
+        "Exchanges",
+        "Partitions",
+        "Consumer groups",
+        "Offsets"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "type": "quiz",
+  "title": "Check: Multi-Region Topologies",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Why does an active-passive standby often fail when it's finally needed?",
+      "options": [
+        "Failover is rarely exercised, so it often doesn't work",
+        "Standbys are too fast",
+        "Active regions block it",
+        "Standbys have no data"
+      ]
+    },
+    {
+      "prompt": "In read local, write global, what's slow?",
+      "options": [
+        "Reads in the leader region",
+        "Every read",
+        "Nothing",
+        "Writes from far away, which travel to the leader region"
+      ]
+    },
+    {
+      "prompt": "A Sydney user writes and reads back from the Sydney follower but doesn't see the write. What helps?",
+      "options": [
+        "Add more followers in Sydney",
+        "Use last write wins",
+        "Shorter DNS TTLs",
+        "Route their reads to the leader for a few seconds after a write"
+      ]
+    },
+    {
+      "prompt": "How does geo-partitioning avoid write conflicts?",
+      "options": [
+        "It discards concurrent writes",
+        "Each user's data has one home region, so each record has exactly one leader",
+        "It forbids writes",
+        "It uses CRDTs"
+      ]
+    },
+    {
+      "prompt": "What's geo-partitioning's hard case?",
+      "options": [
+        "Read-heavy pages",
+        "Single-user profiles",
+        "Static assets",
+        "Data shared between users in different regions, like a group chat"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Geo-partitioning is a natural way to satisfy data residency rules."
+    }
+  ]
+}

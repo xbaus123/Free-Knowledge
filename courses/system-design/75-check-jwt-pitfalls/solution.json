@@ -1,0 +1,35 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "The verifier, not the token, decides which algorithms are acceptable."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The public key is public, so the attacker can sign tokens with it."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Some libraries once accepted it, letting anyone write their own claims."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "With enough measurements an attacker could forge a signature byte by byte. Use hmac.compare_digest."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Clock skew is normal between machines."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "HttpOnly cookies can't be read by scripts, but they open up CSRF instead."
+    },
+    {
+      "accepted_answers": [
+        "samesite",
+        "same-site"
+      ],
+      "explanation": "SameSite stops the browser from sending the cookie on cross-site requests."
+    }
+  ]
+}

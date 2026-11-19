@@ -1,0 +1,40 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "LWW silently discards one increment."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "EACH_QUORUM waits for a quorum in every region, as slow as the farthest."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Physics: tens of milliseconds per write."
+    },
+    {
+      "accepted_answers": [
+        "pacelc"
+      ],
+      "explanation": "The \"else\" half of PACELC."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Take the max of each entry: {us: 5, eu: 4} = 9."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Delays, reordering, and duplicates can't change the result."
+    },
+    {
+      "accepted_answers": [
+        "pn"
+      ],
+      "explanation": "Positive-negative."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Different data, different trade-offs."
+    }
+  ]
+}

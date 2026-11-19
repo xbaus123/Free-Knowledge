@@ -1,0 +1,65 @@
+{
+  "type": "quiz",
+  "title": "Check: Races and Locks",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Why can count += 1 lose an update when two threads run it?",
+      "options": [
+        "Integers can overflow",
+        "The GIL drops one of them",
+        "It's really read, add, write, and the threads can interleave between those steps",
+        "Python rounds the result"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the pattern behind most races on shared data? (three words, hyphens allowed)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Race conditions usually show up reliably in testing."
+    },
+    {
+      "type": "written",
+      "prompt": "What's the name for code that only one thread may run at a time? (two words)"
+    },
+    {
+      "prompt": "In Python, what does `with lock:` guarantee when the block raises an exception?",
+      "options": [
+        "The lock stays held forever",
+        "The block retries",
+        "The exception is swallowed",
+        "The lock is released anyway"
+      ]
+    },
+    {
+      "prompt": "A single lock guards a whole service's state, and throughput stops improving as you add threads. Why?",
+      "options": [
+        "Locks make code incorrect",
+        "The GIL doubles",
+        "Locks use too much memory",
+        "Contention: threads queue on the lock, so the parallel code runs serially"
+      ]
+    },
+    {
+      "prompt": "Which tool lets many readers in at once but only one writer?",
+      "options": [
+        "Compare-and-swap",
+        "A read-write lock",
+        "A semaphore",
+        "A condition variable"
+      ]
+    },
+    {
+      "prompt": "Compare-and-swap is an example of what?",
+      "options": [
+        "An atomic operation: a single hardware instruction with no lock",
+        "A page cache",
+        "A deadlock",
+        "A context switch"
+      ]
+    }
+  ]
+}

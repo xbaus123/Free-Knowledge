@@ -1,0 +1,34 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "That's the dual-write problem."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Then the stores disagree permanently."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Debezium reads the replication log."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The database and stream can't disagree."
+    },
+    {
+      "accepted_answers": [
+        "sourcing"
+      ],
+      "explanation": "Every current-state view is derived from it."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "And handle stragglers that arrive late."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The table is kept current by the change stream."
+    }
+  ]
+}

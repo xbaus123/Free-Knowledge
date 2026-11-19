@@ -1,0 +1,60 @@
+{
+  "type": "quiz",
+  "title": "Check: JWTs",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "How many dot-separated parts does a JWT have? (number)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "A JWT's payload is encrypted, so it's safe to put secrets in it."
+    },
+    {
+      "prompt": "Which claim stops a token meant for one service from being replayed against another?",
+      "options": [
+        "iat",
+        "aud",
+        "sub",
+        "kid"
+      ]
+    },
+    {
+      "prompt": "Which claim bounds how long a stolen token is useful?",
+      "options": [
+        "exp",
+        "iss",
+        "jti",
+        "sub"
+      ]
+    },
+    {
+      "prompt": "With HS256, what's the risk of giving every service the verification secret?",
+      "options": [
+        "Every verifier can also mint tokens",
+        "Tokens get larger",
+        "Verification needs a network call",
+        "Keys can't be rotated"
+      ]
+    },
+    {
+      "prompt": "Why prefer RS256 or ES256 for many services?",
+      "options": [
+        "They encrypt the payload",
+        "They're faster than HMAC",
+        "They need no keys",
+        "Services verify with a public key, so a compromised service can't forge tokens"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which header field names the key a token was signed with, making key rotation painless? (three letters)"
+    },
+    {
+      "type": "written",
+      "prompt": "What's the name for the JSON document where an authorization server publishes its public keys? (four letters)"
+    }
+  ]
+}

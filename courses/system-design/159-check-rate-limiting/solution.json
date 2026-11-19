@@ -1,0 +1,34 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Ideally with a Retry-After header."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It's the most common choice."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "End of one minute plus start of the next."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Bursts wait or are dropped."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Otherwise each server enforces its own separate limit."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Reject floods before they reach anything expensive."
+    },
+    {
+      "accepted_answers": [
+        "retry-after"
+      ],
+      "explanation": "Retry-After: 30."
+    }
+  ]
+}

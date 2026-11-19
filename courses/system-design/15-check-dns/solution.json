@@ -1,0 +1,40 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Each level refers the resolver one step down the hierarchy until an authoritative server answers."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A is IPv4, AAAA is IPv6."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "A resolver that gets a CNAME resolves its target the same way."
+    },
+    {
+      "accepted_answers": [
+        "ns"
+      ],
+      "explanation": "NS records are the referrals that walk a resolver down from the root."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Both are cached until their TTL runs out, which keeps the roots from being buried in traffic."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "With a long TTL, clients keep using the old address for hours. Short TTLs cost more lookups but let changes spread fast."
+    },
+    {
+      "accepted_answers": [
+        "time to live"
+      ],
+      "explanation": "Every DNS record carries a TTL in seconds."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It only works well with short TTLs, so clients come back often enough to be spread around."
+    }
+  ]
+}

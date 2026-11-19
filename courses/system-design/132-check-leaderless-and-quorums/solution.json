@@ -1,0 +1,38 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Dynamo, Cassandra, and Riak work this way."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Version numbers tell the client which copy is newest."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Three of five must answer each operation."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Every write needs all three replicas."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "1 + 1 is not greater than 3, so the sets may not overlap."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Anti-entropy is the background process that compares replicas."
+    },
+    {
+      "accepted_answers": [
+        "handoff"
+      ],
+      "explanation": "With sloppy quorums, the overlap no longer holds."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Sloppy quorums, concurrent writes, and partial failures all break the guarantee."
+    }
+  ]
+}

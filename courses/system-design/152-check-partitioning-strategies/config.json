@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Check: Partitioning Strategies",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "How does partitioning differ from replication?",
+      "options": [
+        "They're the same",
+        "Partitioning copies data; replication splits it",
+        "Partitioning puts different subsets on different machines; replication puts the same data on several",
+        "Partitioning is only for caches"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "An overloaded partition that gets more than its share of load is a hot ______. (one word)"
+    },
+    {
+      "prompt": "What's key-range partitioning's main advantage?",
+      "options": [
+        "Range scans are efficient because keys stay sorted within a partition",
+        "No rebalancing needed",
+        "Load always spreads evenly",
+        "No hot spots"
+      ]
+    },
+    {
+      "prompt": "Sensor readings are keyed by timestamp in a range-partitioned store. What goes wrong?",
+      "options": [
+        "All of today's writes land on one partition",
+        "Range scans stop working",
+        "Nothing",
+        "Data is lost"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A language's built-in hash() is a good choice for picking partitions."
+    },
+    {
+      "prompt": "What does hash partitioning give up?",
+      "options": [
+        "Replication",
+        "Durability",
+        "Efficient range queries, since adjacent keys scatter",
+        "Even load"
+      ]
+    },
+    {
+      "prompt": "Cassandra's compound primary key hashes the first column and sorts by the rest. What's it good for?",
+      "options": [
+        "\"All posts by user 42, newest first\"",
+        "Global secondary indexes",
+        "Avoiding replication",
+        "Cross-partition transactions"
+      ]
+    }
+  ]
+}

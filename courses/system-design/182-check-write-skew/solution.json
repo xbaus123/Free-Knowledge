@@ -1,0 +1,34 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "That's write skew."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Each transaction's write invalidates the other's premise."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Also claiming usernames and spending a balance from two devices."
+    },
+    {
+      "accepted_answers": [
+        "phantom"
+      ],
+      "explanation": "There's no existing row to lock."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "That's why phantoms are hard."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "All transactions touching that resource then run one at a time."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "A last resort."
+    }
+  ]
+}

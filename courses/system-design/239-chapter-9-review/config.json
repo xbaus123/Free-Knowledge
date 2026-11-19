@@ -1,0 +1,101 @@
+{
+  "type": "quiz",
+  "title": "Chapter Review: Microservices and Data Flow",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "A 6-person startup is planning 40 microservices. What's the better start?",
+      "options": [
+        "40 services sharing one database",
+        "A service mesh first",
+        "One service per database table",
+        "A modular monolith"
+      ]
+    },
+    {
+      "prompt": "Which boundary is best for a service?",
+      "options": [
+        "A programming language",
+        "A single database table",
+        "A bounded context owned by one team",
+        "A technical layer"
+      ]
+    },
+    {
+      "prompt": "A checkout calls 8 services synchronously. What's the main risk?",
+      "options": [
+        "Availability and latency multiply along the chain",
+        "Strong consistency",
+        "Too few retries",
+        "Too much caching"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Saga compensations must be idempotent and retried until they succeed."
+    },
+    {
+      "prompt": "Which saga step should come first?",
+      "options": [
+        "Sending the confirmation email",
+        "Reserving inventory, which is easy to undo and likely to fail",
+        "Dispatching the courier",
+        "Charging and shipping together"
+      ]
+    },
+    {
+      "prompt": "You need 50 independent services to each react to every order event, and to be able to replay last week's events. Which broker?",
+      "options": [
+        "A cache",
+        "A log-based broker like Kafka",
+        "A CDN",
+        "A task queue"
+      ]
+    },
+    {
+      "prompt": "Image resizing jobs vary from 1 s to 5 minutes and need individual retries. Which broker?",
+      "options": [
+        "A search index",
+        "A TSDB",
+        "A log-based broker",
+        "A task queue like SQS or RabbitMQ"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Where do messages that fail N times go? (three words, hyphen allowed)"
+    },
+    {
+      "prompt": "Why is dual-writing to a database and a search index broken?",
+      "options": [
+        "It's too slow",
+        "Search indexes can't be written",
+        "Either write can fail or arrive out of order, and the stores silently diverge",
+        "It needs 2PC"
+      ]
+    },
+    {
+      "prompt": "Process, then commit offsets: what guarantee?",
+      "options": [
+        "At least once",
+        "At most once",
+        "Exactly once by itself",
+        "None"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "MapReduce's shuffle groups all values for a key on one reducer, which is also where joins happen."
+    },
+    {
+      "prompt": "Which gives effectively-once processing?",
+      "options": [
+        "Turning off acknowledgments",
+        "At-most-once delivery",
+        "At-least-once delivery with idempotent writes",
+        "Retrying non-idempotent writes"
+      ]
+    }
+  ]
+}

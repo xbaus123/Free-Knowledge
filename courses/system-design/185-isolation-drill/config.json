@@ -1,0 +1,57 @@
+{
+  "type": "quiz",
+  "title": "Drill: Which Anomaly?",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "A nightly backup reads accounts over two hours while transfers continue, and the total doesn't add up. Which level fixes it?",
+      "options": [
+        "No isolation",
+        "Read committed",
+        "Snapshot isolation",
+        "Write-around caching"
+      ]
+    },
+    {
+      "prompt": "Two editors save the same wiki page, and one person's changes vanish. Which anomaly?",
+      "options": [
+        "Dirty read",
+        "Phantom",
+        "Lost update",
+        "Read skew"
+      ]
+    },
+    {
+      "prompt": "Two users claim the username ada at the same instant, and both succeed. What's the simplest fix?",
+      "options": [
+        "Read committed",
+        "Snapshot isolation",
+        "A unique constraint on username",
+        "A cache"
+      ]
+    },
+    {
+      "prompt": "Two players spend the same 100 gold from two devices and both purchases succeed. Which anomaly?",
+      "options": [
+        "Read skew",
+        "No anomaly",
+        "Write skew",
+        "Dirty write"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A unique index can prevent two overlapping time-range bookings in most databases."
+    },
+    {
+      "prompt": "A report reads a row, another transaction updates and aborts, and the report used the uncommitted value. Which level would have prevented it?",
+      "options": [
+        "Read committed",
+        "None",
+        "Only serializable",
+        "Repeatable read only"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "The .proto file generates typed clients and servers in many languages."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Field numbers are also what let schemas evolve safely, covered later in the course."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Streaming lets ListBooks return a stream of Book messages."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "If the budget runs out, every downstream call can stop too."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "-32601 is METHOD_NOT_FOUND. -32602 is INVALID_PARAMS."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Remote calls can time out without telling you whether they ran, are thousands of times slower, and vary wildly in latency."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Generated clients and binary encodings shine when you own both ends."
+    }
+  ]
+}

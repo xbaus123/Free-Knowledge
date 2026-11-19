@@ -1,0 +1,65 @@
+{
+  "type": "quiz",
+  "title": "Check: Indexes",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Without an index, how does a database answer WHERE user_id = 1?",
+      "options": [
+        "Binary search on the table",
+        "A full table scan: read every row and check it",
+        "It can't answer it",
+        "It asks the application"
+      ]
+    },
+    {
+      "prompt": "A B-tree has a fanout of 500. About how many keys can four levels address?",
+      "options": [
+        "About 125 million",
+        "About 500",
+        "About 2,000",
+        "About 62 billion"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "B-trees can answer range queries and ORDER BY efficiently because their keys are sorted."
+    },
+    {
+      "prompt": "There's an index on (from_account, created_at). Which query can it NOT help?",
+      "options": [
+        "WHERE created_at > '2024-01-01'",
+        "WHERE from_account = 10",
+        "WHERE from_account = 10 AND created_at > '2024-01-01'",
+        "WHERE from_account = 10 ORDER BY created_at DESC"
+      ]
+    },
+    {
+      "prompt": "What does every extra index cost?",
+      "options": [
+        "Reads get slower",
+        "Nothing",
+        "It disables constraints",
+        "Every write to the table must update it, and it takes space"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which SQL command shows whether a query uses an index? (one word)"
+    },
+    {
+      "prompt": "A SQLite plan says `USE TEMP B-TREE FOR ORDER BY`. What does it mean?",
+      "options": [
+        "The results had to be sorted after fetching them",
+        "The table was scanned twice",
+        "An index was used for sorting",
+        "The query failed"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "PRIMARY KEY and UNIQUE constraints create an index automatically."
+    }
+  ]
+}

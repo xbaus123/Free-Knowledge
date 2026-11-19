@@ -1,0 +1,40 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Each layer uses the one below it: application (HTTP), transport (TCP), network (IP), link (Ethernet)."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "IP routes packets hop by hop between networks. The link layer only moves frames across one physical hop."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "IP is best-effort: packets can be dropped, duplicated, reordered, or delayed, and IP doesn't tell you which."
+    },
+    {
+      "accepted_answers": [
+        "32"
+      ],
+      "explanation": "Four bytes, written in decimal: 192.168.1.10. IPv6 uses 128 bits."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A /24 fixes the first 24 bits and leaves 8 free: 2^8 = 256 addresses."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The three private blocks are 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16."
+    },
+    {
+      "accepted_answers": [
+        "nat"
+      ],
+      "explanation": "Network address translation rewrites addresses at the boundary, which stretched IPv4's 4 billion addresses."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Every arrow hides addressing, routing, handshakes, and at least one round trip over an unreliable network."
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "3",
+        "three"
+      ],
+      "explanation": "Header, payload, and signature."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It's signed, not encrypted. Anyone can base64-decode and read it."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "aud names the audience the token is for."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Expiry, in Unix seconds."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "One shared secret both signs and verifies."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The authorization server keeps the private key."
+    },
+    {
+      "accepted_answers": [
+        "kid"
+      ],
+      "explanation": "Publish the new key, sign with it, and keep the old one until its tokens expire."
+    },
+    {
+      "accepted_answers": [
+        "jwks"
+      ],
+      "explanation": "A JSON Web Key Set, at a well-known URL."
+    }
+  ]
+}

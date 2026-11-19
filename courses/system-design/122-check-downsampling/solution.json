@@ -1,0 +1,28 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "Averages can't be combined without counts, and the max reveals spikes."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Percentiles don't roll up. Roll up histogram buckets instead."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Coarser rollups serve trends and capacity planning."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The TSDB for hot data, the object store for cheap history."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Unbounded label values multiply memory use until the database falls over."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "It partitions tables by time into chunks automatically."
+    }
+  ]
+}

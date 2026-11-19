@@ -1,0 +1,34 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Scans are LRU's weakness."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Frequency matters, not recency."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "New keys also start low and get evicted before proving themselves."
+    },
+    {
+      "accepted_answers": [
+        "lru"
+      ],
+      "explanation": "Least recently used."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Admission control keeps one-off keys out."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Entries expire after a fixed time regardless of use."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Sampling avoids tracking exact order."
+    }
+  ]
+}

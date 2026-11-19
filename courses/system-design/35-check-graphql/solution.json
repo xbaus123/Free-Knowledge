@@ -1,0 +1,39 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "No over-fetching, no under-fetching, one round trip."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "An unknown field is rejected with an error and no data is returned."
+    },
+    {
+      "accepted_answers": [
+        "mutations",
+        "mutation"
+      ],
+      "explanation": "Mutations look like queries with side effects."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's the N+1 problem: 1 for the list plus N for the items."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Facebook's DataLoader batches loads within one tick of the event loop."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "You need your own caching layer."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "REST suits public APIs, gRPC internal calls, and GraphQL many client types with different data needs."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The client chooses the shape, so the server must defend itself."
+    }
+  ]
+}

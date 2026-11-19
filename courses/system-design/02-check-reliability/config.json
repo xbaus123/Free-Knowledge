@@ -1,0 +1,56 @@
+{
+  "type": "quiz",
+  "title": "Check: Reliability",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "A disk dies in one database server, but a replica takes over and every request still succeeds. How do you describe what happened?",
+      "options": [
+        "A failure, but not a fault",
+        "A fault that didn't become a failure",
+        "Both a fault and a failure",
+        "Neither: nothing went wrong"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A well-designed system prevents every fault from happening."
+    },
+    {
+      "prompt": "Which is the typical defense against hardware faults such as a dead disk or a lost machine?",
+      "options": [
+        "Redundancy: RAID, spare machines, multiple data centers",
+        "Better unit tests",
+        "Process isolation",
+        "Gradual rollouts of new config"
+      ]
+    },
+    {
+      "prompt": "An engineer pushes a bad config file and takes the site down. Which kind of fault is that, and what's a typical defense?",
+      "options": [
+        "A human fault; good defaults, sandboxes, quick rollback, and gradual rollouts",
+        "Not a fault at all, because no component broke",
+        "A software fault; more RAM",
+        "A hardware fault; RAID"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which Netflix tool famously causes faults on purpose so the team learns whether their fault tolerance actually works? (two words)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "A bug that is triggered only by unusual input and crashes every server at once is a software fault."
+    },
+    {
+      "prompt": "Why does this course describe most applications today as data-intensive rather than compute-intensive?",
+      "options": [
+        "They need more CPU cores than older applications",
+        "They run only batch jobs",
+        "The hard part is the amount of data, its complexity, and how fast it changes, not raw CPU",
+        "They avoid databases entirely"
+      ]
+    }
+  ]
+}

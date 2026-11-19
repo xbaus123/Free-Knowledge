@@ -1,0 +1,65 @@
+{
+  "type": "quiz",
+  "title": "Check: Leaderless Replication",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "In leaderless replication, which replicas accept writes?",
+      "options": [
+        "Only the leader",
+        "Only a majority leader",
+        "Any replica",
+        "None: writes go to a log"
+      ]
+    },
+    {
+      "prompt": "Why does w + r > n make reads see the latest write?",
+      "options": [
+        "Writes are synchronous everywhere",
+        "The write set and the read set must overlap in at least one node",
+        "Every node has every write",
+        "Reads go to the leader"
+      ]
+    },
+    {
+      "prompt": "n = 5, w = 3, r = 3. How many nodes can be down while reads and writes still succeed?",
+      "options": [
+        "3",
+        "2",
+        "0",
+        "1"
+      ]
+    },
+    {
+      "prompt": "n = 3, w = 3, r = 1. What's the trade-off?",
+      "options": [
+        "Reads need every node",
+        "Fast reads, but one node down blocks writes",
+        "Stale reads",
+        "Writes tolerate two failures"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "n = 3, w = 1, r = 1 guarantees reads see the latest write."
+    },
+    {
+      "prompt": "A read sees a stale copy on one replica and writes the newer value back to it. What's that called?",
+      "options": [
+        "Anti-entropy",
+        "Read repair",
+        "Hinted handoff",
+        "Failover"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Accepting writes on other nodes during a partition and passing them back later is hinted ______. (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Quorums make stale reads unlikely, not impossible."
+    }
+  ]
+}

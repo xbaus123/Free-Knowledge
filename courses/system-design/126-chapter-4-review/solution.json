@@ -1,0 +1,54 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "It maps terms to postings."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Analysis must be symmetric."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The tenth mention adds far less than the first."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Space is reclaimed on merge."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Scatter-gather is as slow as its slowest shard."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Dual writes lose updates when the index is down; change data capture comes later."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Keep blobs out of the database."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "40% overhead for 4 failures."
+    },
+    {
+      "accepted_answers": [
+        "cardinality"
+      ],
+      "explanation": "Unbounded labels are the classic failure."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "All deltas of deltas are 0."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "That's why new fields must be optional."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It resolves differences by field name against its own schema."
+    }
+  ]
+}

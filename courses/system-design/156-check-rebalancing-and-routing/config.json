@@ -1,0 +1,66 @@
+{
+  "type": "quiz",
+  "title": "Check: Rebalancing and Routing",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "With hash mod N, changing N from 10 to 11 moves about how many keys?",
+      "options": [
+        "About 90%",
+        "None",
+        "About 10%",
+        "About 1%"
+      ]
+    },
+    {
+      "prompt": "With a fixed number of partitions (say 1,000 for 10 nodes), what happens when a node is added?",
+      "options": [
+        "Every key is rehashed",
+        "Nothing moves",
+        "Partitions split in two",
+        "It steals a few whole partitions from each node; keys never change partition"
+      ]
+    },
+    {
+      "prompt": "Which strategy splits a partition when it grows too big?",
+      "options": [
+        "Hash mod N",
+        "Fixed partitions",
+        "Dynamic partitioning",
+        "Consistent hashing"
+      ]
+    },
+    {
+      "prompt": "Adding a node to a consistent hash ring moves about what fraction of keys?",
+      "options": [
+        "About half",
+        "About 1/N",
+        "All of them",
+        "None"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Each node appearing at many points on the ring, to even out the arcs, uses ______ nodes. (one word)"
+    },
+    {
+      "prompt": "Cassandra and Riak let clients ask any node, which forwards if needed. How do nodes share the partition map?",
+      "options": [
+        "A gossip protocol",
+        "DNS",
+        "A load balancer",
+        "Email"
+      ]
+    },
+    {
+      "prompt": "What often holds the authoritative partition map?",
+      "options": [
+        "The client's cache",
+        "A coordination service like ZooKeeper or etcd",
+        "The rate limiter",
+        "The CDN"
+      ]
+    }
+  ]
+}

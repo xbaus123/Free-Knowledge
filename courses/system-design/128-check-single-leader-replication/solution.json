@@ -1,0 +1,41 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Replication adds work to every write. It buys availability, read capacity, and lower latency."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Followers apply the leader's replication log in the same order."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "That's the risk of asynchronous replication."
+    },
+    {
+      "accepted_answers": [
+        "semi"
+      ],
+      "explanation": "One guaranteed-current follower without stalling on all of them."
+    },
+    {
+      "accepted_answers": [
+        "split brain",
+        "split-brain"
+      ],
+      "explanation": "It's one of the ways failover goes wrong."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Too long a timeout makes recovery slow instead."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Each follower would compute a different value."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "It describes which rows changed, decoupled from storage internals."
+    }
+  ]
+}

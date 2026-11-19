@@ -1,0 +1,46 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "Uniqueness needs a single agreed order."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "When a partition happens, you choose consistency or availability."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "So every replica reaches the same state."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The coordinator is a single point of failure."
+    },
+    {
+      "accepted_answers": [
+        "term"
+      ],
+      "explanation": "At most one leader per term."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Consensus needs a strict majority."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Use a small consensus service for elections, locks, and config."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "It increases with every change."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It doesn't need coordination on every operation."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "2PC lacks it."
+    }
+  ]
+}

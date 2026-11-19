@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Check: Circuit Breakers",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Which order does a breaker go through when a dependency fails and then recovers?",
+      "options": [
+        "Closed, open, half-open, closed",
+        "Open, closed, half-open",
+        "Half-open, open, closed",
+        "Closed, half-open, open"
+      ]
+    },
+    {
+      "prompt": "What happens to calls while the breaker is open?",
+      "options": [
+        "They go through normally",
+        "They're retried",
+        "They're rejected immediately, without calling the dependency",
+        "They wait for a timeout"
+      ]
+    },
+    {
+      "prompt": "In the half-open state, what happens?",
+      "options": [
+        "One trial call (or a few) is let through",
+        "The breaker resets its threshold",
+        "No calls go through",
+        "Every call goes through"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Slow calls should count as failures in a production breaker."
+    },
+    {
+      "prompt": "When the breaker is open, what's a good fallback?",
+      "options": [
+        "A cached value, a default, or a degraded response",
+        "An infinite retry loop",
+        "Crashing the caller",
+        "Calling the dependency anyway"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A retry layer should retry an error that came from an open breaker."
+    },
+    {
+      "prompt": "What's Envoy's name for a per-host breaker that ejects one bad instance?",
+      "options": [
+        "A bulkhead",
+        "Load shedding",
+        "Outlier detection",
+        "Hedging"
+      ]
+    }
+  ]
+}

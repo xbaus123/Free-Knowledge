@@ -1,0 +1,35 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Scaling up (vertical) is simple, but big machines cost disproportionately more and there's a ceiling."
+    },
+    {
+      "accepted_answers": [
+        "shared-nothing",
+        "shared nothing"
+      ],
+      "explanation": "Scaling out uses shared-nothing machines that coordinate only over the network."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Stateless services just need more copies behind a load balancer. Data has to be replicated, partitioned, and kept consistent, which is most of this course."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Elasticity helps with unpredictable load, at the cost of more moving parts."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Operability is about making life easy for the people who keep the system running."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Simplicity means managing complexity, and abstractions are how you hide it."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Most of the cost comes after launch: fixing bugs, keeping it running, and adapting it to new needs."
+    }
+  ]
+}

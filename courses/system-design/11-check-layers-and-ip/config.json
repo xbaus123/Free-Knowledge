@@ -1,0 +1,65 @@
+{
+  "type": "quiz",
+  "title": "Check: Layers and IP",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Put the layers in order from top to bottom.",
+      "options": [
+        "Application, transport, network, link",
+        "Transport, application, link, network",
+        "Link, network, transport, application",
+        "Network, transport, application, link"
+      ]
+    },
+    {
+      "prompt": "Which layer is responsible for getting a packet from one machine to another across networks?",
+      "options": [
+        "Link (Ethernet)",
+        "Network (IP)",
+        "Transport (TCP)",
+        "Application (HTTP)"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "IP guarantees that every packet arrives exactly once and in order."
+    },
+    {
+      "type": "written",
+      "prompt": "How many bits are in an IPv4 address? (number)"
+    },
+    {
+      "prompt": "How many addresses are in a /24 block?",
+      "options": [
+        "16.7 million",
+        "256",
+        "1",
+        "24"
+      ]
+    },
+    {
+      "prompt": "Which of these blocks is private, reserved for internal networks and never routed on the public internet?",
+      "options": [
+        "192.0.0.0/2",
+        "8.8.8.0/24",
+        "10.0.0.0/8",
+        "100.0.0.0/8"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What lets many devices share one public IPv4 address? (three-letter acronym)"
+    },
+    {
+      "prompt": "Why does almost every surprising behavior in distributed systems trace back to the arrows in a diagram?",
+      "options": [
+        "Network calls are always faster than local calls",
+        "Arrows are drawn wrong",
+        "Each arrow is a network call that can be slow, lost, duplicated, or reordered",
+        "The arrows hide extra CPUs"
+      ]
+    }
+  ]
+}

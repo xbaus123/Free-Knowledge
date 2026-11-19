@@ -1,0 +1,32 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "The speed of light, regional outages, and data laws."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Light in fiber covers about 200 km per millisecond, each way."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Only moving servers closer beats the speed of light."
+    },
+    {
+      "accepted_answers": [
+        "rpo"
+      ],
+      "explanation": "Recovery point objective. With async replication, it's the lag."
+    },
+    {
+      "accepted_answers": [
+        "rto"
+      ],
+      "explanation": "Recovery time objective: hours from backups, seconds if traffic already flows elsewhere."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Each region needs enough capacity to be useful."
+    }
+  ]
+}

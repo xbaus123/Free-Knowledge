@@ -1,0 +1,35 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "EDNS Client Subnet passes part of the user's address along."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "A long tail keeps going to the dead region."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Without DNS doing anything."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Each PoP takes the traffic nearest to it."
+    },
+    {
+      "accepted_answers": [
+        "pop",
+        "pops"
+      ],
+      "explanation": "Point of presence."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Keep regions below about 60%, or plan load shedding."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Better than everything failing."
+    }
+  ]
+}

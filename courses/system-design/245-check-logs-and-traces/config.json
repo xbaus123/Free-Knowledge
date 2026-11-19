@@ -1,0 +1,70 @@
+{
+  "type": "quiz",
+  "title": "Check: Logs and Traces",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Why structure logs as JSON objects?",
+      "options": [
+        "They're shorter",
+        "They're encrypted",
+        "Machines can filter, aggregate, and join them by field",
+        "They can't be lost"
+      ]
+    },
+    {
+      "prompt": "What should every log line include so you can find every line for one request across services?",
+      "options": [
+        "The trace id",
+        "The user's password",
+        "The server's CPU",
+        "A random number"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "At scale, it's reasonable to sample successful requests' logs while keeping every error."
+    },
+    {
+      "prompt": "What's a span?",
+      "options": [
+        "A log level",
+        "A metric label",
+        "A whole request's journey",
+        "One timed operation within a trace"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which W3C header carries trace context between services? (one word)"
+    },
+    {
+      "prompt": "In traceparent, what does flags 01 mean?",
+      "options": [
+        "This trace is sampled",
+        "Version 1",
+        "An error occurred",
+        "The parent is the root"
+      ]
+    },
+    {
+      "prompt": "A request continues through Kafka. How does the trace survive?",
+      "options": [
+        "The consumer guesses it",
+        "Kafka generates a new trace",
+        "It can't",
+        "The trace context goes into the message metadata"
+      ]
+    },
+    {
+      "prompt": "Which paper introduced the trace and span model?",
+      "options": [
+        "Amazon's Dynamo",
+        "Facebook's Gorilla",
+        "Google's Spanner",
+        "Google's Dapper"
+      ]
+    }
+  ]
+}

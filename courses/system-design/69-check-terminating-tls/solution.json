@@ -1,0 +1,37 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "That's termination at the edge."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "An L4 balancer forwards encrypted bytes and the backend terminates."
+    },
+    {
+      "accepted_answers": [
+        "zero trust",
+        "zero-trust"
+      ],
+      "explanation": "Every connection is authenticated and encrypted, even inside the data center."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Both sides learn who the other is."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Often as SPIFFE identities like spiffe://example.com/orders."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Let's Encrypt works this way."
+    },
+    {
+      "accepted_answers": [
+        "sni"
+      ],
+      "explanation": "Server name indication."
+    }
+  ]
+}

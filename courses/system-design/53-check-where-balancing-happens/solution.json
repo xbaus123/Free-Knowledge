@@ -1,0 +1,38 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "It's free and global, but slow to react."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "It picks a backend when a connection opens and forwards all of that connection's packets to it."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "One connection can carry a huge share of traffic and pin it to one backend."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It terminates HTTP and can route by host, path, method, headers, or cookies."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Otherwise every request would appear to come from the balancer."
+    },
+    {
+      "accepted_answers": [
+        "direct"
+      ],
+      "explanation": "That's part of why L4 balancers handle millions of packets per second."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "No extra hop, but every client needs the logic and a current server list."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Only idempotent requests are safe to retry blindly."
+    }
+  ]
+}

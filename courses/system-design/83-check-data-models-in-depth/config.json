@@ -1,0 +1,56 @@
+{
+  "type": "quiz",
+  "title": "Check: Relational and Document Models",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "SQL is declarative. What does that mean?",
+      "options": [
+        "Queries run in the order you write the joins",
+        "SQL can't change data",
+        "You say what you want, and the query optimizer decides how to get it",
+        "You write the loop that walks the index"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the term for the friction of translating between nested application objects and flat tables? (two words, hyphen allowed)"
+    },
+    {
+      "prompt": "Which data fits the document model best?",
+      "options": [
+        "Bank transfers between accounts",
+        "Products shared across thousands of orders",
+        "A résumé with its positions and education, always loaded together",
+        "A social network's friendships"
+      ]
+    },
+    {
+      "prompt": "A product's name is copied into every order document. The product is renamed. What happens?",
+      "options": [
+        "The old name is deleted everywhere",
+        "Nothing: orders store only SKUs",
+        "Every copy must be updated, or they disagree",
+        "The database updates them automatically"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Relational databases enforce schema-on-write; document databases are typically schema-on-read."
+    },
+    {
+      "prompt": "Which question is awkward in a pure document store?",
+      "options": [
+        "What's in Ada's latest order?",
+        "Who else bought what Ada bought?",
+        "What's Ada's name?",
+        "How many orders does Ada have?"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "With schema-on-read, changing a document's structure needs no migration, but your code must handle every old shape."
+    }
+  ]
+}

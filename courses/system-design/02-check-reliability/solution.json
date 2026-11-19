@@ -1,0 +1,34 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "A fault is one component deviating from its spec. A failure is the whole system no longer serving users. Fault tolerance keeps the first from becoming the second."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "You can't prevent every fault. You design fault-tolerant systems so faults don't turn into failures."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Hardware fails at random and independently, so you keep spares: redundant disks, machines, and data centers."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Human error is one of the most common causes of outages. Make mistakes easy to undo and limit how far they spread."
+    },
+    {
+      "accepted_answers": [
+        "chaos monkey"
+      ],
+      "explanation": "Chaos Monkey kills instances in production. Deliberately injecting faults is the only way to be sure recovery paths work."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Software faults are dangerous because they're correlated: the same bug runs on every machine, unlike independent hardware faults."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Data-intensive systems are assembled from databases, caches, indexes, and stream processors. Choosing and combining them is system design."
+    }
+  ]
+}

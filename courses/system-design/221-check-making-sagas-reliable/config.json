@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Check: Reliable Sagas",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "A product shows out of stock because a saga reserved the last one, then the saga compensates and stock returns. Which ACID property do sagas lack?",
+      "options": [
+        "Durability",
+        "Consistency",
+        "Atomicity",
+        "Isolation"
+      ]
+    },
+    {
+      "prompt": "Marking records PENDING while a saga runs is called what?",
+      "options": [
+        "A semantic lock",
+        "A tombstone",
+        "A lease",
+        "A fencing token"
+      ]
+    },
+    {
+      "prompt": "Which update is commutative?",
+      "options": [
+        "Replace the address",
+        "Add 5 to the balance",
+        "Delete the account",
+        "Set the balance to 105"
+      ]
+    },
+    {
+      "prompt": "The orchestrator crashes after charging a card but before recording it. How does it avoid charging twice when it resumes?",
+      "options": [
+        "Each call carries an idempotency key the participant stores with the effect",
+        "It refunds first",
+        "It never resumes",
+        "It asks the user"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Only an id that travels with a request from end to end can reliably suppress duplicates. What's this called? (two words, hyphen allowed)"
+    },
+    {
+      "prompt": "A service updates its database and publishes an event, and either can fail without the other. What fixes it?",
+      "options": [
+        "Publish first, then update",
+        "Retry both forever",
+        "Write the event to an outbox table in the same local transaction, and relay it",
+        "Use two databases"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "If a compensation keeps failing, a good orchestrator surfaces the stuck saga loudly instead of skipping ahead."
+    }
+  ]
+}

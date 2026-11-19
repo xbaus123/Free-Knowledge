@@ -1,0 +1,165 @@
+{
+  "type": "quiz",
+  "title": "Final Review: System Design",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Chapter 1: Why is p99 often more important than the mean?",
+      "options": [
+        "Tail latency is what fan-out amplifies and what your heaviest users feel",
+        "It ignores slow requests",
+        "It's easier to compute",
+        "It's always lower"
+      ]
+    },
+    {
+      "prompt": "Chapter 1: A server is at 95% utilization. What happens to latency?",
+      "options": [
+        "It grows linearly",
+        "It climbs steeply as queues form",
+        "It stays flat",
+        "It drops"
+      ]
+    },
+    {
+      "prompt": "Chapter 2: Which algorithm best handles requests of very different costs?",
+      "options": [
+        "DNS round robin",
+        "Least connections",
+        "Hash mod N",
+        "Round robin"
+      ]
+    },
+    {
+      "prompt": "Chapter 2: Where must the check \"is this order the caller's?\" happen?",
+      "options": [
+        "At the CDN",
+        "In the service that owns the order data",
+        "In DNS",
+        "In the browser"
+      ]
+    },
+    {
+      "prompt": "Chapter 3: Which engine turns random writes into sequential ones?",
+      "options": [
+        "A star schema",
+        "A B-tree",
+        "An LSM-tree",
+        "A hash join"
+      ]
+    },
+    {
+      "prompt": "Chapter 4: Why doesn't a B-tree on title support word search?",
+      "options": [
+        "It can't store text",
+        "It's too deep",
+        "It's sorted by whole title, so words in the middle can't be found without a scan",
+        "It has no keys"
+      ]
+    },
+    {
+      "prompt": "Chapter 4: An old client must read messages from a new server. Which compatibility is that?",
+      "options": [
+        "Neither",
+        "Backward",
+        "Both",
+        "Forward"
+      ]
+    },
+    {
+      "prompt": "Chapter 5: What do w + r > n quorums guarantee?",
+      "options": [
+        "No stale reads ever",
+        "Read and write sets overlap, so reads usually see the latest write",
+        "Linearizability",
+        "No conflicts"
+      ]
+    },
+    {
+      "prompt": "Chapter 5: Which cache defense stops a thousand requests recomputing one expired key?",
+      "options": [
+        "Request coalescing (single flight)",
+        "LRU",
+        "Longer TTLs alone",
+        "Write-around"
+      ]
+    },
+    {
+      "prompt": "Chapter 6: Adding a node to a consistent hash ring moves about how many keys?",
+      "options": [
+        "All of them",
+        "About 1/N",
+        "About half",
+        "None"
+      ]
+    },
+    {
+      "prompt": "Chapter 6: Which CDN directive keeps a personal page out of shared caches?",
+      "options": [
+        "s-maxage",
+        "private",
+        "immutable",
+        "public"
+      ]
+    },
+    {
+      "prompt": "Chapter 7: Two doctors both go off call after each sees the other on call. Which isolation level prevents it?",
+      "options": [
+        "Serializable",
+        "None",
+        "Snapshot isolation",
+        "Read committed"
+      ]
+    },
+    {
+      "prompt": "Chapter 7: Which pattern stops retries from overwhelming a dependency that's down?",
+      "options": [
+        "Hedged requests",
+        "More retries",
+        "A circuit breaker",
+        "Longer timeouts"
+      ]
+    },
+    {
+      "prompt": "Chapter 8: Why can't Raft elect two leaders in one term?",
+      "options": [
+        "Clocks are synced",
+        "Terms are global",
+        "Leaders are chosen by DNS",
+        "Each node votes once per term and majorities overlap"
+      ]
+    },
+    {
+      "prompt": "Chapter 9: How should a search index stay in sync with the database?",
+      "options": [
+        "Consume the database's change stream (CDC) or an outbox",
+        "Make the index the source of truth",
+        "Dual-write from the app",
+        "Rebuild it hourly by hand"
+      ]
+    },
+    {
+      "prompt": "Chapter 9: Which saga step goes last?",
+      "options": [
+        "Validating input",
+        "Reserving stock",
+        "Any step",
+        "An irreversible one, like sending the confirmation email"
+      ]
+    },
+    {
+      "prompt": "Chapter 10: Which alert design pages on real problems but not brief blips?",
+      "options": [
+        "Any error in the logs",
+        "Multi-window burn-rate alerts",
+        "Disk above 50%",
+        "CPU above 80%"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Most of system design is about choosing and combining standard pieces so the whole stays reliable, scalable, and maintainable."
+    }
+  ]
+}

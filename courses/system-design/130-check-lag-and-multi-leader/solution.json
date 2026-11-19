@@ -1,0 +1,35 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Your reload hit a follower that hadn't applied your write yet."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Two reads hit followers with different lag, and time went backward."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Writes must be seen in the order they happened."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Each site or device has a local leader."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Concurrent changes have to be resolved somehow."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Simple, but lossy."
+    },
+    {
+      "accepted_answers": [
+        "crdts",
+        "crdt"
+      ],
+      "explanation": "Conflict-free replicated data types."
+    }
+  ]
+}

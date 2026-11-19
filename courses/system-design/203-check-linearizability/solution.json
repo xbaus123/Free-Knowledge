@@ -1,0 +1,32 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Every operation takes effect atomically at some instant between its start and end."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Once any read returns a new value, every later read must too."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Also uniqueness constraints and cross-channel timing."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Single-leader with leader reads can; consensus does."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Partitions aren't optional, so the choice is only made when one happens."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "That's choosing consistency."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Every operation waits on coordination, even without partitions."
+    }
+  ]
+}

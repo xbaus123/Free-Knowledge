@@ -1,0 +1,30 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Every request for that key still goes to the same partition."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Reads must then gather all 100 keys back."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Scatter/gather, so tail latency adds up."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Reads touch one partition; writes fan out."
+    },
+    {
+      "accepted_answers": [
+        "gather"
+      ],
+      "explanation": "You'll see it in search engines too."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Hot writes are the harder problem."
+    }
+  ]
+}

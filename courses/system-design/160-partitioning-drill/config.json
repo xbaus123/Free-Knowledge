@@ -1,0 +1,52 @@
+{
+  "type": "quiz",
+  "title": "Drill: Partitioning Scenarios",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "A metrics store's main query is \"one sensor's readings over a month.\" Which key works?",
+      "options": [
+        "Hash of the timestamp",
+        "A random UUID",
+        "Timestamp alone, range-partitioned",
+        "(sensor id, timestamp), hashed on sensor id and sorted by timestamp"
+      ]
+    },
+    {
+      "prompt": "A cache cluster grows from 20 to 21 nodes and the database melts. What was the partitioner likely doing?",
+      "options": [
+        "hash(key) % N",
+        "Dynamic partitioning",
+        "Consistent hashing with vnodes",
+        "A fixed number of partitions"
+      ]
+    },
+    {
+      "prompt": "A product search must find \"color = red\" quickly, and writes can be slightly delayed in the index. Which index fits?",
+      "options": [
+        "A term-partitioned global index",
+        "No index",
+        "A document-partitioned local index",
+        "A fixed window"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A buggy client in a retry loop is exactly what rate limiting is for."
+    },
+    {
+      "prompt": "An API allows 100 requests a minute, and a client sends 100 at 0:59 and 100 at 1:00. Which algorithm let that happen?",
+      "options": [
+        "Leaky bucket",
+        "Sliding window",
+        "Token bucket with B = 100",
+        "Fixed window"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "When the same key is hot for both reads and writes, which tier handles the hot reads? (one word)"
+    }
+  ]
+}

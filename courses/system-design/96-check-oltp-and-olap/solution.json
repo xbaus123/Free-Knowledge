@@ -1,0 +1,35 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "OLAP aggregates over millions of rows."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Data is loaded into the warehouse through ETL."
+    },
+    {
+      "accepted_answers": [
+        "extract transform load",
+        "extract, transform, load"
+      ],
+      "explanation": "Extract, transform, load."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Dimension tables (product, store, date) surround the fact table."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Row storage would read all 100 columns of every row."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Bitmaps and run-length encoding thrive on repetition."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Also BigQuery, Snowflake, Redshift, and ClickHouse."
+    }
+  ]
+}

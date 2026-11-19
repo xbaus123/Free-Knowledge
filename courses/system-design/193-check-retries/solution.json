@@ -1,0 +1,39 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Permanent errors fail the same way every time."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "100 × 2^3 = 800 ms."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Randomized waits break up the thundering herd."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "random(0, min(cap, base × 2^n))."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Other layers fail fast."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Retries are capped at a fraction of normal traffic."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It may have. Retry only idempotent operations or ones with an idempotency key."
+    },
+    {
+      "accepted_answers": [
+        "hedged",
+        "hedge"
+      ],
+      "explanation": "Google reported it cuts tail latency for about 5% more load."
+    }
+  ]
+}

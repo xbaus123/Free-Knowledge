@@ -1,0 +1,75 @@
+{
+  "type": "quiz",
+  "title": "Check: Metrics and Histograms",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "How does observability differ from monitoring?",
+      "options": [
+        "They're the same",
+        "Monitoring uses traces only",
+        "Observability needs no data",
+        "Monitoring asks known questions; observability lets you ask new ones after something strange happens"
+      ]
+    },
+    {
+      "prompt": "Which signal answers \"where is the time going in this request?\"",
+      "options": [
+        "Logs",
+        "Traces",
+        "Metrics",
+        "Health checks"
+      ]
+    },
+    {
+      "prompt": "Which metric type only goes up, and is usually viewed as a rate?",
+      "options": [
+        "Summary",
+        "Gauge",
+        "Histogram",
+        "Counter"
+      ]
+    },
+    {
+      "prompt": "Queue length and consumer lag are which metric type?",
+      "options": [
+        "Counter",
+        "Gauge",
+        "Summary",
+        "Histogram"
+      ]
+    },
+    {
+      "prompt": "Why is labeling a metric by user_id dangerous?",
+      "options": [
+        "Users can see it",
+        "Each user becomes a separate time series, and cardinality explodes",
+        "It slows the network",
+        "Labels can't hold numbers"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Server A's p99 is 100 ms and server B's is 900 ms, so the fleet's p99 is 500 ms."
+    },
+    {
+      "prompt": "To estimate p90 of 1,000 requests from a histogram, what rank do you look for?",
+      "options": [
+        "The 999th",
+        "The 100th slowest of the slowest",
+        "The 900th fastest",
+        "The 90th"
+      ]
+    },
+    {
+      "prompt": "Summaries compute percentiles in the client. What's their limitation?",
+      "options": [
+        "They need Grafana",
+        "They're counters",
+        "They're inaccurate",
+        "They can't be combined across instances"
+      ]
+    }
+  ]
+}

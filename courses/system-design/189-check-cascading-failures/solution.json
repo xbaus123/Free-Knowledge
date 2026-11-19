@@ -1,0 +1,26 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "That's a cascading failure."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "3^4 = 81: a retry storm."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Stable, but in the wrong state. Only shedding load breaks the loop."
+    },
+    {
+      "accepted_answers": [
+        "waiting"
+      ],
+      "explanation": "Every pattern limits how long, how often, or how many callers wait."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "They usually start with one slow dependency, and the system's own reactions make it worse."
+    }
+  ]
+}

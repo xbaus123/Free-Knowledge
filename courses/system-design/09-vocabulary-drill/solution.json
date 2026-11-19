@@ -1,0 +1,34 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "The page waits for the slowest call, so each service's tail becomes the page's typical experience."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Near capacity, queues grow in bursts. The tail feels it first."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Redundancy keeps a fault (one machine dying) from becoming a failure (users losing service)."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Load parameters describe the load. Response time describes performance under that load."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Stateless services scale out easily. Watch the database next: it's the stateful part."
+    },
+    {
+      "accepted_answers": [
+        "evolvability"
+      ],
+      "explanation": "Schema evolution and rolling deployments, later in the course, are evolvability in practice."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The median splits requests in half: half are faster and half are at least that slow."
+    }
+  ]
+}

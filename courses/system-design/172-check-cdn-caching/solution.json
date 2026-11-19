@@ -1,0 +1,32 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "That's the offload job."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "private means only the user's own browser may store it."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "s for shared."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "no-store means nobody stores it at all."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Set-Cookie almost always means a personal response."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "It can hide an origin region's outage from many users."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Getting this wrong serves one user's account page to strangers."
+    }
+  ]
+}

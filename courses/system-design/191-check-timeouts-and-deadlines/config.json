@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Check: Timeouts and Deadlines",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Which timeout guards against a host that's down or unreachable?",
+      "options": [
+        "Connect",
+        "Overall deadline",
+        "Idle",
+        "Request"
+      ]
+    },
+    {
+      "prompt": "What's a good starting point for a request timeout?",
+      "options": [
+        "The mean latency",
+        "Zero",
+        "The callee's p99 or p99.9 latency plus a margin",
+        "One minute"
+      ]
+    },
+    {
+      "prompt": "The gateway gives up after 1 s, but A, B, and C each keep working with their own 1 s timeouts. What's that wasted work called?",
+      "options": [
+        "A phantom",
+        "Orphaned work",
+        "Write amplification",
+        "Backpressure"
+      ]
+    },
+    {
+      "prompt": "How does each service compute its downstream timeout under a deadline?",
+      "options": [
+        "Double the caller's timeout",
+        "At random",
+        "From the time remaining, minus a small margin",
+        "A fixed 1 second"
+      ]
+    },
+    {
+      "prompt": "Why does gRPC's grpc-timeout header carry a relative duration rather than an absolute time?",
+      "options": [
+        "Durations compress better",
+        "Absolute times are too long",
+        "Machines' clocks disagree, but each can measure elapsed time correctly",
+        "HTTP forbids timestamps"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A service should check the deadline before starting expensive work, and drop requests whose deadline passed while queued."
+    },
+    {
+      "type": "written",
+      "prompt": "Cassandra's adaptive failure detector is the phi ______ failure detector. (one word)"
+    }
+  ]
+}

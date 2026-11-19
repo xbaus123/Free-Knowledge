@@ -1,0 +1,38 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Vary headers become part of the cache key."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Also sort parameters so ?a=1&b=2 and ?b=2&a=1 share an entry."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The origin labels responses with tags."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A changed file gets a new name; only the HTML needs a short TTL."
+    },
+    {
+      "accepted_answers": [
+        "shield"
+      ],
+      "explanation": "Edges miss to the shield, and the origin sees about one request per object."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Even a tiny TTL helps enormously for shared dynamic pages."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Shared fragments can be cached and assembled at the edge."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Cloudflare Workers, Lambda@Edge, and Fastly Compute."
+    }
+  ]
+}

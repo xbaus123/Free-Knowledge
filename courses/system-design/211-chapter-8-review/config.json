@@ -1,0 +1,83 @@
+{
+  "type": "quiz",
+  "title": "Chapter Review: Consistency and Consensus",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "A seat-booking system must never sell one seat twice across replicas. What does it need?",
+      "options": [
+        "Last write wins",
+        "Read repair",
+        "Eventual consistency",
+        "Linearizable operations, such as consensus-backed compare-and-set"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "CAP means you pick two of consistency, availability, and partition tolerance."
+    },
+    {
+      "prompt": "What does total order broadcast give state machine replication?",
+      "options": [
+        "Faster reads",
+        "Automatic sharding",
+        "Every replica applies the same writes in the same order",
+        "No need for logs"
+      ]
+    },
+    {
+      "prompt": "Why is 2PC called blocking?",
+      "options": [
+        "It blocks reads",
+        "Participants in doubt wait for the coordinator, holding locks",
+        "It's synchronous",
+        "It locks the whole database"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "In Raft, each election epoch is called a ______. (one word)"
+    },
+    {
+      "prompt": "A 3-node Raft cluster loses 2 nodes. What happens?",
+      "options": [
+        "No majority, so it can't elect a leader or commit",
+        "It switches to LWW",
+        "The last node becomes leader",
+        "It keeps going"
+      ]
+    },
+    {
+      "prompt": "Why not run consensus over all your data?",
+      "options": [
+        "It can't handle writes",
+        "It needs special hardware",
+        "Every decision waits on a majority round trip",
+        "It loses data"
+      ]
+    },
+    {
+      "prompt": "What serves as a fencing token in ZooKeeper or etcd?",
+      "options": [
+        "The node's IP",
+        "The lease length",
+        "A random string",
+        "The zxid or revision number"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Causal consistency is cheaper than linearizability."
+    },
+    {
+      "prompt": "Which property guarantees every non-crashed node eventually decides, given a working majority?",
+      "options": [
+        "Termination",
+        "Validity",
+        "Agreement",
+        "Integrity"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Check: Authorization Models",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "\"Support can refund orders\" is a rule in which model?",
+      "options": [
+        "ABAC",
+        "ACL",
+        "ReBAC",
+        "RBAC"
+      ]
+    },
+    {
+      "prompt": "\"You can edit a doc if you're an editor of its folder\" fits which model best?",
+      "options": [
+        "ACL",
+        "RBAC",
+        "None",
+        "ReBAC"
+      ]
+    },
+    {
+      "prompt": "\"Managers can approve expenses under $5,000 in their own department, during business hours\" fits which model?",
+      "options": [
+        "ReBAC",
+        "ACL",
+        "ABAC",
+        "RBAC"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "In RBAC, a manager role can inherit everything the support role has."
+    },
+    {
+      "prompt": "Where must the check \"is order 7 this user's order?\" happen?",
+      "options": [
+        "Only at the gateway",
+        "In DNS",
+        "In the browser",
+        "In the service, which has the data"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Changing /orders/7 to /orders/8 and reading a stranger's order is broken ______-level authorization. (one word)"
+    },
+    {
+      "prompt": "Why must the gateway strip identity headers like X-User-Id that the client sent?",
+      "options": [
+        "To save bandwidth",
+        "Otherwise a client can just claim to be admin",
+        "They're too long",
+        "Services ignore them anyway"
+      ]
+    }
+  ]
+}

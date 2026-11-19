@@ -1,0 +1,57 @@
+{
+  "type": "quiz",
+  "title": "Check: Inside an Object Store",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Why is the metadata service kept sorted by key?",
+      "options": [
+        "To compress chunks",
+        "For erasure coding",
+        "So LIST with a prefix is a range scan",
+        "To deduplicate data"
+      ]
+    },
+    {
+      "prompt": "What does chunking a 10 GB object buy?",
+      "options": [
+        "Automatic encryption",
+        "Parallel reads and writes across hundreds of disks, and cheap ranged reads",
+        "Smaller metadata only",
+        "Strong consistency"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "In S3, a multipart object's ETag is the MD5 of its bytes."
+    },
+    {
+      "prompt": "What does naming chunks by a hash of their content enable?",
+      "options": [
+        "Smaller hashes",
+        "Byte-range reads",
+        "Deduplication, verifying reads, and caching without invalidation",
+        "Faster deletes"
+      ]
+    },
+    {
+      "prompt": "Why does a delete happen instantly while storage bills shrink later?",
+      "options": [
+        "Bills are monthly",
+        "Deletes are queued for a day",
+        "Chunk space is reclaimed by garbage collection once no object refers to it",
+        "Chunks are never deleted"
+      ]
+    },
+    {
+      "prompt": "What's the safe write order?",
+      "options": [
+        "Write the data durably first, then commit the metadata",
+        "Commit the metadata first, then write the data",
+        "Write both at once",
+        "Write only metadata"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Dynamo-style."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The new leader may be missing them."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Two of three still answer."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Clock skew can make it pick the wrong one."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "That's read-your-writes."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "One follower's view only moves forward."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Route by lag, not just liveness."
+    },
+    {
+      "accepted_answers": [
+        "write-behind",
+        "write behind",
+        "write-back",
+        "writeback"
+      ],
+      "explanation": "Fast, but unflushed writes can be lost."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Out-of-order updates can leave the cache wrong forever."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Prefill from a snapshot or the hottest keys."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "One-off reads can't displace frequently used keys."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It needs dependency tracking, not coordination. Linearizability needs coordination."
+    }
+  ]
+}

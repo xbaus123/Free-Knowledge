@@ -1,0 +1,70 @@
+{
+  "type": "quiz",
+  "title": "Check: Sagas",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Why is two-phase commit across microservices rarely used?",
+      "options": [
+        "Every participant needs the same protocol, locks are held while the slowest votes, and a coordinator failure strands them",
+        "It needs a cache",
+        "It's too fast",
+        "It doesn't exist"
+      ]
+    },
+    {
+      "prompt": "What's a saga?",
+      "options": [
+        "A retry policy",
+        "One distributed ACID transaction",
+        "A message queue",
+        "A sequence of local transactions, each with a compensating transaction"
+      ]
+    },
+    {
+      "prompt": "Charging the card succeeds, then booking a courier fails. What runs?",
+      "options": [
+        "Nothing",
+        "Refund the card, then release the items, in reverse order",
+        "Release the items, then refund",
+        "Retry the charge"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A compensation makes it as if the step never happened, like a database rollback."
+    },
+    {
+      "prompt": "Where should an irreversible step like sending a confirmation email go?",
+      "options": [
+        "Anywhere",
+        "Last, after the saga can no longer fail",
+        "First",
+        "In the middle"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "The step after which a saga is guaranteed to complete is the ______. (one word)"
+    },
+    {
+      "prompt": "Which saga style keeps the whole flow in one place?",
+      "options": [
+        "2PC",
+        "Choreography",
+        "Dual writes",
+        "Orchestration"
+      ]
+    },
+    {
+      "prompt": "Why do most teams orchestrate sagas of more than a few steps?",
+      "options": [
+        "Orchestration needs no broker",
+        "With choreography, nobody can see the whole flow without reading every service, and event cycles creep in",
+        "Choreography can't compensate",
+        "Choreography is slower"
+      ]
+    }
+  ]
+}

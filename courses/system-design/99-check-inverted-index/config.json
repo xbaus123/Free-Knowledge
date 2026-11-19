@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Check: The Inverted Index",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "A B-tree indexes product titles. Why can't it answer LIKE '%wireless%' efficiently?",
+      "options": [
+        "It's sorted by the whole title, so it can only find titles that start with a word",
+        "B-trees can't store text",
+        "LIKE queries are forbidden on indexes",
+        "The index is too small"
+      ]
+    },
+    {
+      "prompt": "Which three things does full-text search need that a B-tree doesn't give you?",
+      "options": [
+        "Lookup by word, relevance ranking, and fuzziness",
+        "Replication, partitioning, and consensus",
+        "Encryption, compression, and caching",
+        "Sorting, joins, and transactions"
+      ]
+    },
+    {
+      "prompt": "What does an inverted index map?",
+      "options": [
+        "Each term to the documents containing it",
+        "Each document to its words",
+        "Each key to a byte offset",
+        "Each user to a role"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the name for the list of documents containing one term? (one word, or two)"
+    },
+    {
+      "prompt": "How does an engine answer quick AND brown?",
+      "options": [
+        "Look up the phrase in a B-tree",
+        "Union the lists",
+        "Scan every document",
+        "Intersect the two sorted postings lists with a linear merge"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A query's cost is proportional to the postings it reads, not to the size of the whole corpus."
+    },
+    {
+      "prompt": "Why is the term dictionary kept sorted?",
+      "options": [
+        "Because postings are unsorted",
+        "So documents stay in order",
+        "So it can be searched, including by prefix and fuzzily",
+        "To save memory only"
+      ]
+    }
+  ]
+}

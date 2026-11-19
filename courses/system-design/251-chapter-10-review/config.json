@@ -1,0 +1,70 @@
+{
+  "type": "quiz",
+  "title": "Chapter Review: Observability",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Checkout's p99 jumped. Which signal tells you first?",
+      "options": [
+        "Metrics",
+        "Health checks",
+        "Logs",
+        "Traces"
+      ]
+    },
+    {
+      "prompt": "Which is the right way to get a fleet-wide p99?",
+      "options": [
+        "Sum histogram buckets across servers and estimate the percentile",
+        "Use the mean",
+        "Average each server's p99",
+        "Take the max server's p50"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Request ids make good metric labels."
+    },
+    {
+      "prompt": "Which checklist is for request-driven services?",
+      "options": [
+        "RED",
+        "ACID",
+        "CAP",
+        "USE"
+      ]
+    },
+    {
+      "prompt": "A trace shows a request waiting on the slowest of 5 parallel calls. Where's the time?",
+      "options": [
+        "On the critical path through the slowest call",
+        "In the fastest call",
+        "Spread evenly",
+        "In the logs"
+      ]
+    },
+    {
+      "prompt": "Which sampling keeps every error trace?",
+      "options": [
+        "No sampling at all is the only way",
+        "Head sampling at 1%",
+        "Random span sampling",
+        "Tail sampling"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A 99% SLO sees a 2% error ratio. What's the burn rate? (number)"
+    },
+    {
+      "prompt": "What links a dashboard spike to a specific slow trace?",
+      "options": [
+        "Cardinality",
+        "Gauges",
+        "Summaries",
+        "Exemplars"
+      ]
+    }
+  ]
+}

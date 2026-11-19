@@ -1,0 +1,57 @@
+{
+  "type": "quiz",
+  "title": "Check: Batch Processing",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What's the difference between the system of record and derived data?",
+      "options": [
+        "They're the same",
+        "The system of record is a cache",
+        "Derived data is the source of truth",
+        "The system of record is where facts are first written; derived data is computed from it and rebuildable"
+      ]
+    },
+    {
+      "prompt": "Put MapReduce's phases in order.",
+      "options": [
+        "Map, shuffle, reduce",
+        "Reduce, map, shuffle",
+        "Shuffle, map, reduce",
+        "Map, reduce, shuffle"
+      ]
+    },
+    {
+      "prompt": "To count requests per URL, what does the map step emit for each log line?",
+      "options": [
+        "(1, url)",
+        "(url, total)",
+        "Nothing",
+        "(url, 1)"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Batch jobs treat their input as immutable, so a failed job can simply be rerun."
+    },
+    {
+      "prompt": "Why are Spark and Flink faster than a chain of MapReduce jobs?",
+      "options": [
+        "They skip the shuffle",
+        "They don't use disks at all",
+        "They chain operators and keep intermediate state in memory",
+        "They run on one machine"
+      ]
+    },
+    {
+      "prompt": "What's batch output's main drawback?",
+      "options": [
+        "It's always wrong",
+        "It can't be rerun",
+        "Latency: a nightly job's output is up to a day old",
+        "It's not derived data"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "5 million series ÷ 15 s ≈ 333,000 points per second."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "They arrive nearly in time order and are almost never updated or deleted individually."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "http_requests_total{service=\"api\", status=\"500\"}."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The same structure as search."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Dropping a month is as cheap as deleting a directory."
+    },
+    {
+      "accepted_answers": [
+        "head"
+      ],
+      "explanation": "It's written out as an immutable block every two hours."
+    }
+  ]
+}

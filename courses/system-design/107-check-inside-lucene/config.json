@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Check: Inside Lucene",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Lucene's storage design most resembles which earlier structure?",
+      "options": [
+        "A B-tree updated in place",
+        "A graph",
+        "A hash index",
+        "Immutable SSTable segments in a log-structured engine"
+      ]
+    },
+    {
+      "prompt": "Why is Elasticsearch called near-real-time?",
+      "options": [
+        "It uses batch jobs",
+        "Its clocks drift",
+        "A new document becomes searchable only after the next refresh",
+        "It's slow"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which write-ahead log does Elasticsearch append every operation to for durability? (one word)"
+    },
+    {
+      "prompt": "How does Lucene delete a document from an immutable segment?",
+      "options": [
+        "It removes it from the postings in place",
+        "It rewrites the segment immediately",
+        "It sets a bit in the segment's live-docs bitmap",
+        "It can't"
+      ]
+    },
+    {
+      "prompt": "How does Lucene update a document?",
+      "options": [
+        "Delete plus add",
+        "By appending a diff",
+        "By editing the postings",
+        "In place"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Many small segments make searches slow, so a merge policy combines them in the background."
+    },
+    {
+      "prompt": "Why does Lucene store doc values alongside the inverted index?",
+      "options": [
+        "To store stopwords",
+        "To speed up fuzzy matching",
+        "Sorting and aggregations need each document's field value, which an inverted index is bad at",
+        "For the translog"
+      ]
+    }
+  ]
+}

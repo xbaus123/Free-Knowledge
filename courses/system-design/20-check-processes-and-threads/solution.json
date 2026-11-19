@@ -1,0 +1,35 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Threads share their process's memory, so any thread can read or write any variable."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Threads share one process. Processes are the unit of isolation."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Threads skip setting up a new address space."
+    },
+    {
+      "accepted_answers": [
+        "context switch",
+        "context-switch"
+      ],
+      "explanation": "A context switch can happen between any two instructions, and your code doesn't get a say."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Parallelism needs tasks executing at the same instant on different cores."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The GIL limits parallelism, not concurrency. Threads still interleave, so races happen in Python too."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Processes have separate address spaces, which is the point of using them."
+    }
+  ]
+}

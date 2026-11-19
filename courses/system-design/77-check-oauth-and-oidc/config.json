@@ -1,0 +1,70 @@
+{
+  "type": "quiz",
+  "title": "Check: OAuth and OIDC",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What problem does OAuth 2.0 solve?",
+      "options": [
+        "Encrypting traffic",
+        "Balancing load",
+        "Granting a third-party app limited access without giving it your password",
+        "Hashing passwords"
+      ]
+    },
+    {
+      "prompt": "In OAuth, which role issues tokens after authenticating the user?",
+      "options": [
+        "The client",
+        "The resource owner",
+        "The authorization server",
+        "The resource server"
+      ]
+    },
+    {
+      "prompt": "In the authorization code flow, where does the user type their password?",
+      "options": [
+        "At the authorization server",
+        "In a URL parameter",
+        "At the resource server",
+        "At the client app"
+      ]
+    },
+    {
+      "prompt": "Why is an intercepted authorization code useless with PKCE?",
+      "options": [
+        "Codes expire instantly",
+        "Codes are encrypted",
+        "Exchanging it needs the code verifier, which never left the client",
+        "Codes contain no data"
+      ]
+    },
+    {
+      "prompt": "What does the state parameter protect against?",
+      "options": [
+        "An attacker injecting their own code into the login flow (CSRF)",
+        "Algorithm confusion",
+        "Replay of TLS data",
+        "Expired certificates"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which OAuth flow do services use to get tokens for service-to-service calls with no user involved? (two words)"
+    },
+    {
+      "prompt": "What does OpenID Connect add on top of OAuth?",
+      "options": [
+        "An ID token saying who logged in",
+        "Server-side sessions",
+        "Rate limiting",
+        "Encryption of access tokens"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "An API may accept an ID token as authorization."
+    }
+  ]
+}

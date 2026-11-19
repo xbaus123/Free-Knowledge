@@ -1,0 +1,52 @@
+{
+  "type": "quiz",
+  "title": "Check: Gorilla Compression",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Timestamps 1000, 1015, 1030, 1045. What are the deltas of deltas after the first delta?",
+      "options": [
+        "1, 1",
+        "0, 0",
+        "1015, 1030",
+        "15, 15"
+      ]
+    },
+    {
+      "prompt": "How many bits does a delta of delta of 0 cost?",
+      "options": [
+        "64",
+        "1",
+        "7",
+        "0"
+      ]
+    },
+    {
+      "prompt": "How does Gorilla compress values?",
+      "options": [
+        "Round to integers",
+        "Store the average",
+        "Delta-of-delta encoding",
+        "XOR each value with the previous one and store only the meaningful bits"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Gorilla compressed points from 16 bytes to about 1.37 bytes on Facebook's data."
+    },
+    {
+      "prompt": "Why are Gorilla chunks kept small, around 120 points?",
+      "options": [
+        "To allow updates",
+        "Disks have small sectors",
+        "To reduce metadata",
+        "Points must be decoded in sequence, so reading one means decoding its chunk from the start"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Two similar floats XOR to a value with long runs of leading and trailing ______. (one word)"
+    }
+  ]
+}

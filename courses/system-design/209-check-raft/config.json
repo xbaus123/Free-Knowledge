@@ -1,0 +1,75 @@
+{
+  "type": "quiz",
+  "title": "Check: Raft",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What triggers a Raft follower to become a candidate?",
+      "options": [
+        "A higher term",
+        "A full log",
+        "Its randomized election timeout runs out without a heartbeat",
+        "A client request"
+      ]
+    },
+    {
+      "prompt": "Why can't two leaders be elected in the same term?",
+      "options": [
+        "Terms are global clocks",
+        "Leaders check DNS",
+        "Each node votes once per term, and two majorities always overlap",
+        "Candidates wait forever"
+      ]
+    },
+    {
+      "prompt": "Why are election timeouts randomized?",
+      "options": [
+        "To sync clocks",
+        "To confuse attackers",
+        "To save power",
+        "To make split votes rare"
+      ]
+    },
+    {
+      "prompt": "A leader sees a message with a higher term. What does it do?",
+      "options": [
+        "Starts a new election",
+        "Rejects the sender",
+        "Ignores it",
+        "Steps down to follower"
+      ]
+    },
+    {
+      "prompt": "When is a log entry committed?",
+      "options": [
+        "When a client reads it",
+        "Once a majority has stored it",
+        "When the leader appends it",
+        "When every node has it"
+      ]
+    },
+    {
+      "prompt": "Why does a node vote only for candidates whose logs are at least as up to date as its own?",
+      "options": [
+        "To prevent split votes",
+        "So a new leader already has every committed entry",
+        "To speed up elections",
+        "To reduce messages"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "How many failures does a 5-node Raft cluster tolerate? (number)"
+    },
+    {
+      "prompt": "Which system stores Kubernetes' state using Raft?",
+      "options": [
+        "Elasticsearch",
+        "Redis",
+        "etcd",
+        "Memcached"
+      ]
+    }
+  ]
+}

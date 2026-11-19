@@ -1,0 +1,127 @@
+{
+  "type": "quiz",
+  "title": "Chapter Review: Foundations",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Which statement about faults and failures is right?",
+      "options": [
+        "A failure is one component misbehaving",
+        "Failures never affect users",
+        "Fault tolerance keeps a component's fault from becoming a system failure",
+        "Faults can always be prevented"
+      ]
+    },
+    {
+      "prompt": "A page makes 20 parallel calls, each slow on 1% of calls. Roughly what fraction of page loads hit at least one slow call?",
+      "options": [
+        "About 20 × 99%",
+        "About 0.05%",
+        "About 1%",
+        "About 18%"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Stateless services are easy to scale out; data is the hard part."
+    },
+    {
+      "prompt": "Which protocol would you pick for a multiplayer game's position updates?",
+      "options": [
+        "SMTP",
+        "TCP",
+        "DNS",
+        "UDP"
+      ]
+    },
+    {
+      "prompt": "You want a DNS change to reach clients within a minute. What must be true?",
+      "options": [
+        "The record must be a CNAME",
+        "Clients must use UDP",
+        "The root servers must be updated",
+        "The record's TTL must be short"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A 1 Gbit/s link with a 100 ms RTT: what's the bandwidth-delay product in MB? (number)"
+    },
+    {
+      "prompt": "Two threads both run `balance -= amount` without a lock. What can go wrong?",
+      "options": [
+        "Nothing, because Python has a GIL",
+        "A context switch error",
+        "A lost update, because the read-modify-write interleaves",
+        "A deadlock"
+      ]
+    },
+    {
+      "prompt": "What prevents deadlock between transfers that lock two accounts?",
+      "options": [
+        "Taking the locks in a global order, such as by account id",
+        "Using more threads",
+        "Using a read-write lock",
+        "Holding the locks longer"
+      ]
+    },
+    {
+      "prompt": "Why does a 99% cache hit rate in front of an SSD still average eleven times slower than RAM?",
+      "options": [
+        "The 1% of misses each cost a thousand times more",
+        "Hits are slower than misses",
+        "LRU eviction is slow",
+        "RAM is volatile"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A durable database calls fsync before telling you a commit succeeded."
+    },
+    {
+      "prompt": "Which HTTP method should a client be free to retry after a timeout without an idempotency key?",
+      "options": [
+        "POST",
+        "PUT",
+        "None of them",
+        "PATCH"
+      ]
+    },
+    {
+      "prompt": "A mobile app needs exactly a few fields from several related objects in one round trip. Which API style fits best?",
+      "options": [
+        "JSON-RPC",
+        "REST",
+        "SMTP",
+        "GraphQL"
+      ]
+    },
+    {
+      "prompt": "A query filters on `user_id` and is slow. EXPLAIN shows `SCAN accounts`. What's the fix?",
+      "options": [
+        "Use a bigger transaction",
+        "Add a CHECK constraint",
+        "Add an index on accounts(user_id)",
+        "Denormalize the users table"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which ACID property means all of a transaction's writes happen or none do? (one word)"
+    },
+    {
+      "prompt": "10 million users each make 10 requests a day. Roughly what's the average request rate?",
+      "options": [
+        "About 1,000 per second",
+        "About 100,000 per second",
+        "About 10 per second",
+        "About 10 million per second"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Embedding related data in a document makes reads of the whole tree faster but cross-document relationships harder."
+    }
+  ]
+}

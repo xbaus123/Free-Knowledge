@@ -1,0 +1,34 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "The decision in the log is the commit point."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "It wrote everything to disk first."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "2PC is a blocking protocol."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Coming up in the next chapter."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Consensus terminates as long as a majority works; 2PC can block forever."
+    },
+    {
+      "accepted_answers": [
+        "raft"
+      ],
+      "explanation": "Others include Paxos, Zab, and Viewstamped Replication."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Integrity means no node decides twice."
+    }
+  ]
+}

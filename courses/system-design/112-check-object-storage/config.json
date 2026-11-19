@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Check: Object Storage",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Why not store 20 MB videos in a database column?",
+      "options": [
+        "It's faster",
+        "Databases can't store bytes",
+        "Videos need SQL",
+        "Every replica, backup, cache, and migration carries them"
+      ]
+    },
+    {
+      "prompt": "How do object stores get their scale compared with a POSIX filesystem?",
+      "options": [
+        "By using bigger disks",
+        "By storing everything in RAM",
+        "By adding transactions",
+        "By giving up renames, locks, in-place overwrites, and appends"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "In an object store, logs/2026/10/01.gz lives inside real nested folders."
+    },
+    {
+      "prompt": "What happens when you PUT a key that already exists?",
+      "options": [
+        "The object is replaced atomically; readers see old or new, never a mix",
+        "It fails",
+        "The bytes are appended",
+        "Both versions merge"
+      ]
+    },
+    {
+      "prompt": "How does a video player seek in a large object?",
+      "options": [
+        "A GET with a byte range",
+        "A LIST call",
+        "A HEAD request",
+        "A multipart upload"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the content fingerprint an object store returns with each object, used for integrity and conditional requests? (one word)"
+    },
+    {
+      "prompt": "What does a presigned URL let a client do?",
+      "options": [
+        "Upload or download one object directly for a limited time, without your servers handling the bytes",
+        "List every bucket",
+        "Change the bucket's lifecycle rules",
+        "Bypass encryption"
+      ]
+    }
+  ]
+}

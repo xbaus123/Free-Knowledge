@@ -1,0 +1,52 @@
+{
+  "type": "quiz",
+  "title": "Check: Power of Two Choices and Hashing",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Many balancers all send their next request to the same least-loaded server at once. What's that called?",
+      "options": [
+        "A cascade",
+        "A herd",
+        "A deadlock",
+        "A split brain"
+      ]
+    },
+    {
+      "prompt": "How does the power of two choices pick a backend?",
+      "options": [
+        "Pick the two least loaded and alternate",
+        "Pick one at random twice",
+        "Hash the request twice",
+        "Sample two at random and take the less loaded"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Different balancers sampling different random pairs is why power of two choices avoids stampedes."
+    },
+    {
+      "prompt": "When do you want hashing instead of least connections?",
+      "options": [
+        "When requests vary in cost",
+        "When the same key should land on the same backend, like a cache that already holds a user's data",
+        "When you have only one server",
+        "When servers have different speeds"
+      ]
+    },
+    {
+      "prompt": "Why is plain hash % N a poor choice for affinity?",
+      "options": [
+        "It's too slow to compute",
+        "It needs a database",
+        "It always picks server 0",
+        "Changing N reshuffles almost every key"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which hashing scheme moves only a small fraction of keys when a server is added? (two words)"
+    }
+  ]
+}

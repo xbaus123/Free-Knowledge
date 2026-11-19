@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Check: Write Skew and Phantoms",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Alice and Bob each see two doctors on call and each go off call. Nobody is left. Why isn't this a lost update?",
+      "options": [
+        "It was a dirty read",
+        "Neither overwrote the other's data; each wrote a different row",
+        "One aborted",
+        "Both wrote the same row"
+      ]
+    },
+    {
+      "prompt": "Put write skew's pattern in order.",
+      "options": [
+        "Read rows and check a condition, decide, then write something that changes the condition",
+        "Write, then read, then decide",
+        "Decide, write, then read",
+        "Read only"
+      ]
+    },
+    {
+      "prompt": "Which of these is a write-skew risk?",
+      "options": [
+        "Two customers booking the same meeting room at the same time",
+        "One user editing their own profile",
+        "Reading a static page",
+        "Appending to a log"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A write that changes the result of another transaction's search for rows is a ______. (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "SELECT ... FOR UPDATE can lock a row that doesn't exist yet."
+    },
+    {
+      "prompt": "What's the usual fix when checking for the absence of rows, like \"no booking overlaps 18:00 to 19:00\"?",
+      "options": [
+        "Use read committed",
+        "Add an index",
+        "Lock a row that does exist, such as the room or bay, with FOR UPDATE",
+        "Retry forever"
+      ]
+    },
+    {
+      "prompt": "Creating rows just so there's something to lock is called what?",
+      "options": [
+        "Compaction",
+        "Hinted handoff",
+        "Materializing conflicts",
+        "Read repair"
+      ]
+    }
+  ]
+}

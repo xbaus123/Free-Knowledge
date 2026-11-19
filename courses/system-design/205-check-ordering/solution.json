@@ -1,0 +1,34 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Causal consistency is weaker and much cheaper than linearizability."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "(counter, node id)."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Counters move past the highest seen."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "You need to know the order is final."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "That's exactly what state machine replication needs."
+    },
+    {
+      "accepted_answers": [
+        "machine"
+      ],
+      "explanation": "ZooKeeper and etcd work this way."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "You can build a linearizable compare-and-set on it."
+    }
+  ]
+}

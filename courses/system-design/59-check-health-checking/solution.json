@@ -1,0 +1,34 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "A streak of failures (and of successes to come back) smooths out noise."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It reacts between probes and catches servers that pass /healthz but fail real requests."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A partial outage becomes total. Health checks should mostly report whether this process can serve."
+    },
+    {
+      "accepted_answers": [
+        "draining"
+      ],
+      "explanation": "Do it before removing a backend for a deploy."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A cold server handed a full share can fall over."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Every check ends in a timeout, which can't distinguish dead, slow, or unreachable. Every health check is a guess."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A protocol like VRRP moves the address within seconds."
+    }
+  ]
+}

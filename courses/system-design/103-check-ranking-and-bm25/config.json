@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Check: Ranking",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Why does a match on \"raft\" count for more than a match on \"system\"?",
+      "options": [
+        "Raft is shorter",
+        "Raft appears in more documents",
+        "Raft is rarer, so its inverse document frequency is higher",
+        "System is a stopword"
+      ]
+    },
+    {
+      "prompt": "Why does one mention in a tweet mean more than one mention in a 300-page book?",
+      "options": [
+        "Length normalization",
+        "Term frequency",
+        "Skip lists",
+        "Saturation"
+      ]
+    },
+    {
+      "prompt": "What's BM25's key improvement over plain TF-IDF?",
+      "options": [
+        "It ignores term frequency",
+        "It ignores rare terms",
+        "Saturation: the tenth mention adds far less than the first",
+        "It requires machine learning"
+      ]
+    },
+    {
+      "prompt": "In BM25, what does setting b = 0 do?",
+      "options": [
+        "Ignores document length entirely",
+        "Normalizes length fully",
+        "Ignores term frequency",
+        "Disables IDF"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "As tf grows, BM25's term-frequency fraction approaches k1 + 1 and never exceeds it."
+    },
+    {
+      "prompt": "Why rerank only the top few hundred BM25 results with a learned model?",
+      "options": [
+        "The model is too expensive to run on every match",
+        "BM25 can't find more than a few hundred",
+        "The model is less accurate on long lists",
+        "Users can't see more"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which data structure keeps the best k results so far without sorting every match? (two words, hyphen allowed)"
+    }
+  ]
+}

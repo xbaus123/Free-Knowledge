@@ -1,0 +1,39 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "It then increments the term and votes for itself."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "That overlap is the heart of consensus."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Nodes rarely time out at the same instant."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Any node that sees a higher term steps down."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Then every node applies it in order."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Committed entries are never lost."
+    },
+    {
+      "accepted_answers": [
+        "2",
+        "two"
+      ],
+      "explanation": "A strict majority of 3 must remain."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Consul, CockroachDB, TiKV, and Kafka KRaft also run Raft."
+    }
+  ]
+}

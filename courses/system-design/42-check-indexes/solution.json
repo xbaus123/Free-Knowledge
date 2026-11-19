@@ -1,0 +1,39 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "For a million rows that's a million checks, every time."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "500^4 ≈ 6.25 × 10^10. Any one of them is four page reads away."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Neighboring keys sit in neighboring leaves."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A composite index helps queries that filter on its leftmost columns, like a phone book sorted by last name."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Add the indexes your important queries need, and no more."
+    },
+    {
+      "accepted_answers": [
+        "explain",
+        "explain query plan"
+      ],
+      "explanation": "In SQLite: EXPLAIN QUERY PLAN SELECT ..."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "An index in the right order would let the database skip that sort."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Checking uniqueness quickly needs one."
+    }
+  ]
+}

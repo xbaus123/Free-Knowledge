@@ -1,0 +1,32 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Whatever order deletes arrive in, the next reader loads the current value."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "From Facebook's memcache paper. TTLs bound staleness as a last resort."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The two writes usually aren't atomic."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "It writes to the cache now and to the database later in batches."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Use it for data like view counts, or with a replicated, persistent cache."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Write only to the database and let reads fill the cache."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It's the last line of defense."
+    }
+  ]
+}

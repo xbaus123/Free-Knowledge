@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Check: Routing Users to Regions",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Why can GeoDNS send a Madrid user to Amsterdam?",
+      "options": [
+        "DNS sees the resolver's location, not the user's",
+        "TTLs are too short",
+        "GeoDNS ignores location",
+        "Madrid has no servers"
+      ]
+    },
+    {
+      "prompt": "Why is failing over a region by changing DNS slow?",
+      "options": [
+        "Certificates must be reissued",
+        "BGP must converge",
+        "Answers are cached, and some clients ignore short TTLs",
+        "DNS servers are slow"
+      ]
+    },
+    {
+      "prompt": "How does anycast route users?",
+      "options": [
+        "Clients choose randomly",
+        "A central load balancer",
+        "Many locations announce the same IP, and routers send packets along the shortest path",
+        "DNS returns different IPs"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Anycast spreads a DDoS attack across every location instead of concentrating it on one."
+    },
+    {
+      "type": "written",
+      "prompt": "What's the acronym for a CDN or cloud edge location near users? (three letters)"
+    },
+    {
+      "prompt": "Three regions each run at 70%. One fails, and its traffic splits evenly over the other two. What happens?",
+      "options": [
+        "They hit 105%: a regional failure becomes a global overload",
+        "Nothing",
+        "They run at 35%",
+        "They run at 70%"
+      ]
+    },
+    {
+      "prompt": "What's load shedding?",
+      "options": [
+        "Deliberately rejecting low-priority work when overloaded",
+        "Moving load to a backup",
+        "Compressing responses",
+        "Turning off health checks"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "user 42 paid 19.99 is painful to query."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Correlation ids join logs to traces."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Log volume grows with traffic."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Each has a span id and a parent span id."
+    },
+    {
+      "accepted_answers": [
+        "traceparent"
+      ],
+      "explanation": "Version, trace id, parent id, and flags."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Bit 0 is the sampled flag."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Traces shouldn't stop at the broker."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Dapper, 2010."
+    }
+  ]
+}

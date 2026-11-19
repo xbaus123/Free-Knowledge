@@ -1,0 +1,38 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Authentication is who you are; authorization is what you may do."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Authentication happens once per login. Authorization happens on every request, for every resource."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Use a slow, salted hash like Argon2, scrypt, or bcrypt."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The work factor is what makes each guess expensive."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The cost is a lookup in a shared session store on every request."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "That's why access tokens are short-lived."
+    },
+    {
+      "accepted_answers": [
+        "refresh"
+      ],
+      "explanation": "The authorization server checks it on each exchange, so revoking it ends access quickly."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Each refresh token is single-use."
+    }
+  ]
+}

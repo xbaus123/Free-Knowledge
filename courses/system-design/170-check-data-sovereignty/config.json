@@ -1,0 +1,43 @@
+{
+  "type": "quiz",
+  "title": "Check: Data Sovereignty",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What's the difference between data residency and data sovereignty?",
+      "options": [
+        "Residency is where data is stored; sovereignty is whose laws apply to it",
+        "Sovereignty is about latency",
+        "Residency is about encryption",
+        "They're the same"
+      ]
+    },
+    {
+      "prompt": "Which EU regulation restricts transferring personal data outside the EU?",
+      "options": [
+        "GDPR",
+        "SOX",
+        "PCI DSS",
+        "HIPAA"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "If both EU regions are down, routing EU users to Virginia keeps the residency rule intact."
+    },
+    {
+      "prompt": "Which of these must a residency guarantee also cover?",
+      "options": [
+        "Nothing beyond the database",
+        "Only the primary database",
+        "Only user-facing pages",
+        "Logs, backups, analytics, search indexes, and caches"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Destroying an encryption key so every copy of the data becomes unreadable is called crypto-______. (one word)"
+    }
+  ]
+}

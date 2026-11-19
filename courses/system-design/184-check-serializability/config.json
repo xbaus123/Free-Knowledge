@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Check: Serializability",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Which systems run every transaction on a single thread to get serializability?",
+      "options": [
+        "Kafka and Flink",
+        "Cassandra and Riak",
+        "VoltDB and Redis",
+        "PostgreSQL and Oracle"
+      ]
+    },
+    {
+      "prompt": "What's two-phase locking's weakness?",
+      "options": [
+        "It allows write skew",
+        "It loses data",
+        "Readers and writers block each other, so it's slow and deadlock-prone",
+        "It's not serializable"
+      ]
+    },
+    {
+      "prompt": "How does serializable snapshot isolation (SSI) work?",
+      "options": [
+        "Every read takes a lock",
+        "It never aborts",
+        "Transactions run optimistically; at commit, one whose reads have since changed is aborted and must retry",
+        "Transactions run one at a time"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Applications using SSI must be prepared to retry aborted transactions."
+    },
+    {
+      "prompt": "Which anomaly does snapshot isolation still allow?",
+      "options": [
+        "Write skew",
+        "Read skew",
+        "Dirty writes",
+        "Dirty reads"
+      ]
+    },
+    {
+      "prompt": "Which anomaly does read committed allow but snapshot isolation prevent?",
+      "options": [
+        "Read skew",
+        "Write skew",
+        "Dirty write",
+        "Dirty read"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What does 2PL stand for? (three words, hyphen allowed)"
+    }
+  ]
+}

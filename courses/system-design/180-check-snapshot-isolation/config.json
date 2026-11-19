@@ -1,0 +1,65 @@
+{
+  "type": "quiz",
+  "title": "Check: Snapshot Isolation and Lost Updates",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Alice reads account 1 before a $100 transfer and account 2 after it, and sees $900 instead of $1,000. What's that anomaly?",
+      "options": [
+        "Read skew",
+        "Lost update",
+        "Dirty write",
+        "Write skew"
+      ]
+    },
+    {
+      "prompt": "What does snapshot isolation give each transaction?",
+      "options": [
+        "A consistent snapshot of the database as of when it started",
+        "A private copy of the disk",
+        "Exclusive locks on every row",
+        "The newest data always"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Snapshot isolation is implemented with multi-version concurrency control. What's the acronym? (four letters)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Under MVCC, readers never block writers, and writers never block readers."
+    },
+    {
+      "prompt": "Two transactions increment the same counter by reading it, adding 1, and writing it back. One increment disappears. Which fix is simplest?",
+      "options": [
+        "A secondary index",
+        "An atomic UPDATE ... SET value = value + 1",
+        "A bigger cache",
+        "Read committed"
+      ]
+    },
+    {
+      "prompt": "What does SELECT ... FOR UPDATE do?",
+      "options": [
+        "Reads uncommitted data",
+        "Locks the rows you read until your transaction ends",
+        "Updates every row",
+        "Creates a snapshot"
+      ]
+    },
+    {
+      "prompt": "UPDATE docs SET content = 'new' WHERE id = 1 AND content = 'old' matches no rows. What does that tell you?",
+      "options": [
+        "Someone else changed it first, so retry",
+        "The database is down",
+        "The update succeeded",
+        "The row was deleted forever"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What does PostgreSQL call its snapshot isolation level? (two words)"
+    }
+  ]
+}

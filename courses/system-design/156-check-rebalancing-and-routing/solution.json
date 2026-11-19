@@ -1,0 +1,34 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Almost every key's home changes."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Riak, Elasticsearch, and Couchbase work this way."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "HBase and MongoDB do this."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It only takes keys from its neighbors on the ring."
+    },
+    {
+      "accepted_answers": [
+        "virtual"
+      ],
+      "explanation": "Virtual nodes (vnodes)."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Another option is a routing tier or partition-aware clients."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Nodes register with it and routers watch for changes."
+    }
+  ]
+}

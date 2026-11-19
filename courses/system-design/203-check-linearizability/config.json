@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Check: Linearizability and CAP",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What does linearizability promise?",
+      "options": [
+        "Reads go to any replica",
+        "The system behaves as if there were a single copy of the data",
+        "Replicas converge eventually",
+        "Writes are fast"
+      ]
+    },
+    {
+      "prompt": "Alice sees the final score. She tells Bob, who refreshes and sees \"in progress.\" Why is that a violation?",
+      "options": [
+        "Alice's read was stale",
+        "Bob's read started after Alice's finished, yet saw older data",
+        "Bob's browser was slow",
+        "It isn't a violation"
+      ]
+    },
+    {
+      "prompt": "Which needs linearizability?",
+      "options": [
+        "Showing a like count",
+        "Logging page views",
+        "Serving an image",
+        "Electing a leader"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Leaderless Dynamo-style replication and last write wins generally provide linearizability."
+    },
+    {
+      "prompt": "What does CAP really say?",
+      "options": [
+        "Consistency is always free",
+        "Partitions never happen",
+        "Pick any two of consistency, availability, and partition tolerance",
+        "When partitioned, choose consistency or availability"
+      ]
+    },
+    {
+      "prompt": "During a partition, a linearizable system's side without a quorum does what?",
+      "options": [
+        "Elects two leaders",
+        "Keeps answering and diverges",
+        "Switches to LWW",
+        "Refuses requests, so it's unavailable"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Many systems give up linearizability for performance, not only for fault tolerance."
+    }
+  ]
+}

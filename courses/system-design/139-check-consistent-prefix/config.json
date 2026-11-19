@@ -1,0 +1,70 @@
+{
+  "type": "quiz",
+  "title": "Check: Consistent Prefixes and Session Guarantees",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Why is consistent prefix reading free within one partition with a single leader?",
+      "options": [
+        "Clocks are synchronized",
+        "Reads go to the leader",
+        "The log is applied in order",
+        "There's no replication"
+      ]
+    },
+    {
+      "prompt": "What's often the best fix for answers appearing before questions?",
+      "options": [
+        "More replicas",
+        "Keep a conversation's messages in the conversation's partition",
+        "Last write wins",
+        "Longer TTLs"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the strongest consistency model that needs no coordination and stays available during partitions? (one word)"
+    },
+    {
+      "prompt": "Which tools summarize causal dependencies compactly?",
+      "options": [
+        "B-trees",
+        "Round robin",
+        "Bloom filters",
+        "Version vectors or hybrid logical clocks"
+      ]
+    },
+    {
+      "prompt": "Which session guarantee prevents \"my delete was applied before my create\"?",
+      "options": [
+        "Monotonic writes",
+        "Read your writes",
+        "Monotonic reads",
+        "Writes follow reads"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Session guarantees are cheap because they need only per-session metadata, not coordination between replicas."
+    },
+    {
+      "prompt": "Which model has every reader see the latest write, as if there were one copy?",
+      "options": [
+        "Monotonic reads",
+        "Eventual consistency",
+        "Linearizability",
+        "Bounded staleness"
+      ]
+    },
+    {
+      "prompt": "Which operation most needs a linearizable read?",
+      "options": [
+        "Checking that a username is still free",
+        "Listing old blog posts",
+        "Showing a like count",
+        "Loading a profile photo"
+      ]
+    }
+  ]
+}

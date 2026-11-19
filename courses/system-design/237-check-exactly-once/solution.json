@@ -1,0 +1,30 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Retries make at-least-once inevitable. You can make the effect happen once."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Applying it twice gives the same result."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Output and progress move together."
+    },
+    {
+      "accepted_answers": [
+        "once"
+      ],
+      "explanation": "The final effect is as if each message were processed once."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The guarantee is end to end."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Store each message's id or offset with the result."
+    }
+  ]
+}

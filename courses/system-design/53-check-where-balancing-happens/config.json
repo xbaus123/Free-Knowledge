@@ -1,0 +1,65 @@
+{
+  "type": "quiz",
+  "title": "Check: L4, L7, and More",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What's the main weakness of DNS-based load balancing?",
+      "options": [
+        "It costs too much",
+        "It can't return more than one address",
+        "It only works in one region",
+        "Cached answers make changes and failover lag by the TTL, and it knows nothing about load"
+      ]
+    },
+    {
+      "prompt": "What does an L4 load balancer see?",
+      "options": [
+        "Each HTTP request's path and headers",
+        "Database queries",
+        "Addresses and ports of TCP or UDP connections, not the bytes inside",
+        "Only DNS names"
+      ]
+    },
+    {
+      "prompt": "Why can an L4 balancer spread gRPC traffic badly?",
+      "options": [
+        "gRPC uses UDP",
+        "gRPC requires sticky sessions",
+        "L4 balancers can't forward binary data",
+        "gRPC multiplexes many requests over a few long-lived connections, and L4 balances connections, not requests"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "An L7 load balancer can route /api/* to API servers and /static/* to a file server."
+    },
+    {
+      "prompt": "Which header does an L7 balancer add so backends know the client's real address?",
+      "options": [
+        "Content-Type",
+        "Idempotency-Key",
+        "X-Forwarded-For",
+        "Authorization"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "With ______ server return, an L4 backend's response skips the load balancer entirely. (one word)"
+    },
+    {
+      "prompt": "Where does client-side load balancing happen?",
+      "options": [
+        "In the TLS handshake",
+        "In the DNS root servers",
+        "In the database",
+        "Each client holds the server list and picks a server itself"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "An L7 balancer should retry any failed request on another backend, including non-idempotent POSTs."
+    }
+  ]
+}

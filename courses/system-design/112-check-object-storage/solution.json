@@ -1,0 +1,35 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "Keep the blob in an object store and the pointer plus metadata in the database."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Each of those operations needs coordination across machines."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The namespace is flat. Folders are an illusion created by listing with a prefix and a delimiter."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Objects are immutable and written whole."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Ranged reads fetch only the bytes needed."
+    },
+    {
+      "accepted_answers": [
+        "etag",
+        "e-tag"
+      ],
+      "explanation": "For simple uploads, it's the MD5 of the bytes."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Your servers never touch the traffic or hand out credentials."
+    }
+  ]
+}

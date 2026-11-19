@@ -1,0 +1,65 @@
+{
+  "type": "quiz",
+  "title": "Check: The Memory Hierarchy",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Order these from fastest to slowest access.",
+      "options": [
+        "RAM, SSD random read, spinning disk seek",
+        "SSD, RAM, spinning disk",
+        "Spinning disk, SSD, RAM",
+        "RAM, spinning disk, SSD"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "RAM survives a power loss."
+    },
+    {
+      "prompt": "Storage reads whole 4 KB pages instead of single bytes. Which kind of locality does that exploit?",
+      "options": [
+        "Network locality",
+        "Spatial locality",
+        "Temporal locality",
+        "No locality"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which eviction policy throws out whatever has gone longest without use? (three letters)"
+    },
+    {
+      "prompt": "RAM at 100 ns sits in front of an SSD at 100 µs. With a 99% hit rate, what's the average access time?",
+      "options": [
+        "About 1,100 ns",
+        "About 100 µs",
+        "About 100 ns",
+        "About 101 ns"
+      ]
+    },
+    {
+      "prompt": "Why are append-only logs popular in storage engines?",
+      "options": [
+        "They need no fsync",
+        "They turn every write into a fast sequential one",
+        "They make random reads faster",
+        "They use less disk space"
+      ]
+    },
+    {
+      "prompt": "The page cache holds a write in RAM and writes it to disk later. What's the risk?",
+      "options": [
+        "The disk fills up",
+        "Reads get slower",
+        "A crash can lose a write the program believed was saved",
+        "Nothing: it's always safe"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which system call forces buffered writes onto durable storage? (one word)"
+    }
+  ]
+}

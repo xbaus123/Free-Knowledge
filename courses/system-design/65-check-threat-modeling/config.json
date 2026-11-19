@@ -1,0 +1,65 @@
+{
+  "type": "quiz",
+  "title": "Check: Threat Modeling",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Where does threat modeling look hardest for things that can go wrong?",
+      "options": [
+        "At trust boundaries, where data crosses between parties that trust each other differently",
+        "In the CSS",
+        "Inside a single function",
+        "At the database's indexes"
+      ]
+    },
+    {
+      "prompt": "An attacker edits a token's role claim to admin. Which STRIDE threat is that?",
+      "options": [
+        "Denial of service",
+        "Tampering",
+        "Spoofing",
+        "Repudiation"
+      ]
+    },
+    {
+      "prompt": "A customer calls an admin-only endpoint and it works. Which STRIDE threat is that?",
+      "options": [
+        "Tampering",
+        "Elevation of privilege",
+        "Repudiation",
+        "Information disclosure"
+      ]
+    },
+    {
+      "prompt": "A user claims \"I never issued that refund.\" Which defense addresses this repudiation?",
+      "options": [
+        "Rate limiting",
+        "TLS",
+        "A CDN",
+        "Tamper-evident audit logs"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which principle says every user, service, and key gets only the minimum access it needs? (two words)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "When the policy service is down and a request can't be authorized, the safe choice is to allow it so users aren't blocked."
+    },
+    {
+      "prompt": "What does defense in depth mean?",
+      "options": [
+        "Put all security in the gateway",
+        "Assume any one layer will fail, so encrypt and authenticate and authorize and audit",
+        "Hide the system's architecture",
+        "Use the longest possible passwords"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What does the S in STRIDE stand for? (one word)"
+    }
+  ]
+}

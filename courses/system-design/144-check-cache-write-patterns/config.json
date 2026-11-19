@@ -1,0 +1,66 @@
+{
+  "type": "quiz",
+  "title": "Check: Cache Write Patterns",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Why delete the cached copy on a write instead of updating it?",
+      "options": [
+        "Deletes are faster",
+        "Concurrent writers' cache updates can arrive out of order, but deletes are order-insensitive",
+        "To save memory",
+        "Updates aren't allowed"
+      ]
+    },
+    {
+      "prompt": "A slow reader loads an old value, a writer updates the database and deletes the key, then the reader stores its stale value. What fixes it?",
+      "options": [
+        "LRU",
+        "A bigger cache",
+        "Write-around",
+        "Leases: a delete invalidates the reader's token, so its set is refused"
+      ]
+    },
+    {
+      "prompt": "What's write-through's weakness?",
+      "options": [
+        "Reads after a write miss",
+        "It loses unflushed writes",
+        "Every write pays for both stores, and a failure between them leaves them disagreeing",
+        "It can't be used with databases"
+      ]
+    },
+    {
+      "prompt": "Which pattern coalesces a counter incremented 1,000 times into one database write?",
+      "options": [
+        "Cache-aside",
+        "Write-around",
+        "Write-behind",
+        "Write-through"
+      ]
+    },
+    {
+      "prompt": "What's write-behind's main risk?",
+      "options": [
+        "Stale reads forever",
+        "Slow writes",
+        "No caching of reads",
+        "Acknowledged writes are lost if the cache node dies before flushing"
+      ]
+    },
+    {
+      "prompt": "Which pattern suits log entries written once and rarely read soon after?",
+      "options": [
+        "Write-around",
+        "Read-through only",
+        "Write-through",
+        "Write-behind"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A TTL on every cache entry bounds how long any staleness bug can last."
+    }
+  ]
+}

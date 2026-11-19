@@ -1,0 +1,52 @@
+{
+  "type": "quiz",
+  "title": "Check: Deadlock",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Thread A locks account x and waits for y. Thread B locks y and waits for x. What happens?",
+      "options": [
+        "One finishes first",
+        "Python raises a race condition error",
+        "The scheduler swaps the locks",
+        "Both wait forever: a deadlock"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Deadlock requires several conditions at once, so breaking any one of them prevents it."
+    },
+    {
+      "prompt": "Which condition does lock ordering break?",
+      "options": [
+        "No preemption",
+        "The cycle of waiting",
+        "Hold and wait",
+        "Mutual exclusion"
+      ]
+    },
+    {
+      "prompt": "Which rule is an example of lock ordering for transfers?",
+      "options": [
+        "Always lock the source first",
+        "Lock whichever account is larger",
+        "Always lock the account with the lower id first",
+        "Always lock the target first"
+      ]
+    },
+    {
+      "prompt": "What do databases do when row locks deadlock?",
+      "options": [
+        "Silently drop both writes",
+        "Detect the cycle and abort one transaction, which the application must retry",
+        "Wait forever",
+        "Restart the server"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "How many locks does a deadlock between two threads need, at minimum? (number)"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "users.id, for example."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Foreign keys are how tables relate; joins recombine the rows at query time."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Migration scripts, admin tools, and next year's service are all covered."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "UNIQUE also creates an index, because checking uniqueness quickly needs one."
+    },
+    {
+      "accepted_answers": [
+        "check"
+      ],
+      "explanation": "CHECK (balance >= 0) makes the database reject any write that would leave a negative balance."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "That's the point: let the database say no."
+    },
+    {
+      "accepted_answers": [
+        "normalization",
+        "normalisation"
+      ],
+      "explanation": "Copying facts around is denormalizing: faster for some reads, but every copy can disagree."
+    }
+  ]
+}

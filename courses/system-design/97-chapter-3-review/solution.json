@@ -1,0 +1,54 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Multi-hop traversals are what graphs are for."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Every copy is a place that can disagree."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's its whole appeal."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "That's what SSTables' sparse indexes fix."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "It answers \"definitely not here.\""
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Read the inputs side by side and write the smallest key first."
+    },
+    {
+      "accepted_answers": [
+        "memtable"
+      ],
+      "explanation": "It's flushed to an SSTable when it gets big."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "500^4 pages × 4 KB ≈ 256 TB."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "One root-to-leaf path, versus possibly several structures."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "B-trees through the WAL and page writes, LSM-trees through compaction."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Aggregations over a few columns of many rows are what column stores are built for."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "You say what; it decides how."
+    }
+  ]
+}

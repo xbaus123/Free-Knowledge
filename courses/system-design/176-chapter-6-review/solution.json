@@ -1,0 +1,54 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "Keys stay sorted in each partition."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Only neighbors on the ring give up keys."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Each partition indexes only its own documents."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "B tokens, refilled at R per second."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "One home region per user."
+    },
+    {
+      "accepted_answers": [
+        "13"
+      ],
+      "explanation": "max(2, 6) + max(7, 1) = 6 + 7 = 13."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A failed site withdraws its BGP announcement."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Writes not yet replicated are lost with the region."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "private, Authorization, and Set-Cookie rules exist for this."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A change produces a new name."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It's the other way around."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Pay for coordination only where it matters."
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "type": "quiz",
+  "title": "Check: Processes and Threads",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What do threads in the same process share?",
+      "options": [
+        "Only the CPU core",
+        "Nothing",
+        "Memory",
+        "Only files"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A crash in one thread can take down every thread in the same process."
+    },
+    {
+      "prompt": "Which is cheaper to create and switch between?",
+      "options": [
+        "Neither can be switched",
+        "They cost the same",
+        "Processes",
+        "Threads"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the name for the scheduler moving a core from one thread to another? (two words, hyphen allowed)"
+    },
+    {
+      "prompt": "One core runs two tasks by switching between them. Is that concurrency or parallelism?",
+      "options": [
+        "Parallelism",
+        "Both",
+        "Neither",
+        "Concurrency"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Because of Python's GIL, Python threads can't have race conditions."
+    },
+    {
+      "prompt": "Why did older web servers run one process per request?",
+      "options": [
+        "The GIL requires it",
+        "Processes are cheaper than threads",
+        "Processes share memory more easily",
+        "Isolation: one request's crash or bad memory write can't affect others"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "Store the gaps; small numbers compress well."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "With 10 postings against 10 million, most of the long list is irrelevant."
+    },
+    {
+      "accepted_answers": [
+        "roaring"
+      ],
+      "explanation": "Roaring bitmaps."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Older engines dropped them entirely."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Clean the characters, split into tokens, then transform the tokens."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Lemmatizing uses a dictionary (better → good)."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The query must go through the same analyzer as the documents."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Recall: find every relevant document. Precision: return only relevant ones."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "It spreads load, routes around dead servers, and hides how many servers there are. It doesn't make a single request cheaper."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Rolling deployments, canaries, and failover all depend on it."
+    },
+    {
+      "accepted_answers": [
+        "sticky"
+      ],
+      "explanation": "Sticky sessions spread load unevenly and lose sessions when that server dies."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Then any server can handle any request."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Moving state out is what makes servers disposable."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "That's the cost of state on the server."
+    }
+  ]
+}

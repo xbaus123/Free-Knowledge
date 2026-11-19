@@ -1,0 +1,40 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "10,000/s × 0.2 s. Every one hits the database for the same thing."
+    },
+    {
+      "accepted_answers": [
+        "thundering herd",
+        "dogpile effect",
+        "dogpile"
+      ],
+      "explanation": "Also called the dogpile effect."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Spread expiries out."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Go's singleflight package is the standard example."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "That's cache penetration."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Usually only one or two readers refresh, before the key ever expires."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Users see slightly stale data instead of a slow page."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Hot keys are skew at the cache tier."
+    }
+  ]
+}

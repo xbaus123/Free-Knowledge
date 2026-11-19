@@ -1,0 +1,36 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Clients talking to a reverse proxy think it's the origin."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "This also blunts slow-request attacks like Slowloris."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It receives requests on behalf of backends and forwards them."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Keep the gateway to cross-cutting concerns, or it becomes a distributed monolith."
+    },
+    {
+      "accepted_answers": [
+        "frontend",
+        "front end",
+        "front-end"
+      ],
+      "explanation": "A BFF aggregates and reshapes calls for that one client."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "If the canary looks healthy, shift more traffic."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Meshes handle east-west traffic between services; gateways handle north-south traffic from clients."
+    }
+  ]
+}

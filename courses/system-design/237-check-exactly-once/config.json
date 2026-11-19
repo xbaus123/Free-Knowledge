@@ -1,0 +1,52 @@
+{
+  "type": "quiz",
+  "title": "Check: Exactly Once",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "type": "true_false",
+      "prompt": "Duplicates can be eliminated entirely at the transport level."
+    },
+    {
+      "prompt": "Which write is idempotent?",
+      "options": [
+        "Append a row",
+        "Increment a counter",
+        "Add 20 to balance",
+        "Set balance to 120"
+      ]
+    },
+    {
+      "prompt": "How do Kafka transactions and Flink checkpoints get effectively-once?",
+      "options": [
+        "They store nothing",
+        "They commit the output and the consumer's offset together",
+        "They skip retries",
+        "They use bigger partitions"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "At-least-once delivery plus idempotent or transactional processing gives effectively-______ processing. (one word)"
+    },
+    {
+      "prompt": "Why must idempotency keys flow all the way from the client?",
+      "options": [
+        "They don't need to",
+        "If any step isn't idempotent or transactional, duplicates leak through",
+        "To speed up brokers",
+        "For logging only"
+      ]
+    },
+    {
+      "prompt": "What's deduplication at the sink?",
+      "options": [
+        "Skipping events whose id has already been applied",
+        "Sorting by key",
+        "Compressing messages",
+        "Deleting the topic"
+      ]
+    }
+  ]
+}

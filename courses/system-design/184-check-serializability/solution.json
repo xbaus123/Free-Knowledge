@@ -1,0 +1,35 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Transactions must be short and data must fit in memory."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Predicate locks stop phantoms too."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "That's PostgreSQL's SERIALIZABLE."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Aborts are how SSI resolves conflicts."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Only serializable prevents write skew and phantoms."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Snapshots fix read skew."
+    },
+    {
+      "accepted_answers": [
+        "two-phase locking",
+        "two phase locking"
+      ],
+      "explanation": "Locks held until commit."
+    }
+  ]
+}

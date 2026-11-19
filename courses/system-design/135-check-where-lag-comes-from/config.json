@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Check: Measuring Lag",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "type": "true_false",
+      "prompt": "Replication lag on a healthy system is bounded to a few milliseconds."
+    },
+    {
+      "prompt": "Why can one huge transaction delay everything behind it on a follower?",
+      "options": [
+        "Indexes are rebuilt",
+        "Followers apply changes in commit order",
+        "The leader pauses",
+        "Big transactions are dropped"
+      ]
+    },
+    {
+      "prompt": "A leader writes on 32 cores; a follower replays the log on one thread. What happens under heavy write load?",
+      "options": [
+        "The leader slows down to match",
+        "The follower skips writes",
+        "Nothing",
+        "The follower falls further and further behind"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's PostgreSQL's name for log positions? Answer with the acronym. (three letters)"
+    },
+    {
+      "prompt": "A leader writes 50,000 changes a second, and a follower is 50,000 writes behind. How stale is it?",
+      "options": [
+        "It can't be known",
+        "About a millisecond",
+        "About 50,000 seconds",
+        "About one second"
+      ]
+    },
+    {
+      "prompt": "Why do teams have the leader write a heartbeat row every second?",
+      "options": [
+        "So lag is measured as the age of the newest heartbeat a follower applied, even when the leader is idle",
+        "To compact the log",
+        "To trigger failover",
+        "To keep connections alive"
+      ]
+    },
+    {
+      "prompt": "What should a load balancer do with a follower that's an hour behind?",
+      "options": [
+        "Send it only writes",
+        "Take it out of the read pool",
+        "Keep sending it reads, since it's up",
+        "Promote it to leader"
+      ]
+    }
+  ]
+}

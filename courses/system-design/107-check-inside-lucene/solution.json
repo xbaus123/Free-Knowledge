@@ -1,0 +1,34 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "New data goes to a buffer, then to immutable segments that are merged later."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "A refresh writes the buffer out as a new searchable segment, about once a second."
+    },
+    {
+      "accepted_answers": [
+        "translog"
+      ],
+      "explanation": "A periodic flush fsyncs segments and truncates the translog."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The space is reclaimed when the segment is merged."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Segments never change."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Every search has to visit every segment."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Doc values are column-oriented storage, one column per field."
+    }
+  ]
+}

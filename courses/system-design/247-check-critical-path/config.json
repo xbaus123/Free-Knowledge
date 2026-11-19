@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Check: Critical Paths and OpenTelemetry",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "A handler calls three services in parallel: 40 ms, 120 ms, and 60 ms. Which one should you optimize first?",
+      "options": [
+        "The 60 ms one",
+        "The 120 ms one, on the critical path",
+        "The 40 ms one",
+        "All equally"
+      ]
+    },
+    {
+      "prompt": "How do you approximate the critical path?",
+      "options": [
+        "From the root, step to the child that finished last, and repeat",
+        "Pick the first child",
+        "Pick the longest span anywhere",
+        "Sum all spans"
+      ]
+    },
+    {
+      "prompt": "What's head sampling's weakness?",
+      "options": [
+        "It drops the rare slow or failed requests you most want to see",
+        "It splits traces",
+        "It's expensive",
+        "It needs a collector"
+      ]
+    },
+    {
+      "prompt": "Tail sampling decides when?",
+      "options": [
+        "Never",
+        "After the whole trace is complete, so it can keep every error and every slow trace",
+        "Randomly per span",
+        "At the root"
+      ]
+    },
+    {
+      "prompt": "What does OpenTelemetry give you?",
+      "options": [
+        "A log store only",
+        "A metrics database",
+        "Vendor-neutral APIs, SDKs, auto-instrumentation, and a collector for metrics, logs, and traces",
+        "A dashboard tool"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Sample trace ids recorded alongside histogram buckets, linking a metric spike to a trace, are called what? (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "OpenTelemetry's semantic conventions standardize attribute names like http.request.method."
+    }
+  ]
+}

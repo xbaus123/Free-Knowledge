@@ -1,0 +1,74 @@
+{
+  "type": "quiz",
+  "title": "Check: TCP and UDP",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What does a port let you do?",
+      "options": [
+        "Compress data",
+        "Route packets between networks",
+        "Encrypt traffic",
+        "Run many programs on one address, each reachable separately"
+      ]
+    },
+    {
+      "prompt": "Put TCP's three-way handshake in order.",
+      "options": [
+        "SYN, SYN-ACK, ACK",
+        "ACK, SYN, SYN-ACK",
+        "SYN, ACK, FIN",
+        "SYN-ACK, SYN, ACK"
+      ]
+    },
+    {
+      "prompt": "A receiver sends \"ACK 1000\". What does it mean?",
+      "options": [
+        "I received exactly 1000 segments",
+        "I have every byte before byte 1000",
+        "The window is 1000 bytes",
+        "Please resend byte 1000 only"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "After a retransmission, a TCP receiver may see the same bytes twice and must drop the duplicates."
+    },
+    {
+      "type": "written",
+      "prompt": "One lost TCP segment stalls every byte behind it until the retransmission arrives. What's that called? (three words, hyphens allowed)"
+    },
+    {
+      "prompt": "Which of these is the best fit for UDP?",
+      "options": [
+        "An SSH session",
+        "Replicating a database",
+        "A video call that would rather skip a lost frame than wait for it",
+        "Transferring a bank statement"
+      ]
+    },
+    {
+      "prompt": "QUIC, the transport under HTTP/3, is built on which protocol?",
+      "options": [
+        "TCP",
+        "Ethernet",
+        "DNS",
+        "UDP"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "TCP makes the network reliable, so a TCP application never sees a timeout."
+    },
+    {
+      "prompt": "What does TCP's window control?",
+      "options": [
+        "How many unacknowledged bytes can be in flight",
+        "How long DNS answers are cached",
+        "How many connections a server accepts",
+        "The size of the IP header"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "That's delegated authorization."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The resource server is the API holding the data; the client is the app; the resource owner is the user."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The client never sees it."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The code challenge sent earlier is the verifier's hash."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It ties the response to the request the client made."
+    },
+    {
+      "accepted_answers": [
+        "client credentials",
+        "client-credentials"
+      ],
+      "explanation": "The token names the service itself."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Add the openid scope and get an ID token for the client."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "ID tokens are for the client. APIs accept access tokens."
+    }
+  ]
+}

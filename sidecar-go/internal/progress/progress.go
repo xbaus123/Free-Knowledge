@@ -217,6 +217,56 @@ var migrations = []string{
 	UPDATE telemetry_sessions SET lesson_id = (SELECT new FROM renamed WHERE old = lesson_id)
 		WHERE course_id = 'system-design' AND lesson_id IN (SELECT old FROM renamed);
 	DROP TABLE renamed;`,
+	// System Design 8.0 split every long reading into short readings, each
+	// followed by a quiz, and added drills and chapter reviews. Labs and
+	// simulator lessons keep their progress under their new ids, and a split
+	// reading's progress moves to its first part. The four old knowledge
+	// checks were replaced by new quizzes with different questions, so their
+	// saved answers aren't carried over.
+	`CREATE TEMP TABLE renamed (old TEXT PRIMARY KEY, new TEXT NOT NULL);
+	INSERT INTO renamed VALUES
+		('01-core-vocabulary', '01-reliability-and-faults'),
+		('03-networking-basics', '18-networking-lab'),
+		('05-os-and-hardware', '27-concurrency-lab'),
+		('06-api-paradigms', '36-api-lab'),
+		('08-database-101', '45-database-lab'),
+		('10-back-of-the-envelope', '46-back-of-the-envelope'),
+		('11-scaling-out', '48-scaling-out'),
+		('12-load-balancing-and-gateways', '62-load-balancer-lab'),
+		('13-security-and-identity', '80-security-lab'),
+		('14-data-models-and-apis', '82-data-models-in-depth'),
+		('15-three-data-models', '86-three-data-models'),
+		('16-storage-engines', '87-logs-and-hash-indexes'),
+		('17-bitcask-kv-store', '89-bitcask-kv-store'),
+		('18-compaction-and-sstables', '92-compaction-and-sstables'),
+		('19-search-and-indexing', '110-search-lab'),
+		('20-blob-and-tsdb-storage', '123-blob-and-tsdb-lab'),
+		('21-encoding-and-evolution', '124-encoding-and-evolution'),
+		('22-rolling-deployment', '125-rolling-deployment'),
+		('23-replication', '127-single-leader-replication'),
+		('24-replication-lag-and-consistency', '140-replication-lag-lab'),
+		('25-caching-strategies', '149-caching-lab'),
+		('26-partitioning-and-rate-limiting', '151-partitioning-strategies'),
+		('27-consistent-hashing', '157-consistent-hashing'),
+		('28-geographical-distribution', '175-geo-distribution-lab'),
+		('29-transactions', '177-acid-and-read-committed'),
+		('30-write-skew', '186-write-skew-lab'),
+		('31-distributed-trouble', '187-distributed-trouble'),
+		('32-resiliency-patterns', '198-resiliency-lab'),
+		('33-fencing-tokens', '199-fencing-tokens'),
+		('34-consistency-and-consensus', '202-linearizability'),
+		('35-raft-leader-election', '210-raft-leader-election'),
+		('36-microservices-and-architecture', '222-microservices-lab'),
+		('37-message-queues', '231-message-queues-lab'),
+		('38-batch-and-stream-processing', '232-batch-processing'),
+		('39-change-data-capture', '238-change-data-capture'),
+		('40-observability-and-telemetry', '250-observability-lab'),
+		('41-capstone', '253-capstone');
+	UPDATE lesson_progress SET lesson_id = (SELECT new FROM renamed WHERE old = lesson_id)
+		WHERE course_id = 'system-design' AND lesson_id IN (SELECT old FROM renamed);
+	UPDATE telemetry_sessions SET lesson_id = (SELECT new FROM renamed WHERE old = lesson_id)
+		WHERE course_id = 'system-design' AND lesson_id IN (SELECT old FROM renamed);
+	DROP TABLE renamed;`,
 }
 
 type Store struct {

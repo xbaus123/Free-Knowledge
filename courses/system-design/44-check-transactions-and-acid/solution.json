@@ -1,0 +1,35 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "All of a transaction's writes happen, or none do."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Ideally the result is as if they ran one at a time. Real databases offer weaker, faster isolation levels."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "That's durability."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Consistency is a property of your data's rules. The database provides the tools."
+    },
+    {
+      "accepted_answers": [
+        "rollback",
+        "rollback;"
+      ],
+      "explanation": "COMMIT makes them permanent; ROLLBACK discards them."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It's a transaction around the block."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It changes nothing and succeeds. Check cursor.rowcount to see how many rows changed."
+    }
+  ]
+}

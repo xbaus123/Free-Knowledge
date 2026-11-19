@@ -1,0 +1,101 @@
+{
+  "type": "quiz",
+  "title": "Chapter Review: Partitioning and Geography",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Which partitioning keeps range scans efficient?",
+      "options": [
+        "Hash",
+        "Round robin",
+        "Random",
+        "Key range"
+      ]
+    },
+    {
+      "prompt": "Which rebalancing approach moves about 1/N of keys when a node joins?",
+      "options": [
+        "hash mod N",
+        "Consistent hashing",
+        "Global indexes",
+        "Fixed windows"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A document-partitioned secondary index needs scatter/gather for queries by the indexed value."
+    },
+    {
+      "prompt": "Which rate limiter allows bursts while capping the average?",
+      "options": [
+        "Leaky bucket",
+        "Fixed window",
+        "Token bucket",
+        "Sliding log"
+      ]
+    },
+    {
+      "prompt": "Which topology avoids write conflicts and fits data residency?",
+      "options": [
+        "Multi-leader active-active",
+        "Single region",
+        "Geo-partitioning",
+        "Anycast"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Two regions' G-counters are {a: 2, b: 7} and {a: 6, b: 1}. What's the merged value? (number)"
+    },
+    {
+      "prompt": "Which routing technique fails over in seconds without DNS changes?",
+      "options": [
+        "Sticky sessions",
+        "Anycast",
+        "GeoDNS",
+        "Static IP lists"
+      ]
+    },
+    {
+      "prompt": "Which RPO does asynchronous cross-region replication give?",
+      "options": [
+        "Roughly the replication lag, typically seconds",
+        "Zero",
+        "Days",
+        "It depends on DNS TTLs"
+      ]
+    },
+    {
+      "prompt": "A user's account page was served to strangers by the CDN. What was the likely mistake?",
+      "options": [
+        "Short TTLs",
+        "Caching a personalized response in a shared cache",
+        "Using versioned URLs",
+        "Too many PoPs"
+      ]
+    },
+    {
+      "prompt": "Why version static asset URLs with a content hash?",
+      "options": [
+        "So they can be cached forever and never purged",
+        "To make them private",
+        "To disable caching",
+        "To shorten URLs"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Partitioning protects against unexpected abuse, and rate limiting handles expected growth."
+    },
+    {
+      "prompt": "A geo-distributed bank balance and a like count need different guarantees. Which pairing fits?",
+      "options": [
+        "CRDT for both",
+        "LWW for both",
+        "Consensus for the like count only",
+        "Consensus for the balance, a CRDT for the like count"
+      ]
+    }
+  ]
+}

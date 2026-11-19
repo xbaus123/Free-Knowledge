@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Check: OLTP and OLAP",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "\"Fetch a few records by key\" is the typical query of which workload?",
+      "options": [
+        "Batch",
+        "OLTP",
+        "OLAP",
+        "ETL"
+      ]
+    },
+    {
+      "prompt": "Why do analytics workloads move to a separate data warehouse?",
+      "options": [
+        "Warehouses are cheaper for single-row lookups",
+        "To avoid indexes",
+        "Production databases can't store history",
+        "So heavy analytical queries can't slow down the production database"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What does ETL stand for? (three words)"
+    },
+    {
+      "prompt": "In a star schema, what sits at the center?",
+      "options": [
+        "An inverted index",
+        "The memtable",
+        "A large fact table of events",
+        "A dimension table of products"
+      ]
+    },
+    {
+      "prompt": "A query reads 3 columns of a 100-column table. Why is column storage faster?",
+      "options": [
+        "It only touches those 3 columns' files",
+        "It uses B-trees",
+        "It caches every row",
+        "It skips compression"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Columns compress extremely well because each holds similar values."
+    },
+    {
+      "prompt": "Which of these is a columnar format or warehouse?",
+      "options": [
+        "Bitcask",
+        "Redis",
+        "SQLite",
+        "Parquet"
+      ]
+    }
+  ]
+}

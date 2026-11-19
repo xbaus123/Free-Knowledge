@@ -1,0 +1,47 @@
+{
+  "type": "quiz",
+  "title": "Check: Why Multi-Region",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Which three forces push a system out of one region?",
+      "options": [
+        "Security, testing, and deploys",
+        "Caching, indexing, and logging",
+        "Latency, availability, and regulation",
+        "Cost, simplicity, and speed"
+      ]
+    },
+    {
+      "prompt": "New York to London is about 5,600 km. What's the fastest possible round trip in fiber?",
+      "options": [
+        "About 1 ms",
+        "About 560 ms",
+        "About 5.6 ms",
+        "About 56 ms"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Enough server capacity in one region can make distant users' requests as fast as nearby users'."
+    },
+    {
+      "type": "written",
+      "prompt": "Which disaster recovery number measures how much recent data you can afford to lose? (three letters)"
+    },
+    {
+      "type": "written",
+      "prompt": "Which number measures how long until you're serving again? (three letters)"
+    },
+    {
+      "prompt": "Which is a real cost of going multi-region?",
+      "options": [
+        "No more replicas",
+        "Harder consistency, cross-region bandwidth bills, and capacity in every region",
+        "Less availability",
+        "Higher latency for nearby users"
+      ]
+    }
+  ]
+}

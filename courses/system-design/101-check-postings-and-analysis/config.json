@@ -1,0 +1,70 @@
+{
+  "type": "quiz",
+  "title": "Check: Postings and Analysis",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Postings 1003, 1007, 1010 are delta-encoded. What's stored?",
+      "options": [
+        "1, 2, 3",
+        "3, 4, 1003",
+        "1003, 1007, 1010",
+        "1003, 4, 3"
+      ]
+    },
+    {
+      "prompt": "Why do skip lists help when intersecting a rare term with a very common one?",
+      "options": [
+        "The engine jumps through the long list instead of reading it all",
+        "They remove stopwords",
+        "They compress the rare list",
+        "They sort the list"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which kind of compressed bitmap turns AND and OR into fast bitwise operations for very common terms? (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Modern engines often keep stopwords, because compression makes them cheap and phrases like \"to be or not to be\" need them."
+    },
+    {
+      "prompt": "Put the analyzer's stages in order.",
+      "options": [
+        "Character filters, tokenizer, token filters",
+        "Tokenizer, character filters, token filters",
+        "Token filters, tokenizer, character filters",
+        "Tokenizer only"
+      ]
+    },
+    {
+      "prompt": "Reducing running and runs to run is called what?",
+      "options": [
+        "Tokenizing",
+        "Lemmatizing",
+        "Stemming",
+        "Delta encoding"
+      ]
+    },
+    {
+      "prompt": "Documents are lowercased and stemmed, but queries aren't. What happens?",
+      "options": [
+        "Nothing changes",
+        "\"Running\" never matches anything",
+        "Every query matches every document",
+        "Search gets faster"
+      ]
+    },
+    {
+      "prompt": "Aggressive stemming finds more documents but conflates universe and university. That's a trade-off between what?",
+      "options": [
+        "Latency and throughput",
+        "Recall and precision",
+        "Consistency and availability",
+        "Reads and writes"
+      ]
+    }
+  ]
+}

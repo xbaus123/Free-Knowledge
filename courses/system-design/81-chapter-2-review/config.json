@@ -1,0 +1,123 @@
+{
+  "type": "quiz",
+  "title": "Chapter Review: The Front Door",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Demand is 1,200 requests/s and one server handles 500 at a safe utilization. How many servers do you need, with a spare?",
+      "options": [
+        "4",
+        "2",
+        "12",
+        "3"
+      ]
+    },
+    {
+      "prompt": "Which balancer can route by URL path?",
+      "options": [
+        "L4",
+        "L7",
+        "Anycast",
+        "DNS"
+      ]
+    },
+    {
+      "prompt": "Why is least connections better than round robin for uneven requests?",
+      "options": [
+        "It keeps users on one server",
+        "It's stateless",
+        "It sees which servers are backed up and steers around them",
+        "It needs no health checks"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Health checks that test a shared database can turn a database blip into a total outage."
+    },
+    {
+      "prompt": "Which belongs in a service rather than in the API gateway?",
+      "options": [
+        "Routing /api/orders to the order service",
+        "Rate limiting per client",
+        "Verifying a token's signature",
+        "Checking that order 7 belongs to this user"
+      ]
+    },
+    {
+      "prompt": "Which STRIDE threat does rate limiting defend against?",
+      "options": [
+        "Spoofing",
+        "Tampering",
+        "Denial of service",
+        "Repudiation"
+      ]
+    },
+    {
+      "prompt": "What does forward secrecy protect?",
+      "options": [
+        "Passwords in the database",
+        "Recorded past traffic, if the server's long-term key leaks later",
+        "The certificate chain",
+        "Future traffic after a key leaks"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "TLS where both sides present certificates is called ______ TLS. (one word)"
+    },
+    {
+      "prompt": "Which password storage is right?",
+      "options": [
+        "SHA-256",
+        "MD5 with a global salt",
+        "Argon2 with a per-user salt",
+        "Plain text in an encrypted database"
+      ]
+    },
+    {
+      "prompt": "A user is banned, but their 15-minute access token keeps working. Why?",
+      "options": [
+        "The gateway is broken",
+        "Self-contained tokens stay valid until they expire",
+        "The refresh token is still valid",
+        "Sessions can't be deleted"
+      ]
+    },
+    {
+      "prompt": "Which JWT check stops a token for an internal tool from being used against the payments API?",
+      "options": [
+        "Checking the kid",
+        "Checking iat",
+        "Checking the token length",
+        "Checking aud"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A JWT verifier should use whatever algorithm the token's header names."
+    },
+    {
+      "prompt": "In the code flow, what makes an intercepted authorization code useless?",
+      "options": [
+        "An HttpOnly cookie",
+        "The ID token",
+        "The state parameter",
+        "PKCE"
+      ]
+    },
+    {
+      "prompt": "\"Customers can read their own orders\" is awkward in pure RBAC. Why?",
+      "options": [
+        "It depends on the specific object, not just a role",
+        "RBAC has no permissions",
+        "RBAC can't inherit",
+        "Customers can't have roles"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "When a security check can't be completed, a system should fail ______. (one word)"
+    }
+  ]
+}

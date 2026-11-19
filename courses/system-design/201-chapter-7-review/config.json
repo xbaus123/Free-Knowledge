@@ -1,0 +1,101 @@
+{
+  "type": "quiz",
+  "title": "Chapter Review: Transactions and Fault Tolerance",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Which isolation level prevents write skew?",
+      "options": [
+        "Snapshot isolation",
+        "Read committed",
+        "Repeatable read in every database",
+        "Serializable"
+      ]
+    },
+    {
+      "prompt": "Which implementation of serializability is optimistic and aborts on conflict?",
+      "options": [
+        "SSI",
+        "Read committed",
+        "Serial execution",
+        "2PL"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "MVCC lets readers and writers proceed without blocking each other."
+    },
+    {
+      "prompt": "A booking check looks for overlapping rows that don't exist yet. What's the risk?",
+      "options": [
+        "Dirty writes",
+        "Torn records",
+        "Phantoms",
+        "Read skew"
+      ]
+    },
+    {
+      "prompt": "Why can't a timeout tell a dead node from a slow one?",
+      "options": [
+        "Timeouts are too short",
+        "Clocks are synchronized",
+        "Both look the same: no response yet",
+        "Dead nodes reply with errors"
+      ]
+    },
+    {
+      "prompt": "Retries in four layers turn one failure into 81 attempts. What's the fix?",
+      "options": [
+        "Add caches",
+        "Retry at one layer, within a budget",
+        "Retry more in each layer",
+        "Remove timeouts"
+      ]
+    },
+    {
+      "prompt": "Which pattern gives callers an instant error when a dependency is known to be down?",
+      "options": [
+        "Deadline",
+        "Circuit breaker",
+        "Bulkhead",
+        "Hedging"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "By Little's law, 50 requests a second at 100 ms each means about how many in progress? (number)"
+    },
+    {
+      "prompt": "Which is a cascading failure?",
+      "options": [
+        "A dropped packet",
+        "A slow non-essential service exhausting a page's worker threads",
+        "A cache miss",
+        "A disk filling up"
+      ]
+    },
+    {
+      "prompt": "Why propagate a deadline instead of fixed per-call timeouts?",
+      "options": [
+        "To synchronize clocks",
+        "To avoid retries",
+        "To make calls faster",
+        "To stop downstream work when the caller has already given up"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Full jitter randomizes each retry's wait over the whole backoff window."
+    },
+    {
+      "prompt": "A GC pause lets a lock expire, and the old holder writes anyway. What protects the data?",
+      "options": [
+        "Longer leases only",
+        "A CDN",
+        "Read committed",
+        "Fencing tokens checked by the storage"
+      ]
+    }
+  ]
+}

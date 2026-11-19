@@ -1,0 +1,70 @@
+{
+  "type": "quiz",
+  "title": "Check: Read-Your-Writes and Monotonic Reads",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "type": "true_false",
+      "prompt": "Read-your-writes guarantees a user sees other users' updates immediately."
+    },
+    {
+      "prompt": "What's the most precise way to provide read-your-writes?",
+      "options": [
+        "Remember the log position of the user's latest write, and read only from followers that have applied it",
+        "Read from the leader forever",
+        "Always read from a random follower",
+        "Disable caching"
+      ]
+    },
+    {
+      "prompt": "A user writes on their phone and reads on their laptop. Why can't the laptop enforce read-your-writes by itself?",
+      "options": [
+        "It doesn't know the phone's write position, so the position must be stored per user",
+        "Phones write to a different database",
+        "Laptops can't read from followers",
+        "It can, with no extra work"
+      ]
+    },
+    {
+      "prompt": "What must a cache in front of followers do for read-your-writes?",
+      "options": [
+        "Respect the same rule, or it replays the stale value for its whole TTL",
+        "Nothing",
+        "Use LFU",
+        "Cache only writes"
+      ]
+    },
+    {
+      "prompt": "What does monotonic reads guarantee?",
+      "options": [
+        "Your writes are applied in order",
+        "Reads are fast",
+        "You always see the latest write",
+        "Once you've seen a state, later reads never show an older one"
+      ]
+    },
+    {
+      "prompt": "What's the simplest way to provide monotonic reads?",
+      "options": [
+        "Read from a random follower",
+        "Shorter TTLs",
+        "Sticky routing: send each user's reads to the same follower",
+        "More followers"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Combining both guarantees, the session's minimum acceptable position is the ______ of its latest write and the newest state it read. (one word)"
+    },
+    {
+      "prompt": "Which database feature waits until a replica has applied given transactions?",
+      "options": [
+        "PostgreSQL's VACUUM",
+        "MySQL's WAIT_FOR_EXECUTED_GTID_SET()",
+        "SQLite's EXPLAIN",
+        "Redis EXPIRE"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Scalability only means something for a particular kind of growth: if load grows this way, what happens to performance and what can we add to cope?"
+    },
+    {
+      "accepted_answers": [
+        "fan-out",
+        "fanout",
+        "fan out"
+      ],
+      "explanation": "Fan-out is a load parameter. Twitter's home timelines made it famous."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Pushing at write time makes reads cheap, but an account with tens of millions of followers makes each of its tweets expensive. Those tweets are merged in at read time instead."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Each tweet is copied into every follower's cached timeline, so a write does much more work and a timeline read is a lookup."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Throughput matters most for batch work. For online services, what users feel is how long they wait."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Response time = service time + network delays + queueing delays. People often say latency loosely for all of it."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Response time is a distribution, not a number. That's why the next reading talks about percentiles."
+    }
+  ]
+}

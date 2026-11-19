@@ -1,0 +1,70 @@
+{
+  "type": "quiz",
+  "title": "Check: Cache Keys and Invalidation",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Why does Vary: User-Agent destroy a CDN's hit ratio?",
+      "options": [
+        "There are thousands of distinct user-agent strings, each a separate cache entry",
+        "CDNs ignore it",
+        "It makes responses private",
+        "It disables TLS"
+      ]
+    },
+    {
+      "prompt": "What should the edge do with utm_* tracking parameters?",
+      "options": [
+        "Reject the request",
+        "Cache each separately",
+        "Keep them",
+        "Drop them from the cache key, since they don't change the response"
+      ]
+    },
+    {
+      "prompt": "One purge should drop every page that showed product 42. What makes that possible?",
+      "options": [
+        "Versioned URLs",
+        "Surrogate keys (cache tags)",
+        "Vary: *",
+        "Shorter TTLs"
+      ]
+    },
+    {
+      "prompt": "What's the best invalidation strategy for static assets?",
+      "options": [
+        "Versioned URLs with a content hash, cached for a year as immutable",
+        "A 10-second TTL",
+        "Purging every deploy",
+        "Never caching them"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Regional mid-tier caches between the edges and the origin are called an origin ______. (one word)"
+    },
+    {
+      "prompt": "A news page gets 5,000 requests a second. What does a 1-second microcache do?",
+      "options": [
+        "Makes the page personal",
+        "Turns 5,000 origin requests a second into about 1 per PoP",
+        "Doubles origin load",
+        "Nothing for dynamic pages"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Personalized pages can't be cached, but a CDN still accelerates them with edge TLS and warm backbone connections."
+    },
+    {
+      "prompt": "Which is an example of edge compute?",
+      "options": [
+        "A bigger origin server",
+        "A database replica",
+        "A TTL",
+        "Checking a JWT in the PoP before the request reaches the origin"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "type": "quiz",
+  "title": "Check: Authentication and Sessions",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Which question does authorization answer?",
+      "options": [
+        "What may you do?",
+        "Who are you?",
+        "How fast is the server?",
+        "Is the connection encrypted?"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Authorization happens once per login."
+    },
+    {
+      "prompt": "Why not store passwords hashed with SHA-256?",
+      "options": [
+        "It's reversible",
+        "It's fast, so a GPU can try billions of guesses a second",
+        "It produces collisions for every password",
+        "It's too slow"
+      ]
+    },
+    {
+      "prompt": "What does a salt do?",
+      "options": [
+        "Makes each guess slower",
+        "Encrypts the password",
+        "Makes identical passwords hash differently, defeating precomputed tables",
+        "Lets you recover the password"
+      ]
+    },
+    {
+      "prompt": "What's the main advantage of a server-side session?",
+      "options": [
+        "It works across regions with no shared state",
+        "Revocation is trivial: delete the record",
+        "No lookup is needed on each request",
+        "It never expires"
+      ]
+    },
+    {
+      "prompt": "What's the main drawback of a self-contained signed token?",
+      "options": [
+        "Every request needs a database lookup",
+        "It stays valid until it expires, even after logout or a ban",
+        "It can't be verified locally",
+        "It can't hold a user id"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A long-lived token the client trades for new short-lived access tokens is a ______ token. (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "With refresh token rotation, reusing an old refresh token signals theft and revokes the whole chain."
+    }
+  ]
+}

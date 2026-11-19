@@ -1,0 +1,66 @@
+{
+  "type": "quiz",
+  "title": "Check: RPC",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "How does gRPC describe a service?",
+      "options": [
+        "In an OpenAPI YAML file",
+        "In a GraphQL schema",
+        "In SQL",
+        "In a Protocol Buffers interface definition"
+      ]
+    },
+    {
+      "prompt": "Why are Protocol Buffers messages smaller than the same data as JSON?",
+      "options": [
+        "They drop half the fields",
+        "They can't hold strings",
+        "They're compressed with gzip",
+        "They use field numbers and a binary encoding instead of field names in text"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "gRPC runs over HTTP/2, so many calls can share one connection and stream in either direction."
+    },
+    {
+      "prompt": "What does a gRPC deadline do?",
+      "options": [
+        "Encrypts the call",
+        "Schedules a call for later",
+        "Retries forever",
+        "Gives a call a time budget that propagates to the calls it makes"
+      ]
+    },
+    {
+      "prompt": "A JSON-RPC reply contains `\"error\": {\"code\": -32601}`. What went wrong?",
+      "options": [
+        "The params were invalid",
+        "Nothing: -32601 means success",
+        "The server timed out",
+        "The method doesn't exist"
+      ]
+    },
+    {
+      "prompt": "What's the trap with any RPC framework?",
+      "options": [
+        "It's too slow to use",
+        "Believing a remote call behaves like a local one",
+        "It needs a database",
+        "It can't carry errors"
+      ]
+    },
+    {
+      "prompt": "Where is RPC at its best?",
+      "options": [
+        "Browser caching",
+        "Inside an organization, between services you control on both sides",
+        "Serving static files",
+        "Public APIs for unknown clients"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "The queue absorbs the burst."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Accepted isn't done. Errors surface later and elsewhere."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The first of DDIA's two questions."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A work queue."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Each subscriber does something different with every event."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Groups receive everything; workers in each group share the work."
+    }
+  ]
+}

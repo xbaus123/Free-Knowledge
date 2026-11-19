@@ -1,0 +1,70 @@
+{
+  "type": "quiz",
+  "title": "Check: Phrases and Fuzzy Matching",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "new → d7: [4, 19] and york → d7: [5]. Does d7 match the phrase \"new york\"?",
+      "options": [
+        "No: positions must be equal",
+        "Only with slop",
+        "Yes: new at 4, york at 5",
+        "No: york appears only once"
+      ]
+    },
+    {
+      "prompt": "Why must positions keep a gap where stopwords were removed?",
+      "options": [
+        "To speed up BM25",
+        "Stopwords can't be removed",
+        "To save space",
+        "Otherwise \"state of the art\" would match a document that says \"state art\""
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the Levenshtein distance from kitten to sitting? (number)"
+    },
+    {
+      "prompt": "What does Damerau-Levenshtein add?",
+      "options": [
+        "Counting only substitutions",
+        "Matching by sound",
+        "Swapping two adjacent letters counts as one edit",
+        "Ignoring case"
+      ]
+    },
+    {
+      "prompt": "How does Lucene find every term within edit distance k without comparing against every term?",
+      "options": [
+        "It scans all postings",
+        "It walks a Levenshtein automaton and the term dictionary together",
+        "It uses a hash map",
+        "It stems the query"
+      ]
+    },
+    {
+      "prompt": "What do edge n-grams (e, el, ela, elas, …) enable?",
+      "options": [
+        "Search-as-you-type autocomplete",
+        "Phonetic matching",
+        "Delta encoding",
+        "Phrase slop"
+      ]
+    },
+    {
+      "prompt": "Which tool matches Smith with Smyth?",
+      "options": [
+        "BM25",
+        "Stemming",
+        "Skip lists",
+        "A phonetic filter like Soundex or Metaphone"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "About 10 to 15% of search queries contain a typo."
+    }
+  ]
+}

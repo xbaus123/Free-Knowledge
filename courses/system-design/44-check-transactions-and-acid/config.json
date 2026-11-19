@@ -1,0 +1,56 @@
+{
+  "type": "quiz",
+  "title": "Check: Transactions and ACID",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "A transfer crashes after the debit but before the credit. Which property makes sure you never see half a transfer?",
+      "options": [
+        "Isolation",
+        "Durability",
+        "Atomicity",
+        "Consistency"
+      ]
+    },
+    {
+      "prompt": "Two transfers from the same account run at the same moment. Which property keeps each from seeing the other's half-finished work?",
+      "options": [
+        "Atomicity",
+        "Durability",
+        "Normalization",
+        "Isolation"
+      ]
+    },
+    {
+      "prompt": "What makes a committed write survive a crash?",
+      "options": [
+        "It's kept in RAM",
+        "It's written to a write-ahead log and fsynced before the commit returns",
+        "It's indexed",
+        "It's copied to the client"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Strictly, keeping data valid (the C in ACID) is the application's job, and the database helps with atomicity and constraints."
+    },
+    {
+      "type": "written",
+      "prompt": "Which SQL statement undoes every write in the current transaction? (one word)"
+    },
+    {
+      "prompt": "In Python's sqlite3, what does `with conn:` do?",
+      "options": [
+        "Opens a new database file",
+        "Commits if the block finishes and rolls back if it raises",
+        "Retries the block",
+        "Locks every table"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "An UPDATE that matches no rows raises an error in SQL."
+    }
+  ]
+}

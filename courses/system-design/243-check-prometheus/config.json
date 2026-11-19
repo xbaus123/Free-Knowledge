@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Check: Prometheus and What to Measure",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "How does Prometheus collect metrics?",
+      "options": [
+        "It reads log files",
+        "It traces requests",
+        "It pulls by scraping each service's /metrics endpoint",
+        "Services push every event"
+      ]
+    },
+    {
+      "prompt": "A histogram shows le=\"0.1\" 4, le=\"0.25\" 8, le=\"+Inf\" 10. How many requests took between 0.1 s and 0.25 s?",
+      "options": [
+        "2",
+        "4",
+        "12",
+        "8"
+      ]
+    },
+    {
+      "prompt": "How do short-lived batch jobs report metrics to Prometheus?",
+      "options": [
+        "They're scraped every second",
+        "They push to a gateway",
+        "They can't",
+        "They write to a CDN"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What does the D in RED stand for? (one word)"
+    },
+    {
+      "prompt": "Which checklist fits resources like CPUs, disks, and connection pools?",
+      "options": [
+        "STRIDE",
+        "RED",
+        "USE: utilization, saturation, errors",
+        "ACID"
+      ]
+    },
+    {
+      "prompt": "Which is one of Google's four golden signals?",
+      "options": [
+        "Fanout",
+        "Saturation",
+        "Sharding",
+        "Cardinality"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "For asynchronous pipelines, which gauge tells you how stale derived data is? (two words)"
+    }
+  ]
+}

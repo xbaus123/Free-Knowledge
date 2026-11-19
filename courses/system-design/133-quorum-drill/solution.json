@@ -1,0 +1,34 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "(5 + 1) / 2 = 3."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Async loses confirmed writes on failover."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Each device is a leader that syncs later."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "w = 2 survives one node down, and 2 + 2 > 3."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Discarded writes are dangerous when other systems saw them."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "It's the storage engine's low-level format."
+    },
+    {
+      "accepted_answers": [
+        "4"
+      ],
+      "explanation": "w + r must exceed 7, so r = 4."
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "Anyone, including a crawler or a cache, can call a safe method freely."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Idempotency is about the effect, not the response: the book is deleted either way."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "After a timeout you don't know whether the request ran."
+    },
+    {
+      "accepted_answers": [
+        "idempotency key",
+        "idempotency-key"
+      ],
+      "explanation": "Stripe's API works this way: one unique key per logical operation."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "PUT twice leaves the same resource in place."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Cursor pagination seeks straight to the last item seen, and inserts elsewhere don't shift the page."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Over-fetching is getting fields you don't need. Under-fetching is needing extra requests for data you do."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "And curl is a debugger."
+    }
+  ]
+}

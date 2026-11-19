@@ -1,0 +1,39 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "The problem appears across partitions, which have no global order."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Causally related writes in one partition stay in order."
+    },
+    {
+      "accepted_answers": [
+        "causal",
+        "causal consistency"
+      ],
+      "explanation": "Causes are seen before effects, for everyone."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Tracking dependencies precisely takes metadata."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The session's writes are applied in the order it made them."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "They're about one user's view."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "It costs coordination on every read."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Two users mustn't both claim the same name."
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "type": "quiz",
+  "title": "Chapter Review: Replication and Caching",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Which replication model has no single leader and uses quorums?",
+      "options": [
+        "Multi-leader",
+        "Single-leader",
+        "Leaderless",
+        "Semi-synchronous"
+      ]
+    },
+    {
+      "prompt": "Which risk comes with asynchronous followers on failover?",
+      "options": [
+        "No read scaling",
+        "Write conflicts on every key",
+        "Slower writes",
+        "Losing writes the old leader confirmed"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "With n = 3, w = 2, r = 2, one node can be down for both reads and writes."
+    },
+    {
+      "prompt": "Last write wins resolves conflicts by what?",
+      "options": [
+        "Keeping the write with the highest timestamp and discarding the others",
+        "Routing writes to one leader",
+        "Merging both values",
+        "Asking the user"
+      ]
+    },
+    {
+      "prompt": "Users complain their edits vanish after saving. Which fix is most precise?",
+      "options": [
+        "Add more followers",
+        "Track each user's write position and read only from followers that have applied it",
+        "Turn off replication",
+        "Shorten DNS TTLs"
+      ]
+    },
+    {
+      "prompt": "Which guarantee does sticky routing provide?",
+      "options": [
+        "Monotonic reads",
+        "Durability",
+        "Consistent prefix across partitions",
+        "Linearizability"
+      ]
+    },
+    {
+      "prompt": "Why can an hour-stale follower still receive reads?",
+      "options": [
+        "It's the leader",
+        "Health checks test only whether it's up, not its lag",
+        "Caching",
+        "It has every write"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which cache pattern acknowledges writes from the cache and flushes to the database later? (one word, hyphen allowed)"
+    },
+    {
+      "prompt": "Why delete rather than update a cache entry after a write?",
+      "options": [
+        "Updates use more memory",
+        "Updates can't be done atomically",
+        "Deletes are idempotent and order-insensitive under concurrent writers",
+        "Deletes refresh the TTL"
+      ]
+    },
+    {
+      "prompt": "A cache restart sends every key to the database at once. What's that called, and one defense?",
+      "options": [
+        "A cold start; warm the cache before sending it traffic",
+        "Penetration; write-through",
+        "A hot key; TTL jitter",
+        "An avalanche; LFU"
+      ]
+    },
+    {
+      "prompt": "Which eviction policy resists scans best?",
+      "options": [
+        "FIFO",
+        "LRU",
+        "Random",
+        "LFU"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Causal consistency requires a consensus round trip on every write."
+    }
+  ]
+}

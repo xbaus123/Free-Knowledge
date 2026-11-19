@@ -1,0 +1,40 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Also called a nonrepeatable read. Read committed allows it."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Long-running backups and analytics need this."
+    },
+    {
+      "accepted_answers": [
+        "mvcc"
+      ],
+      "explanation": "The database keeps several committed versions of each row."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Each sees the versions that fit its snapshot."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The database does the read-modify-write in one step."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A concurrent transaction doing the same waits for you."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's compare-and-set."
+    },
+    {
+      "accepted_answers": [
+        "repeatable read"
+      ],
+      "explanation": "It also detects lost updates automatically."
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "type": "quiz",
+  "title": "Check: The Graph Model",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "When does a graph model fit best?",
+      "options": [
+        "When there are no relationships",
+        "When data is a self-contained tree",
+        "When many-to-many relationships are the point of the data, like social networks or fraud rings",
+        "When you need column storage"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's it called when a graph query walks from vertex to vertex along edges? (one word)"
+    },
+    {
+      "prompt": "\"Friends of friends of friends\" in SQL needs what?",
+      "options": [
+        "A single JOIN",
+        "A full-text index",
+        "Nothing special",
+        "Recursive common table expressions"
+      ]
+    },
+    {
+      "prompt": "Which query language is Neo4j's, reading like a drawing of the pattern?",
+      "options": [
+        "Avro",
+        "GraphQL",
+        "Cypher",
+        "SQL"
+      ]
+    },
+    {
+      "prompt": "Which model fits many-to-one relationships, ad hoc queries, and strong integrity?",
+      "options": [
+        "Relational",
+        "Graph",
+        "Key-value",
+        "Document"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "The lines between models blur: PostgreSQL stores JSON documents, and MongoDB supports joins."
+    }
+  ]
+}

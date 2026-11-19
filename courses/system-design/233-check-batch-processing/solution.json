@@ -1,0 +1,28 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "Caches, search indexes, and materialized views are derived."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Emit pairs, group them by key, process each group."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The reducer sums the ones."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Output is written fresh."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Dataflow engines."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Streams address this."
+    }
+  ]
+}

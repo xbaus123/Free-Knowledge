@@ -1,0 +1,35 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "It's usually small, but nothing bounds it."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Head-of-line blocking, in the replication log."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Single-threaded apply can't keep up with parallel writes."
+    },
+    {
+      "accepted_answers": [
+        "lsn",
+        "lsns"
+      ],
+      "explanation": "Log sequence numbers. MySQL uses GTIDs; MongoDB uses oplog timestamps."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Writes behind and seconds behind measure different things."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Naive metrics make an idle, caught-up follower look stale."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Checking only whether a follower is up isn't enough."
+    }
+  ]
+}

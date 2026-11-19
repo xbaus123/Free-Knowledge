@@ -1,0 +1,30 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Stale or separate load information makes every balancer pick the same idle target."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "It's nearly as good as checking every server."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "They don't all converge on the same target."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Affinity trades even load for locality."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Consistent hashing moves only a small fraction of keys when servers come and go."
+    },
+    {
+      "accepted_answers": [
+        "consistent hashing"
+      ],
+      "explanation": "You'll build it later in the course."
+    }
+  ]
+}

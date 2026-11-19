@@ -1,0 +1,36 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "A word in the middle of a title could be anywhere in the sort order, so the database scans every row."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Find every document with a word, rank the best first, and forgive typos."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A forward index maps documents to words; the inverted index flips it."
+    },
+    {
+      "accepted_answers": [
+        "postings list",
+        "postings",
+        "posting list"
+      ],
+      "explanation": "Usually with the term frequency and positions in each document."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "OR is a union. Both are merges of sorted lists, like merging SSTables."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Documents without any query term are never touched."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "You'll see fuzzy search walk it later in the chapter."
+    }
+  ]
+}

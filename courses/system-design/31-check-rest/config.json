@@ -1,0 +1,70 @@
+{
+  "type": "quiz",
+  "title": "Check: REST",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Which method is safe, with no side effects?",
+      "options": [
+        "PATCH",
+        "POST",
+        "DELETE",
+        "GET"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "DELETE is idempotent, even though a second DELETE of the same book answers 404."
+    },
+    {
+      "prompt": "A \"create order\" POST times out. Why is retrying it blindly risky?",
+      "options": [
+        "Timeouts mean the request definitely didn't run",
+        "POST is safe, so nothing happens",
+        "The server always rejects retries",
+        "POST isn't idempotent, so the retry might create a second order"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What does a client send with a POST so the server can recognize a retry and replay the earlier response? (two words)"
+    },
+    {
+      "prompt": "Which method creates or replaces a resource at a given URL and is idempotent?",
+      "options": [
+        "POST",
+        "PUT",
+        "GET",
+        "PATCH"
+      ]
+    },
+    {
+      "prompt": "What's wrong with offset pagination for deep pages?",
+      "options": [
+        "It requires GraphQL",
+        "It can't return more than 10 items",
+        "It's not cacheable",
+        "The database still walks past every skipped row, and rows shift when items are added or deleted"
+      ]
+    },
+    {
+      "prompt": "A client needs a book, its author, and the author's other books, and makes three requests. What's that called?",
+      "options": [
+        "Head-of-line blocking",
+        "Over-fetching",
+        "Under-fetching",
+        "N+1"
+      ]
+    },
+    {
+      "prompt": "Why does REST dominate public APIs?",
+      "options": [
+        "It avoids HTTP",
+        "Its uniformity: every client, proxy, and CDN understands its methods, and GET is cacheable",
+        "It streams in both directions",
+        "It's the most compact encoding"
+      ]
+    }
+  ]
+}

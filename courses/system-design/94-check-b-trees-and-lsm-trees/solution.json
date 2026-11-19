@@ -1,0 +1,41 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "LSM-trees never overwrite; B-trees do."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Splits keep the tree balanced."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Replaying the WAL after a crash restores a consistent tree."
+    },
+    {
+      "accepted_answers": [
+        "latches",
+        "latch"
+      ],
+      "explanation": "Latches protect pages, not transactions."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Sequential appends and merges beat random page overwrites."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "In an LSM-tree a key may exist in several segments until compaction."
+    },
+    {
+      "accepted_answers": [
+        "write amplification"
+      ],
+      "explanation": "On write-heavy workloads, it's often the bottleneck, and it wears out SSDs."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Background compaction competes with live traffic."
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Nothing writes to a closed segment, so reading and rewriting it needs no locks."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Only each key's latest value survives."
+    },
+    {
+      "accepted_answers": [
+        "table"
+      ],
+      "explanation": "An SSTable."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "One key every few kilobytes is enough."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The memtable is also backed by a write-ahead log for crash safety."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Newer data wins, so check newest first."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "So lookups for missing keys don't read every segment."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "LevelDB and RocksDB level; Cassandra defaults to size-tiered."
+    }
+  ]
+}

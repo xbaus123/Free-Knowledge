@@ -1,0 +1,35 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "That's why the database can get faster without your code changing."
+    },
+    {
+      "accepted_answers": [
+        "impedance mismatch",
+        "impedance-mismatch"
+      ],
+      "explanation": "Documents look like your objects, so there's less of it."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "One-to-many trees loaded as a unit are the document model's sweet spot."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Denormalized copies make reads simple and updates painful."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Like static vs. dynamic typing: neither is strictly better."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Questions that cut across documents need several queries or $lookup joins."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The flexibility moves the work into the reader."
+    }
+  ]
+}

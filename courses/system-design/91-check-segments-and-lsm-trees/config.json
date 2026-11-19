@@ -1,0 +1,70 @@
+{
+  "type": "quiz",
+  "title": "Check: SSTables and LSM-Trees",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Why can closed segments be compacted by a background thread safely?",
+      "options": [
+        "They're sorted",
+        "They're immutable",
+        "They're encrypted",
+        "They're in memory"
+      ]
+    },
+    {
+      "prompt": "What does compaction throw away?",
+      "options": [
+        "The newest value of each key",
+        "Every value older than a day",
+        "Overwritten values and tombstoned keys",
+        "The index"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A segment whose records are sorted by key is called a sorted string ______. (one word)"
+    },
+    {
+      "prompt": "Why can an SSTable's index be sparse?",
+      "options": [
+        "It uses a hash",
+        "It has no duplicates",
+        "It's in memory",
+        "Keys are sorted, so you can scan from the nearest indexed key"
+      ]
+    },
+    {
+      "prompt": "Writes arrive in any order. How does an LSM-tree produce sorted files?",
+      "options": [
+        "It sorts the disk every night",
+        "It buffers writes in an in-memory sorted tree, the memtable, and writes it out when full",
+        "It rejects out-of-order writes",
+        "It uses a B-tree on disk"
+      ]
+    },
+    {
+      "prompt": "Put an LSM-tree read in order.",
+      "options": [
+        "Memtable, newest SSTable, older SSTables",
+        "Oldest SSTable, newest SSTable, memtable",
+        "Memtable only",
+        "Write-ahead log, then memtable"
+      ]
+    },
+    {
+      "prompt": "What does a Bloom filter tell an LSM-tree?",
+      "options": [
+        "How big a segment is",
+        "Which segment is newest",
+        "That a key is definitely not in a segment",
+        "Exactly where a key is"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Leveled compaction keeps fixed-size SSTables in levels of increasing size, while size-tiered merges similar-sized SSTables."
+    }
+  ]
+}

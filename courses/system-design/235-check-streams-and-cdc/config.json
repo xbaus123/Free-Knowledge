@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Check: Streams and CDC",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "An app writes to the database, then to the search index. The index is down. What happens?",
+      "options": [
+        "The stores silently diverge",
+        "Nothing",
+        "The database rolls back",
+        "The write is retried automatically"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Two concurrent dual writes can reach the database and the index in different orders."
+    },
+    {
+      "prompt": "How does change data capture fix dual writes?",
+      "options": [
+        "It publishes the database's committed changes in commit order, and each derived store consumes them",
+        "It writes to both stores at once",
+        "It locks the index",
+        "It deletes the cache"
+      ]
+    },
+    {
+      "prompt": "What does the transactional outbox guarantee?",
+      "options": [
+        "Consumers never retry",
+        "Events are never delivered",
+        "The event commits atomically with the business change",
+        "The database is faster"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Making the log of events itself the system of record is called event ______. (one word)"
+    },
+    {
+      "prompt": "For \"p99 latency over the last 5 minutes,\" which time should a stream processor use?",
+      "options": [
+        "Wall-clock time of the reader",
+        "The broker's clock",
+        "Processing time",
+        "Event time, when it happened"
+      ]
+    },
+    {
+      "prompt": "Enriching each click event with the user's current profile from a CDC-maintained table is which kind of join?",
+      "options": [
+        "Stream-table",
+        "Cross join",
+        "Stream-stream",
+        "Table-table"
+      ]
+    }
+  ]
+}

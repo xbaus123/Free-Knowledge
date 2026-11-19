@@ -1,0 +1,40 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "The internet to your edge, the edge to internal services, your services to a vendor's API."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Tampering violates integrity. Signatures, MACs, and TLS defend against it."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The defense is authorization checks on every request."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Non-repudiation means you can prove who did what."
+    },
+    {
+      "accepted_answers": [
+        "least privilege"
+      ],
+      "explanation": "For the minimum time, too."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Fail closed. A system that fails open turns every outage into a breach."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "No single layer is trusted to be perfect."
+    },
+    {
+      "accepted_answers": [
+        "spoofing"
+      ],
+      "explanation": "Pretending to be someone else, like logging in with a stolen cookie."
+    }
+  ]
+}

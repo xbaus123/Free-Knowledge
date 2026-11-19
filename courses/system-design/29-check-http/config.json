@@ -1,0 +1,65 @@
+{
+  "type": "quiz",
+  "title": "Check: HTTP",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What does REST model, compared with RPC and GraphQL?",
+      "options": [
+        "A graph the client queries",
+        "Function calls",
+        "Database tables",
+        "Resources"
+      ]
+    },
+    {
+      "prompt": "What are the parts of an HTTP request?",
+      "options": [
+        "A status code, headers, and a body",
+        "Only a URL",
+        "A port and a checksum",
+        "A method, a path, headers, and an optional body"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A 4xx status means the server failed, so the client should retry the same request."
+    },
+    {
+      "type": "written",
+      "prompt": "Which status code means a new resource now exists? (number)"
+    },
+    {
+      "prompt": "A client asks for /books/999 and there's no such book. Which status fits?",
+      "options": [
+        "500",
+        "400",
+        "409",
+        "404"
+      ]
+    },
+    {
+      "prompt": "A client sends DELETE to a resource that only supports GET. Which status fits?",
+      "options": [
+        "404",
+        "405",
+        "201",
+        "429"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which status code tells a client to slow down? (number)"
+    },
+    {
+      "prompt": "A client tries to create a user with an email that already exists. Which status fits best?",
+      "options": [
+        "200",
+        "409",
+        "204",
+        "503"
+      ]
+    }
+  ]
+}

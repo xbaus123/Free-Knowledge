@@ -1,0 +1,32 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Failures open it, the reset timeout half-opens it, and a successful trial closes it."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Instant errors free the caller's threads."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Success closes it; failure reopens it."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A dependency answering in 10 seconds is as bad as one that's down."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Serve something useful."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The point is that the dependency is known to be down."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The passive health checks from the load-balancing readings."
+    }
+  ]
+}

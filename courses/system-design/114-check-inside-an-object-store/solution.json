@@ -1,0 +1,28 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "That makes it range-partitioned, with the usual hot-spot problem."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Multipart uploads also build on it."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It's the MD5 of the parts' MD5s with -N appended."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Git does the same for files."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Shared chunks need reference counting or mark-and-sweep."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A crash midway leaves orphaned chunks for the garbage collector, never a record pointing at missing data."
+    }
+  ]
+}

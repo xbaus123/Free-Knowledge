@@ -1,0 +1,35 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Neither is usually true in practice."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Weights set the proportions."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It keeps the same proportions but spreads A's turns out, avoiding a burst."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Every server first gains its weight; the winner then pays back the total."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The slow server's requests stay active longer, so it has more active requests and gets fewer new ones."
+    },
+    {
+      "accepted_answers": [
+        "least connections",
+        "least-connections"
+      ],
+      "explanation": "It's the usual default for L7 balancers."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Easy in one process, hard across a fleet."
+    }
+  ]
+}

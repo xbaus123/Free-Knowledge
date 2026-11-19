@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Check: JWT Pitfalls",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What's the common root of most JWT library vulnerabilities?",
+      "options": [
+        "Trusting the token to describe how it should be checked",
+        "Short expiry times",
+        "Using JSON",
+        "Using base64"
+      ]
+    },
+    {
+      "prompt": "A server expecting RS256 receives a token with alg HS256, and a naive library uses the RSA public key as the HMAC secret. What's this attack?",
+      "options": [
+        "CSRF",
+        "Algorithm confusion",
+        "A timing attack",
+        "Clock skew"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A token with \"alg\": \"none\" and an empty signature should be rejected."
+    },
+    {
+      "prompt": "Why compare signatures with a constant-time function instead of ==?",
+      "options": [
+        "== stops at the first differing byte, so timing leaks how much was right",
+        "== is slower",
+        "Constant-time comparison is required by JSON",
+        "== can't compare bytes"
+      ]
+    },
+    {
+      "prompt": "Why allow 30 to 60 seconds of leeway when checking exp?",
+      "options": [
+        "Servers' clocks disagree by seconds",
+        "To support 0-RTT",
+        "Tokens take a minute to sign",
+        "Users type slowly"
+      ]
+    },
+    {
+      "prompt": "Where can an injected script steal a token from?",
+      "options": [
+        "localStorage",
+        "The TLS session",
+        "An HttpOnly cookie",
+        "The server's database"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which cookie attribute, along with anti-CSRF tokens, defends against cross-site request forgery? (one word)"
+    }
+  ]
+}

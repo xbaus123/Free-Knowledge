@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Check: Eviction Policies",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "A batch job reads a million keys once each. What happens to an LRU cache?",
+      "options": [
+        "Nothing",
+        "Every genuinely hot key is pushed out",
+        "Hot keys get hotter",
+        "The cache doubles in size"
+      ]
+    },
+    {
+      "prompt": "Why do popular keys survive a scan under LFU?",
+      "options": [
+        "Scans are blocked",
+        "One-off reads never catch up with their counts",
+        "LFU ignores reads",
+        "LFU never evicts"
+      ]
+    },
+    {
+      "prompt": "What's an LFU weakness?",
+      "options": [
+        "Yesterday's popular key keeps its count forever unless counts age",
+        "It's O(n²)",
+        "It ignores frequency",
+        "It can't evict"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which policy evicts whatever has gone longest without use? (three letters)"
+    },
+    {
+      "prompt": "What does W-TinyLFU (used by Caffeine) do?",
+      "options": [
+        "Uses FIFO order",
+        "Admits a new key only if a frequency sketch says it's more popular than the eviction victim",
+        "Evicts at random",
+        "Caches only writes"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "TTL-based expiry bounds staleness rather than memory."
+    },
+    {
+      "prompt": "How does Redis implement LRU and LFU?",
+      "options": [
+        "It doesn't support them",
+        "Exactly, with a global list",
+        "Approximately, by sampling a few keys",
+        "With ARC"
+      ]
+    }
+  ]
+}

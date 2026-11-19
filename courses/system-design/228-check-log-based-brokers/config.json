@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Check: Logs and Consumer Groups",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "How does Kafka choose a message's partition?",
+      "options": [
+        "By hashing the message key",
+        "By the consumer",
+        "At random always",
+        "By message size"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Reading a message from a Kafka partition deletes it."
+    },
+    {
+      "type": "written",
+      "prompt": "What's a message's sequential position within a partition called? (one word)"
+    },
+    {
+      "prompt": "A topic has 8 partitions. What's the most busy consumers one group can have?",
+      "options": [
+        "8",
+        "1",
+        "16",
+        "Unlimited"
+      ]
+    },
+    {
+      "prompt": "A search indexer group and an email group both consume one topic. What does each get?",
+      "options": [
+        "Half the messages each",
+        "Only new messages after joining",
+        "Every message, at its own pace",
+        "Nothing until the other finishes"
+      ]
+    },
+    {
+      "prompt": "A consumer crashes after processing messages but before committing offsets. What happens after rebalancing?",
+      "options": [
+        "The group stops",
+        "The new owner reprocesses from the last committed offset",
+        "The broker deletes them",
+        "Those messages are lost"
+      ]
+    },
+    {
+      "prompt": "With Kafka's range assignor, 7 partitions and 3 consumers, how are partitions assigned?",
+      "options": [
+        "[0, 3, 6], [1, 4], [2, 5]",
+        "[0, 1], [2, 3], [4, 5, 6]",
+        "[0, 1, 2], [3, 4], [5, 6]",
+        "[0..6], [], []"
+      ]
+    }
+  ]
+}

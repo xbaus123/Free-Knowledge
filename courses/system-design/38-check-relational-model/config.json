@@ -1,0 +1,56 @@
+{
+  "type": "quiz",
+  "title": "Check: The Relational Model",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What uniquely identifies each row in a table?",
+      "options": [
+        "Its first column",
+        "Its primary key",
+        "Its index",
+        "Its foreign key"
+      ]
+    },
+    {
+      "prompt": "accounts.user_id points at users.id. What is accounts.user_id?",
+      "options": [
+        "A composite index",
+        "A primary key",
+        "A foreign key",
+        "A cursor"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Constraints in the database apply to every program that writes, not only your main application."
+    },
+    {
+      "prompt": "Which constraint keeps two users from having the same email?",
+      "options": [
+        "CHECK",
+        "UNIQUE",
+        "NOT NULL",
+        "REFERENCES"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which constraint keyword enforces any condition you can write about a row, such as balance >= 0? (one word)"
+    },
+    {
+      "prompt": "What happens to a write that would break a constraint?",
+      "options": [
+        "The database fixes the data",
+        "It fails with an error, and nothing changes",
+        "The constraint is dropped",
+        "It's saved with a warning"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the term for storing each fact exactly once and referring to it by id? (one word)"
+    }
+  ]
+}

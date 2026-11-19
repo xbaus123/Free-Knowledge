@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Drill: Load Balancing Scenarios",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Your service talks gRPC, and one backend gets 70% of the traffic. Which change helps most?",
+      "options": [
+        "Use round robin at L4",
+        "Add more DNS records",
+        "Switch to an L7 balancer that balances each request",
+        "Lower the TTL"
+      ]
+    },
+    {
+      "prompt": "Requests range from 5 ms to 500 ms, and p99 is bad under round robin. What should you try?",
+      "options": [
+        "Bigger DNS TTLs",
+        "Weighted round robin",
+        "Hash by URL",
+        "Least connections"
+      ]
+    },
+    {
+      "prompt": "Thirty independent balancer instances each track load locally and keep herding onto the same backend. What fixes it?",
+      "options": [
+        "One global lock",
+        "Removing health checks",
+        "Power of two choices",
+        "Round robin with sticky sessions"
+      ]
+    },
+    {
+      "prompt": "A cache tier should keep each user on the server that already holds their data, even as servers are added. What do you use?",
+      "options": [
+        "Consistent hashing on the user id",
+        "Round robin",
+        "Least connections",
+        "Plain hash % N"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Deploying a new version safely means draining a backend's connections before removing it."
+    },
+    {
+      "prompt": "Your one load balancer crashes and the whole site goes down. What was missing?",
+      "options": [
+        "More backends",
+        "Redundant balancers: an active-passive pair or an active-active fleet",
+        "A service mesh",
+        "A longer health-check interval"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which kind of health check reacts to failures between probes by watching real traffic? (one word)"
+    }
+  ]
+}

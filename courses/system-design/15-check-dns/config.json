@@ -1,0 +1,65 @@
+{
+  "type": "quiz",
+  "title": "Check: DNS",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "A resolver has nothing cached and looks up api.example.com. In what order does it ask?",
+      "options": [
+        "Root, then the com servers, then example.com's authoritative servers",
+        "example.com's servers, then com, then root",
+        "The com servers only",
+        "Root only"
+      ]
+    },
+    {
+      "prompt": "Which record type gives a name's IPv4 address?",
+      "options": [
+        "A",
+        "AAAA",
+        "CNAME",
+        "MX"
+      ]
+    },
+    {
+      "prompt": "What does a CNAME record say?",
+      "options": [
+        "The name's IPv6 address",
+        "Where to deliver mail",
+        "Which servers are authoritative for a zone",
+        "This name is an alias; look up that other name instead"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which record type tells a resolver which servers are authoritative for a zone? (two letters)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Resolvers cache referrals as well as answers, which is why most lookups never reach a root server."
+    },
+    {
+      "prompt": "You plan to fail over to another region by changing a DNS record. Which TTL helps?",
+      "options": [
+        "No TTL at all",
+        "A short TTL, like 30 to 60 seconds",
+        "The TTL doesn't affect failover",
+        "A long TTL, like a day"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What does TTL stand for? (three words)"
+    },
+    {
+      "prompt": "What is DNS-based load balancing?",
+      "options": [
+        "Sending all traffic to the root servers",
+        "Returning different addresses to different clients",
+        "Encrypting DNS queries",
+        "Caching every answer forever"
+      ]
+    }
+  ]
+}

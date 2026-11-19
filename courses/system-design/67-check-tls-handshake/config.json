@@ -1,0 +1,52 @@
+{
+  "type": "quiz",
+  "title": "Check: TLS",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Which three properties does TLS give a connection?",
+      "options": [
+        "Ordering, retransmission, and flow control",
+        "Authorization, auditing, and rate limiting",
+        "Confidentiality, integrity, and server authentication",
+        "Speed, compression, and caching"
+      ]
+    },
+    {
+      "prompt": "How do both sides agree on session keys without sending them?",
+      "options": [
+        "They're in the certificate",
+        "The server emails them",
+        "The client picks them and sends them in plain text",
+        "An ephemeral Diffie-Hellman exchange of key shares"
+      ]
+    },
+    {
+      "prompt": "What does the client check in the certificate chain?",
+      "options": [
+        "Only that it's long enough",
+        "That the cipher is AES",
+        "That the server's IP is private",
+        "It leads to a trusted root CA, hasn't expired, and names the host it wanted"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Past traffic stays secret even if the server's private key leaks later. What's that property called? (two words)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "After the handshake, bulk encryption with AES-GCM or ChaCha20 is cheap; the expensive part is the asymmetric crypto in the handshake."
+    },
+    {
+      "prompt": "Why do servers accept TLS 1.3 0-RTT data only for idempotent requests?",
+      "options": [
+        "An attacker can replay 0-RTT data",
+        "Browsers forbid it",
+        "0-RTT is slower",
+        "0-RTT data isn't encrypted"
+      ]
+    }
+  ]
+}

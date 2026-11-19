@@ -1,0 +1,31 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Ordering and retransmission come from TCP underneath."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Each side sends half, and both derive the same keys."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The server also signs the handshake with the certificate's private key to prove it holds it."
+    },
+    {
+      "accepted_answers": [
+        "forward secrecy",
+        "perfect forward secrecy"
+      ],
+      "explanation": "Ephemeral keys are thrown away after the handshake. TLS 1.3 requires it."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Session resumption lets returning clients skip most of it."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A replayed GET is harmless; a replayed payment isn't."
+    }
+  ]
+}

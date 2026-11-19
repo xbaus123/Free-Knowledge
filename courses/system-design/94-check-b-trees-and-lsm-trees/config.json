@@ -1,0 +1,65 @@
+{
+  "type": "quiz",
+  "title": "Check: B-Trees vs. LSM-Trees",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "How does a B-tree update a key?",
+      "options": [
+        "It rewrites the whole tree",
+        "It overwrites the page in place",
+        "It writes a new SSTable",
+        "It appends a new record to a log segment"
+      ]
+    },
+    {
+      "prompt": "What happens when a B-tree page overflows?",
+      "options": [
+        "A tombstone is written",
+        "The write is rejected",
+        "The tree is rebuilt",
+        "It splits in two and the parent is updated"
+      ]
+    },
+    {
+      "prompt": "Why does a B-tree write every change to a write-ahead log first?",
+      "options": [
+        "To compress pages",
+        "To avoid latches",
+        "A crash mid-split could otherwise corrupt the tree",
+        "To sort the keys"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What are the lightweight locks a B-tree takes on pages during concurrent access? (one word)"
+    },
+    {
+      "prompt": "Which usually has faster writes?",
+      "options": [
+        "They're always equal",
+        "An LSM-tree",
+        "A B-tree",
+        "Neither can write"
+      ]
+    },
+    {
+      "prompt": "Which suits transactions and locks better because each key lives in exactly one place?",
+      "options": [
+        "A B-tree",
+        "A memtable",
+        "An LSM-tree",
+        "A Bloom filter"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the name for bytes written to disk per byte the application writes? (two words)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "LSM-tree throughput can suffer when compaction can't keep up with incoming writes."
+    }
+  ]
+}

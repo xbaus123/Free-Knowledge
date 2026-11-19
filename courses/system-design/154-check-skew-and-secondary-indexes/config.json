@@ -1,0 +1,52 @@
+{
+  "type": "quiz",
+  "title": "Check: Skew and Secondary Indexes",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "type": "true_false",
+      "prompt": "Hash partitioning spreads load from one very hot key across many partitions."
+    },
+    {
+      "prompt": "How can an application split writes to one hot key?",
+      "options": [
+        "Use a bigger hash",
+        "Use key-range partitioning",
+        "Add a random two-digit suffix, spreading writes over 100 keys",
+        "Disable replication"
+      ]
+    },
+    {
+      "prompt": "With document-partitioned (local) indexes, what does a query for \"all red cars\" do?",
+      "options": [
+        "Asks every partition and combines the results",
+        "Uses consistent hashing",
+        "Asks one partition",
+        "Scans one disk"
+      ]
+    },
+    {
+      "prompt": "With a term-partitioned (global) index, what's the cost?",
+      "options": [
+        "Reads are always stale by a day",
+        "One write may update index entries on several partitions, usually asynchronously",
+        "Every read hits every partition",
+        "Writes can't be indexed"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Querying every partition and combining results is called scatter/______. (one word)"
+    },
+    {
+      "prompt": "What absorbs hot reads well?",
+      "options": [
+        "Fixed windows",
+        "Caches",
+        "More partitions",
+        "Global indexes"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "L4 pins long-lived multiplexed connections; L7 balances requests within them."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Uneven costs need an algorithm that sees real load."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Random pairs break the herd without shared state."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Consistent hashing keeps most users in place when the pool changes."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "In-flight requests finish, and no new ones arrive."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A single balancer is a single point of failure too."
+    },
+    {
+      "accepted_answers": [
+        "passive"
+      ],
+      "explanation": "Active checks probe; passive checks observe."
+    }
+  ]
+}

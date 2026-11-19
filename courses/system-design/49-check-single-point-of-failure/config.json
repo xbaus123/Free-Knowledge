@@ -1,0 +1,56 @@
+{
+  "type": "quiz",
+  "title": "Check: Scaling Out",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "A server has 4 workers and each request takes 6 ms. About how many requests per second can it finish?",
+      "options": [
+        "About 6,000",
+        "About 667",
+        "About 1,500",
+        "About 24"
+      ]
+    },
+    {
+      "prompt": "That server receives 1,000 requests per second. What happens?",
+      "options": [
+        "It runs at 67% and stays fast",
+        "It drops exactly a third of requests and stays fast",
+        "Nothing: queues absorb it forever",
+        "Utilization is 150%, so the queue grows every millisecond and latency climbs"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A component whose crash takes the whole app down is a single point of ______. (one word)"
+    },
+    {
+      "prompt": "When a server is overloaded, which latency number shoots up first?",
+      "options": [
+        "The minimum",
+        "p99",
+        "None: they rise together",
+        "p50"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Scaling out with a load balancer improves reliability as well as capacity."
+    },
+    {
+      "prompt": "In the lab, an asynchronous database standby takes over after a crash. What's the trade-off compared with a synchronous one?",
+      "options": [
+        "It can't fail over at all",
+        "No extra write latency, but writes confirmed just before the crash can be lost",
+        "It never loses data",
+        "It's slower and loses more data"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "After you add a second API server and a load balancer, the database is still a single point of failure until it gets a standby."
+    }
+  ]
+}

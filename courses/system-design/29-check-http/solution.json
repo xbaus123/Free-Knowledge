@@ -1,0 +1,40 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "REST models resources, RPC models function calls, and GraphQL models a graph of data."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "A response has a status code, headers, and a body."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "4xx means the client did something wrong; retrying unchanged won't help. 5xx is the server failing, where a retry might work."
+    },
+    {
+      "accepted_answers": [
+        "201"
+      ],
+      "explanation": "201 Created, usually with the new resource in the body."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "404 Not Found: no such resource."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "405 Method Not Allowed: the resource exists but doesn't support that method."
+    },
+    {
+      "accepted_answers": [
+        "429"
+      ],
+      "explanation": "429 Too Many Requests. Rate limiting comes later in the course."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "409 Conflict: the request clashes with the current state."
+    }
+  ]
+}

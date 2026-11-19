@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Check: Proxies and Gateways",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What's the difference between a forward proxy and a reverse proxy?",
+      "options": [
+        "A forward proxy only handles DNS",
+        "A forward proxy acts for clients; a reverse proxy acts for servers",
+        "A reverse proxy acts for clients",
+        "They're the same"
+      ]
+    },
+    {
+      "prompt": "How does a reverse proxy protect backends from a slow mobile upload?",
+      "options": [
+        "It drops the upload",
+        "It speeds up the client's network",
+        "It forwards bytes as they arrive",
+        "It absorbs the slow upload and hands the backend a complete request in one burst"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Every L7 load balancer is a reverse proxy."
+    },
+    {
+      "prompt": "Which of these belongs in an API gateway?",
+      "options": [
+        "The orders database",
+        "Business rules for refunds",
+        "Authentication, routing, and rate limiting",
+        "Each service's internal caching logic"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A gateway tailored to one client, such as the mobile app, is called a backend for ______. (one word)"
+    },
+    {
+      "prompt": "Sending 1% of traffic to a new version and watching its error rate is called a what?",
+      "options": [
+        "Herd",
+        "Canary",
+        "Shadow",
+        "Blue team"
+      ]
+    },
+    {
+      "prompt": "What runs a small proxy beside every service instance to handle internal traffic?",
+      "options": [
+        "A forward proxy",
+        "A CDN",
+        "An API gateway",
+        "A service mesh"
+      ]
+    }
+  ]
+}

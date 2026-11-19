@@ -1,0 +1,36 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Pulling makes a dead target easy to spot."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Buckets are cumulative: 8 − 4 = 4."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "They may finish before a scrape."
+    },
+    {
+      "accepted_answers": [
+        "duration"
+      ],
+      "explanation": "Rate, errors, duration."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The simulator's node badges show exactly this."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Latency, traffic, errors, and saturation."
+    },
+    {
+      "accepted_answers": [
+        "consumer lag"
+      ],
+      "explanation": "It's the stream version of queue length."
+    }
+  ]
+}

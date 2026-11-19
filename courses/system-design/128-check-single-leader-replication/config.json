@@ -1,0 +1,70 @@
+{
+  "type": "quiz",
+  "title": "Check: Single-Leader Replication",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Which is NOT a reason to replicate data?",
+      "options": [
+        "To keep a copy close to users",
+        "To make each write cheaper",
+        "To scale reads",
+        "To stay available when a machine fails"
+      ]
+    },
+    {
+      "prompt": "In single-leader replication, where do writes go?",
+      "options": [
+        "To any replica",
+        "To all replicas at once",
+        "To the closest follower",
+        "Only to the leader"
+      ]
+    },
+    {
+      "prompt": "The leader confirms a write immediately and replicates in the background. The leader dies a moment later. What can happen?",
+      "options": [
+        "Nothing: followers always have every write",
+        "The confirmed write is lost",
+        "The client is notified",
+        "The write is applied twice"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Making one follower synchronous and the rest asynchronous is called ______-synchronous replication. (one word)"
+    },
+    {
+      "type": "written",
+      "prompt": "Two nodes both believe they're the leader and both accept writes. What's that called? (two words, hyphen allowed)"
+    },
+    {
+      "prompt": "Why is a very short failover timeout risky?",
+      "options": [
+        "It makes recovery slow",
+        "It loses no data",
+        "It disables replication",
+        "It triggers needless failovers during load spikes"
+      ]
+    },
+    {
+      "prompt": "Statement-based replication sends SQL statements to followers. When does it break?",
+      "options": [
+        "With joins",
+        "With indexes",
+        "With nondeterministic functions like NOW() or RAND()",
+        "With INSERTs"
+      ]
+    },
+    {
+      "prompt": "Which replication log format is the basis for change data capture?",
+      "options": [
+        "Statement-based",
+        "None of them",
+        "Write-ahead log shipping",
+        "Logical (row-based)"
+      ]
+    }
+  ]
+}

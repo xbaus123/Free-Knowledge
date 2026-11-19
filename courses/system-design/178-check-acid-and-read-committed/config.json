@@ -1,0 +1,52 @@
+{
+  "type": "quiz",
+  "title": "Check: ACID and Read Committed",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Why might atomicity be better named abortability?",
+      "options": [
+        "It only applies to reads",
+        "Transactions can't be aborted",
+        "If a transaction aborts, every write in it is undone, so it's safe to retry",
+        "It's about atoms on disk"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "The database alone guarantees consistency, whatever the application does."
+    },
+    {
+      "prompt": "What does serializable isolation promise?",
+      "options": [
+        "Every transaction commits",
+        "The result is as if transactions ran one at a time",
+        "Transactions never conflict",
+        "Reads are always from the leader"
+      ]
+    },
+    {
+      "prompt": "You read another transaction's uncommitted write, and it later aborts. What anomaly is that?",
+      "options": [
+        "A dirty read",
+        "A phantom",
+        "Read skew",
+        "A dirty write"
+      ]
+    },
+    {
+      "prompt": "How do databases prevent dirty writes?",
+      "options": [
+        "Compare-and-set",
+        "Bloom filters",
+        "Row-level write locks held until commit",
+        "Snapshots"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which isolation level is the default in PostgreSQL and Oracle? (two words)"
+    }
+  ]
+}

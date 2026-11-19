@@ -1,0 +1,43 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "A connection is identified by both ends' address and port, so a web server on 443 and a database on 5432 can share one machine."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The handshake costs one round trip before any data flows."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "TCP's ACKs are cumulative: the number of the next byte the receiver is waiting for."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The sender resends when an ACK doesn't come back in time, even if the original actually arrived."
+    },
+    {
+      "accepted_answers": [
+        "head-of-line blocking",
+        "head of line blocking"
+      ],
+      "explanation": "It's the price of a single ordered stream. QUIC avoids it by retransmitting per stream."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "When late data is useless, retransmission just adds delay."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "QUIC does its own retransmission on top of UDP, per stream, so one lost packet doesn't block unrelated streams."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "TCP only hides most failures. If the other side vanishes, TCP eventually gives up and your application sees a timeout."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Flow and congestion control limit bytes in flight. The window grows while things go well and shrinks sharply on loss."
+    }
+  ]
+}

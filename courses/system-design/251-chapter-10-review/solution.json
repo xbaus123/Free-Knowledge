@@ -1,0 +1,38 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Then traces show where, and logs show what."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "histogram_quantile over summed rates."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "They're unbounded. Put them in logs and traces."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Rate, errors, duration."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Optimize along the critical path."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "It decides after the trace completes."
+    },
+    {
+      "accepted_answers": [
+        "2"
+      ],
+      "explanation": "0.02 / 0.01 = 2."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Sample trace ids stored with histogram buckets."
+    }
+  ]
+}

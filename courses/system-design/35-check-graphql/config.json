@@ -1,0 +1,70 @@
+{
+  "type": "quiz",
+  "title": "Check: GraphQL and Choosing",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What does a GraphQL client get back?",
+      "options": [
+        "A list of URLs to fetch",
+        "A binary protobuf",
+        "Every field of every type",
+        "JSON in exactly the shape of its query"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A GraphQL server validates the query against the schema before fetching any data."
+    },
+    {
+      "type": "written",
+      "prompt": "In GraphQL, what are writes called? (one word)"
+    },
+    {
+      "prompt": "A query lists 50 books with their authors. The naive resolver runs one query for the books and one per author. How many queries is that?",
+      "options": [
+        "51",
+        "50",
+        "2",
+        "1"
+      ]
+    },
+    {
+      "prompt": "What's the fix for N+1?",
+      "options": [
+        "A longer cache TTL",
+        "Switching to offset pagination",
+        "Batching: load every needed author in one query",
+        "Adding more resolvers"
+      ]
+    },
+    {
+      "prompt": "Why doesn't ordinary HTTP caching work for GraphQL?",
+      "options": [
+        "GraphQL responses are binary",
+        "Responses are too small",
+        "GraphQL forbids caching",
+        "Every query is a POST to one URL"
+      ]
+    },
+    {
+      "prompt": "Which style fits internal service-to-service calls best?",
+      "options": [
+        "GraphQL",
+        "REST with offset pagination",
+        "Email",
+        "RPC (gRPC)"
+      ]
+    },
+    {
+      "prompt": "Why do GraphQL servers limit query depth and cost?",
+      "options": [
+        "A careless or malicious client can request an enormously deep query",
+        "To make HTTP caching work",
+        "Deep queries are invalid",
+        "The schema can only be two levels deep"
+      ]
+    }
+  ]
+}

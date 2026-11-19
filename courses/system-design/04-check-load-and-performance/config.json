@@ -1,0 +1,56 @@
+{
+  "type": "quiz",
+  "title": "Check: Load and Performance",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "type": "true_false",
+      "prompt": "\"Does it scale?\" is a meaningful question on its own."
+    },
+    {
+      "type": "written",
+      "prompt": "What's the term for how many downstream requests one incoming request causes? (one word, hyphen allowed)"
+    },
+    {
+      "prompt": "When Twitter moved to pushing each tweet into followers' cached timelines, which load parameter turned out to matter most?",
+      "options": [
+        "The number of tweets posted per second",
+        "The distribution of followers per user",
+        "The number of data centers serving reads",
+        "The average length of a tweet"
+      ]
+    },
+    {
+      "prompt": "After Twitter's switch to fan-out on write, what changed?",
+      "options": [
+        "Writes got cheap and reads got expensive",
+        "Reads got cheap and writes got expensive",
+        "Nothing measurable",
+        "Both got cheaper"
+      ]
+    },
+    {
+      "prompt": "Which performance measure matters most for an online service that a person is waiting on?",
+      "options": [
+        "Batch size",
+        "Throughput",
+        "Response time",
+        "Disk capacity"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Strictly speaking, latency is the time a request spends waiting to be handled, while response time is everything the client sees."
+    },
+    {
+      "prompt": "You send the same request a thousand times. What should you expect of the response times?",
+      "options": [
+        "Exactly two values: hit and miss",
+        "The same time every run",
+        "Every run slower than the last",
+        "A distribution: most are fast, and some are slow because of GC pauses, lost packets, or cold caches"
+      ]
+    }
+  ]
+}

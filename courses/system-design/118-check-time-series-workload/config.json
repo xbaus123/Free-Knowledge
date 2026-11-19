@@ -1,0 +1,52 @@
+{
+  "type": "quiz",
+  "title": "Check: Time-Series Workload and Layout",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "10,000 servers expose 500 metrics each, scraped every 15 seconds. About how many points per second?",
+      "options": [
+        "About 333,000",
+        "About 3,300",
+        "About 5 million",
+        "About 75,000"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Time-series points are frequently updated in place."
+    },
+    {
+      "prompt": "What identifies a series?",
+      "options": [
+        "A metric name plus its labels",
+        "A random id",
+        "A timestamp",
+        "The server's IP"
+      ]
+    },
+    {
+      "prompt": "How does Prometheus find the series for {service=\"api\", status=\"500\"}?",
+      "options": [
+        "Intersect postings lists in an inverted index of label pairs",
+        "Scan every series",
+        "A B-tree on timestamps",
+        "A hash of the query"
+      ]
+    },
+    {
+      "prompt": "How does Prometheus enforce retention?",
+      "options": [
+        "Writing tombstones per point",
+        "Compacting points into one",
+        "Asking users to delete",
+        "Deleting whole blocks older than the limit"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Recent Prometheus data lives in an in-memory ______ block. (one word)"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Splitting along team lines lets each team move independently."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Every problem from the distributed-systems chapters applies."
+    },
+    {
+      "accepted_answers": [
+        "conway's",
+        "conways",
+        "conway",
+        "conway's law"
+      ],
+      "explanation": "The inverse Conway maneuver designs teams to get the architecture you want."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The boundaries are already there when you need them."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "All of microservices' costs and none of the benefits."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Segment and Amazon Prime Video both did."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The compiler finds every caller."
+    }
+  ]
+}

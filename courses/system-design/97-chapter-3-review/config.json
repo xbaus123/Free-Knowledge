@@ -1,0 +1,101 @@
+{
+  "type": "quiz",
+  "title": "Chapter Review: Data Models and Storage Engines",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "A recommendation engine needs \"customers who bought what you bought, up to three hops away.\" Which model fits?",
+      "options": [
+        "Key-value",
+        "Document",
+        "Graph",
+        "Column store"
+      ]
+    },
+    {
+      "prompt": "Which change is the classic downside of denormalization?",
+      "options": [
+        "Renaming a product means updating every copy",
+        "Writes get faster",
+        "Indexes stop working",
+        "Reads need more joins"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "An append-only log makes writes sequential."
+    },
+    {
+      "prompt": "A Bitcask store has 10 billion keys and 32 GB of RAM. What's the problem?",
+      "options": [
+        "Writes will be random",
+        "The hash index of every key won't fit in memory",
+        "Tombstones won't work",
+        "It can't delete"
+      ]
+    },
+    {
+      "prompt": "Which structure lets an LSM-tree skip segments that can't contain a key?",
+      "options": [
+        "A WAL",
+        "A sparse index",
+        "A memtable",
+        "A Bloom filter"
+      ]
+    },
+    {
+      "prompt": "Why is merging SSTables efficient?",
+      "options": [
+        "They have no tombstones",
+        "They're sorted, so it's a linear merge like mergesort",
+        "They're in memory",
+        "They're small"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the in-memory sorted buffer of recent writes in an LSM-tree called? (one word)"
+    },
+    {
+      "prompt": "A B-tree with 4 KB pages and a branching factor of 500 has four levels. Roughly how much can it store?",
+      "options": [
+        "256 MB",
+        "256 TB",
+        "2 KB",
+        "4 GB"
+      ]
+    },
+    {
+      "prompt": "Which engine gives more predictable read latency?",
+      "options": [
+        "Both equally",
+        "B-tree",
+        "LSM-tree",
+        "Neither"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Both B-trees and LSM-trees write data more than once."
+    },
+    {
+      "prompt": "A dashboard sums revenue by region over 500 million sales. Which storage fits?",
+      "options": [
+        "A Bitcask store",
+        "A graph database",
+        "A columnar warehouse",
+        "The production OLTP database"
+      ]
+    },
+    {
+      "prompt": "What does the query optimizer do?",
+      "options": [
+        "Compacts segments",
+        "Decides how to run a declarative query: which index, which join order",
+        "Encrypts data",
+        "Writes your SQL for you"
+      ]
+    }
+  ]
+}

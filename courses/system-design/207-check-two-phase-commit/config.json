@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Check: Two-Phase Commit and Consensus",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Put two-phase commit in order.",
+      "options": [
+        "Prepare and collect votes, write the decision to the coordinator's log, then tell everyone to commit",
+        "Commit everywhere, then prepare",
+        "Write the decision, then prepare",
+        "Vote, abort, commit"
+      ]
+    },
+    {
+      "prompt": "What does a participant's yes vote promise?",
+      "options": [
+        "It will retry",
+        "Nothing",
+        "It can no longer abort on its own",
+        "It has already committed"
+      ]
+    },
+    {
+      "prompt": "The coordinator crashes after every participant voted yes. What happens?",
+      "options": [
+        "A new coordinator is elected automatically",
+        "They all abort",
+        "Participants are in doubt and hold their locks until it recovers",
+        "They all commit"
+      ]
+    },
+    {
+      "prompt": "What do microservices usually use instead of 2PC?",
+      "options": [
+        "Last write wins",
+        "XA transactions",
+        "Sagas",
+        "Hinted handoff"
+      ]
+    },
+    {
+      "prompt": "Which consensus property does 2PC lack?",
+      "options": [
+        "Agreement",
+        "Validity",
+        "Integrity",
+        "Termination"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which consensus algorithm was designed to be understandable? (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Uniform agreement means no two nodes decide differently."
+    }
+  ]
+}

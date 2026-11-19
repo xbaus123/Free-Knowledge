@@ -1,0 +1,47 @@
+{
+  "type": "quiz",
+  "title": "Check: The Document Model",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What does embedding related data in one document give you?",
+      "options": [
+        "Locality: one read returns the whole thing",
+        "Stronger joins",
+        "Smaller documents",
+        "An enforced schema"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Document databases interpret structure when data is read rather than when it's written. What's that called? (three words, hyphens allowed)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Document databases handle many-to-many relationships as easily as relational ones."
+    },
+    {
+      "prompt": "Which data fits the document model best?",
+      "options": [
+        "Products shared by many orders",
+        "A social graph of who follows whom",
+        "A user profile with its addresses, always loaded together",
+        "Bank accounts referenced by transfers"
+      ]
+    },
+    {
+      "prompt": "What's the relational model's main strength in the comparison?",
+      "options": [
+        "Never needing indexes",
+        "Having no schema",
+        "Matching the shape of your objects",
+        "Integrity and flexible queries across data"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "The boundary is blurry: PostgreSQL can store and index JSON, and MongoDB has joins and schema validation."
+    }
+  ]
+}

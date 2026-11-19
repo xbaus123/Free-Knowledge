@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Check: Logs and Hash Indexes",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "In the two-line shell database, why are writes fast and reads slow?",
+      "options": [
+        "Both are slow",
+        "Writes are cached; reads hit the network",
+        "Reads use an index; writes don't",
+        "Writes append sequentially; reads scan the whole file"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Every index speeds up some reads and slows down every write."
+    },
+    {
+      "prompt": "What does Bitcask keep in memory?",
+      "options": [
+        "A sorted tree of keys",
+        "Nothing",
+        "A hash map from each key to the byte offset of its latest record",
+        "Every value"
+      ]
+    },
+    {
+      "prompt": "When is Bitcask ideal?",
+      "options": [
+        "Full-text search",
+        "Billions of keys that don't fit in memory",
+        "Range queries",
+        "Many writes per key, and all keys fit in memory"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "How does an append-only log record a delete? It appends a special ______ record. (one word)"
+    },
+    {
+      "prompt": "The hash map is lost when the process restarts. How is it rebuilt?",
+      "options": [
+        "By reading the log from start to end",
+        "By asking replicas",
+        "It can't be",
+        "From a backup"
+      ]
+    },
+    {
+      "prompt": "A crash mid-append leaves a torn record at the end of the file. What detects it?",
+      "options": [
+        "A checksum",
+        "fsync",
+        "A tombstone",
+        "The hash map"
+      ]
+    }
+  ]
+}

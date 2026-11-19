@@ -1,0 +1,65 @@
+{
+  "type": "quiz",
+  "title": "Check: Percentiles and Queueing",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "A service's p99 response time is 1.5 seconds. What does that mean?",
+      "options": [
+        "The average request takes 1.5 seconds",
+        "The single slowest request took 1.5 seconds",
+        "1 in 100 requests takes at least 1.5 seconds",
+        "99% of requests take about 1.5 seconds"
+      ]
+    },
+    {
+      "prompt": "Why is the mean a poor summary of response times?",
+      "options": [
+        "It's expensive to compute over millions of requests",
+        "It ignores the fastest requests",
+        "It doesn't tell you how many users actually experienced a delay",
+        "It's always higher than the median"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which percentile is the median? Answer like p95."
+    },
+    {
+      "prompt": "Loading one page makes 10 backend calls in parallel. Each backend is slow (beyond its p99) on 1% of calls. Roughly what fraction of page loads are slow?",
+      "options": [
+        "About 1%",
+        "About 10%",
+        "About 0.1%",
+        "About 99%"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Amazon sets internal latency targets at p999 because its most valuable customers tend to make the slowest requests."
+    },
+    {
+      "prompt": "What's the difference between an SLO and an SLA?",
+      "options": [
+        "An SLO measures throughput; an SLA measures latency",
+        "They're the same thing",
+        "An SLA is internal; an SLO is in the contract",
+        "An SLO is an internal goal; an SLA is a contract that promises it to customers"
+      ]
+    },
+    {
+      "prompt": "A server's utilization climbs from 50% to 95% as traffic grows. What happens to response times?",
+      "options": [
+        "They stay flat until utilization reaches 100%",
+        "They fall, because caches stay warmer under load",
+        "They rise in exact proportion to the traffic",
+        "They rise steeply, because queues form and grow faster near full capacity"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the name for a few slow requests holding up the ones queued behind them? (three words, hyphens allowed)"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "type": "quiz",
+  "title": "Check: Logs vs. Task Queues",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Why can a fixed consumer be rewound to reprocess the last day?",
+      "options": [
+        "Consumers store every message",
+        "Messages stay in the log after they're consumed",
+        "Offsets can't move",
+        "The broker keeps a backup"
+      ]
+    },
+    {
+      "prompt": "How do you measure consumer lag?",
+      "options": [
+        "Message size",
+        "Number of partitions",
+        "CPU usage",
+        "The distance between a partition's end offset and the group's committed offset"
+      ]
+    },
+    {
+      "prompt": "What's a log's weakness for long, individually expensive jobs?",
+      "options": [
+        "A slow message blocks every message behind it in its partition",
+        "It reorders them",
+        "It can't store them",
+        "It loses them"
+      ]
+    },
+    {
+      "prompt": "A consumer commits its offset, then processes, then crashes mid-processing. What guarantee is that?",
+      "options": [
+        "At most once",
+        "Exactly once",
+        "Effectively once",
+        "At least once"
+      ]
+    },
+    {
+      "prompt": "Which is the usual choice?",
+      "options": [
+        "At least once plus idempotent processing",
+        "Commit before processing",
+        "At most once",
+        "No commits"
+      ]
+    },
+    {
+      "prompt": "Which fits jobs of varying cost with individual retries, delays, and priorities?",
+      "options": [
+        "A TSDB",
+        "A CDN",
+        "A log like Kafka",
+        "A task queue like RabbitMQ or SQS"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Adding a consumer group to a log costs no broker writes; it's just another set of offsets."
+    }
+  ]
+}

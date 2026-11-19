@@ -1,0 +1,52 @@
+{
+  "type": "quiz",
+  "title": "Check: Why Balance Load",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Which is NOT one of the three things a load balancer gives you?",
+      "options": [
+        "Availability",
+        "Scalability",
+        "Indirection",
+        "Faster individual requests on each backend"
+      ]
+    },
+    {
+      "prompt": "Why does indirection matter?",
+      "options": [
+        "It encrypts traffic",
+        "Clients know one stable address, so you can deploy, resize, and replace servers behind it",
+        "It caches responses",
+        "It makes servers stateless"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Routing each user back to the same server every time is called ______ sessions. (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Load balancing works most cleanly when backends are stateless and the state lives in a database or cache."
+    },
+    {
+      "prompt": "What does \"cattle, not pets\" mean for servers?",
+      "options": [
+        "Servers should be named after animals",
+        "Servers are interchangeable and can be replaced without care",
+        "Each server is hand-tuned and irreplaceable",
+        "Servers must keep session state"
+      ]
+    },
+    {
+      "prompt": "A server keeps login sessions in its own memory and crashes. What happens to its users?",
+      "options": [
+        "Nothing: another server has the sessions",
+        "They lose their sessions and must log in again",
+        "They're moved with their sessions intact",
+        "The load balancer restores them"
+      ]
+    }
+  ]
+}

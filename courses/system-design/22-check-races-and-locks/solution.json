@@ -1,0 +1,41 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Both threads read 5, both write 6, and one increment is lost."
+    },
+    {
+      "accepted_answers": [
+        "read-modify-write",
+        "read modify write"
+      ],
+      "explanation": "You'll meet it again at database scale as the lost update."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "They're rare and timing-dependent, so code often passes tests and fails once a day under production load."
+    },
+    {
+      "accepted_answers": [
+        "critical section"
+      ],
+      "explanation": "A lock guards a critical section."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The context manager releases the lock when the block ends, however it ends."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "A lock held too long, or too widely, turns parallel code into serial code."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A semaphore allows at most n holders. A condition variable waits for something to change."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Atomic operations update one value safely without a lock."
+    }
+  ]
+}

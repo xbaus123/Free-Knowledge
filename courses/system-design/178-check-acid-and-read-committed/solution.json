@@ -1,0 +1,30 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "All or nothing, so partial failures don't leave half-done work."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Consistency depends on your application's rules; the database enforces only the constraints you declare."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Most databases default to something weaker."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "You acted on data that never existed."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "A second writer waits for the first to commit or abort."
+    },
+    {
+      "accepted_answers": [
+        "read committed"
+      ],
+      "explanation": "It prevents dirty reads and dirty writes."
+    }
+  ]
+}

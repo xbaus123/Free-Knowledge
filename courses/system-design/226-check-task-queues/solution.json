@@ -1,0 +1,34 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "Unacknowledged messages are redelivered."
+    },
+    {
+      "accepted_answers": [
+        "visibility"
+      ],
+      "explanation": "Delete it before the timeout ends."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "At-least-once delivery, so consumers must be idempotent."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The late acknowledgment would be refused."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "With redelivery and competing consumers, message 2 can finish before message 1."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "That's a poison message."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Topic patterns like orders.*.eu."
+    }
+  ]
+}

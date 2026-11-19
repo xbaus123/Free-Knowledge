@@ -1,0 +1,34 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "4 ÷ 0.006 s ≈ 667 requests per second."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Demand above capacity means the queue never drains."
+    },
+    {
+      "accepted_answers": [
+        "failure"
+      ],
+      "explanation": "With one server, one crash is a total outage. Scaling out removes that."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Requests at the back of the queue wait longest, so the tail moves first."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Health checks notice a dead server and the rest keep serving."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Synchronous replication waits for the standby on every write, so it loses nothing but adds latency."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Crash the database in Chaos mode and everything fails."
+    }
+  ]
+}

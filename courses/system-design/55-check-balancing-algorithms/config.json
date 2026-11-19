@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Check: Round Robin and Least Connections",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "type": "true_false",
+      "prompt": "Round robin is perfectly fair only if every request costs the same and every server is equally fast."
+    },
+    {
+      "prompt": "With weights A=5, B=1, C=1, what share of requests does A get?",
+      "options": [
+        "5 of every 7",
+        "1 of every 3",
+        "5 of every 5",
+        "All of them"
+      ]
+    },
+    {
+      "prompt": "Which sequence does smooth weighted round robin produce for A=5, B=1, C=1?",
+      "options": [
+        "A, A, A, A, A, B, C",
+        "A, A, B, A, C, A, A",
+        "A, B, C, A, B, C, A",
+        "B, C, A, A, A, A, A"
+      ]
+    },
+    {
+      "prompt": "In smooth weighted round robin, after choosing the server with the highest score, what happens to its score?",
+      "options": [
+        "The total weight is subtracted from it",
+        "It's reset to zero",
+        "It's doubled",
+        "Its weight is added again"
+      ]
+    },
+    {
+      "prompt": "One server has a long garbage collection pause. Which algorithm notices and steers around it?",
+      "options": [
+        "Least connections",
+        "Hash by user id",
+        "Round robin",
+        "Weighted round robin"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which algorithm sends each request to the backend with the fewest active requests? (two words)"
+    },
+    {
+      "prompt": "What does least connections cost compared with round robin?",
+      "options": [
+        "State: counting active requests per backend, which is hard to share across many balancers",
+        "TLS on every backend",
+        "More network round trips",
+        "It can't handle weighted servers"
+      ]
+    }
+  ]
+}

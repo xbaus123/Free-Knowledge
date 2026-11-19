@@ -1,0 +1,30 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "A distributed cache is shared, at the cost of a round trip."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Hit rate is everything."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "In read-through, the cache does it through a loader."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Slowly, but they work. That's why it's the most common pattern."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Check, load, store."
+    },
+    {
+      "accepted_answers": [
+        "cache-control"
+      ],
+      "explanation": "Client and edge caches obey it."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "type": "quiz",
+  "title": "Drill: Which Pattern?",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "A dependency hangs and every caller's threads pile up. What's the first fix?",
+      "options": [
+        "More retries",
+        "A bigger cache",
+        "Last write wins",
+        "Timeouts and deadlines"
+      ]
+    },
+    {
+      "prompt": "Occasional 503s during deploys cause user-visible errors. What helps?",
+      "options": [
+        "Removing timeouts",
+        "Retries with exponential backoff and jitter",
+        "A circuit breaker that stays open",
+        "Load shedding"
+      ]
+    },
+    {
+      "prompt": "A dependency is down for ten minutes and retries make the recovery slower. What helps?",
+      "options": [
+        "More aggressive retries",
+        "Longer timeouts",
+        "A circuit breaker with a fallback",
+        "Hedged requests"
+      ]
+    },
+    {
+      "prompt": "A slow search service is starving checkout of threads. What helps?",
+      "options": [
+        "More retries",
+        "TTL jitter",
+        "A longer timeout",
+        "A bulkhead limiting search's concurrency"
+      ]
+    },
+    {
+      "prompt": "p99 is ruined by one slow replica out of many. What helps, for idempotent reads?",
+      "options": [
+        "Retry budgets",
+        "Hedged requests",
+        "Write-behind",
+        "Circuit breakers"
+      ]
+    },
+    {
+      "prompt": "Traffic is 3× capacity during a launch. What should the service do?",
+      "options": [
+        "Shed low-priority load and serve the rest well",
+        "Retry everything",
+        "Disable health checks",
+        "Accept everything"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A lock holder that pauses for a long GC can wake up still believing it holds the lock, which is why storage should check fencing tokens."
+    }
+  ]
+}

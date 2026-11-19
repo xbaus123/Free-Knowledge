@@ -1,0 +1,70 @@
+{
+  "type": "quiz",
+  "title": "Check: Stampedes and Hot Keys",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "A key is read 10,000 times a second and takes 200 ms to recompute. It expires. About how many requests miss before it's repopulated?",
+      "options": [
+        "About 2,000",
+        "About 1",
+        "About 10,000",
+        "About 200"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's another name for a cache stampede? (two words)"
+    },
+    {
+      "prompt": "Keys loaded together with the same TTL all expire at once. What's the simple fix?",
+      "options": [
+        "LRU",
+        "Longer TTLs",
+        "TTL jitter: add a random ±10%",
+        "Write-through"
+      ]
+    },
+    {
+      "prompt": "What does request coalescing (single flight) do?",
+      "options": [
+        "Every request loads the key",
+        "Requests are dropped",
+        "Only the first missing request loads the key; the rest wait and share its result",
+        "The cache is cleared"
+      ]
+    },
+    {
+      "prompt": "Requests for keys that don't exist always miss. What helps?",
+      "options": [
+        "LFU",
+        "Bigger cache",
+        "Negative caching: briefly cache \"not found\"",
+        "Write-behind"
+      ]
+    },
+    {
+      "prompt": "In XFetch, what makes a reader refresh early?",
+      "options": [
+        "A write to the database",
+        "A probability that rises as expiry approaches",
+        "A fixed schedule",
+        "The key being evicted"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Stale-while-revalidate serves the expired value while one request refreshes it in the background."
+    },
+    {
+      "prompt": "One celebrity's profile gets a million reads a second and overwhelms its cache node. What helps?",
+      "options": [
+        "Cache it in-process on every app server, or replicate it across several cache nodes",
+        "Evict it",
+        "A longer TTL",
+        "Write-around"
+      ]
+    }
+  ]
+}

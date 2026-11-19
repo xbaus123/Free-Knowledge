@@ -1,0 +1,56 @@
+{
+  "type": "quiz",
+  "title": "Check: Scaling and Maintainability",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What is scaling up?",
+      "options": [
+        "Moving to a more powerful machine",
+        "Adding more machines that share the load",
+        "Adding capacity automatically as load rises",
+        "Splitting a database by key"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the name for an architecture where machines share the load but share no memory or disks? (two words, hyphen allowed)"
+    },
+    {
+      "prompt": "Which part of a system is the hardest to scale out across many machines?",
+      "options": [
+        "Data: databases and other stateful components",
+        "Stateless API servers behind a load balancer",
+        "Static files such as images and scripts",
+        "The load balancer itself"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "An elastic system adds capacity automatically as load rises."
+    },
+    {
+      "prompt": "A team adds clear dashboards, predictable behavior, and sane defaults so on-call engineers can keep the system healthy. Which maintainability principle is that?",
+      "options": [
+        "Operability",
+        "Evolvability",
+        "Elasticity",
+        "Simplicity"
+      ]
+    },
+    {
+      "prompt": "What's the main tool for simplicity?",
+      "options": [
+        "Avoiding monitoring",
+        "Good abstractions that hide implementation details behind clean interfaces",
+        "Adding more features",
+        "Writing everything in one file"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Most of a system's cost comes before launch."
+    }
+  ]
+}

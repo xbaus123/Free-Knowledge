@@ -1,0 +1,70 @@
+{
+  "type": "quiz",
+  "title": "Check: Bulkheads and Load Shedding",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What does a bulkhead do?",
+      "options": [
+        "Retries failed calls",
+        "Balances load",
+        "Caps the resources one dependency can consume, so a problem with it can't use up everything",
+        "Encrypts traffic"
+      ]
+    },
+    {
+      "prompt": "A dependency serves 100 requests a second at 200 ms. By Little's law, about how many concurrent slots does it need?",
+      "options": [
+        "About 20",
+        "About 200",
+        "About 2",
+        "About 100"
+      ]
+    },
+    {
+      "prompt": "What does shuffle sharding do?",
+      "options": [
+        "Shuffles data between partitions",
+        "Assigns each customer a random small set of cells, so two customers rarely share all of theirs",
+        "Sorts keys",
+        "Randomizes retries"
+      ]
+    },
+    {
+      "prompt": "Why is rejecting a request under overload better than accepting it and timing out?",
+      "options": [
+        "Accepting is always worse",
+        "Timeouts are illegal",
+        "Rejecting costs microseconds; timing out wastes seconds of work",
+        "Rejected requests are retried automatically"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A full bounded queue rejecting new work pushes back on senders. What's that called? (one word)"
+    },
+    {
+      "prompt": "Which is graceful degradation?",
+      "options": [
+        "Retrying forever",
+        "Crashing quickly",
+        "Rejecting every request",
+        "Serving stale data or hiding non-essential features when dependencies fail"
+      ]
+    },
+    {
+      "prompt": "Put the patterns for one outbound call in order.",
+      "options": [
+        "Deadline check, bulkhead slot, circuit breaker, timeout, call",
+        "Call, timeout, breaker",
+        "Breaker, call, deadline",
+        "Timeout, deadline, bulkhead, call"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Resiliency patterns only work if they're tested, which is what chaos engineering does."
+    }
+  ]
+}

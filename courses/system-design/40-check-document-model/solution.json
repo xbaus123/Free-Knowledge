@@ -1,0 +1,31 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "It fits data that's naturally a tree and always loaded together."
+    },
+    {
+      "accepted_answers": [
+        "schema-on-read",
+        "schema on read"
+      ],
+      "explanation": "Flexible, but your code has to cope with every shape ever written."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Joins are limited or missing, so you copy data around or make several queries."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Trees loaded as a unit suit documents. Data with many cross-references suits tables."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Documents win on locality and matching your objects."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Modern databases borrow from both models."
+    }
+  ]
+}

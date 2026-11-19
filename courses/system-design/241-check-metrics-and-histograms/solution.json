@@ -1,0 +1,36 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "You need both."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Metrics say whether something's wrong; logs say what happened."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Requests served, errors, bytes sent."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Gauges go up and down."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Put unbounded values in logs and traces."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "You can't average percentiles. Add histogram buckets and estimate from the combined counts."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Then walk the buckets cumulatively and interpolate within one."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Histograms can be summed."
+    }
+  ]
+}

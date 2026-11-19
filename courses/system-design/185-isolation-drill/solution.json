@@ -1,0 +1,28 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "The backup needs a consistent snapshot."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Read-modify-write on the same value."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "When the conflict is on one value, a unique index stops it."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Each checked the balance, then wrote a different purchase row."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It stops identical bookings, not overlapping ranges."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Read committed prevents dirty reads."
+    }
+  ]
+}

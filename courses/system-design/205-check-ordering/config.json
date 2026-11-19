@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Check: Ordering and Total Order Broadcast",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What does causality require?",
+      "options": [
+        "All events are concurrent",
+        "Every event has a wall-clock time",
+        "If A caused B, everyone sees A before B",
+        "Writes are linearizable"
+      ]
+    },
+    {
+      "prompt": "What does a Lamport timestamp attach to each operation?",
+      "options": [
+        "A hash of the data",
+        "A counter and the node id",
+        "A random UUID",
+        "A wall-clock time"
+      ]
+    },
+    {
+      "prompt": "A node receives a message with counter 42 while its own counter is 7. What does it do?",
+      "options": [
+        "Jump its counter past 42",
+        "Keep its counter at 7",
+        "Reset to 0",
+        "Reject the message"
+      ]
+    },
+    {
+      "prompt": "Why can't Lamport timestamps alone enforce a unique username right now?",
+      "options": [
+        "They need GPS clocks",
+        "The order is only known after the fact; another node might claim it with a lower timestamp",
+        "They're too slow",
+        "They aren't totally ordered"
+      ]
+    },
+    {
+      "prompt": "What two properties does total order broadcast guarantee?",
+      "options": [
+        "Encryption and integrity",
+        "Speed and low cost",
+        "Eventual delivery in any order",
+        "Reliable delivery and the same order everywhere"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Feeding every replica the same writes in the same order so they end up in the same state is state ______ replication. (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Total order broadcast is equivalent to consensus."
+    }
+  ]
+}

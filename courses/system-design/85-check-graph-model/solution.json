@@ -1,0 +1,31 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Vertices and edges, both with properties."
+    },
+    {
+      "accepted_answers": [
+        "traversal",
+        "a traversal"
+      ],
+      "explanation": "Traversals of variable depth are natural in a graph."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Variable-depth queries are awkward in SQL and natural in Cypher."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "MATCH (a)-[:PLACED]->(o) ..."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Documents suit trees; graphs suit highly connected data."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Pick the model that matches your data's shape, knowing each system borrows from the others."
+    }
+  ]
+}

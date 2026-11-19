@@ -1,0 +1,32 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "Stop waiting forever."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Transient faults become a little latency."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Give it room to recover."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Contain the fault."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Race a second replica after the p95."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Serving some requests well beats serving all of them badly."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The storage rejects writes with stale tokens."
+    }
+  ]
+}

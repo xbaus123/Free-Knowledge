@@ -1,0 +1,36 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "A rare term is telling; a common one says little."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "BM25's b parameter controls how much to penalize long documents."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "With TF-IDF, repeating a keyword 100 times scores 100 times higher, which spammers exploit."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "b = 1 normalizes fully; the usual default is 0.75."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's saturation."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Cheap first-pass retrieval, expensive second-pass reranking."
+    },
+    {
+      "accepted_answers": [
+        "min-heap",
+        "min heap",
+        "a min-heap"
+      ],
+      "explanation": "WAND and block-max WAND go further by skipping documents that can't beat the current kth score."
+    }
+  ]
+}

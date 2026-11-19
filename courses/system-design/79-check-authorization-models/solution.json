@@ -1,0 +1,34 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "Users have roles, and roles grant permissions."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Permissions follow a graph of relationships, as in Google's Zanzibar."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Policies over attributes of user, resource, and context."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Roles can inherit from other roles."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Gateways do coarse checks; services do object-level checks."
+    },
+    {
+      "accepted_answers": [
+        "object"
+      ],
+      "explanation": "Also called IDOR, the most common API vulnerability in the OWASP API Security Top 10."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Services should accept identity headers only from the gateway."
+    }
+  ]
+}

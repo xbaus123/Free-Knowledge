@@ -1,0 +1,70 @@
+{
+  "type": "quiz",
+  "title": "Check: Communication and Service Meshes",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "A request needs 3 services, each up 99.9% of the time independently. About how often does it succeed?",
+      "options": [
+        "99.7%",
+        "97%",
+        "99.0%",
+        "99.9%"
+      ]
+    },
+    {
+      "prompt": "With 10 synchronous dependencies at 99.9% each, the request succeeds about 99.0% of the time. Roughly how much monthly failure is that?",
+      "options": [
+        "About 1 minute",
+        "About 43 minutes",
+        "About 7 hours",
+        "About 3 days"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Asynchronous messaging keeps services up when neighbors are down, at the cost of eventual consistency and harder debugging."
+    },
+    {
+      "prompt": "A calls B and B calls A synchronously. What does that suggest?",
+      "options": [
+        "The two are really one service, or one direction should be an event",
+        "A healthy design",
+        "Use a bigger cache",
+        "Add more retries"
+      ]
+    },
+    {
+      "prompt": "In a service mesh, what is the data plane?",
+      "options": [
+        "The DNS servers",
+        "The central database",
+        "The CI pipeline",
+        "A sidecar proxy next to every service instance"
+      ]
+    },
+    {
+      "prompt": "What does the control plane do?",
+      "options": [
+        "Configures every sidecar: routing, retries, permissions, and certificates",
+        "Runs batch jobs",
+        "Stores user data",
+        "Handles each request's bytes"
+      ]
+    },
+    {
+      "prompt": "What's a cost of a service mesh?",
+      "options": [
+        "No metrics",
+        "Language lock-in",
+        "An extra proxy hop per call and thousands of proxies to run",
+        "No mTLS"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A mesh retrying a non-idempotent call can still charge a customer twice."
+    }
+  ]
+}

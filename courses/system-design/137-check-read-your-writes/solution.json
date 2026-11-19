@@ -1,0 +1,41 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "It only promises your own updates."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It waits for exactly the write that matters."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Cross-device guarantees need central per-user state."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A cache is another copy."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Data can still be stale, but time never goes backward."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "A single follower's state only moves forward."
+    },
+    {
+      "accepted_answers": [
+        "larger",
+        "max",
+        "maximum",
+        "greater"
+      ],
+      "explanation": "Take whichever is newer."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "MongoDB's causally consistent sessions do the same with afterClusterTime."
+    }
+  ]
+}

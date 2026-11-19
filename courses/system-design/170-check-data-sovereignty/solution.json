@@ -1,0 +1,26 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Data in Frankfurt held by an American company may still face American legal demands."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Unless the destination offers equivalent protection."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Fail closed. Provision two regions inside the jurisdiction instead."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Everything is data."
+    },
+    {
+      "accepted_answers": [
+        "shredding"
+      ],
+      "explanation": "Keep keys in a KMS in the same jurisdiction."
+    }
+  ]
+}

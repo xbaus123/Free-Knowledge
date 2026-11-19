@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Check: Erasure Coding",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "A million disks with a 1% annual failure rate lose about how many disks a day?",
+      "options": [
+        "About 270",
+        "About 1",
+        "About 10,000",
+        "About 27"
+      ]
+    },
+    {
+      "prompt": "What's 3× replication's storage overhead?",
+      "options": [
+        "300%",
+        "50%",
+        "200%",
+        "0%"
+      ]
+    },
+    {
+      "prompt": "With Reed-Solomon (6, 3), how many shard losses can a chunk survive?",
+      "options": [
+        "1",
+        "9",
+        "6",
+        "3"
+      ]
+    },
+    {
+      "prompt": "XOR parity over 4 data shards: how is a lost shard rebuilt?",
+      "options": [
+        "Re-upload the object",
+        "It can't be",
+        "XOR the parity with the 3 surviving data shards",
+        "Copy it from a replica"
+      ]
+    },
+    {
+      "prompt": "What's erasure coding's main cost compared with replication?",
+      "options": [
+        "More storage",
+        "No CPU needed",
+        "Fewer failures survived",
+        "Repair and degraded reads must read k shards over the network"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the background process that re-reads every shard to find corruption early? (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "A common design has clients upload directly to the object store with a presigned URL, so API servers never touch the bytes."
+    }
+  ]
+}

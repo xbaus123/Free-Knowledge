@@ -1,0 +1,66 @@
+{
+  "type": "quiz",
+  "title": "Check: CDN Caching Rules",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "A CDN has a 95% hit ratio. How many requests reach the origin?",
+      "options": [
+        "19 in 20",
+        "None",
+        "1 in 20",
+        "1 in 95"
+      ]
+    },
+    {
+      "prompt": "Which directive keeps a CDN from storing a response, while still letting the user's browser store it?",
+      "options": [
+        "s-maxage=60",
+        "immutable",
+        "private",
+        "public"
+      ]
+    },
+    {
+      "prompt": "Which directive sets freshness only in shared caches, overriding max-age there?",
+      "options": [
+        "no-cache",
+        "max-age",
+        "s-maxage",
+        "stale-if-error"
+      ]
+    },
+    {
+      "prompt": "What does no-cache mean?",
+      "options": [
+        "Only CDNs may store it",
+        "It must never be stored",
+        "It's cached forever",
+        "It may be stored but must be revalidated before every use"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A CDN should cache a response that sets a cookie by default."
+    },
+    {
+      "prompt": "Which directive lets a CDN keep serving the last good copy while the origin is failing?",
+      "options": [
+        "no-store",
+        "immutable",
+        "private",
+        "stale-if-error"
+      ]
+    },
+    {
+      "prompt": "A request carries an Authorization header. When may a shared cache store its response?",
+      "options": [
+        "When the TTL is short",
+        "Only if the origin explicitly marks it public or gives s-maxage",
+        "Always",
+        "Never"
+      ]
+    }
+  ]
+}

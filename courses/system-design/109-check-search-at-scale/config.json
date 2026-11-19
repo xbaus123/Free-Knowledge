@@ -1,0 +1,70 @@
+{
+  "type": "quiz",
+  "title": "Check: Search at Scale",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "How does Elasticsearch pick a document's shard?",
+      "options": [
+        "The least loaded shard",
+        "Round robin",
+        "hash(_id) % number of primary shards",
+        "By date"
+      ]
+    },
+    {
+      "prompt": "Search is read-heavy. How does it scale read throughput?",
+      "options": [
+        "Use bigger nodes only",
+        "Add primary shards later",
+        "Add replica shards; any copy can answer a search",
+        "Disable refreshes"
+      ]
+    },
+    {
+      "prompt": "Put a distributed search's phases in order.",
+      "options": [
+        "Query each shard for its top k ids and scores, then fetch the global top k documents",
+        "Fetch every document, then query",
+        "Query one shard only",
+        "Fetch, merge, query"
+      ]
+    },
+    {
+      "prompt": "With 50 shards, why are many searches slow even if each shard is slow only 1% of the time?",
+      "options": [
+        "The coordinator is single-threaded",
+        "Shards share one disk",
+        "Replicas slow it down",
+        "A search waits for its slowest shard: tail latency amplification"
+      ]
+    },
+    {
+      "prompt": "Why is page 1,000 of 10 results expensive?",
+      "options": [
+        "Every shard returns its top 10,010 and the coordinator sorts them all",
+        "It fetches only one shard",
+        "Pages are cached",
+        "It needs a reindex"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A search index is usually the system of record."
+    },
+    {
+      "prompt": "\"cheap flights\" should match \"low-cost airfare\". Which technique helps?",
+      "options": [
+        "Phrase queries",
+        "Delta encoding",
+        "Vector search over embeddings",
+        "Stemming"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Running BM25 and vector search and merging the results is called ______ search. (one word)"
+    }
+  ]
+}

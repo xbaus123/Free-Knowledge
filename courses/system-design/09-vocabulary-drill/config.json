@@ -1,0 +1,56 @@
+{
+  "type": "quiz",
+  "title": "Drill: The Language of Load",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "A checkout page calls 5 services in parallel and waits for all of them. Which number should the team watch most closely for each service?",
+      "options": [
+        "Its throughput only",
+        "Its tail latency, such as p99",
+        "Its mean latency",
+        "Its disk usage"
+      ]
+    },
+    {
+      "prompt": "A database server runs at 97% CPU and p99 latency has tripled since last week, while p50 barely moved. What's the most likely explanation?",
+      "options": [
+        "The network got faster",
+        "The mean is hiding a speedup",
+        "Requests are queueing near full utilization",
+        "The cache hit rate went up"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A design that adds a replica so one machine's crash doesn't take the service down is an example of fault tolerance."
+    },
+    {
+      "prompt": "Which of these is a load parameter?",
+      "options": [
+        "The ratio of reads to writes",
+        "The number of engineers on call",
+        "The p99 response time",
+        "The programming language"
+      ]
+    },
+    {
+      "prompt": "A chat app's API servers keep no state of their own. Traffic doubles. What's the simplest way to cope?",
+      "options": [
+        "Buy one machine twice as large for the database",
+        "Add a CHECK constraint",
+        "Shard the API servers by user",
+        "Scale them out: add more servers behind the load balancer"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which maintainability principle is about making a system easy to change? (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "If a service's p50 is 100 ms, then half of its requests take 100 ms or more."
+    }
+  ]
+}

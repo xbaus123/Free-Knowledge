@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Check: SLOs and Alerting",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What should alerts page a human for?",
+      "options": [
+        "Every log line",
+        "Every CPU spike",
+        "Disk usage above 10%",
+        "Symptoms users feel"
+      ]
+    },
+    {
+      "prompt": "\"The fraction of requests that succeed in under 300 ms\" is what?",
+      "options": [
+        "An SLI",
+        "An SLO",
+        "An error budget",
+        "An SLA"
+      ]
+    },
+    {
+      "prompt": "A 99.9% SLO over 30 days allows about how much total outage?",
+      "options": [
+        "About 3 days",
+        "About 7 hours",
+        "About 43 minutes",
+        "About 4 minutes"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the part of an SLO that's allowed to fail called? (two words)"
+    },
+    {
+      "prompt": "A 99.9% SLO sees an error ratio of 0.5%. What's the burn rate?",
+      "options": [
+        "0.5",
+        "5",
+        "50",
+        "1"
+      ]
+    },
+    {
+      "prompt": "Why do multi-window burn-rate alerts require both a long and a short window to fire?",
+      "options": [
+        "To measure CPU",
+        "To double the pages",
+        "To ignore all blips forever",
+        "The long one proves enough budget was spent; the short one proves it's still happening"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A burn rate of 1 spends exactly the whole budget over the SLO window."
+    }
+  ]
+}

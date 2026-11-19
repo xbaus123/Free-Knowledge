@@ -1,0 +1,56 @@
+{
+  "type": "quiz",
+  "title": "Check: Terminating TLS",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "The edge decrypts TLS and forwards plain HTTP inside. What's the cost?",
+      "options": [
+        "Anyone inside the network can read the traffic",
+        "Certificates on every backend",
+        "No L7 routing",
+        "Two handshakes per request"
+      ]
+    },
+    {
+      "prompt": "Which option gives true end-to-end encryption but no L7 routing at the edge?",
+      "options": [
+        "Terminate at the edge",
+        "0-RTT",
+        "Passthrough",
+        "Re-encrypt"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the stance that no network location is trusted by default? (two words, hyphen allowed)"
+    },
+    {
+      "prompt": "What's mutual TLS?",
+      "options": [
+        "TLS where the client also presents a certificate",
+        "TLS without certificates",
+        "Running TLS twice on one connection",
+        "TLS with two servers"
+      ]
+    },
+    {
+      "prompt": "How do services in a mesh usually get certificates?",
+      "options": [
+        "Engineers copy them by hand",
+        "They share one certificate",
+        "The mesh issues short-lived certificates to every instance automatically",
+        "They don't use certificates"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "An expired certificate is one of the most common self-inflicted outages, which is why issuance and renewal should be automated with ACME."
+    },
+    {
+      "type": "written",
+      "prompt": "Which TLS extension lets the client name the host it wants, so one IP address can serve many certificates? (three letters)"
+    }
+  ]
+}

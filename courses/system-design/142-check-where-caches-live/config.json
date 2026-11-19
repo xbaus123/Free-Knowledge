@@ -1,0 +1,52 @@
+{
+  "type": "quiz",
+  "title": "Check: Caches and Read Patterns",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What's the main drawback of an in-process cache on N servers?",
+      "options": [
+        "It's slower than a database",
+        "It can't store objects",
+        "A network hop on every read",
+        "N copies that go stale independently, and each restart starts cold"
+      ]
+    },
+    {
+      "prompt": "When does caching pay off most?",
+      "options": [
+        "Every read is for a different key",
+        "Writes outnumber reads",
+        "Data changes every millisecond",
+        "Reads greatly outnumber writes, the same data is read repeatedly, and it's expensive to produce"
+      ]
+    },
+    {
+      "prompt": "In cache-aside, who loads a miss from the database?",
+      "options": [
+        "The CDN",
+        "The database",
+        "The application",
+        "The cache"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "With cache-aside, if the cache is down, reads still work by falling through to the database."
+    },
+    {
+      "prompt": "How many trips does a cache-aside miss take?",
+      "options": [
+        "Three: cache, database, cache",
+        "Four",
+        "One",
+        "Two: database and cache"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which HTTP response header tells browsers and CDNs how to cache a response? (hyphenated)"
+    }
+  ]
+}

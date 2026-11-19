@@ -1,0 +1,35 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Speeding up the others changes nothing."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The chain that determined end-to-end latency."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The decision is made before anyone knows how the request went."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It costs more buffering in a collector."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Instrument once, change backends freely."
+    },
+    {
+      "accepted_answers": [
+        "exemplars",
+        "exemplar"
+      ],
+      "explanation": "Metric to trace to log line."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "So dashboards work across services and languages."
+    }
+  ]
+}

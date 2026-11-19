@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Drill: Replication Choices",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "You need n = 5 with majority quorums. What are w and r?",
+      "options": [
+        "2 and 2",
+        "3 and 3",
+        "5 and 1",
+        "1 and 5"
+      ]
+    },
+    {
+      "prompt": "A bank can't lose a confirmed deposit if the leader dies. Which replication fits?",
+      "options": [
+        "Sloppy quorums",
+        "Fully asynchronous followers",
+        "Last write wins",
+        "At least one synchronous follower"
+      ]
+    },
+    {
+      "prompt": "A calendar app must let users edit offline on several devices. Which replication model fits?",
+      "options": [
+        "No replication",
+        "Single-leader",
+        "Synchronous single follower",
+        "Multi-leader"
+      ]
+    },
+    {
+      "prompt": "A write-heavy store must keep accepting writes when any one of three nodes is down, and reads must see the latest write. Which setting works?",
+      "options": [
+        "n = 3, w = 1, r = 2",
+        "n = 3, w = 2, r = 2",
+        "n = 3, w = 3, r = 1",
+        "n = 3, w = 1, r = 1"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Promoting an out-of-date follower can reuse ids that other systems already stored, as happened at GitHub."
+    },
+    {
+      "prompt": "Which replication log format ties you to one database version?",
+      "options": [
+        "Logical log",
+        "Statement-based",
+        "Write-ahead log shipping",
+        "Change data capture"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "With n = 7 and w = 4, what's the smallest r that guarantees overlap? (number)"
+    }
+  ]
+}

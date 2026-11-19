@@ -1,0 +1,42 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Each context has its own ubiquitous language."
+    },
+    {
+      "accepted_answers": [
+        "ubiquitous"
+      ],
+      "explanation": "It keeps a model consistent within its context."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "An Order with its line items."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A transaction modifies one aggregate; consistency between aggregates is eventual."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Database per service."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Split by business capability, not technical layer."
+    },
+    {
+      "accepted_answers": [
+        "anti-corruption layer",
+        "anticorruption layer",
+        "anti corruption layer"
+      ],
+      "explanation": "Their quirks don't leak into your code."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Named after a vine that grows around a tree."
+    }
+  ]
+}

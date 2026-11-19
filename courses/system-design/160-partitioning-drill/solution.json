@@ -1,0 +1,32 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "Spread sensors across partitions, keep each sensor's readings sorted."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Almost every key moved at once."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Reads hit one partition; index updates are asynchronous."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Partitioning handles expected growth; rate limiting handles the unexpected."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "200 requests in two seconds, both windows within limit."
+    },
+    {
+      "accepted_answers": [
+        "cache",
+        "caches",
+        "caching"
+      ],
+      "explanation": "Writes need key splitting."
+    }
+  ]
+}

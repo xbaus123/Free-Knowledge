@@ -1,0 +1,38 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Availability multiplies against it."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "From Garcia-Molina and Salem, 1987."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Compensations undo steps k − 1 down to 1."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A refund appears on the statement next to the charge. It's a new, visible action."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "You can't un-send an email."
+    },
+    {
+      "accepted_answers": [
+        "pivot"
+      ],
+      "explanation": "Steps after it are retried until they succeed, never compensated."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Temporal, Step Functions, and Camunda are orchestrators."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Visibility matters for long flows."
+    }
+  ]
+}

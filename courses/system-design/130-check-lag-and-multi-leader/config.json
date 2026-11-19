@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Check: Lag and Multi-Leader",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "You post a comment, reload, and it's gone. Which guarantee was missing?",
+      "options": [
+        "Monotonic reads",
+        "Read-your-writes",
+        "Linearizability of other users",
+        "Consistent prefix reads"
+      ]
+    },
+    {
+      "prompt": "A comment appears, then disappears when you refresh. Which guarantee was missing?",
+      "options": [
+        "Consistent prefix reads",
+        "Read-your-writes",
+        "Monotonic reads",
+        "Durability"
+      ]
+    },
+    {
+      "prompt": "You see an answer before the question it replies to. Which guarantee was missing?",
+      "options": [
+        "Monotonic reads",
+        "Consistent prefix reads",
+        "Atomicity",
+        "Read-your-writes"
+      ]
+    },
+    {
+      "prompt": "When is multi-leader replication useful?",
+      "options": [
+        "For a single small database",
+        "Across data centers, for offline clients, and for collaborative editing",
+        "To make reads linearizable",
+        "To avoid write conflicts"
+      ]
+    },
+    {
+      "prompt": "What's the cost of multi-leader replication?",
+      "options": [
+        "No fault tolerance",
+        "Write conflicts when two leaders accept changes to the same record",
+        "Slower local writes",
+        "No replication log"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Last write wins can silently discard a write, and clock skew makes \"last\" unreliable."
+    },
+    {
+      "type": "written",
+      "prompt": "Which data types merge concurrent changes automatically, like counters, sets, and collaborative text? (four letters, plural)"
+    }
+  ]
+}

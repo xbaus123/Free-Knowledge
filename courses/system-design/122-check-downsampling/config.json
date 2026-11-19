@@ -1,0 +1,57 @@
+{
+  "type": "quiz",
+  "title": "Check: Downsampling and Retention",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What should a rollup bucket store?",
+      "options": [
+        "Only the average",
+        "Only the last value",
+        "The p99",
+        "Min, max, sum, and count"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "You can compute a correct p99 for a day from 24 hourly p99s."
+    },
+    {
+      "prompt": "Why keep 15-second data for only about 15 days?",
+      "options": [
+        "It's illegal to keep it",
+        "Prometheus forbids it",
+        "Old data is queried rarely and at coarse resolution",
+        "Disks can't hold more"
+      ]
+    },
+    {
+      "prompt": "Long-term metrics systems like Thanos and Mimir store compacted blocks where?",
+      "options": [
+        "In the API gateway",
+        "In RAM",
+        "In a graph database",
+        "In an object store"
+      ]
+    },
+    {
+      "prompt": "A team adds user_id as a metric label. What's the danger?",
+      "options": [
+        "Retention stops working",
+        "Compression improves",
+        "Queries get more accurate",
+        "Cardinality explodes: every distinct label combination is a new series"
+      ]
+    },
+    {
+      "prompt": "Which TSDB is a PostgreSQL extension that keeps SQL and joins?",
+      "options": [
+        "VictoriaMetrics",
+        "Prometheus",
+        "InfluxDB",
+        "TimescaleDB"
+      ]
+    }
+  ]
+}

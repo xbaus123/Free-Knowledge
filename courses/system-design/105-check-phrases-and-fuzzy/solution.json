@@ -1,0 +1,39 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "A phrase matches when the terms sit at consecutive positions."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "\"art\" should stay three positions after \"state\"."
+    },
+    {
+      "accepted_answers": [
+        "3",
+        "three"
+      ],
+      "explanation": "kitten → sitten → sittin → sitting."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "It suits human typos like teh for the."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Only branches that can still match are visited."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Prefixes become ordinary terms."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "It matches words that sound alike."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Which is why fuzzy matching matters."
+    }
+  ]
+}

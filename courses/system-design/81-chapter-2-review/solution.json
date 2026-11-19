@@ -1,0 +1,68 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "1,200 ÷ 500 = 2.4, so 3 servers, plus 1 spare."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Only L7 parses HTTP."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Round robin keeps feeding a slow server its full share."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Every backend goes unhealthy at once."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Object-level checks need the service's data."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "It keeps floods from exhausting resources."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Session keys came from ephemeral keys that are gone."
+    },
+    {
+      "accepted_answers": [
+        "mutual"
+      ],
+      "explanation": "mTLS is the zero-trust default inside the data center."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Slow and salted."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Short lifetimes bound the window; a jti denylist closes it at a cost."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "A valid signature only proves the issuer made it."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The verifier decides; the header only selects among allowed options."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "State prevents injected codes; PKCE prevents stolen ones from being redeemed."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Object-dependent rules need a service check, ABAC, or ReBAC."
+    },
+    {
+      "accepted_answers": [
+        "closed"
+      ],
+      "explanation": "Deny by default."
+    }
+  ]
+}

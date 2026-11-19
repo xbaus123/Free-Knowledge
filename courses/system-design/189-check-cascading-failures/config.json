@@ -1,0 +1,43 @@
+{
+  "type": "quiz",
+  "title": "Check: How Faults Spread",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "A non-essential recommendations call slows from 20 ms to 2 s, with no timeout. What happens to the product page?",
+      "options": [
+        "Nothing: recommendations are optional",
+        "It gets faster",
+        "Only recommendations fail",
+        "Its threads fill up waiting, and it goes down too"
+      ]
+    },
+    {
+      "prompt": "Four layers each retry 3 times. How many attempts can one failing call at the bottom become?",
+      "options": [
+        "3",
+        "4",
+        "12",
+        "81"
+      ]
+    },
+    {
+      "prompt": "A cache empties, the cold cache overloads the database, and retries keep it overloaded after the trigger is gone. What's this called?",
+      "options": [
+        "A metastable failure",
+        "A split brain",
+        "A phantom",
+        "A deadlock"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "According to the reading, what's the common thread that spreads failure? (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Most large outages start large."
+    }
+  ]
+}

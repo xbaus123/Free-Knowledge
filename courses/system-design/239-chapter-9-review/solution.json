@@ -1,0 +1,57 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "Extract services when a module truly needs it."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Split by business capability."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Make non-essential calls optional or asynchronous."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A stuck saga needs a human."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Irreversible steps go last."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Retention and cheap fan-out."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Logs suffer head-of-line blocking for long jobs."
+    },
+    {
+      "accepted_answers": [
+        "dead-letter queue",
+        "dead letter queue",
+        "a dead-letter queue",
+        "dlq"
+      ],
+      "explanation": "For a human to inspect."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Use CDC or an outbox."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Uncommitted processed messages run again."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Send users and their events to the same reducer by user id."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The effect happens once even if delivery happens twice."
+    }
+  ]
+}

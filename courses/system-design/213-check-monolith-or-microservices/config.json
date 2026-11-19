@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Check: Monolith or Microservices",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What problem do microservices mostly solve?",
+      "options": [
+        "Database size",
+        "An organizational one: many engineers blocking each other in one codebase",
+        "Network latency",
+        "Slow CPUs"
+      ]
+    },
+    {
+      "prompt": "In a monolith, a call between components is a function call. What is it with microservices?",
+      "options": [
+        "A database query",
+        "Also a function call",
+        "A file read",
+        "A network call that can fail, time out, or run twice"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which law says systems mirror the communication structure of the organizations that build them? (one word)"
+    },
+    {
+      "prompt": "What's the usual advice for a small team?",
+      "options": [
+        "Start with a modular monolith and extract services when needed",
+        "Start with 50 microservices",
+        "Share one database across services",
+        "Avoid modules"
+      ]
+    },
+    {
+      "prompt": "Services that must deploy together and share a database are called what?",
+      "options": [
+        "A distributed monolith",
+        "A service mesh",
+        "A saga",
+        "A modular monolith"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Some companies have moved microservices back into a single process to cut cost and complexity."
+    },
+    {
+      "prompt": "Which is easier in a monolith?",
+      "options": [
+        "Fault isolation between features",
+        "Independent deploys per team",
+        "Scaling one hot component alone",
+        "Refactoring across component boundaries"
+      ]
+    }
+  ]
+}

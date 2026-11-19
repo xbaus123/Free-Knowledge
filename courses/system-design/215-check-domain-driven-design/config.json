@@ -1,0 +1,65 @@
+{
+  "type": "quiz",
+  "title": "Check: Service Boundaries",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Sales, billing, and support each mean something different by \"customer.\" What does DDD suggest?",
+      "options": [
+        "No customer model",
+        "A shared customers table",
+        "A bounded context per area, each with its own Customer model linked by id",
+        "One giant Customer class for everyone"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "In DDD, the shared vocabulary of a context's experts and engineers is the ______ language. (one word)"
+    },
+    {
+      "prompt": "What's an aggregate?",
+      "options": [
+        "A cluster of objects that must stay consistent together, changed through one root",
+        "A SQL GROUP BY",
+        "A service mesh",
+        "A cache"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "In DDD, one transaction may modify several aggregates at once."
+    },
+    {
+      "prompt": "Why is a shared database between services hidden coupling?",
+      "options": [
+        "One team's schema change can break another's queries, and nobody can tell who depends on what",
+        "It prevents caching",
+        "It's against the law",
+        "Databases are slow"
+      ]
+    },
+    {
+      "prompt": "Which is a poor service boundary?",
+      "options": [
+        "A \"validation service\" every other service calls",
+        "A payments service",
+        "An ordering service",
+        "A shipping service"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What's the layer that translates a legacy or vendor model into your own context's concepts? (two words, hyphen allowed)"
+    },
+    {
+      "prompt": "Which pattern migrates a monolith by routing one capability at a time to new services through a proxy?",
+      "options": [
+        "Strangler fig",
+        "Bulkhead",
+        "Saga",
+        "Outbox"
+      ]
+    }
+  ]
+}

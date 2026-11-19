@@ -1,0 +1,43 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "A wider pipe carries more per second, but water doesn't arrive any sooner."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Light in fiber covers about 200,000 km/s. California to the Netherlands and back is about 150 ms, period."
+    },
+    {
+      "accepted_answers": [
+        "80",
+        "80 ms",
+        "80ms"
+      ],
+      "explanation": "1 MB is 8 million bits. 8,000,000 / 100,000,000 = 0.08 s = 80 ms."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Waiting in router and server queues is what grows when load approaches capacity."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "1 RTT for the TCP handshake, 1 for TLS 1.3, and 1 for the request and first byte."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Reusing a connection skips both handshakes. CDNs and batching also fight round trips."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "throughput <= window / RTT = 65,536 bytes / 0.1 s, about 655 KB/s, or about 5 Mbit/s."
+    },
+    {
+      "accepted_answers": [
+        "bandwidth-delay product",
+        "bandwidth delay product"
+      ],
+      "explanation": "To keep a link full, the window must be at least the bandwidth-delay product."
+    }
+  ]
+}
