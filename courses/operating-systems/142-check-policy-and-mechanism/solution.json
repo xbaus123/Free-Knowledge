@@ -1,0 +1,38 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "Policy decides what; mechanism determines how."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "A mechanism is the means of doing something."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's the slides' example."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Changing a policy then just means changing a parameter, not rewriting the mechanism."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "It's a decision about what should happen."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It's how access control is enforced. Who gets access is the policy."
+    },
+    {
+      "accepted_answers": [
+        "engineering"
+      ],
+      "explanation": "Software engineering."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Then a policy change never requires a new mechanism."
+    }
+  ]
+}

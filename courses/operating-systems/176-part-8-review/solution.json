@@ -1,0 +1,59 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Core dump for a process's memory, crash dump for kernel memory."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "So don't write code as cleverly as you possibly can."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Find what's holding everything back."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Your profiler did exactly this."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Find the last start address at or below the sample."
+    },
+    {
+      "accepted_answers": [
+        "probe",
+        "probes",
+        "a probe"
+      ],
+      "explanation": "Probes send their data to consumers."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's its main purpose."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "That information builds or tunes a kernel for the site."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It includes only what that machine needs."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Non-volatile firmware."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The boot block then loads the bootstrap loader."
+    },
+    {
+      "accepted_answers": [
+        "grub",
+        "grub2"
+      ],
+      "explanation": "GRUB."
+    }
+  ]
+}

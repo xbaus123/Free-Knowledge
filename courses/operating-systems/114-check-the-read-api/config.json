@@ -1,0 +1,60 @@
+{
+  "type": "quiz",
+  "title": "Check: read()",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "Which header file must a program include to use read()? (include the .h)"
+    },
+    {
+      "prompt": "In `read(int fd, void *buf, size_t count)`, what is `fd`?",
+      "options": [
+        "The return value",
+        "The file descriptor to read from",
+        "The buffer to fill",
+        "The number of bytes to read"
+      ]
+    },
+    {
+      "prompt": "What is `count`?",
+      "options": [
+        "The file descriptor",
+        "The number of files open",
+        "The maximum number of bytes to read into the buffer",
+        "The number of times to retry"
+      ]
+    },
+    {
+      "prompt": "read() returns 0. What does that mean?",
+      "options": [
+        "End of file",
+        "One byte was read",
+        "The buffer is full",
+        "An error occurred"
+      ]
+    },
+    {
+      "prompt": "read() returns -1. What does that mean?",
+      "options": [
+        "One byte too many was read",
+        "End of file",
+        "The file is empty",
+        "An error occurred"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A file has 40 bytes left and a program calls read(fd, buf, 100). read() returns 40."
+    },
+    {
+      "type": "written",
+      "prompt": "Which UNIX command shows you the documentation for an API function like read()? (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "To call read() correctly, a programmer needs to know which number the kernel uses for the read system call."
+    }
+  ]
+}

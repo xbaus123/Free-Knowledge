@@ -1,0 +1,189 @@
+{
+  "type": "quiz",
+  "title": "Chapter Review: Operating-System Structures",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Which of these is a service that keeps the system itself running efficiently, rather than one that helps the user directly?",
+      "options": [
+        "Program execution",
+        "File-system manipulation",
+        "User interface",
+        "Resource allocation"
+      ]
+    },
+    {
+      "prompt": "Processes exchanging data through the OS in packets use which communication model?",
+      "options": [
+        "Shared memory",
+        "Monolithic",
+        "Message passing",
+        "Batch"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "In UNIX, most commands are names of program files, so adding a new command doesn't require modifying the shell."
+    },
+    {
+      "prompt": "Which interface was invented at Xerox PARC?",
+      "options": [
+        "The command line",
+        "The touchscreen",
+        "The GUI",
+        "Batch processing"
+      ]
+    },
+    {
+      "prompt": "Programs mostly reach system calls through:",
+      "options": [
+        "The bootstrap loader",
+        "An API, such as POSIX, Win32, or Java",
+        "A core dump",
+        "The registry"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "read() returns -1. What happened? (one word, or two)"
+    },
+    {
+      "prompt": "How does the system-call interface find a call's implementation?",
+      "options": [
+        "It asks the shell",
+        "A search by function name on disk",
+        "It reads the boot block",
+        "A table indexed by the call's number"
+      ]
+    },
+    {
+      "prompt": "Which parameter-passing methods have no limit on the number of parameters?",
+      "options": [
+        "Registers only",
+        "Block in memory and the stack",
+        "None of them",
+        "Registers and the stack"
+      ]
+    },
+    {
+      "prompt": "printf() is to write() as:",
+      "options": [
+        "A system call is to a library call",
+        "A policy is to a mechanism",
+        "A daemon is to a shell",
+        "A library call is to a system call"
+      ]
+    },
+    {
+      "prompt": "Which category does `request device` belong to?",
+      "options": [
+        "Process control",
+        "File management",
+        "Protection",
+        "Device management"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What is the UNIX counterpart of Windows' CreateProcess()? (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "MS-DOS creates a new process for each program it runs."
+    },
+    {
+      "prompt": "Background services that launch at boot and run in user context are known as:",
+      "options": [
+        "Daemons, services, or subsystems",
+        "Kernels",
+        "Probes",
+        "Boot blocks"
+      ]
+    },
+    {
+      "prompt": "\"Lock accounts after 3 wrong passwords\" is:",
+      "options": [
+        "A mechanism",
+        "A daemon",
+        "A policy",
+        "A system call"
+      ]
+    },
+    {
+      "prompt": "Why are OSes written in high-level languages like C?",
+      "options": [
+        "Always faster than assembly",
+        "Easier to port to other hardware",
+        "So they can't be debugged",
+        "No compiler needed"
+      ]
+    },
+    {
+      "prompt": "In a strictly layered OS, each layer may use the services of:",
+      "options": [
+        "No other layer",
+        "Only lower-level layers",
+        "Only higher-level layers",
+        "Any layer"
+      ]
+    },
+    {
+      "prompt": "What's the main detriment of a microkernel?",
+      "options": [
+        "Harder to port",
+        "Less reliable",
+        "Performance overhead of user-space-to-kernel communication",
+        "Harder to extend"
+      ]
+    },
+    {
+      "prompt": "Linux is best described as:",
+      "options": [
+        "Monolithic plus loadable modules",
+        "Strictly layered",
+        "Simple, like MS-DOS",
+        "A pure microkernel"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which microkernel is the macOS kernel, Darwin, partly based on? (one word)"
+    },
+    {
+      "prompt": "Android runs apps written in Java on:",
+      "options": [
+        "A modified Linux kernel, in the Dalvik virtual machine",
+        "The Mach microkernel, natively",
+        "Cocoa Touch",
+        "MS-DOS"
+      ]
+    },
+    {
+      "prompt": "A kernel failure produces a:",
+      "options": [
+        "Crash dump",
+        "Profile",
+        "Core dump",
+        "Boot block"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Profiling samples the instruction pointer periodically to find where time is spent."
+    },
+    {
+      "type": "written",
+      "prompt": "Which program gathers a site's hardware configuration to build or tune a kernel? (one word)"
+    },
+    {
+      "prompt": "In a two-step boot, the boot block's job is to:",
+      "options": [
+        "Draw the login screen",
+        "Start every daemon",
+        "Load the bootstrap loader from disk",
+        "Write the crash dump"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "unistd.h",
+        "<unistd.h>",
+        "#include <unistd.h>"
+      ],
+      "explanation": "unistd.h defines read() and the ssize_t and size_t types."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A file descriptor is the small number the OS gave back when the file was opened."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "read() may read fewer bytes, but never more than count."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Zero bytes read means there's nothing left."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "-1 signals an error."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It reads what's there, up to count, and returns how many bytes it actually read."
+    },
+    {
+      "accepted_answers": [
+        "man"
+      ],
+      "explanation": "man read shows the manual page."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The API hides that. The programmer only needs the function's parameters and return values."
+    }
+  ]
+}

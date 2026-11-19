@@ -1,0 +1,50 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "The CPU is built to begin at a fixed address."
+    },
+    {
+      "accepted_answers": [
+        "rom",
+        "firmware rom",
+        "firmware",
+        "eeprom"
+      ],
+      "explanation": "Firmware ROM, which keeps its contents with the power off."
+    },
+    {
+      "accepted_answers": [
+        "bootstrap loader",
+        "boot loader",
+        "bootloader",
+        "bootstrap program",
+        "the bootstrap loader"
+      ],
+      "explanation": "The bootstrap loader."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The boot block then loads the bootstrap loader from disk."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "ROM is small and hard to change."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "That's how firmware updates are installed."
+    },
+    {
+      "accepted_answers": [
+        "grub",
+        "grub2"
+      ],
+      "explanation": "GRUB, the GRand Unified Bootloader."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The final step on the slides."
+    }
+  ]
+}

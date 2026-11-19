@@ -1,0 +1,69 @@
+{
+  "type": "quiz",
+  "title": "Check: MS-DOS and FreeBSD",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "MS-DOS is:",
+      "options": [
+        "A UNIX variant",
+        "Single-tasking",
+        "Multitasking",
+        "A microkernel"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "When MS-DOS runs a program, it creates a new process for it."
+    },
+    {
+      "prompt": "When MS-DOS loads a program, what does the program overwrite?",
+      "options": [
+        "The kernel",
+        "Only free memory",
+        "All of memory except the kernel, including most of the command interpreter",
+        "Nothing; it runs from disk"
+      ]
+    },
+    {
+      "prompt": "What happens when a program exits in MS-DOS?",
+      "options": [
+        "A new process is forked",
+        "The kernel is reloaded",
+        "The shell is reloaded",
+        "The computer reboots"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "In FreeBSD, which system call does the shell use to create a new process? (one word)"
+    },
+    {
+      "type": "written",
+      "prompt": "Which system call loads a program into the newly created process? (one word)"
+    },
+    {
+      "prompt": "After fork() and exec(), what can the FreeBSD shell do?",
+      "options": [
+        "Reboot the system",
+        "Only wait; it can't do anything else",
+        "Wait for the process to terminate, or continue taking user commands",
+        "Nothing; the shell has been overwritten"
+      ]
+    },
+    {
+      "prompt": "A FreeBSD process exits with code 0. What does that mean?",
+      "options": [
+        "The shell crashed",
+        "An error occurred",
+        "The process is still running",
+        "No error"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "In FreeBSD, the command interpreter stays in memory while other processes run."
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "type": "quiz",
+  "title": "Check: Files and Devices",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Moving to a different position in a file, such as rewinding to the start, uses which call?",
+      "options": [
+        "signal event",
+        "reopen",
+        "release device",
+        "reposition"
+      ]
+    },
+    {
+      "prompt": "Which is a file-management call?",
+      "options": [
+        "request device",
+        "create process",
+        "get time",
+        "get file attributes"
+      ]
+    },
+    {
+      "prompt": "Which is a device-management call?",
+      "options": [
+        "request device",
+        "delete file",
+        "wait event",
+        "allocate memory"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which three calls appear in BOTH the file-management and device-management lists? (in any order, separated by commas)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "UNIX merges files and devices into a combined structure, so the same calls can work on both."
+    },
+    {
+      "prompt": "request device and release device are most like which pair of file calls?",
+      "options": [
+        "read and write",
+        "create and delete",
+        "get and set attributes",
+        "open and close"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Logically attaching or detaching a device is a file-management call."
+    },
+    {
+      "prompt": "Changing a file's protection code (who may read or write it) uses which call?",
+      "options": [
+        "reposition",
+        "request device",
+        "open",
+        "set file attributes"
+      ]
+    }
+  ]
+}

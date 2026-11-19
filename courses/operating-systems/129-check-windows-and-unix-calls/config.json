@@ -1,0 +1,74 @@
+{
+  "type": "quiz",
+  "title": "Check: Windows and UNIX",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What is the UNIX counterpart of Windows' CreateProcess()?",
+      "options": [
+        "fork()",
+        "open()",
+        "pipe()",
+        "chmod()"
+      ]
+    },
+    {
+      "prompt": "What is the Windows counterpart of UNIX open()?",
+      "options": [
+        "CreateProcess()",
+        "CreateFile()",
+        "CreatePipe()",
+        "SetFileSecurity()"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which UNIX call changes a file's permissions? (include the parentheses or not)"
+    },
+    {
+      "prompt": "Which category does shmget() belong to?",
+      "options": [
+        "Communications",
+        "Process control",
+        "Protection",
+        "File manipulation"
+      ]
+    },
+    {
+      "prompt": "Which category does getpid() belong to?",
+      "options": [
+        "Communications",
+        "Process control",
+        "Device manipulation",
+        "Information maintenance"
+      ]
+    },
+    {
+      "prompt": "UNIX's catch-all call for device settings is:",
+      "options": [
+        "alarm()",
+        "ioctl()",
+        "mmap()",
+        "umask()"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "UNIX uses the same read() and write() calls for files and for devices."
+    },
+    {
+      "prompt": "Which UNIX call is the counterpart of Windows' WaitForSingleObject()?",
+      "options": [
+        "wait()",
+        "exit()",
+        "alarm()",
+        "sleep()"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which UNIX call creates a one-way communication channel between processes? (one word)"
+    }
+  ]
+}

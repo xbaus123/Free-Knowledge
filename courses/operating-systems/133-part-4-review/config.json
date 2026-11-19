@@ -1,0 +1,96 @@
+{
+  "type": "quiz",
+  "title": "Part Review: Types of System Calls",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Which is NOT one of the six categories of system calls?",
+      "options": [
+        "Process control",
+        "Device management",
+        "Compilation",
+        "Protection"
+      ]
+    },
+    {
+      "prompt": "Which process-control call lets processes share data safely?",
+      "options": [
+        "Locks",
+        "wait for time",
+        "Dump memory",
+        "load"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "read, write, and reposition appear in both the file-management and device-management categories."
+    },
+    {
+      "prompt": "What is the generic device-management counterpart of opening a file?",
+      "options": [
+        "get device attributes",
+        "attach device",
+        "request device",
+        "create process"
+      ]
+    },
+    {
+      "prompt": "In the message-passing model, a connection is addressed with:",
+      "options": [
+        "A host name and a process name",
+        "A file and a device",
+        "Two memory addresses",
+        "A lock"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What is the UNIX counterpart of Windows' CreateProcess()? (one word)"
+    },
+    {
+      "prompt": "Windows' SetFileSecurity() corresponds to which UNIX call?",
+      "options": [
+        "umask()",
+        "chmod()",
+        "chown()",
+        "ioctl()"
+      ]
+    },
+    {
+      "prompt": "Which system creates no process to run a program and reloads the shell afterwards?",
+      "options": [
+        "macOS",
+        "FreeBSD",
+        "Linux",
+        "MS-DOS"
+      ]
+    },
+    {
+      "prompt": "In FreeBSD, the order of calls the shell makes to run a program is:",
+      "options": [
+        "fork() to create a process, then exec() in that process to load the program",
+        "load, then reboot",
+        "Only exec(); no new process is needed",
+        "exec() first, then fork()"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A FreeBSD process exit code greater than 0 means an error."
+    },
+    {
+      "prompt": "A process calls getpid(). Which category is this?",
+      "options": [
+        "Communications",
+        "Information maintenance",
+        "Protection",
+        "Process control"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "With shared memory, the OS normally prevents processes from accessing each other's memory, and the processes agree to lift that restriction for a shared region."
+    }
+  ]
+}

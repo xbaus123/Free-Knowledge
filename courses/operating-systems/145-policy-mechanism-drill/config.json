@@ -1,0 +1,62 @@
+{
+  "type": "quiz",
+  "title": "Drill: Policy or Mechanism?",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "type": "true_false",
+      "prompt": "\"Students may store at most 2 GB in their home directories.\" This is a policy."
+    },
+    {
+      "type": "true_false",
+      "prompt": "The code that counts a user's disk blocks and refuses a write past the quota is a policy."
+    },
+    {
+      "prompt": "A hardware timer that interrupts the CPU after a set number of ticks is a:",
+      "options": [
+        "Mechanism",
+        "Policy"
+      ]
+    },
+    {
+      "prompt": "\"Give each process 20 ms before switching\" is a:",
+      "options": [
+        "Mechanism",
+        "Policy"
+      ]
+    },
+    {
+      "prompt": "\"Lock the screen after 10 minutes without input\" is a:",
+      "options": [
+        "Mechanism",
+        "Policy"
+      ]
+    },
+    {
+      "prompt": "The system call that switches a process's priority to a new value is a:",
+      "options": [
+        "Mechanism",
+        "Policy"
+      ]
+    },
+    {
+      "prompt": "\"Only members of the admin group may install software\" is a:",
+      "options": [
+        "Mechanism",
+        "Policy"
+      ]
+    },
+    {
+      "prompt": "The permission-checking code that runs on every file open is a:",
+      "options": [
+        "Mechanism",
+        "Policy"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A well-designed OS lets an administrator change the timeslice length without rewriting the timer code."
+    }
+  ]
+}

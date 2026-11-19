@@ -1,0 +1,41 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "That's the opening idea of the chapter: an execution environment plus services."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It matters when many users or jobs share the machine. A lone user rarely thinks about it."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "File handling is something every user and program needs directly. Accounting and resource allocation serve the shared system."
+    },
+    {
+      "accepted_answers": [
+        "system calls",
+        "system call",
+        "the system calls",
+        "the system call interface",
+        "system call interface",
+        "system-call interface",
+        "syscalls",
+        "syscall"
+      ],
+      "explanation": "System calls are the doorway into the OS. Nothing below that layer is called directly."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Those are the three interface styles. The next lessons cover them."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "When resources are shared, someone has to make sure processes and users can't interfere with each other."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Accounting tracks who uses how much. It serves the system and its administrators, not the user's own work."
+    }
+  ]
+}

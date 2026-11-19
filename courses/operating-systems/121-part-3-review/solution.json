@@ -1,0 +1,60 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "They're the doorway into the kernel's services."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Win32 for Windows, POSIX for UNIX-like systems, Java for the JVM."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "APIs are portable and easier to use."
+    },
+    {
+      "accepted_answers": [
+        "end of file",
+        "eof",
+        "end-of-file",
+        "the end of file",
+        "end of the file"
+      ],
+      "explanation": "Nothing left to read."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "buf is where read() puts the bytes."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Every call has a number; the table maps it to the implementation."
+    },
+    {
+      "accepted_answers": [
+        "support"
+      ],
+      "explanation": "The run-time support library comes with the compiler."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "printf() calls write()."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Block and stack have no such limit."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It's the reverse: the program pushes them, and the OS pops them off."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The slides name Linux and Solaris."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Part 4 shows Windows and UNIX names side by side."
+    }
+  ]
+}

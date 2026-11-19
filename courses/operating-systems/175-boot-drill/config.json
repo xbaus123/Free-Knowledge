@@ -1,0 +1,61 @@
+{
+  "type": "quiz",
+  "title": "Drill: Put the Boot in Order",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What happens FIRST when the power comes on?",
+      "options": [
+        "GRUB shows its menu",
+        "The boot block is read from disk",
+        "The kernel starts the daemons",
+        "The CPU starts executing at a fixed address in firmware ROM"
+      ]
+    },
+    {
+      "prompt": "What does the firmware code load next, in a two-step boot?",
+      "options": [
+        "The kernel, directly",
+        "The shell",
+        "The boot block, from a fixed location on disk",
+        "The login screen"
+      ]
+    },
+    {
+      "prompt": "What does the boot block's code load?",
+      "options": [
+        "The GUI",
+        "A core dump",
+        "The bootstrap loader (GRUB) from disk",
+        "The firmware"
+      ]
+    },
+    {
+      "prompt": "What does GRUB do?",
+      "options": [
+        "Lets you choose a kernel, then loads it into memory and starts it",
+        "Draws the desktop",
+        "Profiles the CPU",
+        "Writes crash dumps"
+      ]
+    },
+    {
+      "prompt": "Which step happens LAST of these?",
+      "options": [
+        "The boot block loads",
+        "GRUB loads",
+        "Firmware runs",
+        "Background daemons start"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "In a one-step boot, the bootstrap loader in ROM or EEPROM loads the kernel directly, with no boot block."
+    },
+    {
+      "type": "written",
+      "prompt": "A new kernel won't start. Which bootstrap loader's menu lets you pick last week's kernel instead? (one word)"
+    }
+  ]
+}

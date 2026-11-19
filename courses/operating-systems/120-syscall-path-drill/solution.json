@@ -1,0 +1,39 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "printf() is a library function. It runs in user mode before any trap."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The number selects the table entry; the parameters go in registers, a block, or the stack."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "From chapter 1: a system call is a trap that sets the mode bit to kernel."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Number in, table lookup, implementation out."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Status and return values travel back up the same path."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "That's exactly the fallback your api_call() used."
+    },
+    {
+      "accepted_answers": [
+        "system",
+        "syscall"
+      ],
+      "explanation": "The library call wraps the system call."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The API stays the same; what's underneath it differs. That's the portability benefit."
+    }
+  ]
+}

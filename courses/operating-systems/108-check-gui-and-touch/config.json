@@ -1,0 +1,65 @@
+{
+  "type": "quiz",
+  "title": "Check: GUIs and Touch",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "In a GUI, what is a directory usually called? (one word)"
+    },
+    {
+      "prompt": "Where was the graphical user interface invented?",
+      "options": [
+        "Xerox PARC",
+        "MIT",
+        "Bell Labs",
+        "IBM"
+      ]
+    },
+    {
+      "prompt": "What is the name of macOS's graphical interface?",
+      "options": [
+        "Aqua",
+        "Cocoa",
+        "GNOME",
+        "KDE"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "UNIX and Linux traditionally have a CLI, with optional GUIs such as KDE and GNOME."
+    },
+    {
+      "prompt": "On a touchscreen, how are actions and selections mostly made?",
+      "options": [
+        "Gestures",
+        "Batch files",
+        "A mouse",
+        "Typed commands"
+      ]
+    },
+    {
+      "prompt": "How does a touchscreen device usually handle text entry?",
+      "options": [
+        "A batch file",
+        "It can't accept text",
+        "A mouse",
+        "A virtual keyboard"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A user who prefers the GUI and one who prefers the CLI are using different system calls underneath."
+    },
+    {
+      "prompt": "Why do system administrators often prefer the command line?",
+      "options": [
+        "Commands can be repeated quickly and saved in shell scripts",
+        "The CLI runs in kernel mode",
+        "The CLI has access to hardware the GUI can't reach",
+        "GUIs can't open files"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "type": "quiz",
+  "title": "Check: Services for the System",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Which of these is a resource the OS allocates?",
+      "options": [
+        "A programming language",
+        "CPU cycles",
+        "The OS's own source code",
+        "A user's password"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which service keeps track of which users use how much of which resources? (one word)"
+    },
+    {
+      "prompt": "Requiring a password before anyone can log in is an example of:",
+      "options": [
+        "Resource allocation",
+        "Program execution",
+        "Accounting",
+        "Security"
+      ]
+    },
+    {
+      "prompt": "Making sure one process can't read another process's memory is an example of:",
+      "options": [
+        "Batch processing",
+        "Protection",
+        "Accounting",
+        "Communications"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Security includes defending external I/O devices, such as network adapters, from invalid access attempts."
+    },
+    {
+      "type": "true_false",
+      "prompt": "Resource allocation only matters on systems with a single user running a single job."
+    },
+    {
+      "prompt": "An administrator reviews last month's CPU-time records to decide whether to buy another server. Which service produced those records?",
+      "options": [
+        "Accounting",
+        "Protection",
+        "Error detection",
+        "User interface"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "Resource allocation, accounting, and protection and security serve the shared system."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "In shared memory, the processes read and write the same region directly."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The shell just finds the program by name and runs it."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The desktop-metaphor GUI."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "APIs are portable and easier to use."
+    },
+    {
+      "accepted_answers": [
+        "error",
+        "an error",
+        "error occurred",
+        "an error occurred",
+        "failure",
+        "it failed"
+      ],
+      "explanation": "0 is end of file; -1 is an error."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Each system call has a number."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Registers run out; memory doesn't."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The C library's printf() calls the write() system call."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "request and release are the open and close of devices."
+    },
+    {
+      "accepted_answers": [
+        "fork",
+        "fork()"
+      ],
+      "explanation": "fork()."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It's single-tasking: no process created, single memory space, shell reloaded at exit."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Like sshd or cupsd."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "It decides what will be done. The lockout code is the mechanism."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The trade-off is that they may be slower."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Layer 0 is the hardware; layer N is the user interface."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Every message costs mode switches."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A hybrid: one kernel address space, with dynamic modules."
+    },
+    {
+      "accepted_answers": [
+        "mach"
+      ],
+      "explanation": "Mach, combined with BSD."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's the slides' Android stack."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Core dumps are for failed processes."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Statistical, and cheap."
+    },
+    {
+      "accepted_answers": [
+        "sysgen",
+        "system generation"
+      ],
+      "explanation": "SYSGEN."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Then the bootstrap loader (like GRUB) loads the kernel."
+    }
+  ]
+}

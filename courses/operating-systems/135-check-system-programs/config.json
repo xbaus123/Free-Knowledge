@@ -1,0 +1,74 @@
+{
+  "type": "quiz",
+  "title": "Check: System Programs",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What do system programs provide?",
+      "options": [
+        "The hardware's instruction set",
+        "A convenient environment for program development and execution",
+        "The interrupt vector",
+        "The kernel's scheduler"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Some system programs are simply user interfaces to system calls."
+    },
+    {
+      "prompt": "A program that copies and renames files belongs to which category?",
+      "options": [
+        "Status information",
+        "Programming-language support",
+        "Communications",
+        "File management"
+      ]
+    },
+    {
+      "prompt": "A program that reports free disk space and the number of logged-in users belongs to:",
+      "options": [
+        "File modification",
+        "Program loading and execution",
+        "Status information",
+        "File management"
+      ]
+    },
+    {
+      "prompt": "Compilers, assemblers, debuggers, and interpreters belong to:",
+      "options": [
+        "Background services",
+        "Programming-language support",
+        "Status information",
+        "Communications"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What is the database some systems (like Windows) use to store and retrieve configuration information? (one word)"
+    },
+    {
+      "prompt": "A text editor is an example of which category?",
+      "options": [
+        "Status information",
+        "File modification",
+        "Communications",
+        "File management"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Most users' view of the operating system is defined by the system calls, not by system programs."
+    },
+    {
+      "prompt": "Relocatable loaders and linkage editors belong to:",
+      "options": [
+        "Program loading and execution",
+        "File modification",
+        "Communications",
+        "Programming-language support"
+      ]
+    }
+  ]
+}

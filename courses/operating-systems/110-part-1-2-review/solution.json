@@ -1,0 +1,59 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "Accounting and resource allocation serve the shared system, not a single user's work."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "In shared memory the processes touch the same memory; in message passing the OS carries the data."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "All three are sources of errors the OS has to notice and handle."
+    },
+    {
+      "accepted_answers": [
+        "accounting"
+      ],
+      "explanation": "Accounting, used for billing or usage statistics."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Protection controls all access to resources; security adds authentication and defense from outsiders."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The shell just looks the name up and runs whatever program it finds."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's its whole job, repeated forever."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "macOS: Aqua on top, UNIX underneath."
+    },
+    {
+      "accepted_answers": [
+        "xerox parc",
+        "parc",
+        "xerox",
+        "xerox palo alto research center"
+      ],
+      "explanation": "Xerox PARC, in the 1970s."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A separate program would only change its own directory."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Plus, increasingly, voice commands."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Commands in a file, run unattended: batch."
+    }
+  ]
+}

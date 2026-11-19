@@ -1,0 +1,65 @@
+{
+  "type": "quiz",
+  "title": "Check: Parameter Passing",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Which is the simplest way to pass parameters to a system call?",
+      "options": [
+        "In registers",
+        "On the stack",
+        "In a block in memory",
+        "In a file on disk"
+      ]
+    },
+    {
+      "prompt": "What is the problem with passing parameters only in registers?",
+      "options": [
+        "The OS can't read registers",
+        "There may be more parameters than registers",
+        "Registers can only hold text",
+        "Registers are too slow"
+      ]
+    },
+    {
+      "prompt": "In the block method, what goes in the register?",
+      "options": [
+        "The address of the block of parameters",
+        "Nothing; the OS guesses",
+        "The first parameter",
+        "The number of parameters"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Name one of the two operating systems the slides say use the block (table) method. (one word)"
+    },
+    {
+      "prompt": "In the stack method, the program ______ parameters onto the stack, and the OS ______ them off.",
+      "options": [
+        "loads; compiles",
+        "pushes; pops",
+        "pops; pushes",
+        "copies; deletes"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "The block and stack methods don't limit the number or length of parameters being passed."
+    },
+    {
+      "type": "true_false",
+      "prompt": "In the parameter-table diagram, the user program executes 'system call 13' after loading the table's address into a register."
+    },
+    {
+      "prompt": "A system call needs 9 parameters on a CPU that sets aside 6 registers for them. Which methods could work?",
+      "options": [
+        "Registers only",
+        "None; the call is impossible",
+        "Block in memory or the stack",
+        "Only a GUI"
+      ]
+    }
+  ]
+}

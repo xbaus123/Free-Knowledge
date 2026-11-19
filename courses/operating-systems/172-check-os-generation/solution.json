@@ -1,0 +1,35 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Each actual computer has its own CPU, memory, and devices."
+    },
+    {
+      "accepted_answers": [
+        "sysgen",
+        "system generation"
+      ],
+      "explanation": "SYSGEN: system generation."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "CPU, memory, devices, and OS options."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Or to tune a general kernel."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "No drivers or checks for hardware that isn't there."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The kernel was built for the old configuration."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Loadable modules make one kernel fit many machines."
+    }
+  ]
+}

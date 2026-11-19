@@ -1,0 +1,56 @@
+{
+  "type": "quiz",
+  "title": "Check: Simple Structure",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Which OS is the classic example of a simple structure?",
+      "options": [
+        "Solaris",
+        "Android",
+        "MS-DOS",
+        "Mach"
+      ]
+    },
+    {
+      "prompt": "MS-DOS was written to provide:",
+      "options": [
+        "A microkernel design",
+        "The best support for multiple users",
+        "The most security possible",
+        "The most functionality in the least space"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "MS-DOS is carefully divided into modules with well-separated interfaces."
+    },
+    {
+      "prompt": "In the MS-DOS structure diagram, what could an application program do?",
+      "options": [
+        "Nothing; it had to ask the user",
+        "Call the ROM BIOS device drivers directly, skipping the layers in between",
+        "Only make system calls through a protected interface",
+        "Run only in kernel mode"
+      ]
+    },
+    {
+      "prompt": "Why could one buggy program crash MS-DOS?",
+      "options": [
+        "Nothing kept programs away from the hardware and the OS",
+        "MS-DOS had too many layers",
+        "Programs ran in a virtual machine",
+        "The kernel was written in Java"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which microkernel does the overview give as its example? (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "A general-purpose operating system is a very large program, which is why its structure matters."
+    }
+  ]
+}

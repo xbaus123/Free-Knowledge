@@ -1,0 +1,60 @@
+{
+  "type": "quiz",
+  "title": "Check: Daemons and Apps",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "In UNIX, what is a background service program usually called? (one word)"
+    },
+    {
+      "prompt": "When do background services typically launch?",
+      "options": [
+        "When the system shuts down",
+        "Only when a user double-clicks them",
+        "Only after a crash",
+        "At boot time"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Daemons run in kernel context."
+    },
+    {
+      "prompt": "Which is a typical job for a background service?",
+      "options": [
+        "Error logging",
+        "Translating C into machine code at a user's request",
+        "Editing a document",
+        "Drawing a game's graphics"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Some background services run only during system startup and then terminate."
+    },
+    {
+      "prompt": "Which is an application program rather than a system program?",
+      "options": [
+        "A spreadsheet",
+        "A compiler",
+        "A disk-checking daemon",
+        "The shell"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Application programs are not typically considered part of the operating system."
+    },
+    {
+      "prompt": "A UNIX program named `sshd` is most likely:",
+      "options": [
+        "The kernel",
+        "A text editor",
+        "A daemon providing remote login",
+        "A compiler"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "type": "quiz",
+  "title": "Check: DTrace",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What does DTrace allow?",
+      "options": [
+        "Compiling the kernel",
+        "Booting from a USB stick",
+        "Live instrumentation on production systems",
+        "Running Android apps on a Mac"
+      ]
+    },
+    {
+      "prompt": "Which systems do the slides list as having DTrace?",
+      "options": [
+        "Only Linux",
+        "iOS and Android only",
+        "MS-DOS and Windows 95",
+        "Solaris, FreeBSD, and Mac OS X"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "In DTrace, what is a point in the code that fires when it's executed? (one word)"
+    },
+    {
+      "type": "written",
+      "prompt": "What is the program that receives data from the probes it enabled? (one word)"
+    },
+    {
+      "prompt": "What is a provider?",
+      "options": [
+        "A device driver",
+        "The company that sold you the computer",
+        "The program that receives probe data",
+        "The part of DTrace that owns a set of probes in some area"
+      ]
+    },
+    {
+      "prompt": "In the XEventsQueued trace, what do the U and K columns show?",
+      "options": [
+        "The CPU number",
+        "Whether each function ran in user mode or kernel mode",
+        "The function's size",
+        "Whether the function succeeded"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "The sched.d example measures how long each of user 101's programs spends on the CPU."
+    },
+    {
+      "prompt": "In the sched.d script, what happens when a process goes OFF the CPU?",
+      "options": [
+        "The timestamp is reset to the boot time",
+        "The time since it went on is added to its program's total",
+        "A new process is forked",
+        "The process is killed"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "type": "quiz",
+  "title": "Check: Process Control",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "How many categories of system calls are there in this chapter's list? (a number)"
+    },
+    {
+      "prompt": "Which of these is a process-control system call?",
+      "options": [
+        "create process",
+        "get time",
+        "create file",
+        "request device"
+      ]
+    },
+    {
+      "prompt": "What is the difference between end and abort?",
+      "options": [
+        "abort only works in kernel mode",
+        "end halts normally; abort halts abnormally",
+        "They're the same call",
+        "end is for files; abort is for devices"
+      ]
+    },
+    {
+      "prompt": "A debugger runs a program one instruction at a time. This is called:",
+      "options": [
+        "Batch execution",
+        "Memory dumping",
+        "Single-step execution",
+        "Message passing"
+      ]
+    },
+    {
+      "prompt": "What are locks for?",
+      "options": [
+        "Managing access to shared data between processes",
+        "Stopping the CPU",
+        "Encrypting files",
+        "Locking the screen"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Allocating and freeing memory are process-control system calls."
+    },
+    {
+      "type": "true_false",
+      "prompt": "When a program aborts because of an error, the OS may dump its memory to disk for later examination."
+    },
+    {
+      "prompt": "A program wants to sleep for 5 seconds. Which process-control call fits?",
+      "options": [
+        "terminate process",
+        "load",
+        "signal event",
+        "wait for time"
+      ]
+    }
+  ]
+}

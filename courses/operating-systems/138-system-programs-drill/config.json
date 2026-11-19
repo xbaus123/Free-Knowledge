@@ -1,0 +1,89 @@
+{
+  "type": "quiz",
+  "title": "Drill: What Kind of Program?",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "`gcc`, the C compiler",
+      "options": [
+        "Status information",
+        "Programming-language support",
+        "Application program",
+        "File modification"
+      ]
+    },
+    {
+      "prompt": "`df`, which shows how much disk space is free",
+      "options": [
+        "Communications",
+        "Status information",
+        "Background service",
+        "File management"
+      ]
+    },
+    {
+      "prompt": "`mv`, which renames or moves files",
+      "options": [
+        "Status information",
+        "Communications",
+        "File management",
+        "File modification"
+      ]
+    },
+    {
+      "prompt": "`sed`, which transforms the text inside a file",
+      "options": [
+        "File management",
+        "Status information",
+        "Programming-language support",
+        "File modification"
+      ]
+    },
+    {
+      "prompt": "`ssh`, which logs you in to a remote machine",
+      "options": [
+        "Status information",
+        "File modification",
+        "Communications",
+        "Background service"
+      ]
+    },
+    {
+      "prompt": "`cupsd`, which runs from boot and handles print jobs",
+      "options": [
+        "Application program",
+        "Background service",
+        "File management",
+        "Programming-language support"
+      ]
+    },
+    {
+      "prompt": "A photo-editing app",
+      "options": [
+        "Background service",
+        "Status information",
+        "Application program",
+        "File modification"
+      ]
+    },
+    {
+      "prompt": "`gdb`, a debugger",
+      "options": [
+        "Programming-language support",
+        "Communications",
+        "Status information",
+        "Background service"
+      ]
+    },
+    {
+      "prompt": "`top`, which shows live CPU and memory use",
+      "options": [
+        "Communications",
+        "Status information",
+        "File management",
+        "Application program"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Registers are simplest, but limited in number."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A CPU has a fixed, small number of registers."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The register holds X, where the parameters live in memory."
+    },
+    {
+      "accepted_answers": [
+        "linux",
+        "solaris"
+      ],
+      "explanation": "Linux and Solaris."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Push to put on the stack, pop to take off."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Memory has room for as many parameters as needed."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Load address X into a register, then make the call. The kernel's code for call 13 reads its parameters from table X."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Block and stack have no limit; registers alone can't hold 9."
+    }
+  ]
+}

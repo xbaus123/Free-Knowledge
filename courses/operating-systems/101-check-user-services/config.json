@@ -1,0 +1,65 @@
+{
+  "type": "quiz",
+  "title": "Check: Services for the User",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Program execution means the OS can load a program into memory, run it, and:",
+      "options": [
+        "Guarantee it has no bugs",
+        "End its execution, either normally or abnormally",
+        "Run it without using the CPU",
+        "Rewrite it in a faster language"
+      ]
+    },
+    {
+      "prompt": "Two processes on the same machine communicate by reading and writing the same region of memory. This is:",
+      "options": [
+        "Batch processing",
+        "Shared memory",
+        "Message passing",
+        "Accounting"
+      ]
+    },
+    {
+      "prompt": "In the message-passing model of communication, who moves the packets of information between processes?",
+      "options": [
+        "The user",
+        "The operating system",
+        "The compiler",
+        "The processes write straight into each other's memory"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Error detection only covers bugs in user programs; hardware errors are the hardware's problem."
+    },
+    {
+      "type": "written",
+      "prompt": "Fill in the blank: the three styles of user interface are command-line, graphical, and ______. (one word)"
+    },
+    {
+      "prompt": "A printer runs out of paper in the middle of a job. Which service is responsible for noticing and handling it?",
+      "options": [
+        "Error detection",
+        "Accounting",
+        "User interface",
+        "Program execution"
+      ]
+    },
+    {
+      "prompt": "Which is NOT listed as part of file-system manipulation?",
+      "options": [
+        "Creating and deleting files",
+        "Managing permissions",
+        "Scheduling which process runs next",
+        "Searching directories"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Communication between processes can happen on one computer or between computers over a network."
+    }
+  ]
+}

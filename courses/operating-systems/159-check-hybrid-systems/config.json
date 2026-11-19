@@ -1,0 +1,69 @@
+{
+  "type": "quiz",
+  "title": "Check: Hybrid Systems",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "type": "true_false",
+      "prompt": "Most modern operating systems follow exactly one pure structure model."
+    },
+    {
+      "prompt": "Why do hybrids combine approaches?",
+      "options": [
+        "To address performance, security, and usability needs",
+        "Because pure models are illegal",
+        "To run only on one CPU",
+        "To avoid having a kernel"
+      ]
+    },
+    {
+      "prompt": "Linux is best described as:",
+      "options": [
+        "Monolithic, plus modular for dynamic loading of functionality",
+        "A simple structure like MS-DOS",
+        "Strictly layered",
+        "A pure microkernel"
+      ]
+    },
+    {
+      "prompt": "Windows is described as:",
+      "options": [
+        "Mostly monolithic, plus microkernel ideas for different subsystem personalities",
+        "Single-tasking",
+        "Purely layered",
+        "A pure microkernel"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What is the name of macOS's GUI? (one word)"
+    },
+    {
+      "prompt": "What is Cocoa?",
+      "options": [
+        "The macOS kernel",
+        "The macOS programming environment (an API for writing apps)",
+        "The bootloader",
+        "A device driver framework"
+      ]
+    },
+    {
+      "prompt": "The macOS kernel combines Mach with which other system?",
+      "options": [
+        "Solaris",
+        "Windows NT",
+        "BSD UNIX",
+        "MS-DOS"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What does macOS call its dynamically loadable kernel modules? (two words)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "In macOS, Mach and BSD run in the same kernel address space."
+    }
+  ]
+}

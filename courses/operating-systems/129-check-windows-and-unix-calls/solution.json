@@ -1,0 +1,46 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "fork() creates a new process in UNIX."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "CreateFile() opens or creates a file. The name is a little misleading."
+    },
+    {
+      "accepted_answers": [
+        "chmod",
+        "chmod()"
+      ],
+      "explanation": "chmod: change mode. Windows uses SetFileSecurity()."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "shmget() gets a shared-memory segment, which is communication."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Asking for your own process ID is information maintenance."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "ioctl() is I/O control. Windows has SetConsoleMode() for consoles."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Windows uses ReadFile() for files and ReadConsole() for the console."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Both wait for something, typically for a child process to finish."
+    },
+    {
+      "accepted_answers": [
+        "pipe",
+        "pipe()"
+      ],
+      "explanation": "pipe() is UNIX's counterpart to CreatePipe()."
+    }
+  ]
+}

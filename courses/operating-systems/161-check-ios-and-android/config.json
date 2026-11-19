@@ -1,0 +1,73 @@
+{
+  "type": "quiz",
+  "title": "Check: iOS and Android",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "iOS is structured on which operating system?",
+      "options": [
+        "MS-DOS",
+        "Windows",
+        "Linux",
+        "Mac OS X"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "iOS runs Mac OS X applications natively."
+    },
+    {
+      "type": "written",
+      "prompt": "What is the iOS API for developing apps called? (two words)"
+    },
+    {
+      "prompt": "Which iOS layer provides graphics, audio, and video?",
+      "options": [
+        "Core OS",
+        "Cocoa Touch",
+        "Core services",
+        "Media services"
+      ]
+    },
+    {
+      "prompt": "Who developed Android?",
+      "options": [
+        "The Open Handset Alliance, mostly Google",
+        "Apple",
+        "Carnegie Mellon",
+        "Microsoft"
+      ]
+    },
+    {
+      "prompt": "Android is based on:",
+      "options": [
+        "The Mach microkernel",
+        "MS-DOS",
+        "The Windows kernel",
+        "A modified Linux kernel"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What did Android add to the Linux kernel, according to the slides? (two words)"
+    },
+    {
+      "type": "written",
+      "prompt": "What virtual machine runs Android apps in the slides? (one word)"
+    },
+    {
+      "prompt": "Which database library does Android include?",
+      "options": [
+        "SQLite",
+        "Oracle",
+        "PostgreSQL",
+        "MySQL"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Android apps are developed in Java plus the Android API."
+    }
+  ]
+}

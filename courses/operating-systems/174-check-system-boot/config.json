@@ -1,0 +1,60 @@
+{
+  "type": "quiz",
+  "title": "Check: System Boot",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "When power is initialized, where does execution start?",
+      "options": [
+        "At a random address",
+        "Wherever the user clicks",
+        "At a fixed memory location",
+        "In the shell"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What kind of memory holds the initial boot code? (one word, or two with 'firmware')"
+    },
+    {
+      "type": "written",
+      "prompt": "What is the small piece of code that locates the kernel, loads it into memory, and starts it? (two words)"
+    },
+    {
+      "prompt": "In a two-step boot, what does the ROM code load first?",
+      "options": [
+        "The GUI",
+        "A daemon",
+        "The whole kernel",
+        "A boot block from a fixed location on disk"
+      ]
+    },
+    {
+      "prompt": "Why keep only a tiny loader in ROM and the real bootstrap loader on disk?",
+      "options": [
+        "ROM is faster than disk",
+        "It makes the system single-tasking",
+        "The loader on disk can be updated without replacing firmware",
+        "Disks can't hold code"
+      ]
+    },
+    {
+      "prompt": "What makes EEPROM different from plain ROM?",
+      "options": [
+        "It's a kind of disk",
+        "It runs user programs",
+        "It loses its contents when the power is off",
+        "It can be electrically erased and rewritten"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which common bootstrap loader lets you choose among kernels, versions, and kernel options? (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Once the kernel loads, the system is running."
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "MS-DOS is the slides' example."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Early PCs had very little memory."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It's not divided into modules, and its interfaces and levels are not well separated."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The arrows show applications reaching all the way down to the BIOS."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "No separation, and no hardware protection to enforce any."
+    },
+    {
+      "accepted_answers": [
+        "mach"
+      ],
+      "explanation": "Mach, developed at Carnegie Mellon."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Structure is how you keep millions of lines manageable."
+    }
+  ]
+}

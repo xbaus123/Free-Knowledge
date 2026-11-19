@@ -1,0 +1,48 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "It runs one program at a time."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "MS-DOS uses a simple method with no process created and a single memory space."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "That's why the shell has to be reloaded when the program exits."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The command interpreter comes back so the user can type the next command."
+    },
+    {
+      "accepted_answers": [
+        "fork",
+        "fork()"
+      ],
+      "explanation": "fork() creates the process; exec() then loads a program into it."
+    },
+    {
+      "accepted_answers": [
+        "exec",
+        "exec()",
+        "execve",
+        "execve()"
+      ],
+      "explanation": "exec() replaces the process's memory with the new program."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Background commands let the shell keep going while the program runs."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "0 means success; anything greater than 0 is an error code."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The memory picture shows the interpreter alongside processes B, C, and D."
+    }
+  ]
+}

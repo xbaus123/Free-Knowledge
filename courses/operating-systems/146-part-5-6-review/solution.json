@@ -1,0 +1,60 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Status programs ask the system for information and format it."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "File modification includes editors and text-transforming commands."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "They're ordinary processes, not part of the kernel."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Running gcc on demand is programming-language support, not a boot-time service."
+    },
+    {
+      "accepted_answers": [
+        "system programs",
+        "system program",
+        "the system programs"
+      ],
+      "explanation": "Users see the programs, not the calls underneath."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Users want convenience, ease of learning, reliability, safety, and speed."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "System goals belong to the people who design, implement, and maintain the OS."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Keep them separate for flexibility."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's the whole point."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "C, with assembly at the very lowest levels."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Recompile for new hardware instead of rewriting."
+    },
+    {
+      "accepted_answers": [
+        "emulation",
+        "emulator",
+        "emulators"
+      ],
+      "explanation": "Emulation, at a cost in speed."
+    }
+  ]
+}

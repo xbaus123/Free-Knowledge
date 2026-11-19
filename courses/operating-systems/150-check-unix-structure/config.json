@@ -1,0 +1,65 @@
+{
+  "type": "quiz",
+  "title": "Check: Traditional UNIX",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "The original UNIX consists of which two separable parts?",
+      "options": [
+        "Drivers and daemons",
+        "System programs and the kernel",
+        "The BIOS and the bootloader",
+        "The GUI and the shell"
+      ]
+    },
+    {
+      "prompt": "In traditional UNIX, the kernel consists of everything:",
+      "options": [
+        "Inside the shell",
+        "Below the system-call interface and above the physical hardware",
+        "Above the system-call interface",
+        "On the disk but not in memory"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "The traditional UNIX kernel provides the file system, CPU scheduling, and memory management, all in one level."
+    },
+    {
+      "type": "written",
+      "prompt": "What is the name for an OS design where the whole kernel is one large program in a single address space? (one word)"
+    },
+    {
+      "prompt": "What is the main advantage of a monolithic kernel?",
+      "options": [
+        "Performance: kernel parts communicate with very little overhead",
+        "It needs no system calls",
+        "It's easy to extend",
+        "A bug can't crash it"
+      ]
+    },
+    {
+      "prompt": "What is the main disadvantage of a monolithic kernel?",
+      "options": [
+        "It's too slow",
+        "It's hard to implement and extend",
+        "It needs a microkernel underneath",
+        "It can't run system programs"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "The slides describe traditional UNIX as fully layered."
+    },
+    {
+      "prompt": "In the UNIX diagram, shells, compilers, and system libraries sit:",
+      "options": [
+        "Below the hardware interface",
+        "Inside the kernel",
+        "Above the system-call interface",
+        "In the device controllers"
+      ]
+    }
+  ]
+}

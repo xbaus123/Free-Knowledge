@@ -1,0 +1,42 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "loadable kernel module",
+        "loadable kernel modules"
+      ],
+      "explanation": "Pieces of the kernel loaded as needed."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Separate components with known interfaces, loaded as needed."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's what loadable means: linked in at boot or while running."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "No 'only lower layers' rule."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Same address space, plain function calls."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Scheduling classes, file systems, loadable system calls, executable formats, STREAMS, miscellaneous, and device and bus drivers."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Linux and Solaris, among others."
+    },
+    {
+      "accepted_answers": [
+        "7",
+        "seven"
+      ],
+      "explanation": "Seven."
+    }
+  ]
+}

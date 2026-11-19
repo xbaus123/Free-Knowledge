@@ -1,0 +1,65 @@
+{
+  "type": "quiz",
+  "title": "Check: Info, Comms, Protection",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "A program asks the OS for the current date. Which category of system call is this?",
+      "options": [
+        "Communications",
+        "Device management",
+        "Protection",
+        "Information maintenance"
+      ]
+    },
+    {
+      "prompt": "In the message-passing model, what names the other end of a connection?",
+      "options": [
+        "A memory address",
+        "A device driver",
+        "A file descriptor only",
+        "A host name and a process name"
+      ]
+    },
+    {
+      "prompt": "In the message-passing model, messages typically travel from:",
+      "options": [
+        "A server to the BIOS",
+        "A client to a server",
+        "The CPU to the cache",
+        "The kernel to the bootstrap loader"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which communication model lets processes create and gain access to memory regions owned by other processes? (two words)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "Message passing is a good fit for smaller amounts of data and for communication between computers."
+    },
+    {
+      "prompt": "Which is a protection system call?",
+      "options": [
+        "reposition",
+        "send message",
+        "set permissions",
+        "get time"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "With shared memory, the OS automatically prevents two processes from writing the same location at the same time."
+    },
+    {
+      "prompt": "A program asks how much free disk space there is. Which call fits?",
+      "options": [
+        "get system data",
+        "create connection",
+        "request device",
+        "allow user access"
+      ]
+    }
+  ]
+}

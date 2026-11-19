@@ -1,0 +1,60 @@
+{
+  "type": "quiz",
+  "title": "Check: Into the Kernel",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "How does the system-call interface find the code for a requested system call?",
+      "options": [
+        "It uses the call's number as an index into a table",
+        "It compiles the call on the fly",
+        "It asks the user",
+        "It searches the disk for a file with the call's name"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What is the component called that keeps the table of system calls and invokes the right one? (three words)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "After a system call finishes, the system-call interface returns its status and any return values to the caller."
+    },
+    {
+      "type": "true_false",
+      "prompt": "To make a system call, the caller must know how it's implemented inside the kernel."
+    },
+    {
+      "prompt": "What handles most of the details of the OS interface on behalf of the programmer?",
+      "options": [
+        "The device controller",
+        "The run-time support library included with the compiler",
+        "The interrupt vector",
+        "The bootstrap loader"
+      ]
+    },
+    {
+      "prompt": "A C program calls printf(). What actually happens?",
+      "options": [
+        "printf() writes directly to the screen hardware in user mode",
+        "printf() is itself a system call that traps directly",
+        "printf() in the standard C library formats the text and calls the write() system call",
+        "The compiler prints the text at compile time"
+      ]
+    },
+    {
+      "prompt": "In the open() diagram, the lookup in the system-call table happens in:",
+      "options": [
+        "User mode",
+        "The compiler",
+        "The shell",
+        "Kernel mode"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "printf() is a library call, and write() is a system call."
+    }
+  ]
+}

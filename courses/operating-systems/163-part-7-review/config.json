@@ -1,0 +1,105 @@
+{
+  "type": "quiz",
+  "title": "Part Review: Operating-System Structure",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Which structure did MS-DOS use?",
+      "options": [
+        "Simple structure",
+        "Microkernel",
+        "Layered",
+        "Loadable modules"
+      ]
+    },
+    {
+      "prompt": "What does the traditional UNIX kernel consist of?",
+      "options": [
+        "Only the scheduler",
+        "The shell and system programs",
+        "A microkernel plus servers",
+        "Everything below the system-call interface and above the physical hardware"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A monolithic kernel's main advantage is performance."
+    },
+    {
+      "prompt": "In a layered OS, layer 0 is ______ and layer N is ______.",
+      "options": [
+        "the user interface; the hardware",
+        "the kernel; the shell",
+        "memory; the disk",
+        "the hardware; the user interface"
+      ]
+    },
+    {
+      "prompt": "In your assign_layers(), what made layering impossible?",
+      "options": [
+        "Too many modules",
+        "A cycle: modules that use each other",
+        "A module that uses nothing",
+        "Modules with long names"
+      ]
+    },
+    {
+      "prompt": "A microkernel keeps which services in kernel mode?",
+      "options": [
+        "File systems and device drivers",
+        "Interprocess communication, basic memory management, and CPU scheduling",
+        "The GUI and the shell",
+        "Everything"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "In a microkernel system, user-space modules communicate by message ______. (one word)"
+    },
+    {
+      "prompt": "Your mode_switches() found 8 switches for a microkernel and 2 for a monolithic kernel on the same request. Which microkernel detriment does that show?",
+      "options": [
+        "Less secure",
+        "Harder to extend",
+        "Harder to port",
+        "Performance overhead of user-space-to-kernel-space communication"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Loadable kernel modules run inside the kernel and talk to each other over known interfaces."
+    },
+    {
+      "prompt": "Linux and Solaris are described as:",
+      "options": [
+        "Monolithic plus modular",
+        "Pure microkernels",
+        "Strictly layered",
+        "Simple structures"
+      ]
+    },
+    {
+      "prompt": "The macOS kernel environment combines:",
+      "options": [
+        "MS-DOS and Windows",
+        "Mach and BSD, plus the I/O kit and kernel extensions",
+        "Linux and Dalvik",
+        "Only Mach, as a pure microkernel"
+      ]
+    },
+    {
+      "prompt": "Which iOS layer is the API for building apps?",
+      "options": [
+        "Cocoa Touch",
+        "Core services",
+        "Core OS",
+        "Media services"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Android is based on a modified Linux kernel and runs Java apps in a virtual machine."
+    }
+  ]
+}

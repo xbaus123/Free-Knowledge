@@ -1,0 +1,42 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Each system call has a number, and the table maps numbers to implementations."
+    },
+    {
+      "accepted_answers": [
+        "system call interface",
+        "system-call interface",
+        "the system call interface",
+        "the system-call interface",
+        "syscall interface"
+      ],
+      "explanation": "The system-call interface sits right at the user/kernel boundary."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's how read() can hand back a byte count or -1."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The caller only needs to obey the API and know what the OS will do."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The library functions set up and make the actual system calls."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "printf() is a library call; write() is the system call underneath."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The trap switches to kernel mode, then the interface consults the table."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Library calls run in user mode; some of them make system calls."
+    }
+  ]
+}

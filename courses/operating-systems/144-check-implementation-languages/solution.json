@@ -1,0 +1,40 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Then came Algol and PL/1, and now C and C++."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "They came between assembly and C."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Usually a mix: assembly at the lowest levels, C for the main body, and C, C++, and scripting languages for system programs."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Boot code and register-level details need exact control of the CPU."
+    },
+    {
+      "accepted_answers": [
+        "port",
+        "porting",
+        "ported"
+      ],
+      "explanation": "High-level languages make an OS easier to port."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "That's the trade-off on the slides, though modern compilers shrink it."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Software imitates one kind of hardware on top of another."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Scripting languages are common for system programs."
+    }
+  ]
+}

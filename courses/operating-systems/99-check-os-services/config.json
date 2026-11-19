@@ -1,0 +1,56 @@
+{
+  "type": "quiz",
+  "title": "Check: OS Services",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "An operating system provides an environment for executing programs and:",
+      "options": [
+        "A replacement for the CPU when it's busy",
+        "Services to programs and the users of those programs",
+        "A compiler for every programming language",
+        "Faster hardware"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Resource allocation is mainly a service for keeping the system itself running efficiently, not a convenience for a single user."
+    },
+    {
+      "prompt": "Which of these is a user-helpful service rather than a system-efficiency service?",
+      "options": [
+        "Resource allocation",
+        "Accounting",
+        "File-system manipulation",
+        "None of them; all are system-efficiency services"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "In the services diagram, user programs reach every OS service through which layer? (two words)"
+    },
+    {
+      "prompt": "Which three user interfaces appear in the services diagram?",
+      "options": [
+        "Windows, macOS, and Linux",
+        "Keyboard, mouse, and monitor",
+        "GUI, batch, and command line",
+        "Shell, kernel, and hardware"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Protection and security belong to the family of services that keep the system running efficiently through resource sharing."
+    },
+    {
+      "prompt": "Which service is NOT on the user-helpful list?",
+      "options": [
+        "Program execution",
+        "Communications",
+        "Accounting",
+        "Error detection"
+      ]
+    }
+  ]
+}

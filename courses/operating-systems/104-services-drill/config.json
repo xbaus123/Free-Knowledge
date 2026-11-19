@@ -1,0 +1,79 @@
+{
+  "type": "quiz",
+  "title": "Drill: Which Service?",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "You double-click a game and it starts. Which service loaded it into memory and ran it?",
+      "options": [
+        "Protection",
+        "Program execution",
+        "Accounting",
+        "Communications"
+      ]
+    },
+    {
+      "prompt": "Your text editor saves a file and sets it to read-only.",
+      "options": [
+        "Error detection",
+        "File-system manipulation",
+        "Resource allocation",
+        "Accounting"
+      ]
+    },
+    {
+      "prompt": "A chat program sends your message to a friend's computer across the Internet.",
+      "options": [
+        "Accounting",
+        "Communications",
+        "Program execution",
+        "User interface"
+      ]
+    },
+    {
+      "prompt": "Two programs both want the only webcam. The OS lets one have it and makes the other wait.",
+      "options": [
+        "Accounting",
+        "Error detection",
+        "Resource allocation",
+        "File-system manipulation"
+      ]
+    },
+    {
+      "prompt": "A disk reports a bad sector, and the OS logs it and retries the read elsewhere.",
+      "options": [
+        "Protection",
+        "Error detection",
+        "User interface",
+        "Communications"
+      ]
+    },
+    {
+      "prompt": "A university bills each department for its share of computing time.",
+      "options": [
+        "Security",
+        "Accounting",
+        "Program execution",
+        "Resource allocation"
+      ]
+    },
+    {
+      "prompt": "A program reads data from a USB thermometer.",
+      "options": [
+        "User interface",
+        "Protection",
+        "Accounting",
+        "I/O operations"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "You log in with your fingerprint before the desktop appears. Name the service. (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "A program crashes with an illegal memory access and the OS ends it, leaving other programs running. Error detection and protection are both at work."
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "type": "quiz",
+  "title": "Check: The Command Line",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What is the main job of a command interpreter?",
+      "options": [
+        "Translate programs into machine code",
+        "Draw windows and icons",
+        "Schedule processes on the CPU",
+        "Fetch a command from the user and execute it"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "On a system that offers several command interpreters to choose from, what is each one called? (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "A command interpreter is always part of the kernel."
+    },
+    {
+      "prompt": "In UNIX, most commands are implemented as:",
+      "options": [
+        "Separate program files that the shell finds by name and runs",
+        "Code built into the shell itself",
+        "Entries in the interrupt vector",
+        "Hardware instructions"
+      ]
+    },
+    {
+      "prompt": "A programmer writes a new command-line tool. With the program-name approach, what must change in the shell?",
+      "options": [
+        "The kernel must be rebuilt",
+        "Nothing; the new program file just needs to be where the shell looks",
+        "The user must switch to a different shell",
+        "The shell must be recompiled with the new code"
+      ]
+    },
+    {
+      "prompt": "Why does `cd` have to be a built-in command?",
+      "options": [
+        "Programs aren't allowed to read directories",
+        "It changes the shell's own current directory, which a separate program can't do for it",
+        "It needs to run in kernel mode",
+        "It's too short to be a program"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "bash and zsh are both shells: different command interpreters that do the same basic job."
+    }
+  ]
+}

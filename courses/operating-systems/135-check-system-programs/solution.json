@@ -1,0 +1,44 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "They sit between the kernel and applications and make the system usable."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Others, like compilers, are much more complex."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Create, delete, copy, rename, print, dump, list: file management."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Asking the system for information like that is status information."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "They support writing and running programs."
+    },
+    {
+      "accepted_answers": [
+        "registry",
+        "the registry",
+        "a registry"
+      ],
+      "explanation": "The registry holds configuration information."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Editors create and modify file contents. File management handles files as whole objects."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It's the other way around: people see the system programs, not the calls underneath."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "They get programs into memory and ready to run."
+    }
+  ]
+}

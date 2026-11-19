@@ -1,0 +1,44 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Loading and running a program is the program-execution service."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Writing files and managing their permissions are both file-system manipulation."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Exchanging information between computers over a network is communications."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Deciding who gets an I/O device is resource allocation."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Noticing an I/O device error and taking the right action is error detection."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Tracking who used how much is accounting; billing is one use of it."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "A running program needing a device is the I/O-operations service."
+    },
+    {
+      "accepted_answers": [
+        "security",
+        "protection and security",
+        "authentication"
+      ],
+      "explanation": "Authenticating users keeps outsiders out: security."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The OS detects the error and protection keeps the bad access from harming anyone else."
+    }
+  ]
+}

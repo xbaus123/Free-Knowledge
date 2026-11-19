@@ -1,0 +1,39 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "It's not solvable, but some approaches have proven successful."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Goals and specifications come first."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Hardware and system type (desktop, mobile, real time...) set the starting constraints."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Users want a system that's convenient, easy to learn, reliable, safe, and fast."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "System goals are those of the people who design, build, and maintain the OS."
+    },
+    {
+      "accepted_answers": [
+        "reliable",
+        "reliability"
+      ],
+      "explanation": "Users and builders both want reliability."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Speed can fight maintainability; safety can fight convenience."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "No single answer satisfies every goal, so designs vary widely."
+    }
+  ]
+}

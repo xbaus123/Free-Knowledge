@@ -1,0 +1,91 @@
+{
+  "type": "quiz",
+  "title": "Part Review: System Calls",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "System calls are:",
+      "options": [
+        "The programming interface to the services provided by the OS",
+        "Functions in the C standard library",
+        "Interrupts from I/O devices",
+        "Commands typed at the shell"
+      ]
+    },
+    {
+      "prompt": "Which three APIs are the most common?",
+      "options": [
+        "BIOS, GRUB, and ROM",
+        "Aqua, GNOME, and KDE",
+        "C, C++, and assembly",
+        "Win32, POSIX, and Java"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Programs mostly reach system calls through an API rather than invoking them directly."
+    },
+    {
+      "type": "written",
+      "prompt": "read() returns 0. What does that mean? (three words)"
+    },
+    {
+      "prompt": "In `ssize_t read(int fd, void *buf, size_t count)`, `buf` is:",
+      "options": [
+        "The maximum number of bytes",
+        "The return value",
+        "The file descriptor",
+        "A buffer where the data will be read into"
+      ]
+    },
+    {
+      "prompt": "What does the system-call interface use to find the right kernel code?",
+      "options": [
+        "The function's name in a dictionary on disk",
+        "The program counter of the caller",
+        "A table indexed by system-call number",
+        "The current user's ID"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Most of the details of the OS interface are hidden from the programmer by the API and managed by the run-time ______ library. (one word)"
+    },
+    {
+      "prompt": "Which call in the printf() example is the actual system call?",
+      "options": [
+        "printf()",
+        "write()",
+        "return",
+        "main()"
+      ]
+    },
+    {
+      "prompt": "Which parameter-passing method is limited by the number of CPU registers?",
+      "options": [
+        "None of them",
+        "Registers",
+        "Stack",
+        "Block in memory"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "In the stack method, the operating system pushes the parameters and the program pops them."
+    },
+    {
+      "prompt": "Which operating systems pass a block's address in a register?",
+      "options": [
+        "MS-DOS and CP/M",
+        "Linux and Solaris",
+        "iOS and Android",
+        "Only Windows"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "The textbook's system-call names, like open() and read(), are generic; real systems may name them differently."
+    }
+  ]
+}

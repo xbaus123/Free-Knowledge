@@ -1,0 +1,44 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "You can trace a running system without restarting it."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Solaris, FreeBSD, and Mac OS X."
+    },
+    {
+      "accepted_answers": [
+        "probe",
+        "a probe",
+        "probes"
+      ],
+      "explanation": "Probes capture state data when they fire."
+    },
+    {
+      "accepted_answers": [
+        "consumer",
+        "a consumer",
+        "consumers"
+      ],
+      "explanation": "Consumers receive the probe data."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "For example, sched for scheduling events."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "You can watch the call cross from user mode into the kernel and back."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It records a timestamp on-cpu and adds the elapsed time off-cpu."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "sum(timestamp - self->ts), then clear the saved timestamp."
+    }
+  ]
+}

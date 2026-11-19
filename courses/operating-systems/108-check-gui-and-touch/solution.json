@@ -1,0 +1,40 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "folder",
+        "a folder",
+        "folders"
+      ],
+      "explanation": "The desktop metaphor turns directories into folders."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Xerox PARC built the first desktop-metaphor GUI; Apple popularized it."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Aqua is the GUI. Cocoa is a programming environment, which Part 7 covers."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "CDE, KDE, and GNOME are all optional desktop environments for UNIX-like systems."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Taps, swipes, and pinches replace the mouse."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The keyboard is drawn on the screen. Voice input is another option."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Both interfaces sit on top of the same system calls. Only the way you ask changes."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Speed and scripting. A shell script is a batch interface built from CLI commands."
+    }
+  ]
+}

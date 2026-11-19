@@ -1,0 +1,65 @@
+{
+  "type": "quiz",
+  "title": "Check: Implementation",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What were the earliest operating systems written in?",
+      "options": [
+        "Assembly language",
+        "Python",
+        "Java",
+        "C"
+      ]
+    },
+    {
+      "prompt": "Which languages are the slides' examples of early system programming languages?",
+      "options": [
+        "Java and C#",
+        "Algol and PL/1",
+        "Perl and Python",
+        "C and C++"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A modern OS is usually written in a single language from top to bottom."
+    },
+    {
+      "prompt": "Which part of an OS is still most likely to be written in assembly?",
+      "options": [
+        "The GUI",
+        "The text editor",
+        "The shell scripts",
+        "The lowest levels, closest to the hardware"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What is the word for moving an OS to run on different hardware? (one word)"
+    },
+    {
+      "prompt": "What is the main cost of writing an OS in a high-level language?",
+      "options": [
+        "It needs more registers",
+        "It can't be ported",
+        "It may be slower",
+        "It can't make system calls"
+      ]
+    },
+    {
+      "prompt": "What does emulation allow?",
+      "options": [
+        "Booting without ROM",
+        "Running an OS on non-native hardware",
+        "Running two policies at once",
+        "Skipping the compiler"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "System programs are often written in scripting languages such as Perl, Python, or shell scripts."
+    }
+  ]
+}

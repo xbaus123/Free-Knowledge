@@ -1,0 +1,43 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "get time or date is information maintenance."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Host name for the computer, process name for the process on it."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The client sends requests; the server waits for and answers them."
+    },
+    {
+      "accepted_answers": [
+        "shared memory",
+        "shared-memory",
+        "shared memory model",
+        "shared-memory model",
+        "the shared memory model",
+        "the shared-memory model"
+      ],
+      "explanation": "Shared memory removes the usual restriction for one agreed-upon region."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Shared memory is faster on one machine, but message passing works easily across a network."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Getting and setting permissions, and allowing or denying user access, are protection."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "That's the processes' responsibility, which is one of the risks of shared memory."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "System data like free memory or disk space is information maintenance."
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "type": "quiz",
+  "title": "Check: Design Goals",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "type": "true_false",
+      "prompt": "OS design is a solved problem: there's one correct way to build an operating system."
+    },
+    {
+      "prompt": "Where should the design of an OS start?",
+      "options": [
+        "By porting an existing kernel",
+        "By choosing the GUI colors",
+        "By defining goals and specifications",
+        "By writing the bootstrap loader"
+      ]
+    },
+    {
+      "prompt": "Which two things affect the design at the very top?",
+      "options": [
+        "The choice of hardware and the type of system",
+        "The user's favorite color and font",
+        "The compiler and the text editor",
+        "The number of daemons and the size of the registry"
+      ]
+    },
+    {
+      "prompt": "\"Easy to learn\" is a:",
+      "options": [
+        "Mechanism",
+        "Hardware requirement",
+        "System goal",
+        "User goal"
+      ]
+    },
+    {
+      "prompt": "\"Easy to maintain\" is a:",
+      "options": [
+        "System goal",
+        "Policy",
+        "User goal",
+        "System call"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Which goal appears on BOTH the user list and the system list? (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "User and system goals can conflict with each other."
+    },
+    {
+      "prompt": "Why do operating systems differ so much inside?",
+      "options": [
+        "Every OS uses the same structure",
+        "Each strikes its own balance among vague and conflicting goals",
+        "System calls are illegal in some countries",
+        "Hardware never changes"
+      ]
+    }
+  ]
+}

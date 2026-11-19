@@ -1,0 +1,65 @@
+{
+  "type": "quiz",
+  "title": "Check: Modules",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "What does LKM stand for? (three words)"
+    },
+    {
+      "prompt": "Loadable kernel modules use which kind of approach?",
+      "options": [
+        "Message passing only",
+        "Batch",
+        "Single-tasking",
+        "Object-oriented"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A loadable module can be added to a running kernel without rebuilding the kernel."
+    },
+    {
+      "prompt": "Modules are similar to layers, but:",
+      "options": [
+        "Stricter, since a module can only call the one below it",
+        "Slower, since they use messages",
+        "More flexible, since any module can call any other through its interface",
+        "They run in user space"
+      ]
+    },
+    {
+      "prompt": "Why are modules faster than microkernel services?",
+      "options": [
+        "Modules skip the hardware",
+        "Modules run on a separate CPU",
+        "Modules run inside the kernel and call each other directly, without message passing",
+        "They aren't; modules are slower"
+      ]
+    },
+    {
+      "prompt": "Which is one of Solaris's seven types of loadable modules?",
+      "options": [
+        "Web browsers",
+        "Shell scripts",
+        "Scheduling classes",
+        "Text editors"
+      ]
+    },
+    {
+      "prompt": "Which two operating systems do the slides name as using loadable modules?",
+      "options": [
+        "MS-DOS and CP/M",
+        "Mach and Minix",
+        "iOS and Palm OS",
+        "Linux and Solaris"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "How many types of loadable modules does Solaris have around its core kernel? (a number)"
+    }
+  ]
+}

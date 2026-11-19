@@ -1,0 +1,96 @@
+{
+  "type": "quiz",
+  "title": "Part Review: System Programs and Design",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Which is a status-information system program?",
+      "options": [
+        "A text editor",
+        "A program that shows free memory and disk space",
+        "A compiler",
+        "A web browser"
+      ]
+    },
+    {
+      "prompt": "Searching inside files or transforming their text belongs to:",
+      "options": [
+        "Background services",
+        "File management",
+        "Communications",
+        "File modification"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Background services run in user context and are known as services, subsystems, or daemons."
+    },
+    {
+      "prompt": "Which is NOT a typical background service job?",
+      "options": [
+        "Printing",
+        "Compiling a student's homework when they type gcc",
+        "Disk checking",
+        "Error logging"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What defines most users' view of the operating system: system programs or system calls? (two words)"
+    },
+    {
+      "prompt": "\"Reliable, safe, and fast\" are examples of:",
+      "options": [
+        "System calls",
+        "Mechanisms",
+        "User goals",
+        "Background services"
+      ]
+    },
+    {
+      "prompt": "\"Flexible, error-free, and efficient\" are examples of:",
+      "options": [
+        "Policies",
+        "Daemons",
+        "User goals",
+        "System goals"
+      ]
+    },
+    {
+      "prompt": "Policy decides ______; mechanism determines ______.",
+      "options": [
+        "the hardware; the software",
+        "what will be done; how to do it",
+        "who uses the system; when it boots",
+        "how to do it; what will be done"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Separating policy from mechanism means a policy change can be made without rewriting the mechanism."
+    },
+    {
+      "prompt": "What language is the main body of most modern kernels written in?",
+      "options": [
+        "Assembly",
+        "C",
+        "PL/1",
+        "Python"
+      ]
+    },
+    {
+      "prompt": "What is the main advantage of a high-level implementation language?",
+      "options": [
+        "It's always faster",
+        "It needs no compiler",
+        "It runs in kernel mode automatically",
+        "It's easier to port to other hardware"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What technique lets an OS run on non-native hardware by imitating the CPU in software? (one word)"
+    }
+  ]
+}

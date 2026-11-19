@@ -1,0 +1,98 @@
+{
+  "type": "quiz",
+  "title": "Drill: Name That Category",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "chown(), which changes a file's owner",
+      "options": [
+        "Protection",
+        "File management",
+        "Information maintenance",
+        "Device management"
+      ]
+    },
+    {
+      "prompt": "ReadFile()",
+      "options": [
+        "Communications",
+        "File management",
+        "Device management",
+        "Protection"
+      ]
+    },
+    {
+      "prompt": "exit()",
+      "options": [
+        "Information maintenance",
+        "Communications",
+        "File management",
+        "Process control"
+      ]
+    },
+    {
+      "prompt": "send message",
+      "options": [
+        "Protection",
+        "Process control",
+        "Communications",
+        "Device management"
+      ]
+    },
+    {
+      "prompt": "SetTimer()",
+      "options": [
+        "Information maintenance",
+        "Process control",
+        "Protection",
+        "Device management"
+      ]
+    },
+    {
+      "prompt": "release device",
+      "options": [
+        "Communications",
+        "File management",
+        "Protection",
+        "Device management"
+      ]
+    },
+    {
+      "prompt": "acquire lock",
+      "options": [
+        "Information maintenance",
+        "File management",
+        "Protection",
+        "Process control"
+      ]
+    },
+    {
+      "prompt": "mmap(), used to map a shared region of memory",
+      "options": [
+        "Device management",
+        "Process control",
+        "Communications",
+        "Protection"
+      ]
+    },
+    {
+      "prompt": "delete file",
+      "options": [
+        "Protection",
+        "Device management",
+        "Information maintenance",
+        "File management"
+      ]
+    },
+    {
+      "prompt": "allow user access",
+      "options": [
+        "Process control",
+        "Communications",
+        "Information maintenance",
+        "Protection"
+      ]
+    }
+  ]
+}

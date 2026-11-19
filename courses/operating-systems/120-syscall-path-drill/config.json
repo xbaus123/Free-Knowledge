@@ -1,0 +1,70 @@
+{
+  "type": "quiz",
+  "title": "Drill: Follow the Call",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "A C program calls printf(). What is the FIRST thing that runs after the call?",
+      "options": [
+        "The bootstrap loader",
+        "The interrupt vector",
+        "Code in the standard C library, in user mode",
+        "The kernel's write() implementation"
+      ]
+    },
+    {
+      "prompt": "The library is about to make the write() system call. What does it put where the kernel expects it?",
+      "options": [
+        "The source code of printf()",
+        "write()'s system-call number and its parameters",
+        "The user's password",
+        "A copy of the kernel"
+      ]
+    },
+    {
+      "prompt": "What switches the CPU from user mode to kernel mode for a system call?",
+      "options": [
+        "Including unistd.h",
+        "Returning 0 from main()",
+        "A trap (software interrupt) instruction",
+        "Calling printf()"
+      ]
+    },
+    {
+      "prompt": "In kernel mode, how does the system-call interface choose the code to run?",
+      "options": [
+        "It searches by the function's name",
+        "It indexes the system-call table by the call's number",
+        "It runs every system call in turn",
+        "It asks the scheduler"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "When the kernel's write() finishes, control returns to the C library and then to the program, back in user mode."
+    },
+    {
+      "prompt": "A system call takes 8 parameters on a machine with 6 parameter registers. What will a Linux-style library most likely do?",
+      "options": [
+        "Drop the last two parameters",
+        "Run the call in user mode",
+        "Refuse to make the call",
+        "Put the parameters in a block in memory and pass its address in a register"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Fill in the blank: printf() is a library call, and write() is a ______ call. (one word)"
+    },
+    {
+      "prompt": "Which part of this path would change if you moved a POSIX program from Linux to macOS?",
+      "options": [
+        "The program's calls to read() and write()",
+        "The header file names",
+        "Nothing could change anywhere",
+        "The system-call numbers and kernel implementations, which the API hides"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "type": "quiz",
+  "title": "Check: Microkernels",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What is the main idea of a microkernel?",
+      "options": [
+        "Remove the kernel entirely",
+        "Split the kernel into rings that use only lower rings",
+        "Move as much as possible from the kernel into user space",
+        "Put everything into one big kernel"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Name the classic microkernel from Carnegie Mellon. (one word)"
+    },
+    {
+      "prompt": "What is the macOS kernel called?",
+      "options": [
+        "Aqua",
+        "Dalvik",
+        "Cocoa",
+        "Darwin"
+      ]
+    },
+    {
+      "prompt": "How do user-space modules communicate in a microkernel system?",
+      "options": [
+        "Message passing, through the microkernel",
+        "Shared global variables in the kernel",
+        "Direct function calls into each other",
+        "They can't communicate"
+      ]
+    },
+    {
+      "prompt": "In the microkernel diagram, which of these runs in USER mode?",
+      "options": [
+        "CPU scheduling",
+        "Interprocess communication",
+        "The device driver",
+        "Basic memory management"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A microkernel is more reliable partly because less code runs in kernel mode."
+    },
+    {
+      "prompt": "What is the main detriment of a microkernel?",
+      "options": [
+        "It can't run device drivers at all",
+        "Performance overhead of user-space-to-kernel-space communication",
+        "It's hard to port",
+        "It's less secure"
+      ]
+    },
+    {
+      "prompt": "Which is NOT a benefit of a microkernel?",
+      "options": [
+        "Easier to extend",
+        "Faster communication between OS services",
+        "Easier to port",
+        "More secure"
+      ]
+    }
+  ]
+}

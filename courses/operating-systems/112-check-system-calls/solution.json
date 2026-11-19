@@ -1,0 +1,43 @@
+{
+  "answers": [
+    {
+      "correct_index": 2,
+      "explanation": "They're how programs request OS services."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "C or C++, with assembly only for the lowest-level parts."
+    },
+    {
+      "accepted_answers": [
+        "application programming interface",
+        "application program interface"
+      ],
+      "explanation": "An API is a set of functions with defined parameters and return values."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "POSIX is the standard API for UNIX-like systems."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The Win32 API (Windows API)."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It's the other way around: they mostly use an API, which makes the system calls for them."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Write to POSIX once, and it works across POSIX systems even if their raw system calls differ."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Every block read and every block written is a system call."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The example sequence says: create output file; if file exists, abort."
+    }
+  ]
+}

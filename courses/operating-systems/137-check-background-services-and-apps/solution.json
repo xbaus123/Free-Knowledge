@@ -1,0 +1,40 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "daemon",
+        "daemons",
+        "a daemon"
+      ],
+      "explanation": "They're also called services or subsystems."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Some do their job at startup and exit; others run until shutdown."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "They run in user context, as ordinary processes."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Disk checking, process scheduling, error logging, and printing are the examples."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Others stay running from boot to shutdown."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Applications don't pertain to the system itself."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "They're run by users to solve users' problems."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The trailing d is the daemon naming convention; sshd accepts secure-shell connections."
+    }
+  ]
+}

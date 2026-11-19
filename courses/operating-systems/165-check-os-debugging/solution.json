@@ -1,0 +1,38 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "debugging"
+      ],
+      "explanation": "The errors themselves are bugs."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Core dump for a process; crash dump for the kernel."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A crash dump captures kernel memory."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Logs are written continuously, not just at a crash."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's why systems often save it to a reserved disk area first."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "So code written as cleverly as possible is too clever to debug."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Leave yourself room to debug it."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "That's a crash dump. A core dump is for a failed application process."
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Ending abnormally (with an error indication) is part of the service too."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "With shared memory the processes access the same bytes directly. With message passing the OS carries the data."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Message passing goes through the OS, which is why it needs system calls like send and receive."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The OS watches for errors in the CPU and memory hardware, in I/O devices, and in user programs."
+    },
+    {
+      "accepted_answers": [
+        "batch"
+      ],
+      "explanation": "Batch interfaces run commands from a file with no user at the keyboard."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "I/O device errors are one of the three places errors come from."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Scheduling is a resource-allocation job, not file handling."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Both cases count as the communications service."
+    }
+  ]
+}

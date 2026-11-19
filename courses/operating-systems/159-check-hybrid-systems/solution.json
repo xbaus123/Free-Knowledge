@@ -1,0 +1,47 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Most are hybrids that combine several approaches."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Each pure model is weak somewhere; mixing lets a system get the strengths of several."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "One kernel address space for speed, with loadable modules."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Subsystem personalities let it support different APIs."
+    },
+    {
+      "accepted_answers": [
+        "aqua"
+      ],
+      "explanation": "Aqua is the GUI; Cocoa is the programming environment."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Cocoa sits in the application-environments layer."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Mach plus BSD, plus the I/O kit and kernel extensions."
+    },
+    {
+      "accepted_answers": [
+        "kernel extensions",
+        "kernel extension",
+        "kexts",
+        "kext"
+      ],
+      "explanation": "Kernel extensions, or kexts."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's what makes it a hybrid: microkernel roots, monolithic speed."
+    }
+  ]
+}

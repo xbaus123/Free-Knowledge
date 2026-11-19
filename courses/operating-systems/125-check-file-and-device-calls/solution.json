@@ -1,0 +1,46 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "reposition moves the current spot in the file without reading or writing."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "File attributes (name, type, size, protection) are file management."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "request and release are device-management calls."
+    },
+    {
+      "accepted_answers": [
+        "read, write, reposition",
+        "read, reposition, write",
+        "write, read, reposition",
+        "write, reposition, read",
+        "reposition, read, write",
+        "reposition, write, read",
+        "read write reposition",
+        "read, write and reposition",
+        "read, write, and reposition"
+      ],
+      "explanation": "read, write, and reposition work on both files and devices."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Devices appear as special files under /dev."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "You get a device before using it and release it after, just like opening and closing a file."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It's on the device-management list."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Protection codes are one of a file's attributes."
+    }
+  ]
+}

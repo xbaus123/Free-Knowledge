@@ -1,0 +1,34 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "CPU cycles, main memory, file storage, and I/O devices are the usual examples."
+    },
+    {
+      "accepted_answers": [
+        "accounting"
+      ],
+      "explanation": "Accounting records usage, for billing or for statistics."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Authentication defends the system from outsiders, which is security."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Protection controls all access to system resources by processes and users inside the system."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The slides list it explicitly: security extends to defending external I/O devices."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It's the opposite: it matters when multiple users or jobs run at the same time."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Usage statistics are exactly what accounting is for."
+    }
+  ]
+}

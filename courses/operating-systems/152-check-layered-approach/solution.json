@@ -1,0 +1,39 @@
+{
+  "answers": [
+    {
+      "accepted_answers": [
+        "hardware",
+        "the hardware"
+      ],
+      "explanation": "Hardware at the bottom, user interface at the top."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The slides put the user interface on top."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Each layer uses functions and services of only lower-level layers."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A layer may only use lower layers."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Work up from layer 0, one layer at a time."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Memory management and disk drivers, for example, can each need the other."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Every layer crossing costs time."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Each protocol layer uses only the one below it."
+    }
+  ]
+}

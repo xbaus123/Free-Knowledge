@@ -1,0 +1,91 @@
+{
+  "type": "quiz",
+  "title": "Part Review: Services and Interfaces",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Which list contains ONLY services that help the user directly?",
+      "options": [
+        "Program execution, accounting, communications",
+        "Accounting, resource allocation, protection",
+        "User interface, program execution, I/O operations, file-system manipulation",
+        "Resource allocation, error detection, user interface"
+      ]
+    },
+    {
+      "prompt": "Which communication model has the OS move packets of data from one process to another?",
+      "options": [
+        "Message passing",
+        "Accounting",
+        "Batch",
+        "Shared memory"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Error detection covers errors in hardware, I/O devices, and user programs."
+    },
+    {
+      "type": "written",
+      "prompt": "Which service tracks how much of each resource every user consumes? (one word)"
+    },
+    {
+      "prompt": "Protection is mainly about controlling access by ______, while security is mainly about defending against ______.",
+      "options": [
+        "attackers from outside; processes inside the system",
+        "hardware; software",
+        "processes and users inside the system; attackers from outside",
+        "files; memory"
+      ]
+    },
+    {
+      "prompt": "In your tiny shell, `install()` added a new command without changing the shell's code. Which approach to implementing commands does that model?",
+      "options": [
+        "Microkernel commands",
+        "Built-in commands",
+        "Commands as names of program files",
+        "Kernel commands"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A command interpreter fetches a command from the user and executes it."
+    },
+    {
+      "prompt": "Which system pairs the Aqua GUI with a UNIX kernel and available shells?",
+      "options": [
+        "Windows",
+        "MS-DOS",
+        "Linux with GNOME",
+        "macOS"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Name the research center where the GUI was invented. (two words)"
+    },
+    {
+      "prompt": "Why can't `cd` be an ordinary program?",
+      "options": [
+        "It must change the shell's own current directory",
+        "Programs can't take arguments",
+        "It needs kernel mode",
+        "It runs too often"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Touchscreen interfaces replace the mouse with gestures and use a virtual keyboard for text."
+    },
+    {
+      "prompt": "A shell script that runs a list of commands with no one at the keyboard is an example of which interface style?",
+      "options": [
+        "Voice",
+        "GUI",
+        "Touch",
+        "Batch"
+      ]
+    }
+  ]
+}

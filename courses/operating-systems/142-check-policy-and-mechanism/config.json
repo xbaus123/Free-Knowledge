@@ -1,0 +1,65 @@
+{
+  "type": "quiz",
+  "title": "Check: Policy and Mechanism",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Policy answers which question?",
+      "options": [
+        "Who wrote the code?",
+        "How will it be done?",
+        "When was it compiled?",
+        "What will be done?"
+      ]
+    },
+    {
+      "prompt": "Mechanism answers which question?",
+      "options": [
+        "What will be done?",
+        "Where is the file?",
+        "How will it be done?",
+        "Why does it matter?"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "The timer itself is a mechanism, and how long each program may run before the timer fires is a policy."
+    },
+    {
+      "prompt": "Why separate policy from mechanism?",
+      "options": [
+        "It removes the need for system calls",
+        "It lets programs run in kernel mode",
+        "It makes the kernel bigger",
+        "It allows maximum flexibility if policy decisions change later"
+      ]
+    },
+    {
+      "prompt": "Deciding that interactive programs should get priority over background jobs is a:",
+      "options": [
+        "Mechanism",
+        "System call",
+        "Device driver",
+        "Policy"
+      ]
+    },
+    {
+      "prompt": "The code that checks a file's permission bits on every open() is a:",
+      "options": [
+        "Mechanism",
+        "Policy",
+        "User goal",
+        "Daemon"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Specifying and designing an OS is called a highly creative task of software ______. (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "An ideal mechanism is general enough to support many different policies."
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "Everything else follows from the code in ROM."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The boot block is the second step."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The boot block exists to bring in the real loader."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Locate, load, and start the kernel."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "The kernel starts daemons once it's running."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The boot block is only used in the two-step process."
+    },
+    {
+      "accepted_answers": [
+        "grub",
+        "grub2"
+      ],
+      "explanation": "GRUB can select among multiple kernel versions."
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "type": "quiz",
+  "title": "Part Review: Debugging, Generation, and Boot",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "A failed application leaves a ______; a failed kernel leaves a ______.",
+      "options": [
+        "crash dump; core dump",
+        "core dump; crash dump",
+        "log file; boot block",
+        "probe; provider"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Kernighan's Law says that debugging is twice as hard as writing the code."
+    },
+    {
+      "prompt": "Performance tuning works by:",
+      "options": [
+        "Adding more processes",
+        "Shrinking the registry",
+        "Turning off logging forever",
+        "Removing bottlenecks"
+      ]
+    },
+    {
+      "prompt": "Periodic sampling of the instruction pointer to look for statistical trends is called:",
+      "options": [
+        "Paging",
+        "Profiling",
+        "Booting",
+        "Tracing"
+      ]
+    },
+    {
+      "prompt": "In your profiler, what turned a sampled address into a function name?",
+      "options": [
+        "A symbol table of sorted start addresses",
+        "The registry",
+        "The boot block",
+        "A crash dump"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "In DTrace, what fires when code is executed within a provider? (one word)"
+    },
+    {
+      "type": "true_false",
+      "prompt": "DTrace can be used on live production systems."
+    },
+    {
+      "prompt": "What does SYSGEN do?",
+      "options": [
+        "Generates random numbers",
+        "Draws the GUI",
+        "Writes core dumps",
+        "Obtains information about the specific hardware configuration"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A system-specific compiled kernel can be more efficient than one general kernel."
+    },
+    {
+      "prompt": "Where is the bootstrap loader stored in a one-step boot?",
+      "options": [
+        "In the user's home directory",
+        "ROM or EEPROM",
+        "In the registry",
+        "In a core dump"
+      ]
+    },
+    {
+      "prompt": "In a two-step boot, the ROM code first loads:",
+      "options": [
+        "A boot block from a fixed location",
+        "GRUB's configuration from the network",
+        "The GUI",
+        "Every daemon"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "Name the common bootstrap loader that can choose among multiple kernels. (one word)"
+    }
+  ]
+}

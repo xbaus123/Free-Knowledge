@@ -1,0 +1,40 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Moving services out to user space is the microkernel idea."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's traditional UNIX."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Each layer uses only lower layers."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "MS-DOS's simple structure."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Loadable kernel modules."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Messages through the kernel cost much more than function calls."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "The driver is just a user process."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Debug layer 0, then 1, then 2..."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's the appeal of loadable modules."
+    }
+  ]
+}

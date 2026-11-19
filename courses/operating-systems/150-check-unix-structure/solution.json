@@ -1,0 +1,40 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "System programs above the system-call interface, the kernel below it."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "That's the textbook definition."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "A large number of functions for one level."
+    },
+    {
+      "accepted_answers": [
+        "monolithic",
+        "monolithic kernel",
+        "a monolithic kernel"
+      ],
+      "explanation": "Traditional UNIX is monolithic."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Plain function calls inside one address space are fast."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Everything is tangled together in one big piece."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Beyond simple, but not fully layered."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "They're system programs, outside the kernel."
+    }
+  ]
+}

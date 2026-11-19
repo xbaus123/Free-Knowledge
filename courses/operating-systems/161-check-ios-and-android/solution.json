@@ -1,0 +1,53 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "iOS is built on Mac OS X with added mobile functionality."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It doesn't, and it originally ran on a different CPU architecture (ARM vs. Intel)."
+    },
+    {
+      "accepted_answers": [
+        "cocoa touch",
+        "cocoatouch"
+      ],
+      "explanation": "Cocoa Touch, the top layer of iOS."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Core services provides cloud computing and databases; core OS is the kernel."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "And it's open source."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Linux, with power management added."
+    },
+    {
+      "accepted_answers": [
+        "power management"
+      ],
+      "explanation": "Phones run on batteries, so power management matters."
+    },
+    {
+      "accepted_answers": [
+        "dalvik",
+        "dalvik vm",
+        "dalvik virtual machine"
+      ],
+      "explanation": "Java bytecode is translated to run in the Dalvik VM."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "SQLite, along with webkit, multimedia frameworks, and a smaller libc."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Class files are compiled to bytecode, then translated for the VM."
+    }
+  ]
+}

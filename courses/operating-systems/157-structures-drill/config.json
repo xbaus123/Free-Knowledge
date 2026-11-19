@@ -1,0 +1,84 @@
+{
+  "type": "quiz",
+  "title": "Drill: Which Structure?",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "File systems and device drivers run as user processes and talk through the kernel by messages.",
+      "options": [
+        "Layered",
+        "Microkernel",
+        "Monolithic",
+        "Simple"
+      ]
+    },
+    {
+      "prompt": "Everything below the system-call interface is one big program in one address space.",
+      "options": [
+        "Monolithic",
+        "Microkernel",
+        "Layered",
+        "Modules"
+      ]
+    },
+    {
+      "prompt": "Each part may use only the services of parts strictly below it, down to the hardware at level 0.",
+      "options": [
+        "Layered",
+        "Modules",
+        "Simple",
+        "Microkernel"
+      ]
+    },
+    {
+      "prompt": "Written for minimum size, not divided into modules, and applications can call the BIOS directly.",
+      "options": [
+        "Simple",
+        "Modules",
+        "Microkernel",
+        "Layered"
+      ]
+    },
+    {
+      "prompt": "A small core kernel links in drivers and file systems as needed, and they call each other directly inside the kernel.",
+      "options": [
+        "Microkernel",
+        "Simple",
+        "Modules",
+        "Layered"
+      ]
+    },
+    {
+      "prompt": "Which structure has the HIGHEST communication overhead between OS services?",
+      "options": [
+        "Monolithic",
+        "Modules",
+        "Simple",
+        "Microkernel"
+      ]
+    },
+    {
+      "prompt": "Which structure lets a crashed device driver be restarted like any other program while the system keeps running?",
+      "options": [
+        "Monolithic",
+        "Simple",
+        "Microkernel",
+        "Modules"
+      ]
+    },
+    {
+      "prompt": "Which structure is easiest to debug one level at a time?",
+      "options": [
+        "Layered",
+        "Monolithic",
+        "Simple",
+        "Modules"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A structure where modules run inside the kernel gets microkernel-like flexibility without the message-passing cost."
+    }
+  ]
+}

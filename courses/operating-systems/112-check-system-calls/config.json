@@ -1,0 +1,74 @@
+{
+  "type": "quiz",
+  "title": "Check: System Calls and APIs",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "What are system calls?",
+      "options": [
+        "Calls from the OS to user programs",
+        "Phone calls to technical support",
+        "The programming interface to the services provided by the OS",
+        "The machine instructions that add and subtract"
+      ]
+    },
+    {
+      "prompt": "In what kind of language are system calls typically written?",
+      "options": [
+        "A high-level language such as C or C++",
+        "Only assembly language",
+        "Python",
+        "Java bytecode"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "What does API stand for? (three words)"
+    },
+    {
+      "prompt": "Which API is used on Linux, macOS, and virtually all versions of UNIX?",
+      "options": [
+        "Java",
+        "Win32",
+        "POSIX",
+        "Cocoa"
+      ]
+    },
+    {
+      "prompt": "Which API do Windows programs use?",
+      "options": [
+        "GNOME",
+        "Win32",
+        "POSIX",
+        "Java"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Most programs invoke system calls directly rather than going through an API."
+    },
+    {
+      "prompt": "What's the main portability benefit of programming against an API?",
+      "options": [
+        "The program runs in kernel mode",
+        "The program can compile and run on any system that supports the same API",
+        "The program uses fewer system calls",
+        "The program doesn't need a compiler"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A program that copies a large file can easily make thousands of system calls."
+    },
+    {
+      "prompt": "In the file-copy example, what happens if the output file already exists?",
+      "options": [
+        "The program aborts",
+        "The OS renames it",
+        "The copy is appended to it",
+        "The file is silently deleted"
+      ]
+    }
+  ]
+}

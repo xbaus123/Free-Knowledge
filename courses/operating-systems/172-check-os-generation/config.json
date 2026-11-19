@@ -1,0 +1,56 @@
+{
+  "type": "quiz",
+  "title": "Check: System Generation",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "type": "true_false",
+      "prompt": "An operating system is usually designed to run on any of a class of machines, so it must be configured for each specific site."
+    },
+    {
+      "type": "written",
+      "prompt": "What is the name of the program that obtains information about a specific hardware configuration? (one word)"
+    },
+    {
+      "prompt": "Which is something SYSGEN needs to find out?",
+      "options": [
+        "Which websites the user visits",
+        "The price of the computer",
+        "The user's favorite applications",
+        "How much memory the machine has"
+      ]
+    },
+    {
+      "prompt": "What can SYSGEN's information be used to build?",
+      "options": [
+        "A system-specific compiled kernel",
+        "A GUI theme",
+        "A web browser",
+        "A new CPU"
+      ]
+    },
+    {
+      "prompt": "Why can a system-specific kernel be more efficient than a general one?",
+      "options": [
+        "It skips the bootstrap loader",
+        "It includes only what this machine needs, so it can generate more efficient code",
+        "It runs in user mode",
+        "It has more drivers"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "With a custom-compiled kernel, changing the hardware may mean rebuilding the kernel."
+    },
+    {
+      "prompt": "How do most modern desktop systems handle different hardware?",
+      "options": [
+        "One general kernel that detects hardware at boot and loads the modules it needs",
+        "Running SYSGEN every time a key is pressed",
+        "They only support one exact computer model",
+        "A different hand-written OS for every computer"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "type": "quiz",
+  "title": "Check: Performance Tuning",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "prompt": "Performance tuning improves performance by:",
+      "options": [
+        "Removing the kernel",
+        "Removing bottlenecks",
+        "Adding more log files",
+        "Disabling interrupts"
+      ]
+    },
+    {
+      "type": "written",
+      "prompt": "A live UNIX program that lists processes sorted by CPU use is called what? (one word)"
+    },
+    {
+      "prompt": "What is the Windows counterpart of top?",
+      "options": [
+        "Task Manager",
+        "Registry Editor",
+        "Notepad",
+        "Control Panel"
+      ]
+    },
+    {
+      "prompt": "What is profiling?",
+      "options": [
+        "Recording every event as it happens",
+        "Writing a crash dump",
+        "Choosing a user's profile picture",
+        "Periodic sampling of the instruction pointer to look for statistical trends"
+      ]
+    },
+    {
+      "prompt": "What does a trace listing record?",
+      "options": [
+        "Activities as they happen, for later analysis",
+        "The user's keystrokes for security",
+        "Random samples of the instruction pointer",
+        "Only the final state of memory"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Profiling is usually cheaper than full tracing because it only records a sample at each timer tick."
+    },
+    {
+      "prompt": "Every process is waiting on the disk while the CPU sits idle. What is the bottleneck?",
+      "options": [
+        "The disk",
+        "The CPU",
+        "The keyboard",
+        "The monitor"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "The OS must provide ways to compute and display measures of system behavior for tuning to be possible."
+    }
+  ]
+}

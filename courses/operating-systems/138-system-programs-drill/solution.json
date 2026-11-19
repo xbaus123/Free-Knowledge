@@ -1,0 +1,40 @@
+{
+  "answers": [
+    {
+      "correct_index": 1,
+      "explanation": "Compilers support program development."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "It asks the system for information and formats it."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Moving and renaming files as whole objects is file management."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Searching or transforming file contents is file modification."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Remote login is a communications program. (The sshd it connects to is a daemon.)"
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Runs from boot to shutdown, provides printing: a daemon."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "It doesn't pertain to the system. It's an application."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Debuggers are listed with compilers and interpreters."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Detailed performance information is status information."
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Ownership decides who may do what with the file, which is protection."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Windows' file read."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Ending a process is process control."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Message passing is communications."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Timers and time-related calls are information maintenance, like alarm() in UNIX."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Giving back a device you requested."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Locks for shared data are on the process-control list."
+    },
+    {
+      "correct_index": 2,
+      "explanation": "Shared memory is one of the two communication models."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Creating and deleting files is file management."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Allowing and denying user access is protection."
+    }
+  ]
+}

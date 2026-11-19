@@ -1,0 +1,58 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "Most functionality in the least space, no modules, poorly separated levels."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "One big level with many functions."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Its parts call each other directly, with little overhead."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Hardware at the bottom, user interface on top."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "That's exactly the difficulty of defining layers."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "File systems and drivers move out to user space."
+    },
+    {
+      "accepted_answers": [
+        "passing"
+      ],
+      "explanation": "Message passing, through the kernel."
+    },
+    {
+      "correct_index": 3,
+      "explanation": "Every user-to-user hop costs two mode switches."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Flexible like a microkernel, fast like a monolithic kernel."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "One kernel address space, with dynamically loaded modules."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A hybrid."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Cocoa Touch sits on top."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The Dalvik VM, in the slides' version."
+    }
+  ]
+}

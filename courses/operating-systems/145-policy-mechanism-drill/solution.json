@@ -1,0 +1,40 @@
+{
+  "answers": [
+    {
+      "correct_index": 0,
+      "explanation": "It decides what's allowed. The quota-checking code would be the mechanism."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "That's how the quota is enforced: a mechanism."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The timer is how the OS regains control."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "How long to allow is a decision about what will be done."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "The number of minutes is a choice. Locking the screen is the mechanism."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It's the means of changing priorities, whatever values a policy chooses."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Who may do what is policy."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "It enforces whatever permissions are set."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "That's the payoff of separating policy from mechanism."
+    }
+  ]
+}

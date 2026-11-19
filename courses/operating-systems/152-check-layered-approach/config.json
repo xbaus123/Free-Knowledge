@@ -1,0 +1,65 @@
+{
+  "type": "quiz",
+  "title": "Check: Layers",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "In the layered approach, what is layer 0? (one word)"
+    },
+    {
+      "prompt": "What is the highest layer, layer N?",
+      "options": [
+        "The device drivers",
+        "The file system",
+        "The hardware",
+        "The user interface"
+      ]
+    },
+    {
+      "prompt": "In a layered system, layer 3 may use the services of:",
+      "options": [
+        "Any layer",
+        "Only layer 4 and above",
+        "Only itself",
+        "Only layers 2, 1, and 0"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Layer 2 calling a function in layer 5 is allowed in a strictly layered system."
+    },
+    {
+      "prompt": "Why is a layered OS easier to debug?",
+      "options": [
+        "Layers never have bugs",
+        "The hardware debugs itself",
+        "Lower layers can be checked first, so a new bug must be in the layer being tested",
+        "There's only one layer"
+      ]
+    },
+    {
+      "prompt": "What is one big difficulty with the layered approach?",
+      "options": [
+        "It requires a GUI",
+        "It can't run on real hardware",
+        "It has no user interface",
+        "Defining the layers, since some parts need each other"
+      ]
+    },
+    {
+      "prompt": "Why can a layered system be slow?",
+      "options": [
+        "It has no cache",
+        "The hardware is in the top layer",
+        "A request has to pass through many layers, each adding overhead",
+        "Layers run in user mode"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "The network protocol stack is a well-known example of the layered idea outside the kernel."
+    }
+  ]
+}

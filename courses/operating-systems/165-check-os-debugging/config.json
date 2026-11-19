@@ -1,0 +1,65 @@
+{
+  "type": "quiz",
+  "title": "Check: Debugging",
+  "immediate_feedback": true,
+  "save_progress": true,
+  "questions": [
+    {
+      "type": "written",
+      "prompt": "Finding and fixing errors in software is called what? (one word)"
+    },
+    {
+      "prompt": "An application crashes. What file captures the memory of its process?",
+      "options": [
+        "A core dump",
+        "The registry",
+        "A log file",
+        "A crash dump"
+      ]
+    },
+    {
+      "prompt": "The operating system itself crashes. What file contains kernel memory?",
+      "options": [
+        "A crash dump",
+        "A core dump",
+        "A boot block",
+        "A shell script"
+      ]
+    },
+    {
+      "prompt": "Where does the OS record error information as it happens?",
+      "options": [
+        "The cache",
+        "The boot block",
+        "Log files",
+        "The interrupt vector"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "Writing a crash dump can be tricky because the kernel's own file-system code might be what failed."
+    },
+    {
+      "prompt": "According to Kernighan's Law, debugging is how much harder than writing the code?",
+      "options": [
+        "Equally hard",
+        "Twice as hard",
+        "Ten times as hard",
+        "Half as hard"
+      ]
+    },
+    {
+      "prompt": "What's the practical lesson of Kernighan's Law?",
+      "options": [
+        "Write code clearly rather than as cleverly as possible",
+        "Never debug code",
+        "Always use a GUI",
+        "Only write code in assembly"
+      ]
+    },
+    {
+      "type": "true_false",
+      "prompt": "A core dump is produced when the operating system itself fails."
+    }
+  ]
+}

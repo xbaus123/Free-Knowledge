@@ -1,0 +1,36 @@
+{
+  "answers": [
+    {
+      "correct_index": 3,
+      "explanation": "Read a command, run it, repeat."
+    },
+    {
+      "accepted_answers": [
+        "shell",
+        "shells",
+        "a shell"
+      ],
+      "explanation": "bash, zsh, csh, and sh are all shells."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "Sometimes it's in the kernel, but often (as in UNIX and Linux) it's an ordinary system program."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "The shell just locates a program named like the command and runs it with the arguments."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "That's the big advantage: adding features doesn't require modifying the shell."
+    },
+    {
+      "correct_index": 1,
+      "explanation": "A separate program would change its own directory and then exit, leaving the shell where it was."
+    },
+    {
+      "correct_index": 0,
+      "explanation": "Different features and syntax, same fetch-and-execute job."
+    }
+  ]
+}
