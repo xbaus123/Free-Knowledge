@@ -91,12 +91,15 @@ type Store struct {
 func NewStore(roots []Root) *Store { return &Store{roots: roots} }
 
 type courseFile struct {
-	Title       string   `json:"title"`
-	Description string   `json:"description"`
-	Author      string   `json:"author"`
-	Version     string   `json:"version"`
-	Language    string   `json:"language"`
-	Lessons     []string `json:"lessons"`
+	Title       string `json:"title"`
+	Description string `json:"description"`
+	Author      string `json:"author"`
+	Version     string `json:"version"`
+	Language    string `json:"language"`
+	// Bookmarks lets learners mark a lesson (and how far down it they've
+	// read) to come back to, whether or not they've completed it.
+	Bookmarks bool     `json:"bookmarks"`
+	Lessons   []string `json:"lessons"`
 }
 
 type lessonConfig struct {
@@ -281,16 +284,18 @@ const (
 )
 
 type Course struct {
-	ID          string          `json:"id"`
-	Title       string          `json:"title"`
-	Description string          `json:"description"`
-	Author      string          `json:"author,omitempty"`
-	Version     string          `json:"version,omitempty"`
-	Language    string          `json:"language,omitempty"`
-	Source      string          `json:"source"`
-	Lessons     []LessonSummary `json:"lessons"`
-	Problems    []string        `json:"problems,omitempty"`
-	Dir         string          `json:"-"`
+	ID          string `json:"id"`
+	Title       string `json:"title"`
+	Description string `json:"description"`
+	Author      string `json:"author,omitempty"`
+	Version     string `json:"version,omitempty"`
+	Language    string `json:"language,omitempty"`
+	// Bookmarks: learners can bookmark where they are in the course.
+	Bookmarks bool            `json:"bookmarks,omitempty"`
+	Source    string          `json:"source"`
+	Lessons   []LessonSummary `json:"lessons"`
+	Problems  []string        `json:"problems,omitempty"`
+	Dir       string          `json:"-"`
 }
 
 type LessonSummary struct {
@@ -410,6 +415,7 @@ func loadCourse(root Root, id string) (*Course, error) {
 		return c, nil
 	}
 	c.Title, c.Description, c.Author, c.Version, c.Language = cf.Title, cf.Description, cf.Author, cf.Version, cf.Language
+	c.Bookmarks = cf.Bookmarks
 	if c.Title == "" {
 		c.Title = id
 	}

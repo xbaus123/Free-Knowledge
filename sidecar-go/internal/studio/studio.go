@@ -35,6 +35,8 @@ type CourseMeta struct {
 	Author      string `json:"author"`
 	Version     string `json:"version"`
 	Language    string `json:"language,omitempty"`
+	// Bookmarks lets learners bookmark where they are in the course.
+	Bookmarks bool `json:"bookmarks,omitempty"`
 }
 
 type courseFile struct {

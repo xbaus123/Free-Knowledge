@@ -544,3 +544,44 @@ func TestStudioTemplateEndpoint(t *testing.T) {
 		t.Fatalf("unknown language: %d", r.StatusCode)
 	}
 }
+
+func TestBookmarkEndpoints(t *testing.T) {
+	ts, _ := newTestServer(t)
+	auth := map[string]string{"Authorization": "Bearer " + testToken}
+
+	// Only courses that turn bookmarks on accept one.
+	if res := do(t, ts, "PUT", "/courses/getting-started/bookmark", `{"lessonId":"01-python-greet"}`, auth); res.StatusCode != 400 {
+		t.Fatalf("bookmark in a course without bookmarks: %d", res.StatusCode)
+	}
+	if res := do(t, ts, "PUT", "/courses/internetworking/bookmark", `{"lessonId":"nope"}`, auth); res.StatusCode != 404 {
+		t.Fatalf("bookmark an unknown lesson: %d", res.StatusCode)
+	}
+	if res := do(t, ts, "PUT", "/courses/internetworking/bookmark", `{"lessonId":"03-arpanet-and-tcp-ip","scroll":0.4}`, auth); res.StatusCode != 204 {
+		t.Fatalf("bookmark: %d", res.StatusCode)
+	}
+
+	var all struct {
+		Bookmarks map[string]struct {
+			LessonID string
+			Scroll   float64
+		}
+		Courses map[string]map[string]struct{ Completed bool }
+	}
+	res := do(t, ts, "GET", "/progress", "", auth)
+	if err := json.NewDecoder(res.Body).Decode(&all); err != nil ||
+		all.Bookmarks["internetworking"].LessonID != "03-arpanet-and-tcp-ip" || all.Bookmarks["internetworking"].Scroll != 0.4 {
+		t.Fatalf("progress: %+v %v", all, err)
+	}
+	if all.Courses["internetworking"]["03-arpanet-and-tcp-ip"].Completed {
+		t.Fatal("a bookmark shouldn't complete the lesson")
+	}
+
+	if res := do(t, ts, "DELETE", "/courses/internetworking/bookmark", "", auth); res.StatusCode != 204 {
+		t.Fatalf("delete: %d", res.StatusCode)
+	}
+	all.Bookmarks = nil
+	res = do(t, ts, "GET", "/progress", "", auth)
+	if err := json.NewDecoder(res.Body).Decode(&all); err != nil || len(all.Bookmarks) != 0 {
+		t.Fatalf("after delete: %+v %v", all.Bookmarks, err)
+	}
+}

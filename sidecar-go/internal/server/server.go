@@ -9,6 +9,7 @@ import (
 	"log/slog"
 	"net"
 	"net/http"
+	"slices"
 	"strings"
 	"time"
 
@@ -70,6 +71,8 @@ func (s *Server) Handler() http.Handler {
 	mux.Handle("GET /courses/{course}/lessons/{lesson}/progress", s.requireToken(http.HandlerFunc(s.handleLessonProgress)))
 	mux.Handle("PUT /courses/{course}/lessons/{lesson}/progress/code", s.requireToken(http.HandlerFunc(s.handleSaveCode)))
 	mux.Handle("DELETE /courses/{course}/lessons/{lesson}/progress/code", s.requireToken(http.HandlerFunc(s.handleResetCode)))
+	mux.Handle("PUT /courses/{course}/bookmark", s.requireToken(http.HandlerFunc(s.handleSetBookmark)))
+	mux.Handle("DELETE /courses/{course}/bookmark", s.requireToken(http.HandlerFunc(s.handleDeleteBookmark)))
 	mux.Handle("POST /simulate", s.requireToken(http.HandlerFunc(s.handleSimulate)))
 	mux.Handle("GET /simulate/catalog", s.requireToken(http.HandlerFunc(s.handleCatalog)))
 	s.studioRoutes(mux)
@@ -406,7 +409,51 @@ func (s *Server) handleProgress(w http.ResponseWriter, r *http.Request) {
 		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": err.Error()})
 		return
 	}
-	writeJSON(w, http.StatusOK, map[string]any{"stats": stats, "courses": all})
+	bookmarks, err := s.cfg.Progress.Bookmarks()
+	if err != nil {
+		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": err.Error()})
+		return
+	}
+	writeJSON(w, http.StatusOK, map[string]any{"stats": stats, "courses": all, "bookmarks": bookmarks})
+}
+
+// handleSetBookmark moves a course's bookmark to one of its lessons. Only
+// courses that turn bookmarks on accept one.
+func (s *Server) handleSetBookmark(w http.ResponseWriter, r *http.Request) {
+	c, err := s.cfg.Courses.Course(r.PathValue("course"))
+	if err != nil {
+		writeCourseError(w, err)
+		return
+	}
+	if !c.Bookmarks {
+		writeJSON(w, http.StatusBadRequest, map[string]string{"error": "this course doesn't use bookmarks"})
+		return
+	}
+	var body struct {
+		LessonID string  `json:"lessonId"`
+		Scroll   float64 `json:"scroll"`
+	}
+	if err := json.NewDecoder(http.MaxBytesReader(w, r.Body, maxBodyBytes)).Decode(&body); err != nil {
+		writeJSON(w, http.StatusBadRequest, map[string]string{"error": "invalid JSON body: " + err.Error()})
+		return
+	}
+	if !slices.ContainsFunc(c.Lessons, func(l course.LessonSummary) bool { return l.ID == body.LessonID }) {
+		writeJSON(w, http.StatusNotFound, map[string]string{"error": "no such lesson in this course"})
+		return
+	}
+	if err := s.cfg.Progress.SetBookmark(c.ID, body.LessonID, body.Scroll); err != nil {
+		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": err.Error()})
+		return
+	}
+	w.WriteHeader(http.StatusNoContent)
+}
+
+func (s *Server) handleDeleteBookmark(w http.ResponseWriter, r *http.Request) {
+	if err := s.cfg.Progress.DeleteBookmark(r.PathValue("course")); err != nil {
+		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": err.Error()})
+		return
+	}
+	w.WriteHeader(http.StatusNoContent)
 }
 
 // lessonFromPath checks the lesson exists so progress can't pile up for

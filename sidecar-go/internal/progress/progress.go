@@ -267,6 +267,14 @@ var migrations = []string{
 	UPDATE telemetry_sessions SET lesson_id = (SELECT new FROM renamed WHERE old = lesson_id)
 		WHERE course_id = 'system-design' AND lesson_id IN (SELECT old FROM renamed);
 	DROP TABLE renamed;`,
+	// Bookmarks: one per course, marking the lesson the learner wants to come
+	// back to and how far down it they'd scrolled (0–1).
+	`CREATE TABLE bookmarks (
+		course_id  TEXT PRIMARY KEY,
+		lesson_id  TEXT NOT NULL,
+		scroll     REAL NOT NULL DEFAULT 0,
+		updated_at INTEGER NOT NULL
+	);`,
 }
 
 type Store struct {
@@ -472,6 +480,52 @@ func (s *Store) Stats() (Stats, error) {
 		expect = d.AddDate(0, 0, -1).Format(time.DateOnly)
 	}
 	return st, rows.Err()
+}
+
+// --- bookmarks ---
+
+// Bookmark is where a learner chose to pick a course back up.
+type Bookmark struct {
+	LessonID string `json:"lessonId"`
+	// Scroll is how far down the lesson text they were, from 0 to 1.
+	Scroll    float64   `json:"scroll"`
+	UpdatedAt time.Time `json:"updatedAt"`
+}
+
+// SetBookmark moves a course's bookmark, replacing any earlier one.
+func (s *Store) SetBookmark(courseID, lessonID string, scroll float64) error {
+	scroll = min(max(scroll, 0), 1)
+	_, err := s.db.Exec(`INSERT INTO bookmarks (course_id, lesson_id, scroll, updated_at) VALUES (?, ?, ?, ?)
+		ON CONFLICT (course_id) DO UPDATE SET lesson_id = excluded.lesson_id, scroll = excluded.scroll, updated_at = excluded.updated_at`,
+		courseID, lessonID, scroll, s.now().UnixMilli())
+	return err
+}
+
+// DeleteBookmark removes a course's bookmark, if it has one.
+func (s *Store) DeleteBookmark(courseID string) error {
+	_, err := s.db.Exec(`DELETE FROM bookmarks WHERE course_id = ?`, courseID)
+	return err
+}
+
+// Bookmarks returns every course's bookmark, keyed by course.
+func (s *Store) Bookmarks() (map[string]Bookmark, error) {
+	rows, err := s.db.Query(`SELECT course_id, lesson_id, scroll, updated_at FROM bookmarks`)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	out := map[string]Bookmark{}
+	for rows.Next() {
+		var courseID string
+		var b Bookmark
+		var at int64
+		if err := rows.Scan(&courseID, &b.LessonID, &b.Scroll, &at); err != nil {
+			return nil, err
+		}
+		b.UpdatedAt = time.UnixMilli(at)
+		out[courseID] = b
+	}
+	return out, rows.Err()
 }
 
 // --- learning telemetry ---

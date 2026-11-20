@@ -188,3 +188,28 @@ func TestRenumberedSystemDesignLessonsKeepProgress(t *testing.T) {
 		t.Fatalf("telemetry lesson = %q", lesson)
 	}
 }
+
+func TestBookmarks(t *testing.T) {
+	s := open(t)
+	b, err := s.Bookmarks()
+	must(t, err)
+	if len(b) != 0 {
+		t.Fatalf("new store has bookmarks: %+v", b)
+	}
+	must(t, s.SetBookmark("c", "l1", 0.25))
+	must(t, s.SetBookmark("c", "l2", 7)) // moves it, and clamps the scroll
+	must(t, s.SetBookmark("d", "x", -1))
+	b, _ = s.Bookmarks()
+	if len(b) != 2 || b["c"].LessonID != "l2" || b["c"].Scroll != 1 || b["d"].Scroll != 0 || b["c"].UpdatedAt.IsZero() {
+		t.Fatalf("got %+v", b)
+	}
+	must(t, s.DeleteBookmark("c"))
+	b, _ = s.Bookmarks()
+	if _, ok := b["c"]; ok || len(b) != 1 {
+		t.Fatalf("delete: %+v", b)
+	}
+	// A bookmark doesn't mark anything complete.
+	if d, _ := s.Lesson("d", "x"); d.Completed {
+		t.Fatal("bookmarking shouldn't complete a lesson")
+	}
+}

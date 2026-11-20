@@ -10,6 +10,8 @@ export interface CourseMeta {
   author: string;
   version: string;
   language?: string;
+  /** Let learners bookmark where they are in the course. */
+  bookmarks?: boolean;
 }
 
 export type LessonType = "code" | "article" | "quiz" | "system-design";

@@ -150,12 +150,13 @@ function NewCourseForm({ onCreate, onCancel }: { onCreate: (meta: Partial<studio
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [author, setAuthor] = useState("");
+  const [bookmarks, setBookmarks] = useState(false);
 
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        if (title.trim()) onCreate({ title: title.trim(), description, author });
+        if (title.trim()) onCreate({ title: title.trim(), description, author, bookmarks: bookmarks || undefined });
       }}
       className="mb-8 grid gap-3 rounded-lg border border-indigo-900 bg-zinc-900/60 p-4 sm:grid-cols-2"
     >
@@ -168,6 +169,13 @@ function NewCourseForm({ onCreate, onCancel }: { onCreate: (meta: Partial<studio
       <Field label="Description" wide>
         <input value={description} onChange={(e) => setDescription(e.target.value)} placeholder="What will learners be able to do?" className={inputClass} />
       </Field>
+      <label
+        className="flex cursor-pointer items-center gap-2 self-end text-sm text-zinc-300"
+        title="Learners can bookmark a lesson, and how far down it they've read, to come back to later without completing it"
+      >
+        <input type="checkbox" checked={bookmarks} onChange={(e) => setBookmarks(e.target.checked)} className="accent-indigo-500" />
+        Allow bookmarks
+      </label>
       <p className="self-end text-xs text-zinc-500">Each lesson picks its own languages, and can mix several.</p>
       <div className="flex items-end justify-end gap-2">
         <button type="button" onClick={onCancel} className="rounded px-3 py-1.5 text-sm text-zinc-400 hover:bg-zinc-800">

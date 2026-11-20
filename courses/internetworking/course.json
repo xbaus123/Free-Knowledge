@@ -3,6 +3,7 @@
   "description": "How the Internet actually works, layer by layer. Starts with where the Internet came from and the OSI and TCP/IP models, then works up the stack: topologies and transmission media, Ethernet frames and switching, IP addressing and subnetting, ARP and ICMP, TCP and UDP, routing, DNS and mail, the upper layers, resilience, and wireless and IoT. Readings explain each layer, Python exercises have you build the pieces (frames, checksums, subnet calculators, routing tables), short quizzes (multiple choice, true or false, and typed answers) follow every reading, with drills and a review to close each chapter. The course ends by following one click through the whole stack, then a final review that covers every chapter.",
   "author": "FreeKnowledge contributors",
   "version": "0.1.0",
+  "bookmarks": true,
   "lessons": [
     "01-why-we-network",
     "02-check-packet-switching",

@@ -94,6 +94,15 @@ func TestCourseAndLessonEditing(t *testing.T) {
 	if c.Title != "Renamed" || c.Lessons[0].ID != b {
 		t.Fatalf("after update: %+v", c)
 	}
+	if c.Bookmarks {
+		t.Error("bookmarks should be off unless the author turns them on")
+	}
+	if err := s.UpdateCourse(id, CourseMeta{Title: "Renamed", Bookmarks: true}, nil); err != nil {
+		t.Fatal(err)
+	}
+	if c = must(s.Courses.Course(id)); !c.Bookmarks || c.Lessons[0].ID != b {
+		t.Fatalf("turning bookmarks on: %+v", c)
+	}
 
 	if err := s.DeleteLesson(id, b); err != nil {
 		t.Fatal(err)

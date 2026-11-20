@@ -7,7 +7,7 @@ import * as engine from "./lib/engine";
 
 type Route =
   | { view: "home" }
-  | { view: "lesson"; courseId: string; lessonId: string; fromStudio?: boolean }
+  | { view: "lesson"; courseId: string; lessonId: string; fromStudio?: boolean; scroll?: number }
   | { view: "studio" }
   | { view: "studio-course"; courseId: string; lessonId?: string };
 type LessonRef = { courseId: string; lessonId: string };
@@ -39,8 +39,8 @@ export default function App() {
       });
   }, []);
 
-  const openLesson = (courseId: string, lessonId: string) => {
-    setRoute({ view: "lesson", courseId, lessonId });
+  const openLesson = (courseId: string, lessonId: string, scroll?: number) => {
+    setRoute({ view: "lesson", courseId, lessonId, scroll });
     setLastLesson({ courseId, lessonId });
     try {
       localStorage.setItem(LAST_LESSON_KEY, JSON.stringify({ courseId, lessonId }));
@@ -81,6 +81,7 @@ export default function App() {
           lessonId={route.lessonId}
           onOpenLesson={(lessonId) => openLesson(route.courseId, lessonId)}
           onHome={() => setRoute({ view: "home" })}
+          initialScroll={route.scroll}
         />
       );
     case "studio":

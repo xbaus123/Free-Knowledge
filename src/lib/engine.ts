@@ -57,6 +57,8 @@ export interface Course {
   author?: string;
   version?: string;
   language?: string;
+  /** Learners can bookmark where they are, without completing anything. */
+  bookmarks?: boolean;
   source: "user" | "bundled";
   lessons: LessonSummary[];
   problems?: string[];
@@ -278,6 +280,15 @@ export interface Progress {
   stats: { currentStreak: number; completedLessons: number };
   /** courseId → lessonId → progress; lessons with no activity are absent. */
   courses: Record<string, Record<string, LessonProgress>>;
+  /** courseId → that course's bookmark, if it has one. */
+  bookmarks?: Record<string, Bookmark>;
+}
+
+export interface Bookmark {
+  lessonId: string;
+  /** How far down the lesson text, from 0 (top) to 1 (bottom). */
+  scroll: number;
+  updatedAt: string;
 }
 
 interface EngineInfo {
@@ -346,6 +357,11 @@ export const saveCode = (courseId: string, lessonId: string, code: string) =>
   request<void>(lessonPath(courseId, lessonId) + "/progress/code", { method: "PUT", body: JSON.stringify({ code }) });
 export const resetCode = (courseId: string, lessonId: string) =>
   request<void>(lessonPath(courseId, lessonId) + "/progress/code", { method: "DELETE" });
+
+const bookmarkPath = (courseId: string) => `/courses/${encodeURIComponent(courseId)}/bookmark`;
+export const setBookmark = (courseId: string, lessonId: string, scroll: number) =>
+  request<void>(bookmarkPath(courseId), { method: "PUT", body: JSON.stringify({ lessonId, scroll }) });
+export const deleteBookmark = (courseId: string) => request<void>(bookmarkPath(courseId), { method: "DELETE" });
 
 export type Outcome = "pass" | "syntax_error" | "compile_error" | "failed_assertion" | "runtime_error" | "timeout";
 

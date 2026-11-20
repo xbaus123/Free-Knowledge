@@ -86,7 +86,7 @@ export function CourseEditor({ courseId, initialLessonId, onBack, onPreview }: P
   const loadCourse = useCallback(async () => {
     const c = await engine.course(courseId);
     setCourse(c);
-    setMeta({ title: c.title, description: c.description, author: c.author ?? "", version: c.version ?? "", language: c.language });
+    setMeta({ title: c.title, description: c.description, author: c.author ?? "", version: c.version ?? "", language: c.language, bookmarks: c.bookmarks });
     return c;
   }, [courseId]);
 
@@ -382,7 +382,20 @@ export function CourseEditor({ courseId, initialLessonId, onBack, onPreview }: P
               <input value={meta.description} onChange={(e) => setMeta({ ...meta, description: e.target.value })} className={inputClass} />
             </Field>
           </div>
-          <div className="flex items-end justify-end gap-2">
+          <label
+            className="flex cursor-pointer items-center gap-2 self-end pb-2 text-sm text-zinc-300 sm:col-span-3"
+            title="Learners can bookmark a lesson, and how far down it they've read, to come back to later without completing it"
+          >
+            <input
+              type="checkbox"
+              checked={!!meta.bookmarks}
+              onChange={(e) => setMeta({ ...meta, bookmarks: e.target.checked || undefined })}
+              className="accent-indigo-500"
+            />
+            Allow bookmarks
+            <span className="text-xs text-zinc-500">Learners can save their place without completing lessons.</span>
+          </label>
+          <div className="flex items-end justify-end gap-2 sm:col-start-3">
             <button onClick={() => setShowSettings(false)} className="rounded px-3 py-1.5 text-sm text-zinc-400 hover:bg-zinc-800">
               Cancel
             </button>

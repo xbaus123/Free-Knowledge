@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import * as engine from "../lib/engine";
 import { importWithPrompts } from "../lib/studio";
+import { BookmarkIcon } from "./BookmarkIcon";
 
 // Collapsed course cards list this many lessons so every card is the same size.
 const PREVIEW_LESSONS = 5;
 
 interface Props {
   lastLesson?: { courseId: string; lessonId: string };
-  onOpen: (courseId: string, lessonId: string) => void;
+  /** `scroll` (0–1) restores how far down the lesson a bookmark was. */
+  onOpen: (courseId: string, lessonId: string, scroll?: number) => void;
   onStudio: () => void;
 }
 
@@ -51,7 +53,16 @@ export function Home({ lastLesson, onOpen, onStudio }: Props) {
 
   const done = (courseId: string, lessonId: string) => !!progress?.courses[courseId]?.[lessonId]?.completed;
 
+  // A course's bookmark, if it uses bookmarks and the lesson still exists.
+  const bookmarkFor = (c: engine.Course) => {
+    const b = c.bookmarks ? progress?.bookmarks?.[c.id] : undefined;
+    const index = b ? c.lessons.findIndex((l) => l.id === b.lessonId) : -1;
+    return b && index >= 0 ? { ...b, index, lesson: c.lessons[index] } : undefined;
+  };
+
   const openCourse = (c: engine.Course) => {
+    const b = bookmarkFor(c);
+    if (b) return onOpen(c.id, b.lessonId, b.scroll);
     const target = c.lessons.find((l) => !done(c.id, l.id)) ?? c.lessons[0];
     if (target) onOpen(c.id, target.id);
   };
@@ -118,6 +129,7 @@ export function Home({ lastLesson, onOpen, onStudio }: Props) {
             const pct = c.lessons.length ? Math.round((completed / c.lessons.length) * 100) : 0;
             const isExpanded = expanded.has(c.id);
             const shown = isExpanded ? c.lessons : c.lessons.slice(0, PREVIEW_LESSONS);
+            const bookmark = bookmarkFor(c);
             return (
               <div
                 key={c.id}
@@ -153,14 +165,31 @@ export function Home({ lastLesson, onOpen, onStudio }: Props) {
                           {done(c.id, l.id) ? "✓" : i + 1}
                         </span>
                         <span className="truncate">{l.title}</span>
+                        {bookmark?.lessonId === l.id && (
+                          <span className="ml-auto shrink-0 text-amber-300" title="Bookmarked">
+                            <BookmarkIcon filled />
+                          </span>
+                        )}
                       </button>
                     </li>
                   ))}
                 </ol>
-                <div className="mb-3 h-6">
+                <div className="mb-3 flex h-6 items-center justify-between gap-2">
                   {c.lessons.length > PREVIEW_LESSONS && (
                     <button onClick={() => toggleExpanded(c.id)} className="px-1.5 text-xs text-indigo-300 hover:text-indigo-200">
                       {isExpanded ? "Show fewer lessons ▴" : `Show all ${c.lessons.length} lessons ▾`}
+                    </button>
+                  )}
+                  {bookmark && (
+                    <button
+                      onClick={() => onOpen(c.id, bookmark.lessonId, bookmark.scroll)}
+                      title={`Open your bookmark: ${bookmark.index + 1}. ${bookmark.lesson.title}`}
+                      className="ml-auto flex min-w-0 items-center gap-1.5 rounded px-1.5 text-xs text-amber-300 hover:text-amber-200"
+                    >
+                      <BookmarkIcon filled className="h-3 w-3 shrink-0" />
+                      <span className="truncate">
+                        Bookmark: {bookmark.index + 1}. {bookmark.lesson.title}
+                      </span>
                     </button>
                   )}
                 </div>
@@ -176,7 +205,7 @@ export function Home({ lastLesson, onOpen, onStudio }: Props) {
                     disabled={c.lessons.length === 0}
                     className="rounded bg-indigo-600 px-3 py-1 text-sm font-medium hover:bg-indigo-500 disabled:opacity-40"
                   >
-                    {completed === 0 ? "Start" : completed === c.lessons.length ? "Review" : "Continue"}
+                    {bookmark || (completed > 0 && completed < c.lessons.length) ? "Continue" : completed === 0 ? "Start" : "Review"}
                   </button>
                 </div>
               </div>

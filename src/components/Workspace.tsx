@@ -4,6 +4,7 @@ import * as engine from "../lib/engine";
 import { languageForPath } from "../lib/monaco";
 import { classifyGrade, LessonTelemetry, telemetryAllowed } from "../lib/telemetry";
 import { AskClaudeButton } from "./AskClaudeButton";
+import { BookmarkIcon } from "./BookmarkIcon";
 import { CodeEditor } from "./CodeEditor";
 import { FileTree, LockIcon } from "./FileTree";
 import { FindBar } from "./FindBar";
@@ -23,6 +24,8 @@ interface Props {
   onHome: () => void;
   /** Label for the back button; "Courses" unless previewing from the Studio. */
   backLabel?: string;
+  /** Scroll the first lesson's text here (0–1) once it loads, e.g. when opened from a bookmark. */
+  initialScroll?: number;
 }
 
 type SaveState = "saved" | "unsaved" | "saving" | "error";
@@ -34,9 +37,15 @@ const AUTOSAVE_MS = 800;
 const RUNNABLE = new Set(["python", "javascript"]);
 const PRINT_HINT: Record<string, string> = { python: "print(...)", javascript: "console.log(...)" };
 
-export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel = "Courses" }: Props) {
+export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel = "Courses", initialScroll }: Props) {
   const [course, setCourse] = useState<engine.Course>();
   const [progress, setProgress] = useState<Record<string, engine.LessonProgress>>({});
+  const [bookmark, setBookmark] = useState<engine.Bookmark>();
+  const [bookmarkError, setBookmarkError] = useState(false);
+  // Where to scroll a lesson's text once it has loaded (opening a bookmark).
+  const pendingScroll = useRef<{ lessonId: string; scroll: number } | undefined>(
+    initialScroll !== undefined ? { lessonId, scroll: initialScroll } : undefined,
+  );
   const [lesson, setLesson] = useState<engine.Lesson>();
   const [code, setCode] = useState("");
   // Mirrors `code` synchronously: ⌘Enter can fire right after a keystroke,
@@ -93,7 +102,10 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
   const refreshProgress = useCallback(() => {
     engine
       .progress()
-      .then((p) => setProgress(p.courses[courseId] ?? {}))
+      .then((p) => {
+        setProgress(p.courses[courseId] ?? {});
+        setBookmark(p.bookmarks?.[courseId]);
+      })
       .catch(console.error);
   }, [courseId]);
 
@@ -144,6 +156,18 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
       cancelRef.current?.();
     };
   }, [courseId, lessonId]);
+
+  // Opening a bookmark: scroll its lesson back to where the learner was.
+  useEffect(() => {
+    const target = pendingScroll.current;
+    if (!lesson || target?.lessonId !== lesson.id) return;
+    pendingScroll.current = undefined;
+    const frame = requestAnimationFrame(() => {
+      const el = lessonTextRef.current;
+      if (el) el.scrollTop = target.scroll * (el.scrollHeight - el.clientHeight);
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [lesson]);
 
   // --- telemetry: one tracked visit per lesson, if the lesson and learner allow it ---
   useEffect(() => {
@@ -430,6 +454,33 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
   const completedCount = lessons.filter((l) => progress[l.id]?.completed).length;
 
   const completed = !!progress[lessonId]?.completed;
+
+  // --- bookmarks (courses that turn them on) ---
+  const bookmarkedHere = bookmark?.lessonId === lessonId;
+  const bookmarkIndex = bookmark ? lessons.findIndex((l) => l.id === bookmark.lessonId) : -1;
+  const toggleBookmark = async () => {
+    setBookmarkError(false);
+    try {
+      if (bookmarkedHere) {
+        await engine.deleteBookmark(courseId);
+        setBookmark(undefined);
+      } else {
+        const el = lessonTextRef.current;
+        const room = el ? el.scrollHeight - el.clientHeight : 0;
+        const scroll = el && room > 0 ? el.scrollTop / room : 0;
+        await engine.setBookmark(courseId, lessonId, scroll);
+        setBookmark({ lessonId, scroll, updatedAt: new Date().toISOString() });
+      }
+    } catch (e) {
+      console.error("bookmark failed", e);
+      setBookmarkError(true);
+    }
+  };
+  const goToBookmark = () => {
+    if (!bookmark) return;
+    pendingScroll.current = { lessonId: bookmark.lessonId, scroll: bookmark.scroll };
+    onOpenLesson(bookmark.lessonId);
+  };
   const goNext = next ? () => onOpenLesson(next.id) : undefined;
 
   const lessonPane = (
@@ -477,6 +528,7 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
             <option key={l.id} value={l.id}>
               {progress[l.id]?.completed ? "✓ " : ""}
               {i + 1}. {l.title}
+              {course?.bookmarks && bookmark?.lessonId === l.id ? " (bookmarked)" : ""}
             </option>
           ))}
         </select>
@@ -484,6 +536,40 @@ export function Workspace({ courseId, lessonId, onOpenLesson, onHome, backLabel 
           {completedCount}/{lessons.length} done
         </span>
         <div className="ml-auto flex items-center gap-1">
+          {course?.bookmarks && (
+            <>
+              {bookmark && !bookmarkedHere && bookmarkIndex >= 0 && (
+                <button
+                  onClick={goToBookmark}
+                  title={`Go to your bookmark: ${lessons[bookmarkIndex].title}`}
+                  className="rounded px-2 py-1 text-xs text-zinc-400 hover:bg-zinc-800 hover:text-zinc-100"
+                >
+                  Go to bookmark ({bookmarkIndex + 1})
+                </button>
+              )}
+              <button
+                onClick={toggleBookmark}
+                disabled={!lesson}
+                aria-pressed={bookmarkedHere}
+                title={
+                  bookmarkError
+                    ? "Couldn't save the bookmark. Try again."
+                    : bookmarkedHere
+                      ? "Remove your bookmark from this lesson"
+                      : bookmark
+                        ? "Move your bookmark here, to this lesson and how far you've scrolled"
+                        : "Bookmark this lesson and how far you've scrolled, to come back to it later"
+                }
+                className={`flex items-center gap-1.5 rounded px-2 py-1 text-xs hover:bg-zinc-800 ${
+                  bookmarkError ? "text-red-400" : bookmarkedHere ? "text-amber-300" : "text-zinc-400 hover:text-zinc-100"
+                }`}
+              >
+                <BookmarkIcon filled={bookmarkedHere} />
+                {bookmarkedHere ? "Bookmarked" : "Bookmark"}
+              </button>
+              <span className="mx-1 h-4 w-px bg-zinc-800" />
+            </>
+          )}
           {caps?.scratchpad && (
             <button
               onClick={() => setScratchpadOpen(true)}
